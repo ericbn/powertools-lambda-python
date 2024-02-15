@@ -6,13 +6,13 @@ from ...shared.types import JSONType
 from . import schema
 from .base import StoreProvider
 from .comparators import (
+    compare_all_in_list,
+    compare_any_in_list,
     compare_datetime_range,
     compare_days_of_week,
     compare_modulo_range,
+    compare_none_in_list,
     compare_time_range,
-    compare_all_in_list,
-    compare_any_in_list,
-    compare_none_in_list
 )
 from .exceptions import ConfigurationStoreError
 

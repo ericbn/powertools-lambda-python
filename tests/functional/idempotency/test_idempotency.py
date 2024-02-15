@@ -1172,11 +1172,9 @@ class MockPersistenceLayer(BasePersistenceLayer):
     def _update_record(self, data_record: DataRecord) -> None:
         assert data_record.idempotency_key == self.expected_idempotency_key
 
-    def _get_record(self, idempotency_key) -> DataRecord:
-        ...
+    def _get_record(self, idempotency_key) -> DataRecord: ...
 
-    def _delete_record(self, data_record: DataRecord) -> None:
-        ...
+    def _delete_record(self, data_record: DataRecord) -> None: ...
 
 
 def test_idempotent_lambda_event_source(lambda_context):

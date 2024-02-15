@@ -73,8 +73,7 @@ class VPCLatticeEventBase(BaseProxyEvent):
         name: str,
         default_value: str,
         case_sensitive: Optional[bool] = False,
-    ) -> str:
-        ...
+    ) -> str: ...
 
     @overload
     def get_header_value(
@@ -82,8 +81,7 @@ class VPCLatticeEventBase(BaseProxyEvent):
         name: str,
         default_value: Optional[str] = None,
         case_sensitive: Optional[bool] = False,
-    ) -> Optional[str]:
-        ...
+    ) -> Optional[str]: ...
 
     def get_header_value(
         self,
