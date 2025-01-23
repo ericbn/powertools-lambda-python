@@ -1242,6 +1242,15 @@ You're not viewing the latest version.
 </li>
         
           <li class="md-nav__item">
+  <a href="#customizing-the-idempotency-key-generation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Customizing the Idempotency key generation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#lambda-timeouts" class="md-nav__link">
     <span class="md-ellipsis">
       Lambda timeouts
@@ -2324,6 +2333,15 @@ You're not viewing the latest version.
 </li>
         
           <li class="md-nav__item">
+  <a href="#customizing-the-idempotency-key-generation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Customizing the Idempotency key generation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#lambda-timeouts" class="md-nav__link">
     <span class="md-ellipsis">
       Lambda timeouts
@@ -2789,7 +2807,10 @@ You're not viewing the latest version.
 </ul>
 <h2 id="terminology">Terminology<a class="headerlink" href="#terminology" title="Permanent link">&para;</a></h2>
 <p>The property of idempotency means that an operation does not cause additional side effects if it is called more than once with the same input parameters.</p>
-<p><strong>Idempotency key</strong> is a combination of <strong>(a)</strong> Lambda function name, <strong>(b)</strong> fully qualified name of your function, and <strong>(c)</strong> a hash of the entire payload or part(s) of the payload you specify.</p>
+<!-- markdownlint-disable MD013 -->
+<p><strong>Idempotency key</strong> By default, this is a combination of <strong>(a)</strong> Lambda function name, <strong>(b)</strong> fully qualified name of your function, and <strong>(c)</strong> a hash of the entire payload or part(s) of the payload you specify. However, you can customize the key generation by using <strong>(a)</strong> a <a href="#customizing-the-idempotency-key-generation">custom prefix name</a>, while still incorporating <strong>(c)</strong> a hash of the entire payload or part(s) of the payload you specify.</p>
+<!-- markdownlint-enable MD013 -->
+
 <p><strong>Idempotent request</strong> is an operation with the same input previously processed that is not expired in your persistent storage or in-memory cache.</p>
 <p><strong>Persistence layer</strong> is a storage we use to create, read, expire, and delete idempotency records.</p>
 <p><strong>Idempotency record</strong> is the data representation of an idempotent request saved in the persistent layer and in its various status. We use it to coordinate  whether <strong>(a)</strong> a request is idempotent, <strong>(b)</strong> it's not expired, <strong>(c)</strong> JSON response to return, and more.</p>
@@ -4435,6 +4456,195 @@ This means there could be differences in whitespace even when the JSON payload i
 <p><strong>Why?</strong></p>
 <p>A record might still be valid (<code>COMPLETE</code>) when we retrieved, but in some rare cases it might expire a second later. A record could also be <a href="#using-in-memory-cache">cached in memory</a>. You might also want to have idempotent transactions that should expire in seconds.</p>
 </details>
+<h3 id="customizing-the-idempotency-key-generation">Customizing the Idempotency key generation<a class="headerlink" href="#customizing-the-idempotency-key-generation" title="Permanent link">&para;</a></h3>
+<div class="admonition warning">
+<p class="admonition-title">Warning: Changing the idempotency key generation will invalidate existing idempotency records</p>
+</div>
+<p>Use <strong><code>key_prefix</code></strong> parameter in the <code>@idempotent</code> or <code>@idempotent_function</code> decorators to define a custom prefix for your Idempotency Key. This allows you to decouple idempotency key name from function names. It can be useful during application refactoring, for example.</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="11:2"><input checked="checked" id="using-a-custom-prefix-in-lambda-handler" name="__tabbed_11" type="radio" /><input id="using-a-custom-prefix-in-standalone-functions" name="__tabbed_11" type="radio" /><div class="tabbed-labels"><label for="using-a-custom-prefix-in-lambda-handler">Using a custom prefix in Lambda Handler</label><label for="using-a-custom-prefix-in-standalone-functions">Using a custom prefix in standalone functions</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span>
+<span class="normal">35</span>
+<span class="normal">36</span>
+<span class="normal">37</span>
+<span class="normal">38</span>
+<span class="normal">39</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">dataclasses</span><span class="w"> </span><span class="kn">import</span> <span class="n">dataclass</span><span class="p">,</span> <span class="n">field</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">uuid</span><span class="w"> </span><span class="kn">import</span> <span class="n">uuid4</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">aws_lambda_powertools.utilities.idempotency</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
+    <span class="n">DynamoDBPersistenceLayer</span><span class="p">,</span>
+    <span class="n">idempotent</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">aws_lambda_powertools.utilities.typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">LambdaContext</span>
+
+<span class="n">table</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">&quot;IDEMPOTENCY_TABLE&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>
+<span class="n">persistence_layer</span> <span class="o">=</span> <span class="n">DynamoDBPersistenceLayer</span><span class="p">(</span><span class="n">table_name</span><span class="o">=</span><span class="n">table</span><span class="p">)</span>
+
+
+<span class="nd">@dataclass</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">Payment</span><span class="p">:</span>
+    <span class="n">user_id</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="n">product_id</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="n">payment_id</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="n">field</span><span class="p">(</span><span class="n">default_factory</span><span class="o">=</span><span class="k">lambda</span><span class="p">:</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">uuid4</span><span class="p">()</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+
+<span class="k">class</span><span class="w"> </span><span class="nc">PaymentError</span><span class="p">(</span><span class="ne">Exception</span><span class="p">):</span> <span class="o">...</span>
+
+
+<span class="hll"><span class="nd">@idempotent</span><span class="p">(</span><span class="n">persistence_store</span><span class="o">=</span><span class="n">persistence_layer</span><span class="p">,</span> <span class="n">key_prefix</span><span class="o">=</span><span class="s2">&quot;my_custom_prefix&quot;</span><span class="p">)</span> <span class="c1"># (1)!</span>
+</span><span class="k">def</span><span class="w"> </span><span class="nf">lambda_handler</span><span class="p">(</span><span class="n">event</span><span class="p">:</span> <span class="nb">dict</span><span class="p">,</span> <span class="n">context</span><span class="p">:</span> <span class="n">LambdaContext</span><span class="p">):</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">payment</span><span class="p">:</span> <span class="n">Payment</span> <span class="o">=</span> <span class="n">create_subscription_payment</span><span class="p">(</span><span class="n">event</span><span class="p">)</span>
+        <span class="k">return</span> <span class="p">{</span>
+            <span class="s2">&quot;payment_id&quot;</span><span class="p">:</span> <span class="n">payment</span><span class="o">.</span><span class="n">payment_id</span><span class="p">,</span>
+            <span class="s2">&quot;message&quot;</span><span class="p">:</span> <span class="s2">&quot;success&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;statusCode&quot;</span><span class="p">:</span> <span class="mi">200</span><span class="p">,</span>
+        <span class="p">}</span>
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">exc</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="n">PaymentError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Error creating payment </span><span class="si">{</span><span class="nb">str</span><span class="p">(</span><span class="n">exc</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">create_subscription_payment</span><span class="p">(</span><span class="n">event</span><span class="p">:</span> <span class="nb">dict</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Payment</span><span class="p">:</span>
+    <span class="k">return</span> <span class="n">Payment</span><span class="p">(</span><span class="o">**</span><span class="n">event</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+<ol>
+<li>The Idempotency record will be something like <code>my_custom_prefix#c4ca4238a0b923820dcc509a6f75849b</code></li>
+</ol>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span>
+<span class="normal">35</span>
+<span class="normal">36</span>
+<span class="normal">37</span>
+<span class="normal">38</span>
+<span class="normal">39</span>
+<span class="normal">40</span>
+<span class="normal">41</span>
+<span class="normal">42</span>
+<span class="normal">43</span>
+<span class="normal">44</span>
+<span class="normal">45</span>
+<span class="normal">46</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">dataclasses</span><span class="w"> </span><span class="kn">import</span> <span class="n">dataclass</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">aws_lambda_powertools.utilities.idempotency</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
+    <span class="n">DynamoDBPersistenceLayer</span><span class="p">,</span>
+    <span class="n">IdempotencyConfig</span><span class="p">,</span>
+    <span class="n">idempotent_function</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">aws_lambda_powertools.utilities.typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">LambdaContext</span>
+
+<span class="n">table</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">&quot;IDEMPOTENCY_TABLE&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>
+<span class="n">dynamodb</span> <span class="o">=</span> <span class="n">DynamoDBPersistenceLayer</span><span class="p">(</span><span class="n">table_name</span><span class="o">=</span><span class="n">table</span><span class="p">)</span>
+<span class="n">config</span> <span class="o">=</span> <span class="n">IdempotencyConfig</span><span class="p">(</span><span class="n">event_key_jmespath</span><span class="o">=</span><span class="s2">&quot;order_id&quot;</span><span class="p">)</span>  <span class="c1"># see Choosing a payload subset section</span>
+
+
+<span class="nd">@dataclass</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">OrderItem</span><span class="p">:</span>
+    <span class="n">sku</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="n">description</span><span class="p">:</span> <span class="nb">str</span>
+
+
+<span class="nd">@dataclass</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">Order</span><span class="p">:</span>
+    <span class="n">item</span><span class="p">:</span> <span class="n">OrderItem</span>
+    <span class="n">order_id</span><span class="p">:</span> <span class="nb">int</span>
+
+
+<span class="nd">@idempotent_function</span><span class="p">(</span>
+    <span class="n">data_keyword_argument</span><span class="o">=</span><span class="s2">&quot;order&quot;</span><span class="p">,</span>
+    <span class="n">config</span><span class="o">=</span><span class="n">config</span><span class="p">,</span>
+    <span class="n">persistence_store</span><span class="o">=</span><span class="n">dynamodb</span><span class="p">,</span>
+<span class="hll">    <span class="n">key_prefix</span><span class="o">=</span><span class="s2">&quot;my_custom_prefix&quot;</span><span class="p">,</span> <span class="c1"># (1)!</span>
+</span><span class="p">)</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">process_order</span><span class="p">(</span><span class="n">order</span><span class="p">:</span> <span class="n">Order</span><span class="p">):</span> 
+    <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;processed order </span><span class="si">{</span><span class="n">order</span><span class="o">.</span><span class="n">order_id</span><span class="si">}</span><span class="s2">&quot;</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">lambda_handler</span><span class="p">(</span><span class="n">event</span><span class="p">:</span> <span class="nb">dict</span><span class="p">,</span> <span class="n">context</span><span class="p">:</span> <span class="n">LambdaContext</span><span class="p">):</span>
+    <span class="c1"># see Lambda timeouts section</span>
+    <span class="n">config</span><span class="o">.</span><span class="n">register_lambda_context</span><span class="p">(</span><span class="n">context</span><span class="p">)</span> 
+
+    <span class="n">order_item</span> <span class="o">=</span> <span class="n">OrderItem</span><span class="p">(</span><span class="n">sku</span><span class="o">=</span><span class="s2">&quot;fake&quot;</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s2">&quot;sample&quot;</span><span class="p">)</span>
+    <span class="n">order</span> <span class="o">=</span> <span class="n">Order</span><span class="p">(</span><span class="n">item</span><span class="o">=</span><span class="n">order_item</span><span class="p">,</span> <span class="n">order_id</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+    <span class="c1"># `order` parameter must be called as a keyword argument to work</span>
+    <span class="n">process_order</span><span class="p">(</span><span class="n">order</span><span class="o">=</span><span class="n">order</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+<ol>
+<li>The Idempotency record will be something like <code>my_custom_prefix#c4ca4238a0b923820dcc509a6f75849b</code></li>
+</ol>
+</div>
+</div>
+</div>
 <h3 id="lambda-timeouts">Lambda timeouts<a class="headerlink" href="#lambda-timeouts" title="Permanent link">&para;</a></h3>
 <div class="admonition note">
 <p class="admonition-title">You can skip this section if you are using the <a href="#idempotent-decorator"><code>@idempotent</code> decorator</a></p>
@@ -4632,7 +4842,7 @@ This means there could be differences in whitespace even when the JSON payload i
 <p>Use <code>sort_key_attr</code> parameter when your table is configured with a composite primary key <em>(hash+range key)</em>.</p>
 <p>When enabled, we will save the idempotency key in the sort key instead. By default, the primary key will now be set to <code>idempotency#{LAMBDA_FUNCTION_NAME}</code>.</p>
 <p>You can optionally set a static value for the partition key using the <code>static_pk_value</code> parameter.</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="11:2"><input checked="checked" id="reusing-a-dynamodb-table-that-uses-a-composite-primary-key" name="__tabbed_11" type="radio" /><input id="sample-event_4" name="__tabbed_11" type="radio" /><div class="tabbed-labels"><label for="reusing-a-dynamodb-table-that-uses-a-composite-primary-key">Reusing a DynamoDB table that uses a composite primary key</label><label for="sample-event_4">Sample Event</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="12:2"><input checked="checked" id="reusing-a-dynamodb-table-that-uses-a-composite-primary-key" name="__tabbed_12" type="radio" /><input id="sample-event_4" name="__tabbed_12" type="radio" /><div class="tabbed-labels"><label for="reusing-a-dynamodb-table-that-uses-a-composite-primary-key">Reusing a DynamoDB table that uses a composite primary key</label><label for="sample-event_4">Sample Event</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
@@ -4789,7 +4999,7 @@ This means there could be differences in whitespace even when the JSON payload i
 </div>
 <p>For simple setups, initialize <code>RedisCachePersistenceLayer</code> with your Redis endpoint and port to connect.</p>
 <p>For security, we enforce SSL connections by default; to disable it, set <code>ssl=False</code>.</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="12:3"><input checked="checked" id="redis-quick-start" name="__tabbed_12" type="radio" /><input id="using-an-existing-redis-client" name="__tabbed_12" type="radio" /><input id="sample-event_5" name="__tabbed_12" type="radio" /><div class="tabbed-labels"><label for="redis-quick-start">Redis quick start</label><label for="using-an-existing-redis-client">Using an existing Redis client</label><label for="sample-event_5">Sample event</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="13:3"><input checked="checked" id="redis-quick-start" name="__tabbed_13" type="radio" /><input id="using-an-existing-redis-client" name="__tabbed_13" type="radio" /><input id="sample-event_5" name="__tabbed_13" type="radio" /><div class="tabbed-labels"><label for="redis-quick-start">Redis quick start</label><label for="using-an-existing-redis-client">Using an existing Redis client</label><label for="sample-event_5">Sample event</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">getting_started_with_idempotency_redis_config.py</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
@@ -4994,7 +5204,7 @@ This means there could be differences in whitespace even when the JSON payload i
 <h5 id="redis-ssl-connections">Redis SSL connections<a class="headerlink" href="#redis-ssl-connections" title="Permanent link">&para;</a></h5>
 <p>We recommend using AWS Secrets Manager to store and rotate certificates safely, and the <a href="../parameters/" target="_blank">Parameters feature</a> to fetch and cache optimally.</p>
 <p>For advanced configurations, we recommend using an existing Redis client for optimal compatibility like SSL certificates and timeout.</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="13:2"><input checked="checked" id="advanced-configuration-using-aws-secrets" name="__tabbed_13" type="radio" /><input id="advanced-configuration-with-local-certificates" name="__tabbed_13" type="radio" /><div class="tabbed-labels"><label for="advanced-configuration-using-aws-secrets">Advanced configuration using AWS Secrets</label><label for="advanced-configuration-with-local-certificates">Advanced configuration with local certificates</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="14:2"><input checked="checked" id="advanced-configuration-using-aws-secrets" name="__tabbed_14" type="radio" /><input id="advanced-configuration-with-local-certificates" name="__tabbed_14" type="radio" /><div class="tabbed-labels"><label for="advanced-configuration-using-aws-secrets">Advanced configuration using AWS Secrets</label><label for="advanced-configuration-with-local-certificates">Advanced configuration with local certificates</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">using_redis_client_with_aws_secrets.py</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
@@ -5267,7 +5477,7 @@ This means there could be differences in whitespace even when the JSON payload i
 <p>In this example, we choose <code>messageId</code> as our idempotency key since we know it'll be unique.</p>
 <p>Depending on your use case, it might be more accurate <a href="#choosing-a-payload-subset">to choose another field</a> your producer intentionally set to define uniqueness.</p>
 </details>
-<div class="tabbed-set tabbed-alternate" data-tabs="14:2"><input checked="checked" id="integration-with-batch-processor" name="__tabbed_14" type="radio" /><input id="sample-event_6" name="__tabbed_14" type="radio" /><div class="tabbed-labels"><label for="integration-with-batch-processor">Integration with Batch Processor</label><label for="sample-event_6">Sample event</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="15:2"><input checked="checked" id="integration-with-batch-processor" name="__tabbed_15" type="radio" /><input id="sample-event_6" name="__tabbed_15" type="radio" /><div class="tabbed-labels"><label for="integration-with-batch-processor">Integration with Batch Processor</label><label for="sample-event_6">Sample event</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">integrate_idempotency_with_batch_processor.py</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
@@ -5696,7 +5906,7 @@ This means there could be differences in whitespace even when the JSON payload i
 </details>
 <p>By default, we will return the same result as it returned before, however in this instance it may be misleading; we provide a fail fast payload validation to address this edge case.</p>
 <p>With <strong><code>payload_validation_jmespath</code></strong>, you can provide an additional JMESPath expression to specify which part of the event body should be validated against previous idempotent invocations</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="15:3"><input checked="checked" id="payload-validation_1" name="__tabbed_15" type="radio" /><input id="sample-event-1" name="__tabbed_15" type="radio" /><input id="sample-event-2" name="__tabbed_15" type="radio" /><div class="tabbed-labels"><label for="payload-validation_1">Payload validation</label><label for="sample-event-1">Sample event 1</label><label for="sample-event-2">Sample event 2</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="16:3"><input checked="checked" id="payload-validation_1" name="__tabbed_16" type="radio" /><input id="sample-event-1" name="__tabbed_16" type="radio" /><input id="sample-event-2" name="__tabbed_16" type="radio" /><div class="tabbed-labels"><label for="payload-validation_1">Payload validation</label><label for="sample-event-1">Sample event 1</label><label for="sample-event-2">Sample event 2</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
@@ -5856,7 +6066,7 @@ This means there could be differences in whitespace even when the JSON payload i
 <summary>Warning</summary>
 <p>To prevent errors, transactions will not be treated as idempotent if <strong><code>raise_on_no_idempotency_key</code></strong> is set to <code>False</code> and the evaluation of <strong><code>event_key_jmespath</code></strong> is <code>None</code>. Therefore, no data will be fetched, stored, or deleted in the idempotency storage layer.</p>
 </details>
-<div class="tabbed-set tabbed-alternate" data-tabs="16:3"><input checked="checked" id="idempotency-key-required" name="__tabbed_16" type="radio" /><input id="success-event" name="__tabbed_16" type="radio" /><input id="failure-event" name="__tabbed_16" type="radio" /><div class="tabbed-labels"><label for="idempotency-key-required">Idempotency key required</label><label for="success-event">Success Event</label><label for="failure-event">Failure Event</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="17:3"><input checked="checked" id="idempotency-key-required" name="__tabbed_17" type="radio" /><input id="success-event" name="__tabbed_17" type="radio" /><input id="failure-event" name="__tabbed_17" type="radio" /><div class="tabbed-labels"><label for="idempotency-key-required">Idempotency key required</label><label for="success-event">Success Event</label><label for="failure-event">Failure Event</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
@@ -5937,7 +6147,7 @@ This means there could be differences in whitespace even when the JSON payload i
 <h3 id="customizing-boto-configuration">Customizing boto configuration<a class="headerlink" href="#customizing-boto-configuration" title="Permanent link">&para;</a></h3>
 <!-- markdownlint-disable-next-line MD013 -->
 <p>The <strong><code>boto_config</code></strong> and <strong><code>boto3_session</code></strong> parameters enable you to pass in a custom <a href="https://botocore.amazonaws.com/v1/documentation/api/latest/reference/config.html" target="_blank">botocore config object</a> or a custom <a href="https://boto3.amazonaws.com/v1/documentation/api/latest/reference/core/session.html" target="_blank">boto3 session</a> when constructing the persistence store.</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="17:3"><input checked="checked" id="custom-session" name="__tabbed_17" type="radio" /><input id="custom-config" name="__tabbed_17" type="radio" /><input id="sample-event_7" name="__tabbed_17" type="radio" /><div class="tabbed-labels"><label for="custom-session">Custom session</label><label for="custom-config">Custom config</label><label for="sample-event_7">Sample Event</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="18:3"><input checked="checked" id="custom-session" name="__tabbed_18" type="radio" /><input id="custom-config" name="__tabbed_18" type="radio" /><input id="sample-event_7" name="__tabbed_18" type="radio" /><div class="tabbed-labels"><label for="custom-session">Custom session</label><label for="custom-config">Custom config</label><label for="sample-event_7">Sample Event</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
@@ -6311,7 +6521,7 @@ This means there could be differences in whitespace even when the JSON payload i
 </details>
 <h3 id="manipulating-the-idempotent-response">Manipulating the Idempotent Response<a class="headerlink" href="#manipulating-the-idempotent-response" title="Permanent link">&para;</a></h3>
 <p>You can set up a <code>response_hook</code> in the <code>IdempotentConfig</code> class to manipulate the returned data when an operation is idempotent. The hook function will be called with the current deserialized response object and the Idempotency record.</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="18:2"><input checked="checked" id="using-an-idempotent-response-hook" name="__tabbed_18" type="radio" /><input id="sample-event_8" name="__tabbed_18" type="radio" /><div class="tabbed-labels"><label for="using-an-idempotent-response-hook">Using an Idempotent Response Hook</label><label for="sample-event_8">Sample event</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="19:2"><input checked="checked" id="using-an-idempotent-response-hook" name="__tabbed_19" type="radio" /><input id="sample-event_8" name="__tabbed_19" type="radio" /><div class="tabbed-labels"><label for="using-an-idempotent-response-hook">Using an Idempotent Response Hook</label><label for="sample-event_8">Sample event</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
@@ -6473,7 +6683,7 @@ This means there could be differences in whitespace even when the JSON payload i
 event - not the "raw" event Lambda was invoked with.</p>
 <p>Make sure to account for this behavior, if you set the <code>event_key_jmespath</code>.</p>
 </details>
-<div class="tabbed-set tabbed-alternate" data-tabs="19:2"><input checked="checked" id="using-idempotency-with-validation-utility" name="__tabbed_19" type="radio" /><input id="sample-event_9" name="__tabbed_19" type="radio" /><div class="tabbed-labels"><label for="using-idempotency-with-validation-utility">Using Idempotency with validation utility</label><label for="sample-event_9">Sample Event</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="20:2"><input checked="checked" id="using-idempotency-with-validation-utility" name="__tabbed_20" type="radio" /><input id="sample-event_9" name="__tabbed_20" type="radio" /><div class="tabbed-labels"><label for="using-idempotency-with-validation-utility">Using Idempotency with validation utility</label><label for="sample-event_9">Sample Event</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
@@ -6675,7 +6885,7 @@ event - not the "raw" event Lambda was invoked with.</p>
 <h3 id="disabling-the-idempotency-utility">Disabling the idempotency utility<a class="headerlink" href="#disabling-the-idempotency-utility" title="Permanent link">&para;</a></h3>
 <p>When testing your code, you may wish to disable the idempotency logic altogether and focus on testing your business logic. To do this, you can set the environment variable <code>POWERTOOLS_IDEMPOTENCY_DISABLED</code>
 with a truthy value. If you prefer setting this for specific tests, and are using Pytest, you can use <a href="https://docs.pytest.org/en/latest/monkeypatch.html" rel="nofollow" target="_blank">monkeypatch</a> fixture:</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="20:2"><input checked="checked" id="test_disabling_idempotency_utilitypy" name="__tabbed_20" type="radio" /><input id="app_test_disabling_idempotency_utilitypy" name="__tabbed_20" type="radio" /><div class="tabbed-labels"><label for="test_disabling_idempotency_utilitypy">test_disabling_idempotency_utility.py</label><label for="app_test_disabling_idempotency_utilitypy">app_test_disabling_idempotency_utility.py</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="21:2"><input checked="checked" id="test_disabling_idempotency_utilitypy" name="__tabbed_21" type="radio" /><input id="app_test_disabling_idempotency_utilitypy" name="__tabbed_21" type="radio" /><div class="tabbed-labels"><label for="test_disabling_idempotency_utilitypy">test_disabling_idempotency_utility.py</label><label for="app_test_disabling_idempotency_utilitypy">app_test_disabling_idempotency_utility.py</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
@@ -6775,7 +6985,7 @@ with a truthy value. If you prefer setting this for specific tests, and are usin
 </div>
 <h3 id="testing-with-dynamodb-local">Testing with DynamoDB Local<a class="headerlink" href="#testing-with-dynamodb-local" title="Permanent link">&para;</a></h3>
 <p>To test with <a href="https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/DynamoDBLocal.DownloadingAndRunning.html" target="_blank">DynamoDB Local</a>, you can replace the <code>DynamoDB client</code> used by the persistence layer with one you create inside your tests. This allows you to set the endpoint_url.</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="21:2"><input checked="checked" id="test_with_dynamodb_localpy" name="__tabbed_21" type="radio" /><input id="app_test_dynamodb_localpy" name="__tabbed_21" type="radio" /><div class="tabbed-labels"><label for="test_with_dynamodb_localpy">test_with_dynamodb_local.py</label><label for="app_test_dynamodb_localpy">app_test_dynamodb_local.py</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="22:2"><input checked="checked" id="test_with_dynamodb_localpy" name="__tabbed_22" type="radio" /><input id="app_test_dynamodb_localpy" name="__tabbed_22" type="radio" /><div class="tabbed-labels"><label for="test_with_dynamodb_localpy">test_with_dynamodb_local.py</label><label for="app_test_dynamodb_localpy">app_test_dynamodb_local.py</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
@@ -6884,7 +7094,7 @@ with a truthy value. If you prefer setting this for specific tests, and are usin
 <h3 id="how-do-i-mock-all-dynamodb-io-operations">How do I mock all DynamoDB I/O operations<a class="headerlink" href="#how-do-i-mock-all-dynamodb-io-operations" title="Permanent link">&para;</a></h3>
 <p>The idempotency utility lazily creates the dynamodb <a href="https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/dynamodb.html#table" target="_blank">Table</a> which it uses to access DynamoDB.
 This means it is possible to pass a mocked Table resource, or stub various methods.</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="22:2"><input checked="checked" id="test_with_io_operationspy" name="__tabbed_22" type="radio" /><input id="app_test_io_operationspy" name="__tabbed_22" type="radio" /><div class="tabbed-labels"><label for="test_with_io_operationspy">test_with_io_operations.py</label><label for="app_test_io_operationspy">app_test_io_operations.py</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="23:2"><input checked="checked" id="test_with_io_operationspy" name="__tabbed_23" type="radio" /><input id="app_test_io_operationspy" name="__tabbed_23" type="radio" /><div class="tabbed-labels"><label for="test_with_io_operationspy">test_with_io_operations.py</label><label for="app_test_io_operationspy">app_test_io_operations.py</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
@@ -6984,7 +7194,7 @@ This means it is possible to pass a mocked Table resource, or stub various metho
 </div>
 <h3 id="testing-with-redis">Testing with Redis<a class="headerlink" href="#testing-with-redis" title="Permanent link">&para;</a></h3>
 <p>To test locally, you can either utilize <a href="https://github.com/cunla/fakeredis-py">fakeredis-py</a> for a simulated Redis environment or refer to the <a href="https://github.com/aws-powertools/powertools-lambda-python/blob/ba6532a1c73e20fdaee88c5795fd40e978553e14/tests/functional/idempotency/persistence/test_redis_layer.py#L34-L66">MockRedis</a> class used in our tests to mock Redis operations.</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="23:2"><input checked="checked" id="test_with_mock_redispy" name="__tabbed_23" type="radio" /><input id="mock_redispy" name="__tabbed_23" type="radio" /><div class="tabbed-labels"><label for="test_with_mock_redispy">test_with_mock_redis.py</label><label for="mock_redispy">mock_redis.py</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="24:2"><input checked="checked" id="test_with_mock_redispy" name="__tabbed_24" type="radio" /><input id="mock_redispy" name="__tabbed_24" type="radio" /><div class="tabbed-labels"><label for="test_with_mock_redispy">test_with_mock_redis.py</label><label for="mock_redispy">mock_redis.py</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
@@ -7163,7 +7373,7 @@ This means it is possible to pass a mocked Table resource, or stub various metho
 </div>
 </div>
 <p>If you want to set up a real Redis client for integration testing, you can reference the code provided below.</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="24:2"><input checked="checked" id="test_with_real_redispy" name="__tabbed_24" type="radio" /><input id="makefile" name="__tabbed_24" type="radio" /><div class="tabbed-labels"><label for="test_with_real_redispy">test_with_real_redis.py</label><label for="makefile">Makefile</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="25:2"><input checked="checked" id="test_with_real_redispy" name="__tabbed_25" type="radio" /><input id="makefile" name="__tabbed_25" type="radio" /><div class="tabbed-labels"><label for="test_with_real_redispy">test_with_real_redis.py</label><label for="makefile">Makefile</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
@@ -7321,7 +7531,7 @@ This means it is possible to pass a mocked Table resource, or stub various metho
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    2024-12-23
+    2025-01-23
   </span>
 
     
