@@ -13,10 +13,10 @@
       
       
       
-        <link rel="prev" href="../base/">
+        <link rel="prev" href="../persistence/">
       
       
-        <link rel="next" href="../dynamodb/">
+        <link rel="next" href="../../jmespath_functions/">
       
       
       <link rel="icon" href="../../../media/aws-logo-light.svg">
@@ -24,7 +24,7 @@
     
     
       
-        <title>AppConfig - Powertools for AWS Lambda (Python)</title>
+        <title>Serialization - Powertools for AWS Lambda (Python)</title>
       
     
     
@@ -80,7 +80,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#aws_lambda_powertools.utilities.parameters.appconfig" class="md-skip">
+        <a href="#aws_lambda_powertools.utilities.idempotency.serialization" class="md-skip">
           Skip to content
         </a>
       
@@ -142,7 +142,7 @@ You're not viewing the latest version.
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              AppConfig
+              Serialization
             
           </span>
         </div>
@@ -318,7 +318,7 @@ You're not viewing the latest version.
     
     
       <li class="md-tabs__item md-tabs__item--active">
-        <a href="../../idempotency/base/" class="md-tabs__link">
+        <a href="../base/" class="md-tabs__link">
           
   
     
@@ -1621,6 +1621,8 @@ You're not viewing the latest version.
                 
   
   
+    
+  
   
   
     
@@ -1647,11 +1649,11 @@ You're not viewing the latest version.
       
     
     
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_1" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_1" checked>
         
           
           <label class="md-nav__link" for="__nav_4_1" id="__nav_4_1_label" tabindex="">
@@ -1666,7 +1668,7 @@ You're not viewing the latest version.
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_1_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_1_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_4_1">
             <span class="md-nav__icon md-icon"></span>
             Idempotency
@@ -1680,7 +1682,7 @@ You're not viewing the latest version.
   
   
     <li class="md-nav__item">
-      <a href="../../idempotency/base/" class="md-nav__link">
+      <a href="../base/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1702,7 +1704,7 @@ You're not viewing the latest version.
   
   
     <li class="md-nav__item">
-      <a href="../../idempotency/config/" class="md-nav__link">
+      <a href="../config/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1724,7 +1726,7 @@ You're not viewing the latest version.
   
   
     <li class="md-nav__item">
-      <a href="../../idempotency/exceptions/" class="md-nav__link">
+      <a href="../exceptions/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1746,7 +1748,7 @@ You're not viewing the latest version.
   
   
     <li class="md-nav__item">
-      <a href="../../idempotency/persistence/" class="md-nav__link">
+      <a href="../persistence/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1765,10 +1767,29 @@ You're not viewing the latest version.
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../../idempotency/serialization/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Serialization
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
@@ -1778,6 +1799,201 @@ You're not viewing the latest version.
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#aws_lambda_powertools.utilities.idempotency.serialization" class="md-nav__link">
+    <span class="md-ellipsis">
+      serialization
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#aws_lambda_powertools.utilities.idempotency.serialization.base" class="md-nav__link">
+    <span class="md-ellipsis">
+      base
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="base">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#aws_lambda_powertools.utilities.idempotency.serialization.base.BaseIdempotencyModelSerializer" class="md-nav__link">
+    <span class="md-ellipsis">
+      BaseIdempotencyModelSerializer
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="BaseIdempotencyModelSerializer">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#aws_lambda_powertools.utilities.idempotency.serialization.base.BaseIdempotencyModelSerializer.instantiate" class="md-nav__link">
+    <span class="md-ellipsis">
+      instantiate
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#aws_lambda_powertools.utilities.idempotency.serialization.base.BaseIdempotencySerializer" class="md-nav__link">
+    <span class="md-ellipsis">
+      BaseIdempotencySerializer
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#aws_lambda_powertools.utilities.idempotency.serialization.custom_dict" class="md-nav__link">
+    <span class="md-ellipsis">
+      custom_dict
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="custom_dict">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#aws_lambda_powertools.utilities.idempotency.serialization.custom_dict.CustomDictSerializer" class="md-nav__link">
+    <span class="md-ellipsis">
+      CustomDictSerializer
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#aws_lambda_powertools.utilities.idempotency.serialization.dataclass" class="md-nav__link">
+    <span class="md-ellipsis">
+      dataclass
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="dataclass">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#aws_lambda_powertools.utilities.idempotency.serialization.dataclass.DataclassSerializer" class="md-nav__link">
+    <span class="md-ellipsis">
+      DataclassSerializer
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#aws_lambda_powertools.utilities.idempotency.serialization.functions" class="md-nav__link">
+    <span class="md-ellipsis">
+      functions
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="functions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#aws_lambda_powertools.utilities.idempotency.serialization.functions.get_actual_type" class="md-nav__link">
+    <span class="md-ellipsis">
+      get_actual_type
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#aws_lambda_powertools.utilities.idempotency.serialization.no_op" class="md-nav__link">
+    <span class="md-ellipsis">
+      no_op
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="no_op">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#aws_lambda_powertools.utilities.idempotency.serialization.no_op.NoOpSerializer" class="md-nav__link">
+    <span class="md-ellipsis">
+      NoOpSerializer
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#aws_lambda_powertools.utilities.idempotency.serialization.pydantic" class="md-nav__link">
+    <span class="md-ellipsis">
+      pydantic
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="pydantic">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#aws_lambda_powertools.utilities.idempotency.serialization.pydantic.PydanticSerializer" class="md-nav__link">
+    <span class="md-ellipsis">
+      PydanticSerializer
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -1817,8 +2033,6 @@ You're not viewing the latest version.
                 
   
   
-    
-  
   
   
     
@@ -1845,11 +2059,11 @@ You're not viewing the latest version.
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_3" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_3" >
         
           
           <label class="md-nav__link" for="__nav_4_3" id="__nav_4_3_label" tabindex="">
@@ -1864,7 +2078,7 @@ You're not viewing the latest version.
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_3_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_3_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_4_3">
             <span class="md-nav__icon md-icon"></span>
             Parameters
@@ -1878,7 +2092,7 @@ You're not viewing the latest version.
   
   
     <li class="md-nav__item">
-      <a href="../base/" class="md-nav__link">
+      <a href="../../parameters/base/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1897,29 +2111,10 @@ You're not viewing the latest version.
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  <span class="md-ellipsis">
-    AppConfig
-    
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../parameters/appconfig/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1929,51 +2124,6 @@ You're not viewing the latest version.
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#aws_lambda_powertools.utilities.parameters.appconfig" class="md-nav__link">
-    <span class="md-ellipsis">
-      appconfig
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#aws_lambda_powertools.utilities.parameters.appconfig.AppConfigProvider" class="md-nav__link">
-    <span class="md-ellipsis">
-      AppConfigProvider
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#aws_lambda_powertools.utilities.parameters.appconfig.get_app_config" class="md-nav__link">
-    <span class="md-ellipsis">
-      get_app_config
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -1986,7 +2136,7 @@ You're not viewing the latest version.
   
   
     <li class="md-nav__item">
-      <a href="../dynamodb/" class="md-nav__link">
+      <a href="../../parameters/dynamodb/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2008,7 +2158,7 @@ You're not viewing the latest version.
   
   
     <li class="md-nav__item">
-      <a href="../ssm/" class="md-nav__link">
+      <a href="../../parameters/ssm/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2030,7 +2180,7 @@ You're not viewing the latest version.
   
   
     <li class="md-nav__item">
-      <a href="../secrets/" class="md-nav__link">
+      <a href="../../parameters/secrets/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2173,29 +2323,179 @@ You're not viewing the latest version.
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#aws_lambda_powertools.utilities.parameters.appconfig" class="md-nav__link">
+  <a href="#aws_lambda_powertools.utilities.idempotency.serialization" class="md-nav__link">
     <span class="md-ellipsis">
-      appconfig
+      serialization
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#aws_lambda_powertools.utilities.parameters.appconfig.AppConfigProvider" class="md-nav__link">
+  <a href="#aws_lambda_powertools.utilities.idempotency.serialization.base" class="md-nav__link">
     <span class="md-ellipsis">
-      AppConfigProvider
+      base
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="base">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#aws_lambda_powertools.utilities.idempotency.serialization.base.BaseIdempotencyModelSerializer" class="md-nav__link">
+    <span class="md-ellipsis">
+      BaseIdempotencyModelSerializer
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="BaseIdempotencyModelSerializer">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#aws_lambda_powertools.utilities.idempotency.serialization.base.BaseIdempotencyModelSerializer.instantiate" class="md-nav__link">
+    <span class="md-ellipsis">
+      instantiate
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#aws_lambda_powertools.utilities.parameters.appconfig.get_app_config" class="md-nav__link">
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#aws_lambda_powertools.utilities.idempotency.serialization.base.BaseIdempotencySerializer" class="md-nav__link">
     <span class="md-ellipsis">
-      get_app_config
+      BaseIdempotencySerializer
     </span>
   </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#aws_lambda_powertools.utilities.idempotency.serialization.custom_dict" class="md-nav__link">
+    <span class="md-ellipsis">
+      custom_dict
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="custom_dict">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#aws_lambda_powertools.utilities.idempotency.serialization.custom_dict.CustomDictSerializer" class="md-nav__link">
+    <span class="md-ellipsis">
+      CustomDictSerializer
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#aws_lambda_powertools.utilities.idempotency.serialization.dataclass" class="md-nav__link">
+    <span class="md-ellipsis">
+      dataclass
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="dataclass">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#aws_lambda_powertools.utilities.idempotency.serialization.dataclass.DataclassSerializer" class="md-nav__link">
+    <span class="md-ellipsis">
+      DataclassSerializer
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#aws_lambda_powertools.utilities.idempotency.serialization.functions" class="md-nav__link">
+    <span class="md-ellipsis">
+      functions
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="functions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#aws_lambda_powertools.utilities.idempotency.serialization.functions.get_actual_type" class="md-nav__link">
+    <span class="md-ellipsis">
+      get_actual_type
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#aws_lambda_powertools.utilities.idempotency.serialization.no_op" class="md-nav__link">
+    <span class="md-ellipsis">
+      no_op
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="no_op">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#aws_lambda_powertools.utilities.idempotency.serialization.no_op.NoOpSerializer" class="md-nav__link">
+    <span class="md-ellipsis">
+      NoOpSerializer
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#aws_lambda_powertools.utilities.idempotency.serialization.pydantic" class="md-nav__link">
+    <span class="md-ellipsis">
+      pydantic
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="pydantic">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#aws_lambda_powertools.utilities.idempotency.serialization.pydantic.PydanticSerializer" class="md-nav__link">
+    <span class="md-ellipsis">
+      PydanticSerializer
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -2218,7 +2518,7 @@ You're not viewing the latest version.
   
 
 
-  <h1>AppConfig</h1>
+  <h1>Serialization</h1>
 
 <!-- markdownlint-disable MD043 MD041 -->
 
@@ -2227,10 +2527,104 @@ You're not viewing the latest version.
 
 
 
-<a id="aws_lambda_powertools.utilities.parameters.appconfig"></a>
+<a id="aws_lambda_powertools.utilities.idempotency.serialization"></a>
     <div class="doc doc-contents first">
 
-        <p>AWS App Config configuration retrieval and caching utility</p>
+
+
+
+
+<table>
+      <thead>
+        <tr>
+          <th><span class="doc-section-title">MODULE</span></th>
+          <th><span>DESCRIPTION</span></th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td><code><a class="autorefs autorefs-internal" title="aws_lambda_powertools.utilities.idempotency.serialization.base" href="#aws_lambda_powertools.utilities.idempotency.serialization.base">base</a></code></td>
+            <td class="doc-module-details">
+              <div class="doc-md-description">
+                <p>Serialization for supporting idempotency</p>
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td><code><a class="autorefs autorefs-internal" title="aws_lambda_powertools.utilities.idempotency.serialization.custom_dict" href="#aws_lambda_powertools.utilities.idempotency.serialization.custom_dict">custom_dict</a></code></td>
+            <td class="doc-module-details">
+              <div class="doc-md-description">
+                
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td><code><a class="autorefs autorefs-internal" title="aws_lambda_powertools.utilities.idempotency.serialization.dataclass" href="#aws_lambda_powertools.utilities.idempotency.serialization.dataclass">dataclass</a></code></td>
+            <td class="doc-module-details">
+              <div class="doc-md-description">
+                
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td><code><a class="autorefs autorefs-internal" title="aws_lambda_powertools.utilities.idempotency.serialization.functions" href="#aws_lambda_powertools.utilities.idempotency.serialization.functions">functions</a></code></td>
+            <td class="doc-module-details">
+              <div class="doc-md-description">
+                
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td><code><a class="autorefs autorefs-internal" title="aws_lambda_powertools.utilities.idempotency.serialization.no_op" href="#aws_lambda_powertools.utilities.idempotency.serialization.no_op">no_op</a></code></td>
+            <td class="doc-module-details">
+              <div class="doc-md-description">
+                
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td><code><a class="autorefs autorefs-internal" title="aws_lambda_powertools.utilities.idempotency.serialization.pydantic" href="#aws_lambda_powertools.utilities.idempotency.serialization.pydantic">pydantic</a></code></td>
+            <td class="doc-module-details">
+              <div class="doc-md-description">
+                
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+
+
+
+
+
+
+
+  <div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+
+<div class="doc doc-object doc-module">
+
+
+
+<h2 id="aws_lambda_powertools.utilities.idempotency.serialization.base" class="doc doc-heading">
+            <span class="doc doc-object-name doc-module-name">base</span>
+
+
+<a href="#aws_lambda_powertools.utilities.idempotency.serialization.base" class="headerlink" title="Permanent link">&para;</a></h2>
+
+    <div class="doc doc-contents ">
+
+        <p>Serialization for supporting idempotency</p>
 
 
 
@@ -2247,10 +2641,18 @@ You're not viewing the latest version.
       </thead>
       <tbody>
           <tr class="doc-section-item">
-            <td><code><a class="autorefs autorefs-internal" title="aws_lambda_powertools.utilities.parameters.appconfig.AppConfigProvider" href="#aws_lambda_powertools.utilities.parameters.appconfig.AppConfigProvider">AppConfigProvider</a></code></td>
+            <td><code><a class="autorefs autorefs-internal" title="aws_lambda_powertools.utilities.idempotency.serialization.base.BaseIdempotencyModelSerializer" href="#aws_lambda_powertools.utilities.idempotency.serialization.base.BaseIdempotencyModelSerializer">BaseIdempotencyModelSerializer</a></code></td>
             <td class="doc-class-details">
               <div class="doc-md-description">
-                <p>AWS App Config Provider</p>
+                <p>Abstract Base Class for Idempotency serialization layer, for using a model as data object representation.</p>
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td><code><a class="autorefs autorefs-internal" title="aws_lambda_powertools.utilities.idempotency.serialization.base.BaseIdempotencySerializer" href="#aws_lambda_powertools.utilities.idempotency.serialization.base.BaseIdempotencySerializer">BaseIdempotencySerializer</a></code></td>
+            <td class="doc-class-details">
+              <div class="doc-md-description">
+                <p>Abstract Base Class for Idempotency serialization layer, supporting dict operations.</p>
               </div>
             </td>
           </tr>
@@ -2258,26 +2660,6 @@ You're not viewing the latest version.
     </table>
 
 
-
-
-<table>
-      <thead>
-        <tr>
-          <th><span class="doc-section-title">FUNCTION</span></th>
-          <th><span>DESCRIPTION</span></th>
-        </tr>
-      </thead>
-      <tbody>
-            <tr class="doc-section-item">
-              <td><code><a class="autorefs autorefs-internal" title="aws_lambda_powertools.utilities.parameters.appconfig.get_app_config" href="#aws_lambda_powertools.utilities.parameters.appconfig.get_app_config">get_app_config</a></code></td>
-              <td class="doc-function-details">
-                <div class="doc-md-description">
-                  <p>Retrieve a configuration value from AWS App Config.</p>
-                </div>
-              </td>
-            </tr>
-      </tbody>
-    </table>
 
 
 
@@ -2296,27 +2678,85 @@ You're not viewing the latest version.
 
 
 
-<h2 id="aws_lambda_powertools.utilities.parameters.appconfig.AppConfigProvider" class="doc doc-heading">
-            <span class="doc doc-object-name doc-class-name">AppConfigProvider</span>
+<h3 id="aws_lambda_powertools.utilities.idempotency.serialization.base.BaseIdempotencyModelSerializer" class="doc doc-heading">
+            <span class="doc doc-object-name doc-class-name">BaseIdempotencyModelSerializer</span>
 
 
-<a href="#aws_lambda_powertools.utilities.parameters.appconfig.AppConfigProvider" class="headerlink" title="Permanent link">&para;</a></h2>
-<div class="doc-signature highlight"><pre><span></span><code><span class="nf">AppConfigProvider</span><span class="p">(</span>
-    <span class="n">environment</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
-    <span class="n">application</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-    <span class="n">config</span><span class="p">:</span> <span class="n">Config</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-    <span class="n">boto_config</span><span class="p">:</span> <span class="n">Config</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-    <span class="n">boto3_session</span><span class="p">:</span> <span class="n">boto3</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">Session</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-    <span class="n">boto3_client</span><span class="p">:</span> <span class="n">AppConfigDataClient</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-<span class="p">)</span>
-</code></pre></div>
+<a href="#aws_lambda_powertools.utilities.idempotency.serialization.base.BaseIdempotencyModelSerializer" class="headerlink" title="Permanent link">&para;</a></h3>
+
 
     <div class="doc doc-contents ">
             <p class="doc doc-class-bases">
-              Bases: <code><a class="autorefs autorefs-internal" title="aws_lambda_powertools.utilities.parameters.base.BaseProvider" href="../base/#aws_lambda_powertools.utilities.parameters.base.BaseProvider">BaseProvider</a></code></p>
+              Bases: <code><a class="autorefs autorefs-internal" title="aws_lambda_powertools.utilities.idempotency.serialization.base.BaseIdempotencySerializer" href="#aws_lambda_powertools.utilities.idempotency.serialization.base.BaseIdempotencySerializer">BaseIdempotencySerializer</a></code></p>
 
 
-        <p>AWS App Config Provider</p>
+        <p>Abstract Base Class for Idempotency serialization layer, for using a model as data object representation.</p>
+
+
+
+
+
+
+
+
+
+<table>
+      <thead>
+        <tr>
+          <th><span class="doc-section-title">METHOD</span></th>
+          <th><span>DESCRIPTION</span></th>
+        </tr>
+      </thead>
+      <tbody>
+            <tr class="doc-section-item">
+              <td><code><a class="autorefs autorefs-internal" title="aws_lambda_powertools.utilities.idempotency.serialization.base.BaseIdempotencyModelSerializer.instantiate" href="#aws_lambda_powertools.utilities.idempotency.serialization.base.BaseIdempotencyModelSerializer.instantiate">instantiate</a></code></td>
+              <td class="doc-function-details">
+                <div class="doc-md-description">
+                  <p>Creates an instance of a serializer based on a provided model type.</p>
+                </div>
+              </td>
+            </tr>
+      </tbody>
+    </table>
+
+
+
+
+
+
+  <div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+<div class="doc doc-object doc-function">
+
+
+<h4 id="aws_lambda_powertools.utilities.idempotency.serialization.base.BaseIdempotencyModelSerializer.instantiate" class="doc doc-heading">
+            <span class="doc doc-object-name doc-function-name">instantiate</span>
+
+
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-abstractmethod"><code>abstractmethod</code></small>
+      <small class="doc doc-label doc-label-classmethod"><code>classmethod</code></small>
+  </span>
+
+<a href="#aws_lambda_powertools.utilities.idempotency.serialization.base.BaseIdempotencyModelSerializer.instantiate" class="headerlink" title="Permanent link">&para;</a></h4>
+<div class="doc-signature highlight"><pre><span></span><code><span class="nf">instantiate</span><span class="p">(</span><span class="n">model_type</span><span class="p">:</span> <span class="n">Any</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">BaseIdempotencySerializer</span>
+</code></pre></div>
+
+    <div class="doc doc-contents ">
+
+        <p>Creates an instance of a serializer based on a provided model type.
+In case the model_type is unknown, None will be sent as <code>model_type</code>.
+It's on the implementer to verify that:
+- None is handled correctly
+- A model type not matching the expected types is handled</p>
 
 
 <table>
@@ -2329,98 +2769,16 @@ You're not viewing the latest version.
       <tbody>
           <tr class="doc-section-item">
             <td>
-                <code>environment</code>
+                <code>model_type</code>
             </td>
             <td class="doc-param-details">
               <div class="doc-md-description">
-                <p>Environment of the configuration to pass during client initialization</p>
+                <p>The model type to instantiate the class for</p>
               </div>
               <p>
                   <span class="doc-param-annotation">
                     <b>TYPE:</b>
-                      <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a></code>
-                  </span>
-              </p>
-            </td>
-          </tr>
-          <tr class="doc-section-item">
-            <td>
-                <code>application</code>
-            </td>
-            <td class="doc-param-details">
-              <div class="doc-md-description">
-                <p>Application of the configuration to pass during client initialization</p>
-              </div>
-              <p>
-                  <span class="doc-param-annotation">
-                    <b>TYPE:</b>
-                      <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a> | None</code>
-                  </span>
-                  <span class="doc-param-default">
-                    <b>DEFAULT:</b>
-                      <code>None</code>
-                  </span>
-              </p>
-            </td>
-          </tr>
-          <tr class="doc-section-item">
-            <td>
-                <code>config</code>
-            </td>
-            <td class="doc-param-details">
-              <div class="doc-md-description">
-                <p>Botocore configuration to pass during client initialization</p>
-              </div>
-              <p>
-                  <span class="doc-param-annotation">
-                    <b>TYPE:</b>
-                      <code><span title="botocore.config.Config">Config</span> | None</code>
-                  </span>
-                  <span class="doc-param-default">
-                    <b>DEFAULT:</b>
-                      <code>None</code>
-                  </span>
-              </p>
-            </td>
-          </tr>
-          <tr class="doc-section-item">
-            <td>
-                <code>boto3_session</code>
-            </td>
-            <td class="doc-param-details">
-              <div class="doc-md-description">
-                <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>Boto3 session to create a boto3_client from
-</code></pre></div></td></tr></table></div>
-              </div>
-              <p>
-                  <span class="doc-param-annotation">
-                    <b>TYPE:</b>
-                      <code><span title="boto3.session.Session">Session</span></code>
-                  </span>
-                  <span class="doc-param-default">
-                    <b>DEFAULT:</b>
-                      <code>None</code>
-                  </span>
-              </p>
-            </td>
-          </tr>
-          <tr class="doc-section-item">
-            <td>
-                <code>boto3_client</code>
-            </td>
-            <td class="doc-param-details">
-              <div class="doc-md-description">
-                <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>Boto3 AppConfigData Client to use, boto3_session will be ignored if both are provided
-</code></pre></div></td></tr></table></div>
-              </div>
-              <p>
-                  <span class="doc-param-annotation">
-                    <b>TYPE:</b>
-                      <code><span title="mypy_boto3_appconfigdata.client.AppConfigDataClient">AppConfigDataClient</span> | None</code>
-                  </span>
-                  <span class="doc-param-default">
-                    <b>DEFAULT:</b>
-                      <code>None</code>
+                      <code><a class="autorefs autorefs-external" title="typing.Any" href="https://docs.python.org/3/library/typing.html#typing.Any">Any</a></code>
                   </span>
               </p>
             </td>
@@ -2429,47 +2787,217 @@ You're not viewing the latest version.
     </table>
 
 
-<details class="example" open>
-  <summary>Example</summary>
-  <p><strong>Retrieves the latest configuration value from App Config</strong></p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
-<span class="normal">2</span>
-<span class="normal">3</span>
-<span class="normal">4</span>
-<span class="normal">5</span>
-<span class="normal">6</span>
-<span class="normal">7</span>
-<span class="normal">8</span></pre></div></td><td class="code"><div><pre><span></span><code>&gt;&gt;&gt; from aws_lambda_powertools.utilities import parameters
-&gt;&gt;&gt;
-&gt;&gt;&gt; appconf_provider = parameters.AppConfigProvider(environment=&quot;my_env&quot;, application=&quot;my_app&quot;)
-&gt;&gt;&gt;
-&gt;&gt;&gt; value : bytes = appconf_provider.get(&quot;my_conf&quot;)
-&gt;&gt;&gt;
-&gt;&gt;&gt; print(value)
-My configuration value
+<table>
+      <thead>
+        <tr>
+          <th><span class="doc-section-title">RETURNS</span></th>
+          <th><span>DESCRIPTION</span></th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <span class="doc-returns-annotation">
+                    <code><a class="autorefs autorefs-internal" title="aws_lambda_powertools.utilities.idempotency.serialization.base.BaseIdempotencySerializer" href="#aws_lambda_powertools.utilities.idempotency.serialization.base.BaseIdempotencySerializer">BaseIdempotencySerializer</a></code>
+                </span>
+            </td>
+            <td class="doc-returns-details">
+              <div class="doc-md-description">
+                <p>Instance of the serializer class</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+            <details class="quote">
+              <summary>Source code in <code>aws_lambda_powertools/utilities/idempotency/serialization/base.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span>
+<span class="normal">35</span>
+<span class="normal">36</span>
+<span class="normal">37</span>
+<span class="normal">38</span>
+<span class="normal">39</span>
+<span class="normal">40</span>
+<span class="normal">41</span>
+<span class="normal">42</span>
+<span class="normal">43</span>
+<span class="normal">44</span>
+<span class="normal">45</span>
+<span class="normal">46</span>
+<span class="normal">47</span>
+<span class="normal">48</span>
+<span class="normal">49</span>
+<span class="normal">50</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@classmethod</span>
+<span class="nd">@abstractmethod</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">instantiate</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">model_type</span><span class="p">:</span> <span class="n">Any</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">BaseIdempotencySerializer</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Creates an instance of a serializer based on a provided model type.</span>
+<span class="sd">    In case the model_type is unknown, None will be sent as `model_type`.</span>
+<span class="sd">    It&#39;s on the implementer to verify that:</span>
+<span class="sd">    - None is handled correctly</span>
+<span class="sd">    - A model type not matching the expected types is handled</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    model_type: Any</span>
+<span class="sd">        The model type to instantiate the class for</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    BaseIdempotencySerializer</span>
+<span class="sd">        Instance of the serializer class</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">pass</span>
 </code></pre></div></td></tr></table></div>
-<p><strong>Retrieves a configuration value from App Config in another AWS region</strong></p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
-<span class="normal"> 2</span>
-<span class="normal"> 3</span>
-<span class="normal"> 4</span>
-<span class="normal"> 5</span>
-<span class="normal"> 6</span>
-<span class="normal"> 7</span>
-<span class="normal"> 8</span>
-<span class="normal"> 9</span>
-<span class="normal">10</span></pre></div></td><td class="code"><div><pre><span></span><code>&gt;&gt;&gt; from botocore.config import Config
-&gt;&gt;&gt; from aws_lambda_powertools.utilities import parameters
-&gt;&gt;&gt;
-&gt;&gt;&gt; config = Config(region_name=&quot;us-west-1&quot;)
-&gt;&gt;&gt; appconf_provider = parameters.AppConfigProvider(environment=&quot;my_env&quot;, application=&quot;my_app&quot;, config=config)
-&gt;&gt;&gt;
-&gt;&gt;&gt; value : bytes = appconf_provider.get(&quot;my_conf&quot;)
-&gt;&gt;&gt;
-&gt;&gt;&gt; print(value)
-My configuration value
-</code></pre></div></td></tr></table></div>
-</details>
+            </details>
+    </div>
+
+</div>
+
+
+
+  </div>
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-class">
+
+
+
+<h3 id="aws_lambda_powertools.utilities.idempotency.serialization.base.BaseIdempotencySerializer" class="doc doc-heading">
+            <span class="doc doc-object-name doc-class-name">BaseIdempotencySerializer</span>
+
+
+<a href="#aws_lambda_powertools.utilities.idempotency.serialization.base.BaseIdempotencySerializer" class="headerlink" title="Permanent link">&para;</a></h3>
+
+
+    <div class="doc doc-contents ">
+            <p class="doc doc-class-bases">
+              Bases: <code><a class="autorefs autorefs-external" title="abc.ABC" href="https://docs.python.org/3/library/abc.html#abc.ABC">ABC</a></code></p>
+
+
+        <p>Abstract Base Class for Idempotency serialization layer, supporting dict operations.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+
+
+  </div>
+
+    </div>
+
+</div>
+
+
+
+
+  </div>
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-module">
+
+
+
+<h2 id="aws_lambda_powertools.utilities.idempotency.serialization.custom_dict" class="doc doc-heading">
+            <span class="doc doc-object-name doc-module-name">custom_dict</span>
+
+
+<a href="#aws_lambda_powertools.utilities.idempotency.serialization.custom_dict" class="headerlink" title="Permanent link">&para;</a></h2>
+
+    <div class="doc doc-contents ">
+
+
+
+
+
+
+
+<table>
+      <thead>
+        <tr>
+          <th><span class="doc-section-title">CLASS</span></th>
+          <th><span>DESCRIPTION</span></th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td><code><a class="autorefs autorefs-internal" title="aws_lambda_powertools.utilities.idempotency.serialization.custom_dict.CustomDictSerializer" href="#aws_lambda_powertools.utilities.idempotency.serialization.custom_dict.CustomDictSerializer">CustomDictSerializer</a></code></td>
+            <td class="doc-class-details">
+              <div class="doc-md-description">
+                
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+
+
+
+
+
+  <div class="doc doc-children">
+
+
+
+
+
+
+
+
+<div class="doc doc-object doc-class">
+
+
+
+<h3 id="aws_lambda_powertools.utilities.idempotency.serialization.custom_dict.CustomDictSerializer" class="doc doc-heading">
+            <span class="doc doc-object-name doc-class-name">CustomDictSerializer</span>
+
+
+<a href="#aws_lambda_powertools.utilities.idempotency.serialization.custom_dict.CustomDictSerializer" class="headerlink" title="Permanent link">&para;</a></h3>
+<div class="doc-signature highlight"><pre><span></span><code><span class="nf">CustomDictSerializer</span><span class="p">(</span>
+    <span class="n">to_dict</span><span class="p">:</span> <span class="n">Callable</span><span class="p">[[</span><span class="n">Any</span><span class="p">],</span> <span class="nb">dict</span><span class="p">],</span>
+    <span class="n">from_dict</span><span class="p">:</span> <span class="n">Callable</span><span class="p">[[</span><span class="nb">dict</span><span class="p">],</span> <span class="n">Any</span><span class="p">],</span>
+<span class="p">)</span>
+</code></pre></div>
+
+    <div class="doc doc-contents ">
+            <p class="doc doc-class-bases">
+              Bases: <code><a class="autorefs autorefs-internal" title="aws_lambda_powertools.utilities.idempotency.serialization.base.BaseIdempotencySerializer" href="#aws_lambda_powertools.utilities.idempotency.serialization.base.BaseIdempotencySerializer">BaseIdempotencySerializer</a></code></p>
+
+
+        
+
 
 
 
@@ -2480,88 +3008,28 @@ My configuration value
 
 
                   <details class="quote">
-                    <summary>Source code in <code>aws_lambda_powertools/utilities/parameters/appconfig.py</code></summary>
-                    <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 74</span>
-<span class="normal"> 75</span>
-<span class="normal"> 76</span>
-<span class="normal"> 77</span>
-<span class="normal"> 78</span>
-<span class="normal"> 79</span>
-<span class="normal"> 80</span>
-<span class="normal"> 81</span>
-<span class="normal"> 82</span>
-<span class="normal"> 83</span>
-<span class="normal"> 84</span>
-<span class="normal"> 85</span>
-<span class="normal"> 86</span>
-<span class="normal"> 87</span>
-<span class="normal"> 88</span>
-<span class="normal"> 89</span>
-<span class="normal"> 90</span>
-<span class="normal"> 91</span>
-<span class="normal"> 92</span>
-<span class="normal"> 93</span>
-<span class="normal"> 94</span>
-<span class="normal"> 95</span>
-<span class="normal"> 96</span>
-<span class="normal"> 97</span>
-<span class="normal"> 98</span>
-<span class="normal"> 99</span>
-<span class="normal">100</span>
-<span class="normal">101</span>
-<span class="normal">102</span>
-<span class="normal">103</span>
-<span class="normal">104</span>
-<span class="normal">105</span>
-<span class="normal">106</span>
-<span class="normal">107</span>
-<span class="normal">108</span>
-<span class="normal">109</span>
-<span class="normal">110</span>
-<span class="normal">111</span>
-<span class="normal">112</span>
-<span class="normal">113</span>
-<span class="normal">114</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
-    <span class="bp">self</span><span class="p">,</span>
-    <span class="n">environment</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
-    <span class="n">application</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-    <span class="n">config</span><span class="p">:</span> <span class="n">Config</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-    <span class="n">boto_config</span><span class="p">:</span> <span class="n">Config</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-    <span class="n">boto3_session</span><span class="p">:</span> <span class="n">boto3</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">Session</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-    <span class="n">boto3_client</span><span class="p">:</span> <span class="n">AppConfigDataClient</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-<span class="p">):</span>
+                    <summary>Source code in <code>aws_lambda_powertools/utilities/idempotency/serialization/custom_dict.py</code></summary>
+                    <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">to_dict</span><span class="p">:</span> <span class="n">Callable</span><span class="p">[[</span><span class="n">Any</span><span class="p">],</span> <span class="nb">dict</span><span class="p">],</span> <span class="n">from_dict</span><span class="p">:</span> <span class="n">Callable</span><span class="p">[[</span><span class="nb">dict</span><span class="p">],</span> <span class="n">Any</span><span class="p">]):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Initialize the App Config client</span>
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    to_dict: Callable[[Any], dict]</span>
+<span class="sd">        A function capable of transforming the saved data object representation into a dictionary</span>
+<span class="sd">    from_dict: Callable[[dict], Any]</span>
+<span class="sd">        A function capable of transforming the saved dictionary into the original data object representation</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-
-    <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
-
-    <span class="k">if</span> <span class="n">config</span><span class="p">:</span>
-        <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span>
-            <span class="n">message</span><span class="o">=</span><span class="s2">&quot;The &#39;config&#39; parameter is deprecated in V3 and will be removed in V4. &quot;</span>
-            <span class="s2">&quot;Please use &#39;boto_config&#39; instead.&quot;</span><span class="p">,</span>
-            <span class="n">category</span><span class="o">=</span><span class="n">PowertoolsDeprecationWarning</span><span class="p">,</span>
-            <span class="n">stacklevel</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
-        <span class="p">)</span>
-
-    <span class="k">if</span> <span class="n">boto3_client</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="n">boto3_session</span> <span class="o">=</span> <span class="n">boto3_session</span> <span class="ow">or</span> <span class="n">boto3</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">Session</span><span class="p">()</span>
-        <span class="n">boto3_client</span> <span class="o">=</span> <span class="n">boto3_session</span><span class="o">.</span><span class="n">client</span><span class="p">(</span><span class="s2">&quot;appconfigdata&quot;</span><span class="p">,</span> <span class="n">config</span><span class="o">=</span><span class="n">boto_config</span> <span class="ow">or</span> <span class="n">config</span><span class="p">)</span>
-
-    <span class="bp">self</span><span class="o">.</span><span class="n">client</span> <span class="o">=</span> <span class="n">boto3_client</span>
-
-    <span class="bp">self</span><span class="o">.</span><span class="n">application</span> <span class="o">=</span> <span class="n">resolve_env_var_choice</span><span class="p">(</span>
-        <span class="n">choice</span><span class="o">=</span><span class="n">application</span><span class="p">,</span>
-        <span class="n">env</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="n">constants</span><span class="o">.</span><span class="n">SERVICE_NAME_ENV</span><span class="p">,</span> <span class="s2">&quot;service_undefined&quot;</span><span class="p">),</span>
-    <span class="p">)</span>
-    <span class="bp">self</span><span class="o">.</span><span class="n">environment</span> <span class="o">=</span> <span class="n">environment</span>
-    <span class="bp">self</span><span class="o">.</span><span class="n">current_version</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
-
-    <span class="bp">self</span><span class="o">.</span><span class="n">_next_token</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>  <span class="c1"># nosec - token for get_latest_configuration executions</span>
-    <span class="c1"># Dict to store the recently retrieved value for a specific configuration.</span>
-    <span class="bp">self</span><span class="o">.</span><span class="n">last_returned_value</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">bytes</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
-
-    <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">client</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">__to_dict</span><span class="p">:</span> <span class="n">Callable</span><span class="p">[[</span><span class="n">Any</span><span class="p">],</span> <span class="nb">dict</span><span class="p">]</span> <span class="o">=</span> <span class="n">to_dict</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">__from_dict</span><span class="p">:</span> <span class="n">Callable</span><span class="p">[[</span><span class="nb">dict</span><span class="p">],</span> <span class="n">Any</span><span class="p">]</span> <span class="o">=</span> <span class="n">from_dict</span>
 </code></pre></div></td></tr></table></div>
                   </details>
 
@@ -2586,28 +3054,214 @@ My configuration value
 </div>
 
 
+
+
+  </div>
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-module">
+
+
+
+<h2 id="aws_lambda_powertools.utilities.idempotency.serialization.dataclass" class="doc doc-heading">
+            <span class="doc doc-object-name doc-module-name">dataclass</span>
+
+
+<a href="#aws_lambda_powertools.utilities.idempotency.serialization.dataclass" class="headerlink" title="Permanent link">&para;</a></h2>
+
+    <div class="doc doc-contents ">
+
+
+
+
+
+
+
+<table>
+      <thead>
+        <tr>
+          <th><span class="doc-section-title">CLASS</span></th>
+          <th><span>DESCRIPTION</span></th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td><code><a class="autorefs autorefs-internal" title="aws_lambda_powertools.utilities.idempotency.serialization.dataclass.DataclassSerializer" href="#aws_lambda_powertools.utilities.idempotency.serialization.dataclass.DataclassSerializer">DataclassSerializer</a></code></td>
+            <td class="doc-class-details">
+              <div class="doc-md-description">
+                <p>A serializer class for transforming data between dataclass objects and dictionaries.</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+
+
+
+
+
+  <div class="doc doc-children">
+
+
+
+
+
+
+
+
+<div class="doc doc-object doc-class">
+
+
+
+<h3 id="aws_lambda_powertools.utilities.idempotency.serialization.dataclass.DataclassSerializer" class="doc doc-heading">
+            <span class="doc doc-object-name doc-class-name">DataclassSerializer</span>
+
+
+<a href="#aws_lambda_powertools.utilities.idempotency.serialization.dataclass.DataclassSerializer" class="headerlink" title="Permanent link">&para;</a></h3>
+<div class="doc-signature highlight"><pre><span></span><code><span class="nf">DataclassSerializer</span><span class="p">(</span><span class="n">model</span><span class="p">:</span> <span class="nb">type</span><span class="p">[</span><span class="n">DataClass</span><span class="p">])</span>
+</code></pre></div>
+
+    <div class="doc doc-contents ">
+            <p class="doc doc-class-bases">
+              Bases: <code><a class="autorefs autorefs-internal" title="aws_lambda_powertools.utilities.idempotency.serialization.base.BaseIdempotencyModelSerializer" href="#aws_lambda_powertools.utilities.idempotency.serialization.base.BaseIdempotencyModelSerializer">BaseIdempotencyModelSerializer</a></code></p>
+
+
+        <p>A serializer class for transforming data between dataclass objects and dictionaries.</p>
+
+        
+
+
+
+
+
+
+
+
+
+
+                  <details class="quote">
+                    <summary>Source code in <code>aws_lambda_powertools/utilities/idempotency/serialization/dataclass.py</code></summary>
+                    <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">model</span><span class="p">:</span> <span class="nb">type</span><span class="p">[</span><span class="n">DataClass</span><span class="p">]):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    model: type[DataClass]</span>
+<span class="sd">        A dataclass type to be used for serialization and deserialization</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">__model</span><span class="p">:</span> <span class="nb">type</span><span class="p">[</span><span class="n">DataClass</span><span class="p">]</span> <span class="o">=</span> <span class="n">model</span>
+</code></pre></div></td></tr></table></div>
+                  </details>
+
+
+
+  <div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+
+
+  </div>
+
+    </div>
+
+</div>
+
+
+
+
+  </div>
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-module">
+
+
+
+<h2 id="aws_lambda_powertools.utilities.idempotency.serialization.functions" class="doc doc-heading">
+            <span class="doc doc-object-name doc-module-name">functions</span>
+
+
+<a href="#aws_lambda_powertools.utilities.idempotency.serialization.functions" class="headerlink" title="Permanent link">&para;</a></h2>
+
+    <div class="doc doc-contents ">
+
+
+
+
+
+
+
+
+
+<table>
+      <thead>
+        <tr>
+          <th><span class="doc-section-title">FUNCTION</span></th>
+          <th><span>DESCRIPTION</span></th>
+        </tr>
+      </thead>
+      <tbody>
+            <tr class="doc-section-item">
+              <td><code><a class="autorefs autorefs-internal" title="aws_lambda_powertools.utilities.idempotency.serialization.functions.get_actual_type" href="#aws_lambda_powertools.utilities.idempotency.serialization.functions.get_actual_type">get_actual_type</a></code></td>
+              <td class="doc-function-details">
+                <div class="doc-md-description">
+                  <p>Extract the actual type from a potentially Optional or Union type.</p>
+                </div>
+              </td>
+            </tr>
+      </tbody>
+    </table>
+
+
+
+
+
+  <div class="doc doc-children">
+
+
+
+
+
+
+
+
+
 <div class="doc doc-object doc-function">
 
 
-<h2 id="aws_lambda_powertools.utilities.parameters.appconfig.get_app_config" class="doc doc-heading">
-            <span class="doc doc-object-name doc-function-name">get_app_config</span>
+<h3 id="aws_lambda_powertools.utilities.idempotency.serialization.functions.get_actual_type" class="doc doc-heading">
+            <span class="doc doc-object-name doc-function-name">get_actual_type</span>
 
 
-<a href="#aws_lambda_powertools.utilities.parameters.appconfig.get_app_config" class="headerlink" title="Permanent link">&para;</a></h2>
-<div class="doc-signature highlight"><pre><span></span><code><span class="nf">get_app_config</span><span class="p">(</span>
-    <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
-    <span class="n">environment</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
-    <span class="n">application</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-    <span class="n">transform</span><span class="p">:</span> <span class="n">TransformOptions</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-    <span class="n">force_fetch</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-    <span class="n">max_age</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-    <span class="o">**</span><span class="n">sdk_options</span>
-<span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span> <span class="o">|</span> <span class="nb">bytes</span> <span class="o">|</span> <span class="nb">list</span> <span class="o">|</span> <span class="nb">dict</span>
+<a href="#aws_lambda_powertools.utilities.idempotency.serialization.functions.get_actual_type" class="headerlink" title="Permanent link">&para;</a></h3>
+<div class="doc-signature highlight"><pre><span></span><code><span class="nf">get_actual_type</span><span class="p">(</span><span class="n">model_type</span><span class="p">:</span> <span class="n">Any</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Any</span>
 </code></pre></div>
 
     <div class="doc doc-contents ">
 
-        <p>Retrieve a configuration value from AWS App Config.</p>
+        <p>Extract the actual type from a potentially Optional or Union type.
+This function handles types that may be wrapped in Optional or Union,
+including the Python 3.10+ Union syntax (Type | None).</p>
 
 
 <table>
@@ -2620,128 +3274,16 @@ My configuration value
       <tbody>
           <tr class="doc-section-item">
             <td>
-                <code>name</code>
+                <code>model_type</code>
             </td>
             <td class="doc-param-details">
               <div class="doc-md-description">
-                <p>Name of the configuration</p>
+                <p>The type to analyze. Can be a simple type, Optional[Type], BaseModel, dataclass</p>
               </div>
               <p>
                   <span class="doc-param-annotation">
                     <b>TYPE:</b>
-                      <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a></code>
-                  </span>
-              </p>
-            </td>
-          </tr>
-          <tr class="doc-section-item">
-            <td>
-                <code>environment</code>
-            </td>
-            <td class="doc-param-details">
-              <div class="doc-md-description">
-                <p>Environment of the configuration</p>
-              </div>
-              <p>
-                  <span class="doc-param-annotation">
-                    <b>TYPE:</b>
-                      <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a></code>
-                  </span>
-              </p>
-            </td>
-          </tr>
-          <tr class="doc-section-item">
-            <td>
-                <code>application</code>
-            </td>
-            <td class="doc-param-details">
-              <div class="doc-md-description">
-                <p>Application of the configuration</p>
-              </div>
-              <p>
-                  <span class="doc-param-annotation">
-                    <b>TYPE:</b>
-                      <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a> | None</code>
-                  </span>
-                  <span class="doc-param-default">
-                    <b>DEFAULT:</b>
-                      <code>None</code>
-                  </span>
-              </p>
-            </td>
-          </tr>
-          <tr class="doc-section-item">
-            <td>
-                <code>transform</code>
-            </td>
-            <td class="doc-param-details">
-              <div class="doc-md-description">
-                <p>Transforms the content from a JSON object ('json') or base64 binary string ('binary')</p>
-              </div>
-              <p>
-                  <span class="doc-param-annotation">
-                    <b>TYPE:</b>
-                      <code><span title="aws_lambda_powertools.utilities.parameters.types.TransformOptions">TransformOptions</span></code>
-                  </span>
-                  <span class="doc-param-default">
-                    <b>DEFAULT:</b>
-                      <code>None</code>
-                  </span>
-              </p>
-            </td>
-          </tr>
-          <tr class="doc-section-item">
-            <td>
-                <code>force_fetch</code>
-            </td>
-            <td class="doc-param-details">
-              <div class="doc-md-description">
-                <p>Force update even before a cached item has expired, defaults to False</p>
-              </div>
-              <p>
-                  <span class="doc-param-annotation">
-                    <b>TYPE:</b>
-                      <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/functions.html#bool">bool</a></code>
-                  </span>
-                  <span class="doc-param-default">
-                    <b>DEFAULT:</b>
-                      <code>False</code>
-                  </span>
-              </p>
-            </td>
-          </tr>
-          <tr class="doc-section-item">
-            <td>
-                <code>max_age</code>
-            </td>
-            <td class="doc-param-details">
-              <div class="doc-md-description">
-                <p>Maximum age of the cached value</p>
-              </div>
-              <p>
-                  <span class="doc-param-annotation">
-                    <b>TYPE:</b>
-                      <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/functions.html#int">int</a> | None</code>
-                  </span>
-                  <span class="doc-param-default">
-                    <b>DEFAULT:</b>
-                      <code>None</code>
-                  </span>
-              </p>
-            </td>
-          </tr>
-          <tr class="doc-section-item">
-            <td>
-                <code>sdk_options</code>
-            </td>
-            <td class="doc-param-details">
-              <div class="doc-md-description">
-                <p>SDK options to propagate to <code>start_configuration_session</code> API call</p>
-              </div>
-              <p>
-                  <span class="doc-param-default">
-                    <b>DEFAULT:</b>
-                      <code>{}</code>
+                      <code><a class="autorefs autorefs-external" title="typing.Any" href="https://docs.python.org/3/library/typing.html#typing.Any">Any</a></code>
                   </span>
               </p>
             </td>
@@ -2753,33 +3295,164 @@ My configuration value
 <table>
       <thead>
         <tr>
-          <th><span class="doc-section-title">RAISES</span></th>
+          <th><span class="doc-section-title">RETURNS</span></th>
           <th><span>DESCRIPTION</span></th>
         </tr>
       </thead>
       <tbody>
           <tr class="doc-section-item">
             <td>
-              <span class="doc-raises-annotation">
-                  <code><span title="aws_lambda_powertools.utilities.parameters.exceptions.GetParameterError">GetParameterError</span></code>
-              </span>
+                <span class="doc-returns-annotation">
+                    <code>The actual type without Optional or Union wrappers.</code>
+                </span>
             </td>
-            <td class="doc-raises-details">
+            <td class="doc-returns-details">
               <div class="doc-md-description">
-                <p>When the parameter provider fails to retrieve a parameter value for
-a given name.</p>
+                
               </div>
             </td>
           </tr>
           <tr class="doc-section-item">
             <td>
-              <span class="doc-raises-annotation">
-                  <code><span title="aws_lambda_powertools.utilities.parameters.exceptions.TransformParameterError">TransformParameterError</span></code>
-              </span>
+                <code>Raises</code>
             </td>
-            <td class="doc-raises-details">
+            <td class="doc-returns-details">
               <div class="doc-md-description">
-                <p>When the parameter provider fails to transform a parameter value.</p>
+                
+              </div>
+                <p>
+                  <span class="doc-returns-annotation">
+                    <b>TYPE:</b>
+                      <code><a class="autorefs autorefs-external" title="typing.Any" href="https://docs.python.org/3/library/typing.html#typing.Any">Any</a></code>
+                  </span>
+                </p>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+            <details class="quote">
+              <summary>Source code in <code>aws_lambda_powertools/utilities/idempotency/serialization/functions.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span>
+<span class="normal">35</span>
+<span class="normal">36</span>
+<span class="normal">37</span>
+<span class="normal">38</span>
+<span class="normal">39</span>
+<span class="normal">40</span>
+<span class="normal">41</span>
+<span class="normal">42</span>
+<span class="normal">43</span>
+<span class="normal">44</span>
+<span class="normal">45</span>
+<span class="normal">46</span>
+<span class="normal">47</span>
+<span class="normal">48</span>
+<span class="normal">49</span>
+<span class="normal">50</span>
+<span class="normal">51</span>
+<span class="normal">52</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">get_actual_type</span><span class="p">(</span><span class="n">model_type</span><span class="p">:</span> <span class="n">Any</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Any</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Extract the actual type from a potentially Optional or Union type.</span>
+<span class="sd">    This function handles types that may be wrapped in Optional or Union,</span>
+<span class="sd">    including the Python 3.10+ Union syntax (Type | None).</span>
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    model_type: Any</span>
+<span class="sd">        The type to analyze. Can be a simple type, Optional[Type], BaseModel, dataclass</span>
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    The actual type without Optional or Union wrappers.</span>
+<span class="sd">    Raises:</span>
+<span class="sd">        IdempotencyModelTypeError: If the type specification is invalid</span>
+<span class="sd">                                   (e.g., Union with multiple non-None types).</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="c1"># Get the origin of the type (e.g., Union, Optional)</span>
+    <span class="n">origin</span> <span class="o">=</span> <span class="n">get_origin</span><span class="p">(</span><span class="n">model_type</span><span class="p">)</span>
+
+    <span class="c1"># Check if type is Union, Optional, or UnionType (Python 3.10+)</span>
+    <span class="k">if</span> <span class="n">origin</span> <span class="ow">in</span> <span class="p">(</span><span class="n">Union</span><span class="p">,</span> <span class="n">Optional</span><span class="p">)</span> <span class="ow">or</span> <span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">version_info</span> <span class="o">&gt;=</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span> <span class="ow">and</span> <span class="n">origin</span> <span class="ow">in</span> <span class="p">(</span><span class="n">Union</span><span class="p">,</span> <span class="n">UnionType</span><span class="p">)):</span>
+        <span class="c1"># Get type arguments</span>
+        <span class="n">args</span> <span class="o">=</span> <span class="n">get_args</span><span class="p">(</span><span class="n">model_type</span><span class="p">)</span>
+
+        <span class="c1"># Filter out NoneType</span>
+        <span class="n">actual_type</span> <span class="o">=</span> <span class="n">_extract_non_none_types</span><span class="p">(</span><span class="n">args</span><span class="p">)</span>
+
+        <span class="c1"># Ensure only one non-None type exists</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">actual_type</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="n">IdempotencyModelTypeError</span><span class="p">(</span>
+                <span class="s2">&quot;Invalid type: expected a single type, optionally wrapped in Optional or Union with None.&quot;</span><span class="p">,</span>
+            <span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">actual_type</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+
+    <span class="c1"># If not a Union/Optional type, return original type</span>
+    <span class="k">return</span> <span class="n">model_type</span>
+</code></pre></div></td></tr></table></div>
+            </details>
+    </div>
+
+</div>
+
+
+
+  </div>
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-module">
+
+
+
+<h2 id="aws_lambda_powertools.utilities.idempotency.serialization.no_op" class="doc doc-heading">
+            <span class="doc doc-object-name doc-module-name">no_op</span>
+
+
+<a href="#aws_lambda_powertools.utilities.idempotency.serialization.no_op" class="headerlink" title="Permanent link">&para;</a></h2>
+
+    <div class="doc doc-contents ">
+
+
+
+
+
+
+
+<table>
+      <thead>
+        <tr>
+          <th><span class="doc-section-title">CLASS</span></th>
+          <th><span>DESCRIPTION</span></th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td><code><a class="autorefs autorefs-internal" title="aws_lambda_powertools.utilities.idempotency.serialization.no_op.NoOpSerializer" href="#aws_lambda_powertools.utilities.idempotency.serialization.no_op.NoOpSerializer">NoOpSerializer</a></code></td>
+            <td class="doc-class-details">
+              <div class="doc-md-description">
+                
               </div>
             </td>
           </tr>
@@ -2787,184 +3460,223 @@ a given name.</p>
     </table>
 
 
-<details class="example" open>
-  <summary>Example</summary>
-  <p><strong>Retrieves the latest version of configuration value from App Config</strong></p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
-<span class="normal">2</span>
-<span class="normal">3</span>
-<span class="normal">4</span>
-<span class="normal">5</span>
-<span class="normal">6</span></pre></div></td><td class="code"><div><pre><span></span><code>&gt;&gt;&gt; from aws_lambda_powertools.utilities.parameters import get_app_config
-&gt;&gt;&gt;
-&gt;&gt;&gt; value = get_app_config(&quot;my_config&quot;, environment=&quot;my_env&quot;, application=&quot;my_env&quot;)
-&gt;&gt;&gt;
-&gt;&gt;&gt; print(value)
-My configuration value
-</code></pre></div></td></tr></table></div>
-<p><strong>Retrieves a configuration value and decodes it using a JSON decoder</strong></p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
-<span class="normal">2</span>
-<span class="normal">3</span>
-<span class="normal">4</span>
-<span class="normal">5</span>
-<span class="normal">6</span></pre></div></td><td class="code"><div><pre><span></span><code>&gt;&gt;&gt; from aws_lambda_powertools.utilities.parameters import get_app_config
-&gt;&gt;&gt;
-&gt;&gt;&gt; value = get_app_config(&quot;my_config&quot;, environment=&quot;my_env&quot;, application=&quot;my_env&quot;, transform=&#39;json&#39;)
-&gt;&gt;&gt;
-&gt;&gt;&gt; print(value)
-My configuration&#39;s JSON value
-</code></pre></div></td></tr></table></div>
-</details>
-            <details class="quote">
-              <summary>Source code in <code>aws_lambda_powertools/utilities/parameters/appconfig.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">157</span>
-<span class="normal">158</span>
-<span class="normal">159</span>
-<span class="normal">160</span>
-<span class="normal">161</span>
-<span class="normal">162</span>
-<span class="normal">163</span>
-<span class="normal">164</span>
-<span class="normal">165</span>
-<span class="normal">166</span>
-<span class="normal">167</span>
-<span class="normal">168</span>
-<span class="normal">169</span>
-<span class="normal">170</span>
-<span class="normal">171</span>
-<span class="normal">172</span>
-<span class="normal">173</span>
-<span class="normal">174</span>
-<span class="normal">175</span>
-<span class="normal">176</span>
-<span class="normal">177</span>
-<span class="normal">178</span>
-<span class="normal">179</span>
-<span class="normal">180</span>
-<span class="normal">181</span>
-<span class="normal">182</span>
-<span class="normal">183</span>
-<span class="normal">184</span>
-<span class="normal">185</span>
-<span class="normal">186</span>
-<span class="normal">187</span>
-<span class="normal">188</span>
-<span class="normal">189</span>
-<span class="normal">190</span>
-<span class="normal">191</span>
-<span class="normal">192</span>
-<span class="normal">193</span>
-<span class="normal">194</span>
-<span class="normal">195</span>
-<span class="normal">196</span>
-<span class="normal">197</span>
-<span class="normal">198</span>
-<span class="normal">199</span>
-<span class="normal">200</span>
-<span class="normal">201</span>
-<span class="normal">202</span>
-<span class="normal">203</span>
-<span class="normal">204</span>
-<span class="normal">205</span>
-<span class="normal">206</span>
-<span class="normal">207</span>
-<span class="normal">208</span>
-<span class="normal">209</span>
-<span class="normal">210</span>
-<span class="normal">211</span>
-<span class="normal">212</span>
-<span class="normal">213</span>
-<span class="normal">214</span>
-<span class="normal">215</span>
-<span class="normal">216</span>
-<span class="normal">217</span>
-<span class="normal">218</span>
-<span class="normal">219</span>
-<span class="normal">220</span>
-<span class="normal">221</span>
-<span class="normal">222</span>
-<span class="normal">223</span>
-<span class="normal">224</span>
-<span class="normal">225</span>
-<span class="normal">226</span>
-<span class="normal">227</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">get_app_config</span><span class="p">(</span>
-    <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
-    <span class="n">environment</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
-    <span class="n">application</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-    <span class="n">transform</span><span class="p">:</span> <span class="n">TransformOptions</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-    <span class="n">force_fetch</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-    <span class="n">max_age</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-    <span class="o">**</span><span class="n">sdk_options</span><span class="p">,</span>
-<span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span> <span class="o">|</span> <span class="nb">bytes</span> <span class="o">|</span> <span class="nb">list</span> <span class="o">|</span> <span class="nb">dict</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Retrieve a configuration value from AWS App Config.</span>
 
+
+
+
+
+  <div class="doc doc-children">
+
+
+
+
+
+
+
+
+<div class="doc doc-object doc-class">
+
+
+
+<h3 id="aws_lambda_powertools.utilities.idempotency.serialization.no_op.NoOpSerializer" class="doc doc-heading">
+            <span class="doc doc-object-name doc-class-name">NoOpSerializer</span>
+
+
+<a href="#aws_lambda_powertools.utilities.idempotency.serialization.no_op.NoOpSerializer" class="headerlink" title="Permanent link">&para;</a></h3>
+<div class="doc-signature highlight"><pre><span></span><code><span class="nf">NoOpSerializer</span><span class="p">()</span>
+</code></pre></div>
+
+    <div class="doc doc-contents ">
+            <p class="doc doc-class-bases">
+              Bases: <code><a class="autorefs autorefs-internal" title="aws_lambda_powertools.utilities.idempotency.serialization.base.BaseIdempotencySerializer" href="#aws_lambda_powertools.utilities.idempotency.serialization.base.BaseIdempotencySerializer">BaseIdempotencySerializer</a></code></p>
+
+
+        <p>Default serializer, does not transform data</p>
+
+
+
+
+
+
+
+
+
+
+                  <details class="quote">
+                    <summary>Source code in <code>aws_lambda_powertools/utilities/idempotency/serialization/no_op.py</code></summary>
+                    <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
-<span class="sd">    name: str</span>
-<span class="sd">        Name of the configuration</span>
-<span class="sd">    environment: str</span>
-<span class="sd">        Environment of the configuration</span>
-<span class="sd">    application: str</span>
-<span class="sd">        Application of the configuration</span>
-<span class="sd">    transform: str, optional</span>
-<span class="sd">        Transforms the content from a JSON object (&#39;json&#39;) or base64 binary string (&#39;binary&#39;)</span>
-<span class="sd">    force_fetch: bool, optional</span>
-<span class="sd">        Force update even before a cached item has expired, defaults to False</span>
-<span class="sd">    max_age: int, optional</span>
-<span class="sd">        Maximum age of the cached value</span>
-<span class="sd">    sdk_options: dict, optional</span>
-<span class="sd">        SDK options to propagate to `start_configuration_session` API call</span>
-
-<span class="sd">    Raises</span>
-<span class="sd">    ------</span>
-<span class="sd">    GetParameterError</span>
-<span class="sd">        When the parameter provider fails to retrieve a parameter value for</span>
-<span class="sd">        a given name.</span>
-<span class="sd">    TransformParameterError</span>
-<span class="sd">        When the parameter provider fails to transform a parameter value.</span>
-
-<span class="sd">    Example</span>
-<span class="sd">    -------</span>
-<span class="sd">    **Retrieves the latest version of configuration value from App Config**</span>
-
-<span class="sd">        &gt;&gt;&gt; from aws_lambda_powertools.utilities.parameters import get_app_config</span>
-<span class="sd">        &gt;&gt;&gt;</span>
-<span class="sd">        &gt;&gt;&gt; value = get_app_config(&quot;my_config&quot;, environment=&quot;my_env&quot;, application=&quot;my_env&quot;)</span>
-<span class="sd">        &gt;&gt;&gt;</span>
-<span class="sd">        &gt;&gt;&gt; print(value)</span>
-<span class="sd">        My configuration value</span>
-
-<span class="sd">    **Retrieves a configuration value and decodes it using a JSON decoder**</span>
-
-<span class="sd">        &gt;&gt;&gt; from aws_lambda_powertools.utilities.parameters import get_app_config</span>
-<span class="sd">        &gt;&gt;&gt;</span>
-<span class="sd">        &gt;&gt;&gt; value = get_app_config(&quot;my_config&quot;, environment=&quot;my_env&quot;, application=&quot;my_env&quot;, transform=&#39;json&#39;)</span>
-<span class="sd">        &gt;&gt;&gt;</span>
-<span class="sd">        &gt;&gt;&gt; print(value)</span>
-<span class="sd">        My configuration&#39;s JSON value</span>
+<span class="sd">    Default serializer, does not transform data</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="c1"># If max_age is not set, resolve it from the environment variable, defaulting to DEFAULT_MAX_AGE_SECS</span>
-    <span class="n">max_age</span> <span class="o">=</span> <span class="n">resolve_max_age</span><span class="p">(</span><span class="n">env</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="n">constants</span><span class="o">.</span><span class="n">PARAMETERS_MAX_AGE_ENV</span><span class="p">,</span> <span class="n">DEFAULT_MAX_AGE_SECS</span><span class="p">),</span> <span class="n">choice</span><span class="o">=</span><span class="n">max_age</span><span class="p">)</span>
-
-    <span class="c1"># Only create the provider if this function is called at least once</span>
-    <span class="k">if</span> <span class="s2">&quot;appconfig&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">DEFAULT_PROVIDERS</span><span class="p">:</span>
-        <span class="n">DEFAULT_PROVIDERS</span><span class="p">[</span><span class="s2">&quot;appconfig&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">AppConfigProvider</span><span class="p">(</span><span class="n">environment</span><span class="o">=</span><span class="n">environment</span><span class="p">,</span> <span class="n">application</span><span class="o">=</span><span class="n">application</span><span class="p">)</span>
-
-    <span class="k">return</span> <span class="n">DEFAULT_PROVIDERS</span><span class="p">[</span><span class="s2">&quot;appconfig&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">get</span><span class="p">(</span>
-        <span class="n">name</span><span class="p">,</span>
-        <span class="n">max_age</span><span class="o">=</span><span class="n">max_age</span><span class="p">,</span>
-        <span class="n">transform</span><span class="o">=</span><span class="n">transform</span><span class="p">,</span>
-        <span class="n">force_fetch</span><span class="o">=</span><span class="n">force_fetch</span><span class="p">,</span>
-        <span class="o">**</span><span class="n">sdk_options</span><span class="p">,</span>
-    <span class="p">)</span>
 </code></pre></div></td></tr></table></div>
-            </details>
+                  </details>
+
+
+
+  <div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+
+
+  </div>
+
     </div>
 
 </div>
 
+
+
+
+  </div>
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-module">
+
+
+
+<h2 id="aws_lambda_powertools.utilities.idempotency.serialization.pydantic" class="doc doc-heading">
+            <span class="doc doc-object-name doc-module-name">pydantic</span>
+
+
+<a href="#aws_lambda_powertools.utilities.idempotency.serialization.pydantic" class="headerlink" title="Permanent link">&para;</a></h2>
+
+    <div class="doc doc-contents ">
+
+
+
+
+
+
+
+<table>
+      <thead>
+        <tr>
+          <th><span class="doc-section-title">CLASS</span></th>
+          <th><span>DESCRIPTION</span></th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td><code><a class="autorefs autorefs-internal" title="aws_lambda_powertools.utilities.idempotency.serialization.pydantic.PydanticSerializer" href="#aws_lambda_powertools.utilities.idempotency.serialization.pydantic.PydanticSerializer">PydanticSerializer</a></code></td>
+            <td class="doc-class-details">
+              <div class="doc-md-description">
+                <p>Pydantic serializer for idempotency models</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+
+
+
+
+
+  <div class="doc doc-children">
+
+
+
+
+
+
+
+
+<div class="doc doc-object doc-class">
+
+
+
+<h3 id="aws_lambda_powertools.utilities.idempotency.serialization.pydantic.PydanticSerializer" class="doc doc-heading">
+            <span class="doc doc-object-name doc-class-name">PydanticSerializer</span>
+
+
+<a href="#aws_lambda_powertools.utilities.idempotency.serialization.pydantic.PydanticSerializer" class="headerlink" title="Permanent link">&para;</a></h3>
+<div class="doc-signature highlight"><pre><span></span><code><span class="nf">PydanticSerializer</span><span class="p">(</span><span class="n">model</span><span class="p">:</span> <span class="nb">type</span><span class="p">[</span><span class="n">BaseModel</span><span class="p">])</span>
+</code></pre></div>
+
+    <div class="doc doc-contents ">
+            <p class="doc doc-class-bases">
+              Bases: <code><a class="autorefs autorefs-internal" title="aws_lambda_powertools.utilities.idempotency.serialization.base.BaseIdempotencyModelSerializer" href="#aws_lambda_powertools.utilities.idempotency.serialization.base.BaseIdempotencyModelSerializer">BaseIdempotencyModelSerializer</a></code></p>
+
+
+        <p>Pydantic serializer for idempotency models</p>
+
+        
+
+
+
+
+
+
+
+
+
+
+                  <details class="quote">
+                    <summary>Source code in <code>aws_lambda_powertools/utilities/idempotency/serialization/pydantic.py</code></summary>
+                    <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">model</span><span class="p">:</span> <span class="nb">type</span><span class="p">[</span><span class="n">BaseModel</span><span class="p">]):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    model: Model</span>
+<span class="sd">        Pydantic model to be used for serialization</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">__model</span><span class="p">:</span> <span class="nb">type</span><span class="p">[</span><span class="n">BaseModel</span><span class="p">]</span> <span class="o">=</span> <span class="n">model</span>
+</code></pre></div></td></tr></table></div>
+                  </details>
+
+
+
+  <div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+
+
+  </div>
+
+    </div>
+
+</div>
+
+
+
+
+  </div>
+
+    </div>
+
+</div>
 
 
   </div>
