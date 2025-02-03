@@ -13,10 +13,10 @@
       
       
       
-        <link rel="prev" href="../parser/">
+        <link rel="prev" href="../../contributing/conventions/">
       
       
-        <link rel="next" href="../typing/">
+        <link rel="next" href="../streaming/">
       
       
       <link rel="icon" href="../../media/aws-logo-light.svg">
@@ -24,7 +24,7 @@
     
     
       
-        <title>Streaming - Powertools for AWS Lambda (Python)</title>
+        <title>Parser - Powertools for AWS Lambda (Python)</title>
       
     
     
@@ -80,7 +80,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#aws_lambda_powertools.utilities.streaming.s3_object" class="md-skip">
+        <a href="#aws_lambda_powertools.utilities.parser.parser" class="md-skip">
           Skip to content
         </a>
       
@@ -142,7 +142,7 @@ You're not viewing the latest version.
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Streaming
+              Parser
             
           </span>
         </div>
@@ -310,7 +310,7 @@ You're not viewing the latest version.
     
     
       <li class="md-tabs__item md-tabs__item--active">
-        <a href="../parser/" class="md-tabs__link">
+        <a href="./" class="md-tabs__link">
           
   
     
@@ -1604,28 +1604,6 @@ You're not viewing the latest version.
                 
   
   
-  
-  
-    <li class="md-nav__item">
-      <a href="../parser/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Parser
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
     
   
   
@@ -1640,7 +1618,7 @@ You're not viewing the latest version.
           
   
   <span class="md-ellipsis">
-    Streaming
+    Parser
     
   </span>
   
@@ -1652,7 +1630,7 @@ You're not viewing the latest version.
         
   
   <span class="md-ellipsis">
-    Streaming
+    Parser
     
   </span>
   
@@ -1673,105 +1651,27 @@ You're not viewing the latest version.
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#aws_lambda_powertools.utilities.streaming.s3_object" class="md-nav__link">
+  <a href="#aws_lambda_powertools.utilities.parser.parser" class="md-nav__link">
     <span class="md-ellipsis">
-      s3_object
+      parser
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#aws_lambda_powertools.utilities.streaming.s3_object.S3Object" class="md-nav__link">
+  <a href="#aws_lambda_powertools.utilities.parser.parser.event_parser" class="md-nav__link">
     <span class="md-ellipsis">
-      S3Object
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="S3Object">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#aws_lambda_powertools.utilities.streaming.s3_object.S3Object.size" class="md-nav__link">
-    <span class="md-ellipsis">
-      size
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#aws_lambda_powertools.utilities.streaming.s3_object.S3Object.transformed_stream" class="md-nav__link">
-    <span class="md-ellipsis">
-      transformed_stream
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#aws_lambda_powertools.utilities.streaming.s3_object.S3Object.transform" class="md-nav__link">
-    <span class="md-ellipsis">
-      transform
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#aws_lambda_powertools.utilities.streaming.transformations.csv" class="md-nav__link">
-    <span class="md-ellipsis">
-      csv
+      event_parser
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#aws_lambda_powertools.utilities.streaming.transformations.csv.CsvTransform" class="md-nav__link">
+  <a href="#aws_lambda_powertools.utilities.parser.parser.parse" class="md-nav__link">
     <span class="md-ellipsis">
-      CsvTransform
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#aws_lambda_powertools.utilities.streaming.transformations.gzip" class="md-nav__link">
-    <span class="md-ellipsis">
-      gzip
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#aws_lambda_powertools.utilities.streaming.transformations.gzip.GzipTransform" class="md-nav__link">
-    <span class="md-ellipsis">
-      GzipTransform
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#aws_lambda_powertools.utilities.streaming.transformations.zip" class="md-nav__link">
-    <span class="md-ellipsis">
-      zip
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#aws_lambda_powertools.utilities.streaming.transformations.zip.ZipTransform" class="md-nav__link">
-    <span class="md-ellipsis">
-      ZipTransform
+      parse
     </span>
   </a>
   
@@ -1781,6 +1681,28 @@ You're not viewing the latest version.
   
 </nav>
       
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../streaming/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Streaming
+    
+  </span>
+  
+
+      </a>
     </li>
   
 
@@ -1862,105 +1784,27 @@ You're not viewing the latest version.
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#aws_lambda_powertools.utilities.streaming.s3_object" class="md-nav__link">
+  <a href="#aws_lambda_powertools.utilities.parser.parser" class="md-nav__link">
     <span class="md-ellipsis">
-      s3_object
+      parser
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#aws_lambda_powertools.utilities.streaming.s3_object.S3Object" class="md-nav__link">
+  <a href="#aws_lambda_powertools.utilities.parser.parser.event_parser" class="md-nav__link">
     <span class="md-ellipsis">
-      S3Object
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="S3Object">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#aws_lambda_powertools.utilities.streaming.s3_object.S3Object.size" class="md-nav__link">
-    <span class="md-ellipsis">
-      size
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#aws_lambda_powertools.utilities.streaming.s3_object.S3Object.transformed_stream" class="md-nav__link">
-    <span class="md-ellipsis">
-      transformed_stream
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#aws_lambda_powertools.utilities.streaming.s3_object.S3Object.transform" class="md-nav__link">
-    <span class="md-ellipsis">
-      transform
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#aws_lambda_powertools.utilities.streaming.transformations.csv" class="md-nav__link">
-    <span class="md-ellipsis">
-      csv
+      event_parser
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#aws_lambda_powertools.utilities.streaming.transformations.csv.CsvTransform" class="md-nav__link">
+  <a href="#aws_lambda_powertools.utilities.parser.parser.parse" class="md-nav__link">
     <span class="md-ellipsis">
-      CsvTransform
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#aws_lambda_powertools.utilities.streaming.transformations.gzip" class="md-nav__link">
-    <span class="md-ellipsis">
-      gzip
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#aws_lambda_powertools.utilities.streaming.transformations.gzip.GzipTransform" class="md-nav__link">
-    <span class="md-ellipsis">
-      GzipTransform
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#aws_lambda_powertools.utilities.streaming.transformations.zip" class="md-nav__link">
-    <span class="md-ellipsis">
-      zip
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#aws_lambda_powertools.utilities.streaming.transformations.zip.ZipTransform" class="md-nav__link">
-    <span class="md-ellipsis">
-      ZipTransform
+      parse
     </span>
   </a>
   
@@ -1985,7 +1829,7 @@ You're not viewing the latest version.
   
 
 
-  <h1>Streaming</h1>
+  <h1>Parser</h1>
 
 <!-- markdownlint-disable MD043 MD041 -->
 
@@ -1994,232 +1838,16 @@ You're not viewing the latest version.
 
 
 
-<a id="aws_lambda_powertools.utilities.streaming.s3_object"></a>
+<a id="aws_lambda_powertools.utilities.parser.parser"></a>
     <div class="doc doc-contents first">
 
+        <p>The Parser utility simplifies data parsing and validation using Pydantic. It allows you to define data models
+in pure Python classes, parse and validate incoming events, and extract only the data you need.</p>
+<div class="admonition abstract">
+<p class="admonition-title">Usage Documentation</p>
+<p><a href="../../utilities/parser/"><code>Parser</code></a></p>
+</div>
 
-
-
-
-
-
-<table>
-      <thead>
-        <tr>
-          <th><span class="doc-section-title">CLASS</span></th>
-          <th><span>DESCRIPTION</span></th>
-        </tr>
-      </thead>
-      <tbody>
-          <tr class="doc-section-item">
-            <td><code><a class="autorefs autorefs-internal" title="aws_lambda_powertools.utilities.streaming.s3_object.S3Object" href="#aws_lambda_powertools.utilities.streaming.s3_object.S3Object">S3Object</a></code></td>
-            <td class="doc-class-details">
-              <div class="doc-md-description">
-                <p>Seekable and streamable S3 Object reader.</p>
-              </div>
-            </td>
-          </tr>
-      </tbody>
-    </table>
-
-
-
-
-
-
-
-  <div class="doc doc-children">
-
-
-
-
-
-
-
-
-<div class="doc doc-object doc-class">
-
-
-
-<h2 id="aws_lambda_powertools.utilities.streaming.s3_object.S3Object" class="doc doc-heading">
-            <span class="doc doc-object-name doc-class-name">S3Object</span>
-
-
-<a href="#aws_lambda_powertools.utilities.streaming.s3_object.S3Object" class="headerlink" title="Permanent link">&para;</a></h2>
-<div class="doc-signature highlight"><pre><span></span><code><span class="nf">S3Object</span><span class="p">(</span>
-    <span class="n">bucket</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
-    <span class="n">key</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
-    <span class="n">version_id</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-    <span class="n">boto3_client</span><span class="p">:</span> <span class="n">S3Client</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-    <span class="n">is_gzip</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-    <span class="n">is_csv</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-    <span class="o">**</span><span class="n">sdk_options</span>
-<span class="p">)</span>
-</code></pre></div>
-
-    <div class="doc doc-contents ">
-            <p class="doc doc-class-bases">
-              Bases: <code><a class="autorefs autorefs-external" title="typing.IO" href="https://docs.python.org/3/library/typing.html#typing.IO">IO</a>[<a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#bytes">bytes</a>]</code></p>
-
-
-        <p>Seekable and streamable S3 Object reader.</p>
-<p>S3Object implements the IO[bytes], backed by a seekable S3 streaming.</p>
-
-
-<table>
-      <thead>
-        <tr>
-          <th><span class="doc-section-title">PARAMETER</span></th>
-          <th><span>DESCRIPTION</span></th>
-        </tr>
-      </thead>
-      <tbody>
-          <tr class="doc-section-item">
-            <td>
-                <code>bucket</code>
-            </td>
-            <td class="doc-param-details">
-              <div class="doc-md-description">
-                <p>The S3 bucket</p>
-              </div>
-              <p>
-                  <span class="doc-param-annotation">
-                    <b>TYPE:</b>
-                      <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a></code>
-                  </span>
-              </p>
-            </td>
-          </tr>
-          <tr class="doc-section-item">
-            <td>
-                <code>key</code>
-            </td>
-            <td class="doc-param-details">
-              <div class="doc-md-description">
-                <p>The S3 key</p>
-              </div>
-              <p>
-                  <span class="doc-param-annotation">
-                    <b>TYPE:</b>
-                      <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a></code>
-                  </span>
-              </p>
-            </td>
-          </tr>
-          <tr class="doc-section-item">
-            <td>
-                <code>version_id</code>
-            </td>
-            <td class="doc-param-details">
-              <div class="doc-md-description">
-                <p>A version ID of the object, when the S3 bucket is versioned</p>
-              </div>
-              <p>
-                  <span class="doc-param-annotation">
-                    <b>TYPE:</b>
-                      <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a> | None</code>
-                  </span>
-                  <span class="doc-param-default">
-                    <b>DEFAULT:</b>
-                      <code>None</code>
-                  </span>
-              </p>
-            </td>
-          </tr>
-          <tr class="doc-section-item">
-            <td>
-                <code>boto3_client</code>
-            </td>
-            <td class="doc-param-details">
-              <div class="doc-md-description">
-                <p>An optional boto3 S3 client. If missing, a new one will be created.</p>
-              </div>
-              <p>
-                  <span class="doc-param-annotation">
-                    <b>TYPE:</b>
-                      <code><span title="mypy_boto3_s3.client.S3Client">S3Client</span> | None</code>
-                  </span>
-                  <span class="doc-param-default">
-                    <b>DEFAULT:</b>
-                      <code>None</code>
-                  </span>
-              </p>
-            </td>
-          </tr>
-          <tr class="doc-section-item">
-            <td>
-                <code>is_gzip</code>
-            </td>
-            <td class="doc-param-details">
-              <div class="doc-md-description">
-                <p>Enables the Gunzip data transformation</p>
-              </div>
-              <p>
-                  <span class="doc-param-annotation">
-                    <b>TYPE:</b>
-                      <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/functions.html#bool">bool</a> | None</code>
-                  </span>
-                  <span class="doc-param-default">
-                    <b>DEFAULT:</b>
-                      <code>False</code>
-                  </span>
-              </p>
-            </td>
-          </tr>
-          <tr class="doc-section-item">
-            <td>
-                <code>is_csv</code>
-            </td>
-            <td class="doc-param-details">
-              <div class="doc-md-description">
-                <p>Enables the CSV data transformation</p>
-              </div>
-              <p>
-                  <span class="doc-param-annotation">
-                    <b>TYPE:</b>
-                      <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/functions.html#bool">bool</a> | None</code>
-                  </span>
-                  <span class="doc-param-default">
-                    <b>DEFAULT:</b>
-                      <code>False</code>
-                  </span>
-              </p>
-            </td>
-          </tr>
-          <tr class="doc-section-item">
-            <td>
-                <code>sdk_options</code>
-            </td>
-            <td class="doc-param-details">
-              <div class="doc-md-description">
-                <p>Dictionary of options that will be passed to the S3 Client get_object API call</p>
-              </div>
-              <p>
-                  <span class="doc-param-default">
-                    <b>DEFAULT:</b>
-                      <code>{}</code>
-                  </span>
-              </p>
-            </td>
-          </tr>
-      </tbody>
-    </table>
-
-
-<details class="example" open>
-  <summary>Example</summary>
-  <p><strong>Reads a line from an S3, loading as little data as necessary:</strong></p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
-<span class="normal">2</span>
-<span class="normal">3</span>
-<span class="normal">4</span>
-<span class="normal">5</span></pre></div></td><td class="code"><div><pre><span></span><code>&gt;&gt;&gt; from aws_lambda_powertools.utilities.streaming import S3Object
-&gt;&gt;&gt;
-&gt;&gt;&gt; line: bytes = S3Object(bucket=&quot;bucket&quot;, key=&quot;key&quot;).readline()
-&gt;&gt;&gt;
-&gt;&gt;&gt; print(line)
-</code></pre></div></td></tr></table></div>
-</details>
 
 
 
@@ -2231,16 +1859,24 @@ You're not viewing the latest version.
 <table>
       <thead>
         <tr>
-          <th><span class="doc-section-title">METHOD</span></th>
+          <th><span class="doc-section-title">FUNCTION</span></th>
           <th><span>DESCRIPTION</span></th>
         </tr>
       </thead>
       <tbody>
             <tr class="doc-section-item">
-              <td><code><a class="autorefs autorefs-internal" title="aws_lambda_powertools.utilities.streaming.s3_object.S3Object.transform" href="#aws_lambda_powertools.utilities.streaming.s3_object.S3Object.transform">transform</a></code></td>
+              <td><code><a class="autorefs autorefs-internal" title="aws_lambda_powertools.utilities.parser.parser.event_parser" href="#aws_lambda_powertools.utilities.parser.parser.event_parser">event_parser</a></code></td>
               <td class="doc-function-details">
                 <div class="doc-md-description">
-                  <p>Applies one or more data transformations to the stream.</p>
+                  <p>Lambda handler decorator to parse &amp; validate events using Pydantic models</p>
+                </div>
+              </td>
+            </tr>
+            <tr class="doc-section-item">
+              <td><code><a class="autorefs autorefs-internal" title="aws_lambda_powertools.utilities.parser.parser.parse" href="#aws_lambda_powertools.utilities.parser.parser.parse">parse</a></code></td>
+              <td class="doc-function-details">
+                <div class="doc-md-description">
+                  <p>Standalone function to parse &amp; validate events using Pydantic models</p>
                 </div>
               </td>
             </tr>
@@ -2250,114 +1886,6 @@ You're not viewing the latest version.
 
 
 
-<table>
-      <thead>
-        <tr>
-          <th><span class="doc-section-title">ATTRIBUTE</span></th>
-          <th><span>DESCRIPTION</span></th>
-        </tr>
-      </thead>
-      <tbody>
-          <tr class="doc-section-item">
-            <td><code><a class="autorefs autorefs-internal" title="aws_lambda_powertools.utilities.streaming.s3_object.S3Object.size" href="#aws_lambda_powertools.utilities.streaming.s3_object.S3Object.size">size</a></code></td>
-            <td class="doc-attribute-details">
-              <div class="doc-md-description">
-                <p>Retrieves the size of the underlying S3 object</p>
-              </div>
-              <p>
-                  <span class="doc-attribute-annotation">
-                    <b>TYPE:</b>
-                      <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/functions.html#int">int</a></code>
-                  </span>
-              </p>
-            </td>
-          </tr>
-          <tr class="doc-section-item">
-            <td><code><a class="autorefs autorefs-internal" title="aws_lambda_powertools.utilities.streaming.s3_object.S3Object.transformed_stream" href="#aws_lambda_powertools.utilities.streaming.s3_object.S3Object.transformed_stream">transformed_stream</a></code></td>
-            <td class="doc-attribute-details">
-              <div class="doc-md-description">
-                <p>Returns a IO[bytes] stream with all the data transformations applied in order</p>
-              </div>
-              <p>
-                  <span class="doc-attribute-annotation">
-                    <b>TYPE:</b>
-                      <code><a class="autorefs autorefs-external" title="typing.IO" href="https://docs.python.org/3/library/typing.html#typing.IO">IO</a>[<a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#bytes">bytes</a>]</code>
-                  </span>
-              </p>
-            </td>
-          </tr>
-      </tbody>
-    </table>
-
-                  <details class="quote">
-                    <summary>Source code in <code>aws_lambda_powertools/utilities/streaming/s3_object.py</code></summary>
-                    <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">60</span>
-<span class="normal">61</span>
-<span class="normal">62</span>
-<span class="normal">63</span>
-<span class="normal">64</span>
-<span class="normal">65</span>
-<span class="normal">66</span>
-<span class="normal">67</span>
-<span class="normal">68</span>
-<span class="normal">69</span>
-<span class="normal">70</span>
-<span class="normal">71</span>
-<span class="normal">72</span>
-<span class="normal">73</span>
-<span class="normal">74</span>
-<span class="normal">75</span>
-<span class="normal">76</span>
-<span class="normal">77</span>
-<span class="normal">78</span>
-<span class="normal">79</span>
-<span class="normal">80</span>
-<span class="normal">81</span>
-<span class="normal">82</span>
-<span class="normal">83</span>
-<span class="normal">84</span>
-<span class="normal">85</span>
-<span class="normal">86</span>
-<span class="normal">87</span>
-<span class="normal">88</span>
-<span class="normal">89</span>
-<span class="normal">90</span>
-<span class="normal">91</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
-    <span class="bp">self</span><span class="p">,</span>
-    <span class="n">bucket</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
-    <span class="n">key</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
-    <span class="n">version_id</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-    <span class="n">boto3_client</span><span class="p">:</span> <span class="n">S3Client</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-    <span class="n">is_gzip</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-    <span class="n">is_csv</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-    <span class="o">**</span><span class="n">sdk_options</span><span class="p">,</span>
-<span class="p">):</span>
-    <span class="bp">self</span><span class="o">.</span><span class="n">bucket</span> <span class="o">=</span> <span class="n">bucket</span>
-    <span class="bp">self</span><span class="o">.</span><span class="n">key</span> <span class="o">=</span> <span class="n">key</span>
-    <span class="bp">self</span><span class="o">.</span><span class="n">version_id</span> <span class="o">=</span> <span class="n">version_id</span>
-
-    <span class="c1"># The underlying seekable IO, where all the magic happens</span>
-    <span class="bp">self</span><span class="o">.</span><span class="n">raw_stream</span> <span class="o">=</span> <span class="n">_S3SeekableIO</span><span class="p">(</span>
-        <span class="n">bucket</span><span class="o">=</span><span class="n">bucket</span><span class="p">,</span>
-        <span class="n">key</span><span class="o">=</span><span class="n">key</span><span class="p">,</span>
-        <span class="n">version_id</span><span class="o">=</span><span class="n">version_id</span><span class="p">,</span>
-        <span class="n">boto3_client</span><span class="o">=</span><span class="n">boto3_client</span><span class="p">,</span>
-        <span class="o">**</span><span class="n">sdk_options</span><span class="p">,</span>
-    <span class="p">)</span>
-
-    <span class="c1"># Stores the list of data transformations</span>
-    <span class="bp">self</span><span class="o">.</span><span class="n">_data_transformations</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">BaseTransform</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
-    <span class="k">if</span> <span class="n">is_gzip</span><span class="p">:</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_data_transformations</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">GzipTransform</span><span class="p">())</span>
-    <span class="k">if</span> <span class="n">is_csv</span><span class="p">:</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_data_transformations</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">CsvTransform</span><span class="p">())</span>
-
-    <span class="c1"># Stores the cached transformed stream</span>
-    <span class="bp">self</span><span class="o">.</span><span class="n">_transformed_stream</span><span class="p">:</span> <span class="n">IO</span><span class="p">[</span><span class="nb">bytes</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
-</code></pre></div></td></tr></table></div>
-                  </details>
-
-
 
   <div class="doc doc-children">
 
@@ -2367,93 +1895,77 @@ You're not viewing the latest version.
 
 
 
-<div class="doc doc-object doc-attribute">
-
-
-
-<h3 id="aws_lambda_powertools.utilities.streaming.s3_object.S3Object.size" class="doc doc-heading">
-            <span class="doc doc-object-name doc-attribute-name">size</span>
-
-
-  <span class="doc doc-labels">
-      <small class="doc doc-label doc-label-property"><code>property</code></small>
-  </span>
-
-<a href="#aws_lambda_powertools.utilities.streaming.s3_object.S3Object.size" class="headerlink" title="Permanent link">&para;</a></h3>
-<div class="doc-signature highlight"><pre><span></span><code><span class="n">size</span><span class="p">:</span> <span class="nb">int</span>
-</code></pre></div>
-
-    <div class="doc doc-contents ">
-
-        <p>Retrieves the size of the underlying S3 object</p>
-    </div>
-
-</div>
-
-<div class="doc doc-object doc-attribute">
-
-
-
-<h3 id="aws_lambda_powertools.utilities.streaming.s3_object.S3Object.transformed_stream" class="doc doc-heading">
-            <span class="doc doc-object-name doc-attribute-name">transformed_stream</span>
-
-
-  <span class="doc doc-labels">
-      <small class="doc doc-label doc-label-property"><code>property</code></small>
-  </span>
-
-<a href="#aws_lambda_powertools.utilities.streaming.s3_object.S3Object.transformed_stream" class="headerlink" title="Permanent link">&para;</a></h3>
-<div class="doc-signature highlight"><pre><span></span><code><span class="n">transformed_stream</span><span class="p">:</span> <span class="n">IO</span><span class="p">[</span><span class="nb">bytes</span><span class="p">]</span>
-</code></pre></div>
-
-    <div class="doc doc-contents ">
-
-        <p>Returns a IO[bytes] stream with all the data transformations applied in order</p>
-    </div>
-
-</div>
-
 
 
 <div class="doc doc-object doc-function">
 
 
-<h3 id="aws_lambda_powertools.utilities.streaming.s3_object.S3Object.transform" class="doc doc-heading">
-            <span class="doc doc-object-name doc-function-name">transform</span>
+<h2 id="aws_lambda_powertools.utilities.parser.parser.event_parser" class="doc doc-heading">
+            <span class="doc doc-object-name doc-function-name">event_parser</span>
 
 
-<a href="#aws_lambda_powertools.utilities.streaming.s3_object.S3Object.transform" class="headerlink" title="Permanent link">&para;</a></h3>
-          <div class="doc-overloads">
-<div class="doc-signature highlight"><pre><span></span><code><span class="nf">transform</span><span class="p">(</span>
-    <span class="n">transformations</span><span class="p">:</span> <span class="p">(</span>
-        <span class="n">BaseTransform</span><span class="p">[</span><span class="n">T</span><span class="p">]</span> <span class="o">|</span> <span class="n">Sequence</span><span class="p">[</span><span class="n">BaseTransform</span><span class="p">[</span><span class="n">T</span><span class="p">]]</span>
-    <span class="p">),</span>
-    <span class="n">in_place</span><span class="p">:</span> <span class="n">Literal</span><span class="p">[</span><span class="kc">True</span><span class="p">],</span>
-<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">T</span>
-</code></pre></div><div class="doc-signature highlight"><pre><span></span><code><span class="nf">transform</span><span class="p">(</span>
-    <span class="n">transformations</span><span class="p">:</span> <span class="p">(</span>
-        <span class="n">BaseTransform</span><span class="p">[</span><span class="n">T</span><span class="p">]</span> <span class="o">|</span> <span class="n">Sequence</span><span class="p">[</span><span class="n">BaseTransform</span><span class="p">[</span><span class="n">T</span><span class="p">]]</span>
-    <span class="p">),</span>
-    <span class="n">in_place</span><span class="p">:</span> <span class="n">Literal</span><span class="p">[</span><span class="kc">False</span><span class="p">],</span>
-<span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span>
-</code></pre></div><div class="doc-signature highlight"><pre><span></span><code><span class="nf">transform</span><span class="p">(</span>
-    <span class="n">transformations</span><span class="p">:</span> <span class="p">(</span>
-        <span class="n">BaseTransform</span><span class="p">[</span><span class="n">T</span><span class="p">]</span> <span class="o">|</span> <span class="n">Sequence</span><span class="p">[</span><span class="n">BaseTransform</span><span class="p">[</span><span class="n">T</span><span class="p">]]</span>
-    <span class="p">),</span>
-<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">T</span>
-</code></pre></div>          </div>
-<div class="doc-signature highlight"><pre><span></span><code><span class="nf">transform</span><span class="p">(</span>
-    <span class="n">transformations</span><span class="p">:</span> <span class="p">(</span>
-        <span class="n">BaseTransform</span><span class="p">[</span><span class="n">T</span><span class="p">]</span> <span class="o">|</span> <span class="n">Sequence</span><span class="p">[</span><span class="n">BaseTransform</span><span class="p">[</span><span class="n">T</span><span class="p">]]</span>
-    <span class="p">),</span>
-    <span class="n">in_place</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">T</span> <span class="o">|</span> <span class="kc">None</span>
+<a href="#aws_lambda_powertools.utilities.parser.parser.event_parser" class="headerlink" title="Permanent link">&para;</a></h2>
+<div class="doc-signature highlight"><pre><span></span><code><span class="nf">event_parser</span><span class="p">(</span>
+    <span class="n">handler</span><span class="p">:</span> <span class="n">Callable</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="n">EventParserReturnType</span><span class="p">],</span>
+    <span class="n">event</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">],</span>
+    <span class="n">context</span><span class="p">:</span> <span class="n">LambdaContext</span><span class="p">,</span>
+    <span class="n">model</span><span class="p">:</span> <span class="nb">type</span><span class="p">[</span><span class="n">T</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">envelope</span><span class="p">:</span> <span class="nb">type</span><span class="p">[</span><span class="n">Envelope</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="o">**</span><span class="n">kwargs</span><span class="p">:</span> <span class="n">Any</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">EventParserReturnType</span>
 </code></pre></div>
 
     <div class="doc doc-contents ">
 
-        <p>Applies one or more data transformations to the stream.</p>
+        <p>Lambda handler decorator to parse &amp; validate events using Pydantic models</p>
+<p>It requires a model that implements Pydantic BaseModel to parse &amp; validate the event.</p>
+<p>When an envelope is given, it'll use the following logic:</p>
+<ol>
+<li>Parse the event against the envelope model first e.g. EnvelopeModel(**event)</li>
+<li>Envelope will extract a given key to be parsed against the model e.g. event.detail</li>
+</ol>
+<p>This is useful when you need to confirm event wrapper structure, and
+b) selectively extract a portion of your payload for parsing &amp; validation.</p>
+<p>NOTE: If envelope is omitted, the complete event is parsed to match the model parameter definition.</p>
 
+
+<details class="example" open>
+  <summary>Example</summary>
+  <p><strong>Lambda handler decorator to parse &amp; validate event</strong></p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span>
+<span class="normal">8</span></pre></div></td><td class="code"><div><pre><span></span><code>class Order(BaseModel):
+    id: int
+    description: str
+    ...
+
+@event_parser(model=Order)
+def handler(event: Order, context: LambdaContext):
+    ...
+</code></pre></div></td></tr></table></div>
+<p><strong>Lambda handler decorator to parse &amp; validate event - using built-in envelope</strong></p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span>
+<span class="normal">8</span></pre></div></td><td class="code"><div><pre><span></span><code>class Order(BaseModel):
+    id: int
+    description: str
+    ...
+
+@event_parser(model=Order, envelope=envelopes.EVENTBRIDGE)
+def handler(event: Order, context: LambdaContext):
+    ...
+</code></pre></div></td></tr></table></div>
+</details>
 
 <table>
       <thead>
@@ -2465,36 +1977,88 @@ You're not viewing the latest version.
       <tbody>
           <tr class="doc-section-item">
             <td>
-                <code>transformations</code>
+                <code>handler</code>
             </td>
             <td class="doc-param-details">
               <div class="doc-md-description">
-                <p>One or more transformations to apply. Transformations are applied in the same order as they are declared.</p>
+                <p>Method to annotate on</p>
               </div>
               <p>
                   <span class="doc-param-annotation">
                     <b>TYPE:</b>
-                      <code><span title="aws_lambda_powertools.utilities.streaming.transformations.base.BaseTransform">BaseTransform</span>[<span title="aws_lambda_powertools.utilities.streaming.types.T">T</span>] | <a class="autorefs autorefs-external" title="typing.Sequence" href="https://docs.python.org/3/library/typing.html#typing.Sequence">Sequence</a>[<span title="aws_lambda_powertools.utilities.streaming.transformations.base.BaseTransform">BaseTransform</span>[<span title="aws_lambda_powertools.utilities.streaming.types.T">T</span>]]</code>
+                      <code><a class="autorefs autorefs-external" title="typing.Callable" href="https://docs.python.org/3/library/typing.html#typing.Callable">Callable</a>[..., <span title="aws_lambda_powertools.utilities.parser.types.EventParserReturnType">EventParserReturnType</span>]</code>
                   </span>
               </p>
             </td>
           </tr>
           <tr class="doc-section-item">
             <td>
-                <code>in_place</code>
+                <code>event</code>
             </td>
             <td class="doc-param-details">
               <div class="doc-md-description">
-                <p>Transforms the stream in place, instead of returning a new stream object. Defaults to false.</p>
+                <p>Lambda event to be parsed &amp; validated</p>
               </div>
               <p>
                   <span class="doc-param-annotation">
                     <b>TYPE:</b>
-                      <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/functions.html#bool">bool</a> | None</code>
+                      <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#dict">dict</a>[<a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a>, <a class="autorefs autorefs-external" title="typing.Any" href="https://docs.python.org/3/library/typing.html#typing.Any">Any</a>]</code>
+                  </span>
+              </p>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>context</code>
+            </td>
+            <td class="doc-param-details">
+              <div class="doc-md-description">
+                <p>Lambda context object</p>
+              </div>
+              <p>
+                  <span class="doc-param-annotation">
+                    <b>TYPE:</b>
+                      <code><a class="autorefs autorefs-internal" title="aws_lambda_powertools.utilities.typing.LambdaContext" href="../typing/#aws_lambda_powertools.utilities.typing.LambdaContext">LambdaContext</a></code>
+                  </span>
+              </p>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>model</code>
+            </td>
+            <td class="doc-param-details">
+              <div class="doc-md-description">
+                <p>Your data model that will replace the event.</p>
+              </div>
+              <p>
+                  <span class="doc-param-annotation">
+                    <b>TYPE:</b>
+                      <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/functions.html#type">type</a>[<span title="aws_lambda_powertools.utilities.parser.types.T">T</span>] | None</code>
                   </span>
                   <span class="doc-param-default">
                     <b>DEFAULT:</b>
-                      <code>False</code>
+                      <code>None</code>
+                  </span>
+              </p>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>envelope</code>
+            </td>
+            <td class="doc-param-details">
+              <div class="doc-md-description">
+                <p>Optional envelope to extract the model from</p>
+              </div>
+              <p>
+                  <span class="doc-param-annotation">
+                    <b>TYPE:</b>
+                      <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/functions.html#type">type</a>[<span title="aws_lambda_powertools.utilities.parser.envelopes.base.Envelope">Envelope</span>] | None</code>
+                  </span>
+                  <span class="doc-param-default">
+                    <b>DEFAULT:</b>
+                      <code>None</code>
                   </span>
               </p>
             </td>
@@ -2506,20 +2070,44 @@ You're not viewing the latest version.
 <table>
       <thead>
         <tr>
-          <th><span class="doc-section-title">RETURNS</span></th>
+          <th><span class="doc-section-title">RAISES</span></th>
           <th><span>DESCRIPTION</span></th>
         </tr>
       </thead>
       <tbody>
           <tr class="doc-section-item">
             <td>
-                <span class="doc-returns-annotation">
-                    <code>T[bound=IO[bytes]], optional</code>
-                </span>
+              <span class="doc-raises-annotation">
+                  <code><span title="pydantic.ValidationError">ValidationError</span></code>
+              </span>
             </td>
-            <td class="doc-returns-details">
+            <td class="doc-raises-details">
               <div class="doc-md-description">
-                <p>If in_place is False, returns an IO[bytes] object representing the transformed stream</p>
+                <p>When input event does not conform with the provided model</p>
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+              <span class="doc-raises-annotation">
+                  <code><span title="aws_lambda_powertools.utilities.parser.exceptions.InvalidModelTypeError">InvalidModelTypeError</span></code>
+              </span>
+            </td>
+            <td class="doc-raises-details">
+              <div class="doc-md-description">
+                <p>When the model given does not implement BaseModel, is not provided</p>
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+              <span class="doc-raises-annotation">
+                  <code><span title="aws_lambda_powertools.utilities.parser.exceptions.InvalidEnvelopeError">InvalidEnvelopeError</span></code>
+              </span>
+            </td>
+            <td class="doc-raises-details">
+              <div class="doc-md-description">
+                <p>When envelope given does not implement BaseEnvelope</p>
               </div>
             </td>
           </tr>
@@ -2527,8 +2115,392 @@ You're not viewing the latest version.
     </table>
 
             <details class="quote">
-              <summary>Source code in <code>aws_lambda_powertools/utilities/streaming/s3_object.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">139</span>
+              <summary>Source code in <code>aws_lambda_powertools/utilities/parser/parser.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 31</span>
+<span class="normal"> 32</span>
+<span class="normal"> 33</span>
+<span class="normal"> 34</span>
+<span class="normal"> 35</span>
+<span class="normal"> 36</span>
+<span class="normal"> 37</span>
+<span class="normal"> 38</span>
+<span class="normal"> 39</span>
+<span class="normal"> 40</span>
+<span class="normal"> 41</span>
+<span class="normal"> 42</span>
+<span class="normal"> 43</span>
+<span class="normal"> 44</span>
+<span class="normal"> 45</span>
+<span class="normal"> 46</span>
+<span class="normal"> 47</span>
+<span class="normal"> 48</span>
+<span class="normal"> 49</span>
+<span class="normal"> 50</span>
+<span class="normal"> 51</span>
+<span class="normal"> 52</span>
+<span class="normal"> 53</span>
+<span class="normal"> 54</span>
+<span class="normal"> 55</span>
+<span class="normal"> 56</span>
+<span class="normal"> 57</span>
+<span class="normal"> 58</span>
+<span class="normal"> 59</span>
+<span class="normal"> 60</span>
+<span class="normal"> 61</span>
+<span class="normal"> 62</span>
+<span class="normal"> 63</span>
+<span class="normal"> 64</span>
+<span class="normal"> 65</span>
+<span class="normal"> 66</span>
+<span class="normal"> 67</span>
+<span class="normal"> 68</span>
+<span class="normal"> 69</span>
+<span class="normal"> 70</span>
+<span class="normal"> 71</span>
+<span class="normal"> 72</span>
+<span class="normal"> 73</span>
+<span class="normal"> 74</span>
+<span class="normal"> 75</span>
+<span class="normal"> 76</span>
+<span class="normal"> 77</span>
+<span class="normal"> 78</span>
+<span class="normal"> 79</span>
+<span class="normal"> 80</span>
+<span class="normal"> 81</span>
+<span class="normal"> 82</span>
+<span class="normal"> 83</span>
+<span class="normal"> 84</span>
+<span class="normal"> 85</span>
+<span class="normal"> 86</span>
+<span class="normal"> 87</span>
+<span class="normal"> 88</span>
+<span class="normal"> 89</span>
+<span class="normal"> 90</span>
+<span class="normal"> 91</span>
+<span class="normal"> 92</span>
+<span class="normal"> 93</span>
+<span class="normal"> 94</span>
+<span class="normal"> 95</span>
+<span class="normal"> 96</span>
+<span class="normal"> 97</span>
+<span class="normal"> 98</span>
+<span class="normal"> 99</span>
+<span class="normal">100</span>
+<span class="normal">101</span>
+<span class="normal">102</span>
+<span class="normal">103</span>
+<span class="normal">104</span>
+<span class="normal">105</span>
+<span class="normal">106</span>
+<span class="normal">107</span>
+<span class="normal">108</span>
+<span class="normal">109</span>
+<span class="normal">110</span>
+<span class="normal">111</span>
+<span class="normal">112</span>
+<span class="normal">113</span>
+<span class="normal">114</span>
+<span class="normal">115</span>
+<span class="normal">116</span>
+<span class="normal">117</span>
+<span class="normal">118</span>
+<span class="normal">119</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@lambda_handler_decorator</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">event_parser</span><span class="p">(</span>
+    <span class="n">handler</span><span class="p">:</span> <span class="n">Callable</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="n">EventParserReturnType</span><span class="p">],</span>
+    <span class="n">event</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">],</span>
+    <span class="n">context</span><span class="p">:</span> <span class="n">LambdaContext</span><span class="p">,</span>
+    <span class="n">model</span><span class="p">:</span> <span class="nb">type</span><span class="p">[</span><span class="n">T</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">envelope</span><span class="p">:</span> <span class="nb">type</span><span class="p">[</span><span class="n">Envelope</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="o">**</span><span class="n">kwargs</span><span class="p">:</span> <span class="n">Any</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">EventParserReturnType</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Lambda handler decorator to parse &amp; validate events using Pydantic models</span>
+
+<span class="sd">    It requires a model that implements Pydantic BaseModel to parse &amp; validate the event.</span>
+
+<span class="sd">    When an envelope is given, it&#39;ll use the following logic:</span>
+
+<span class="sd">    1. Parse the event against the envelope model first e.g. EnvelopeModel(**event)</span>
+<span class="sd">    2. Envelope will extract a given key to be parsed against the model e.g. event.detail</span>
+
+<span class="sd">    This is useful when you need to confirm event wrapper structure, and</span>
+<span class="sd">    b) selectively extract a portion of your payload for parsing &amp; validation.</span>
+
+<span class="sd">    NOTE: If envelope is omitted, the complete event is parsed to match the model parameter definition.</span>
+
+<span class="sd">    Example</span>
+<span class="sd">    -------</span>
+<span class="sd">    **Lambda handler decorator to parse &amp; validate event**</span>
+
+<span class="sd">        class Order(BaseModel):</span>
+<span class="sd">            id: int</span>
+<span class="sd">            description: str</span>
+<span class="sd">            ...</span>
+
+<span class="sd">        @event_parser(model=Order)</span>
+<span class="sd">        def handler(event: Order, context: LambdaContext):</span>
+<span class="sd">            ...</span>
+
+<span class="sd">    **Lambda handler decorator to parse &amp; validate event - using built-in envelope**</span>
+
+<span class="sd">        class Order(BaseModel):</span>
+<span class="sd">            id: int</span>
+<span class="sd">            description: str</span>
+<span class="sd">            ...</span>
+
+<span class="sd">        @event_parser(model=Order, envelope=envelopes.EVENTBRIDGE)</span>
+<span class="sd">        def handler(event: Order, context: LambdaContext):</span>
+<span class="sd">            ...</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    handler:  Callable</span>
+<span class="sd">        Method to annotate on</span>
+<span class="sd">    event:    dict</span>
+<span class="sd">        Lambda event to be parsed &amp; validated</span>
+<span class="sd">    context:  LambdaContext</span>
+<span class="sd">        Lambda context object</span>
+<span class="sd">    model:   type[T] | None</span>
+<span class="sd">        Your data model that will replace the event.</span>
+<span class="sd">    envelope: Envelope</span>
+<span class="sd">        Optional envelope to extract the model from</span>
+
+<span class="sd">    Raises</span>
+<span class="sd">    ------</span>
+<span class="sd">    ValidationError</span>
+<span class="sd">        When input event does not conform with the provided model</span>
+<span class="sd">    InvalidModelTypeError</span>
+<span class="sd">        When the model given does not implement BaseModel, is not provided</span>
+<span class="sd">    InvalidEnvelopeError</span>
+<span class="sd">        When envelope given does not implement BaseEnvelope</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">if</span> <span class="n">model</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="c1"># The first parameter of a Lambda function is always the event.</span>
+        <span class="c1"># Get the first parameter&#39;s type by using typing.get_type_hints.</span>
+        <span class="n">type_hints</span> <span class="o">=</span> <span class="n">typing</span><span class="o">.</span><span class="n">get_type_hints</span><span class="p">(</span><span class="n">handler</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">type_hints</span><span class="p">:</span>
+            <span class="n">model</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">type_hints</span><span class="o">.</span><span class="n">values</span><span class="p">())[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="k">if</span> <span class="n">model</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="n">InvalidModelTypeError</span><span class="p">(</span>
+                <span class="s2">&quot;The model must be provided either as the `model` argument to `event_parser`&quot;</span>
+                <span class="s2">&quot;or as the type hint of `event` in the handler that it wraps&quot;</span><span class="p">,</span>
+            <span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">envelope</span><span class="p">:</span>
+        <span class="n">parsed_event</span> <span class="o">=</span> <span class="n">parse</span><span class="p">(</span><span class="n">event</span><span class="o">=</span><span class="n">event</span><span class="p">,</span> <span class="n">model</span><span class="o">=</span><span class="n">model</span><span class="p">,</span> <span class="n">envelope</span><span class="o">=</span><span class="n">envelope</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">parsed_event</span> <span class="o">=</span> <span class="n">parse</span><span class="p">(</span><span class="n">event</span><span class="o">=</span><span class="n">event</span><span class="p">,</span> <span class="n">model</span><span class="o">=</span><span class="n">model</span><span class="p">)</span>
+
+    <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Calling handler </span><span class="si">{</span><span class="n">handler</span><span class="o">.</span><span class="vm">__name__</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">handler</span><span class="p">(</span><span class="n">parsed_event</span><span class="p">,</span> <span class="n">context</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+            </details>
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h2 id="aws_lambda_powertools.utilities.parser.parser.parse" class="doc doc-heading">
+            <span class="doc doc-object-name doc-function-name">parse</span>
+
+
+<a href="#aws_lambda_powertools.utilities.parser.parser.parse" class="headerlink" title="Permanent link">&para;</a></h2>
+          <div class="doc-overloads">
+<div class="doc-signature highlight"><pre><span></span><code><span class="nf">parse</span><span class="p">(</span><span class="n">event</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">],</span> <span class="n">model</span><span class="p">:</span> <span class="nb">type</span><span class="p">[</span><span class="n">T</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">T</span>
+</code></pre></div><div class="doc-signature highlight"><pre><span></span><code><span class="nf">parse</span><span class="p">(</span>
+    <span class="n">event</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">],</span>
+    <span class="n">model</span><span class="p">:</span> <span class="nb">type</span><span class="p">[</span><span class="n">T</span><span class="p">],</span>
+    <span class="n">envelope</span><span class="p">:</span> <span class="nb">type</span><span class="p">[</span><span class="n">Envelope</span><span class="p">],</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">T</span>
+</code></pre></div>          </div>
+<div class="doc-signature highlight"><pre><span></span><code><span class="nf">parse</span><span class="p">(</span>
+    <span class="n">event</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">],</span>
+    <span class="n">model</span><span class="p">:</span> <span class="nb">type</span><span class="p">[</span><span class="n">T</span><span class="p">],</span>
+    <span class="n">envelope</span><span class="p">:</span> <span class="nb">type</span><span class="p">[</span><span class="n">Envelope</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+<span class="p">)</span>
+</code></pre></div>
+
+    <div class="doc doc-contents ">
+
+        <p>Standalone function to parse &amp; validate events using Pydantic models</p>
+<p>Typically used when you need fine-grained control over error handling compared to event_parser decorator.</p>
+
+
+<details class="example" open>
+  <summary>Example</summary>
+  <p><strong>Lambda handler decorator to parse &amp; validate event</strong></p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span></pre></div></td><td class="code"><div><pre><span></span><code>from aws_lambda_powertools.utilities.parser import ValidationError
+
+class Order(BaseModel):
+    id: int
+    description: str
+    ...
+
+def handler(event: Order, context: LambdaContext):
+    try:
+        parse(model=Order)
+    except ValidationError:
+        ...
+</code></pre></div></td></tr></table></div>
+<p><strong>Lambda handler decorator to parse &amp; validate event - using built-in envelope</strong></p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span></pre></div></td><td class="code"><div><pre><span></span><code>class Order(BaseModel):
+    id: int
+    description: str
+    ...
+
+def handler(event: Order, context: LambdaContext):
+    try:
+        parse(model=Order, envelope=envelopes.EVENTBRIDGE)
+    except ValidationError:
+        ...
+</code></pre></div></td></tr></table></div>
+</details>
+
+<table>
+      <thead>
+        <tr>
+          <th><span class="doc-section-title">PARAMETER</span></th>
+          <th><span>DESCRIPTION</span></th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>event</code>
+            </td>
+            <td class="doc-param-details">
+              <div class="doc-md-description">
+                <p>Lambda event to be parsed &amp; validated</p>
+              </div>
+              <p>
+                  <span class="doc-param-annotation">
+                    <b>TYPE:</b>
+                      <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#dict">dict</a>[<a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a>, <a class="autorefs autorefs-external" title="typing.Any" href="https://docs.python.org/3/library/typing.html#typing.Any">Any</a>]</code>
+                  </span>
+              </p>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>model</code>
+            </td>
+            <td class="doc-param-details">
+              <div class="doc-md-description">
+                <p>Your data model that will replace the event</p>
+              </div>
+              <p>
+                  <span class="doc-param-annotation">
+                    <b>TYPE:</b>
+                      <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/functions.html#type">type</a>[<span title="aws_lambda_powertools.utilities.parser.types.T">T</span>]</code>
+                  </span>
+              </p>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>envelope</code>
+            </td>
+            <td class="doc-param-details">
+              <div class="doc-md-description">
+                <p>Optional envelope to extract the model from</p>
+              </div>
+              <p>
+                  <span class="doc-param-annotation">
+                    <b>TYPE:</b>
+                      <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/functions.html#type">type</a>[<span title="aws_lambda_powertools.utilities.parser.envelopes.base.Envelope">Envelope</span>] | None</code>
+                  </span>
+                  <span class="doc-param-default">
+                    <b>DEFAULT:</b>
+                      <code>None</code>
+                  </span>
+              </p>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+<table>
+      <thead>
+        <tr>
+          <th><span class="doc-section-title">RAISES</span></th>
+          <th><span>DESCRIPTION</span></th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+              <span class="doc-raises-annotation">
+                  <code><span title="pydantic.ValidationError">ValidationError</span></code>
+              </span>
+            </td>
+            <td class="doc-raises-details">
+              <div class="doc-md-description">
+                <p>When input event does not conform with model provided</p>
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+              <span class="doc-raises-annotation">
+                  <code><span title="aws_lambda_powertools.utilities.parser.exceptions.InvalidModelTypeError">InvalidModelTypeError</span></code>
+              </span>
+            </td>
+            <td class="doc-raises-details">
+              <div class="doc-md-description">
+                <p>When model given does not implement BaseModel</p>
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+              <span class="doc-raises-annotation">
+                  <code><span title="aws_lambda_powertools.utilities.parser.exceptions.InvalidEnvelopeError">InvalidEnvelopeError</span></code>
+              </span>
+            </td>
+            <td class="doc-raises-details">
+              <div class="doc-md-description">
+                <p>When envelope given does not implement BaseEnvelope</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+            <details class="quote">
+              <summary>Source code in <code>aws_lambda_powertools/utilities/parser/parser.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">130</span>
+<span class="normal">131</span>
+<span class="normal">132</span>
+<span class="normal">133</span>
+<span class="normal">134</span>
+<span class="normal">135</span>
+<span class="normal">136</span>
+<span class="normal">137</span>
+<span class="normal">138</span>
+<span class="normal">139</span>
 <span class="normal">140</span>
 <span class="normal">141</span>
 <span class="normal">142</span>
@@ -2573,536 +2545,122 @@ You're not viewing the latest version.
 <span class="normal">181</span>
 <span class="normal">182</span>
 <span class="normal">183</span>
-<span class="normal">184</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">transform</span><span class="p">(</span>
-    <span class="bp">self</span><span class="p">,</span>
-    <span class="n">transformations</span><span class="p">:</span> <span class="n">BaseTransform</span><span class="p">[</span><span class="n">T</span><span class="p">]</span> <span class="o">|</span> <span class="n">Sequence</span><span class="p">[</span><span class="n">BaseTransform</span><span class="p">[</span><span class="n">T</span><span class="p">]],</span>
-    <span class="n">in_place</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">T</span> <span class="o">|</span> <span class="kc">None</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Applies one or more data transformations to the stream.</span>
+<span class="normal">184</span>
+<span class="normal">185</span>
+<span class="normal">186</span>
+<span class="normal">187</span>
+<span class="normal">188</span>
+<span class="normal">189</span>
+<span class="normal">190</span>
+<span class="normal">191</span>
+<span class="normal">192</span>
+<span class="normal">193</span>
+<span class="normal">194</span>
+<span class="normal">195</span>
+<span class="normal">196</span>
+<span class="normal">197</span>
+<span class="normal">198</span>
+<span class="normal">199</span>
+<span class="normal">200</span>
+<span class="normal">201</span>
+<span class="normal">202</span>
+<span class="normal">203</span>
+<span class="normal">204</span>
+<span class="normal">205</span>
+<span class="normal">206</span>
+<span class="normal">207</span>
+<span class="normal">208</span>
+<span class="normal">209</span>
+<span class="normal">210</span>
+<span class="normal">211</span>
+<span class="normal">212</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">parse</span><span class="p">(</span><span class="n">event</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">],</span> <span class="n">model</span><span class="p">:</span> <span class="nb">type</span><span class="p">[</span><span class="n">T</span><span class="p">],</span> <span class="n">envelope</span><span class="p">:</span> <span class="nb">type</span><span class="p">[</span><span class="n">Envelope</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Standalone function to parse &amp; validate events using Pydantic models</span>
+
+<span class="sd">    Typically used when you need fine-grained control over error handling compared to event_parser decorator.</span>
+
+<span class="sd">    Example</span>
+<span class="sd">    -------</span>
+
+<span class="sd">    **Lambda handler decorator to parse &amp; validate event**</span>
+
+<span class="sd">        from aws_lambda_powertools.utilities.parser import ValidationError</span>
+
+<span class="sd">        class Order(BaseModel):</span>
+<span class="sd">            id: int</span>
+<span class="sd">            description: str</span>
+<span class="sd">            ...</span>
+
+<span class="sd">        def handler(event: Order, context: LambdaContext):</span>
+<span class="sd">            try:</span>
+<span class="sd">                parse(model=Order)</span>
+<span class="sd">            except ValidationError:</span>
+<span class="sd">                ...</span>
+
+<span class="sd">    **Lambda handler decorator to parse &amp; validate event - using built-in envelope**</span>
+
+<span class="sd">        class Order(BaseModel):</span>
+<span class="sd">            id: int</span>
+<span class="sd">            description: str</span>
+<span class="sd">            ...</span>
+
+<span class="sd">        def handler(event: Order, context: LambdaContext):</span>
+<span class="sd">            try:</span>
+<span class="sd">                parse(model=Order, envelope=envelopes.EVENTBRIDGE)</span>
+<span class="sd">            except ValidationError:</span>
+<span class="sd">                ...</span>
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
-<span class="sd">    transformations: BaseTransform[T] | Sequence[BaseTransform[T]]</span>
-<span class="sd">        One or more transformations to apply. Transformations are applied in the same order as they are declared.</span>
-<span class="sd">    in_place: bool, optional</span>
-<span class="sd">        Transforms the stream in place, instead of returning a new stream object. Defaults to false.</span>
+<span class="sd">    event:    dict</span>
+<span class="sd">        Lambda event to be parsed &amp; validated</span>
+<span class="sd">    model:   Model</span>
+<span class="sd">        Your data model that will replace the event</span>
+<span class="sd">    envelope: Envelope</span>
+<span class="sd">        Optional envelope to extract the model from</span>
 
-<span class="sd">    Returns</span>
-<span class="sd">    -------</span>
-<span class="sd">    T[bound=IO[bytes]], optional</span>
-<span class="sd">        If in_place is False, returns an IO[bytes] object representing the transformed stream</span>
+<span class="sd">    Raises</span>
+<span class="sd">    ------</span>
+<span class="sd">    ValidationError</span>
+<span class="sd">        When input event does not conform with model provided</span>
+<span class="sd">    InvalidModelTypeError</span>
+<span class="sd">        When model given does not implement BaseModel</span>
+<span class="sd">    InvalidEnvelopeError</span>
+<span class="sd">        When envelope given does not implement BaseEnvelope</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="c1"># Make transformations always be a sequence to make mypy happy</span>
-    <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">transformations</span><span class="p">,</span> <span class="n">Sequence</span><span class="p">):</span>
-        <span class="n">transformations</span> <span class="o">=</span> <span class="p">[</span><span class="n">transformations</span><span class="p">]</span>
+    <span class="k">if</span> <span class="n">envelope</span> <span class="ow">and</span> <span class="nb">callable</span><span class="p">(</span><span class="n">envelope</span><span class="p">):</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Parsing and validating event model with envelope=</span><span class="si">{</span><span class="n">envelope</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">envelope</span><span class="p">()</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">event</span><span class="p">,</span> <span class="n">model</span><span class="o">=</span><span class="n">model</span><span class="p">)</span>
+        <span class="k">except</span> <span class="ne">AttributeError</span> <span class="k">as</span> <span class="n">exc</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="n">InvalidEnvelopeError</span><span class="p">(</span>
+                <span class="sa">f</span><span class="s2">&quot;Error: </span><span class="si">{</span><span class="nb">str</span><span class="p">(</span><span class="n">exc</span><span class="p">)</span><span class="si">}</span><span class="s2">. Please ensure that both the Input model and the Envelope inherits from BaseModel,</span><span class="se">\n</span><span class="s2">&quot;</span>  <span class="c1"># noqa E501</span>
+                <span class="s2">&quot;and your payload adheres to the specified Input model structure.</span><span class="se">\n</span><span class="s2">&quot;</span>
+                <span class="sa">f</span><span class="s2">&quot;Envelope=</span><span class="si">{</span><span class="n">envelope</span><span class="si">}</span><span class="se">\n</span><span class="s2">Model=</span><span class="si">{</span><span class="n">model</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>
+            <span class="p">)</span> <span class="kn">from</span><span class="w"> </span><span class="nn">exc</span>
 
-    <span class="c1"># Scenario 1: user wants to transform the stream in place.</span>
-    <span class="c1"># In this case, we store the transformations and invalidate any existing transformed stream.</span>
-    <span class="c1"># This way, the transformed_stream is re-created on the next IO operation.</span>
-    <span class="c1"># This can happen when the user calls .transform multiple times before they start reading data</span>
-    <span class="c1">#</span>
-    <span class="c1">#   &gt;&gt;&gt; s3object.transform(GzipTransform(), in_place=True)</span>
-    <span class="c1">#   &gt;&gt;&gt; s3object.seek(0, io.SEEK_SET) &lt;- this creates a transformed stream</span>
-    <span class="c1">#   &gt;&gt;&gt; s3object.transform(CsvTransform(), in_place=True) &lt;- need to re-create transformed stream</span>
-    <span class="c1">#   &gt;&gt;&gt; s3object.read...</span>
-    <span class="k">if</span> <span class="n">in_place</span><span class="p">:</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_data_transformations</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">transformations</span><span class="p">)</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">adapter</span> <span class="o">=</span> <span class="n">_retrieve_or_set_model_from_cache</span><span class="p">(</span><span class="n">model</span><span class="o">=</span><span class="n">model</span><span class="p">)</span>
 
-        <span class="c1"># Invalidate any existing transformed stream.</span>
-        <span class="c1"># It will be created again next time it&#39;s accessed.</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_transformed_stream</span> <span class="o">=</span> <span class="kc">None</span>
-        <span class="k">return</span> <span class="kc">None</span>
-    <span class="k">else</span><span class="p">:</span>
-        <span class="c1"># Tell mypy that raw_stream actually implements T (bound to IO[bytes])</span>
-        <span class="n">stream</span> <span class="o">=</span> <span class="n">cast</span><span class="p">(</span><span class="n">T</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">raw_stream</span><span class="p">)</span>
-        <span class="k">for</span> <span class="n">transformation</span> <span class="ow">in</span> <span class="n">transformations</span><span class="p">:</span>
-            <span class="n">stream</span> <span class="o">=</span> <span class="n">transformation</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">stream</span><span class="p">)</span>
-        <span class="k">return</span> <span class="n">stream</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;Parsing and validating event model; no envelope used&quot;</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">_parse_and_validate_event</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">event</span><span class="p">,</span> <span class="n">adapter</span><span class="o">=</span><span class="n">adapter</span><span class="p">)</span>
+
+    <span class="c1"># Pydantic raises PydanticSchemaGenerationError when the model is not a Pydantic model</span>
+    <span class="c1"># This is seen in the tests where we pass a non-Pydantic model type to the parser or</span>
+    <span class="c1"># when we pass a data structure that does not match the model (trying to parse a true/false/etc into a model)</span>
+    <span class="k">except</span> <span class="n">PydanticSchemaGenerationError</span> <span class="k">as</span> <span class="n">exc</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="n">InvalidModelTypeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The event supplied is unable to be validated into </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">model</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span> <span class="kn">from</span><span class="w"> </span><span class="nn">exc</span>
+    <span class="k">except</span> <span class="ne">AttributeError</span> <span class="k">as</span> <span class="n">exc</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="n">InvalidModelTypeError</span><span class="p">(</span>
+            <span class="sa">f</span><span class="s2">&quot;Error: </span><span class="si">{</span><span class="nb">str</span><span class="p">(</span><span class="n">exc</span><span class="p">)</span><span class="si">}</span><span class="s2">. Please ensure the Input model inherits from BaseModel,</span><span class="se">\n</span><span class="s2">&quot;</span>
+            <span class="s2">&quot;and your payload adheres to the specified Input model structure.</span><span class="se">\n</span><span class="s2">&quot;</span>
+            <span class="sa">f</span><span class="s2">&quot;Model=</span><span class="si">{</span><span class="n">model</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>
+        <span class="p">)</span> <span class="kn">from</span><span class="w"> </span><span class="nn">exc</span>
 </code></pre></div></td></tr></table></div>
             </details>
     </div>
 
 </div>
-
-
-
-  </div>
-
-    </div>
-
-</div>
-
-
-
-
-  </div>
-
-    </div>
-
-</div>
-
-<div class="doc doc-object doc-module">
-
-
-
-<a id="aws_lambda_powertools.utilities.streaming.transformations.csv"></a>
-    <div class="doc doc-contents first">
-
-
-
-
-
-
-
-<table>
-      <thead>
-        <tr>
-          <th><span class="doc-section-title">CLASS</span></th>
-          <th><span>DESCRIPTION</span></th>
-        </tr>
-      </thead>
-      <tbody>
-          <tr class="doc-section-item">
-            <td><code><a class="autorefs autorefs-internal" title="aws_lambda_powertools.utilities.streaming.transformations.csv.CsvTransform" href="#aws_lambda_powertools.utilities.streaming.transformations.csv.CsvTransform">CsvTransform</a></code></td>
-            <td class="doc-class-details">
-              <div class="doc-md-description">
-                <p>CSV data transform.</p>
-              </div>
-            </td>
-          </tr>
-      </tbody>
-    </table>
-
-
-
-
-
-
-
-  <div class="doc doc-children">
-
-
-
-
-
-
-
-
-<div class="doc doc-object doc-class">
-
-
-
-<h2 id="aws_lambda_powertools.utilities.streaming.transformations.csv.CsvTransform" class="doc doc-heading">
-            <span class="doc doc-object-name doc-class-name">CsvTransform</span>
-
-
-<a href="#aws_lambda_powertools.utilities.streaming.transformations.csv.CsvTransform" class="headerlink" title="Permanent link">&para;</a></h2>
-<div class="doc-signature highlight"><pre><span></span><code><span class="nf">CsvTransform</span><span class="p">(</span><span class="o">**</span><span class="n">transform_options</span><span class="p">)</span>
-</code></pre></div>
-
-    <div class="doc doc-contents ">
-            <p class="doc doc-class-bases">
-              Bases: <code><span title="aws_lambda_powertools.utilities.streaming.transformations.base.BaseTransform">BaseTransform</span></code></p>
-
-
-        <p>CSV data transform.</p>
-<p>Returns a csv.DictReader that reads data from the input stream:
-https://docs.python.org/3/library/csv.html#csv.DictReader</p>
-
-
-<details class="example" open>
-  <summary>Example</summary>
-  <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
-<span class="normal">2</span>
-<span class="normal">3</span>
-<span class="normal">4</span>
-<span class="normal">5</span>
-<span class="normal">6</span>
-<span class="normal">7</span></pre></div></td><td class="code"><div><pre><span></span><code>&gt;&gt;&gt; from aws_lambda_powertools.utilities.streaming import S3Object
-&gt;&gt;&gt; from aws_lambda_powertools.utilities.streaming.transformations import CsvTransform
-&gt;&gt;&gt;
-&gt;&gt;&gt; s3object = S3Object(bucket=&quot;bucket&quot;, key=&quot;key&quot;)
-&gt;&gt;&gt; csv_reader = s3object.transform(CsvTransform())
-&gt;&gt;&gt; for row in csv_reader:
-&gt;&gt;&gt;   print(row)
-</code></pre></div></td></tr></table></div>
-<p>Since the underlying stream of bytes needs to be converted into a stream of characters (Iterator[str]),
-we wrap the input into an io.TextIOWrapper. This means you have control over the text encoding
-and line termination options.</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
-<span class="normal">2</span>
-<span class="normal">3</span>
-<span class="normal">4</span>
-<span class="normal">5</span>
-<span class="normal">6</span>
-<span class="normal">7</span></pre></div></td><td class="code"><div><pre><span></span><code>&gt;&gt;&gt; from aws_lambda_powertools.utilities.streaming import S3Object
-&gt;&gt;&gt; from aws_lambda_powertools.utilities.streaming.transformations import CsvTransform
-&gt;&gt;&gt;
-&gt;&gt;&gt; s3object = S3Object(bucket=&quot;bucket&quot;, key=&quot;key&quot;)
-&gt;&gt;&gt; csv_reader = s3object.transform(CsvTransform(encoding=&quot;utf-8&quot;, newline=&quot;\r\n&quot;))
-&gt;&gt;&gt; for row in csv_reader:
-&gt;&gt;&gt;   print(row)
-</code></pre></div></td></tr></table></div>
-<p>Additional options passed on the constructor, will be pased to the csv.DictReader constructor.</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
-<span class="normal">2</span>
-<span class="normal">3</span>
-<span class="normal">4</span>
-<span class="normal">5</span>
-<span class="normal">6</span>
-<span class="normal">7</span></pre></div></td><td class="code"><div><pre><span></span><code>&gt;&gt;&gt; from aws_lambda_powertools.utilities.streaming import S3Object
-&gt;&gt;&gt; from aws_lambda_powertools.utilities.streaming.transformations import CsvTransform
-&gt;&gt;&gt;
-&gt;&gt;&gt; s3object = S3Object(bucket=&quot;bucket&quot;, key=&quot;key&quot;)
-&gt;&gt;&gt; csv_reader = s3object.transform(CsvTransform(dialect=&quot;excel&quot;))
-&gt;&gt;&gt; for row in csv_reader:
-&gt;&gt;&gt;   print(row)
-</code></pre></div></td></tr></table></div>
-</details>
-
-
-
-
-
-
-
-
-
-                  <details class="quote">
-                    <summary>Source code in <code>aws_lambda_powertools/utilities/streaming/transformations/base.py</code></summary>
-                    <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">17</span>
-<span class="normal">18</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">transform_options</span><span class="p">):</span>
-    <span class="bp">self</span><span class="o">.</span><span class="n">transform_options</span> <span class="o">=</span> <span class="n">transform_options</span>
-</code></pre></div></td></tr></table></div>
-                  </details>
-
-
-
-  <div class="doc doc-children">
-
-
-
-
-
-
-
-
-
-
-
-  </div>
-
-    </div>
-
-</div>
-
-
-
-
-  </div>
-
-    </div>
-
-</div>
-
-<div class="doc doc-object doc-module">
-
-
-
-<a id="aws_lambda_powertools.utilities.streaming.transformations.gzip"></a>
-    <div class="doc doc-contents first">
-
-
-
-
-
-
-
-<table>
-      <thead>
-        <tr>
-          <th><span class="doc-section-title">CLASS</span></th>
-          <th><span>DESCRIPTION</span></th>
-        </tr>
-      </thead>
-      <tbody>
-          <tr class="doc-section-item">
-            <td><code><a class="autorefs autorefs-internal" title="aws_lambda_powertools.utilities.streaming.transformations.gzip.GzipTransform" href="#aws_lambda_powertools.utilities.streaming.transformations.gzip.GzipTransform">GzipTransform</a></code></td>
-            <td class="doc-class-details">
-              <div class="doc-md-description">
-                <p>Gzip data transform.</p>
-              </div>
-            </td>
-          </tr>
-      </tbody>
-    </table>
-
-
-
-
-
-
-
-  <div class="doc doc-children">
-
-
-
-
-
-
-
-
-<div class="doc doc-object doc-class">
-
-
-
-<h2 id="aws_lambda_powertools.utilities.streaming.transformations.gzip.GzipTransform" class="doc doc-heading">
-            <span class="doc doc-object-name doc-class-name">GzipTransform</span>
-
-
-<a href="#aws_lambda_powertools.utilities.streaming.transformations.gzip.GzipTransform" class="headerlink" title="Permanent link">&para;</a></h2>
-<div class="doc-signature highlight"><pre><span></span><code><span class="nf">GzipTransform</span><span class="p">(</span><span class="o">**</span><span class="n">transform_options</span><span class="p">)</span>
-</code></pre></div>
-
-    <div class="doc doc-contents ">
-            <p class="doc doc-class-bases">
-              Bases: <code><span title="aws_lambda_powertools.utilities.streaming.transformations.base.BaseTransform">BaseTransform</span></code></p>
-
-
-        <p>Gzip data transform.</p>
-<p>Returns a gzip.GzipFile instead that reads data from the input stream:
-https://docs.python.org/3/library/gzip.html#gzip.GzipFile</p>
-
-
-<details class="example" open>
-  <summary>Example</summary>
-  <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
-<span class="normal">2</span>
-<span class="normal">3</span>
-<span class="normal">4</span>
-<span class="normal">5</span>
-<span class="normal">6</span>
-<span class="normal">7</span></pre></div></td><td class="code"><div><pre><span></span><code>&gt;&gt;&gt; from aws_lambda_powertools.utilities.streaming import S3Object
-&gt;&gt;&gt; from aws_lambda_powertools.utilities.streaming.transformations import GzipTransform
-&gt;&gt;&gt;
-&gt;&gt;&gt; s3object = S3Object(bucket=&quot;bucket&quot;, key=&quot;key&quot;)
-&gt;&gt;&gt; reader = s3object.transform(GzipTransform())
-&gt;&gt;&gt; for line in reader:
-&gt;&gt;&gt;   print(line)
-</code></pre></div></td></tr></table></div>
-</details>
-
-
-
-
-
-
-
-
-
-                  <details class="quote">
-                    <summary>Source code in <code>aws_lambda_powertools/utilities/streaming/transformations/base.py</code></summary>
-                    <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">17</span>
-<span class="normal">18</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">transform_options</span><span class="p">):</span>
-    <span class="bp">self</span><span class="o">.</span><span class="n">transform_options</span> <span class="o">=</span> <span class="n">transform_options</span>
-</code></pre></div></td></tr></table></div>
-                  </details>
-
-
-
-  <div class="doc doc-children">
-
-
-
-
-
-
-
-
-
-
-
-  </div>
-
-    </div>
-
-</div>
-
-
-
-
-  </div>
-
-    </div>
-
-</div>
-
-<div class="doc doc-object doc-module">
-
-
-
-<a id="aws_lambda_powertools.utilities.streaming.transformations.zip"></a>
-    <div class="doc doc-contents first">
-
-
-
-
-
-
-
-<table>
-      <thead>
-        <tr>
-          <th><span class="doc-section-title">CLASS</span></th>
-          <th><span>DESCRIPTION</span></th>
-        </tr>
-      </thead>
-      <tbody>
-          <tr class="doc-section-item">
-            <td><code><a class="autorefs autorefs-internal" title="aws_lambda_powertools.utilities.streaming.transformations.zip.ZipTransform" href="#aws_lambda_powertools.utilities.streaming.transformations.zip.ZipTransform">ZipTransform</a></code></td>
-            <td class="doc-class-details">
-              <div class="doc-md-description">
-                <p>Zip data transform.</p>
-              </div>
-            </td>
-          </tr>
-      </tbody>
-    </table>
-
-
-
-
-
-
-
-  <div class="doc doc-children">
-
-
-
-
-
-
-
-
-<div class="doc doc-object doc-class">
-
-
-
-<h2 id="aws_lambda_powertools.utilities.streaming.transformations.zip.ZipTransform" class="doc doc-heading">
-            <span class="doc doc-object-name doc-class-name">ZipTransform</span>
-
-
-<a href="#aws_lambda_powertools.utilities.streaming.transformations.zip.ZipTransform" class="headerlink" title="Permanent link">&para;</a></h2>
-<div class="doc-signature highlight"><pre><span></span><code><span class="nf">ZipTransform</span><span class="p">(</span><span class="o">**</span><span class="n">transform_options</span><span class="p">)</span>
-</code></pre></div>
-
-    <div class="doc doc-contents ">
-            <p class="doc doc-class-bases">
-              Bases: <code><span title="aws_lambda_powertools.utilities.streaming.transformations.base.BaseTransform">BaseTransform</span></code></p>
-
-
-        <p>Zip data transform.</p>
-<p>Returns a zip.ZipFile that reads data from the input stream:
-https://docs.python.org/3/library/zipfile.html#zipfile.ZipFile</p>
-
-
-<details class="example" open>
-  <summary>Example</summary>
-  <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
-<span class="normal">2</span>
-<span class="normal">3</span>
-<span class="normal">4</span>
-<span class="normal">5</span>
-<span class="normal">6</span>
-<span class="normal">7</span>
-<span class="normal">8</span></pre></div></td><td class="code"><div><pre><span></span><code>&gt;&gt;&gt; from aws_lambda_powertools.utilities.streaming import S3Object
-&gt;&gt;&gt; from aws_lambda_powertools.utilities.streaming.transformations import ZipTransform
-&gt;&gt;&gt;
-&gt;&gt;&gt; s3object = S3Object(bucket=&quot;bucket&quot;, key=&quot;key&quot;)
-&gt;&gt;&gt; zip_reader = s3object.transform(ZipTransform())
-&gt;&gt;&gt; for file in zip_reader.namelist():
-&gt;&gt;&gt;   print(file)
-&gt;&gt;&gt;   zip_reader.extract(file)
-</code></pre></div></td></tr></table></div>
-<p>Additional options passed on the constructor, will be pased to the is_csv.DictReader constructor.</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
-<span class="normal">2</span>
-<span class="normal">3</span>
-<span class="normal">4</span>
-<span class="normal">5</span>
-<span class="normal">6</span>
-<span class="normal">7</span>
-<span class="normal">8</span>
-<span class="normal">9</span></pre></div></td><td class="code"><div><pre><span></span><code>&gt;&gt;&gt; from aws_lambda_powertools.utilities.streaming import S3Object
-&gt;&gt;&gt; from aws_lambda_powertools.utilities.streaming.transformations import ZipTransform
-&gt;&gt;&gt; import zipfile
-&gt;&gt;&gt;
-&gt;&gt;&gt; s3object = S3Object(bucket=&quot;bucket&quot;, key=&quot;key&quot;)
-&gt;&gt;&gt; zip_reader = s3object.transform(ZipTransform(compression=zipfile.ZIP_LZMA))
-&gt;&gt;&gt; for file in zip_reader.namelist():
-&gt;&gt;&gt;   print(file)
-&gt;&gt;&gt;   zip_reader.extract(file)
-</code></pre></div></td></tr></table></div>
-<p>Currently, it's not possible to pipe the Zip file stream into another data transformation,
-since a Zip file contains multiple files, and not a single stream. However, you can still
-open a specific file as a stream, reading only the necessary bytes to extract it:</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
-<span class="normal">2</span>
-<span class="normal">3</span>
-<span class="normal">4</span>
-<span class="normal">5</span>
-<span class="normal">6</span>
-<span class="normal">7</span>
-<span class="normal">8</span>
-<span class="normal">9</span></pre></div></td><td class="code"><div><pre><span></span><code>&gt;&gt;&gt; from aws_lambda_powertools.utilities.streaming import S3Object
-&gt;&gt;&gt; from aws_lambda_powertools.utilities.streaming.transformations import ZipTransform
-&gt;&gt;&gt; import zipfile
-&gt;&gt;&gt;
-&gt;&gt;&gt; s3object = S3Object(bucket=&quot;bucket&quot;, key=&quot;key&quot;)
-&gt;&gt;&gt; zip_reader = s3object.transform(ZipTransform())
-&gt;&gt;&gt; with zip_reader.open(&quot;filename.txt&quot;) as f:
-&gt;&gt;&gt;   for line in f:
-&gt;&gt;&gt;      print(line)
-</code></pre></div></td></tr></table></div>
-</details>
-
-
-
-
-
-
-
-
-
-                  <details class="quote">
-                    <summary>Source code in <code>aws_lambda_powertools/utilities/streaming/transformations/base.py</code></summary>
-                    <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">17</span>
-<span class="normal">18</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">transform_options</span><span class="p">):</span>
-    <span class="bp">self</span><span class="o">.</span><span class="n">transform_options</span> <span class="o">=</span> <span class="n">transform_options</span>
-</code></pre></div></td></tr></table></div>
-                  </details>
-
-
-
-  <div class="doc doc-children">
-
-
-
-
-
-
-
-
-
-
-
-  </div>
-
-    </div>
-
-</div>
-
 
 
 
