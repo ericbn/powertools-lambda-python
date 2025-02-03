@@ -13,25 +13,25 @@
       
       
       
-        <link rel="prev" href="../appconfig/">
+        <link rel="prev" href="../../contributing/conventions/">
       
       
-        <link rel="next" href="../ssm/">
+        <link rel="next" href="../parameters/base/">
       
       
-      <link rel="icon" href="../../../media/aws-logo-light.svg">
+      <link rel="icon" href="../../media/aws-logo-light.svg">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.1">
     
     
       
-        <title>DynamoDB - Powertools for AWS Lambda (Python)</title>
+        <title>JMESPath Functions - Powertools for AWS Lambda (Python)</title>
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.a40c8224.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.a40c8224.min.css">
       
         
-        <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
       
       
 
@@ -50,11 +50,11 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/_mkdocstrings.css">
+      <link rel="stylesheet" href="../../assets/_mkdocstrings.css">
     
-      <link rel="stylesheet" href="../../../stylesheets/extra.css">
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
     
-    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -80,7 +80,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#aws_lambda_powertools.utilities.parameters.dynamodb" class="md-skip">
+        <a href="#aws_lambda_powertools.utilities.jmespath_utils" class="md-skip">
           Skip to content
         </a>
       
@@ -108,7 +108,7 @@ On March 25th 2025, v2 reaches <a href="https://github.com/aws-powertools/powert
             <div class="md-banner__inner md-grid md-typeset">
               
 You're not viewing the latest version.
-<a href="../../../..">
+<a href="../../..">
   <strong>Click here to go to latest.</strong>
 </a>
 
@@ -123,9 +123,9 @@ You're not viewing the latest version.
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="../../.." title="Powertools for AWS Lambda (Python)" class="md-header__button md-logo" aria-label="Powertools for AWS Lambda (Python)" data-md-component="logo">
+    <a href="../.." title="Powertools for AWS Lambda (Python)" class="md-header__button md-logo" aria-label="Powertools for AWS Lambda (Python)" data-md-component="logo">
       
-  <img src="../../../media/aws-logo-light.svg" alt="logo">
+  <img src="../../media/aws-logo-light.svg" alt="logo">
 
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -142,7 +142,7 @@ You're not viewing the latest version.
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              DynamoDB
+              JMESPath Functions
             
           </span>
         </div>
@@ -251,7 +251,7 @@ You're not viewing the latest version.
     
     
       <li class="md-tabs__item">
-        <a href="../../.." class="md-tabs__link">
+        <a href="../.." class="md-tabs__link">
           
   
     
@@ -269,7 +269,7 @@ You're not viewing the latest version.
   
   
     <li class="md-tabs__item">
-      <a href="../../../tutorial/" class="md-tabs__link">
+      <a href="../../tutorial/" class="md-tabs__link">
         
   
     
@@ -288,7 +288,7 @@ You're not viewing the latest version.
     
     
       <li class="md-tabs__item">
-        <a href="../../../security/" class="md-tabs__link">
+        <a href="../../security/" class="md-tabs__link">
           
   
     
@@ -310,7 +310,7 @@ You're not viewing the latest version.
     
     
       <li class="md-tabs__item md-tabs__item--active">
-        <a href="../../jmespath_functions/" class="md-tabs__link">
+        <a href="./" class="md-tabs__link">
           
   
     
@@ -345,9 +345,9 @@ You're not viewing the latest version.
 
 <nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../../.." title="Powertools for AWS Lambda (Python)" class="md-nav__button md-logo" aria-label="Powertools for AWS Lambda (Python)" data-md-component="logo">
+    <a href="../.." title="Powertools for AWS Lambda (Python)" class="md-nav__button md-logo" aria-label="Powertools for AWS Lambda (Python)" data-md-component="logo">
       
-  <img src="../../../media/aws-logo-light.svg" alt="logo">
+  <img src="../../media/aws-logo-light.svg" alt="logo">
 
     </a>
     Powertools for AWS Lambda (Python)
@@ -411,7 +411,7 @@ You're not viewing the latest version.
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../.." class="md-nav__link ">
+            <a href="../.." class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -445,7 +445,7 @@ You're not viewing the latest version.
   
   
     <li class="md-nav__item">
-      <a href="../../../changelog/" class="md-nav__link">
+      <a href="../../changelog/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -467,7 +467,7 @@ You're not viewing the latest version.
   
   
     <li class="md-nav__item">
-      <a href="../../../api/" target="_blank" class="md-nav__link">
+      <a href="../../api/" target="_blank" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -489,7 +489,7 @@ You're not viewing the latest version.
   
   
     <li class="md-nav__item">
-      <a href="../../../upgrade/" class="md-nav__link">
+      <a href="../../upgrade/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -511,7 +511,7 @@ You're not viewing the latest version.
   
   
     <li class="md-nav__item">
-      <a href="../../../we_made_this/" class="md-nav__link">
+      <a href="../../we_made_this/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -555,7 +555,7 @@ You're not viewing the latest version.
   
   
     <li class="md-nav__item">
-      <a href="../../../roadmap/" class="md-nav__link">
+      <a href="../../roadmap/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -654,7 +654,7 @@ You're not viewing the latest version.
   
   
     <li class="md-nav__item">
-      <a href="../../../core/tracer/" class="md-nav__link">
+      <a href="../../core/tracer/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -676,7 +676,7 @@ You're not viewing the latest version.
   
   
     <li class="md-nav__item">
-      <a href="../../../core/logger/" class="md-nav__link">
+      <a href="../../core/logger/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -725,7 +725,7 @@ You're not viewing the latest version.
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../../core/metrics/" class="md-nav__link ">
+            <a href="../../core/metrics/" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -759,7 +759,7 @@ You're not viewing the latest version.
   
   
     <li class="md-nav__item">
-      <a href="../../../core/metrics/" class="md-nav__link">
+      <a href="../../core/metrics/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -781,7 +781,7 @@ You're not viewing the latest version.
   
   
     <li class="md-nav__item">
-      <a href="../../../core/metrics/datadog/" class="md-nav__link">
+      <a href="../../core/metrics/datadog/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -860,7 +860,7 @@ You're not viewing the latest version.
   
   
     <li class="md-nav__item">
-      <a href="../../../core/event_handler/api_gateway/" class="md-nav__link">
+      <a href="../../core/event_handler/api_gateway/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -882,7 +882,7 @@ You're not viewing the latest version.
   
   
     <li class="md-nav__item">
-      <a href="../../../core/event_handler/appsync/" class="md-nav__link">
+      <a href="../../core/event_handler/appsync/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -904,7 +904,7 @@ You're not viewing the latest version.
   
   
     <li class="md-nav__item">
-      <a href="../../../core/event_handler/bedrock_agents/" class="md-nav__link">
+      <a href="../../core/event_handler/bedrock_agents/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -934,7 +934,7 @@ You're not viewing the latest version.
   
   
     <li class="md-nav__item">
-      <a href="../../../utilities/parameters/" class="md-nav__link">
+      <a href="../../utilities/parameters/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -956,7 +956,7 @@ You're not viewing the latest version.
   
   
     <li class="md-nav__item">
-      <a href="../../../utilities/batch/" class="md-nav__link">
+      <a href="../../utilities/batch/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -978,7 +978,7 @@ You're not viewing the latest version.
   
   
     <li class="md-nav__item">
-      <a href="../../../utilities/typing/" class="md-nav__link">
+      <a href="../../utilities/typing/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1000,7 +1000,7 @@ You're not viewing the latest version.
   
   
     <li class="md-nav__item">
-      <a href="../../../utilities/validation/" class="md-nav__link">
+      <a href="../../utilities/validation/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1022,7 +1022,7 @@ You're not viewing the latest version.
   
   
     <li class="md-nav__item">
-      <a href="../../../utilities/data_classes/" class="md-nav__link">
+      <a href="../../utilities/data_classes/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1044,7 +1044,7 @@ You're not viewing the latest version.
   
   
     <li class="md-nav__item">
-      <a href="../../../utilities/parser/" class="md-nav__link">
+      <a href="../../utilities/parser/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1066,7 +1066,7 @@ You're not viewing the latest version.
   
   
     <li class="md-nav__item">
-      <a href="../../../utilities/idempotency/" class="md-nav__link">
+      <a href="../../utilities/idempotency/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1088,7 +1088,7 @@ You're not viewing the latest version.
   
   
     <li class="md-nav__item">
-      <a href="../../../utilities/data_masking/" class="md-nav__link">
+      <a href="../../utilities/data_masking/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1110,7 +1110,7 @@ You're not viewing the latest version.
   
   
     <li class="md-nav__item">
-      <a href="../../../utilities/feature_flags/" class="md-nav__link">
+      <a href="../../utilities/feature_flags/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1132,7 +1132,7 @@ You're not viewing the latest version.
   
   
     <li class="md-nav__item">
-      <a href="../../../utilities/streaming/" class="md-nav__link">
+      <a href="../../utilities/streaming/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1154,7 +1154,7 @@ You're not viewing the latest version.
   
   
     <li class="md-nav__item">
-      <a href="../../../utilities/middleware_factory/" class="md-nav__link">
+      <a href="../../utilities/middleware_factory/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1176,7 +1176,7 @@ You're not viewing the latest version.
   
   
     <li class="md-nav__item">
-      <a href="../../../utilities/jmespath_functions/" class="md-nav__link">
+      <a href="../../utilities/jmespath_functions/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1235,7 +1235,7 @@ You're not viewing the latest version.
   
   
     <li class="md-nav__item">
-      <a href="../../../tutorial/" class="md-nav__link">
+      <a href="../../tutorial/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1311,7 +1311,7 @@ You're not viewing the latest version.
   
   
     <li class="md-nav__item">
-      <a href="../../../security/" class="md-nav__link">
+      <a href="../../security/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1333,7 +1333,7 @@ You're not viewing the latest version.
   
   
     <li class="md-nav__item">
-      <a href="../../../automation/" class="md-nav__link">
+      <a href="../../automation/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1355,7 +1355,7 @@ You're not viewing the latest version.
   
   
     <li class="md-nav__item">
-      <a href="../../../versioning/" class="md-nav__link">
+      <a href="../../versioning/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1377,7 +1377,7 @@ You're not viewing the latest version.
   
   
     <li class="md-nav__item">
-      <a href="../../../roadmap/" class="md-nav__link">
+      <a href="../../roadmap/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1399,7 +1399,7 @@ You're not viewing the latest version.
   
   
     <li class="md-nav__item">
-      <a href="../../../maintainers/" class="md-nav__link">
+      <a href="../../maintainers/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1470,7 +1470,7 @@ You're not viewing the latest version.
   
   
     <li class="md-nav__item">
-      <a href="../../../contributing/setup/" class="md-nav__link">
+      <a href="../../contributing/setup/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1492,7 +1492,7 @@ You're not viewing the latest version.
   
   
     <li class="md-nav__item">
-      <a href="../../../contributing/getting_started/" class="md-nav__link">
+      <a href="../../contributing/getting_started/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1514,7 +1514,7 @@ You're not viewing the latest version.
   
   
     <li class="md-nav__item">
-      <a href="../../../contributing/conventions/" class="md-nav__link">
+      <a href="../../contributing/conventions/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1608,10 +1608,29 @@ You're not viewing the latest version.
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../../jmespath_functions/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    JMESPath Functions
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
@@ -1621,6 +1640,51 @@ You're not viewing the latest version.
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#aws_lambda_powertools.utilities.jmespath_utils" class="md-nav__link">
+    <span class="md-ellipsis">
+      jmespath_utils
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#aws_lambda_powertools.utilities.jmespath_utils.extract_data_from_envelope" class="md-nav__link">
+    <span class="md-ellipsis">
+      extract_data_from_envelope
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#aws_lambda_powertools.utilities.jmespath_utils.query" class="md-nav__link">
+    <span class="md-ellipsis">
+      query
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -1630,8 +1694,6 @@ You're not viewing the latest version.
                 
   
   
-    
-  
   
   
     
@@ -1658,11 +1720,11 @@ You're not viewing the latest version.
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2" >
         
           
           <label class="md-nav__link" for="__nav_4_2" id="__nav_4_2_label" tabindex="">
@@ -1677,7 +1739,7 @@ You're not viewing the latest version.
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_2_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_2_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_4_2">
             <span class="md-nav__icon md-icon"></span>
             Parameters
@@ -1691,7 +1753,7 @@ You're not viewing the latest version.
   
   
     <li class="md-nav__item">
-      <a href="../base/" class="md-nav__link">
+      <a href="../parameters/base/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1713,7 +1775,7 @@ You're not viewing the latest version.
   
   
     <li class="md-nav__item">
-      <a href="../appconfig/" class="md-nav__link">
+      <a href="../parameters/appconfig/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1732,29 +1794,10 @@ You're not viewing the latest version.
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  <span class="md-ellipsis">
-    DynamoDB
-    
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../parameters/dynamodb/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1764,42 +1807,6 @@ You're not viewing the latest version.
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#aws_lambda_powertools.utilities.parameters.dynamodb" class="md-nav__link">
-    <span class="md-ellipsis">
-      dynamodb
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#aws_lambda_powertools.utilities.parameters.dynamodb.DynamoDBProvider" class="md-nav__link">
-    <span class="md-ellipsis">
-      DynamoDBProvider
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -1812,7 +1819,7 @@ You're not viewing the latest version.
   
   
     <li class="md-nav__item">
-      <a href="../ssm/" class="md-nav__link">
+      <a href="../parameters/ssm/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1834,7 +1841,7 @@ You're not viewing the latest version.
   
   
     <li class="md-nav__item">
-      <a href="../secrets/" class="md-nav__link">
+      <a href="../parameters/secrets/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1864,7 +1871,7 @@ You're not viewing the latest version.
   
   
     <li class="md-nav__item">
-      <a href="../../parser/" class="md-nav__link">
+      <a href="../parser/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1886,7 +1893,7 @@ You're not viewing the latest version.
   
   
     <li class="md-nav__item">
-      <a href="../../streaming/" class="md-nav__link">
+      <a href="../streaming/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1908,7 +1915,7 @@ You're not viewing the latest version.
   
   
     <li class="md-nav__item">
-      <a href="../../typing/" class="md-nav__link">
+      <a href="../typing/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1930,7 +1937,7 @@ You're not viewing the latest version.
   
   
     <li class="md-nav__item">
-      <a href="../../validation/" class="md-nav__link">
+      <a href="../validation/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1977,18 +1984,27 @@ You're not viewing the latest version.
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#aws_lambda_powertools.utilities.parameters.dynamodb" class="md-nav__link">
+  <a href="#aws_lambda_powertools.utilities.jmespath_utils" class="md-nav__link">
     <span class="md-ellipsis">
-      dynamodb
+      jmespath_utils
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#aws_lambda_powertools.utilities.parameters.dynamodb.DynamoDBProvider" class="md-nav__link">
+  <a href="#aws_lambda_powertools.utilities.jmespath_utils.extract_data_from_envelope" class="md-nav__link">
     <span class="md-ellipsis">
-      DynamoDBProvider
+      extract_data_from_envelope
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#aws_lambda_powertools.utilities.jmespath_utils.query" class="md-nav__link">
+    <span class="md-ellipsis">
+      query
     </span>
   </a>
   
@@ -2013,7 +2029,7 @@ You're not viewing the latest version.
   
 
 
-  <h1>DynamoDB</h1>
+  <h1>JMESPath Functions</h1>
 
 <!-- markdownlint-disable MD043 MD041 -->
 
@@ -2022,10 +2038,16 @@ You're not viewing the latest version.
 
 
 
-<a id="aws_lambda_powertools.utilities.parameters.dynamodb"></a>
+<a id="aws_lambda_powertools.utilities.jmespath_utils"></a>
     <div class="doc doc-contents first">
 
-        <p>Amazon DynamoDB parameter retrieval and caching utility</p>
+        <p>Built-in JMESPath Functions to easily deserialize common encoded JSON payloads in Lambda functions.</p>
+<div class="admonition abstract">
+<p class="admonition-title">Usage Documentation</p>
+<p><a href="../../utilities/jmespath_functions/"><code>JMESPath Functions</code></a></p>
+</div>
+
+
 
 
 
@@ -2036,23 +2058,29 @@ You're not viewing the latest version.
 <table>
       <thead>
         <tr>
-          <th><span class="doc-section-title">CLASS</span></th>
+          <th><span class="doc-section-title">FUNCTION</span></th>
           <th><span>DESCRIPTION</span></th>
         </tr>
       </thead>
       <tbody>
-          <tr class="doc-section-item">
-            <td><code><a class="autorefs autorefs-internal" title="aws_lambda_powertools.utilities.parameters.dynamodb.DynamoDBProvider" href="#aws_lambda_powertools.utilities.parameters.dynamodb.DynamoDBProvider">DynamoDBProvider</a></code></td>
-            <td class="doc-class-details">
-              <div class="doc-md-description">
-                <p>Amazon DynamoDB Parameter Provider</p>
-              </div>
-            </td>
-          </tr>
+            <tr class="doc-section-item">
+              <td><code><a class="autorefs autorefs-internal" title="aws_lambda_powertools.utilities.jmespath_utils.extract_data_from_envelope" href="#aws_lambda_powertools.utilities.jmespath_utils.extract_data_from_envelope">extract_data_from_envelope</a></code></td>
+              <td class="doc-function-details">
+                <div class="doc-md-description">
+                  <p>Searches and extracts data using JMESPath</p>
+                </div>
+              </td>
+            </tr>
+            <tr class="doc-section-item">
+              <td><code><a class="autorefs autorefs-internal" title="aws_lambda_powertools.utilities.jmespath_utils.query" href="#aws_lambda_powertools.utilities.jmespath_utils.query">query</a></code></td>
+              <td class="doc-function-details">
+                <div class="doc-md-description">
+                  <p>Searches and extracts data using JMESPath</p>
+                </div>
+              </td>
+            </tr>
       </tbody>
     </table>
-
-
 
 
 
@@ -2067,35 +2095,106 @@ You're not viewing the latest version.
 
 
 
-<div class="doc doc-object doc-class">
+
+<div class="doc doc-object doc-function">
 
 
+<h2 id="aws_lambda_powertools.utilities.jmespath_utils.extract_data_from_envelope" class="doc doc-heading">
+            <span class="doc doc-object-name doc-function-name">extract_data_from_envelope</span>
 
-<h2 id="aws_lambda_powertools.utilities.parameters.dynamodb.DynamoDBProvider" class="doc doc-heading">
-            <span class="doc doc-object-name doc-class-name">DynamoDBProvider</span>
 
-
-<a href="#aws_lambda_powertools.utilities.parameters.dynamodb.DynamoDBProvider" class="headerlink" title="Permanent link">&para;</a></h2>
-<div class="doc-signature highlight"><pre><span></span><code><span class="nf">DynamoDBProvider</span><span class="p">(</span>
-    <span class="n">table_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
-    <span class="n">key_attr</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;id&quot;</span><span class="p">,</span>
-    <span class="n">sort_attr</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;sk&quot;</span><span class="p">,</span>
-    <span class="n">value_attr</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;value&quot;</span><span class="p">,</span>
-    <span class="n">endpoint_url</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-    <span class="n">config</span><span class="p">:</span> <span class="n">Config</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-    <span class="n">boto_config</span><span class="p">:</span> <span class="n">Config</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-    <span class="n">boto3_session</span><span class="p">:</span> <span class="n">boto3</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">Session</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-    <span class="n">boto3_client</span><span class="p">:</span> <span class="n">DynamoDBServiceResource</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-<span class="p">)</span>
+<a href="#aws_lambda_powertools.utilities.jmespath_utils.extract_data_from_envelope" class="headerlink" title="Permanent link">&para;</a></h2>
+<div class="doc-signature highlight"><pre><span></span><code><span class="nf">extract_data_from_envelope</span><span class="p">(</span>
+    <span class="n">data</span><span class="p">:</span> <span class="nb">dict</span> <span class="o">|</span> <span class="nb">str</span><span class="p">,</span>
+    <span class="n">envelope</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+    <span class="n">jmespath_options</span><span class="p">:</span> <span class="nb">dict</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Any</span>
 </code></pre></div>
 
     <div class="doc doc-contents ">
-            <p class="doc doc-class-bases">
-              Bases: <code><a class="autorefs autorefs-internal" title="aws_lambda_powertools.utilities.parameters.base.BaseProvider" href="../base/#aws_lambda_powertools.utilities.parameters.base.BaseProvider">BaseProvider</a></code></p>
+
+        <p>Searches and extracts data using JMESPath</p>
+<p><em>Deprecated</em>: Use query instead</p>
+
+            <details class="quote">
+              <summary>Source code in <code>aws_lambda_powertools/utilities/jmespath_utils/__init__.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 91</span>
+<span class="normal"> 92</span>
+<span class="normal"> 93</span>
+<span class="normal"> 94</span>
+<span class="normal"> 95</span>
+<span class="normal"> 96</span>
+<span class="normal"> 97</span>
+<span class="normal"> 98</span>
+<span class="normal"> 99</span>
+<span class="normal">100</span>
+<span class="normal">101</span>
+<span class="normal">102</span>
+<span class="normal">103</span>
+<span class="normal">104</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@deprecated</span><span class="p">(</span><span class="s2">&quot;`extract_data_from_envelope` is deprecated; use `query` instead.&quot;</span><span class="p">,</span> <span class="n">category</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">extract_data_from_envelope</span><span class="p">(</span><span class="n">data</span><span class="p">:</span> <span class="nb">dict</span> <span class="o">|</span> <span class="nb">str</span><span class="p">,</span> <span class="n">envelope</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">jmespath_options</span><span class="p">:</span> <span class="nb">dict</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Any</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Searches and extracts data using JMESPath</span>
+
+<span class="sd">    *Deprecated*: Use query instead</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span>
+        <span class="s2">&quot;The extract_data_from_envelope method is deprecated in V3 &quot;</span>
+        <span class="s2">&quot;and will be removed in the next major version. Use query instead.&quot;</span><span class="p">,</span>
+        <span class="n">category</span><span class="o">=</span><span class="n">PowertoolsDeprecationWarning</span><span class="p">,</span>
+        <span class="n">stacklevel</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+    <span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">query</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">,</span> <span class="n">envelope</span><span class="o">=</span><span class="n">envelope</span><span class="p">,</span> <span class="n">jmespath_options</span><span class="o">=</span><span class="n">jmespath_options</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+            </details>
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
 
 
-        <p>Amazon DynamoDB Parameter Provider</p>
+<h2 id="aws_lambda_powertools.utilities.jmespath_utils.query" class="doc doc-heading">
+            <span class="doc doc-object-name doc-function-name">query</span>
 
+
+<a href="#aws_lambda_powertools.utilities.jmespath_utils.query" class="headerlink" title="Permanent link">&para;</a></h2>
+<div class="doc-signature highlight"><pre><span></span><code><span class="nf">query</span><span class="p">(</span>
+    <span class="n">data</span><span class="p">:</span> <span class="nb">dict</span> <span class="o">|</span> <span class="nb">str</span><span class="p">,</span>
+    <span class="n">envelope</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+    <span class="n">jmespath_options</span><span class="p">:</span> <span class="nb">dict</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Any</span>
+</code></pre></div>
+
+    <div class="doc doc-contents ">
+
+        <p>Searches and extracts data using JMESPath</p>
+<p>Envelope being the JMESPath expression to extract the data you're after</p>
+<p>Built-in JMESPath functions include: powertools_json, powertools_base64, powertools_base64_gzip</p>
+
+
+<details class="example" open>
+  <summary>Example</summary>
+  <p><strong>Deserialize JSON string and extracts data from body key</strong></p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span>
+<span class="normal">8</span>
+<span class="normal">9</span></pre></div></td><td class="code"><div><pre><span></span><code>from aws_lambda_powertools.utilities.jmespath_utils import query
+from aws_lambda_powertools.utilities.typing import LambdaContext
+
+
+def handler(event: dict, context: LambdaContext):
+    # event = {&quot;body&quot;: &quot;{&quot;customerId&quot;:&quot;dd4649e6-2484-4993-acb8-0f9123103394&quot;}&quot;}  # noqa: ERA001
+    payload = query(data=event, envelope=&quot;powertools_json(body)&quot;)
+    customer = payload.get(&quot;customerId&quot;)  # now deserialized
+    ...
+</code></pre></div></td></tr></table></div>
+</details>
 
 <table>
       <thead>
@@ -2107,11 +2206,27 @@ You're not viewing the latest version.
       <tbody>
           <tr class="doc-section-item">
             <td>
-                <code>table_name</code>
+                <code>data</code>
             </td>
             <td class="doc-param-details">
               <div class="doc-md-description">
-                <p>Name of the DynamoDB table that stores parameters</p>
+                <p>Data set to be filtered</p>
+              </div>
+              <p>
+                  <span class="doc-param-annotation">
+                    <b>TYPE:</b>
+                      <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#dict">dict</a> | <a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a></code>
+                  </span>
+              </p>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>envelope</code>
+            </td>
+            <td class="doc-param-details">
+              <div class="doc-md-description">
+                <p>JMESPath expression to filter data against</p>
               </div>
               <p>
                   <span class="doc-param-annotation">
@@ -2123,138 +2238,16 @@ You're not viewing the latest version.
           </tr>
           <tr class="doc-section-item">
             <td>
-                <code>key_attr</code>
+                <code>jmespath_options</code>
             </td>
             <td class="doc-param-details">
               <div class="doc-md-description">
-                <p>Hash key for the DynamoDB table (default to 'id')</p>
+                <p>Alternative JMESPath options to be included when filtering expr</p>
               </div>
               <p>
                   <span class="doc-param-annotation">
                     <b>TYPE:</b>
-                      <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a></code>
-                  </span>
-                  <span class="doc-param-default">
-                    <b>DEFAULT:</b>
-                      <code>&#39;id&#39;</code>
-                  </span>
-              </p>
-            </td>
-          </tr>
-          <tr class="doc-section-item">
-            <td>
-                <code>sort_attr</code>
-            </td>
-            <td class="doc-param-details">
-              <div class="doc-md-description">
-                <p>Name of the DynamoDB table sort key (defaults to 'sk'), used only for get_multiple</p>
-              </div>
-              <p>
-                  <span class="doc-param-annotation">
-                    <b>TYPE:</b>
-                      <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a></code>
-                  </span>
-                  <span class="doc-param-default">
-                    <b>DEFAULT:</b>
-                      <code>&#39;sk&#39;</code>
-                  </span>
-              </p>
-            </td>
-          </tr>
-          <tr class="doc-section-item">
-            <td>
-                <code>value_attr</code>
-            </td>
-            <td class="doc-param-details">
-              <div class="doc-md-description">
-                <p>Attribute that contains the values in the DynamoDB table (defaults to 'value')</p>
-              </div>
-              <p>
-                  <span class="doc-param-annotation">
-                    <b>TYPE:</b>
-                      <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a></code>
-                  </span>
-                  <span class="doc-param-default">
-                    <b>DEFAULT:</b>
-                      <code>&#39;value&#39;</code>
-                  </span>
-              </p>
-            </td>
-          </tr>
-          <tr class="doc-section-item">
-            <td>
-                <code>endpoint_url</code>
-            </td>
-            <td class="doc-param-details">
-              <div class="doc-md-description">
-                <p>Complete url to reference local DynamoDB instance, e.g. http://localhost:8080</p>
-              </div>
-              <p>
-                  <span class="doc-param-annotation">
-                    <b>TYPE:</b>
-                      <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a> | None</code>
-                  </span>
-                  <span class="doc-param-default">
-                    <b>DEFAULT:</b>
-                      <code>None</code>
-                  </span>
-              </p>
-            </td>
-          </tr>
-          <tr class="doc-section-item">
-            <td>
-                <code>config</code>
-            </td>
-            <td class="doc-param-details">
-              <div class="doc-md-description">
-                <p>Botocore configuration to pass during client initialization</p>
-              </div>
-              <p>
-                  <span class="doc-param-annotation">
-                    <b>TYPE:</b>
-                      <code><span title="botocore.config.Config">Config</span> | None</code>
-                  </span>
-                  <span class="doc-param-default">
-                    <b>DEFAULT:</b>
-                      <code>None</code>
-                  </span>
-              </p>
-            </td>
-          </tr>
-          <tr class="doc-section-item">
-            <td>
-                <code>boto3_session</code>
-            </td>
-            <td class="doc-param-details">
-              <div class="doc-md-description">
-                <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>Boto3 session to create a boto3_client from
-</code></pre></div></td></tr></table></div>
-              </div>
-              <p>
-                  <span class="doc-param-annotation">
-                    <b>TYPE:</b>
-                      <code><span title="boto3.session.Session">Session</span></code>
-                  </span>
-                  <span class="doc-param-default">
-                    <b>DEFAULT:</b>
-                      <code>None</code>
-                  </span>
-              </p>
-            </td>
-          </tr>
-          <tr class="doc-section-item">
-            <td>
-                <code>boto3_client</code>
-            </td>
-            <td class="doc-param-details">
-              <div class="doc-md-description">
-                <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>Boto3 DynamoDB Resource Client to use; boto3_session will be ignored if both are provided
-</code></pre></div></td></tr></table></div>
-              </div>
-              <p>
-                  <span class="doc-param-annotation">
-                    <b>TYPE:</b>
-                      <code><span title="mypy_boto3_dynamodb.service_resource.DynamoDBServiceResource">DynamoDBServiceResource</span> | None</code>
+                      <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#dict">dict</a> | None</code>
                   </span>
                   <span class="doc-param-default">
                     <b>DEFAULT:</b>
@@ -2267,274 +2260,127 @@ You're not viewing the latest version.
     </table>
 
 
-<details class="example" open>
-  <summary>Example</summary>
-  <p><strong>Retrieves a parameter value from a DynamoDB table</strong></p>
-<p>In this example, the DynamoDB table uses <code>id</code> as hash key and stores the value in the <code>value</code>
-attribute. The parameter item looks like this:</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
-<span class="normal">2</span>
-<span class="normal">3</span>
-<span class="normal">4</span>
-<span class="normal">5</span>
-<span class="normal">6</span>
-<span class="normal">7</span>
-<span class="normal">8</span>
-<span class="normal">9</span></pre></div></td><td class="code"><div><pre><span></span><code>{ &quot;id&quot;: &quot;my-parameters&quot;, &quot;value&quot;: &quot;Parameter value a&quot; }
+<table>
+      <thead>
+        <tr>
+          <th><span class="doc-section-title">RETURNS</span></th>
+          <th><span>DESCRIPTION</span></th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <span class="doc-returns-annotation">
+                    <code><a class="autorefs autorefs-external" title="typing.Any" href="https://docs.python.org/3/library/typing.html#typing.Any">Any</a></code>
+                </span>
+            </td>
+            <td class="doc-returns-details">
+              <div class="doc-md-description">
+                <p>Data found using JMESPath expression given in envelope</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
 
-&gt;&gt;&gt; from aws_lambda_powertools.utilities.parameters import DynamoDBProvider
-&gt;&gt;&gt; ddb_provider = DynamoDBProvider(&quot;ParametersTable&quot;)
-&gt;&gt;&gt;
-&gt;&gt;&gt; value = ddb_provider.get(&quot;my-parameter&quot;)
-&gt;&gt;&gt;
-&gt;&gt;&gt; print(value)
-My parameter value
-</code></pre></div></td></tr></table></div>
-<p><strong>Retrieves a parameter value from a DynamoDB table that has custom attribute names</strong></p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
-<span class="normal"> 2</span>
-<span class="normal"> 3</span>
-<span class="normal"> 4</span>
-<span class="normal"> 5</span>
-<span class="normal"> 6</span>
-<span class="normal"> 7</span>
-<span class="normal"> 8</span>
-<span class="normal"> 9</span>
-<span class="normal">10</span>
-<span class="normal">11</span></pre></div></td><td class="code"><div><pre><span></span><code>&gt;&gt;&gt; from aws_lambda_powertools.utilities.parameters import DynamoDBProvider
-&gt;&gt;&gt; ddb_provider = DynamoDBProvider(
-...     &quot;ParametersTable&quot;,
-...     key_attr=&quot;my-id&quot;,
-...     value_attr=&quot;my-value&quot;
-... )
-&gt;&gt;&gt;
-&gt;&gt;&gt; value = ddb_provider.get(&quot;my-parameter&quot;)
-&gt;&gt;&gt;
-&gt;&gt;&gt; print(value)
-My parameter value
-</code></pre></div></td></tr></table></div>
-<p><strong>Retrieves a parameter value from a DynamoDB table in another AWS region</strong></p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
-<span class="normal"> 2</span>
-<span class="normal"> 3</span>
-<span class="normal"> 4</span>
-<span class="normal"> 5</span>
-<span class="normal"> 6</span>
-<span class="normal"> 7</span>
-<span class="normal"> 8</span>
-<span class="normal"> 9</span>
-<span class="normal">10</span></pre></div></td><td class="code"><div><pre><span></span><code>&gt;&gt;&gt; from botocore.config import Config
-&gt;&gt;&gt; from aws_lambda_powertools.utilities.parameters import DynamoDBProvider
-&gt;&gt;&gt;
-&gt;&gt;&gt; config = Config(region_name=&quot;us-west-1&quot;)
-&gt;&gt;&gt; ddb_provider = DynamoDBProvider(&quot;ParametersTable&quot;, config=config)
-&gt;&gt;&gt;
-&gt;&gt;&gt; value = ddb_provider.get(&quot;my-parameter&quot;)
-&gt;&gt;&gt;
-&gt;&gt;&gt; print(value)
-My parameter value
-</code></pre></div></td></tr></table></div>
-<p><strong>Retrieves a parameter value from a DynamoDB table passing options to the SDK call</strong></p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
-<span class="normal">2</span>
-<span class="normal">3</span>
-<span class="normal">4</span>
-<span class="normal">5</span>
-<span class="normal">6</span>
-<span class="normal">7</span></pre></div></td><td class="code"><div><pre><span></span><code>&gt;&gt;&gt; from aws_lambda_powertools.utilities.parameters import DynamoDBProvider
-&gt;&gt;&gt; ddb_provider = DynamoDBProvider(&quot;ParametersTable&quot;)
-&gt;&gt;&gt;
-&gt;&gt;&gt; value = ddb_provider.get(&quot;my-parameter&quot;, ConsistentRead=True)
-&gt;&gt;&gt;
-&gt;&gt;&gt; print(value)
-My parameter value
-</code></pre></div></td></tr></table></div>
-<p><strong>Retrieves multiple values from a DynamoDB table</strong></p>
-<p>In this case, the provider will use a sort key to retrieve multiple values using a query under
-the hood. This expects that the sort key is named <code>sk</code>. The DynamoDB table contains three items
-looking like this:</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
-<span class="normal"> 2</span>
-<span class="normal"> 3</span>
-<span class="normal"> 4</span>
-<span class="normal"> 5</span>
-<span class="normal"> 6</span>
-<span class="normal"> 7</span>
-<span class="normal"> 8</span>
-<span class="normal"> 9</span>
-<span class="normal">10</span>
-<span class="normal">11</span>
-<span class="normal">12</span>
-<span class="normal">13</span>
-<span class="normal">14</span></pre></div></td><td class="code"><div><pre><span></span><code>{ &quot;id&quot;: &quot;my-parameters&quot;, &quot;sk&quot;: &quot;a&quot;, &quot;value&quot;: &quot;Parameter value a&quot; }
-{ &quot;id&quot;: &quot;my-parameters&quot;, &quot;sk&quot;: &quot;b&quot;, &quot;value&quot;: &quot;Parameter value b&quot; }
-{ &quot;id&quot;: &quot;my-parameters&quot;, &quot;sk&quot;: &quot;c&quot;, &quot;value&quot;: &quot;Parameter value c&quot; }
+            <details class="quote">
+              <summary>Source code in <code>aws_lambda_powertools/utilities/jmespath_utils/__init__.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">43</span>
+<span class="normal">44</span>
+<span class="normal">45</span>
+<span class="normal">46</span>
+<span class="normal">47</span>
+<span class="normal">48</span>
+<span class="normal">49</span>
+<span class="normal">50</span>
+<span class="normal">51</span>
+<span class="normal">52</span>
+<span class="normal">53</span>
+<span class="normal">54</span>
+<span class="normal">55</span>
+<span class="normal">56</span>
+<span class="normal">57</span>
+<span class="normal">58</span>
+<span class="normal">59</span>
+<span class="normal">60</span>
+<span class="normal">61</span>
+<span class="normal">62</span>
+<span class="normal">63</span>
+<span class="normal">64</span>
+<span class="normal">65</span>
+<span class="normal">66</span>
+<span class="normal">67</span>
+<span class="normal">68</span>
+<span class="normal">69</span>
+<span class="normal">70</span>
+<span class="normal">71</span>
+<span class="normal">72</span>
+<span class="normal">73</span>
+<span class="normal">74</span>
+<span class="normal">75</span>
+<span class="normal">76</span>
+<span class="normal">77</span>
+<span class="normal">78</span>
+<span class="normal">79</span>
+<span class="normal">80</span>
+<span class="normal">81</span>
+<span class="normal">82</span>
+<span class="normal">83</span>
+<span class="normal">84</span>
+<span class="normal">85</span>
+<span class="normal">86</span>
+<span class="normal">87</span>
+<span class="normal">88</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">query</span><span class="p">(</span><span class="n">data</span><span class="p">:</span> <span class="nb">dict</span> <span class="o">|</span> <span class="nb">str</span><span class="p">,</span> <span class="n">envelope</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">jmespath_options</span><span class="p">:</span> <span class="nb">dict</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Any</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Searches and extracts data using JMESPath</span>
 
-&gt;&gt;&gt; from aws_lambda_powertools.utilities.parameters import DynamoDBProvider
-&gt;&gt;&gt; ddb_provider = DynamoDBProvider(&quot;ParametersTable&quot;)
-&gt;&gt;&gt;
-&gt;&gt;&gt; values = ddb_provider.get_multiple(&quot;my-parameters&quot;)
-&gt;&gt;&gt;
-&gt;&gt;&gt; for key, value in values.items():
-...     print(key, value)
-a   Parameter value a
-b   Parameter value b
-c   Parameter value c
-</code></pre></div></td></tr></table></div>
-<p><strong>Retrieves multiple values from a DynamoDB table that has custom attribute names</strong></p>
-<p>In this case, the provider will use a sort key to retrieve multiple values using a query under
-the hood.</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
-<span class="normal"> 2</span>
-<span class="normal"> 3</span>
-<span class="normal"> 4</span>
-<span class="normal"> 5</span>
-<span class="normal"> 6</span>
-<span class="normal"> 7</span>
-<span class="normal"> 8</span>
-<span class="normal"> 9</span>
-<span class="normal">10</span>
-<span class="normal">11</span>
-<span class="normal">12</span>
-<span class="normal">13</span>
-<span class="normal">14</span>
-<span class="normal">15</span></pre></div></td><td class="code"><div><pre><span></span><code>&gt;&gt;&gt; from aws_lambda_powertools.utilities.parameters import DynamoDBProvider
-&gt;&gt;&gt; ddb_provider = DynamoDBProvider(
-...     &quot;ParametersTable&quot;,
-...     key_attr=&quot;my-id&quot;,
-...     sort_attr=&quot;my-sort-key&quot;,
-...     value_attr=&quot;my-value&quot;
-... )
-&gt;&gt;&gt;
-&gt;&gt;&gt; values = ddb_provider.get_multiple(&quot;my-parameters&quot;)
-&gt;&gt;&gt;
-&gt;&gt;&gt; for key, value in values.items():
-...     print(key, value)
-a   Parameter value a
-b   Parameter value b
-c   Parameter value c
-</code></pre></div></td></tr></table></div>
-<p><strong>Retrieves multiple values from a DynamoDB table passing options to the SDK calls</strong></p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
-<span class="normal"> 2</span>
-<span class="normal"> 3</span>
-<span class="normal"> 4</span>
-<span class="normal"> 5</span>
-<span class="normal"> 6</span>
-<span class="normal"> 7</span>
-<span class="normal"> 8</span>
-<span class="normal"> 9</span>
-<span class="normal">10</span></pre></div></td><td class="code"><div><pre><span></span><code>&gt;&gt;&gt; from aws_lambda_powertools.utilities.parameters import DynamoDBProvider
-&gt;&gt;&gt; ddb_provider = DynamoDBProvider(&quot;ParametersTable&quot;)
-&gt;&gt;&gt;
-&gt;&gt;&gt; values = ddb_provider.get_multiple(&quot;my-parameters&quot;, ConsistentRead=True)
-&gt;&gt;&gt;
-&gt;&gt;&gt; for key, value in values.items():
-...     print(key, value)
-a   Parameter value a
-b   Parameter value b
-c   Parameter value c
-</code></pre></div></td></tr></table></div>
-</details>
+<span class="sd">    Envelope being the JMESPath expression to extract the data you&#39;re after</span>
+
+<span class="sd">    Built-in JMESPath functions include: powertools_json, powertools_base64, powertools_base64_gzip</span>
+
+<span class="sd">    Example</span>
+<span class="sd">    --------</span>
+
+<span class="sd">    **Deserialize JSON string and extracts data from body key**</span>
+
+<span class="sd">        from aws_lambda_powertools.utilities.jmespath_utils import query</span>
+<span class="sd">        from aws_lambda_powertools.utilities.typing import LambdaContext</span>
 
 
+<span class="sd">        def handler(event: dict, context: LambdaContext):</span>
+<span class="sd">            # event = {&quot;body&quot;: &quot;{\&quot;customerId\&quot;:\&quot;dd4649e6-2484-4993-acb8-0f9123103394\&quot;}&quot;}  # noqa: ERA001</span>
+<span class="sd">            payload = query(data=event, envelope=&quot;powertools_json(body)&quot;)</span>
+<span class="sd">            customer = payload.get(&quot;customerId&quot;)  # now deserialized</span>
+<span class="sd">            ...</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    data : dict | str</span>
+<span class="sd">        Data set to be filtered</span>
+<span class="sd">    envelope : str</span>
+<span class="sd">        JMESPath expression to filter data against</span>
+<span class="sd">    jmespath_options : dict | None</span>
+<span class="sd">        Alternative JMESPath options to be included when filtering expr</span>
 
 
-
-
-
-
-
-                  <details class="quote">
-                    <summary>Source code in <code>aws_lambda_powertools/utilities/parameters/dynamodb.py</code></summary>
-                    <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">154</span>
-<span class="normal">155</span>
-<span class="normal">156</span>
-<span class="normal">157</span>
-<span class="normal">158</span>
-<span class="normal">159</span>
-<span class="normal">160</span>
-<span class="normal">161</span>
-<span class="normal">162</span>
-<span class="normal">163</span>
-<span class="normal">164</span>
-<span class="normal">165</span>
-<span class="normal">166</span>
-<span class="normal">167</span>
-<span class="normal">168</span>
-<span class="normal">169</span>
-<span class="normal">170</span>
-<span class="normal">171</span>
-<span class="normal">172</span>
-<span class="normal">173</span>
-<span class="normal">174</span>
-<span class="normal">175</span>
-<span class="normal">176</span>
-<span class="normal">177</span>
-<span class="normal">178</span>
-<span class="normal">179</span>
-<span class="normal">180</span>
-<span class="normal">181</span>
-<span class="normal">182</span>
-<span class="normal">183</span>
-<span class="normal">184</span>
-<span class="normal">185</span>
-<span class="normal">186</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
-    <span class="bp">self</span><span class="p">,</span>
-    <span class="n">table_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
-    <span class="n">key_attr</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;id&quot;</span><span class="p">,</span>
-    <span class="n">sort_attr</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;sk&quot;</span><span class="p">,</span>
-    <span class="n">value_attr</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;value&quot;</span><span class="p">,</span>
-    <span class="n">endpoint_url</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-    <span class="n">config</span><span class="p">:</span> <span class="n">Config</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-    <span class="n">boto_config</span><span class="p">:</span> <span class="n">Config</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-    <span class="n">boto3_session</span><span class="p">:</span> <span class="n">boto3</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">Session</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-    <span class="n">boto3_client</span><span class="p">:</span> <span class="n">DynamoDBServiceResource</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-<span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Initialize the DynamoDB client</span>
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    Any</span>
+<span class="sd">        Data found using JMESPath expression given in envelope</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">if</span> <span class="n">config</span><span class="p">:</span>
-        <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span>
-            <span class="n">message</span><span class="o">=</span><span class="s2">&quot;The &#39;config&#39; parameter is deprecated in V3 and will be removed in V4. &quot;</span>
-            <span class="s2">&quot;Please use &#39;boto_config&#39; instead.&quot;</span><span class="p">,</span>
-            <span class="n">category</span><span class="o">=</span><span class="n">PowertoolsDeprecationWarning</span><span class="p">,</span>
-            <span class="n">stacklevel</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
-        <span class="p">)</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">jmespath_options</span><span class="p">:</span>
+        <span class="n">jmespath_options</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;custom_functions&quot;</span><span class="p">:</span> <span class="n">PowertoolsFunctions</span><span class="p">()}</span>
 
-    <span class="k">if</span> <span class="n">boto3_client</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="n">boto3_session</span> <span class="o">=</span> <span class="n">boto3_session</span> <span class="ow">or</span> <span class="n">boto3</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">Session</span><span class="p">()</span>
-        <span class="n">boto3_client</span> <span class="o">=</span> <span class="n">boto3_session</span><span class="o">.</span><span class="n">resource</span><span class="p">(</span><span class="s2">&quot;dynamodb&quot;</span><span class="p">,</span> <span class="n">config</span><span class="o">=</span><span class="n">boto_config</span> <span class="ow">or</span> <span class="n">config</span><span class="p">,</span> <span class="n">endpoint_url</span><span class="o">=</span><span class="n">endpoint_url</span><span class="p">)</span>
-
-    <span class="bp">self</span><span class="o">.</span><span class="n">table</span> <span class="o">=</span> <span class="n">boto3_client</span><span class="o">.</span><span class="n">Table</span><span class="p">(</span><span class="n">table_name</span><span class="p">)</span>
-    <span class="bp">self</span><span class="o">.</span><span class="n">key_attr</span> <span class="o">=</span> <span class="n">key_attr</span>
-    <span class="bp">self</span><span class="o">.</span><span class="n">sort_attr</span> <span class="o">=</span> <span class="n">sort_attr</span>
-    <span class="bp">self</span><span class="o">.</span><span class="n">value_attr</span> <span class="o">=</span> <span class="n">value_attr</span>
-
-    <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">resource</span><span class="o">=</span><span class="n">boto3_client</span><span class="p">)</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Envelope detected: </span><span class="si">{</span><span class="n">envelope</span><span class="si">}</span><span class="s2">. JMESPath options: </span><span class="si">{</span><span class="n">jmespath_options</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">jmespath</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="n">envelope</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">options</span><span class="o">=</span><span class="n">jmespath</span><span class="o">.</span><span class="n">Options</span><span class="p">(</span><span class="o">**</span><span class="n">jmespath_options</span><span class="p">))</span>
+    <span class="k">except</span> <span class="p">(</span><span class="n">LexerError</span><span class="p">,</span> <span class="ne">TypeError</span><span class="p">,</span> <span class="ne">UnicodeError</span><span class="p">)</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="n">message</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;Failed to unwrap event from envelope using expression. Error: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2"> Exp: </span><span class="si">{</span><span class="n">envelope</span><span class="si">}</span><span class="s2">, Data: </span><span class="si">{</span><span class="n">data</span><span class="si">}</span><span class="s2">&quot;</span>  <span class="c1"># noqa: B306, E501</span>
+        <span class="k">raise</span> <span class="n">InvalidEnvelopeExpressionError</span><span class="p">(</span><span class="n">message</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
-                  </details>
-
-
-
-  <div class="doc doc-children">
-
-
-
-
-
-
-
-
-
-
-
-  </div>
-
+            </details>
     </div>
 
 </div>
-
 
 
 
@@ -2650,14 +2496,14 @@ c   Parameter value c
     </div>
     
     
-    <script id="__config" type="application/json">{"base": "../../..", "features": ["header.autohide", "navigation.sections", "navigation.top", "navigation.instant", "navigation.indexes", "navigation.tracking", "navigation.tabs", "content.code.annotate", "content.code.copy", "content.tabs.link"], "search": "../../../assets/javascripts/workers/search.f8cc74c7.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"default": "latest", "provider": "mike"}}</script>
+    <script id="__config" type="application/json">{"base": "../..", "features": ["header.autohide", "navigation.sections", "navigation.top", "navigation.instant", "navigation.indexes", "navigation.tracking", "navigation.tabs", "content.code.annotate", "content.code.copy", "content.tabs.link"], "search": "../../assets/javascripts/workers/search.f8cc74c7.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"default": "latest", "provider": "mike"}}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.5090c770.min.js"></script>
+      <script src="../../assets/javascripts/bundle.5090c770.min.js"></script>
       
-        <script src="../../../javascript/aws-amplify.min.js"></script>
+        <script src="../../javascript/aws-amplify.min.js"></script>
       
-        <script src="../../../javascript/extra.js"></script>
+        <script src="../../javascript/extra.js"></script>
       
         <script src="https://docs.powertools.aws.dev/shared/mermaid.min.js"></script>
       
