@@ -13,10 +13,10 @@
       
       
       
-        <link rel="prev" href="../base/">
+        <link rel="prev" href="../appsync/">
       
       
-        <link rel="next" href="../exceptions/">
+        <link rel="next" href="../openapi/">
       
       
       <link rel="icon" href="../../../media/aws-logo-light.svg">
@@ -24,7 +24,7 @@
     
     
       
-        <title>Decorators - Powertools for AWS Lambda (Python)</title>
+        <title>Middleware - Powertools for AWS Lambda (Python)</title>
       
     
     
@@ -80,7 +80,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#aws_lambda_powertools.utilities.batch.decorators" class="md-skip">
+        <a href="#aws_lambda_powertools.event_handler.middlewares" class="md-skip">
           Skip to content
         </a>
       
@@ -142,7 +142,7 @@ You're not viewing the latest version.
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Decorators
+              Middleware
             
           </span>
         </div>
@@ -318,7 +318,7 @@ You're not viewing the latest version.
     
     
       <li class="md-tabs__item md-tabs__item--active">
-        <a href="../base/" class="md-tabs__link">
+        <a href="../../batch/base/" class="md-tabs__link">
           
   
     
@@ -1639,8 +1639,6 @@ You're not viewing the latest version.
                 
   
   
-    
-  
   
   
     
@@ -1663,11 +1661,11 @@ You're not viewing the latest version.
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_1" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_1" >
         
           
           <label class="md-nav__link" for="__nav_4_1" id="__nav_4_1_label" tabindex="">
@@ -1682,7 +1680,7 @@ You're not viewing the latest version.
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_1_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_1_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_4_1">
             <span class="md-nav__icon md-icon"></span>
             Batch Processing
@@ -1696,7 +1694,7 @@ You're not viewing the latest version.
   
   
     <li class="md-nav__item">
-      <a href="../base/" class="md-nav__link">
+      <a href="../../batch/base/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1715,29 +1713,10 @@ You're not viewing the latest version.
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  <span class="md-ellipsis">
-    Decorators
-    
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../batch/decorators/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1747,102 +1726,6 @@ You're not viewing the latest version.
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#aws_lambda_powertools.utilities.batch.decorators" class="md-nav__link">
-    <span class="md-ellipsis">
-      decorators
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#aws_lambda_powertools.utilities.batch.decorators.async_batch_processor" class="md-nav__link">
-    <span class="md-ellipsis">
-      async_batch_processor
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#aws_lambda_powertools.utilities.batch.decorators.async_process_partial_response" class="md-nav__link">
-    <span class="md-ellipsis">
-      async_process_partial_response
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#aws_lambda_powertools.utilities.batch.decorators.batch_processor" class="md-nav__link">
-    <span class="md-ellipsis">
-      batch_processor
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#aws_lambda_powertools.utilities.batch.decorators.process_partial_response" class="md-nav__link">
-    <span class="md-ellipsis">
-      process_partial_response
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#aws_lambda_powertools.utilities.batch.sqs_fifo_partial_processor" class="md-nav__link">
-    <span class="md-ellipsis">
-      sqs_fifo_partial_processor
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#aws_lambda_powertools.utilities.batch.sqs_fifo_partial_processor.SqsFifoPartialProcessor" class="md-nav__link">
-    <span class="md-ellipsis">
-      SqsFifoPartialProcessor
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="SqsFifoPartialProcessor">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#aws_lambda_powertools.utilities.batch.sqs_fifo_partial_processor.SqsFifoPartialProcessor--process-batch-triggered-by-a-fifo-sqs" class="md-nav__link">
-    <span class="md-ellipsis">
-      Process batch triggered by a FIFO SQS
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -1855,7 +1738,7 @@ You're not viewing the latest version.
   
   
     <li class="md-nav__item">
-      <a href="../exceptions/" class="md-nav__link">
+      <a href="../../batch/exceptions/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2030,6 +1913,8 @@ You're not viewing the latest version.
                 
   
   
+    
+  
   
   
     
@@ -2054,11 +1939,11 @@ You're not viewing the latest version.
       
     
     
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_4" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_4" checked>
         
           
           <label class="md-nav__link" for="__nav_4_4" id="__nav_4_4_label" tabindex="">
@@ -2073,7 +1958,7 @@ You're not viewing the latest version.
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_4_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_4_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_4_4">
             <span class="md-nav__icon md-icon"></span>
             Event Handler
@@ -2087,7 +1972,7 @@ You're not viewing the latest version.
   
   
     <li class="md-nav__item">
-      <a href="../../event_handler/appsync/" class="md-nav__link">
+      <a href="../appsync/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2106,10 +1991,29 @@ You're not viewing the latest version.
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../../event_handler/middleware/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Middleware
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
@@ -2119,6 +2023,177 @@ You're not viewing the latest version.
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#aws_lambda_powertools.event_handler.middlewares" class="md-nav__link">
+    <span class="md-ellipsis">
+      middlewares
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#aws_lambda_powertools.event_handler.middlewares.BaseMiddlewareHandler" class="md-nav__link">
+    <span class="md-ellipsis">
+      BaseMiddlewareHandler
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="BaseMiddlewareHandler">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#aws_lambda_powertools.event_handler.middlewares.BaseMiddlewareHandler.handler" class="md-nav__link">
+    <span class="md-ellipsis">
+      handler
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#aws_lambda_powertools.event_handler.middlewares.NextMiddleware" class="md-nav__link">
+    <span class="md-ellipsis">
+      NextMiddleware
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#aws_lambda_powertools.event_handler.middlewares.base" class="md-nav__link">
+    <span class="md-ellipsis">
+      base
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="base">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#aws_lambda_powertools.event_handler.middlewares.base.BaseMiddlewareHandler" class="md-nav__link">
+    <span class="md-ellipsis">
+      BaseMiddlewareHandler
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="BaseMiddlewareHandler">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#aws_lambda_powertools.event_handler.middlewares.base.BaseMiddlewareHandler.handler" class="md-nav__link">
+    <span class="md-ellipsis">
+      handler
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#aws_lambda_powertools.event_handler.middlewares.base.NextMiddleware" class="md-nav__link">
+    <span class="md-ellipsis">
+      NextMiddleware
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#aws_lambda_powertools.event_handler.middlewares.openapi_validation" class="md-nav__link">
+    <span class="md-ellipsis">
+      openapi_validation
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="openapi_validation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#aws_lambda_powertools.event_handler.middlewares.openapi_validation.OpenAPIValidationMiddleware" class="md-nav__link">
+    <span class="md-ellipsis">
+      OpenAPIValidationMiddleware
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#aws_lambda_powertools.event_handler.middlewares.schema_validation" class="md-nav__link">
+    <span class="md-ellipsis">
+      schema_validation
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="schema_validation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#aws_lambda_powertools.event_handler.middlewares.schema_validation.SchemaValidationMiddleware" class="md-nav__link">
+    <span class="md-ellipsis">
+      SchemaValidationMiddleware
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="SchemaValidationMiddleware">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#aws_lambda_powertools.event_handler.middlewares.schema_validation.SchemaValidationMiddleware.handler" class="md-nav__link">
+    <span class="md-ellipsis">
+      handler
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -2131,7 +2206,7 @@ You're not viewing the latest version.
   
   
     <li class="md-nav__item">
-      <a href="../../event_handler/openapi/" class="md-nav__link">
+      <a href="../openapi/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2153,7 +2228,7 @@ You're not viewing the latest version.
   
   
     <li class="md-nav__item">
-      <a href="../../event_handler/api_gateway/" class="md-nav__link">
+      <a href="../api_gateway/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3365,75 +3440,150 @@ You're not viewing the latest version.
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#aws_lambda_powertools.utilities.batch.decorators" class="md-nav__link">
+  <a href="#aws_lambda_powertools.event_handler.middlewares" class="md-nav__link">
     <span class="md-ellipsis">
-      decorators
+      middlewares
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#aws_lambda_powertools.utilities.batch.decorators.async_batch_processor" class="md-nav__link">
+  <a href="#aws_lambda_powertools.event_handler.middlewares.BaseMiddlewareHandler" class="md-nav__link">
     <span class="md-ellipsis">
-      async_batch_processor
+      BaseMiddlewareHandler
     </span>
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#aws_lambda_powertools.utilities.batch.decorators.async_process_partial_response" class="md-nav__link">
-    <span class="md-ellipsis">
-      async_process_partial_response
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#aws_lambda_powertools.utilities.batch.decorators.batch_processor" class="md-nav__link">
-    <span class="md-ellipsis">
-      batch_processor
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#aws_lambda_powertools.utilities.batch.decorators.process_partial_response" class="md-nav__link">
-    <span class="md-ellipsis">
-      process_partial_response
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#aws_lambda_powertools.utilities.batch.sqs_fifo_partial_processor" class="md-nav__link">
-    <span class="md-ellipsis">
-      sqs_fifo_partial_processor
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#aws_lambda_powertools.utilities.batch.sqs_fifo_partial_processor.SqsFifoPartialProcessor" class="md-nav__link">
-    <span class="md-ellipsis">
-      SqsFifoPartialProcessor
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="SqsFifoPartialProcessor">
+    <nav class="md-nav" aria-label="BaseMiddlewareHandler">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#aws_lambda_powertools.utilities.batch.sqs_fifo_partial_processor.SqsFifoPartialProcessor--process-batch-triggered-by-a-fifo-sqs" class="md-nav__link">
+  <a href="#aws_lambda_powertools.event_handler.middlewares.BaseMiddlewareHandler.handler" class="md-nav__link">
     <span class="md-ellipsis">
-      Process batch triggered by a FIFO SQS
+      handler
     </span>
   </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#aws_lambda_powertools.event_handler.middlewares.NextMiddleware" class="md-nav__link">
+    <span class="md-ellipsis">
+      NextMiddleware
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#aws_lambda_powertools.event_handler.middlewares.base" class="md-nav__link">
+    <span class="md-ellipsis">
+      base
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="base">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#aws_lambda_powertools.event_handler.middlewares.base.BaseMiddlewareHandler" class="md-nav__link">
+    <span class="md-ellipsis">
+      BaseMiddlewareHandler
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="BaseMiddlewareHandler">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#aws_lambda_powertools.event_handler.middlewares.base.BaseMiddlewareHandler.handler" class="md-nav__link">
+    <span class="md-ellipsis">
+      handler
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#aws_lambda_powertools.event_handler.middlewares.base.NextMiddleware" class="md-nav__link">
+    <span class="md-ellipsis">
+      NextMiddleware
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#aws_lambda_powertools.event_handler.middlewares.openapi_validation" class="md-nav__link">
+    <span class="md-ellipsis">
+      openapi_validation
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="openapi_validation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#aws_lambda_powertools.event_handler.middlewares.openapi_validation.OpenAPIValidationMiddleware" class="md-nav__link">
+    <span class="md-ellipsis">
+      OpenAPIValidationMiddleware
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#aws_lambda_powertools.event_handler.middlewares.schema_validation" class="md-nav__link">
+    <span class="md-ellipsis">
+      schema_validation
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="schema_validation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#aws_lambda_powertools.event_handler.middlewares.schema_validation.SchemaValidationMiddleware" class="md-nav__link">
+    <span class="md-ellipsis">
+      SchemaValidationMiddleware
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="SchemaValidationMiddleware">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#aws_lambda_powertools.event_handler.middlewares.schema_validation.SchemaValidationMiddleware.handler" class="md-nav__link">
+    <span class="md-ellipsis">
+      handler
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
         
@@ -3461,7 +3611,7 @@ You're not viewing the latest version.
   
 
 
-  <h1>Decorators</h1>
+  <h1>Middleware</h1>
 
 <!-- markdownlint-disable MD043 MD041 -->
 
@@ -3470,12 +3620,8 @@ You're not viewing the latest version.
 
 
 
-<a id="aws_lambda_powertools.utilities.batch.decorators"></a>
+<a id="aws_lambda_powertools.event_handler.middlewares"></a>
     <div class="doc doc-contents first">
-
-
-
-
 
 
 
@@ -3484,45 +3630,69 @@ You're not viewing the latest version.
 <table>
       <thead>
         <tr>
-          <th><span class="doc-section-title">FUNCTION</span></th>
+          <th><span class="doc-section-title">MODULE</span></th>
           <th><span>DESCRIPTION</span></th>
         </tr>
       </thead>
       <tbody>
-            <tr class="doc-section-item">
-              <td><code><a class="autorefs autorefs-internal" title="aws_lambda_powertools.utilities.batch.decorators.async_batch_processor" href="#aws_lambda_powertools.utilities.batch.decorators.async_batch_processor">async_batch_processor</a></code></td>
-              <td class="doc-function-details">
-                <div class="doc-md-description">
-                  <p>Middleware to handle batch event processing</p>
-                </div>
-              </td>
-            </tr>
-            <tr class="doc-section-item">
-              <td><code><a class="autorefs autorefs-internal" title="aws_lambda_powertools.utilities.batch.decorators.async_process_partial_response" href="#aws_lambda_powertools.utilities.batch.decorators.async_process_partial_response">async_process_partial_response</a></code></td>
-              <td class="doc-function-details">
-                <div class="doc-md-description">
-                  <p>Higher level function to handle batch event processing asynchronously.</p>
-                </div>
-              </td>
-            </tr>
-            <tr class="doc-section-item">
-              <td><code><a class="autorefs autorefs-internal" title="aws_lambda_powertools.utilities.batch.decorators.batch_processor" href="#aws_lambda_powertools.utilities.batch.decorators.batch_processor">batch_processor</a></code></td>
-              <td class="doc-function-details">
-                <div class="doc-md-description">
-                  <p>Middleware to handle batch event processing</p>
-                </div>
-              </td>
-            </tr>
-            <tr class="doc-section-item">
-              <td><code><a class="autorefs autorefs-internal" title="aws_lambda_powertools.utilities.batch.decorators.process_partial_response" href="#aws_lambda_powertools.utilities.batch.decorators.process_partial_response">process_partial_response</a></code></td>
-              <td class="doc-function-details">
-                <div class="doc-md-description">
-                  <p>Higher level function to handle batch event processing.</p>
-                </div>
-              </td>
-            </tr>
+          <tr class="doc-section-item">
+            <td><code><a class="autorefs autorefs-internal" title="aws_lambda_powertools.event_handler.middlewares.base" href="#aws_lambda_powertools.event_handler.middlewares.base">base</a></code></td>
+            <td class="doc-module-details">
+              <div class="doc-md-description">
+                
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td><code><a class="autorefs autorefs-internal" title="aws_lambda_powertools.event_handler.middlewares.openapi_validation" href="#aws_lambda_powertools.event_handler.middlewares.openapi_validation">openapi_validation</a></code></td>
+            <td class="doc-module-details">
+              <div class="doc-md-description">
+                
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td><code><a class="autorefs autorefs-internal" title="aws_lambda_powertools.event_handler.middlewares.schema_validation" href="#aws_lambda_powertools.event_handler.middlewares.schema_validation">schema_validation</a></code></td>
+            <td class="doc-module-details">
+              <div class="doc-md-description">
+                
+              </div>
+            </td>
+          </tr>
       </tbody>
     </table>
+
+
+
+
+<table>
+      <thead>
+        <tr>
+          <th><span class="doc-section-title">CLASS</span></th>
+          <th><span>DESCRIPTION</span></th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td><code><a class="autorefs autorefs-internal" title="aws_lambda_powertools.event_handler.middlewares.BaseMiddlewareHandler" href="#aws_lambda_powertools.event_handler.middlewares.BaseMiddlewareHandler">BaseMiddlewareHandler</a></code></td>
+            <td class="doc-class-details">
+              <div class="doc-md-description">
+                <p>Base implementation for Middlewares to run code before and after in a chain.</p>
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td><code><a class="autorefs autorefs-internal" title="aws_lambda_powertools.event_handler.middlewares.NextMiddleware" href="#aws_lambda_powertools.event_handler.middlewares.NextMiddleware">NextMiddleware</a></code></td>
+            <td class="doc-class-details">
+              <div class="doc-md-description">
+                
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
 
 
 
@@ -3537,129 +3707,31 @@ You're not viewing the latest version.
 
 
 
-
-<div class="doc doc-object doc-function">
-
-
-<h2 id="aws_lambda_powertools.utilities.batch.decorators.async_batch_processor" class="doc doc-heading">
-            <span class="doc doc-object-name doc-function-name">async_batch_processor</span>
+<div class="doc doc-object doc-class">
 
 
-<a href="#aws_lambda_powertools.utilities.batch.decorators.async_batch_processor" class="headerlink" title="Permanent link">&para;</a></h2>
-<div class="doc-signature highlight"><pre><span></span><code><span class="nf">async_batch_processor</span><span class="p">(</span>
-    <span class="n">handler</span><span class="p">:</span> <span class="n">Callable</span><span class="p">,</span>
-    <span class="n">event</span><span class="p">:</span> <span class="nb">dict</span><span class="p">,</span>
-    <span class="n">context</span><span class="p">:</span> <span class="n">LambdaContext</span><span class="p">,</span>
-    <span class="n">record_handler</span><span class="p">:</span> <span class="n">Callable</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="n">Awaitable</span><span class="p">[</span><span class="n">Any</span><span class="p">]],</span>
-    <span class="n">processor</span><span class="p">:</span> <span class="n">AsyncBatchProcessor</span><span class="p">,</span>
-<span class="p">)</span>
-</code></pre></div>
+
+<h2 id="aws_lambda_powertools.event_handler.middlewares.BaseMiddlewareHandler" class="doc doc-heading">
+            <span class="doc doc-object-name doc-class-name">BaseMiddlewareHandler</span>
+
+
+<a href="#aws_lambda_powertools.event_handler.middlewares.BaseMiddlewareHandler" class="headerlink" title="Permanent link">&para;</a></h2>
+
 
     <div class="doc doc-contents ">
+            <p class="doc doc-class-bases">
+              Bases: <code><a class="autorefs autorefs-external" title="typing.Generic" href="https://docs.python.org/3/library/typing.html#typing.Generic">Generic</a>[<span title="aws_lambda_powertools.event_handler.types.EventHandlerInstance">EventHandlerInstance</span>]</code>, <code><a class="autorefs autorefs-external" title="abc.ABC" href="https://docs.python.org/3/library/abc.html#abc.ABC">ABC</a></code></p>
 
-        <p>Middleware to handle batch event processing</p>
 
-
-<details class="note" open>
-  <summary>Notes</summary>
-  <p>Consider using async_process_partial_response function for an easier experience.</p>
-</details>
-
-<table>
-      <thead>
-        <tr>
-          <th><span class="doc-section-title">PARAMETER</span></th>
-          <th><span>DESCRIPTION</span></th>
-        </tr>
-      </thead>
-      <tbody>
-          <tr class="doc-section-item">
-            <td>
-                <code>handler</code>
-            </td>
-            <td class="doc-param-details">
-              <div class="doc-md-description">
-                <p>Lambda's handler</p>
-              </div>
-              <p>
-                  <span class="doc-param-annotation">
-                    <b>TYPE:</b>
-                      <code><a class="autorefs autorefs-external" title="typing.Callable" href="https://docs.python.org/3/library/typing.html#typing.Callable">Callable</a></code>
-                  </span>
-              </p>
-            </td>
-          </tr>
-          <tr class="doc-section-item">
-            <td>
-                <code>event</code>
-            </td>
-            <td class="doc-param-details">
-              <div class="doc-md-description">
-                <p>Lambda's Event</p>
-              </div>
-              <p>
-                  <span class="doc-param-annotation">
-                    <b>TYPE:</b>
-                      <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#dict">dict</a></code>
-                  </span>
-              </p>
-            </td>
-          </tr>
-          <tr class="doc-section-item">
-            <td>
-                <code>context</code>
-            </td>
-            <td class="doc-param-details">
-              <div class="doc-md-description">
-                <p>Lambda's Context</p>
-              </div>
-              <p>
-                  <span class="doc-param-annotation">
-                    <b>TYPE:</b>
-                      <code><a class="autorefs autorefs-internal" title="aws_lambda_powertools.utilities.typing.LambdaContext" href="../../typing/#aws_lambda_powertools.utilities.typing.LambdaContext">LambdaContext</a></code>
-                  </span>
-              </p>
-            </td>
-          </tr>
-          <tr class="doc-section-item">
-            <td>
-                <code>record_handler</code>
-            </td>
-            <td class="doc-param-details">
-              <div class="doc-md-description">
-                <p>Callable to process each record from the batch</p>
-              </div>
-              <p>
-                  <span class="doc-param-annotation">
-                    <b>TYPE:</b>
-                      <code><a class="autorefs autorefs-external" title="typing.Callable" href="https://docs.python.org/3/library/typing.html#typing.Callable">Callable</a>[..., <a class="autorefs autorefs-external" title="typing.Awaitable" href="https://docs.python.org/3/library/typing.html#typing.Awaitable">Awaitable</a>[<a class="autorefs autorefs-external" title="typing.Any" href="https://docs.python.org/3/library/typing.html#typing.Any">Any</a>]]</code>
-                  </span>
-              </p>
-            </td>
-          </tr>
-          <tr class="doc-section-item">
-            <td>
-                <code>processor</code>
-            </td>
-            <td class="doc-param-details">
-              <div class="doc-md-description">
-                <p>Batch Processor to handle partial failure cases</p>
-              </div>
-              <p>
-                  <span class="doc-param-annotation">
-                    <b>TYPE:</b>
-                      <code><a class="autorefs autorefs-internal" title="aws_lambda_powertools.utilities.batch.AsyncBatchProcessor" href="../base/#aws_lambda_powertools.utilities.batch.base.AsyncBatchProcessor">AsyncBatchProcessor</a></code>
-                  </span>
-              </p>
-            </td>
-          </tr>
-      </tbody>
-    </table>
+        <p>Base implementation for Middlewares to run code before and after in a chain.</p>
+<p>This is the middleware handler function where middleware logic is implemented.
+The next middleware handler is represented by <code>next_middleware</code>, returning a Response object.</p>
 
 
 <details class="example" open>
   <summary>Example</summary>
-  <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+  <p><strong>Correlation ID Middleware</strong></p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
 <span class="normal"> 4</span>
@@ -3670,30 +3742,17 @@ You're not viewing the latest version.
 <span class="normal"> 9</span>
 <span class="normal">10</span>
 <span class="normal">11</span>
-<span class="normal">12</span></pre></div></td><td class="code"><div><pre><span></span><code>&gt;&gt;&gt; from aws_lambda_powertools.utilities.batch import async_batch_processor, AsyncBatchProcessor
-&gt;&gt;&gt; from aws_lambda_powertools.utilities.data_classes.sqs_event import SQSRecord
-&gt;&gt;&gt;
-&gt;&gt;&gt; processor = AsyncBatchProcessor(event_type=EventType.SQS)
-&gt;&gt;&gt;
-&gt;&gt;&gt; async def async_record_handler(record: SQSRecord):
-&gt;&gt;&gt;     payload: str = record.body
-&gt;&gt;&gt;     return payload
-&gt;&gt;&gt;
-&gt;&gt;&gt; @async_batch_processor(record_handler=async_record_handler, processor=processor)
-&gt;&gt;&gt; def lambda_handler(event, context):
-&gt;&gt;&gt;     return processor.response()
-</code></pre></div></td></tr></table></div>
-</details>
-
-<details class="limitations" open>
-  <summary>Limitations</summary>
-  <ul>
-<li>Sync batch processors. Use <code>batch_processor</code> instead.</li>
-</ul>
-</details>
-            <details class="quote">
-              <summary>Source code in <code>aws_lambda_powertools/utilities/batch/decorators.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">22</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
 <span class="normal">23</span>
 <span class="normal">24</span>
 <span class="normal">25</span>
@@ -3712,19 +3771,1127 @@ You're not viewing the latest version.
 <span class="normal">38</span>
 <span class="normal">39</span>
 <span class="normal">40</span>
-<span class="normal">41</span>
-<span class="normal">42</span>
-<span class="normal">43</span>
-<span class="normal">44</span>
-<span class="normal">45</span>
-<span class="normal">46</span>
-<span class="normal">47</span>
-<span class="normal">48</span>
-<span class="normal">49</span>
-<span class="normal">50</span>
-<span class="normal">51</span>
-<span class="normal">52</span>
-<span class="normal">53</span>
+<span class="normal">41</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">requests</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">aws_lambda_powertools</span><span class="w"> </span><span class="kn">import</span> <span class="n">Logger</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">aws_lambda_powertools.event_handler</span><span class="w"> </span><span class="kn">import</span> <span class="n">APIGatewayRestResolver</span><span class="p">,</span> <span class="n">Response</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">aws_lambda_powertools.event_handler.middlewares</span><span class="w"> </span><span class="kn">import</span> <span class="n">BaseMiddlewareHandler</span><span class="p">,</span> <span class="n">NextMiddleware</span>
+
+<span class="n">app</span> <span class="o">=</span> <span class="n">APIGatewayRestResolver</span><span class="p">()</span>
+<span class="n">logger</span> <span class="o">=</span> <span class="n">Logger</span><span class="p">()</span>
+
+
+<span class="k">class</span><span class="w"> </span><span class="nc">CorrelationIdMiddleware</span><span class="p">(</span><span class="n">BaseMiddlewareHandler</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">header</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">header</span> <span class="o">=</span> <span class="n">header</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">handler</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">app</span><span class="p">:</span> <span class="n">APIGatewayRestResolver</span><span class="p">,</span> <span class="n">next_middleware</span><span class="p">:</span> <span class="n">NextMiddleware</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Response</span><span class="p">:</span>
+        <span class="c1"># BEFORE logic</span>
+        <span class="n">request_id</span> <span class="o">=</span> <span class="n">app</span><span class="o">.</span><span class="n">current_event</span><span class="o">.</span><span class="n">request_context</span><span class="o">.</span><span class="n">request_id</span>
+        <span class="n">correlation_id</span> <span class="o">=</span> <span class="n">app</span><span class="o">.</span><span class="n">current_event</span><span class="o">.</span><span class="n">headers</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">header</span><span class="p">,</span> <span class="n">request_id</span><span class="p">)</span>
+
+        <span class="c1"># Call next middleware or route handler (&#39;/todos&#39;)</span>
+        <span class="n">response</span> <span class="o">=</span> <span class="n">next_middleware</span><span class="p">(</span><span class="n">app</span><span class="p">)</span>
+
+        <span class="c1"># AFTER logic</span>
+        <span class="n">response</span><span class="o">.</span><span class="n">headers</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">header</span><span class="p">]</span> <span class="o">=</span> <span class="n">correlation_id</span>
+
+        <span class="k">return</span> <span class="n">response</span>
+
+
+<span class="nd">@app</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;/todos&quot;</span><span class="p">,</span> <span class="n">middlewares</span><span class="o">=</span><span class="p">[</span><span class="n">CorrelationIdMiddleware</span><span class="p">(</span><span class="n">header</span><span class="o">=</span><span class="s2">&quot;x-correlation-id&quot;</span><span class="p">)])</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">get_todos</span><span class="p">():</span>
+    <span class="n">todos</span><span class="p">:</span> <span class="n">requests</span><span class="o">.</span><span class="n">Response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;https://jsonplaceholder.typicode.com/todos&quot;</span><span class="p">)</span>
+    <span class="n">todos</span><span class="o">.</span><span class="n">raise_for_status</span><span class="p">()</span>
+
+    <span class="c1"># for brevity, we&#39;ll limit to the first 10 only</span>
+    <span class="k">return</span> <span class="p">{</span><span class="s2">&quot;todos&quot;</span><span class="p">:</span> <span class="n">todos</span><span class="o">.</span><span class="n">json</span><span class="p">()[:</span><span class="mi">10</span><span class="p">]}</span>
+
+
+<span class="nd">@logger</span><span class="o">.</span><span class="n">inject_lambda_context</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">lambda_handler</span><span class="p">(</span><span class="n">event</span><span class="p">,</span> <span class="n">context</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">app</span><span class="o">.</span><span class="n">resolve</span><span class="p">(</span><span class="n">event</span><span class="p">,</span> <span class="n">context</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+</details>
+
+
+
+
+
+
+
+
+<table>
+      <thead>
+        <tr>
+          <th><span class="doc-section-title">METHOD</span></th>
+          <th><span>DESCRIPTION</span></th>
+        </tr>
+      </thead>
+      <tbody>
+            <tr class="doc-section-item">
+              <td><code><a class="autorefs autorefs-internal" title="aws_lambda_powertools.event_handler.middlewares.BaseMiddlewareHandler.handler" href="#aws_lambda_powertools.event_handler.middlewares.BaseMiddlewareHandler.handler">handler</a></code></td>
+              <td class="doc-function-details">
+                <div class="doc-md-description">
+                  <p>The Middleware Handler</p>
+                </div>
+              </td>
+            </tr>
+      </tbody>
+    </table>
+
+
+
+
+
+
+  <div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+<div class="doc doc-object doc-function">
+
+
+<h3 id="aws_lambda_powertools.event_handler.middlewares.BaseMiddlewareHandler.handler" class="doc doc-heading">
+            <span class="doc doc-object-name doc-function-name">handler</span>
+
+
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-abstractmethod"><code>abstractmethod</code></small>
+  </span>
+
+<a href="#aws_lambda_powertools.event_handler.middlewares.BaseMiddlewareHandler.handler" class="headerlink" title="Permanent link">&para;</a></h3>
+<div class="doc-signature highlight"><pre><span></span><code><span class="nf">handler</span><span class="p">(</span>
+    <span class="n">app</span><span class="p">:</span> <span class="n">EventHandlerInstance</span><span class="p">,</span>
+    <span class="n">next_middleware</span><span class="p">:</span> <span class="n">NextMiddleware</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Response</span>
+</code></pre></div>
+
+    <div class="doc doc-contents ">
+
+        <p>The Middleware Handler</p>
+
+
+<table>
+      <thead>
+        <tr>
+          <th><span class="doc-section-title">PARAMETER</span></th>
+          <th><span>DESCRIPTION</span></th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>app</code>
+            </td>
+            <td class="doc-param-details">
+              <div class="doc-md-description">
+                <p>An instance of an Event Handler that implements ApiGatewayResolver</p>
+              </div>
+              <p>
+                  <span class="doc-param-annotation">
+                    <b>TYPE:</b>
+                      <code><span title="aws_lambda_powertools.event_handler.types.EventHandlerInstance">EventHandlerInstance</span></code>
+                  </span>
+              </p>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>next_middleware</code>
+            </td>
+            <td class="doc-param-details">
+              <div class="doc-md-description">
+                <p>The next middleware handler in the chain</p>
+              </div>
+              <p>
+                  <span class="doc-param-annotation">
+                    <b>TYPE:</b>
+                      <code><a class="autorefs autorefs-internal" title="aws_lambda_powertools.event_handler.middlewares.base.NextMiddleware" href="#aws_lambda_powertools.event_handler.middlewares.base.NextMiddleware">NextMiddleware</a></code>
+                  </span>
+              </p>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+<table>
+      <thead>
+        <tr>
+          <th><span class="doc-section-title">RETURNS</span></th>
+          <th><span>DESCRIPTION</span></th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <span class="doc-returns-annotation">
+                    <code><a class="autorefs autorefs-internal" title="aws_lambda_powertools.event_handler.api_gateway.Response" href="../api_gateway/#aws_lambda_powertools.event_handler.api_gateway.Response">Response</a></code>
+                </span>
+            </td>
+            <td class="doc-returns-details">
+              <div class="doc-md-description">
+                <p>The response from the next middleware handler in the chain</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+            <details class="quote">
+              <summary>Source code in <code>aws_lambda_powertools/event_handler/middlewares/base.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">81</span>
+<span class="normal">82</span>
+<span class="normal">83</span>
+<span class="normal">84</span>
+<span class="normal">85</span>
+<span class="normal">86</span>
+<span class="normal">87</span>
+<span class="normal">88</span>
+<span class="normal">89</span>
+<span class="normal">90</span>
+<span class="normal">91</span>
+<span class="normal">92</span>
+<span class="normal">93</span>
+<span class="normal">94</span>
+<span class="normal">95</span>
+<span class="normal">96</span>
+<span class="normal">97</span>
+<span class="normal">98</span>
+<span class="normal">99</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@abstractmethod</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">handler</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">app</span><span class="p">:</span> <span class="n">EventHandlerInstance</span><span class="p">,</span> <span class="n">next_middleware</span><span class="p">:</span> <span class="n">NextMiddleware</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Response</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    The Middleware Handler</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    app: EventHandlerInstance</span>
+<span class="sd">        An instance of an Event Handler that implements ApiGatewayResolver</span>
+<span class="sd">    next_middleware: NextMiddleware</span>
+<span class="sd">        The next middleware handler in the chain</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    Response</span>
+<span class="sd">        The response from the next middleware handler in the chain</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">()</span>
+</code></pre></div></td></tr></table></div>
+            </details>
+    </div>
+
+</div>
+
+
+
+  </div>
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-class">
+
+
+
+<h2 id="aws_lambda_powertools.event_handler.middlewares.NextMiddleware" class="doc doc-heading">
+            <span class="doc doc-object-name doc-class-name">NextMiddleware</span>
+
+
+<a href="#aws_lambda_powertools.event_handler.middlewares.NextMiddleware" class="headerlink" title="Permanent link">&para;</a></h2>
+
+
+    <div class="doc doc-contents ">
+            <p class="doc doc-class-bases">
+              Bases: <code><a class="autorefs autorefs-external" title="typing.Protocol" href="https://docs.python.org/3/library/typing.html#typing.Protocol">Protocol</a></code></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+
+
+  </div>
+
+    </div>
+
+</div>
+
+
+
+<div class="doc doc-object doc-module">
+
+
+
+<h2 id="aws_lambda_powertools.event_handler.middlewares.base" class="doc doc-heading">
+            <span class="doc doc-object-name doc-module-name">base</span>
+
+
+<a href="#aws_lambda_powertools.event_handler.middlewares.base" class="headerlink" title="Permanent link">&para;</a></h2>
+
+    <div class="doc doc-contents ">
+
+
+
+
+
+
+
+<table>
+      <thead>
+        <tr>
+          <th><span class="doc-section-title">CLASS</span></th>
+          <th><span>DESCRIPTION</span></th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td><code><a class="autorefs autorefs-internal" title="aws_lambda_powertools.event_handler.middlewares.base.BaseMiddlewareHandler" href="#aws_lambda_powertools.event_handler.middlewares.base.BaseMiddlewareHandler">BaseMiddlewareHandler</a></code></td>
+            <td class="doc-class-details">
+              <div class="doc-md-description">
+                <p>Base implementation for Middlewares to run code before and after in a chain.</p>
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td><code><a class="autorefs autorefs-internal" title="aws_lambda_powertools.event_handler.middlewares.base.NextMiddleware" href="#aws_lambda_powertools.event_handler.middlewares.base.NextMiddleware">NextMiddleware</a></code></td>
+            <td class="doc-class-details">
+              <div class="doc-md-description">
+                
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+
+
+
+
+
+  <div class="doc doc-children">
+
+
+
+
+
+
+
+
+<div class="doc doc-object doc-class">
+
+
+
+<h3 id="aws_lambda_powertools.event_handler.middlewares.base.BaseMiddlewareHandler" class="doc doc-heading">
+            <span class="doc doc-object-name doc-class-name">BaseMiddlewareHandler</span>
+
+
+<a href="#aws_lambda_powertools.event_handler.middlewares.base.BaseMiddlewareHandler" class="headerlink" title="Permanent link">&para;</a></h3>
+
+
+    <div class="doc doc-contents ">
+            <p class="doc doc-class-bases">
+              Bases: <code><a class="autorefs autorefs-external" title="typing.Generic" href="https://docs.python.org/3/library/typing.html#typing.Generic">Generic</a>[<span title="aws_lambda_powertools.event_handler.types.EventHandlerInstance">EventHandlerInstance</span>]</code>, <code><a class="autorefs autorefs-external" title="abc.ABC" href="https://docs.python.org/3/library/abc.html#abc.ABC">ABC</a></code></p>
+
+
+        <p>Base implementation for Middlewares to run code before and after in a chain.</p>
+<p>This is the middleware handler function where middleware logic is implemented.
+The next middleware handler is represented by <code>next_middleware</code>, returning a Response object.</p>
+
+
+<details class="example" open>
+  <summary>Example</summary>
+  <p><strong>Correlation ID Middleware</strong></p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span>
+<span class="normal">35</span>
+<span class="normal">36</span>
+<span class="normal">37</span>
+<span class="normal">38</span>
+<span class="normal">39</span>
+<span class="normal">40</span>
+<span class="normal">41</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">requests</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">aws_lambda_powertools</span><span class="w"> </span><span class="kn">import</span> <span class="n">Logger</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">aws_lambda_powertools.event_handler</span><span class="w"> </span><span class="kn">import</span> <span class="n">APIGatewayRestResolver</span><span class="p">,</span> <span class="n">Response</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">aws_lambda_powertools.event_handler.middlewares</span><span class="w"> </span><span class="kn">import</span> <span class="n">BaseMiddlewareHandler</span><span class="p">,</span> <span class="n">NextMiddleware</span>
+
+<span class="n">app</span> <span class="o">=</span> <span class="n">APIGatewayRestResolver</span><span class="p">()</span>
+<span class="n">logger</span> <span class="o">=</span> <span class="n">Logger</span><span class="p">()</span>
+
+
+<span class="k">class</span><span class="w"> </span><span class="nc">CorrelationIdMiddleware</span><span class="p">(</span><span class="n">BaseMiddlewareHandler</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">header</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">header</span> <span class="o">=</span> <span class="n">header</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">handler</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">app</span><span class="p">:</span> <span class="n">APIGatewayRestResolver</span><span class="p">,</span> <span class="n">next_middleware</span><span class="p">:</span> <span class="n">NextMiddleware</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Response</span><span class="p">:</span>
+        <span class="c1"># BEFORE logic</span>
+        <span class="n">request_id</span> <span class="o">=</span> <span class="n">app</span><span class="o">.</span><span class="n">current_event</span><span class="o">.</span><span class="n">request_context</span><span class="o">.</span><span class="n">request_id</span>
+        <span class="n">correlation_id</span> <span class="o">=</span> <span class="n">app</span><span class="o">.</span><span class="n">current_event</span><span class="o">.</span><span class="n">headers</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">header</span><span class="p">,</span> <span class="n">request_id</span><span class="p">)</span>
+
+        <span class="c1"># Call next middleware or route handler (&#39;/todos&#39;)</span>
+        <span class="n">response</span> <span class="o">=</span> <span class="n">next_middleware</span><span class="p">(</span><span class="n">app</span><span class="p">)</span>
+
+        <span class="c1"># AFTER logic</span>
+        <span class="n">response</span><span class="o">.</span><span class="n">headers</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">header</span><span class="p">]</span> <span class="o">=</span> <span class="n">correlation_id</span>
+
+        <span class="k">return</span> <span class="n">response</span>
+
+
+<span class="nd">@app</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;/todos&quot;</span><span class="p">,</span> <span class="n">middlewares</span><span class="o">=</span><span class="p">[</span><span class="n">CorrelationIdMiddleware</span><span class="p">(</span><span class="n">header</span><span class="o">=</span><span class="s2">&quot;x-correlation-id&quot;</span><span class="p">)])</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">get_todos</span><span class="p">():</span>
+    <span class="n">todos</span><span class="p">:</span> <span class="n">requests</span><span class="o">.</span><span class="n">Response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;https://jsonplaceholder.typicode.com/todos&quot;</span><span class="p">)</span>
+    <span class="n">todos</span><span class="o">.</span><span class="n">raise_for_status</span><span class="p">()</span>
+
+    <span class="c1"># for brevity, we&#39;ll limit to the first 10 only</span>
+    <span class="k">return</span> <span class="p">{</span><span class="s2">&quot;todos&quot;</span><span class="p">:</span> <span class="n">todos</span><span class="o">.</span><span class="n">json</span><span class="p">()[:</span><span class="mi">10</span><span class="p">]}</span>
+
+
+<span class="nd">@logger</span><span class="o">.</span><span class="n">inject_lambda_context</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">lambda_handler</span><span class="p">(</span><span class="n">event</span><span class="p">,</span> <span class="n">context</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">app</span><span class="o">.</span><span class="n">resolve</span><span class="p">(</span><span class="n">event</span><span class="p">,</span> <span class="n">context</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+</details>
+
+
+
+
+
+
+
+
+<table>
+      <thead>
+        <tr>
+          <th><span class="doc-section-title">METHOD</span></th>
+          <th><span>DESCRIPTION</span></th>
+        </tr>
+      </thead>
+      <tbody>
+            <tr class="doc-section-item">
+              <td><code><a class="autorefs autorefs-internal" title="aws_lambda_powertools.event_handler.middlewares.base.BaseMiddlewareHandler.handler" href="#aws_lambda_powertools.event_handler.middlewares.base.BaseMiddlewareHandler.handler">handler</a></code></td>
+              <td class="doc-function-details">
+                <div class="doc-md-description">
+                  <p>The Middleware Handler</p>
+                </div>
+              </td>
+            </tr>
+      </tbody>
+    </table>
+
+
+
+
+
+
+  <div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+<div class="doc doc-object doc-function">
+
+
+<h4 id="aws_lambda_powertools.event_handler.middlewares.base.BaseMiddlewareHandler.handler" class="doc doc-heading">
+            <span class="doc doc-object-name doc-function-name">handler</span>
+
+
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-abstractmethod"><code>abstractmethod</code></small>
+  </span>
+
+<a href="#aws_lambda_powertools.event_handler.middlewares.base.BaseMiddlewareHandler.handler" class="headerlink" title="Permanent link">&para;</a></h4>
+<div class="doc-signature highlight"><pre><span></span><code><span class="nf">handler</span><span class="p">(</span>
+    <span class="n">app</span><span class="p">:</span> <span class="n">EventHandlerInstance</span><span class="p">,</span>
+    <span class="n">next_middleware</span><span class="p">:</span> <span class="n">NextMiddleware</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Response</span>
+</code></pre></div>
+
+    <div class="doc doc-contents ">
+
+        <p>The Middleware Handler</p>
+
+
+<table>
+      <thead>
+        <tr>
+          <th><span class="doc-section-title">PARAMETER</span></th>
+          <th><span>DESCRIPTION</span></th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>app</code>
+            </td>
+            <td class="doc-param-details">
+              <div class="doc-md-description">
+                <p>An instance of an Event Handler that implements ApiGatewayResolver</p>
+              </div>
+              <p>
+                  <span class="doc-param-annotation">
+                    <b>TYPE:</b>
+                      <code><span title="aws_lambda_powertools.event_handler.types.EventHandlerInstance">EventHandlerInstance</span></code>
+                  </span>
+              </p>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>next_middleware</code>
+            </td>
+            <td class="doc-param-details">
+              <div class="doc-md-description">
+                <p>The next middleware handler in the chain</p>
+              </div>
+              <p>
+                  <span class="doc-param-annotation">
+                    <b>TYPE:</b>
+                      <code><a class="autorefs autorefs-internal" title="aws_lambda_powertools.event_handler.middlewares.base.NextMiddleware" href="#aws_lambda_powertools.event_handler.middlewares.base.NextMiddleware">NextMiddleware</a></code>
+                  </span>
+              </p>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+<table>
+      <thead>
+        <tr>
+          <th><span class="doc-section-title">RETURNS</span></th>
+          <th><span>DESCRIPTION</span></th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <span class="doc-returns-annotation">
+                    <code><a class="autorefs autorefs-internal" title="aws_lambda_powertools.event_handler.api_gateway.Response" href="../api_gateway/#aws_lambda_powertools.event_handler.api_gateway.Response">Response</a></code>
+                </span>
+            </td>
+            <td class="doc-returns-details">
+              <div class="doc-md-description">
+                <p>The response from the next middleware handler in the chain</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+            <details class="quote">
+              <summary>Source code in <code>aws_lambda_powertools/event_handler/middlewares/base.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">81</span>
+<span class="normal">82</span>
+<span class="normal">83</span>
+<span class="normal">84</span>
+<span class="normal">85</span>
+<span class="normal">86</span>
+<span class="normal">87</span>
+<span class="normal">88</span>
+<span class="normal">89</span>
+<span class="normal">90</span>
+<span class="normal">91</span>
+<span class="normal">92</span>
+<span class="normal">93</span>
+<span class="normal">94</span>
+<span class="normal">95</span>
+<span class="normal">96</span>
+<span class="normal">97</span>
+<span class="normal">98</span>
+<span class="normal">99</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@abstractmethod</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">handler</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">app</span><span class="p">:</span> <span class="n">EventHandlerInstance</span><span class="p">,</span> <span class="n">next_middleware</span><span class="p">:</span> <span class="n">NextMiddleware</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Response</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    The Middleware Handler</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    app: EventHandlerInstance</span>
+<span class="sd">        An instance of an Event Handler that implements ApiGatewayResolver</span>
+<span class="sd">    next_middleware: NextMiddleware</span>
+<span class="sd">        The next middleware handler in the chain</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    Response</span>
+<span class="sd">        The response from the next middleware handler in the chain</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">()</span>
+</code></pre></div></td></tr></table></div>
+            </details>
+    </div>
+
+</div>
+
+
+
+  </div>
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-class">
+
+
+
+<h3 id="aws_lambda_powertools.event_handler.middlewares.base.NextMiddleware" class="doc doc-heading">
+            <span class="doc doc-object-name doc-class-name">NextMiddleware</span>
+
+
+<a href="#aws_lambda_powertools.event_handler.middlewares.base.NextMiddleware" class="headerlink" title="Permanent link">&para;</a></h3>
+
+
+    <div class="doc doc-contents ">
+            <p class="doc doc-class-bases">
+              Bases: <code><a class="autorefs autorefs-external" title="typing.Protocol" href="https://docs.python.org/3/library/typing.html#typing.Protocol">Protocol</a></code></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+
+
+  </div>
+
+    </div>
+
+</div>
+
+
+
+
+  </div>
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-module">
+
+
+
+<h2 id="aws_lambda_powertools.event_handler.middlewares.openapi_validation" class="doc doc-heading">
+            <span class="doc doc-object-name doc-module-name">openapi_validation</span>
+
+
+<a href="#aws_lambda_powertools.event_handler.middlewares.openapi_validation" class="headerlink" title="Permanent link">&para;</a></h2>
+
+    <div class="doc doc-contents ">
+
+
+
+
+
+
+
+<table>
+      <thead>
+        <tr>
+          <th><span class="doc-section-title">CLASS</span></th>
+          <th><span>DESCRIPTION</span></th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td><code><a class="autorefs autorefs-internal" title="aws_lambda_powertools.event_handler.middlewares.openapi_validation.OpenAPIValidationMiddleware" href="#aws_lambda_powertools.event_handler.middlewares.openapi_validation.OpenAPIValidationMiddleware">OpenAPIValidationMiddleware</a></code></td>
+            <td class="doc-class-details">
+              <div class="doc-md-description">
+                <p>OpenAPIValidationMiddleware is a middleware that validates the request against the OpenAPI schema defined by the</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+
+
+
+
+
+  <div class="doc doc-children">
+
+
+
+
+
+
+
+
+<div class="doc doc-object doc-class">
+
+
+
+<h3 id="aws_lambda_powertools.event_handler.middlewares.openapi_validation.OpenAPIValidationMiddleware" class="doc doc-heading">
+            <span class="doc doc-object-name doc-class-name">OpenAPIValidationMiddleware</span>
+
+
+<a href="#aws_lambda_powertools.event_handler.middlewares.openapi_validation.OpenAPIValidationMiddleware" class="headerlink" title="Permanent link">&para;</a></h3>
+<div class="doc-signature highlight"><pre><span></span><code><span class="nf">OpenAPIValidationMiddleware</span><span class="p">(</span>
+    <span class="n">validation_serializer</span><span class="p">:</span> <span class="p">(</span>
+        <span class="n">Callable</span><span class="p">[[</span><span class="n">Any</span><span class="p">],</span> <span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span>
+    <span class="p">)</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+<span class="p">)</span>
+</code></pre></div>
+
+    <div class="doc doc-contents ">
+            <p class="doc doc-class-bases">
+              Bases: <code><a class="autorefs autorefs-internal" title="aws_lambda_powertools.event_handler.middlewares.BaseMiddlewareHandler" href="#aws_lambda_powertools.event_handler.middlewares.BaseMiddlewareHandler">BaseMiddlewareHandler</a></code></p>
+
+
+        <p>OpenAPIValidationMiddleware is a middleware that validates the request against the OpenAPI schema defined by the
+Lambda handler. It also validates the response against the OpenAPI schema defined by the Lambda handler. It
+should not be used directly, but rather through the <code>enable_validation</code> parameter of the <code>ApiGatewayResolver</code>.</p>
+
+
+<details class="example" open>
+  <summary>Example</summary>
+  <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">pydantic</span><span class="w"> </span><span class="kn">import</span> <span class="n">BaseModel</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">aws_lambda_powertools.event_handler.api_gateway</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
+    <span class="n">APIGatewayRestResolver</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">Todo</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>
+  <span class="n">name</span><span class="p">:</span> <span class="nb">str</span>
+
+<span class="n">app</span> <span class="o">=</span> <span class="n">APIGatewayRestResolver</span><span class="p">(</span><span class="n">enable_validation</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="nd">@app</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;/todos&quot;</span><span class="p">)</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">get_todos</span><span class="p">():</span> <span class="nb">list</span><span class="p">[</span><span class="n">Todo</span><span class="p">]:</span>
+  <span class="k">return</span> <span class="p">[</span><span class="n">Todo</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;hello world&quot;</span><span class="p">)]</span>
+</code></pre></div></td></tr></table></div>
+</details>
+
+
+<table>
+      <thead>
+        <tr>
+          <th><span class="doc-section-title">PARAMETER</span></th>
+          <th><span>DESCRIPTION</span></th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>validation_serializer</code>
+            </td>
+            <td class="doc-param-details">
+              <div class="doc-md-description">
+                <p>Optional serializer to use when serializing the response for validation.
+Use it when you have a custom type that cannot be serialized by the default jsonable_encoder.</p>
+              </div>
+              <p>
+                  <span class="doc-param-annotation">
+                    <b>TYPE:</b>
+                      <code><a class="autorefs autorefs-external" title="typing.Callable" href="https://docs.python.org/3/library/typing.html#typing.Callable">Callable</a></code>
+                  </span>
+                  <span class="doc-param-default">
+                    <b>DEFAULT:</b>
+                      <code>None</code>
+                  </span>
+              </p>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+
+
+
+
+
+
+
+
+                  <details class="quote">
+                    <summary>Source code in <code>aws_lambda_powertools/event_handler/middlewares/openapi_validation.py</code></summary>
+                    <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">61</span>
+<span class="normal">62</span>
+<span class="normal">63</span>
+<span class="normal">64</span>
+<span class="normal">65</span>
+<span class="normal">66</span>
+<span class="normal">67</span>
+<span class="normal">68</span>
+<span class="normal">69</span>
+<span class="normal">70</span>
+<span class="normal">71</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">validation_serializer</span><span class="p">:</span> <span class="n">Callable</span><span class="p">[[</span><span class="n">Any</span><span class="p">],</span> <span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Initialize the OpenAPIValidationMiddleware.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    validation_serializer : Callable, optional</span>
+<span class="sd">        Optional serializer to use when serializing the response for validation.</span>
+<span class="sd">        Use it when you have a custom type that cannot be serialized by the default jsonable_encoder.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">_validation_serializer</span> <span class="o">=</span> <span class="n">validation_serializer</span>
+</code></pre></div></td></tr></table></div>
+                  </details>
+
+
+
+  <div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+
+
+  </div>
+
+    </div>
+
+</div>
+
+
+
+
+  </div>
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-module">
+
+
+
+<h2 id="aws_lambda_powertools.event_handler.middlewares.schema_validation" class="doc doc-heading">
+            <span class="doc doc-object-name doc-module-name">schema_validation</span>
+
+
+<a href="#aws_lambda_powertools.event_handler.middlewares.schema_validation" class="headerlink" title="Permanent link">&para;</a></h2>
+
+    <div class="doc doc-contents ">
+
+
+
+
+
+
+
+<table>
+      <thead>
+        <tr>
+          <th><span class="doc-section-title">CLASS</span></th>
+          <th><span>DESCRIPTION</span></th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td><code><a class="autorefs autorefs-internal" title="aws_lambda_powertools.event_handler.middlewares.schema_validation.SchemaValidationMiddleware" href="#aws_lambda_powertools.event_handler.middlewares.schema_validation.SchemaValidationMiddleware">SchemaValidationMiddleware</a></code></td>
+            <td class="doc-class-details">
+              <div class="doc-md-description">
+                <p>Middleware to validate API request and response against JSON Schema using the <a href="https://docs.powertools.aws.dev/lambda/python/latest/utilities/validation/">Validation utility</a>.</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+
+
+
+
+
+  <div class="doc doc-children">
+
+
+
+
+
+
+
+
+<div class="doc doc-object doc-class">
+
+
+
+<h3 id="aws_lambda_powertools.event_handler.middlewares.schema_validation.SchemaValidationMiddleware" class="doc doc-heading">
+            <span class="doc doc-object-name doc-class-name">SchemaValidationMiddleware</span>
+
+
+<a href="#aws_lambda_powertools.event_handler.middlewares.schema_validation.SchemaValidationMiddleware" class="headerlink" title="Permanent link">&para;</a></h3>
+<div class="doc-signature highlight"><pre><span></span><code><span class="nf">SchemaValidationMiddleware</span><span class="p">(</span>
+    <span class="n">inbound_schema</span><span class="p">:</span> <span class="nb">dict</span><span class="p">,</span>
+    <span class="n">inbound_formats</span><span class="p">:</span> <span class="nb">dict</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">outbound_schema</span><span class="p">:</span> <span class="nb">dict</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">outbound_formats</span><span class="p">:</span> <span class="nb">dict</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+<span class="p">)</span>
+</code></pre></div>
+
+    <div class="doc doc-contents ">
+            <p class="doc doc-class-bases">
+              Bases: <code><a class="autorefs autorefs-internal" title="aws_lambda_powertools.event_handler.middlewares.BaseMiddlewareHandler" href="#aws_lambda_powertools.event_handler.middlewares.BaseMiddlewareHandler">BaseMiddlewareHandler</a></code></p>
+
+
+        <p>Middleware to validate API request and response against JSON Schema using the <a href="https://docs.powertools.aws.dev/lambda/python/latest/utilities/validation/">Validation utility</a>.</p>
+
+
+<details class="example" open>
+  <summary>Example</summary>
+  <p><strong>Validating incoming event</strong></p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">requests</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">aws_lambda_powertools</span><span class="w"> </span><span class="kn">import</span> <span class="n">Logger</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">aws_lambda_powertools.event_handler</span><span class="w"> </span><span class="kn">import</span> <span class="n">APIGatewayRestResolver</span><span class="p">,</span> <span class="n">Response</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">aws_lambda_powertools.event_handler.middlewares</span><span class="w"> </span><span class="kn">import</span> <span class="n">BaseMiddlewareHandler</span><span class="p">,</span> <span class="n">NextMiddleware</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">aws_lambda_powertools.event_handler.middlewares.schema_validation</span><span class="w"> </span><span class="kn">import</span> <span class="n">SchemaValidationMiddleware</span>
+
+<span class="n">app</span> <span class="o">=</span> <span class="n">APIGatewayRestResolver</span><span class="p">()</span>
+<span class="n">logger</span> <span class="o">=</span> <span class="n">Logger</span><span class="p">()</span>
+<span class="n">json_schema_validation</span> <span class="o">=</span> <span class="n">SchemaValidationMiddleware</span><span class="p">(</span><span class="n">inbound_schema</span><span class="o">=</span><span class="n">INCOMING_JSON_SCHEMA</span><span class="p">)</span>
+
+
+<span class="nd">@app</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;/todos&quot;</span><span class="p">,</span> <span class="n">middlewares</span><span class="o">=</span><span class="p">[</span><span class="n">json_schema_validation</span><span class="p">])</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">get_todos</span><span class="p">():</span>
+    <span class="n">todos</span><span class="p">:</span> <span class="n">requests</span><span class="o">.</span><span class="n">Response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;https://jsonplaceholder.typicode.com/todos&quot;</span><span class="p">)</span>
+    <span class="n">todos</span><span class="o">.</span><span class="n">raise_for_status</span><span class="p">()</span>
+
+    <span class="c1"># for brevity, we&#39;ll limit to the first 10 only</span>
+    <span class="k">return</span> <span class="p">{</span><span class="s2">&quot;todos&quot;</span><span class="p">:</span> <span class="n">todos</span><span class="o">.</span><span class="n">json</span><span class="p">()[:</span><span class="mi">10</span><span class="p">]}</span>
+
+
+<span class="nd">@logger</span><span class="o">.</span><span class="n">inject_lambda_context</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">lambda_handler</span><span class="p">(</span><span class="n">event</span><span class="p">,</span> <span class="n">context</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">app</span><span class="o">.</span><span class="n">resolve</span><span class="p">(</span><span class="n">event</span><span class="p">,</span> <span class="n">context</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+</details>
+
+
+<table>
+      <thead>
+        <tr>
+          <th><span class="doc-section-title">PARAMETER</span></th>
+          <th><span>DESCRIPTION</span></th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>inbound_schema</code>
+            </td>
+            <td class="doc-param-details">
+              <div class="doc-md-description">
+                <p>JSON Schema to validate incoming event</p>
+              </div>
+              <p>
+                  <span class="doc-param-annotation">
+                    <b>TYPE:</b>
+                      <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#dict">dict</a></code>
+                  </span>
+              </p>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>inbound_formats</code>
+            </td>
+            <td class="doc-param-details">
+              <div class="doc-md-description">
+                <p>Custom formats containing a key (e.g. int64) and a value expressed as regex or callback returning bool, by default None
+JSON Schema to validate outbound event, by default None</p>
+              </div>
+              <p>
+                  <span class="doc-param-annotation">
+                    <b>TYPE:</b>
+                      <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#dict">dict</a> | None</code>
+                  </span>
+                  <span class="doc-param-default">
+                    <b>DEFAULT:</b>
+                      <code>None</code>
+                  </span>
+              </p>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>outbound_formats</code>
+            </td>
+            <td class="doc-param-details">
+              <div class="doc-md-description">
+                <p>Custom formats containing a key (e.g. int64) and a value expressed as regex or callback returning bool, by default None</p>
+              </div>
+              <p>
+                  <span class="doc-param-annotation">
+                    <b>TYPE:</b>
+                      <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#dict">dict</a> | None</code>
+                  </span>
+                  <span class="doc-param-default">
+                    <b>DEFAULT:</b>
+                      <code>None</code>
+                  </span>
+              </p>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+
+
+
+
+
+
+
+<table>
+      <thead>
+        <tr>
+          <th><span class="doc-section-title">METHOD</span></th>
+          <th><span>DESCRIPTION</span></th>
+        </tr>
+      </thead>
+      <tbody>
+            <tr class="doc-section-item">
+              <td><code><a class="autorefs autorefs-internal" title="aws_lambda_powertools.event_handler.middlewares.schema_validation.SchemaValidationMiddleware.handler" href="#aws_lambda_powertools.event_handler.middlewares.schema_validation.SchemaValidationMiddleware.handler">handler</a></code></td>
+              <td class="doc-function-details">
+                <div class="doc-md-description">
+                  <p>Validates incoming JSON payload (body) against JSON Schema provided.</p>
+                </div>
+              </td>
+            </tr>
+      </tbody>
+    </table>
+
+
+
+                  <details class="quote">
+                    <summary>Source code in <code>aws_lambda_powertools/event_handler/middlewares/schema_validation.py</code></summary>
+                    <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">53</span>
 <span class="normal">54</span>
 <span class="normal">55</span>
 <span class="normal">56</span>
@@ -3747,106 +4914,62 @@ You're not viewing the latest version.
 <span class="normal">73</span>
 <span class="normal">74</span>
 <span class="normal">75</span>
-<span class="normal">76</span>
-<span class="normal">77</span>
-<span class="normal">78</span>
-<span class="normal">79</span>
-<span class="normal">80</span>
-<span class="normal">81</span>
-<span class="normal">82</span>
-<span class="normal">83</span>
-<span class="normal">84</span>
-<span class="normal">85</span>
-<span class="normal">86</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@lambda_handler_decorator</span>
-<span class="nd">@deprecated</span><span class="p">(</span>
-    <span class="s2">&quot;`async_batch_processor` decorator is deprecated; use `async_process_partial_response` function instead.&quot;</span><span class="p">,</span>
-    <span class="n">category</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-<span class="p">)</span>
-<span class="k">def</span><span class="w"> </span><span class="nf">async_batch_processor</span><span class="p">(</span>
-    <span class="n">handler</span><span class="p">:</span> <span class="n">Callable</span><span class="p">,</span>
-    <span class="n">event</span><span class="p">:</span> <span class="nb">dict</span><span class="p">,</span>
-    <span class="n">context</span><span class="p">:</span> <span class="n">LambdaContext</span><span class="p">,</span>
-    <span class="n">record_handler</span><span class="p">:</span> <span class="n">Callable</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="n">Awaitable</span><span class="p">[</span><span class="n">Any</span><span class="p">]],</span>
-    <span class="n">processor</span><span class="p">:</span> <span class="n">AsyncBatchProcessor</span><span class="p">,</span>
+<span class="normal">76</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
+    <span class="bp">self</span><span class="p">,</span>
+    <span class="n">inbound_schema</span><span class="p">:</span> <span class="nb">dict</span><span class="p">,</span>
+    <span class="n">inbound_formats</span><span class="p">:</span> <span class="nb">dict</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">outbound_schema</span><span class="p">:</span> <span class="nb">dict</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">outbound_formats</span><span class="p">:</span> <span class="nb">dict</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
 <span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Middleware to handle batch event processing</span>
-
-<span class="sd">    Notes</span>
-<span class="sd">    -----</span>
-<span class="sd">    Consider using async_process_partial_response function for an easier experience.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;See [Validation utility](https://docs.powertools.aws.dev/lambda/python/latest/utilities/validation/) docs for examples on all parameters.</span>
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
-<span class="sd">    handler: Callable</span>
-<span class="sd">        Lambda&#39;s handler</span>
-<span class="sd">    event: dict</span>
-<span class="sd">        Lambda&#39;s Event</span>
-<span class="sd">    context: LambdaContext</span>
-<span class="sd">        Lambda&#39;s Context</span>
-<span class="sd">    record_handler: Callable[..., Awaitable[Any]]</span>
-<span class="sd">        Callable to process each record from the batch</span>
-<span class="sd">    processor: AsyncBatchProcessor</span>
-<span class="sd">        Batch Processor to handle partial failure cases</span>
-
-<span class="sd">    Example</span>
-<span class="sd">    --------</span>
-<span class="sd">        &gt;&gt;&gt; from aws_lambda_powertools.utilities.batch import async_batch_processor, AsyncBatchProcessor</span>
-<span class="sd">        &gt;&gt;&gt; from aws_lambda_powertools.utilities.data_classes.sqs_event import SQSRecord</span>
-<span class="sd">        &gt;&gt;&gt;</span>
-<span class="sd">        &gt;&gt;&gt; processor = AsyncBatchProcessor(event_type=EventType.SQS)</span>
-<span class="sd">        &gt;&gt;&gt;</span>
-<span class="sd">        &gt;&gt;&gt; async def async_record_handler(record: SQSRecord):</span>
-<span class="sd">        &gt;&gt;&gt;     payload: str = record.body</span>
-<span class="sd">        &gt;&gt;&gt;     return payload</span>
-<span class="sd">        &gt;&gt;&gt;</span>
-<span class="sd">        &gt;&gt;&gt; @async_batch_processor(record_handler=async_record_handler, processor=processor)</span>
-<span class="sd">        &gt;&gt;&gt; def lambda_handler(event, context):</span>
-<span class="sd">        &gt;&gt;&gt;     return processor.response()</span>
-
-<span class="sd">    Limitations</span>
-<span class="sd">    -----------</span>
-<span class="sd">    * Sync batch processors. Use `batch_processor` instead.</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-
-    <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span>
-        <span class="s2">&quot;The `async_batch_processor` decorator is deprecated in V3 &quot;</span>
-        <span class="s2">&quot;and will be removed in the next major version. Use `async_process_partial_response` function instead.&quot;</span><span class="p">,</span>
-        <span class="n">category</span><span class="o">=</span><span class="n">PowertoolsDeprecationWarning</span><span class="p">,</span>
-        <span class="n">stacklevel</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
-    <span class="p">)</span>
-
-    <span class="n">records</span> <span class="o">=</span> <span class="n">event</span><span class="p">[</span><span class="s2">&quot;Records&quot;</span><span class="p">]</span>
-
-    <span class="k">with</span> <span class="n">processor</span><span class="p">(</span><span class="n">records</span><span class="p">,</span> <span class="n">record_handler</span><span class="p">,</span> <span class="n">lambda_context</span><span class="o">=</span><span class="n">context</span><span class="p">):</span>
-        <span class="n">processor</span><span class="o">.</span><span class="n">async_process</span><span class="p">()</span>
-
-    <span class="k">return</span> <span class="n">handler</span><span class="p">(</span><span class="n">event</span><span class="p">,</span> <span class="n">context</span><span class="p">)</span>
+<span class="sd">    inbound_schema : dict</span>
+<span class="sd">        JSON Schema to validate incoming event</span>
+<span class="sd">    inbound_formats : dict | None, optional</span>
+<span class="sd">        Custom formats containing a key (e.g. int64) and a value expressed as regex or callback returning bool, by default None</span>
+<span class="sd">        JSON Schema to validate outbound event, by default None</span>
+<span class="sd">    outbound_formats : dict | None, optional</span>
+<span class="sd">        Custom formats containing a key (e.g. int64) and a value expressed as regex or callback returning bool, by default None</span>
+<span class="sd">    &quot;&quot;&quot;</span>  <span class="c1"># noqa: E501</span>
+    <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">inbound_schema</span> <span class="o">=</span> <span class="n">inbound_schema</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">inbound_formats</span> <span class="o">=</span> <span class="n">inbound_formats</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">outbound_schema</span> <span class="o">=</span> <span class="n">outbound_schema</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">outbound_formats</span> <span class="o">=</span> <span class="n">outbound_formats</span>
 </code></pre></div></td></tr></table></div>
-            </details>
-    </div>
+                  </details>
 
-</div>
+
+
+  <div class="doc doc-children">
+
+
+
+
+
+
+
+
 
 <div class="doc doc-object doc-function">
 
 
-<h2 id="aws_lambda_powertools.utilities.batch.decorators.async_process_partial_response" class="doc doc-heading">
-            <span class="doc doc-object-name doc-function-name">async_process_partial_response</span>
+<h4 id="aws_lambda_powertools.event_handler.middlewares.schema_validation.SchemaValidationMiddleware.handler" class="doc doc-heading">
+            <span class="doc doc-object-name doc-function-name">handler</span>
 
 
-<a href="#aws_lambda_powertools.utilities.batch.decorators.async_process_partial_response" class="headerlink" title="Permanent link">&para;</a></h2>
-<div class="doc-signature highlight"><pre><span></span><code><span class="nf">async_process_partial_response</span><span class="p">(</span>
-    <span class="n">event</span><span class="p">:</span> <span class="nb">dict</span><span class="p">,</span>
-    <span class="n">record_handler</span><span class="p">:</span> <span class="n">Callable</span><span class="p">,</span>
-    <span class="n">processor</span><span class="p">:</span> <span class="n">AsyncBatchProcessor</span><span class="p">,</span>
-    <span class="n">context</span><span class="p">:</span> <span class="n">LambdaContext</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">PartialItemFailureResponse</span>
+<a href="#aws_lambda_powertools.event_handler.middlewares.schema_validation.SchemaValidationMiddleware.handler" class="headerlink" title="Permanent link">&para;</a></h4>
+<div class="doc-signature highlight"><pre><span></span><code><span class="nf">handler</span><span class="p">(</span>
+    <span class="n">app</span><span class="p">:</span> <span class="n">EventHandlerInstance</span><span class="p">,</span>
+    <span class="n">next_middleware</span><span class="p">:</span> <span class="n">NextMiddleware</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Response</span>
 </code></pre></div>
 
     <div class="doc doc-contents ">
 
-        <p>Higher level function to handle batch event processing asynchronously.</p>
+        <p>Validates incoming JSON payload (body) against JSON Schema provided.</p>
 
 
 <table>
@@ -3859,68 +4982,32 @@ You're not viewing the latest version.
       <tbody>
           <tr class="doc-section-item">
             <td>
-                <code>event</code>
+                <code>app</code>
             </td>
             <td class="doc-param-details">
               <div class="doc-md-description">
-                <p>Lambda's original event</p>
+                <p>An instance of an Event Handler</p>
               </div>
               <p>
                   <span class="doc-param-annotation">
                     <b>TYPE:</b>
-                      <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#dict">dict</a></code>
+                      <code><span title="aws_lambda_powertools.event_handler.types.EventHandlerInstance">EventHandlerInstance</span></code>
                   </span>
               </p>
             </td>
           </tr>
           <tr class="doc-section-item">
             <td>
-                <code>record_handler</code>
+                <code>next_middleware</code>
             </td>
             <td class="doc-param-details">
               <div class="doc-md-description">
-                <p>Callable to process each record from the batch</p>
+                <p>Callable to get response from the next middleware or route handler in the chain</p>
               </div>
               <p>
                   <span class="doc-param-annotation">
                     <b>TYPE:</b>
-                      <code><a class="autorefs autorefs-external" title="typing.Callable" href="https://docs.python.org/3/library/typing.html#typing.Callable">Callable</a></code>
-                  </span>
-              </p>
-            </td>
-          </tr>
-          <tr class="doc-section-item">
-            <td>
-                <code>processor</code>
-            </td>
-            <td class="doc-param-details">
-              <div class="doc-md-description">
-                <p>Batch Processor to handle partial failure cases</p>
-              </div>
-              <p>
-                  <span class="doc-param-annotation">
-                    <b>TYPE:</b>
-                      <code><a class="autorefs autorefs-internal" title="aws_lambda_powertools.utilities.batch.AsyncBatchProcessor" href="../base/#aws_lambda_powertools.utilities.batch.base.AsyncBatchProcessor">AsyncBatchProcessor</a></code>
-                  </span>
-              </p>
-            </td>
-          </tr>
-          <tr class="doc-section-item">
-            <td>
-                <code>context</code>
-            </td>
-            <td class="doc-param-details">
-              <div class="doc-md-description">
-                <p>Lambda's context, used to optionally inject in record handler</p>
-              </div>
-              <p>
-                  <span class="doc-param-annotation">
-                    <b>TYPE:</b>
-                      <code><a class="autorefs autorefs-internal" title="aws_lambda_powertools.utilities.typing.LambdaContext" href="../../typing/#aws_lambda_powertools.utilities.typing.LambdaContext">LambdaContext</a> | None</code>
-                  </span>
-                  <span class="doc-param-default">
-                    <b>DEFAULT:</b>
-                      <code>None</code>
+                      <code><a class="autorefs autorefs-internal" title="aws_lambda_powertools.event_handler.middlewares.NextMiddleware" href="#aws_lambda_powertools.event_handler.middlewares.NextMiddleware">NextMiddleware</a></code>
                   </span>
               </p>
             </td>
@@ -3939,348 +5026,27 @@ You're not viewing the latest version.
       <tbody>
           <tr class="doc-section-item">
             <td>
-                <code>result</code>
+                <span class="doc-returns-annotation">
+                    <code><a class="autorefs autorefs-internal" title="aws_lambda_powertools.event_handler.api_gateway.Response" href="../api_gateway/#aws_lambda_powertools.event_handler.api_gateway.Response">Response</a></code>
+                </span>
             </td>
             <td class="doc-returns-details">
               <div class="doc-md-description">
-                <p>Lambda Partial Batch Response</p>
+                <p>It can return three types of response objects</p>
+<ul>
+<li>Original response: Propagates HTTP response returned from the next middleware if validation succeeds</li>
+<li>HTTP 400: Payload or response failed JSON Schema validation</li>
+<li>HTTP 500: JSON Schema provided has incorrect format</li>
+</ul>
               </div>
-                <p>
-                  <span class="doc-returns-annotation">
-                    <b>TYPE:</b>
-                      <code><span title="aws_lambda_powertools.utilities.batch.types.PartialItemFailureResponse">PartialItemFailureResponse</span></code>
-                  </span>
-                </p>
             </td>
           </tr>
       </tbody>
     </table>
 
-
-<details class="example" open>
-  <summary>Example</summary>
-  <p><strong>Processes Lambda's SQS event</strong></p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
-<span class="normal"> 2</span>
-<span class="normal"> 3</span>
-<span class="normal"> 4</span>
-<span class="normal"> 5</span>
-<span class="normal"> 6</span>
-<span class="normal"> 7</span>
-<span class="normal"> 8</span>
-<span class="normal"> 9</span>
-<span class="normal">10</span>
-<span class="normal">11</span>
-<span class="normal">12</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">aws_lambda_powertools.utilities.batch</span><span class="w"> </span><span class="kn">import</span> <span class="n">AsyncBatchProcessor</span><span class="p">,</span> <span class="n">EventType</span><span class="p">,</span> <span class="n">process_partial_response</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">aws_lambda_powertools.utilities.data_classes.sqs_event</span><span class="w"> </span><span class="kn">import</span> <span class="n">SQSRecord</span>
-
-<span class="n">processor</span> <span class="o">=</span> <span class="n">BatchProcessor</span><span class="p">(</span><span class="n">EventType</span><span class="o">.</span><span class="n">SQS</span><span class="p">)</span>
-
-<span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">record_handler</span><span class="p">(</span><span class="n">record</span><span class="p">:</span> <span class="n">SQSRecord</span><span class="p">):</span>
-    <span class="k">return</span> <span class="n">record</span><span class="o">.</span><span class="n">body</span>
-
-<span class="k">def</span><span class="w"> </span><span class="nf">handler</span><span class="p">(</span><span class="n">event</span><span class="p">,</span> <span class="n">context</span><span class="p">):</span>
-    <span class="k">return</span> <span class="n">async_process_partial_response</span><span class="p">(</span>
-        <span class="n">event</span><span class="o">=</span><span class="n">event</span><span class="p">,</span> <span class="n">record_handler</span><span class="o">=</span><span class="n">record_handler</span><span class="p">,</span> <span class="n">processor</span><span class="o">=</span><span class="n">processor</span><span class="p">,</span> <span class="n">context</span><span class="o">=</span><span class="n">context</span>
-    <span class="p">)</span>
-</code></pre></div></td></tr></table></div>
-</details>
-
-<details class="limitations" open>
-  <summary>Limitations</summary>
-  <ul>
-<li>Sync batch processors. Use <code>process_partial_response</code> instead.</li>
-</ul>
-</details>
             <details class="quote">
-              <summary>Source code in <code>aws_lambda_powertools/utilities/batch/decorators.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">221</span>
-<span class="normal">222</span>
-<span class="normal">223</span>
-<span class="normal">224</span>
-<span class="normal">225</span>
-<span class="normal">226</span>
-<span class="normal">227</span>
-<span class="normal">228</span>
-<span class="normal">229</span>
-<span class="normal">230</span>
-<span class="normal">231</span>
-<span class="normal">232</span>
-<span class="normal">233</span>
-<span class="normal">234</span>
-<span class="normal">235</span>
-<span class="normal">236</span>
-<span class="normal">237</span>
-<span class="normal">238</span>
-<span class="normal">239</span>
-<span class="normal">240</span>
-<span class="normal">241</span>
-<span class="normal">242</span>
-<span class="normal">243</span>
-<span class="normal">244</span>
-<span class="normal">245</span>
-<span class="normal">246</span>
-<span class="normal">247</span>
-<span class="normal">248</span>
-<span class="normal">249</span>
-<span class="normal">250</span>
-<span class="normal">251</span>
-<span class="normal">252</span>
-<span class="normal">253</span>
-<span class="normal">254</span>
-<span class="normal">255</span>
-<span class="normal">256</span>
-<span class="normal">257</span>
-<span class="normal">258</span>
-<span class="normal">259</span>
-<span class="normal">260</span>
-<span class="normal">261</span>
-<span class="normal">262</span>
-<span class="normal">263</span>
-<span class="normal">264</span>
-<span class="normal">265</span>
-<span class="normal">266</span>
-<span class="normal">267</span>
-<span class="normal">268</span>
-<span class="normal">269</span>
-<span class="normal">270</span>
-<span class="normal">271</span>
-<span class="normal">272</span>
-<span class="normal">273</span>
-<span class="normal">274</span>
-<span class="normal">275</span>
-<span class="normal">276</span>
-<span class="normal">277</span>
-<span class="normal">278</span>
-<span class="normal">279</span>
-<span class="normal">280</span>
-<span class="normal">281</span>
-<span class="normal">282</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">async_process_partial_response</span><span class="p">(</span>
-    <span class="n">event</span><span class="p">:</span> <span class="nb">dict</span><span class="p">,</span>
-    <span class="n">record_handler</span><span class="p">:</span> <span class="n">Callable</span><span class="p">,</span>
-    <span class="n">processor</span><span class="p">:</span> <span class="n">AsyncBatchProcessor</span><span class="p">,</span>
-    <span class="n">context</span><span class="p">:</span> <span class="n">LambdaContext</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">PartialItemFailureResponse</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Higher level function to handle batch event processing asynchronously.</span>
-
-<span class="sd">    Parameters</span>
-<span class="sd">    ----------</span>
-<span class="sd">    event: dict</span>
-<span class="sd">        Lambda&#39;s original event</span>
-<span class="sd">    record_handler: Callable</span>
-<span class="sd">        Callable to process each record from the batch</span>
-<span class="sd">    processor: AsyncBatchProcessor</span>
-<span class="sd">        Batch Processor to handle partial failure cases</span>
-<span class="sd">    context: LambdaContext</span>
-<span class="sd">        Lambda&#39;s context, used to optionally inject in record handler</span>
-
-<span class="sd">    Returns</span>
-<span class="sd">    -------</span>
-<span class="sd">    result: PartialItemFailureResponse</span>
-<span class="sd">        Lambda Partial Batch Response</span>
-
-<span class="sd">    Example</span>
-<span class="sd">    --------</span>
-<span class="sd">    **Processes Lambda&#39;s SQS event**</span>
-
-<span class="sd">    ```python</span>
-<span class="sd">    from aws_lambda_powertools.utilities.batch import AsyncBatchProcessor, EventType, process_partial_response</span>
-<span class="sd">    from aws_lambda_powertools.utilities.data_classes.sqs_event import SQSRecord</span>
-
-<span class="sd">    processor = BatchProcessor(EventType.SQS)</span>
-
-<span class="sd">    async def record_handler(record: SQSRecord):</span>
-<span class="sd">        return record.body</span>
-
-<span class="sd">    def handler(event, context):</span>
-<span class="sd">        return async_process_partial_response(</span>
-<span class="sd">            event=event, record_handler=record_handler, processor=processor, context=context</span>
-<span class="sd">        )</span>
-<span class="sd">    ```</span>
-
-<span class="sd">    Limitations</span>
-<span class="sd">    -----------</span>
-<span class="sd">    * Sync batch processors. Use `process_partial_response` instead.</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">try</span><span class="p">:</span>
-        <span class="n">records</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">dict</span><span class="p">]</span> <span class="o">=</span> <span class="n">event</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;Records&quot;</span><span class="p">,</span> <span class="p">[])</span>
-    <span class="k">except</span> <span class="ne">AttributeError</span><span class="p">:</span>
-        <span class="n">event_types</span> <span class="o">=</span> <span class="s2">&quot;, &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">EventType</span><span class="o">.</span><span class="n">__members__</span><span class="p">))</span>
-        <span class="n">docs</span> <span class="o">=</span> <span class="s2">&quot;https://docs.powertools.aws.dev/lambda/python/latest/utilities/batch/#processing-messages-from-sqs&quot;</span>  <span class="c1"># noqa: E501 # long-line</span>
-        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
-            <span class="sa">f</span><span class="s2">&quot;Invalid event format. Please ensure batch event is a valid </span><span class="si">{</span><span class="n">processor</span><span class="o">.</span><span class="n">event_type</span><span class="o">.</span><span class="n">value</span><span class="si">}</span><span class="s2"> event. </span><span class="se">\n</span><span class="s2">&quot;</span>
-            <span class="sa">f</span><span class="s2">&quot;See sample events in our documentation for either </span><span class="si">{</span><span class="n">event_types</span><span class="si">}</span><span class="s2">: </span><span class="se">\n</span><span class="s2"> </span><span class="si">{</span><span class="n">docs</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>
-        <span class="p">)</span>
-
-    <span class="k">with</span> <span class="n">processor</span><span class="p">(</span><span class="n">records</span><span class="p">,</span> <span class="n">record_handler</span><span class="p">,</span> <span class="n">context</span><span class="p">):</span>
-        <span class="n">processor</span><span class="o">.</span><span class="n">async_process</span><span class="p">()</span>
-
-    <span class="k">return</span> <span class="n">processor</span><span class="o">.</span><span class="n">response</span><span class="p">()</span>
-</code></pre></div></td></tr></table></div>
-            </details>
-    </div>
-
-</div>
-
-<div class="doc doc-object doc-function">
-
-
-<h2 id="aws_lambda_powertools.utilities.batch.decorators.batch_processor" class="doc doc-heading">
-            <span class="doc doc-object-name doc-function-name">batch_processor</span>
-
-
-<a href="#aws_lambda_powertools.utilities.batch.decorators.batch_processor" class="headerlink" title="Permanent link">&para;</a></h2>
-<div class="doc-signature highlight"><pre><span></span><code><span class="nf">batch_processor</span><span class="p">(</span>
-    <span class="n">handler</span><span class="p">:</span> <span class="n">Callable</span><span class="p">,</span>
-    <span class="n">event</span><span class="p">:</span> <span class="nb">dict</span><span class="p">,</span>
-    <span class="n">context</span><span class="p">:</span> <span class="n">LambdaContext</span><span class="p">,</span>
-    <span class="n">record_handler</span><span class="p">:</span> <span class="n">Callable</span><span class="p">,</span>
-    <span class="n">processor</span><span class="p">:</span> <span class="n">BatchProcessor</span><span class="p">,</span>
-<span class="p">)</span>
-</code></pre></div>
-
-    <div class="doc doc-contents ">
-
-        <p>Middleware to handle batch event processing</p>
-
-
-<details class="note" open>
-  <summary>Notes</summary>
-  <p>Consider using process_partial_response function for an easier experience.</p>
-</details>
-
-<table>
-      <thead>
-        <tr>
-          <th><span class="doc-section-title">PARAMETER</span></th>
-          <th><span>DESCRIPTION</span></th>
-        </tr>
-      </thead>
-      <tbody>
-          <tr class="doc-section-item">
-            <td>
-                <code>handler</code>
-            </td>
-            <td class="doc-param-details">
-              <div class="doc-md-description">
-                <p>Lambda's handler</p>
-              </div>
-              <p>
-                  <span class="doc-param-annotation">
-                    <b>TYPE:</b>
-                      <code><a class="autorefs autorefs-external" title="typing.Callable" href="https://docs.python.org/3/library/typing.html#typing.Callable">Callable</a></code>
-                  </span>
-              </p>
-            </td>
-          </tr>
-          <tr class="doc-section-item">
-            <td>
-                <code>event</code>
-            </td>
-            <td class="doc-param-details">
-              <div class="doc-md-description">
-                <p>Lambda's Event</p>
-              </div>
-              <p>
-                  <span class="doc-param-annotation">
-                    <b>TYPE:</b>
-                      <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#dict">dict</a></code>
-                  </span>
-              </p>
-            </td>
-          </tr>
-          <tr class="doc-section-item">
-            <td>
-                <code>context</code>
-            </td>
-            <td class="doc-param-details">
-              <div class="doc-md-description">
-                <p>Lambda's Context</p>
-              </div>
-              <p>
-                  <span class="doc-param-annotation">
-                    <b>TYPE:</b>
-                      <code><a class="autorefs autorefs-internal" title="aws_lambda_powertools.utilities.typing.LambdaContext" href="../../typing/#aws_lambda_powertools.utilities.typing.LambdaContext">LambdaContext</a></code>
-                  </span>
-              </p>
-            </td>
-          </tr>
-          <tr class="doc-section-item">
-            <td>
-                <code>record_handler</code>
-            </td>
-            <td class="doc-param-details">
-              <div class="doc-md-description">
-                <p>Callable or corutine to process each record from the batch</p>
-              </div>
-              <p>
-                  <span class="doc-param-annotation">
-                    <b>TYPE:</b>
-                      <code><a class="autorefs autorefs-external" title="typing.Callable" href="https://docs.python.org/3/library/typing.html#typing.Callable">Callable</a></code>
-                  </span>
-              </p>
-            </td>
-          </tr>
-          <tr class="doc-section-item">
-            <td>
-                <code>processor</code>
-            </td>
-            <td class="doc-param-details">
-              <div class="doc-md-description">
-                <p>Batch Processor to handle partial failure cases</p>
-              </div>
-              <p>
-                  <span class="doc-param-annotation">
-                    <b>TYPE:</b>
-                      <code><a class="autorefs autorefs-internal" title="aws_lambda_powertools.utilities.batch.BatchProcessor" href="../base/#aws_lambda_powertools.utilities.batch.base.BatchProcessor">BatchProcessor</a></code>
-                  </span>
-              </p>
-            </td>
-          </tr>
-      </tbody>
-    </table>
-
-
-<details class="example" open>
-  <summary>Example</summary>
-  <p><strong>Processes Lambda's event with a BatchProcessor</strong></p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
-<span class="normal"> 2</span>
-<span class="normal"> 3</span>
-<span class="normal"> 4</span>
-<span class="normal"> 5</span>
-<span class="normal"> 6</span>
-<span class="normal"> 7</span>
-<span class="normal"> 8</span>
-<span class="normal"> 9</span>
-<span class="normal">10</span>
-<span class="normal">11</span></pre></div></td><td class="code"><div><pre><span></span><code>&gt;&gt;&gt; from aws_lambda_powertools.utilities.batch import batch_processor, BatchProcessor, EventType
-&gt;&gt;&gt; from aws_lambda_powertools.utilities.data_classes.sqs_event import SQSRecord
-&gt;&gt;&gt;
-&gt;&gt;&gt; processor = BatchProcessor(EventType.SQS)
-&gt;&gt;&gt;
-&gt;&gt;&gt; def record_handler(record):
-&gt;&gt;&gt;     return record[&quot;body&quot;]
-&gt;&gt;&gt;
-&gt;&gt;&gt; @batch_processor(record_handler=record_handler, processor=BatchProcessor())
-&gt;&gt;&gt; def handler(event, context):
-&gt;&gt;&gt;     return processor.response()
-</code></pre></div></td></tr></table></div>
-</details>
-
-<details class="limitations" open>
-  <summary>Limitations</summary>
-  <ul>
-<li>Async batch processors. Use <code>async_batch_processor</code> instead.</li>
-</ul>
-</details>
-            <details class="quote">
-              <summary>Source code in <code>aws_lambda_powertools/utilities/batch/decorators.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 89</span>
-<span class="normal"> 90</span>
-<span class="normal"> 91</span>
-<span class="normal"> 92</span>
+              <summary>Source code in <code>aws_lambda_powertools/event_handler/middlewares/schema_validation.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 92</span>
 <span class="normal"> 93</span>
 <span class="normal"> 94</span>
 <span class="normal"> 95</span>
@@ -4316,393 +5082,43 @@ You're not viewing the latest version.
 <span class="normal">125</span>
 <span class="normal">126</span>
 <span class="normal">127</span>
-<span class="normal">128</span>
-<span class="normal">129</span>
-<span class="normal">130</span>
-<span class="normal">131</span>
-<span class="normal">132</span>
-<span class="normal">133</span>
-<span class="normal">134</span>
-<span class="normal">135</span>
-<span class="normal">136</span>
-<span class="normal">137</span>
-<span class="normal">138</span>
-<span class="normal">139</span>
-<span class="normal">140</span>
-<span class="normal">141</span>
-<span class="normal">142</span>
-<span class="normal">143</span>
-<span class="normal">144</span>
-<span class="normal">145</span>
-<span class="normal">146</span>
-<span class="normal">147</span>
-<span class="normal">148</span>
-<span class="normal">149</span>
-<span class="normal">150</span>
-<span class="normal">151</span>
-<span class="normal">152</span>
-<span class="normal">153</span>
-<span class="normal">154</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@lambda_handler_decorator</span>
-<span class="nd">@deprecated</span><span class="p">(</span>
-    <span class="s2">&quot;`batch_processor` decorator is deprecated; use `process_partial_response` function instead.&quot;</span><span class="p">,</span>
-    <span class="n">category</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-<span class="p">)</span>
-<span class="k">def</span><span class="w"> </span><span class="nf">batch_processor</span><span class="p">(</span>
-    <span class="n">handler</span><span class="p">:</span> <span class="n">Callable</span><span class="p">,</span>
-    <span class="n">event</span><span class="p">:</span> <span class="nb">dict</span><span class="p">,</span>
-    <span class="n">context</span><span class="p">:</span> <span class="n">LambdaContext</span><span class="p">,</span>
-    <span class="n">record_handler</span><span class="p">:</span> <span class="n">Callable</span><span class="p">,</span>
-    <span class="n">processor</span><span class="p">:</span> <span class="n">BatchProcessor</span><span class="p">,</span>
-<span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Middleware to handle batch event processing</span>
-
-<span class="sd">    Notes</span>
-<span class="sd">    -----</span>
-<span class="sd">    Consider using process_partial_response function for an easier experience.</span>
+<span class="normal">128</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">handler</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">app</span><span class="p">:</span> <span class="n">EventHandlerInstance</span><span class="p">,</span> <span class="n">next_middleware</span><span class="p">:</span> <span class="n">NextMiddleware</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Response</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Validates incoming JSON payload (body) against JSON Schema provided.</span>
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
-<span class="sd">    handler: Callable</span>
-<span class="sd">        Lambda&#39;s handler</span>
-<span class="sd">    event: dict</span>
-<span class="sd">        Lambda&#39;s Event</span>
-<span class="sd">    context: LambdaContext</span>
-<span class="sd">        Lambda&#39;s Context</span>
-<span class="sd">    record_handler: Callable</span>
-<span class="sd">        Callable or corutine to process each record from the batch</span>
-<span class="sd">    processor: BatchProcessor</span>
-<span class="sd">        Batch Processor to handle partial failure cases</span>
-
-<span class="sd">    Example</span>
-<span class="sd">    --------</span>
-<span class="sd">    **Processes Lambda&#39;s event with a BatchProcessor**</span>
-
-<span class="sd">        &gt;&gt;&gt; from aws_lambda_powertools.utilities.batch import batch_processor, BatchProcessor, EventType</span>
-<span class="sd">        &gt;&gt;&gt; from aws_lambda_powertools.utilities.data_classes.sqs_event import SQSRecord</span>
-<span class="sd">        &gt;&gt;&gt;</span>
-<span class="sd">        &gt;&gt;&gt; processor = BatchProcessor(EventType.SQS)</span>
-<span class="sd">        &gt;&gt;&gt;</span>
-<span class="sd">        &gt;&gt;&gt; def record_handler(record):</span>
-<span class="sd">        &gt;&gt;&gt;     return record[&quot;body&quot;]</span>
-<span class="sd">        &gt;&gt;&gt;</span>
-<span class="sd">        &gt;&gt;&gt; @batch_processor(record_handler=record_handler, processor=BatchProcessor())</span>
-<span class="sd">        &gt;&gt;&gt; def handler(event, context):</span>
-<span class="sd">        &gt;&gt;&gt;     return processor.response()</span>
-
-<span class="sd">    Limitations</span>
-<span class="sd">    -----------</span>
-<span class="sd">    * Async batch processors. Use `async_batch_processor` instead.</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-
-    <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span>
-        <span class="s2">&quot;The `batch_processor` decorator is deprecated in V3 &quot;</span>
-        <span class="s2">&quot;and will be removed in the next major version. Use `process_partial_response` function instead.&quot;</span><span class="p">,</span>
-        <span class="n">category</span><span class="o">=</span><span class="n">PowertoolsDeprecationWarning</span><span class="p">,</span>
-        <span class="n">stacklevel</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
-    <span class="p">)</span>
-
-    <span class="n">records</span> <span class="o">=</span> <span class="n">event</span><span class="p">[</span><span class="s2">&quot;Records&quot;</span><span class="p">]</span>
-
-    <span class="k">with</span> <span class="n">processor</span><span class="p">(</span><span class="n">records</span><span class="p">,</span> <span class="n">record_handler</span><span class="p">,</span> <span class="n">lambda_context</span><span class="o">=</span><span class="n">context</span><span class="p">):</span>
-        <span class="n">processor</span><span class="o">.</span><span class="n">process</span><span class="p">()</span>
-
-    <span class="k">return</span> <span class="n">handler</span><span class="p">(</span><span class="n">event</span><span class="p">,</span> <span class="n">context</span><span class="p">)</span>
-</code></pre></div></td></tr></table></div>
-            </details>
-    </div>
-
-</div>
-
-<div class="doc doc-object doc-function">
-
-
-<h2 id="aws_lambda_powertools.utilities.batch.decorators.process_partial_response" class="doc doc-heading">
-            <span class="doc doc-object-name doc-function-name">process_partial_response</span>
-
-
-<a href="#aws_lambda_powertools.utilities.batch.decorators.process_partial_response" class="headerlink" title="Permanent link">&para;</a></h2>
-<div class="doc-signature highlight"><pre><span></span><code><span class="nf">process_partial_response</span><span class="p">(</span>
-    <span class="n">event</span><span class="p">:</span> <span class="nb">dict</span><span class="p">,</span>
-    <span class="n">record_handler</span><span class="p">:</span> <span class="n">Callable</span><span class="p">,</span>
-    <span class="n">processor</span><span class="p">:</span> <span class="n">BasePartialBatchProcessor</span><span class="p">,</span>
-    <span class="n">context</span><span class="p">:</span> <span class="n">LambdaContext</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">PartialItemFailureResponse</span>
-</code></pre></div>
-
-    <div class="doc doc-contents ">
-
-        <p>Higher level function to handle batch event processing.</p>
-
-
-<table>
-      <thead>
-        <tr>
-          <th><span class="doc-section-title">PARAMETER</span></th>
-          <th><span>DESCRIPTION</span></th>
-        </tr>
-      </thead>
-      <tbody>
-          <tr class="doc-section-item">
-            <td>
-                <code>event</code>
-            </td>
-            <td class="doc-param-details">
-              <div class="doc-md-description">
-                <p>Lambda's original event</p>
-              </div>
-              <p>
-                  <span class="doc-param-annotation">
-                    <b>TYPE:</b>
-                      <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#dict">dict</a></code>
-                  </span>
-              </p>
-            </td>
-          </tr>
-          <tr class="doc-section-item">
-            <td>
-                <code>record_handler</code>
-            </td>
-            <td class="doc-param-details">
-              <div class="doc-md-description">
-                <p>Callable to process each record from the batch</p>
-              </div>
-              <p>
-                  <span class="doc-param-annotation">
-                    <b>TYPE:</b>
-                      <code><a class="autorefs autorefs-external" title="typing.Callable" href="https://docs.python.org/3/library/typing.html#typing.Callable">Callable</a></code>
-                  </span>
-              </p>
-            </td>
-          </tr>
-          <tr class="doc-section-item">
-            <td>
-                <code>processor</code>
-            </td>
-            <td class="doc-param-details">
-              <div class="doc-md-description">
-                <p>Batch Processor to handle partial failure cases</p>
-              </div>
-              <p>
-                  <span class="doc-param-annotation">
-                    <b>TYPE:</b>
-                      <code><a class="autorefs autorefs-internal" title="aws_lambda_powertools.utilities.batch.BasePartialBatchProcessor" href="../base/#aws_lambda_powertools.utilities.batch.base.BasePartialBatchProcessor">BasePartialBatchProcessor</a></code>
-                  </span>
-              </p>
-            </td>
-          </tr>
-          <tr class="doc-section-item">
-            <td>
-                <code>context</code>
-            </td>
-            <td class="doc-param-details">
-              <div class="doc-md-description">
-                <p>Lambda's context, used to optionally inject in record handler</p>
-              </div>
-              <p>
-                  <span class="doc-param-annotation">
-                    <b>TYPE:</b>
-                      <code><a class="autorefs autorefs-internal" title="aws_lambda_powertools.utilities.typing.LambdaContext" href="../../typing/#aws_lambda_powertools.utilities.typing.LambdaContext">LambdaContext</a> | None</code>
-                  </span>
-                  <span class="doc-param-default">
-                    <b>DEFAULT:</b>
-                      <code>None</code>
-                  </span>
-              </p>
-            </td>
-          </tr>
-      </tbody>
-    </table>
-
-
-<table>
-      <thead>
-        <tr>
-          <th><span class="doc-section-title">RETURNS</span></th>
-          <th><span>DESCRIPTION</span></th>
-        </tr>
-      </thead>
-      <tbody>
-          <tr class="doc-section-item">
-            <td>
-                <code>result</code>
-            </td>
-            <td class="doc-returns-details">
-              <div class="doc-md-description">
-                <p>Lambda Partial Batch Response</p>
-              </div>
-                <p>
-                  <span class="doc-returns-annotation">
-                    <b>TYPE:</b>
-                      <code><span title="aws_lambda_powertools.utilities.batch.types.PartialItemFailureResponse">PartialItemFailureResponse</span></code>
-                  </span>
-                </p>
-            </td>
-          </tr>
-      </tbody>
-    </table>
-
-
-<details class="example" open>
-  <summary>Example</summary>
-  <p><strong>Processes Lambda's SQS event</strong></p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
-<span class="normal"> 2</span>
-<span class="normal"> 3</span>
-<span class="normal"> 4</span>
-<span class="normal"> 5</span>
-<span class="normal"> 6</span>
-<span class="normal"> 7</span>
-<span class="normal"> 8</span>
-<span class="normal"> 9</span>
-<span class="normal">10</span>
-<span class="normal">11</span>
-<span class="normal">12</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">aws_lambda_powertools.utilities.batch</span><span class="w"> </span><span class="kn">import</span> <span class="n">BatchProcessor</span><span class="p">,</span> <span class="n">EventType</span><span class="p">,</span> <span class="n">process_partial_response</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">aws_lambda_powertools.utilities.data_classes.sqs_event</span><span class="w"> </span><span class="kn">import</span> <span class="n">SQSRecord</span>
-
-<span class="n">processor</span> <span class="o">=</span> <span class="n">BatchProcessor</span><span class="p">(</span><span class="n">EventType</span><span class="o">.</span><span class="n">SQS</span><span class="p">)</span>
-
-<span class="k">def</span><span class="w"> </span><span class="nf">record_handler</span><span class="p">(</span><span class="n">record</span><span class="p">:</span> <span class="n">SQSRecord</span><span class="p">):</span>
-    <span class="k">return</span> <span class="n">record</span><span class="o">.</span><span class="n">body</span>
-
-<span class="k">def</span><span class="w"> </span><span class="nf">handler</span><span class="p">(</span><span class="n">event</span><span class="p">,</span> <span class="n">context</span><span class="p">):</span>
-    <span class="k">return</span> <span class="n">process_partial_response</span><span class="p">(</span>
-        <span class="n">event</span><span class="o">=</span><span class="n">event</span><span class="p">,</span> <span class="n">record_handler</span><span class="o">=</span><span class="n">record_handler</span><span class="p">,</span> <span class="n">processor</span><span class="o">=</span><span class="n">processor</span><span class="p">,</span> <span class="n">context</span><span class="o">=</span><span class="n">context</span>
-    <span class="p">)</span>
-</code></pre></div></td></tr></table></div>
-</details>
-
-<details class="limitations" open>
-  <summary>Limitations</summary>
-  <ul>
-<li>Async batch processors. Use <code>async_process_partial_response</code> instead.</li>
-</ul>
-</details>
-            <details class="quote">
-              <summary>Source code in <code>aws_lambda_powertools/utilities/batch/decorators.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">157</span>
-<span class="normal">158</span>
-<span class="normal">159</span>
-<span class="normal">160</span>
-<span class="normal">161</span>
-<span class="normal">162</span>
-<span class="normal">163</span>
-<span class="normal">164</span>
-<span class="normal">165</span>
-<span class="normal">166</span>
-<span class="normal">167</span>
-<span class="normal">168</span>
-<span class="normal">169</span>
-<span class="normal">170</span>
-<span class="normal">171</span>
-<span class="normal">172</span>
-<span class="normal">173</span>
-<span class="normal">174</span>
-<span class="normal">175</span>
-<span class="normal">176</span>
-<span class="normal">177</span>
-<span class="normal">178</span>
-<span class="normal">179</span>
-<span class="normal">180</span>
-<span class="normal">181</span>
-<span class="normal">182</span>
-<span class="normal">183</span>
-<span class="normal">184</span>
-<span class="normal">185</span>
-<span class="normal">186</span>
-<span class="normal">187</span>
-<span class="normal">188</span>
-<span class="normal">189</span>
-<span class="normal">190</span>
-<span class="normal">191</span>
-<span class="normal">192</span>
-<span class="normal">193</span>
-<span class="normal">194</span>
-<span class="normal">195</span>
-<span class="normal">196</span>
-<span class="normal">197</span>
-<span class="normal">198</span>
-<span class="normal">199</span>
-<span class="normal">200</span>
-<span class="normal">201</span>
-<span class="normal">202</span>
-<span class="normal">203</span>
-<span class="normal">204</span>
-<span class="normal">205</span>
-<span class="normal">206</span>
-<span class="normal">207</span>
-<span class="normal">208</span>
-<span class="normal">209</span>
-<span class="normal">210</span>
-<span class="normal">211</span>
-<span class="normal">212</span>
-<span class="normal">213</span>
-<span class="normal">214</span>
-<span class="normal">215</span>
-<span class="normal">216</span>
-<span class="normal">217</span>
-<span class="normal">218</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">process_partial_response</span><span class="p">(</span>
-    <span class="n">event</span><span class="p">:</span> <span class="nb">dict</span><span class="p">,</span>
-    <span class="n">record_handler</span><span class="p">:</span> <span class="n">Callable</span><span class="p">,</span>
-    <span class="n">processor</span><span class="p">:</span> <span class="n">BasePartialBatchProcessor</span><span class="p">,</span>
-    <span class="n">context</span><span class="p">:</span> <span class="n">LambdaContext</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">PartialItemFailureResponse</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Higher level function to handle batch event processing.</span>
-
-<span class="sd">    Parameters</span>
-<span class="sd">    ----------</span>
-<span class="sd">    event: dict</span>
-<span class="sd">        Lambda&#39;s original event</span>
-<span class="sd">    record_handler: Callable</span>
-<span class="sd">        Callable to process each record from the batch</span>
-<span class="sd">    processor: BasePartialBatchProcessor</span>
-<span class="sd">        Batch Processor to handle partial failure cases</span>
-<span class="sd">    context: LambdaContext</span>
-<span class="sd">        Lambda&#39;s context, used to optionally inject in record handler</span>
+<span class="sd">    app : EventHandlerInstance</span>
+<span class="sd">        An instance of an Event Handler</span>
+<span class="sd">    next_middleware : NextMiddleware</span>
+<span class="sd">        Callable to get response from the next middleware or route handler in the chain</span>
 
 <span class="sd">    Returns</span>
 <span class="sd">    -------</span>
-<span class="sd">    result: PartialItemFailureResponse</span>
-<span class="sd">        Lambda Partial Batch Response</span>
+<span class="sd">    Response</span>
+<span class="sd">        It can return three types of response objects</span>
 
-<span class="sd">    Example</span>
-<span class="sd">    --------</span>
-<span class="sd">    **Processes Lambda&#39;s SQS event**</span>
-
-<span class="sd">    ```python</span>
-<span class="sd">    from aws_lambda_powertools.utilities.batch import BatchProcessor, EventType, process_partial_response</span>
-<span class="sd">    from aws_lambda_powertools.utilities.data_classes.sqs_event import SQSRecord</span>
-
-<span class="sd">    processor = BatchProcessor(EventType.SQS)</span>
-
-<span class="sd">    def record_handler(record: SQSRecord):</span>
-<span class="sd">        return record.body</span>
-
-<span class="sd">    def handler(event, context):</span>
-<span class="sd">        return process_partial_response(</span>
-<span class="sd">            event=event, record_handler=record_handler, processor=processor, context=context</span>
-<span class="sd">        )</span>
-<span class="sd">    ```</span>
-
-<span class="sd">    Limitations</span>
-<span class="sd">    -----------</span>
-<span class="sd">    * Async batch processors. Use `async_process_partial_response` instead.</span>
+<span class="sd">        - Original response: Propagates HTTP response returned from the next middleware if validation succeeds</span>
+<span class="sd">        - HTTP 400: Payload or response failed JSON Schema validation</span>
+<span class="sd">        - HTTP 500: JSON Schema provided has incorrect format</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">try</span><span class="p">:</span>
-        <span class="n">records</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">dict</span><span class="p">]</span> <span class="o">=</span> <span class="n">event</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;Records&quot;</span><span class="p">,</span> <span class="p">[])</span>
-    <span class="k">except</span> <span class="ne">AttributeError</span><span class="p">:</span>
-        <span class="n">event_types</span> <span class="o">=</span> <span class="s2">&quot;, &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">EventType</span><span class="o">.</span><span class="n">__members__</span><span class="p">))</span>
-        <span class="n">docs</span> <span class="o">=</span> <span class="s2">&quot;https://docs.powertools.aws.dev/lambda/python/latest/utilities/batch/#processing-messages-from-sqs&quot;</span>  <span class="c1"># noqa: E501 # long-line</span>
-        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
-            <span class="sa">f</span><span class="s2">&quot;Invalid event format. Please ensure batch event is a valid </span><span class="si">{</span><span class="n">processor</span><span class="o">.</span><span class="n">event_type</span><span class="o">.</span><span class="n">value</span><span class="si">}</span><span class="s2"> event. </span><span class="se">\n</span><span class="s2">&quot;</span>
-            <span class="sa">f</span><span class="s2">&quot;See sample events in our documentation for either </span><span class="si">{</span><span class="n">event_types</span><span class="si">}</span><span class="s2">: </span><span class="se">\n</span><span class="s2"> </span><span class="si">{</span><span class="n">docs</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>
-        <span class="p">)</span>
+        <span class="n">validate</span><span class="p">(</span><span class="n">event</span><span class="o">=</span><span class="n">app</span><span class="o">.</span><span class="n">current_event</span><span class="o">.</span><span class="n">json_body</span><span class="p">,</span> <span class="n">schema</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">inbound_schema</span><span class="p">,</span> <span class="n">formats</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">inbound_formats</span><span class="p">)</span>
+    <span class="k">except</span> <span class="n">SchemaValidationError</span> <span class="k">as</span> <span class="n">error</span><span class="p">:</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">bad_request</span><span class="p">(</span><span class="n">error</span><span class="p">)</span>
+    <span class="k">except</span> <span class="n">InvalidSchemaFormatError</span> <span class="k">as</span> <span class="n">error</span><span class="p">:</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">bad_config</span><span class="p">(</span><span class="n">error</span><span class="p">)</span>
 
-    <span class="k">with</span> <span class="n">processor</span><span class="p">(</span><span class="n">records</span><span class="p">,</span> <span class="n">record_handler</span><span class="p">,</span> <span class="n">context</span><span class="p">):</span>
-        <span class="n">processor</span><span class="o">.</span><span class="n">process</span><span class="p">()</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="n">next_middleware</span><span class="p">(</span><span class="n">app</span><span class="p">)</span>
 
-    <span class="k">return</span> <span class="n">processor</span><span class="o">.</span><span class="n">response</span><span class="p">()</span>
+    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">outbound_formats</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">validate</span><span class="p">(</span><span class="n">event</span><span class="o">=</span><span class="n">result</span><span class="o">.</span><span class="n">body</span><span class="p">,</span> <span class="n">schema</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">inbound_schema</span><span class="p">,</span> <span class="n">formats</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">inbound_formats</span><span class="p">)</span>
+        <span class="k">except</span> <span class="n">SchemaValidationError</span> <span class="k">as</span> <span class="n">error</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">bad_response</span><span class="p">(</span><span class="n">error</span><span class="p">)</span>
+        <span class="k">except</span> <span class="n">InvalidSchemaFormatError</span> <span class="k">as</span> <span class="n">error</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">bad_config</span><span class="p">(</span><span class="n">error</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">result</span>
 </code></pre></div></td></tr></table></div>
             </details>
     </div>
@@ -4717,243 +5133,6 @@ You're not viewing the latest version.
 
 </div>
 
-<div class="doc doc-object doc-module">
-
-
-
-<a id="aws_lambda_powertools.utilities.batch.sqs_fifo_partial_processor"></a>
-    <div class="doc doc-contents first">
-
-
-
-
-
-
-
-<table>
-      <thead>
-        <tr>
-          <th><span class="doc-section-title">CLASS</span></th>
-          <th><span>DESCRIPTION</span></th>
-        </tr>
-      </thead>
-      <tbody>
-          <tr class="doc-section-item">
-            <td><code><a class="autorefs autorefs-internal" title="aws_lambda_powertools.utilities.batch.sqs_fifo_partial_processor.SqsFifoPartialProcessor" href="#aws_lambda_powertools.utilities.batch.sqs_fifo_partial_processor.SqsFifoPartialProcessor">SqsFifoPartialProcessor</a></code></td>
-            <td class="doc-class-details">
-              <div class="doc-md-description">
-                <p>Process native partial responses from SQS FIFO queues.</p>
-              </div>
-            </td>
-          </tr>
-      </tbody>
-    </table>
-
-
-
-
-
-
-
-  <div class="doc doc-children">
-
-
-
-
-
-
-
-
-<div class="doc doc-object doc-class">
-
-
-
-<h2 id="aws_lambda_powertools.utilities.batch.sqs_fifo_partial_processor.SqsFifoPartialProcessor" class="doc doc-heading">
-            <span class="doc doc-object-name doc-class-name">SqsFifoPartialProcessor</span>
-
-
-<a href="#aws_lambda_powertools.utilities.batch.sqs_fifo_partial_processor.SqsFifoPartialProcessor" class="headerlink" title="Permanent link">&para;</a></h2>
-<div class="doc-signature highlight"><pre><span></span><code><span class="nf">SqsFifoPartialProcessor</span><span class="p">(</span>
-    <span class="n">model</span><span class="p">:</span> <span class="n">BatchSqsTypeModel</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-    <span class="n">skip_group_on_error</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-<span class="p">)</span>
-</code></pre></div>
-
-    <div class="doc doc-contents ">
-            <p class="doc doc-class-bases">
-              Bases: <code><a class="autorefs autorefs-internal" title="aws_lambda_powertools.utilities.batch.BatchProcessor" href="../base/#aws_lambda_powertools.utilities.batch.base.BatchProcessor">BatchProcessor</a></code></p>
-
-
-        <p>Process native partial responses from SQS FIFO queues.</p>
-<p>Stops processing records when the first record fails. The remaining records are reported as failed items.</p>
-
-
-<details class="example" open>
-  <summary>Example</summary>
-  <h4 id="aws_lambda_powertools.utilities.batch.sqs_fifo_partial_processor.SqsFifoPartialProcessor--process-batch-triggered-by-a-fifo-sqs">Process batch triggered by a FIFO SQS<a class="headerlink" href="#aws_lambda_powertools.utilities.batch.sqs_fifo_partial_processor.SqsFifoPartialProcessor--process-batch-triggered-by-a-fifo-sqs" title="Permanent link">&para;</a></h4>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
-<span class="normal"> 2</span>
-<span class="normal"> 3</span>
-<span class="normal"> 4</span>
-<span class="normal"> 5</span>
-<span class="normal"> 6</span>
-<span class="normal"> 7</span>
-<span class="normal"> 8</span>
-<span class="normal"> 9</span>
-<span class="normal">10</span>
-<span class="normal">11</span>
-<span class="normal">12</span>
-<span class="normal">13</span>
-<span class="normal">14</span>
-<span class="normal">15</span>
-<span class="normal">16</span>
-<span class="normal">17</span>
-<span class="normal">18</span>
-<span class="normal">19</span>
-<span class="normal">20</span>
-<span class="normal">21</span>
-<span class="normal">22</span>
-<span class="normal">23</span>
-<span class="normal">24</span>
-<span class="normal">25</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">json</span>
-
-<span class="kn">from</span><span class="w"> </span><span class="nn">aws_lambda_powertools</span><span class="w"> </span><span class="kn">import</span> <span class="n">Logger</span><span class="p">,</span> <span class="n">Tracer</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">aws_lambda_powertools.utilities.batch</span><span class="w"> </span><span class="kn">import</span> <span class="n">SqsFifoPartialProcessor</span><span class="p">,</span> <span class="n">EventType</span><span class="p">,</span> <span class="n">batch_processor</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">aws_lambda_powertools.utilities.data_classes.sqs_event</span><span class="w"> </span><span class="kn">import</span> <span class="n">SQSRecord</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">aws_lambda_powertools.utilities.typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">LambdaContext</span>
-
-
-<span class="n">processor</span> <span class="o">=</span> <span class="n">SqsFifoPartialProcessor</span><span class="p">()</span>
-<span class="n">tracer</span> <span class="o">=</span> <span class="n">Tracer</span><span class="p">()</span>
-<span class="n">logger</span> <span class="o">=</span> <span class="n">Logger</span><span class="p">()</span>
-
-
-<span class="nd">@tracer</span><span class="o">.</span><span class="n">capture_method</span>
-<span class="k">def</span><span class="w"> </span><span class="nf">record_handler</span><span class="p">(</span><span class="n">record</span><span class="p">:</span> <span class="n">SQSRecord</span><span class="p">):</span>
-    <span class="n">payload</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="n">record</span><span class="o">.</span><span class="n">body</span>
-    <span class="k">if</span> <span class="n">payload</span><span class="p">:</span>
-        <span class="n">item</span><span class="p">:</span> <span class="nb">dict</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">payload</span><span class="p">)</span>
-    <span class="o">...</span>
-
-<span class="nd">@logger</span><span class="o">.</span><span class="n">inject_lambda_context</span>
-<span class="nd">@tracer</span><span class="o">.</span><span class="n">capture_lambda_handler</span>
-<span class="nd">@batch_processor</span><span class="p">(</span><span class="n">record_handler</span><span class="o">=</span><span class="n">record_handler</span><span class="p">,</span> <span class="n">processor</span><span class="o">=</span><span class="n">processor</span><span class="p">)</span>
-<span class="k">def</span><span class="w"> </span><span class="nf">lambda_handler</span><span class="p">(</span><span class="n">event</span><span class="p">,</span> <span class="n">context</span><span class="p">:</span> <span class="n">LambdaContext</span><span class="p">):</span>
-    <span class="k">return</span> <span class="n">processor</span><span class="o">.</span><span class="n">response</span><span class="p">()</span>
-</code></pre></div></td></tr></table></div>
-</details>
-
-
-<table>
-      <thead>
-        <tr>
-          <th><span class="doc-section-title">PARAMETER</span></th>
-          <th><span>DESCRIPTION</span></th>
-        </tr>
-      </thead>
-      <tbody>
-          <tr class="doc-section-item">
-            <td>
-                <code>model</code>
-            </td>
-            <td class="doc-param-details">
-              <div class="doc-md-description">
-                <p>An optional model for batch processing.</p>
-              </div>
-              <p>
-                  <span class="doc-param-annotation">
-                    <b>TYPE:</b>
-                      <code><span title="aws_lambda_powertools.utilities.batch.types.BatchSqsTypeModel">BatchSqsTypeModel</span> | None</code>
-                  </span>
-                  <span class="doc-param-default">
-                    <b>DEFAULT:</b>
-                      <code>None</code>
-                  </span>
-              </p>
-            </td>
-          </tr>
-          <tr class="doc-section-item">
-            <td>
-                <code>skip_group_on_error</code>
-            </td>
-            <td class="doc-param-details">
-              <div class="doc-md-description">
-                <p>Determines whether to exclusively skip messages from the MessageGroupID that encountered processing failures
-Default is False.</p>
-              </div>
-              <p>
-                  <span class="doc-param-annotation">
-                    <b>TYPE:</b>
-                      <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/functions.html#bool">bool</a></code>
-                  </span>
-                  <span class="doc-param-default">
-                    <b>DEFAULT:</b>
-                      <code>False</code>
-                  </span>
-              </p>
-            </td>
-          </tr>
-      </tbody>
-    </table>
-
-
-
-
-
-
-
-
-
-
-                  <details class="quote">
-                    <summary>Source code in <code>aws_lambda_powertools/utilities/batch/sqs_fifo_partial_processor.py</code></summary>
-                    <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">69</span>
-<span class="normal">70</span>
-<span class="normal">71</span>
-<span class="normal">72</span>
-<span class="normal">73</span>
-<span class="normal">74</span>
-<span class="normal">75</span>
-<span class="normal">76</span>
-<span class="normal">77</span>
-<span class="normal">78</span>
-<span class="normal">79</span>
-<span class="normal">80</span>
-<span class="normal">81</span>
-<span class="normal">82</span>
-<span class="normal">83</span>
-<span class="normal">84</span>
-<span class="normal">85</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">model</span><span class="p">:</span> <span class="n">BatchSqsTypeModel</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">skip_group_on_error</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Initialize the SqsFifoProcessor.</span>
-
-<span class="sd">    Parameters</span>
-<span class="sd">    ----------</span>
-<span class="sd">    model: BatchSqsTypeModel | None</span>
-<span class="sd">        An optional model for batch processing.</span>
-<span class="sd">    skip_group_on_error: bool</span>
-<span class="sd">        Determines whether to exclusively skip messages from the MessageGroupID that encountered processing failures</span>
-<span class="sd">        Default is False.</span>
-
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="bp">self</span><span class="o">.</span><span class="n">_skip_group_on_error</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="n">skip_group_on_error</span>
-    <span class="bp">self</span><span class="o">.</span><span class="n">_current_group_id</span> <span class="o">=</span> <span class="kc">None</span>
-    <span class="bp">self</span><span class="o">.</span><span class="n">_failed_group_ids</span><span class="p">:</span> <span class="nb">set</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
-    <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">EventType</span><span class="o">.</span><span class="n">SQS</span><span class="p">,</span> <span class="n">model</span><span class="p">)</span>
-</code></pre></div></td></tr></table></div>
-                  </details>
-
-
-
-  <div class="doc doc-children">
-
-
-
-
-
-
-
-
 
 
 
@@ -4962,8 +5141,6 @@ Default is False.</p>
     </div>
 
 </div>
-
-
 
 
   </div>
@@ -4991,7 +5168,7 @@ Default is False.</p>
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    2025-02-03
+    2025-02-04
   </span>
 
     
