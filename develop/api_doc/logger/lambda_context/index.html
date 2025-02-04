@@ -13,25 +13,25 @@
       
       
       
-        <link rel="prev" href="../parameters/secrets/">
+        <link rel="prev" href="../formatter/">
       
       
-        <link rel="next" href="../streaming/">
+        <link rel="next" href="../logger/">
       
       
-      <link rel="icon" href="../../media/aws-logo-light.svg">
+      <link rel="icon" href="../../../media/aws-logo-light.svg">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.2">
     
     
       
-        <title>Parser - Powertools for AWS Lambda (Python)</title>
+        <title>Lambda Context - Powertools for AWS Lambda (Python)</title>
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.d7758b05.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.d7758b05.min.css">
       
         
-        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
       
       
 
@@ -50,11 +50,11 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/_mkdocstrings.css">
+      <link rel="stylesheet" href="../../../assets/_mkdocstrings.css">
     
-      <link rel="stylesheet" href="../../stylesheets/extra.css">
+      <link rel="stylesheet" href="../../../stylesheets/extra.css">
     
-    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -80,7 +80,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#aws_lambda_powertools.utilities.parser.parser" class="md-skip">
+        <a href="#aws_lambda_powertools.logging.lambda_context" class="md-skip">
           Skip to content
         </a>
       
@@ -108,12 +108,12 @@ On March 25th 2025, v2 reaches <a href="https://github.com/aws-powertools/powert
             <div class="md-banner__inner md-grid md-typeset">
               
 You're not viewing the latest version.
-<a href="../../..">
+<a href="../../../..">
   <strong>Click here to go to latest.</strong>
 </a>
 
             </div>
-            <script>var el=document.querySelector("[data-md-component=outdated]"),base=new URL("../.."),outdated=__md_get("__outdated",sessionStorage,base);!0===outdated&&el&&(el.hidden=!1)</script>
+            <script>var el=document.querySelector("[data-md-component=outdated]"),base=new URL("../../.."),outdated=__md_get("__outdated",sessionStorage,base);!0===outdated&&el&&(el.hidden=!1)</script>
           </aside>
         
       </div>
@@ -123,9 +123,9 @@ You're not viewing the latest version.
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="../.." title="Powertools for AWS Lambda (Python)" class="md-header__button md-logo" aria-label="Powertools for AWS Lambda (Python)" data-md-component="logo">
+    <a href="../../.." title="Powertools for AWS Lambda (Python)" class="md-header__button md-logo" aria-label="Powertools for AWS Lambda (Python)" data-md-component="logo">
       
-  <img src="../../media/aws-logo-light.svg" alt="logo">
+  <img src="../../../media/aws-logo-light.svg" alt="logo">
 
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -142,7 +142,7 @@ You're not viewing the latest version.
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Parser
+              Lambda Context
             
           </span>
         </div>
@@ -251,7 +251,7 @@ You're not viewing the latest version.
     
     
       <li class="md-tabs__item">
-        <a href="../.." class="md-tabs__link">
+        <a href="../../.." class="md-tabs__link">
           
   
     
@@ -269,7 +269,7 @@ You're not viewing the latest version.
   
   
     <li class="md-tabs__item">
-      <a href="../../tutorial/" class="md-tabs__link">
+      <a href="../../../tutorial/" class="md-tabs__link">
         
   
     
@@ -288,7 +288,7 @@ You're not viewing the latest version.
     
     
       <li class="md-tabs__item">
-        <a href="../../security/" class="md-tabs__link">
+        <a href="../../../security/" class="md-tabs__link">
           
   
     
@@ -318,7 +318,7 @@ You're not viewing the latest version.
     
     
       <li class="md-tabs__item md-tabs__item--active">
-        <a href="../batch/base/" class="md-tabs__link">
+        <a href="../../batch/base/" class="md-tabs__link">
           
   
     
@@ -356,9 +356,9 @@ You're not viewing the latest version.
 
 <nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../.." title="Powertools for AWS Lambda (Python)" class="md-nav__button md-logo" aria-label="Powertools for AWS Lambda (Python)" data-md-component="logo">
+    <a href="../../.." title="Powertools for AWS Lambda (Python)" class="md-nav__button md-logo" aria-label="Powertools for AWS Lambda (Python)" data-md-component="logo">
       
-  <img src="../../media/aws-logo-light.svg" alt="logo">
+  <img src="../../../media/aws-logo-light.svg" alt="logo">
 
     </a>
     Powertools for AWS Lambda (Python)
@@ -422,7 +422,7 @@ You're not viewing the latest version.
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../.." class="md-nav__link ">
+            <a href="../../.." class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -456,7 +456,7 @@ You're not viewing the latest version.
   
   
     <li class="md-nav__item">
-      <a href="../../changelog/" class="md-nav__link">
+      <a href="../../../changelog/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -478,7 +478,7 @@ You're not viewing the latest version.
   
   
     <li class="md-nav__item">
-      <a href="../../api/" target="_blank" class="md-nav__link">
+      <a href="../../../api/" target="_blank" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -500,7 +500,7 @@ You're not viewing the latest version.
   
   
     <li class="md-nav__item">
-      <a href="../../upgrade/" class="md-nav__link">
+      <a href="../../../upgrade/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -522,7 +522,7 @@ You're not viewing the latest version.
   
   
     <li class="md-nav__item">
-      <a href="../../we_made_this/" class="md-nav__link">
+      <a href="../../../we_made_this/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -566,7 +566,7 @@ You're not viewing the latest version.
   
   
     <li class="md-nav__item">
-      <a href="../../roadmap/" class="md-nav__link">
+      <a href="../../../roadmap/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -665,7 +665,7 @@ You're not viewing the latest version.
   
   
     <li class="md-nav__item">
-      <a href="../../core/tracer/" class="md-nav__link">
+      <a href="../../../core/tracer/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -687,7 +687,7 @@ You're not viewing the latest version.
   
   
     <li class="md-nav__item">
-      <a href="../../core/logger/" class="md-nav__link">
+      <a href="../../../core/logger/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -736,7 +736,7 @@ You're not viewing the latest version.
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../core/metrics/" class="md-nav__link ">
+            <a href="../../../core/metrics/" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -770,7 +770,7 @@ You're not viewing the latest version.
   
   
     <li class="md-nav__item">
-      <a href="../../core/metrics/" class="md-nav__link">
+      <a href="../../../core/metrics/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -792,7 +792,7 @@ You're not viewing the latest version.
   
   
     <li class="md-nav__item">
-      <a href="../../core/metrics/datadog/" class="md-nav__link">
+      <a href="../../../core/metrics/datadog/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -871,7 +871,7 @@ You're not viewing the latest version.
   
   
     <li class="md-nav__item">
-      <a href="../../core/event_handler/api_gateway/" class="md-nav__link">
+      <a href="../../../core/event_handler/api_gateway/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -893,7 +893,7 @@ You're not viewing the latest version.
   
   
     <li class="md-nav__item">
-      <a href="../../core/event_handler/appsync/" class="md-nav__link">
+      <a href="../../../core/event_handler/appsync/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -915,7 +915,7 @@ You're not viewing the latest version.
   
   
     <li class="md-nav__item">
-      <a href="../../core/event_handler/bedrock_agents/" class="md-nav__link">
+      <a href="../../../core/event_handler/bedrock_agents/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -945,7 +945,7 @@ You're not viewing the latest version.
   
   
     <li class="md-nav__item">
-      <a href="../../utilities/parameters/" class="md-nav__link">
+      <a href="../../../utilities/parameters/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -967,7 +967,7 @@ You're not viewing the latest version.
   
   
     <li class="md-nav__item">
-      <a href="../../utilities/batch/" class="md-nav__link">
+      <a href="../../../utilities/batch/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -989,7 +989,7 @@ You're not viewing the latest version.
   
   
     <li class="md-nav__item">
-      <a href="../../utilities/typing/" class="md-nav__link">
+      <a href="../../../utilities/typing/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1011,7 +1011,7 @@ You're not viewing the latest version.
   
   
     <li class="md-nav__item">
-      <a href="../../utilities/validation/" class="md-nav__link">
+      <a href="../../../utilities/validation/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1033,7 +1033,7 @@ You're not viewing the latest version.
   
   
     <li class="md-nav__item">
-      <a href="../../utilities/data_classes/" class="md-nav__link">
+      <a href="../../../utilities/data_classes/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1055,7 +1055,7 @@ You're not viewing the latest version.
   
   
     <li class="md-nav__item">
-      <a href="../../utilities/parser/" class="md-nav__link">
+      <a href="../../../utilities/parser/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1077,7 +1077,7 @@ You're not viewing the latest version.
   
   
     <li class="md-nav__item">
-      <a href="../../utilities/idempotency/" class="md-nav__link">
+      <a href="../../../utilities/idempotency/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1099,7 +1099,7 @@ You're not viewing the latest version.
   
   
     <li class="md-nav__item">
-      <a href="../../utilities/data_masking/" class="md-nav__link">
+      <a href="../../../utilities/data_masking/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1121,7 +1121,7 @@ You're not viewing the latest version.
   
   
     <li class="md-nav__item">
-      <a href="../../utilities/feature_flags/" class="md-nav__link">
+      <a href="../../../utilities/feature_flags/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1143,7 +1143,7 @@ You're not viewing the latest version.
   
   
     <li class="md-nav__item">
-      <a href="../../utilities/streaming/" class="md-nav__link">
+      <a href="../../../utilities/streaming/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1165,7 +1165,7 @@ You're not viewing the latest version.
   
   
     <li class="md-nav__item">
-      <a href="../../utilities/middleware_factory/" class="md-nav__link">
+      <a href="../../../utilities/middleware_factory/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1187,7 +1187,7 @@ You're not viewing the latest version.
   
   
     <li class="md-nav__item">
-      <a href="../../utilities/jmespath_functions/" class="md-nav__link">
+      <a href="../../../utilities/jmespath_functions/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1246,7 +1246,7 @@ You're not viewing the latest version.
   
   
     <li class="md-nav__item">
-      <a href="../../tutorial/" class="md-nav__link">
+      <a href="../../../tutorial/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1322,7 +1322,7 @@ You're not viewing the latest version.
   
   
     <li class="md-nav__item">
-      <a href="../../security/" class="md-nav__link">
+      <a href="../../../security/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1344,7 +1344,7 @@ You're not viewing the latest version.
   
   
     <li class="md-nav__item">
-      <a href="../../automation/" class="md-nav__link">
+      <a href="../../../automation/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1366,7 +1366,7 @@ You're not viewing the latest version.
   
   
     <li class="md-nav__item">
-      <a href="../../versioning/" class="md-nav__link">
+      <a href="../../../versioning/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1388,7 +1388,7 @@ You're not viewing the latest version.
   
   
     <li class="md-nav__item">
-      <a href="../../roadmap/" class="md-nav__link">
+      <a href="../../../roadmap/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1410,7 +1410,7 @@ You're not viewing the latest version.
   
   
     <li class="md-nav__item">
-      <a href="../../maintainers/" class="md-nav__link">
+      <a href="../../../maintainers/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1481,7 +1481,7 @@ You're not viewing the latest version.
   
   
     <li class="md-nav__item">
-      <a href="../../contributing/setup/" class="md-nav__link">
+      <a href="../../../contributing/setup/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1503,7 +1503,7 @@ You're not viewing the latest version.
   
   
     <li class="md-nav__item">
-      <a href="../../contributing/getting_started/" class="md-nav__link">
+      <a href="../../../contributing/getting_started/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1525,7 +1525,7 @@ You're not viewing the latest version.
   
   
     <li class="md-nav__item">
-      <a href="../../contributing/conventions/" class="md-nav__link">
+      <a href="../../../contributing/conventions/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1690,7 +1690,7 @@ You're not viewing the latest version.
   
   
     <li class="md-nav__item">
-      <a href="../batch/base/" class="md-nav__link">
+      <a href="../../batch/base/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1712,7 +1712,7 @@ You're not viewing the latest version.
   
   
     <li class="md-nav__item">
-      <a href="../batch/decorators/" class="md-nav__link">
+      <a href="../../batch/decorators/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1734,7 +1734,7 @@ You're not viewing the latest version.
   
   
     <li class="md-nav__item">
-      <a href="../batch/exceptions/" class="md-nav__link">
+      <a href="../../batch/exceptions/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1764,7 +1764,7 @@ You're not viewing the latest version.
   
   
     <li class="md-nav__item">
-      <a href="../data_classes/" class="md-nav__link">
+      <a href="../../data_classes/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1838,7 +1838,7 @@ You're not viewing the latest version.
   
   
     <li class="md-nav__item">
-      <a href="../data_masking/base/" class="md-nav__link">
+      <a href="../../data_masking/base/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1860,7 +1860,7 @@ You're not viewing the latest version.
   
   
     <li class="md-nav__item">
-      <a href="../data_masking/exceptions/" class="md-nav__link">
+      <a href="../../data_masking/exceptions/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1882,7 +1882,7 @@ You're not viewing the latest version.
   
   
     <li class="md-nav__item">
-      <a href="../data_masking/provider/" class="md-nav__link">
+      <a href="../../data_masking/provider/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1970,7 +1970,7 @@ You're not viewing the latest version.
   
   
     <li class="md-nav__item">
-      <a href="../feature_flags/appconfig/" class="md-nav__link">
+      <a href="../../feature_flags/appconfig/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1992,7 +1992,7 @@ You're not viewing the latest version.
   
   
     <li class="md-nav__item">
-      <a href="../feature_flags/base/" class="md-nav__link">
+      <a href="../../feature_flags/base/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2014,7 +2014,7 @@ You're not viewing the latest version.
   
   
     <li class="md-nav__item">
-      <a href="../feature_flags/comparators/" class="md-nav__link">
+      <a href="../../feature_flags/comparators/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2036,7 +2036,7 @@ You're not viewing the latest version.
   
   
     <li class="md-nav__item">
-      <a href="../feature_flags/exceptions/" class="md-nav__link">
+      <a href="../../feature_flags/exceptions/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2058,7 +2058,7 @@ You're not viewing the latest version.
   
   
     <li class="md-nav__item">
-      <a href="../feature_flags/feature_flags/" class="md-nav__link">
+      <a href="../../feature_flags/feature_flags/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2080,7 +2080,7 @@ You're not viewing the latest version.
   
   
     <li class="md-nav__item">
-      <a href="../feature_flags/schema/" class="md-nav__link">
+      <a href="../../feature_flags/schema/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2166,7 +2166,7 @@ You're not viewing the latest version.
   
   
     <li class="md-nav__item">
-      <a href="../idempotency/base/" class="md-nav__link">
+      <a href="../../idempotency/base/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2188,7 +2188,7 @@ You're not viewing the latest version.
   
   
     <li class="md-nav__item">
-      <a href="../idempotency/config/" class="md-nav__link">
+      <a href="../../idempotency/config/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2210,7 +2210,7 @@ You're not viewing the latest version.
   
   
     <li class="md-nav__item">
-      <a href="../idempotency/exceptions/" class="md-nav__link">
+      <a href="../../idempotency/exceptions/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2232,7 +2232,7 @@ You're not viewing the latest version.
   
   
     <li class="md-nav__item">
-      <a href="../idempotency/persistence/" class="md-nav__link">
+      <a href="../../idempotency/persistence/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2254,7 +2254,7 @@ You're not viewing the latest version.
   
   
     <li class="md-nav__item">
-      <a href="../idempotency/serialization/" class="md-nav__link">
+      <a href="../../idempotency/serialization/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2284,7 +2284,7 @@ You're not viewing the latest version.
   
   
     <li class="md-nav__item">
-      <a href="../jmespath_functions/" class="md-nav__link">
+      <a href="../../jmespath_functions/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2303,6 +2303,8 @@ You're not viewing the latest version.
                 
   
   
+    
+  
   
   
     
@@ -2329,11 +2331,11 @@ You're not viewing the latest version.
       
     
     
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_7" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_7" checked>
         
           
           <label class="md-nav__link" for="__nav_4_7" id="__nav_4_7_label" tabindex="">
@@ -2348,7 +2350,7 @@ You're not viewing the latest version.
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_7_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_7_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_4_7">
             <span class="md-nav__icon md-icon"></span>
             Logger
@@ -2362,7 +2364,7 @@ You're not viewing the latest version.
   
   
     <li class="md-nav__item">
-      <a href="../logger/datadog_formatter/" class="md-nav__link">
+      <a href="../datadog_formatter/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2384,7 +2386,7 @@ You're not viewing the latest version.
   
   
     <li class="md-nav__item">
-      <a href="../logger/exceptions/" class="md-nav__link">
+      <a href="../exceptions/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2406,7 +2408,7 @@ You're not viewing the latest version.
   
   
     <li class="md-nav__item">
-      <a href="../logger/formatter/" class="md-nav__link">
+      <a href="../formatter/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2425,10 +2427,29 @@ You're not viewing the latest version.
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../logger/lambda_context/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Lambda Context
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
@@ -2438,6 +2459,51 @@ You're not viewing the latest version.
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#aws_lambda_powertools.logging.lambda_context" class="md-nav__link">
+    <span class="md-ellipsis">
+      lambda_context
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#aws_lambda_powertools.logging.lambda_context.LambdaContextModel" class="md-nav__link">
+    <span class="md-ellipsis">
+      LambdaContextModel
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#aws_lambda_powertools.logging.lambda_context.build_lambda_context_model" class="md-nav__link">
+    <span class="md-ellipsis">
+      build_lambda_context_model
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -2450,7 +2516,7 @@ You're not viewing the latest version.
   
   
     <li class="md-nav__item">
-      <a href="../logger/logger/" class="md-nav__link">
+      <a href="../logger/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2480,7 +2546,7 @@ You're not viewing the latest version.
   
   
     <li class="md-nav__item">
-      <a href="../middleware_factory/" class="md-nav__link">
+      <a href="../../middleware_factory/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2558,7 +2624,7 @@ You're not viewing the latest version.
   
   
     <li class="md-nav__item">
-      <a href="../parameters/base/" class="md-nav__link">
+      <a href="../../parameters/base/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2580,7 +2646,7 @@ You're not viewing the latest version.
   
   
     <li class="md-nav__item">
-      <a href="../parameters/appconfig/" class="md-nav__link">
+      <a href="../../parameters/appconfig/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2602,7 +2668,7 @@ You're not viewing the latest version.
   
   
     <li class="md-nav__item">
-      <a href="../parameters/dynamodb/" class="md-nav__link">
+      <a href="../../parameters/dynamodb/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2624,7 +2690,7 @@ You're not viewing the latest version.
   
   
     <li class="md-nav__item">
-      <a href="../parameters/ssm/" class="md-nav__link">
+      <a href="../../parameters/ssm/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2646,7 +2712,7 @@ You're not viewing the latest version.
   
   
     <li class="md-nav__item">
-      <a href="../parameters/secrets/" class="md-nav__link">
+      <a href="../../parameters/secrets/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2673,29 +2739,10 @@ You're not viewing the latest version.
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  <span class="md-ellipsis">
-    Parser
-    
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../parser/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2705,51 +2752,6 @@ You're not viewing the latest version.
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#aws_lambda_powertools.utilities.parser.parser" class="md-nav__link">
-    <span class="md-ellipsis">
-      parser
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#aws_lambda_powertools.utilities.parser.parser.event_parser" class="md-nav__link">
-    <span class="md-ellipsis">
-      event_parser
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#aws_lambda_powertools.utilities.parser.parser.parse" class="md-nav__link">
-    <span class="md-ellipsis">
-      parse
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -2762,7 +2764,7 @@ You're not viewing the latest version.
   
   
     <li class="md-nav__item">
-      <a href="../streaming/" class="md-nav__link">
+      <a href="../../streaming/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2834,7 +2836,7 @@ You're not viewing the latest version.
   
   
     <li class="md-nav__item">
-      <a href="../tracer/base/" class="md-nav__link">
+      <a href="../../tracer/base/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2856,7 +2858,7 @@ You're not viewing the latest version.
   
   
     <li class="md-nav__item">
-      <a href="../tracer/tracing/" class="md-nav__link">
+      <a href="../../tracer/tracing/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2886,7 +2888,7 @@ You're not viewing the latest version.
   
   
     <li class="md-nav__item">
-      <a href="../typing/" class="md-nav__link">
+      <a href="../../typing/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2908,7 +2910,7 @@ You're not viewing the latest version.
   
   
     <li class="md-nav__item">
-      <a href="../validation/" class="md-nav__link">
+      <a href="../../validation/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2955,27 +2957,27 @@ You're not viewing the latest version.
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#aws_lambda_powertools.utilities.parser.parser" class="md-nav__link">
+  <a href="#aws_lambda_powertools.logging.lambda_context" class="md-nav__link">
     <span class="md-ellipsis">
-      parser
+      lambda_context
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#aws_lambda_powertools.utilities.parser.parser.event_parser" class="md-nav__link">
+  <a href="#aws_lambda_powertools.logging.lambda_context.LambdaContextModel" class="md-nav__link">
     <span class="md-ellipsis">
-      event_parser
+      LambdaContextModel
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#aws_lambda_powertools.utilities.parser.parser.parse" class="md-nav__link">
+  <a href="#aws_lambda_powertools.logging.lambda_context.build_lambda_context_model" class="md-nav__link">
     <span class="md-ellipsis">
-      parse
+      build_lambda_context_model
     </span>
   </a>
   
@@ -3000,7 +3002,7 @@ You're not viewing the latest version.
   
 
 
-  <h1>Parser</h1>
+  <h1>Lambda Context</h1>
 
 <!-- markdownlint-disable MD043 MD041 -->
 
@@ -3009,20 +3011,33 @@ You're not viewing the latest version.
 
 
 
-<a id="aws_lambda_powertools.utilities.parser.parser"></a>
+<a id="aws_lambda_powertools.logging.lambda_context"></a>
     <div class="doc doc-contents first">
 
-        <p>The Parser utility simplifies data parsing and validation using Pydantic. It allows you to define data models
-in pure Python classes, parse and validate incoming events, and extract only the data you need.</p>
-<div class="admonition abstract">
-<p class="admonition-title">Usage Documentation</p>
-<p><a href="../../utilities/parser/"><code>Parser</code></a></p>
-</div>
 
 
 
 
 
+
+<table>
+      <thead>
+        <tr>
+          <th><span class="doc-section-title">CLASS</span></th>
+          <th><span>DESCRIPTION</span></th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td><code><a class="autorefs autorefs-internal" title="aws_lambda_powertools.logging.lambda_context.LambdaContextModel" href="#aws_lambda_powertools.logging.lambda_context.LambdaContextModel">LambdaContextModel</a></code></td>
+            <td class="doc-class-details">
+              <div class="doc-md-description">
+                <p>A handful of Lambda Runtime Context fields</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
 
 
 
@@ -3036,18 +3051,10 @@ in pure Python classes, parse and validate incoming events, and extract only the
       </thead>
       <tbody>
             <tr class="doc-section-item">
-              <td><code><a class="autorefs autorefs-internal" title="aws_lambda_powertools.utilities.parser.parser.event_parser" href="#aws_lambda_powertools.utilities.parser.parser.event_parser">event_parser</a></code></td>
+              <td><code><a class="autorefs autorefs-internal" title="aws_lambda_powertools.logging.lambda_context.build_lambda_context_model" href="#aws_lambda_powertools.logging.lambda_context.build_lambda_context_model">build_lambda_context_model</a></code></td>
               <td class="doc-function-details">
                 <div class="doc-md-description">
-                  <p>Lambda handler decorator to parse &amp; validate events using Pydantic models</p>
-                </div>
-              </td>
-            </tr>
-            <tr class="doc-section-item">
-              <td><code><a class="autorefs autorefs-internal" title="aws_lambda_powertools.utilities.parser.parser.parse" href="#aws_lambda_powertools.utilities.parser.parser.parse">parse</a></code></td>
-              <td class="doc-function-details">
-                <div class="doc-md-description">
-                  <p>Standalone function to parse &amp; validate events using Pydantic models</p>
+                  <p>Captures Lambda function runtime info to be used across all log statements</p>
                 </div>
               </td>
             </tr>
@@ -3067,76 +3074,29 @@ in pure Python classes, parse and validate incoming events, and extract only the
 
 
 
-
-<div class="doc doc-object doc-function">
-
-
-<h2 id="aws_lambda_powertools.utilities.parser.parser.event_parser" class="doc doc-heading">
-            <span class="doc doc-object-name doc-function-name">event_parser</span>
+<div class="doc doc-object doc-class">
 
 
-<a href="#aws_lambda_powertools.utilities.parser.parser.event_parser" class="headerlink" title="Permanent link">&para;</a></h2>
-<div class="doc-signature highlight"><pre><span></span><code><span class="nf">event_parser</span><span class="p">(</span>
-    <span class="n">handler</span><span class="p">:</span> <span class="n">Callable</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="n">EventParserReturnType</span><span class="p">],</span>
-    <span class="n">event</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">],</span>
-    <span class="n">context</span><span class="p">:</span> <span class="n">LambdaContext</span><span class="p">,</span>
-    <span class="n">model</span><span class="p">:</span> <span class="nb">type</span><span class="p">[</span><span class="n">T</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-    <span class="n">envelope</span><span class="p">:</span> <span class="nb">type</span><span class="p">[</span><span class="n">Envelope</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-    <span class="o">**</span><span class="n">kwargs</span><span class="p">:</span> <span class="n">Any</span>
-<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">EventParserReturnType</span>
+
+<h2 id="aws_lambda_powertools.logging.lambda_context.LambdaContextModel" class="doc doc-heading">
+            <span class="doc doc-object-name doc-class-name">LambdaContextModel</span>
+
+
+<a href="#aws_lambda_powertools.logging.lambda_context.LambdaContextModel" class="headerlink" title="Permanent link">&para;</a></h2>
+<div class="doc-signature highlight"><pre><span></span><code><span class="nf">LambdaContextModel</span><span class="p">(</span>
+    <span class="n">function_name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;UNDEFINED&quot;</span><span class="p">,</span>
+    <span class="n">function_memory_size</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">128</span><span class="p">,</span>
+    <span class="n">function_arn</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;UNDEFINED&quot;</span><span class="p">,</span>
+    <span class="n">function_request_id</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;UNDEFINED&quot;</span><span class="p">,</span>
+<span class="p">)</span>
 </code></pre></div>
 
     <div class="doc doc-contents ">
 
-        <p>Lambda handler decorator to parse &amp; validate events using Pydantic models</p>
-<p>It requires a model that implements Pydantic BaseModel to parse &amp; validate the event.</p>
-<p>When an envelope is given, it'll use the following logic:</p>
-<ol>
-<li>Parse the event against the envelope model first e.g. EnvelopeModel(**event)</li>
-<li>Envelope will extract a given key to be parsed against the model e.g. event.detail</li>
-</ol>
-<p>This is useful when you need to confirm event wrapper structure, and
-b) selectively extract a portion of your payload for parsing &amp; validation.</p>
-<p>NOTE: If envelope is omitted, the complete event is parsed to match the model parameter definition.</p>
 
+        <p>A handful of Lambda Runtime Context fields</p>
+<p>Full Lambda Context object: https://docs.aws.amazon.com/lambda/latest/dg/python-context-object.html</p>
 
-<details class="example" open>
-  <summary>Example</summary>
-  <p><strong>Lambda handler decorator to parse &amp; validate event</strong></p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
-<span class="normal">2</span>
-<span class="normal">3</span>
-<span class="normal">4</span>
-<span class="normal">5</span>
-<span class="normal">6</span>
-<span class="normal">7</span>
-<span class="normal">8</span></pre></div></td><td class="code"><div><pre><span></span><code>class Order(BaseModel):
-    id: int
-    description: str
-    ...
-
-@event_parser(model=Order)
-def handler(event: Order, context: LambdaContext):
-    ...
-</code></pre></div></td></tr></table></div>
-<p><strong>Lambda handler decorator to parse &amp; validate event - using built-in envelope</strong></p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
-<span class="normal">2</span>
-<span class="normal">3</span>
-<span class="normal">4</span>
-<span class="normal">5</span>
-<span class="normal">6</span>
-<span class="normal">7</span>
-<span class="normal">8</span></pre></div></td><td class="code"><div><pre><span></span><code>class Order(BaseModel):
-    id: int
-    description: str
-    ...
-
-@event_parser(model=Order, envelope=envelopes.EVENTBRIDGE)
-def handler(event: Order, context: LambdaContext):
-    ...
-</code></pre></div></td></tr></table></div>
-</details>
 
 <table>
       <thead>
@@ -3148,36 +3108,172 @@ def handler(event: Order, context: LambdaContext):
       <tbody>
           <tr class="doc-section-item">
             <td>
-                <code>handler</code>
+                <code>function_name</code>
             </td>
             <td class="doc-param-details">
               <div class="doc-md-description">
-                <p>Method to annotate on</p>
+                <p>Lambda function name, by default "UNDEFINED"
+e.g. "test"</p>
               </div>
               <p>
                   <span class="doc-param-annotation">
                     <b>TYPE:</b>
-                      <code><a class="autorefs autorefs-external" title="typing.Callable" href="https://docs.python.org/3/library/typing.html#typing.Callable">Callable</a>[..., <span title="aws_lambda_powertools.utilities.parser.types.EventParserReturnType">EventParserReturnType</span>]</code>
+                      <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a></code>
+                  </span>
+                  <span class="doc-param-default">
+                    <b>DEFAULT:</b>
+                      <code>&#39;UNDEFINED&#39;</code>
                   </span>
               </p>
             </td>
           </tr>
           <tr class="doc-section-item">
             <td>
-                <code>event</code>
+                <code>function_memory_size</code>
             </td>
             <td class="doc-param-details">
               <div class="doc-md-description">
-                <p>Lambda event to be parsed &amp; validated</p>
+                <p>Lambda function memory in MB, by default 128</p>
               </div>
               <p>
                   <span class="doc-param-annotation">
                     <b>TYPE:</b>
-                      <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#dict">dict</a>[<a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a>, <a class="autorefs autorefs-external" title="typing.Any" href="https://docs.python.org/3/library/typing.html#typing.Any">Any</a>]</code>
+                      <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/functions.html#int">int</a></code>
+                  </span>
+                  <span class="doc-param-default">
+                    <b>DEFAULT:</b>
+                      <code>128</code>
                   </span>
               </p>
             </td>
           </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>function_arn</code>
+            </td>
+            <td class="doc-param-details">
+              <div class="doc-md-description">
+                <p>Lambda function ARN, by default "UNDEFINED"
+e.g. "arn:aws:lambda:eu-west-1:809313241:function:test"</p>
+              </div>
+              <p>
+                  <span class="doc-param-annotation">
+                    <b>TYPE:</b>
+                      <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a></code>
+                  </span>
+                  <span class="doc-param-default">
+                    <b>DEFAULT:</b>
+                      <code>&#39;UNDEFINED&#39;</code>
+                  </span>
+              </p>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>function_request_id</code>
+            </td>
+            <td class="doc-param-details">
+              <div class="doc-md-description">
+                <p>Lambda function unique request id, by default "UNDEFINED"
+e.g. "52fdfc07-2182-154f-163f-5f0f9a621d72"</p>
+              </div>
+              <p>
+                  <span class="doc-param-annotation">
+                    <b>TYPE:</b>
+                      <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a></code>
+                  </span>
+                  <span class="doc-param-default">
+                    <b>DEFAULT:</b>
+                      <code>&#39;UNDEFINED&#39;</code>
+                  </span>
+              </p>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+
+
+
+
+
+
+
+
+                  <details class="quote">
+                    <summary>Source code in <code>aws_lambda_powertools/logging/lambda_context.py</code></summary>
+                    <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
+    <span class="bp">self</span><span class="p">,</span>
+    <span class="n">function_name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;UNDEFINED&quot;</span><span class="p">,</span>
+    <span class="n">function_memory_size</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">128</span><span class="p">,</span>
+    <span class="n">function_arn</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;UNDEFINED&quot;</span><span class="p">,</span>
+    <span class="n">function_request_id</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;UNDEFINED&quot;</span><span class="p">,</span>
+<span class="p">):</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">function_name</span> <span class="o">=</span> <span class="n">function_name</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">function_memory_size</span> <span class="o">=</span> <span class="n">function_memory_size</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">function_arn</span> <span class="o">=</span> <span class="n">function_arn</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">function_request_id</span> <span class="o">=</span> <span class="n">function_request_id</span>
+</code></pre></div></td></tr></table></div>
+                  </details>
+
+
+
+  <div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+
+
+  </div>
+
+    </div>
+
+</div>
+
+
+<div class="doc doc-object doc-function">
+
+
+<h2 id="aws_lambda_powertools.logging.lambda_context.build_lambda_context_model" class="doc doc-heading">
+            <span class="doc doc-object-name doc-function-name">build_lambda_context_model</span>
+
+
+<a href="#aws_lambda_powertools.logging.lambda_context.build_lambda_context_model" class="headerlink" title="Permanent link">&para;</a></h2>
+<div class="doc-signature highlight"><pre><span></span><code><span class="nf">build_lambda_context_model</span><span class="p">(</span>
+    <span class="n">context</span><span class="p">:</span> <span class="n">Any</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">LambdaContextModel</span>
+</code></pre></div>
+
+    <div class="doc doc-contents ">
+
+        <p>Captures Lambda function runtime info to be used across all log statements</p>
+
+
+<table>
+      <thead>
+        <tr>
+          <th><span class="doc-section-title">PARAMETER</span></th>
+          <th><span>DESCRIPTION</span></th>
+        </tr>
+      </thead>
+      <tbody>
           <tr class="doc-section-item">
             <td>
                 <code>context</code>
@@ -3189,47 +3285,7 @@ def handler(event: Order, context: LambdaContext):
               <p>
                   <span class="doc-param-annotation">
                     <b>TYPE:</b>
-                      <code><a class="autorefs autorefs-internal" title="aws_lambda_powertools.utilities.typing.LambdaContext" href="../typing/#aws_lambda_powertools.utilities.typing.LambdaContext">LambdaContext</a></code>
-                  </span>
-              </p>
-            </td>
-          </tr>
-          <tr class="doc-section-item">
-            <td>
-                <code>model</code>
-            </td>
-            <td class="doc-param-details">
-              <div class="doc-md-description">
-                <p>Your data model that will replace the event.</p>
-              </div>
-              <p>
-                  <span class="doc-param-annotation">
-                    <b>TYPE:</b>
-                      <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/functions.html#type">type</a>[<span title="aws_lambda_powertools.utilities.parser.types.T">T</span>] | None</code>
-                  </span>
-                  <span class="doc-param-default">
-                    <b>DEFAULT:</b>
-                      <code>None</code>
-                  </span>
-              </p>
-            </td>
-          </tr>
-          <tr class="doc-section-item">
-            <td>
-                <code>envelope</code>
-            </td>
-            <td class="doc-param-details">
-              <div class="doc-md-description">
-                <p>Optional envelope to extract the model from</p>
-              </div>
-              <p>
-                  <span class="doc-param-annotation">
-                    <b>TYPE:</b>
-                      <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/functions.html#type">type</a>[<span title="aws_lambda_powertools.utilities.parser.envelopes.base.Envelope">Envelope</span>] | None</code>
-                  </span>
-                  <span class="doc-param-default">
-                    <b>DEFAULT:</b>
-                      <code>None</code>
+                      <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/functions.html#object">object</a></code>
                   </span>
               </p>
             </td>
@@ -3241,44 +3297,20 @@ def handler(event: Order, context: LambdaContext):
 <table>
       <thead>
         <tr>
-          <th><span class="doc-section-title">RAISES</span></th>
+          <th><span class="doc-section-title">RETURNS</span></th>
           <th><span>DESCRIPTION</span></th>
         </tr>
       </thead>
       <tbody>
           <tr class="doc-section-item">
             <td>
-              <span class="doc-raises-annotation">
-                  <code><span title="pydantic.ValidationError">ValidationError</span></code>
-              </span>
+                <span class="doc-returns-annotation">
+                    <code><a class="autorefs autorefs-internal" title="aws_lambda_powertools.logging.lambda_context.LambdaContextModel" href="#aws_lambda_powertools.logging.lambda_context.LambdaContextModel">LambdaContextModel</a></code>
+                </span>
             </td>
-            <td class="doc-raises-details">
+            <td class="doc-returns-details">
               <div class="doc-md-description">
-                <p>When input event does not conform with the provided model</p>
-              </div>
-            </td>
-          </tr>
-          <tr class="doc-section-item">
-            <td>
-              <span class="doc-raises-annotation">
-                  <code><span title="aws_lambda_powertools.utilities.parser.exceptions.InvalidModelTypeError">InvalidModelTypeError</span></code>
-              </span>
-            </td>
-            <td class="doc-raises-details">
-              <div class="doc-md-description">
-                <p>When the model given does not implement BaseModel, is not provided</p>
-              </div>
-            </td>
-          </tr>
-          <tr class="doc-section-item">
-            <td>
-              <span class="doc-raises-annotation">
-                  <code><span title="aws_lambda_powertools.utilities.parser.exceptions.InvalidEnvelopeError">InvalidEnvelopeError</span></code>
-              </span>
-            </td>
-            <td class="doc-raises-details">
-              <div class="doc-md-description">
-                <p>When envelope given does not implement BaseEnvelope</p>
+                <p>Lambda context only with select fields</p>
               </div>
             </td>
           </tr>
@@ -3286,547 +3318,50 @@ def handler(event: Order, context: LambdaContext):
     </table>
 
             <details class="quote">
-              <summary>Source code in <code>aws_lambda_powertools/utilities/parser/parser.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 31</span>
-<span class="normal"> 32</span>
-<span class="normal"> 33</span>
-<span class="normal"> 34</span>
-<span class="normal"> 35</span>
-<span class="normal"> 36</span>
-<span class="normal"> 37</span>
-<span class="normal"> 38</span>
-<span class="normal"> 39</span>
-<span class="normal"> 40</span>
-<span class="normal"> 41</span>
-<span class="normal"> 42</span>
-<span class="normal"> 43</span>
-<span class="normal"> 44</span>
-<span class="normal"> 45</span>
-<span class="normal"> 46</span>
-<span class="normal"> 47</span>
-<span class="normal"> 48</span>
-<span class="normal"> 49</span>
-<span class="normal"> 50</span>
-<span class="normal"> 51</span>
-<span class="normal"> 52</span>
-<span class="normal"> 53</span>
-<span class="normal"> 54</span>
-<span class="normal"> 55</span>
-<span class="normal"> 56</span>
-<span class="normal"> 57</span>
-<span class="normal"> 58</span>
-<span class="normal"> 59</span>
-<span class="normal"> 60</span>
-<span class="normal"> 61</span>
-<span class="normal"> 62</span>
-<span class="normal"> 63</span>
-<span class="normal"> 64</span>
-<span class="normal"> 65</span>
-<span class="normal"> 66</span>
-<span class="normal"> 67</span>
-<span class="normal"> 68</span>
-<span class="normal"> 69</span>
-<span class="normal"> 70</span>
-<span class="normal"> 71</span>
-<span class="normal"> 72</span>
-<span class="normal"> 73</span>
-<span class="normal"> 74</span>
-<span class="normal"> 75</span>
-<span class="normal"> 76</span>
-<span class="normal"> 77</span>
-<span class="normal"> 78</span>
-<span class="normal"> 79</span>
-<span class="normal"> 80</span>
-<span class="normal"> 81</span>
-<span class="normal"> 82</span>
-<span class="normal"> 83</span>
-<span class="normal"> 84</span>
-<span class="normal"> 85</span>
-<span class="normal"> 86</span>
-<span class="normal"> 87</span>
-<span class="normal"> 88</span>
-<span class="normal"> 89</span>
-<span class="normal"> 90</span>
-<span class="normal"> 91</span>
-<span class="normal"> 92</span>
-<span class="normal"> 93</span>
-<span class="normal"> 94</span>
-<span class="normal"> 95</span>
-<span class="normal"> 96</span>
-<span class="normal"> 97</span>
-<span class="normal"> 98</span>
-<span class="normal"> 99</span>
-<span class="normal">100</span>
-<span class="normal">101</span>
-<span class="normal">102</span>
-<span class="normal">103</span>
-<span class="normal">104</span>
-<span class="normal">105</span>
-<span class="normal">106</span>
-<span class="normal">107</span>
-<span class="normal">108</span>
-<span class="normal">109</span>
-<span class="normal">110</span>
-<span class="normal">111</span>
-<span class="normal">112</span>
-<span class="normal">113</span>
-<span class="normal">114</span>
-<span class="normal">115</span>
-<span class="normal">116</span>
-<span class="normal">117</span>
-<span class="normal">118</span>
-<span class="normal">119</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@lambda_handler_decorator</span>
-<span class="k">def</span><span class="w"> </span><span class="nf">event_parser</span><span class="p">(</span>
-    <span class="n">handler</span><span class="p">:</span> <span class="n">Callable</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="n">EventParserReturnType</span><span class="p">],</span>
-    <span class="n">event</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">],</span>
-    <span class="n">context</span><span class="p">:</span> <span class="n">LambdaContext</span><span class="p">,</span>
-    <span class="n">model</span><span class="p">:</span> <span class="nb">type</span><span class="p">[</span><span class="n">T</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-    <span class="n">envelope</span><span class="p">:</span> <span class="nb">type</span><span class="p">[</span><span class="n">Envelope</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-    <span class="o">**</span><span class="n">kwargs</span><span class="p">:</span> <span class="n">Any</span><span class="p">,</span>
-<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">EventParserReturnType</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Lambda handler decorator to parse &amp; validate events using Pydantic models</span>
-
-<span class="sd">    It requires a model that implements Pydantic BaseModel to parse &amp; validate the event.</span>
-
-<span class="sd">    When an envelope is given, it&#39;ll use the following logic:</span>
-
-<span class="sd">    1. Parse the event against the envelope model first e.g. EnvelopeModel(**event)</span>
-<span class="sd">    2. Envelope will extract a given key to be parsed against the model e.g. event.detail</span>
-
-<span class="sd">    This is useful when you need to confirm event wrapper structure, and</span>
-<span class="sd">    b) selectively extract a portion of your payload for parsing &amp; validation.</span>
-
-<span class="sd">    NOTE: If envelope is omitted, the complete event is parsed to match the model parameter definition.</span>
-
-<span class="sd">    Example</span>
-<span class="sd">    -------</span>
-<span class="sd">    **Lambda handler decorator to parse &amp; validate event**</span>
-
-<span class="sd">        class Order(BaseModel):</span>
-<span class="sd">            id: int</span>
-<span class="sd">            description: str</span>
-<span class="sd">            ...</span>
-
-<span class="sd">        @event_parser(model=Order)</span>
-<span class="sd">        def handler(event: Order, context: LambdaContext):</span>
-<span class="sd">            ...</span>
-
-<span class="sd">    **Lambda handler decorator to parse &amp; validate event - using built-in envelope**</span>
-
-<span class="sd">        class Order(BaseModel):</span>
-<span class="sd">            id: int</span>
-<span class="sd">            description: str</span>
-<span class="sd">            ...</span>
-
-<span class="sd">        @event_parser(model=Order, envelope=envelopes.EVENTBRIDGE)</span>
-<span class="sd">        def handler(event: Order, context: LambdaContext):</span>
-<span class="sd">            ...</span>
+              <summary>Source code in <code>aws_lambda_powertools/logging/lambda_context.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">37</span>
+<span class="normal">38</span>
+<span class="normal">39</span>
+<span class="normal">40</span>
+<span class="normal">41</span>
+<span class="normal">42</span>
+<span class="normal">43</span>
+<span class="normal">44</span>
+<span class="normal">45</span>
+<span class="normal">46</span>
+<span class="normal">47</span>
+<span class="normal">48</span>
+<span class="normal">49</span>
+<span class="normal">50</span>
+<span class="normal">51</span>
+<span class="normal">52</span>
+<span class="normal">53</span>
+<span class="normal">54</span>
+<span class="normal">55</span>
+<span class="normal">56</span>
+<span class="normal">57</span>
+<span class="normal">58</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">build_lambda_context_model</span><span class="p">(</span><span class="n">context</span><span class="p">:</span> <span class="n">Any</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">LambdaContextModel</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Captures Lambda function runtime info to be used across all log statements</span>
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
-<span class="sd">    handler:  Callable</span>
-<span class="sd">        Method to annotate on</span>
-<span class="sd">    event:    dict</span>
-<span class="sd">        Lambda event to be parsed &amp; validated</span>
-<span class="sd">    context:  LambdaContext</span>
+<span class="sd">    context : object</span>
 <span class="sd">        Lambda context object</span>
-<span class="sd">    model:   type[T] | None</span>
-<span class="sd">        Your data model that will replace the event.</span>
-<span class="sd">    envelope: Envelope</span>
-<span class="sd">        Optional envelope to extract the model from</span>
 
-<span class="sd">    Raises</span>
-<span class="sd">    ------</span>
-<span class="sd">    ValidationError</span>
-<span class="sd">        When input event does not conform with the provided model</span>
-<span class="sd">    InvalidModelTypeError</span>
-<span class="sd">        When the model given does not implement BaseModel, is not provided</span>
-<span class="sd">    InvalidEnvelopeError</span>
-<span class="sd">        When envelope given does not implement BaseEnvelope</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-
-    <span class="k">if</span> <span class="n">model</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="c1"># The first parameter of a Lambda function is always the event.</span>
-        <span class="c1"># Get the first parameter&#39;s type by using typing.get_type_hints.</span>
-        <span class="n">type_hints</span> <span class="o">=</span> <span class="n">typing</span><span class="o">.</span><span class="n">get_type_hints</span><span class="p">(</span><span class="n">handler</span><span class="p">)</span>
-        <span class="k">if</span> <span class="n">type_hints</span><span class="p">:</span>
-            <span class="n">model</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">type_hints</span><span class="o">.</span><span class="n">values</span><span class="p">())[</span><span class="mi">0</span><span class="p">]</span>
-        <span class="k">if</span> <span class="n">model</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-            <span class="k">raise</span> <span class="n">InvalidModelTypeError</span><span class="p">(</span>
-                <span class="s2">&quot;The model must be provided either as the `model` argument to `event_parser`&quot;</span>
-                <span class="s2">&quot;or as the type hint of `event` in the handler that it wraps&quot;</span><span class="p">,</span>
-            <span class="p">)</span>
-
-    <span class="k">if</span> <span class="n">envelope</span><span class="p">:</span>
-        <span class="n">parsed_event</span> <span class="o">=</span> <span class="n">parse</span><span class="p">(</span><span class="n">event</span><span class="o">=</span><span class="n">event</span><span class="p">,</span> <span class="n">model</span><span class="o">=</span><span class="n">model</span><span class="p">,</span> <span class="n">envelope</span><span class="o">=</span><span class="n">envelope</span><span class="p">)</span>
-    <span class="k">else</span><span class="p">:</span>
-        <span class="n">parsed_event</span> <span class="o">=</span> <span class="n">parse</span><span class="p">(</span><span class="n">event</span><span class="o">=</span><span class="n">event</span><span class="p">,</span> <span class="n">model</span><span class="o">=</span><span class="n">model</span><span class="p">)</span>
-
-    <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Calling handler </span><span class="si">{</span><span class="n">handler</span><span class="o">.</span><span class="vm">__name__</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">handler</span><span class="p">(</span><span class="n">parsed_event</span><span class="p">,</span> <span class="n">context</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-</code></pre></div></td></tr></table></div>
-            </details>
-    </div>
-
-</div>
-
-<div class="doc doc-object doc-function">
-
-
-<h2 id="aws_lambda_powertools.utilities.parser.parser.parse" class="doc doc-heading">
-            <span class="doc doc-object-name doc-function-name">parse</span>
-
-
-<a href="#aws_lambda_powertools.utilities.parser.parser.parse" class="headerlink" title="Permanent link">&para;</a></h2>
-          <div class="doc-overloads">
-<div class="doc-signature highlight"><pre><span></span><code><span class="nf">parse</span><span class="p">(</span><span class="n">event</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">],</span> <span class="n">model</span><span class="p">:</span> <span class="nb">type</span><span class="p">[</span><span class="n">T</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">T</span>
-</code></pre></div><div class="doc-signature highlight"><pre><span></span><code><span class="nf">parse</span><span class="p">(</span>
-    <span class="n">event</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">],</span>
-    <span class="n">model</span><span class="p">:</span> <span class="nb">type</span><span class="p">[</span><span class="n">T</span><span class="p">],</span>
-    <span class="n">envelope</span><span class="p">:</span> <span class="nb">type</span><span class="p">[</span><span class="n">Envelope</span><span class="p">],</span>
-<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">T</span>
-</code></pre></div>          </div>
-<div class="doc-signature highlight"><pre><span></span><code><span class="nf">parse</span><span class="p">(</span>
-    <span class="n">event</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">],</span>
-    <span class="n">model</span><span class="p">:</span> <span class="nb">type</span><span class="p">[</span><span class="n">T</span><span class="p">],</span>
-    <span class="n">envelope</span><span class="p">:</span> <span class="nb">type</span><span class="p">[</span><span class="n">Envelope</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-<span class="p">)</span>
-</code></pre></div>
-
-    <div class="doc doc-contents ">
-
-        <p>Standalone function to parse &amp; validate events using Pydantic models</p>
-<p>Typically used when you need fine-grained control over error handling compared to event_parser decorator.</p>
-
-
-<details class="example" open>
-  <summary>Example</summary>
-  <p><strong>Lambda handler decorator to parse &amp; validate event</strong></p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
-<span class="normal"> 2</span>
-<span class="normal"> 3</span>
-<span class="normal"> 4</span>
-<span class="normal"> 5</span>
-<span class="normal"> 6</span>
-<span class="normal"> 7</span>
-<span class="normal"> 8</span>
-<span class="normal"> 9</span>
-<span class="normal">10</span>
-<span class="normal">11</span>
-<span class="normal">12</span></pre></div></td><td class="code"><div><pre><span></span><code>from aws_lambda_powertools.utilities.parser import ValidationError
-
-class Order(BaseModel):
-    id: int
-    description: str
-    ...
-
-def handler(event: Order, context: LambdaContext):
-    try:
-        parse(model=Order)
-    except ValidationError:
-        ...
-</code></pre></div></td></tr></table></div>
-<p><strong>Lambda handler decorator to parse &amp; validate event - using built-in envelope</strong></p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
-<span class="normal"> 2</span>
-<span class="normal"> 3</span>
-<span class="normal"> 4</span>
-<span class="normal"> 5</span>
-<span class="normal"> 6</span>
-<span class="normal"> 7</span>
-<span class="normal"> 8</span>
-<span class="normal"> 9</span>
-<span class="normal">10</span></pre></div></td><td class="code"><div><pre><span></span><code>class Order(BaseModel):
-    id: int
-    description: str
-    ...
-
-def handler(event: Order, context: LambdaContext):
-    try:
-        parse(model=Order, envelope=envelopes.EVENTBRIDGE)
-    except ValidationError:
-        ...
-</code></pre></div></td></tr></table></div>
-</details>
-
-<table>
-      <thead>
-        <tr>
-          <th><span class="doc-section-title">PARAMETER</span></th>
-          <th><span>DESCRIPTION</span></th>
-        </tr>
-      </thead>
-      <tbody>
-          <tr class="doc-section-item">
-            <td>
-                <code>event</code>
-            </td>
-            <td class="doc-param-details">
-              <div class="doc-md-description">
-                <p>Lambda event to be parsed &amp; validated</p>
-              </div>
-              <p>
-                  <span class="doc-param-annotation">
-                    <b>TYPE:</b>
-                      <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#dict">dict</a>[<a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a>, <a class="autorefs autorefs-external" title="typing.Any" href="https://docs.python.org/3/library/typing.html#typing.Any">Any</a>]</code>
-                  </span>
-              </p>
-            </td>
-          </tr>
-          <tr class="doc-section-item">
-            <td>
-                <code>model</code>
-            </td>
-            <td class="doc-param-details">
-              <div class="doc-md-description">
-                <p>Your data model that will replace the event</p>
-              </div>
-              <p>
-                  <span class="doc-param-annotation">
-                    <b>TYPE:</b>
-                      <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/functions.html#type">type</a>[<span title="aws_lambda_powertools.utilities.parser.types.T">T</span>]</code>
-                  </span>
-              </p>
-            </td>
-          </tr>
-          <tr class="doc-section-item">
-            <td>
-                <code>envelope</code>
-            </td>
-            <td class="doc-param-details">
-              <div class="doc-md-description">
-                <p>Optional envelope to extract the model from</p>
-              </div>
-              <p>
-                  <span class="doc-param-annotation">
-                    <b>TYPE:</b>
-                      <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/functions.html#type">type</a>[<span title="aws_lambda_powertools.utilities.parser.envelopes.base.Envelope">Envelope</span>] | None</code>
-                  </span>
-                  <span class="doc-param-default">
-                    <b>DEFAULT:</b>
-                      <code>None</code>
-                  </span>
-              </p>
-            </td>
-          </tr>
-      </tbody>
-    </table>
-
-
-<table>
-      <thead>
-        <tr>
-          <th><span class="doc-section-title">RAISES</span></th>
-          <th><span>DESCRIPTION</span></th>
-        </tr>
-      </thead>
-      <tbody>
-          <tr class="doc-section-item">
-            <td>
-              <span class="doc-raises-annotation">
-                  <code><span title="pydantic.ValidationError">ValidationError</span></code>
-              </span>
-            </td>
-            <td class="doc-raises-details">
-              <div class="doc-md-description">
-                <p>When input event does not conform with model provided</p>
-              </div>
-            </td>
-          </tr>
-          <tr class="doc-section-item">
-            <td>
-              <span class="doc-raises-annotation">
-                  <code><span title="aws_lambda_powertools.utilities.parser.exceptions.InvalidModelTypeError">InvalidModelTypeError</span></code>
-              </span>
-            </td>
-            <td class="doc-raises-details">
-              <div class="doc-md-description">
-                <p>When model given does not implement BaseModel</p>
-              </div>
-            </td>
-          </tr>
-          <tr class="doc-section-item">
-            <td>
-              <span class="doc-raises-annotation">
-                  <code><span title="aws_lambda_powertools.utilities.parser.exceptions.InvalidEnvelopeError">InvalidEnvelopeError</span></code>
-              </span>
-            </td>
-            <td class="doc-raises-details">
-              <div class="doc-md-description">
-                <p>When envelope given does not implement BaseEnvelope</p>
-              </div>
-            </td>
-          </tr>
-      </tbody>
-    </table>
-
-            <details class="quote">
-              <summary>Source code in <code>aws_lambda_powertools/utilities/parser/parser.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">130</span>
-<span class="normal">131</span>
-<span class="normal">132</span>
-<span class="normal">133</span>
-<span class="normal">134</span>
-<span class="normal">135</span>
-<span class="normal">136</span>
-<span class="normal">137</span>
-<span class="normal">138</span>
-<span class="normal">139</span>
-<span class="normal">140</span>
-<span class="normal">141</span>
-<span class="normal">142</span>
-<span class="normal">143</span>
-<span class="normal">144</span>
-<span class="normal">145</span>
-<span class="normal">146</span>
-<span class="normal">147</span>
-<span class="normal">148</span>
-<span class="normal">149</span>
-<span class="normal">150</span>
-<span class="normal">151</span>
-<span class="normal">152</span>
-<span class="normal">153</span>
-<span class="normal">154</span>
-<span class="normal">155</span>
-<span class="normal">156</span>
-<span class="normal">157</span>
-<span class="normal">158</span>
-<span class="normal">159</span>
-<span class="normal">160</span>
-<span class="normal">161</span>
-<span class="normal">162</span>
-<span class="normal">163</span>
-<span class="normal">164</span>
-<span class="normal">165</span>
-<span class="normal">166</span>
-<span class="normal">167</span>
-<span class="normal">168</span>
-<span class="normal">169</span>
-<span class="normal">170</span>
-<span class="normal">171</span>
-<span class="normal">172</span>
-<span class="normal">173</span>
-<span class="normal">174</span>
-<span class="normal">175</span>
-<span class="normal">176</span>
-<span class="normal">177</span>
-<span class="normal">178</span>
-<span class="normal">179</span>
-<span class="normal">180</span>
-<span class="normal">181</span>
-<span class="normal">182</span>
-<span class="normal">183</span>
-<span class="normal">184</span>
-<span class="normal">185</span>
-<span class="normal">186</span>
-<span class="normal">187</span>
-<span class="normal">188</span>
-<span class="normal">189</span>
-<span class="normal">190</span>
-<span class="normal">191</span>
-<span class="normal">192</span>
-<span class="normal">193</span>
-<span class="normal">194</span>
-<span class="normal">195</span>
-<span class="normal">196</span>
-<span class="normal">197</span>
-<span class="normal">198</span>
-<span class="normal">199</span>
-<span class="normal">200</span>
-<span class="normal">201</span>
-<span class="normal">202</span>
-<span class="normal">203</span>
-<span class="normal">204</span>
-<span class="normal">205</span>
-<span class="normal">206</span>
-<span class="normal">207</span>
-<span class="normal">208</span>
-<span class="normal">209</span>
-<span class="normal">210</span>
-<span class="normal">211</span>
-<span class="normal">212</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">parse</span><span class="p">(</span><span class="n">event</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">],</span> <span class="n">model</span><span class="p">:</span> <span class="nb">type</span><span class="p">[</span><span class="n">T</span><span class="p">],</span> <span class="n">envelope</span><span class="p">:</span> <span class="nb">type</span><span class="p">[</span><span class="n">Envelope</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Standalone function to parse &amp; validate events using Pydantic models</span>
-
-<span class="sd">    Typically used when you need fine-grained control over error handling compared to event_parser decorator.</span>
-
-<span class="sd">    Example</span>
+<span class="sd">    Returns</span>
 <span class="sd">    -------</span>
-
-<span class="sd">    **Lambda handler decorator to parse &amp; validate event**</span>
-
-<span class="sd">        from aws_lambda_powertools.utilities.parser import ValidationError</span>
-
-<span class="sd">        class Order(BaseModel):</span>
-<span class="sd">            id: int</span>
-<span class="sd">            description: str</span>
-<span class="sd">            ...</span>
-
-<span class="sd">        def handler(event: Order, context: LambdaContext):</span>
-<span class="sd">            try:</span>
-<span class="sd">                parse(model=Order)</span>
-<span class="sd">            except ValidationError:</span>
-<span class="sd">                ...</span>
-
-<span class="sd">    **Lambda handler decorator to parse &amp; validate event - using built-in envelope**</span>
-
-<span class="sd">        class Order(BaseModel):</span>
-<span class="sd">            id: int</span>
-<span class="sd">            description: str</span>
-<span class="sd">            ...</span>
-
-<span class="sd">        def handler(event: Order, context: LambdaContext):</span>
-<span class="sd">            try:</span>
-<span class="sd">                parse(model=Order, envelope=envelopes.EVENTBRIDGE)</span>
-<span class="sd">            except ValidationError:</span>
-<span class="sd">                ...</span>
-
-<span class="sd">    Parameters</span>
-<span class="sd">    ----------</span>
-<span class="sd">    event:    dict</span>
-<span class="sd">        Lambda event to be parsed &amp; validated</span>
-<span class="sd">    model:   Model</span>
-<span class="sd">        Your data model that will replace the event</span>
-<span class="sd">    envelope: Envelope</span>
-<span class="sd">        Optional envelope to extract the model from</span>
-
-<span class="sd">    Raises</span>
-<span class="sd">    ------</span>
-<span class="sd">    ValidationError</span>
-<span class="sd">        When input event does not conform with model provided</span>
-<span class="sd">    InvalidModelTypeError</span>
-<span class="sd">        When model given does not implement BaseModel</span>
-<span class="sd">    InvalidEnvelopeError</span>
-<span class="sd">        When envelope given does not implement BaseEnvelope</span>
+<span class="sd">    LambdaContextModel</span>
+<span class="sd">        Lambda context only with select fields</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">if</span> <span class="n">envelope</span> <span class="ow">and</span> <span class="nb">callable</span><span class="p">(</span><span class="n">envelope</span><span class="p">):</span>
-        <span class="k">try</span><span class="p">:</span>
-            <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Parsing and validating event model with envelope=</span><span class="si">{</span><span class="n">envelope</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-            <span class="k">return</span> <span class="n">envelope</span><span class="p">()</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">event</span><span class="p">,</span> <span class="n">model</span><span class="o">=</span><span class="n">model</span><span class="p">)</span>
-        <span class="k">except</span> <span class="ne">AttributeError</span> <span class="k">as</span> <span class="n">exc</span><span class="p">:</span>
-            <span class="k">raise</span> <span class="n">InvalidEnvelopeError</span><span class="p">(</span>
-                <span class="sa">f</span><span class="s2">&quot;Error: </span><span class="si">{</span><span class="nb">str</span><span class="p">(</span><span class="n">exc</span><span class="p">)</span><span class="si">}</span><span class="s2">. Please ensure that both the Input model and the Envelope inherits from BaseModel,</span><span class="se">\n</span><span class="s2">&quot;</span>  <span class="c1"># noqa E501</span>
-                <span class="s2">&quot;and your payload adheres to the specified Input model structure.</span><span class="se">\n</span><span class="s2">&quot;</span>
-                <span class="sa">f</span><span class="s2">&quot;Envelope=</span><span class="si">{</span><span class="n">envelope</span><span class="si">}</span><span class="se">\n</span><span class="s2">Model=</span><span class="si">{</span><span class="n">model</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>
-            <span class="p">)</span> <span class="kn">from</span><span class="w"> </span><span class="nn">exc</span>
 
-    <span class="k">try</span><span class="p">:</span>
-        <span class="n">adapter</span> <span class="o">=</span> <span class="n">_retrieve_or_set_model_from_cache</span><span class="p">(</span><span class="n">model</span><span class="o">=</span><span class="n">model</span><span class="p">)</span>
+    <span class="n">context</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s2">&quot;function_name&quot;</span><span class="p">:</span> <span class="n">context</span><span class="o">.</span><span class="n">function_name</span><span class="p">,</span>
+        <span class="s2">&quot;function_memory_size&quot;</span><span class="p">:</span> <span class="n">context</span><span class="o">.</span><span class="n">memory_limit_in_mb</span><span class="p">,</span>
+        <span class="s2">&quot;function_arn&quot;</span><span class="p">:</span> <span class="n">context</span><span class="o">.</span><span class="n">invoked_function_arn</span><span class="p">,</span>
+        <span class="s2">&quot;function_request_id&quot;</span><span class="p">:</span> <span class="n">context</span><span class="o">.</span><span class="n">aws_request_id</span><span class="p">,</span>
+    <span class="p">}</span>
 
-        <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;Parsing and validating event model; no envelope used&quot;</span><span class="p">)</span>
-
-        <span class="k">return</span> <span class="n">_parse_and_validate_event</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">event</span><span class="p">,</span> <span class="n">adapter</span><span class="o">=</span><span class="n">adapter</span><span class="p">)</span>
-
-    <span class="c1"># Pydantic raises PydanticSchemaGenerationError when the model is not a Pydantic model</span>
-    <span class="c1"># This is seen in the tests where we pass a non-Pydantic model type to the parser or</span>
-    <span class="c1"># when we pass a data structure that does not match the model (trying to parse a true/false/etc into a model)</span>
-    <span class="k">except</span> <span class="n">PydanticSchemaGenerationError</span> <span class="k">as</span> <span class="n">exc</span><span class="p">:</span>
-        <span class="k">raise</span> <span class="n">InvalidModelTypeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The event supplied is unable to be validated into </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">model</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span> <span class="kn">from</span><span class="w"> </span><span class="nn">exc</span>
-    <span class="k">except</span> <span class="ne">AttributeError</span> <span class="k">as</span> <span class="n">exc</span><span class="p">:</span>
-        <span class="k">raise</span> <span class="n">InvalidModelTypeError</span><span class="p">(</span>
-            <span class="sa">f</span><span class="s2">&quot;Error: </span><span class="si">{</span><span class="nb">str</span><span class="p">(</span><span class="n">exc</span><span class="p">)</span><span class="si">}</span><span class="s2">. Please ensure the Input model inherits from BaseModel,</span><span class="se">\n</span><span class="s2">&quot;</span>
-            <span class="s2">&quot;and your payload adheres to the specified Input model structure.</span><span class="se">\n</span><span class="s2">&quot;</span>
-            <span class="sa">f</span><span class="s2">&quot;Model=</span><span class="si">{</span><span class="n">model</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>
-        <span class="p">)</span> <span class="kn">from</span><span class="w"> </span><span class="nn">exc</span>
+    <span class="k">return</span> <span class="n">LambdaContextModel</span><span class="p">(</span><span class="o">**</span><span class="n">context</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
             </details>
     </div>
@@ -3860,7 +3395,7 @@ def handler(event: Order, context: LambdaContext):
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    2025-02-03
+    2025-02-04
   </span>
 
     
@@ -3947,14 +3482,14 @@ def handler(event: Order, context: LambdaContext):
     </div>
     
     
-    <script id="__config" type="application/json">{"base": "../..", "features": ["header.autohide", "navigation.sections", "navigation.top", "navigation.instant", "navigation.indexes", "navigation.tracking", "navigation.tabs", "content.code.annotate", "content.code.copy", "content.tabs.link"], "search": "../../assets/javascripts/workers/search.f8cc74c7.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"default": "latest", "provider": "mike"}}</script>
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["header.autohide", "navigation.sections", "navigation.top", "navigation.instant", "navigation.indexes", "navigation.tracking", "navigation.tabs", "content.code.annotate", "content.code.copy", "content.tabs.link"], "search": "../../../assets/javascripts/workers/search.f8cc74c7.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"default": "latest", "provider": "mike"}}</script>
     
     
-      <script src="../../assets/javascripts/bundle.f13b1293.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.f13b1293.min.js"></script>
       
-        <script src="../../javascript/aws-amplify.min.js"></script>
+        <script src="../../../javascript/aws-amplify.min.js"></script>
       
-        <script src="../../javascript/extra.js"></script>
+        <script src="../../../javascript/extra.js"></script>
       
         <script src="https://docs.powertools.aws.dev/shared/mermaid.min.js"></script>
       
