@@ -13,10 +13,10 @@
       
       
       
-        <link rel="prev" href="../parser/">
+        <link rel="prev" href="../jmespath_functions/">
       
       
-        <link rel="next" href="../tracer/base/">
+        <link rel="next" href="../parameters/base/">
       
       
       <link rel="icon" href="../../media/aws-logo-light.svg">
@@ -24,7 +24,7 @@
     
     
       
-        <title>Streaming - Powertools for AWS Lambda (Python)</title>
+        <title>Middleware Factory - Powertools for AWS Lambda (Python)</title>
       
     
     
@@ -80,7 +80,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#aws_lambda_powertools.utilities.streaming.s3_object" class="md-skip">
+        <a href="#aws_lambda_powertools.middleware_factory" class="md-skip">
           Skip to content
         </a>
       
@@ -142,7 +142,7 @@ You're not viewing the latest version.
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Streaming
+              Middleware Factory
             
           </span>
         </div>
@@ -2301,10 +2301,29 @@ You're not viewing the latest version.
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../middleware_factory/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Middleware Factory
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
@@ -2314,6 +2333,90 @@ You're not viewing the latest version.
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#aws_lambda_powertools.middleware_factory" class="md-nav__link">
+    <span class="md-ellipsis">
+      middleware_factory
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#aws_lambda_powertools.middleware_factory.lambda_handler_decorator" class="md-nav__link">
+    <span class="md-ellipsis">
+      lambda_handler_decorator
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#aws_lambda_powertools.middleware_factory.exceptions" class="md-nav__link">
+    <span class="md-ellipsis">
+      exceptions
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="exceptions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#aws_lambda_powertools.middleware_factory.exceptions.MiddlewareInvalidArgumentError" class="md-nav__link">
+    <span class="md-ellipsis">
+      MiddlewareInvalidArgumentError
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#aws_lambda_powertools.middleware_factory.factory" class="md-nav__link">
+    <span class="md-ellipsis">
+      factory
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="factory">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#aws_lambda_powertools.middleware_factory.factory.lambda_handler_decorator" class="md-nav__link">
+    <span class="md-ellipsis">
+      lambda_handler_decorator
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -2519,29 +2622,10 @@ You're not viewing the latest version.
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  <span class="md-ellipsis">
-    Streaming
-    
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../streaming/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2551,129 +2635,6 @@ You're not viewing the latest version.
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#aws_lambda_powertools.utilities.streaming.s3_object" class="md-nav__link">
-    <span class="md-ellipsis">
-      s3_object
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#aws_lambda_powertools.utilities.streaming.s3_object.S3Object" class="md-nav__link">
-    <span class="md-ellipsis">
-      S3Object
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="S3Object">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#aws_lambda_powertools.utilities.streaming.s3_object.S3Object.size" class="md-nav__link">
-    <span class="md-ellipsis">
-      size
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#aws_lambda_powertools.utilities.streaming.s3_object.S3Object.transformed_stream" class="md-nav__link">
-    <span class="md-ellipsis">
-      transformed_stream
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#aws_lambda_powertools.utilities.streaming.s3_object.S3Object.transform" class="md-nav__link">
-    <span class="md-ellipsis">
-      transform
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#aws_lambda_powertools.utilities.streaming.transformations.csv" class="md-nav__link">
-    <span class="md-ellipsis">
-      csv
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#aws_lambda_powertools.utilities.streaming.transformations.csv.CsvTransform" class="md-nav__link">
-    <span class="md-ellipsis">
-      CsvTransform
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#aws_lambda_powertools.utilities.streaming.transformations.gzip" class="md-nav__link">
-    <span class="md-ellipsis">
-      gzip
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#aws_lambda_powertools.utilities.streaming.transformations.gzip.GzipTransform" class="md-nav__link">
-    <span class="md-ellipsis">
-      GzipTransform
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#aws_lambda_powertools.utilities.streaming.transformations.zip" class="md-nav__link">
-    <span class="md-ellipsis">
-      zip
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#aws_lambda_powertools.utilities.streaming.transformations.zip.ZipTransform" class="md-nav__link">
-    <span class="md-ellipsis">
-      ZipTransform
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -2857,46 +2818,37 @@ You're not viewing the latest version.
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#aws_lambda_powertools.utilities.streaming.s3_object" class="md-nav__link">
+  <a href="#aws_lambda_powertools.middleware_factory" class="md-nav__link">
     <span class="md-ellipsis">
-      s3_object
+      middleware_factory
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#aws_lambda_powertools.utilities.streaming.s3_object.S3Object" class="md-nav__link">
+  <a href="#aws_lambda_powertools.middleware_factory.lambda_handler_decorator" class="md-nav__link">
     <span class="md-ellipsis">
-      S3Object
+      lambda_handler_decorator
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="S3Object">
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#aws_lambda_powertools.middleware_factory.exceptions" class="md-nav__link">
+    <span class="md-ellipsis">
+      exceptions
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="exceptions">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#aws_lambda_powertools.utilities.streaming.s3_object.S3Object.size" class="md-nav__link">
+  <a href="#aws_lambda_powertools.middleware_factory.exceptions.MiddlewareInvalidArgumentError" class="md-nav__link">
     <span class="md-ellipsis">
-      size
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#aws_lambda_powertools.utilities.streaming.s3_object.S3Object.transformed_stream" class="md-nav__link">
-    <span class="md-ellipsis">
-      transformed_stream
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#aws_lambda_powertools.utilities.streaming.s3_object.S3Object.transform" class="md-nav__link">
-    <span class="md-ellipsis">
-      transform
+      MiddlewareInvalidArgumentError
     </span>
   </a>
   
@@ -2908,56 +2860,26 @@ You're not viewing the latest version.
 </li>
       
         <li class="md-nav__item">
-  <a href="#aws_lambda_powertools.utilities.streaming.transformations.csv" class="md-nav__link">
+  <a href="#aws_lambda_powertools.middleware_factory.factory" class="md-nav__link">
     <span class="md-ellipsis">
-      csv
+      factory
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="factory">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#aws_lambda_powertools.middleware_factory.factory.lambda_handler_decorator" class="md-nav__link">
+    <span class="md-ellipsis">
+      lambda_handler_decorator
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#aws_lambda_powertools.utilities.streaming.transformations.csv.CsvTransform" class="md-nav__link">
-    <span class="md-ellipsis">
-      CsvTransform
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#aws_lambda_powertools.utilities.streaming.transformations.gzip" class="md-nav__link">
-    <span class="md-ellipsis">
-      gzip
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#aws_lambda_powertools.utilities.streaming.transformations.gzip.GzipTransform" class="md-nav__link">
-    <span class="md-ellipsis">
-      GzipTransform
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#aws_lambda_powertools.utilities.streaming.transformations.zip" class="md-nav__link">
-    <span class="md-ellipsis">
-      zip
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#aws_lambda_powertools.utilities.streaming.transformations.zip.ZipTransform" class="md-nav__link">
-    <span class="md-ellipsis">
-      ZipTransform
-    </span>
-  </a>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -2980,7 +2902,7 @@ You're not viewing the latest version.
   
 
 
-  <h1>Streaming</h1>
+  <h1>Middleware Factory</h1>
 
 <!-- markdownlint-disable MD043 MD041 -->
 
@@ -2989,8 +2911,564 @@ You're not viewing the latest version.
 
 
 
-<a id="aws_lambda_powertools.utilities.streaming.s3_object"></a>
+<a id="aws_lambda_powertools.middleware_factory"></a>
     <div class="doc doc-contents first">
+
+        <p>Utilities to enhance middleware</p>
+<div class="admonition abstract">
+<p class="admonition-title">Usage Documentation</p>
+<p><a href="../../utilities/middleware_factory/"><code>Middleware Factory</code></a></p>
+</div>
+
+
+
+
+
+<table>
+      <thead>
+        <tr>
+          <th><span class="doc-section-title">MODULE</span></th>
+          <th><span>DESCRIPTION</span></th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td><code><a class="autorefs autorefs-internal" title="aws_lambda_powertools.middleware_factory.exceptions" href="#aws_lambda_powertools.middleware_factory.exceptions">exceptions</a></code></td>
+            <td class="doc-module-details">
+              <div class="doc-md-description">
+                
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td><code><a class="autorefs autorefs-internal" title="aws_lambda_powertools.middleware_factory.factory" href="#aws_lambda_powertools.middleware_factory.factory">factory</a></code></td>
+            <td class="doc-module-details">
+              <div class="doc-md-description">
+                
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+
+
+
+
+<table>
+      <thead>
+        <tr>
+          <th><span class="doc-section-title">FUNCTION</span></th>
+          <th><span>DESCRIPTION</span></th>
+        </tr>
+      </thead>
+      <tbody>
+            <tr class="doc-section-item">
+              <td><code><a class="autorefs autorefs-internal" title="aws_lambda_powertools.middleware_factory.lambda_handler_decorator" href="#aws_lambda_powertools.middleware_factory.lambda_handler_decorator">lambda_handler_decorator</a></code></td>
+              <td class="doc-function-details">
+                <div class="doc-md-description">
+                  <p>Decorator factory for decorating Lambda handlers.</p>
+                </div>
+              </td>
+            </tr>
+      </tbody>
+    </table>
+
+
+
+
+
+  <div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+<div class="doc doc-object doc-function">
+
+
+<h2 id="aws_lambda_powertools.middleware_factory.lambda_handler_decorator" class="doc doc-heading">
+            <span class="doc doc-object-name doc-function-name">lambda_handler_decorator</span>
+
+
+<a href="#aws_lambda_powertools.middleware_factory.lambda_handler_decorator" class="headerlink" title="Permanent link">&para;</a></h2>
+<div class="doc-signature highlight"><pre><span></span><code><span class="nf">lambda_handler_decorator</span><span class="p">(</span>
+    <span class="n">decorator</span><span class="p">:</span> <span class="n">Callable</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">trace_execution</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Callable</span>
+</code></pre></div>
+
+    <div class="doc doc-contents ">
+
+        <p>Decorator factory for decorating Lambda handlers.</p>
+<p>You can use lambda_handler_decorator to create your own middlewares,
+where your function signature follows: <code>fn(handler, event, context)</code></p>
+<p>Custom keyword arguments are also supported e.g. <code>fn(handler, event, context, option=value)</code></p>
+<p>Middlewares created by this factory supports tracing to help you quickly troubleshoot
+any overhead that custom middlewares may cause - They will appear as custom subsegments.</p>
+<p><strong>Non-key value params are not supported</strong> e.g. <code>fn(handler, event, context, option)</code></p>
+
+
+<details class="environment-variables" open>
+  <summary>Environment variables</summary>
+  <p>POWERTOOLS_TRACE_MIDDLEWARES : str
+    uses <code>aws_lambda_powertools.tracing.Tracer</code>
+    to create sub-segments per middleware (e.g. <code>"true", "True", "TRUE"</code>)</p>
+</details>
+
+<table>
+      <thead>
+        <tr>
+          <th><span class="doc-section-title">PARAMETER</span></th>
+          <th><span>DESCRIPTION</span></th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>decorator</code>
+            </td>
+            <td class="doc-param-details">
+              <div class="doc-md-description">
+                <p>Middleware to be wrapped by this factory</p>
+              </div>
+              <p>
+                  <span class="doc-param-annotation">
+                    <b>TYPE:</b>
+                      <code><a class="autorefs autorefs-external" title="typing.Callable" href="https://docs.python.org/3/library/typing.html#typing.Callable">Callable</a> | None</code>
+                  </span>
+                  <span class="doc-param-default">
+                    <b>DEFAULT:</b>
+                      <code>None</code>
+                  </span>
+              </p>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>trace_execution</code>
+            </td>
+            <td class="doc-param-details">
+              <div class="doc-md-description">
+                <p>Flag to explicitly enable trace execution for middlewares.</p>
+<p><code>Env POWERTOOLS_TRACE_MIDDLEWARES="true"</code></p>
+              </div>
+              <p>
+                  <span class="doc-param-annotation">
+                    <b>TYPE:</b>
+                      <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/functions.html#bool">bool</a> | None</code>
+                  </span>
+                  <span class="doc-param-default">
+                    <b>DEFAULT:</b>
+                      <code>None</code>
+                  </span>
+              </p>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+<details class="example" open>
+  <summary>Example</summary>
+  <p><strong>Create a middleware no params</strong></p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span></pre></div></td><td class="code"><div><pre><span></span><code>from aws_lambda_powertools.middleware_factory import lambda_handler_decorator
+
+@lambda_handler_decorator
+def log_response(handler, event, context):
+    any_code_to_execute_before_lambda_handler()
+    response = handler(event, context)
+    any_code_to_execute_after_lambda_handler()
+    print(f&quot;Lambda handler response: {response}&quot;)
+
+@log_response
+def lambda_handler(event, context):
+    return True
+</code></pre></div></td></tr></table></div>
+<p><strong>Create a middleware with params</strong></p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span></pre></div></td><td class="code"><div><pre><span></span><code>from aws_lambda_powertools.middleware_factory import lambda_handler_decorator
+
+@lambda_handler_decorator
+def obfuscate_sensitive_data(handler, event, context, fields=None):
+    # Obfuscate email before calling Lambda handler
+    if fields:
+        for field in fields:
+            field = event.get(field, &quot;&quot;)
+            event[field] = obfuscate_pii(field)
+
+    response = handler(event, context)
+    print(f&quot;Lambda handler response: {response}&quot;)
+
+@obfuscate_sensitive_data(fields=[&quot;email&quot;])
+def lambda_handler(event, context):
+    return True
+</code></pre></div></td></tr></table></div>
+<p><strong>Trace execution of custom middleware</strong></p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span></pre></div></td><td class="code"><div><pre><span></span><code>from aws_lambda_powertools import Tracer
+from aws_lambda_powertools.middleware_factory import lambda_handler_decorator
+
+tracer = Tracer(service=&quot;payment&quot;) # or via env var
+...
+@lambda_handler_decorator(trace_execution=True)
+def log_response(handler, event, context):
+    ...
+
+@tracer.capture_lambda_handler
+@log_response
+def lambda_handler(event, context):
+    return True
+</code></pre></div></td></tr></table></div>
+</details>
+
+<details class="limitations" open>
+  <summary>Limitations</summary>
+  <ul>
+<li>Async middlewares not supported</li>
+<li>Classes, class methods middlewares not supported</li>
+</ul>
+</details>
+
+<table>
+      <thead>
+        <tr>
+          <th><span class="doc-section-title">RAISES</span></th>
+          <th><span>DESCRIPTION</span></th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+              <span class="doc-raises-annotation">
+                  <code><a class="autorefs autorefs-internal" title="aws_lambda_powertools.middleware_factory.exceptions.MiddlewareInvalidArgumentError" href="#aws_lambda_powertools.middleware_factory.exceptions.MiddlewareInvalidArgumentError">MiddlewareInvalidArgumentError</a></code>
+              </span>
+            </td>
+            <td class="doc-raises-details">
+              <div class="doc-md-description">
+                <p>When middleware receives non keyword=arguments</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+            <details class="quote">
+              <summary>Source code in <code>aws_lambda_powertools/middleware_factory/factory.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 18</span>
+<span class="normal"> 19</span>
+<span class="normal"> 20</span>
+<span class="normal"> 21</span>
+<span class="normal"> 22</span>
+<span class="normal"> 23</span>
+<span class="normal"> 24</span>
+<span class="normal"> 25</span>
+<span class="normal"> 26</span>
+<span class="normal"> 27</span>
+<span class="normal"> 28</span>
+<span class="normal"> 29</span>
+<span class="normal"> 30</span>
+<span class="normal"> 31</span>
+<span class="normal"> 32</span>
+<span class="normal"> 33</span>
+<span class="normal"> 34</span>
+<span class="normal"> 35</span>
+<span class="normal"> 36</span>
+<span class="normal"> 37</span>
+<span class="normal"> 38</span>
+<span class="normal"> 39</span>
+<span class="normal"> 40</span>
+<span class="normal"> 41</span>
+<span class="normal"> 42</span>
+<span class="normal"> 43</span>
+<span class="normal"> 44</span>
+<span class="normal"> 45</span>
+<span class="normal"> 46</span>
+<span class="normal"> 47</span>
+<span class="normal"> 48</span>
+<span class="normal"> 49</span>
+<span class="normal"> 50</span>
+<span class="normal"> 51</span>
+<span class="normal"> 52</span>
+<span class="normal"> 53</span>
+<span class="normal"> 54</span>
+<span class="normal"> 55</span>
+<span class="normal"> 56</span>
+<span class="normal"> 57</span>
+<span class="normal"> 58</span>
+<span class="normal"> 59</span>
+<span class="normal"> 60</span>
+<span class="normal"> 61</span>
+<span class="normal"> 62</span>
+<span class="normal"> 63</span>
+<span class="normal"> 64</span>
+<span class="normal"> 65</span>
+<span class="normal"> 66</span>
+<span class="normal"> 67</span>
+<span class="normal"> 68</span>
+<span class="normal"> 69</span>
+<span class="normal"> 70</span>
+<span class="normal"> 71</span>
+<span class="normal"> 72</span>
+<span class="normal"> 73</span>
+<span class="normal"> 74</span>
+<span class="normal"> 75</span>
+<span class="normal"> 76</span>
+<span class="normal"> 77</span>
+<span class="normal"> 78</span>
+<span class="normal"> 79</span>
+<span class="normal"> 80</span>
+<span class="normal"> 81</span>
+<span class="normal"> 82</span>
+<span class="normal"> 83</span>
+<span class="normal"> 84</span>
+<span class="normal"> 85</span>
+<span class="normal"> 86</span>
+<span class="normal"> 87</span>
+<span class="normal"> 88</span>
+<span class="normal"> 89</span>
+<span class="normal"> 90</span>
+<span class="normal"> 91</span>
+<span class="normal"> 92</span>
+<span class="normal"> 93</span>
+<span class="normal"> 94</span>
+<span class="normal"> 95</span>
+<span class="normal"> 96</span>
+<span class="normal"> 97</span>
+<span class="normal"> 98</span>
+<span class="normal"> 99</span>
+<span class="normal">100</span>
+<span class="normal">101</span>
+<span class="normal">102</span>
+<span class="normal">103</span>
+<span class="normal">104</span>
+<span class="normal">105</span>
+<span class="normal">106</span>
+<span class="normal">107</span>
+<span class="normal">108</span>
+<span class="normal">109</span>
+<span class="normal">110</span>
+<span class="normal">111</span>
+<span class="normal">112</span>
+<span class="normal">113</span>
+<span class="normal">114</span>
+<span class="normal">115</span>
+<span class="normal">116</span>
+<span class="normal">117</span>
+<span class="normal">118</span>
+<span class="normal">119</span>
+<span class="normal">120</span>
+<span class="normal">121</span>
+<span class="normal">122</span>
+<span class="normal">123</span>
+<span class="normal">124</span>
+<span class="normal">125</span>
+<span class="normal">126</span>
+<span class="normal">127</span>
+<span class="normal">128</span>
+<span class="normal">129</span>
+<span class="normal">130</span>
+<span class="normal">131</span>
+<span class="normal">132</span>
+<span class="normal">133</span>
+<span class="normal">134</span>
+<span class="normal">135</span>
+<span class="normal">136</span>
+<span class="normal">137</span>
+<span class="normal">138</span>
+<span class="normal">139</span>
+<span class="normal">140</span>
+<span class="normal">141</span>
+<span class="normal">142</span>
+<span class="normal">143</span>
+<span class="normal">144</span>
+<span class="normal">145</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">lambda_handler_decorator</span><span class="p">(</span><span class="n">decorator</span><span class="p">:</span> <span class="n">Callable</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">trace_execution</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Callable</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Decorator factory for decorating Lambda handlers.</span>
+
+<span class="sd">    You can use lambda_handler_decorator to create your own middlewares,</span>
+<span class="sd">    where your function signature follows: `fn(handler, event, context)`</span>
+
+<span class="sd">    Custom keyword arguments are also supported e.g. `fn(handler, event, context, option=value)`</span>
+
+<span class="sd">    Middlewares created by this factory supports tracing to help you quickly troubleshoot</span>
+<span class="sd">    any overhead that custom middlewares may cause - They will appear as custom subsegments.</span>
+
+<span class="sd">    **Non-key value params are not supported** e.g. `fn(handler, event, context, option)`</span>
+
+<span class="sd">    Environment variables</span>
+<span class="sd">    ---------------------</span>
+<span class="sd">    POWERTOOLS_TRACE_MIDDLEWARES : str</span>
+<span class="sd">        uses `aws_lambda_powertools.tracing.Tracer`</span>
+<span class="sd">        to create sub-segments per middleware (e.g. `&quot;true&quot;, &quot;True&quot;, &quot;TRUE&quot;`)</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    decorator: Callable</span>
+<span class="sd">        Middleware to be wrapped by this factory</span>
+<span class="sd">    trace_execution: bool</span>
+<span class="sd">        Flag to explicitly enable trace execution for middlewares.\n</span>
+<span class="sd">        `Env POWERTOOLS_TRACE_MIDDLEWARES=&quot;true&quot;`</span>
+
+<span class="sd">    Example</span>
+<span class="sd">    -------</span>
+<span class="sd">    **Create a middleware no params**</span>
+
+<span class="sd">        from aws_lambda_powertools.middleware_factory import lambda_handler_decorator</span>
+
+<span class="sd">        @lambda_handler_decorator</span>
+<span class="sd">        def log_response(handler, event, context):</span>
+<span class="sd">            any_code_to_execute_before_lambda_handler()</span>
+<span class="sd">            response = handler(event, context)</span>
+<span class="sd">            any_code_to_execute_after_lambda_handler()</span>
+<span class="sd">            print(f&quot;Lambda handler response: {response}&quot;)</span>
+
+<span class="sd">        @log_response</span>
+<span class="sd">        def lambda_handler(event, context):</span>
+<span class="sd">            return True</span>
+
+<span class="sd">    **Create a middleware with params**</span>
+
+<span class="sd">        from aws_lambda_powertools.middleware_factory import lambda_handler_decorator</span>
+
+<span class="sd">        @lambda_handler_decorator</span>
+<span class="sd">        def obfuscate_sensitive_data(handler, event, context, fields=None):</span>
+<span class="sd">            # Obfuscate email before calling Lambda handler</span>
+<span class="sd">            if fields:</span>
+<span class="sd">                for field in fields:</span>
+<span class="sd">                    field = event.get(field, &quot;&quot;)</span>
+<span class="sd">                    event[field] = obfuscate_pii(field)</span>
+
+<span class="sd">            response = handler(event, context)</span>
+<span class="sd">            print(f&quot;Lambda handler response: {response}&quot;)</span>
+
+<span class="sd">        @obfuscate_sensitive_data(fields=[&quot;email&quot;])</span>
+<span class="sd">        def lambda_handler(event, context):</span>
+<span class="sd">            return True</span>
+
+<span class="sd">    **Trace execution of custom middleware**</span>
+
+<span class="sd">        from aws_lambda_powertools import Tracer</span>
+<span class="sd">        from aws_lambda_powertools.middleware_factory import lambda_handler_decorator</span>
+
+<span class="sd">        tracer = Tracer(service=&quot;payment&quot;) # or via env var</span>
+<span class="sd">        ...</span>
+<span class="sd">        @lambda_handler_decorator(trace_execution=True)</span>
+<span class="sd">        def log_response(handler, event, context):</span>
+<span class="sd">            ...</span>
+
+<span class="sd">        @tracer.capture_lambda_handler</span>
+<span class="sd">        @log_response</span>
+<span class="sd">        def lambda_handler(event, context):</span>
+<span class="sd">            return True</span>
+
+<span class="sd">    Limitations</span>
+<span class="sd">    -----------</span>
+<span class="sd">    * Async middlewares not supported</span>
+<span class="sd">    * Classes, class methods middlewares not supported</span>
+
+<span class="sd">    Raises</span>
+<span class="sd">    ------</span>
+<span class="sd">    MiddlewareInvalidArgumentError</span>
+<span class="sd">        When middleware receives non keyword=arguments</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">if</span> <span class="n">decorator</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">functools</span><span class="o">.</span><span class="n">partial</span><span class="p">(</span><span class="n">lambda_handler_decorator</span><span class="p">,</span> <span class="n">trace_execution</span><span class="o">=</span><span class="n">trace_execution</span><span class="p">)</span>
+
+    <span class="n">trace_execution</span> <span class="o">=</span> <span class="n">resolve_truthy_env_var_choice</span><span class="p">(</span>
+        <span class="n">env</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="n">constants</span><span class="o">.</span><span class="n">MIDDLEWARE_FACTORY_TRACE_ENV</span><span class="p">,</span> <span class="s2">&quot;false&quot;</span><span class="p">),</span>
+        <span class="n">choice</span><span class="o">=</span><span class="n">trace_execution</span><span class="p">,</span>
+    <span class="p">)</span>
+
+    <span class="nd">@functools</span><span class="o">.</span><span class="n">wraps</span><span class="p">(</span><span class="n">decorator</span><span class="p">)</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">final_decorator</span><span class="p">(</span><span class="n">func</span><span class="p">:</span> <span class="n">Callable</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">:</span> <span class="n">Any</span><span class="p">):</span>
+        <span class="c1"># If called with kwargs return new func with kwargs</span>
+        <span class="k">if</span> <span class="n">func</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">functools</span><span class="o">.</span><span class="n">partial</span><span class="p">(</span><span class="n">final_decorator</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">inspect</span><span class="o">.</span><span class="n">isfunction</span><span class="p">(</span><span class="n">func</span><span class="p">):</span>
+            <span class="c1"># @custom_middleware(True) vs @custom_middleware(log_event=True)</span>
+            <span class="k">raise</span> <span class="n">MiddlewareInvalidArgumentError</span><span class="p">(</span>
+                <span class="sa">f</span><span class="s2">&quot;Only keyword arguments is supported for middlewares: </span><span class="si">{</span><span class="n">decorator</span><span class="o">.</span><span class="vm">__qualname__</span><span class="si">}</span><span class="s2"> received </span><span class="si">{</span><span class="n">func</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>  <span class="c1"># type: ignore # noqa: E501</span>
+            <span class="p">)</span>
+
+        <span class="nd">@functools</span><span class="o">.</span><span class="n">wraps</span><span class="p">(</span><span class="n">func</span><span class="p">)</span>
+        <span class="k">def</span><span class="w"> </span><span class="nf">wrapper</span><span class="p">(</span><span class="n">event</span><span class="p">,</span> <span class="n">context</span><span class="p">,</span> <span class="o">**</span><span class="n">handler_kwargs</span><span class="p">):</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="n">middleware</span> <span class="o">=</span> <span class="n">functools</span><span class="o">.</span><span class="n">partial</span><span class="p">(</span><span class="n">decorator</span><span class="p">,</span> <span class="n">func</span><span class="p">,</span> <span class="n">event</span><span class="p">,</span> <span class="n">context</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">,</span> <span class="o">**</span><span class="n">handler_kwargs</span><span class="p">)</span>
+                <span class="k">if</span> <span class="n">trace_execution</span><span class="p">:</span>
+                    <span class="n">tracer</span> <span class="o">=</span> <span class="n">Tracer</span><span class="p">(</span><span class="n">auto_patch</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+                    <span class="k">with</span> <span class="n">tracer</span><span class="o">.</span><span class="n">provider</span><span class="o">.</span><span class="n">in_subsegment</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;## </span><span class="si">{</span><span class="n">decorator</span><span class="o">.</span><span class="vm">__qualname__</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">):</span>
+                        <span class="n">response</span> <span class="o">=</span> <span class="n">middleware</span><span class="p">()</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">response</span> <span class="o">=</span> <span class="n">middleware</span><span class="p">()</span>
+                <span class="k">return</span> <span class="n">response</span>
+            <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
+                <span class="n">logger</span><span class="o">.</span><span class="n">exception</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Caught exception in </span><span class="si">{</span><span class="n">decorator</span><span class="o">.</span><span class="vm">__qualname__</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+                <span class="k">raise</span>
+
+        <span class="k">return</span> <span class="n">wrapper</span>
+
+    <span class="k">return</span> <span class="n">final_decorator</span>
+</code></pre></div></td></tr></table></div>
+            </details>
+    </div>
+
+</div>
+
+
+<div class="doc doc-object doc-module">
+
+
+
+<h2 id="aws_lambda_powertools.middleware_factory.exceptions" class="doc doc-heading">
+            <span class="doc doc-object-name doc-module-name">exceptions</span>
+
+
+<a href="#aws_lambda_powertools.middleware_factory.exceptions" class="headerlink" title="Permanent link">&para;</a></h2>
+
+    <div class="doc doc-contents ">
 
 
 
@@ -3007,10 +3485,10 @@ You're not viewing the latest version.
       </thead>
       <tbody>
           <tr class="doc-section-item">
-            <td><code><a class="autorefs autorefs-internal" title="aws_lambda_powertools.utilities.streaming.s3_object.S3Object" href="#aws_lambda_powertools.utilities.streaming.s3_object.S3Object">S3Object</a></code></td>
+            <td><code><a class="autorefs autorefs-internal" title="aws_lambda_powertools.middleware_factory.exceptions.MiddlewareInvalidArgumentError" href="#aws_lambda_powertools.middleware_factory.exceptions.MiddlewareInvalidArgumentError">MiddlewareInvalidArgumentError</a></code></td>
             <td class="doc-class-details">
               <div class="doc-md-description">
-                <p>Seekable and streamable S3 Object reader.</p>
+                <p>When middleware receives non keyword=arguments</p>
               </div>
             </td>
           </tr>
@@ -3036,185 +3514,55 @@ You're not viewing the latest version.
 
 
 
-<h2 id="aws_lambda_powertools.utilities.streaming.s3_object.S3Object" class="doc doc-heading">
-            <span class="doc doc-object-name doc-class-name">S3Object</span>
+<h3 id="aws_lambda_powertools.middleware_factory.exceptions.MiddlewareInvalidArgumentError" class="doc doc-heading">
+            <span class="doc doc-object-name doc-class-name">MiddlewareInvalidArgumentError</span>
 
 
-<a href="#aws_lambda_powertools.utilities.streaming.s3_object.S3Object" class="headerlink" title="Permanent link">&para;</a></h2>
-<div class="doc-signature highlight"><pre><span></span><code><span class="nf">S3Object</span><span class="p">(</span>
-    <span class="n">bucket</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
-    <span class="n">key</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
-    <span class="n">version_id</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-    <span class="n">boto3_client</span><span class="p">:</span> <span class="n">S3Client</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-    <span class="n">is_gzip</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-    <span class="n">is_csv</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-    <span class="o">**</span><span class="n">sdk_options</span>
-<span class="p">)</span>
-</code></pre></div>
+<a href="#aws_lambda_powertools.middleware_factory.exceptions.MiddlewareInvalidArgumentError" class="headerlink" title="Permanent link">&para;</a></h3>
+
 
     <div class="doc doc-contents ">
             <p class="doc doc-class-bases">
-              Bases: <code><a class="autorefs autorefs-external" title="typing.IO" href="https://docs.python.org/3/library/typing.html#typing.IO">IO</a>[<a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#bytes">bytes</a>]</code></p>
+              Bases: <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/exceptions.html#Exception">Exception</a></code></p>
 
 
-        <p>Seekable and streamable S3 Object reader.</p>
-<p>S3Object implements the IO[bytes], backed by a seekable S3 streaming.</p>
+        <p>When middleware receives non keyword=arguments</p>
 
 
-<table>
-      <thead>
-        <tr>
-          <th><span class="doc-section-title">PARAMETER</span></th>
-          <th><span>DESCRIPTION</span></th>
-        </tr>
-      </thead>
-      <tbody>
-          <tr class="doc-section-item">
-            <td>
-                <code>bucket</code>
-            </td>
-            <td class="doc-param-details">
-              <div class="doc-md-description">
-                <p>The S3 bucket</p>
-              </div>
-              <p>
-                  <span class="doc-param-annotation">
-                    <b>TYPE:</b>
-                      <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a></code>
-                  </span>
-              </p>
-            </td>
-          </tr>
-          <tr class="doc-section-item">
-            <td>
-                <code>key</code>
-            </td>
-            <td class="doc-param-details">
-              <div class="doc-md-description">
-                <p>The S3 key</p>
-              </div>
-              <p>
-                  <span class="doc-param-annotation">
-                    <b>TYPE:</b>
-                      <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a></code>
-                  </span>
-              </p>
-            </td>
-          </tr>
-          <tr class="doc-section-item">
-            <td>
-                <code>version_id</code>
-            </td>
-            <td class="doc-param-details">
-              <div class="doc-md-description">
-                <p>A version ID of the object, when the S3 bucket is versioned</p>
-              </div>
-              <p>
-                  <span class="doc-param-annotation">
-                    <b>TYPE:</b>
-                      <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a> | None</code>
-                  </span>
-                  <span class="doc-param-default">
-                    <b>DEFAULT:</b>
-                      <code>None</code>
-                  </span>
-              </p>
-            </td>
-          </tr>
-          <tr class="doc-section-item">
-            <td>
-                <code>boto3_client</code>
-            </td>
-            <td class="doc-param-details">
-              <div class="doc-md-description">
-                <p>An optional boto3 S3 client. If missing, a new one will be created.</p>
-              </div>
-              <p>
-                  <span class="doc-param-annotation">
-                    <b>TYPE:</b>
-                      <code><span title="mypy_boto3_s3.client.S3Client">S3Client</span> | None</code>
-                  </span>
-                  <span class="doc-param-default">
-                    <b>DEFAULT:</b>
-                      <code>None</code>
-                  </span>
-              </p>
-            </td>
-          </tr>
-          <tr class="doc-section-item">
-            <td>
-                <code>is_gzip</code>
-            </td>
-            <td class="doc-param-details">
-              <div class="doc-md-description">
-                <p>Enables the Gunzip data transformation</p>
-              </div>
-              <p>
-                  <span class="doc-param-annotation">
-                    <b>TYPE:</b>
-                      <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/functions.html#bool">bool</a> | None</code>
-                  </span>
-                  <span class="doc-param-default">
-                    <b>DEFAULT:</b>
-                      <code>False</code>
-                  </span>
-              </p>
-            </td>
-          </tr>
-          <tr class="doc-section-item">
-            <td>
-                <code>is_csv</code>
-            </td>
-            <td class="doc-param-details">
-              <div class="doc-md-description">
-                <p>Enables the CSV data transformation</p>
-              </div>
-              <p>
-                  <span class="doc-param-annotation">
-                    <b>TYPE:</b>
-                      <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/functions.html#bool">bool</a> | None</code>
-                  </span>
-                  <span class="doc-param-default">
-                    <b>DEFAULT:</b>
-                      <code>False</code>
-                  </span>
-              </p>
-            </td>
-          </tr>
-          <tr class="doc-section-item">
-            <td>
-                <code>sdk_options</code>
-            </td>
-            <td class="doc-param-details">
-              <div class="doc-md-description">
-                <p>Dictionary of options that will be passed to the S3 Client get_object API call</p>
-              </div>
-              <p>
-                  <span class="doc-param-default">
-                    <b>DEFAULT:</b>
-                      <code>{}</code>
-                  </span>
-              </p>
-            </td>
-          </tr>
-      </tbody>
-    </table>
 
 
-<details class="example" open>
-  <summary>Example</summary>
-  <p><strong>Reads a line from an S3, loading as little data as necessary:</strong></p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
-<span class="normal">2</span>
-<span class="normal">3</span>
-<span class="normal">4</span>
-<span class="normal">5</span></pre></div></td><td class="code"><div><pre><span></span><code>&gt;&gt;&gt; from aws_lambda_powertools.utilities.streaming import S3Object
-&gt;&gt;&gt;
-&gt;&gt;&gt; line: bytes = S3Object(bucket=&quot;bucket&quot;, key=&quot;key&quot;).readline()
-&gt;&gt;&gt;
-&gt;&gt;&gt; print(line)
-</code></pre></div></td></tr></table></div>
-</details>
+
+
+
+
+
+
+
+    </div>
+
+</div>
+
+
+
+
+  </div>
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-module">
+
+
+
+<h2 id="aws_lambda_powertools.middleware_factory.factory" class="doc doc-heading">
+            <span class="doc doc-object-name doc-module-name">factory</span>
+
+
+<a href="#aws_lambda_powertools.middleware_factory.factory" class="headerlink" title="Permanent link">&para;</a></h2>
+
+    <div class="doc doc-contents ">
+
 
 
 
@@ -3226,16 +3574,16 @@ You're not viewing the latest version.
 <table>
       <thead>
         <tr>
-          <th><span class="doc-section-title">METHOD</span></th>
+          <th><span class="doc-section-title">FUNCTION</span></th>
           <th><span>DESCRIPTION</span></th>
         </tr>
       </thead>
       <tbody>
             <tr class="doc-section-item">
-              <td><code><a class="autorefs autorefs-internal" title="aws_lambda_powertools.utilities.streaming.s3_object.S3Object.transform" href="#aws_lambda_powertools.utilities.streaming.s3_object.S3Object.transform">transform</a></code></td>
+              <td><code><a class="autorefs autorefs-internal" title="aws_lambda_powertools.middleware_factory.factory.lambda_handler_decorator" href="#aws_lambda_powertools.middleware_factory.factory.lambda_handler_decorator">lambda_handler_decorator</a></code></td>
               <td class="doc-function-details">
                 <div class="doc-md-description">
-                  <p>Applies one or more data transformations to the stream.</p>
+                  <p>Decorator factory for decorating Lambda handlers.</p>
                 </div>
               </td>
             </tr>
@@ -3243,114 +3591,6 @@ You're not viewing the latest version.
     </table>
 
 
-
-
-<table>
-      <thead>
-        <tr>
-          <th><span class="doc-section-title">ATTRIBUTE</span></th>
-          <th><span>DESCRIPTION</span></th>
-        </tr>
-      </thead>
-      <tbody>
-          <tr class="doc-section-item">
-            <td><code><a class="autorefs autorefs-internal" title="aws_lambda_powertools.utilities.streaming.s3_object.S3Object.size" href="#aws_lambda_powertools.utilities.streaming.s3_object.S3Object.size">size</a></code></td>
-            <td class="doc-attribute-details">
-              <div class="doc-md-description">
-                <p>Retrieves the size of the underlying S3 object</p>
-              </div>
-              <p>
-                  <span class="doc-attribute-annotation">
-                    <b>TYPE:</b>
-                      <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/functions.html#int">int</a></code>
-                  </span>
-              </p>
-            </td>
-          </tr>
-          <tr class="doc-section-item">
-            <td><code><a class="autorefs autorefs-internal" title="aws_lambda_powertools.utilities.streaming.s3_object.S3Object.transformed_stream" href="#aws_lambda_powertools.utilities.streaming.s3_object.S3Object.transformed_stream">transformed_stream</a></code></td>
-            <td class="doc-attribute-details">
-              <div class="doc-md-description">
-                <p>Returns a IO[bytes] stream with all the data transformations applied in order</p>
-              </div>
-              <p>
-                  <span class="doc-attribute-annotation">
-                    <b>TYPE:</b>
-                      <code><a class="autorefs autorefs-external" title="typing.IO" href="https://docs.python.org/3/library/typing.html#typing.IO">IO</a>[<a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#bytes">bytes</a>]</code>
-                  </span>
-              </p>
-            </td>
-          </tr>
-      </tbody>
-    </table>
-
-                  <details class="quote">
-                    <summary>Source code in <code>aws_lambda_powertools/utilities/streaming/s3_object.py</code></summary>
-                    <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">60</span>
-<span class="normal">61</span>
-<span class="normal">62</span>
-<span class="normal">63</span>
-<span class="normal">64</span>
-<span class="normal">65</span>
-<span class="normal">66</span>
-<span class="normal">67</span>
-<span class="normal">68</span>
-<span class="normal">69</span>
-<span class="normal">70</span>
-<span class="normal">71</span>
-<span class="normal">72</span>
-<span class="normal">73</span>
-<span class="normal">74</span>
-<span class="normal">75</span>
-<span class="normal">76</span>
-<span class="normal">77</span>
-<span class="normal">78</span>
-<span class="normal">79</span>
-<span class="normal">80</span>
-<span class="normal">81</span>
-<span class="normal">82</span>
-<span class="normal">83</span>
-<span class="normal">84</span>
-<span class="normal">85</span>
-<span class="normal">86</span>
-<span class="normal">87</span>
-<span class="normal">88</span>
-<span class="normal">89</span>
-<span class="normal">90</span>
-<span class="normal">91</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
-    <span class="bp">self</span><span class="p">,</span>
-    <span class="n">bucket</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
-    <span class="n">key</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
-    <span class="n">version_id</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-    <span class="n">boto3_client</span><span class="p">:</span> <span class="n">S3Client</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-    <span class="n">is_gzip</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-    <span class="n">is_csv</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-    <span class="o">**</span><span class="n">sdk_options</span><span class="p">,</span>
-<span class="p">):</span>
-    <span class="bp">self</span><span class="o">.</span><span class="n">bucket</span> <span class="o">=</span> <span class="n">bucket</span>
-    <span class="bp">self</span><span class="o">.</span><span class="n">key</span> <span class="o">=</span> <span class="n">key</span>
-    <span class="bp">self</span><span class="o">.</span><span class="n">version_id</span> <span class="o">=</span> <span class="n">version_id</span>
-
-    <span class="c1"># The underlying seekable IO, where all the magic happens</span>
-    <span class="bp">self</span><span class="o">.</span><span class="n">raw_stream</span> <span class="o">=</span> <span class="n">_S3SeekableIO</span><span class="p">(</span>
-        <span class="n">bucket</span><span class="o">=</span><span class="n">bucket</span><span class="p">,</span>
-        <span class="n">key</span><span class="o">=</span><span class="n">key</span><span class="p">,</span>
-        <span class="n">version_id</span><span class="o">=</span><span class="n">version_id</span><span class="p">,</span>
-        <span class="n">boto3_client</span><span class="o">=</span><span class="n">boto3_client</span><span class="p">,</span>
-        <span class="o">**</span><span class="n">sdk_options</span><span class="p">,</span>
-    <span class="p">)</span>
-
-    <span class="c1"># Stores the list of data transformations</span>
-    <span class="bp">self</span><span class="o">.</span><span class="n">_data_transformations</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">BaseTransform</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
-    <span class="k">if</span> <span class="n">is_gzip</span><span class="p">:</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_data_transformations</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">GzipTransform</span><span class="p">())</span>
-    <span class="k">if</span> <span class="n">is_csv</span><span class="p">:</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_data_transformations</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">CsvTransform</span><span class="p">())</span>
-
-    <span class="c1"># Stores the cached transformed stream</span>
-    <span class="bp">self</span><span class="o">.</span><span class="n">_transformed_stream</span><span class="p">:</span> <span class="n">IO</span><span class="p">[</span><span class="nb">bytes</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
-</code></pre></div></td></tr></table></div>
-                  </details>
 
 
 
@@ -3362,93 +3602,39 @@ You're not viewing the latest version.
 
 
 
-<div class="doc doc-object doc-attribute">
-
-
-
-<h3 id="aws_lambda_powertools.utilities.streaming.s3_object.S3Object.size" class="doc doc-heading">
-            <span class="doc doc-object-name doc-attribute-name">size</span>
-
-
-  <span class="doc doc-labels">
-      <small class="doc doc-label doc-label-property"><code>property</code></small>
-  </span>
-
-<a href="#aws_lambda_powertools.utilities.streaming.s3_object.S3Object.size" class="headerlink" title="Permanent link">&para;</a></h3>
-<div class="doc-signature highlight"><pre><span></span><code><span class="n">size</span><span class="p">:</span> <span class="nb">int</span>
-</code></pre></div>
-
-    <div class="doc doc-contents ">
-
-        <p>Retrieves the size of the underlying S3 object</p>
-    </div>
-
-</div>
-
-<div class="doc doc-object doc-attribute">
-
-
-
-<h3 id="aws_lambda_powertools.utilities.streaming.s3_object.S3Object.transformed_stream" class="doc doc-heading">
-            <span class="doc doc-object-name doc-attribute-name">transformed_stream</span>
-
-
-  <span class="doc doc-labels">
-      <small class="doc doc-label doc-label-property"><code>property</code></small>
-  </span>
-
-<a href="#aws_lambda_powertools.utilities.streaming.s3_object.S3Object.transformed_stream" class="headerlink" title="Permanent link">&para;</a></h3>
-<div class="doc-signature highlight"><pre><span></span><code><span class="n">transformed_stream</span><span class="p">:</span> <span class="n">IO</span><span class="p">[</span><span class="nb">bytes</span><span class="p">]</span>
-</code></pre></div>
-
-    <div class="doc doc-contents ">
-
-        <p>Returns a IO[bytes] stream with all the data transformations applied in order</p>
-    </div>
-
-</div>
-
 
 
 <div class="doc doc-object doc-function">
 
 
-<h3 id="aws_lambda_powertools.utilities.streaming.s3_object.S3Object.transform" class="doc doc-heading">
-            <span class="doc doc-object-name doc-function-name">transform</span>
+<h3 id="aws_lambda_powertools.middleware_factory.factory.lambda_handler_decorator" class="doc doc-heading">
+            <span class="doc doc-object-name doc-function-name">lambda_handler_decorator</span>
 
 
-<a href="#aws_lambda_powertools.utilities.streaming.s3_object.S3Object.transform" class="headerlink" title="Permanent link">&para;</a></h3>
-          <div class="doc-overloads">
-<div class="doc-signature highlight"><pre><span></span><code><span class="nf">transform</span><span class="p">(</span>
-    <span class="n">transformations</span><span class="p">:</span> <span class="p">(</span>
-        <span class="n">BaseTransform</span><span class="p">[</span><span class="n">T</span><span class="p">]</span> <span class="o">|</span> <span class="n">Sequence</span><span class="p">[</span><span class="n">BaseTransform</span><span class="p">[</span><span class="n">T</span><span class="p">]]</span>
-    <span class="p">),</span>
-    <span class="n">in_place</span><span class="p">:</span> <span class="n">Literal</span><span class="p">[</span><span class="kc">True</span><span class="p">],</span>
-<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">T</span>
-</code></pre></div><div class="doc-signature highlight"><pre><span></span><code><span class="nf">transform</span><span class="p">(</span>
-    <span class="n">transformations</span><span class="p">:</span> <span class="p">(</span>
-        <span class="n">BaseTransform</span><span class="p">[</span><span class="n">T</span><span class="p">]</span> <span class="o">|</span> <span class="n">Sequence</span><span class="p">[</span><span class="n">BaseTransform</span><span class="p">[</span><span class="n">T</span><span class="p">]]</span>
-    <span class="p">),</span>
-    <span class="n">in_place</span><span class="p">:</span> <span class="n">Literal</span><span class="p">[</span><span class="kc">False</span><span class="p">],</span>
-<span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span>
-</code></pre></div><div class="doc-signature highlight"><pre><span></span><code><span class="nf">transform</span><span class="p">(</span>
-    <span class="n">transformations</span><span class="p">:</span> <span class="p">(</span>
-        <span class="n">BaseTransform</span><span class="p">[</span><span class="n">T</span><span class="p">]</span> <span class="o">|</span> <span class="n">Sequence</span><span class="p">[</span><span class="n">BaseTransform</span><span class="p">[</span><span class="n">T</span><span class="p">]]</span>
-    <span class="p">),</span>
-<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">T</span>
-</code></pre></div>          </div>
-<div class="doc-signature highlight"><pre><span></span><code><span class="nf">transform</span><span class="p">(</span>
-    <span class="n">transformations</span><span class="p">:</span> <span class="p">(</span>
-        <span class="n">BaseTransform</span><span class="p">[</span><span class="n">T</span><span class="p">]</span> <span class="o">|</span> <span class="n">Sequence</span><span class="p">[</span><span class="n">BaseTransform</span><span class="p">[</span><span class="n">T</span><span class="p">]]</span>
-    <span class="p">),</span>
-    <span class="n">in_place</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">T</span> <span class="o">|</span> <span class="kc">None</span>
+<a href="#aws_lambda_powertools.middleware_factory.factory.lambda_handler_decorator" class="headerlink" title="Permanent link">&para;</a></h3>
+<div class="doc-signature highlight"><pre><span></span><code><span class="nf">lambda_handler_decorator</span><span class="p">(</span>
+    <span class="n">decorator</span><span class="p">:</span> <span class="n">Callable</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">trace_execution</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Callable</span>
 </code></pre></div>
 
     <div class="doc doc-contents ">
 
-        <p>Applies one or more data transformations to the stream.</p>
+        <p>Decorator factory for decorating Lambda handlers.</p>
+<p>You can use lambda_handler_decorator to create your own middlewares,
+where your function signature follows: <code>fn(handler, event, context)</code></p>
+<p>Custom keyword arguments are also supported e.g. <code>fn(handler, event, context, option=value)</code></p>
+<p>Middlewares created by this factory supports tracing to help you quickly troubleshoot
+any overhead that custom middlewares may cause - They will appear as custom subsegments.</p>
+<p><strong>Non-key value params are not supported</strong> e.g. <code>fn(handler, event, context, option)</code></p>
 
+
+<details class="environment-variables" open>
+  <summary>Environment variables</summary>
+  <p>POWERTOOLS_TRACE_MIDDLEWARES : str
+    uses <code>aws_lambda_powertools.tracing.Tracer</code>
+    to create sub-segments per middleware (e.g. <code>"true", "True", "TRUE"</code>)</p>
+</details>
 
 <table>
       <thead>
@@ -3460,27 +3646,32 @@ You're not viewing the latest version.
       <tbody>
           <tr class="doc-section-item">
             <td>
-                <code>transformations</code>
+                <code>decorator</code>
             </td>
             <td class="doc-param-details">
               <div class="doc-md-description">
-                <p>One or more transformations to apply. Transformations are applied in the same order as they are declared.</p>
+                <p>Middleware to be wrapped by this factory</p>
               </div>
               <p>
                   <span class="doc-param-annotation">
                     <b>TYPE:</b>
-                      <code><span title="aws_lambda_powertools.utilities.streaming.transformations.base.BaseTransform">BaseTransform</span>[<span title="aws_lambda_powertools.utilities.streaming.types.T">T</span>] | <a class="autorefs autorefs-external" title="typing.Sequence" href="https://docs.python.org/3/library/typing.html#typing.Sequence">Sequence</a>[<span title="aws_lambda_powertools.utilities.streaming.transformations.base.BaseTransform">BaseTransform</span>[<span title="aws_lambda_powertools.utilities.streaming.types.T">T</span>]]</code>
+                      <code><a class="autorefs autorefs-external" title="typing.Callable" href="https://docs.python.org/3/library/typing.html#typing.Callable">Callable</a> | None</code>
+                  </span>
+                  <span class="doc-param-default">
+                    <b>DEFAULT:</b>
+                      <code>None</code>
                   </span>
               </p>
             </td>
           </tr>
           <tr class="doc-section-item">
             <td>
-                <code>in_place</code>
+                <code>trace_execution</code>
             </td>
             <td class="doc-param-details">
               <div class="doc-md-description">
-                <p>Transforms the stream in place, instead of returning a new stream object. Defaults to false.</p>
+                <p>Flag to explicitly enable trace execution for middlewares.</p>
+<p><code>Env POWERTOOLS_TRACE_MIDDLEWARES="true"</code></p>
               </div>
               <p>
                   <span class="doc-param-annotation">
@@ -3489,7 +3680,7 @@ You're not viewing the latest version.
                   </span>
                   <span class="doc-param-default">
                     <b>DEFAULT:</b>
-                      <code>False</code>
+                      <code>None</code>
                   </span>
               </p>
             </td>
@@ -3498,23 +3689,120 @@ You're not viewing the latest version.
     </table>
 
 
+<details class="example" open>
+  <summary>Example</summary>
+  <p><strong>Create a middleware no params</strong></p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span></pre></div></td><td class="code"><div><pre><span></span><code>from aws_lambda_powertools.middleware_factory import lambda_handler_decorator
+
+@lambda_handler_decorator
+def log_response(handler, event, context):
+    any_code_to_execute_before_lambda_handler()
+    response = handler(event, context)
+    any_code_to_execute_after_lambda_handler()
+    print(f&quot;Lambda handler response: {response}&quot;)
+
+@log_response
+def lambda_handler(event, context):
+    return True
+</code></pre></div></td></tr></table></div>
+<p><strong>Create a middleware with params</strong></p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span></pre></div></td><td class="code"><div><pre><span></span><code>from aws_lambda_powertools.middleware_factory import lambda_handler_decorator
+
+@lambda_handler_decorator
+def obfuscate_sensitive_data(handler, event, context, fields=None):
+    # Obfuscate email before calling Lambda handler
+    if fields:
+        for field in fields:
+            field = event.get(field, &quot;&quot;)
+            event[field] = obfuscate_pii(field)
+
+    response = handler(event, context)
+    print(f&quot;Lambda handler response: {response}&quot;)
+
+@obfuscate_sensitive_data(fields=[&quot;email&quot;])
+def lambda_handler(event, context):
+    return True
+</code></pre></div></td></tr></table></div>
+<p><strong>Trace execution of custom middleware</strong></p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span></pre></div></td><td class="code"><div><pre><span></span><code>from aws_lambda_powertools import Tracer
+from aws_lambda_powertools.middleware_factory import lambda_handler_decorator
+
+tracer = Tracer(service=&quot;payment&quot;) # or via env var
+...
+@lambda_handler_decorator(trace_execution=True)
+def log_response(handler, event, context):
+    ...
+
+@tracer.capture_lambda_handler
+@log_response
+def lambda_handler(event, context):
+    return True
+</code></pre></div></td></tr></table></div>
+</details>
+
+<details class="limitations" open>
+  <summary>Limitations</summary>
+  <ul>
+<li>Async middlewares not supported</li>
+<li>Classes, class methods middlewares not supported</li>
+</ul>
+</details>
+
 <table>
       <thead>
         <tr>
-          <th><span class="doc-section-title">RETURNS</span></th>
+          <th><span class="doc-section-title">RAISES</span></th>
           <th><span>DESCRIPTION</span></th>
         </tr>
       </thead>
       <tbody>
           <tr class="doc-section-item">
             <td>
-                <span class="doc-returns-annotation">
-                    <code>T[bound=IO[bytes]], optional</code>
-                </span>
+              <span class="doc-raises-annotation">
+                  <code><a class="autorefs autorefs-internal" title="aws_lambda_powertools.middleware_factory.exceptions.MiddlewareInvalidArgumentError" href="#aws_lambda_powertools.middleware_factory.exceptions.MiddlewareInvalidArgumentError">MiddlewareInvalidArgumentError</a></code>
+              </span>
             </td>
-            <td class="doc-returns-details">
+            <td class="doc-raises-details">
               <div class="doc-md-description">
-                <p>If in_place is False, returns an IO[bytes] object representing the transformed stream</p>
+                <p>When middleware receives non keyword=arguments</p>
               </div>
             </td>
           </tr>
@@ -3522,98 +3810,262 @@ You're not viewing the latest version.
     </table>
 
             <details class="quote">
-              <summary>Source code in <code>aws_lambda_powertools/utilities/streaming/s3_object.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">139</span>
+              <summary>Source code in <code>aws_lambda_powertools/middleware_factory/factory.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 18</span>
+<span class="normal"> 19</span>
+<span class="normal"> 20</span>
+<span class="normal"> 21</span>
+<span class="normal"> 22</span>
+<span class="normal"> 23</span>
+<span class="normal"> 24</span>
+<span class="normal"> 25</span>
+<span class="normal"> 26</span>
+<span class="normal"> 27</span>
+<span class="normal"> 28</span>
+<span class="normal"> 29</span>
+<span class="normal"> 30</span>
+<span class="normal"> 31</span>
+<span class="normal"> 32</span>
+<span class="normal"> 33</span>
+<span class="normal"> 34</span>
+<span class="normal"> 35</span>
+<span class="normal"> 36</span>
+<span class="normal"> 37</span>
+<span class="normal"> 38</span>
+<span class="normal"> 39</span>
+<span class="normal"> 40</span>
+<span class="normal"> 41</span>
+<span class="normal"> 42</span>
+<span class="normal"> 43</span>
+<span class="normal"> 44</span>
+<span class="normal"> 45</span>
+<span class="normal"> 46</span>
+<span class="normal"> 47</span>
+<span class="normal"> 48</span>
+<span class="normal"> 49</span>
+<span class="normal"> 50</span>
+<span class="normal"> 51</span>
+<span class="normal"> 52</span>
+<span class="normal"> 53</span>
+<span class="normal"> 54</span>
+<span class="normal"> 55</span>
+<span class="normal"> 56</span>
+<span class="normal"> 57</span>
+<span class="normal"> 58</span>
+<span class="normal"> 59</span>
+<span class="normal"> 60</span>
+<span class="normal"> 61</span>
+<span class="normal"> 62</span>
+<span class="normal"> 63</span>
+<span class="normal"> 64</span>
+<span class="normal"> 65</span>
+<span class="normal"> 66</span>
+<span class="normal"> 67</span>
+<span class="normal"> 68</span>
+<span class="normal"> 69</span>
+<span class="normal"> 70</span>
+<span class="normal"> 71</span>
+<span class="normal"> 72</span>
+<span class="normal"> 73</span>
+<span class="normal"> 74</span>
+<span class="normal"> 75</span>
+<span class="normal"> 76</span>
+<span class="normal"> 77</span>
+<span class="normal"> 78</span>
+<span class="normal"> 79</span>
+<span class="normal"> 80</span>
+<span class="normal"> 81</span>
+<span class="normal"> 82</span>
+<span class="normal"> 83</span>
+<span class="normal"> 84</span>
+<span class="normal"> 85</span>
+<span class="normal"> 86</span>
+<span class="normal"> 87</span>
+<span class="normal"> 88</span>
+<span class="normal"> 89</span>
+<span class="normal"> 90</span>
+<span class="normal"> 91</span>
+<span class="normal"> 92</span>
+<span class="normal"> 93</span>
+<span class="normal"> 94</span>
+<span class="normal"> 95</span>
+<span class="normal"> 96</span>
+<span class="normal"> 97</span>
+<span class="normal"> 98</span>
+<span class="normal"> 99</span>
+<span class="normal">100</span>
+<span class="normal">101</span>
+<span class="normal">102</span>
+<span class="normal">103</span>
+<span class="normal">104</span>
+<span class="normal">105</span>
+<span class="normal">106</span>
+<span class="normal">107</span>
+<span class="normal">108</span>
+<span class="normal">109</span>
+<span class="normal">110</span>
+<span class="normal">111</span>
+<span class="normal">112</span>
+<span class="normal">113</span>
+<span class="normal">114</span>
+<span class="normal">115</span>
+<span class="normal">116</span>
+<span class="normal">117</span>
+<span class="normal">118</span>
+<span class="normal">119</span>
+<span class="normal">120</span>
+<span class="normal">121</span>
+<span class="normal">122</span>
+<span class="normal">123</span>
+<span class="normal">124</span>
+<span class="normal">125</span>
+<span class="normal">126</span>
+<span class="normal">127</span>
+<span class="normal">128</span>
+<span class="normal">129</span>
+<span class="normal">130</span>
+<span class="normal">131</span>
+<span class="normal">132</span>
+<span class="normal">133</span>
+<span class="normal">134</span>
+<span class="normal">135</span>
+<span class="normal">136</span>
+<span class="normal">137</span>
+<span class="normal">138</span>
+<span class="normal">139</span>
 <span class="normal">140</span>
 <span class="normal">141</span>
 <span class="normal">142</span>
 <span class="normal">143</span>
 <span class="normal">144</span>
-<span class="normal">145</span>
-<span class="normal">146</span>
-<span class="normal">147</span>
-<span class="normal">148</span>
-<span class="normal">149</span>
-<span class="normal">150</span>
-<span class="normal">151</span>
-<span class="normal">152</span>
-<span class="normal">153</span>
-<span class="normal">154</span>
-<span class="normal">155</span>
-<span class="normal">156</span>
-<span class="normal">157</span>
-<span class="normal">158</span>
-<span class="normal">159</span>
-<span class="normal">160</span>
-<span class="normal">161</span>
-<span class="normal">162</span>
-<span class="normal">163</span>
-<span class="normal">164</span>
-<span class="normal">165</span>
-<span class="normal">166</span>
-<span class="normal">167</span>
-<span class="normal">168</span>
-<span class="normal">169</span>
-<span class="normal">170</span>
-<span class="normal">171</span>
-<span class="normal">172</span>
-<span class="normal">173</span>
-<span class="normal">174</span>
-<span class="normal">175</span>
-<span class="normal">176</span>
-<span class="normal">177</span>
-<span class="normal">178</span>
-<span class="normal">179</span>
-<span class="normal">180</span>
-<span class="normal">181</span>
-<span class="normal">182</span>
-<span class="normal">183</span>
-<span class="normal">184</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">transform</span><span class="p">(</span>
-    <span class="bp">self</span><span class="p">,</span>
-    <span class="n">transformations</span><span class="p">:</span> <span class="n">BaseTransform</span><span class="p">[</span><span class="n">T</span><span class="p">]</span> <span class="o">|</span> <span class="n">Sequence</span><span class="p">[</span><span class="n">BaseTransform</span><span class="p">[</span><span class="n">T</span><span class="p">]],</span>
-    <span class="n">in_place</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">T</span> <span class="o">|</span> <span class="kc">None</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Applies one or more data transformations to the stream.</span>
+<span class="normal">145</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">lambda_handler_decorator</span><span class="p">(</span><span class="n">decorator</span><span class="p">:</span> <span class="n">Callable</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">trace_execution</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Callable</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Decorator factory for decorating Lambda handlers.</span>
+
+<span class="sd">    You can use lambda_handler_decorator to create your own middlewares,</span>
+<span class="sd">    where your function signature follows: `fn(handler, event, context)`</span>
+
+<span class="sd">    Custom keyword arguments are also supported e.g. `fn(handler, event, context, option=value)`</span>
+
+<span class="sd">    Middlewares created by this factory supports tracing to help you quickly troubleshoot</span>
+<span class="sd">    any overhead that custom middlewares may cause - They will appear as custom subsegments.</span>
+
+<span class="sd">    **Non-key value params are not supported** e.g. `fn(handler, event, context, option)`</span>
+
+<span class="sd">    Environment variables</span>
+<span class="sd">    ---------------------</span>
+<span class="sd">    POWERTOOLS_TRACE_MIDDLEWARES : str</span>
+<span class="sd">        uses `aws_lambda_powertools.tracing.Tracer`</span>
+<span class="sd">        to create sub-segments per middleware (e.g. `&quot;true&quot;, &quot;True&quot;, &quot;TRUE&quot;`)</span>
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
-<span class="sd">    transformations: BaseTransform[T] | Sequence[BaseTransform[T]]</span>
-<span class="sd">        One or more transformations to apply. Transformations are applied in the same order as they are declared.</span>
-<span class="sd">    in_place: bool, optional</span>
-<span class="sd">        Transforms the stream in place, instead of returning a new stream object. Defaults to false.</span>
+<span class="sd">    decorator: Callable</span>
+<span class="sd">        Middleware to be wrapped by this factory</span>
+<span class="sd">    trace_execution: bool</span>
+<span class="sd">        Flag to explicitly enable trace execution for middlewares.\n</span>
+<span class="sd">        `Env POWERTOOLS_TRACE_MIDDLEWARES=&quot;true&quot;`</span>
 
-<span class="sd">    Returns</span>
+<span class="sd">    Example</span>
 <span class="sd">    -------</span>
-<span class="sd">    T[bound=IO[bytes]], optional</span>
-<span class="sd">        If in_place is False, returns an IO[bytes] object representing the transformed stream</span>
+<span class="sd">    **Create a middleware no params**</span>
+
+<span class="sd">        from aws_lambda_powertools.middleware_factory import lambda_handler_decorator</span>
+
+<span class="sd">        @lambda_handler_decorator</span>
+<span class="sd">        def log_response(handler, event, context):</span>
+<span class="sd">            any_code_to_execute_before_lambda_handler()</span>
+<span class="sd">            response = handler(event, context)</span>
+<span class="sd">            any_code_to_execute_after_lambda_handler()</span>
+<span class="sd">            print(f&quot;Lambda handler response: {response}&quot;)</span>
+
+<span class="sd">        @log_response</span>
+<span class="sd">        def lambda_handler(event, context):</span>
+<span class="sd">            return True</span>
+
+<span class="sd">    **Create a middleware with params**</span>
+
+<span class="sd">        from aws_lambda_powertools.middleware_factory import lambda_handler_decorator</span>
+
+<span class="sd">        @lambda_handler_decorator</span>
+<span class="sd">        def obfuscate_sensitive_data(handler, event, context, fields=None):</span>
+<span class="sd">            # Obfuscate email before calling Lambda handler</span>
+<span class="sd">            if fields:</span>
+<span class="sd">                for field in fields:</span>
+<span class="sd">                    field = event.get(field, &quot;&quot;)</span>
+<span class="sd">                    event[field] = obfuscate_pii(field)</span>
+
+<span class="sd">            response = handler(event, context)</span>
+<span class="sd">            print(f&quot;Lambda handler response: {response}&quot;)</span>
+
+<span class="sd">        @obfuscate_sensitive_data(fields=[&quot;email&quot;])</span>
+<span class="sd">        def lambda_handler(event, context):</span>
+<span class="sd">            return True</span>
+
+<span class="sd">    **Trace execution of custom middleware**</span>
+
+<span class="sd">        from aws_lambda_powertools import Tracer</span>
+<span class="sd">        from aws_lambda_powertools.middleware_factory import lambda_handler_decorator</span>
+
+<span class="sd">        tracer = Tracer(service=&quot;payment&quot;) # or via env var</span>
+<span class="sd">        ...</span>
+<span class="sd">        @lambda_handler_decorator(trace_execution=True)</span>
+<span class="sd">        def log_response(handler, event, context):</span>
+<span class="sd">            ...</span>
+
+<span class="sd">        @tracer.capture_lambda_handler</span>
+<span class="sd">        @log_response</span>
+<span class="sd">        def lambda_handler(event, context):</span>
+<span class="sd">            return True</span>
+
+<span class="sd">    Limitations</span>
+<span class="sd">    -----------</span>
+<span class="sd">    * Async middlewares not supported</span>
+<span class="sd">    * Classes, class methods middlewares not supported</span>
+
+<span class="sd">    Raises</span>
+<span class="sd">    ------</span>
+<span class="sd">    MiddlewareInvalidArgumentError</span>
+<span class="sd">        When middleware receives non keyword=arguments</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="c1"># Make transformations always be a sequence to make mypy happy</span>
-    <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">transformations</span><span class="p">,</span> <span class="n">Sequence</span><span class="p">):</span>
-        <span class="n">transformations</span> <span class="o">=</span> <span class="p">[</span><span class="n">transformations</span><span class="p">]</span>
 
-    <span class="c1"># Scenario 1: user wants to transform the stream in place.</span>
-    <span class="c1"># In this case, we store the transformations and invalidate any existing transformed stream.</span>
-    <span class="c1"># This way, the transformed_stream is re-created on the next IO operation.</span>
-    <span class="c1"># This can happen when the user calls .transform multiple times before they start reading data</span>
-    <span class="c1">#</span>
-    <span class="c1">#   &gt;&gt;&gt; s3object.transform(GzipTransform(), in_place=True)</span>
-    <span class="c1">#   &gt;&gt;&gt; s3object.seek(0, io.SEEK_SET) &lt;- this creates a transformed stream</span>
-    <span class="c1">#   &gt;&gt;&gt; s3object.transform(CsvTransform(), in_place=True) &lt;- need to re-create transformed stream</span>
-    <span class="c1">#   &gt;&gt;&gt; s3object.read...</span>
-    <span class="k">if</span> <span class="n">in_place</span><span class="p">:</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_data_transformations</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">transformations</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">decorator</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">functools</span><span class="o">.</span><span class="n">partial</span><span class="p">(</span><span class="n">lambda_handler_decorator</span><span class="p">,</span> <span class="n">trace_execution</span><span class="o">=</span><span class="n">trace_execution</span><span class="p">)</span>
 
-        <span class="c1"># Invalidate any existing transformed stream.</span>
-        <span class="c1"># It will be created again next time it&#39;s accessed.</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_transformed_stream</span> <span class="o">=</span> <span class="kc">None</span>
-        <span class="k">return</span> <span class="kc">None</span>
-    <span class="k">else</span><span class="p">:</span>
-        <span class="c1"># Tell mypy that raw_stream actually implements T (bound to IO[bytes])</span>
-        <span class="n">stream</span> <span class="o">=</span> <span class="n">cast</span><span class="p">(</span><span class="n">T</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">raw_stream</span><span class="p">)</span>
-        <span class="k">for</span> <span class="n">transformation</span> <span class="ow">in</span> <span class="n">transformations</span><span class="p">:</span>
-            <span class="n">stream</span> <span class="o">=</span> <span class="n">transformation</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">stream</span><span class="p">)</span>
-        <span class="k">return</span> <span class="n">stream</span>
+    <span class="n">trace_execution</span> <span class="o">=</span> <span class="n">resolve_truthy_env_var_choice</span><span class="p">(</span>
+        <span class="n">env</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="n">constants</span><span class="o">.</span><span class="n">MIDDLEWARE_FACTORY_TRACE_ENV</span><span class="p">,</span> <span class="s2">&quot;false&quot;</span><span class="p">),</span>
+        <span class="n">choice</span><span class="o">=</span><span class="n">trace_execution</span><span class="p">,</span>
+    <span class="p">)</span>
+
+    <span class="nd">@functools</span><span class="o">.</span><span class="n">wraps</span><span class="p">(</span><span class="n">decorator</span><span class="p">)</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">final_decorator</span><span class="p">(</span><span class="n">func</span><span class="p">:</span> <span class="n">Callable</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">:</span> <span class="n">Any</span><span class="p">):</span>
+        <span class="c1"># If called with kwargs return new func with kwargs</span>
+        <span class="k">if</span> <span class="n">func</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">functools</span><span class="o">.</span><span class="n">partial</span><span class="p">(</span><span class="n">final_decorator</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">inspect</span><span class="o">.</span><span class="n">isfunction</span><span class="p">(</span><span class="n">func</span><span class="p">):</span>
+            <span class="c1"># @custom_middleware(True) vs @custom_middleware(log_event=True)</span>
+            <span class="k">raise</span> <span class="n">MiddlewareInvalidArgumentError</span><span class="p">(</span>
+                <span class="sa">f</span><span class="s2">&quot;Only keyword arguments is supported for middlewares: </span><span class="si">{</span><span class="n">decorator</span><span class="o">.</span><span class="vm">__qualname__</span><span class="si">}</span><span class="s2"> received </span><span class="si">{</span><span class="n">func</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>  <span class="c1"># type: ignore # noqa: E501</span>
+            <span class="p">)</span>
+
+        <span class="nd">@functools</span><span class="o">.</span><span class="n">wraps</span><span class="p">(</span><span class="n">func</span><span class="p">)</span>
+        <span class="k">def</span><span class="w"> </span><span class="nf">wrapper</span><span class="p">(</span><span class="n">event</span><span class="p">,</span> <span class="n">context</span><span class="p">,</span> <span class="o">**</span><span class="n">handler_kwargs</span><span class="p">):</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="n">middleware</span> <span class="o">=</span> <span class="n">functools</span><span class="o">.</span><span class="n">partial</span><span class="p">(</span><span class="n">decorator</span><span class="p">,</span> <span class="n">func</span><span class="p">,</span> <span class="n">event</span><span class="p">,</span> <span class="n">context</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">,</span> <span class="o">**</span><span class="n">handler_kwargs</span><span class="p">)</span>
+                <span class="k">if</span> <span class="n">trace_execution</span><span class="p">:</span>
+                    <span class="n">tracer</span> <span class="o">=</span> <span class="n">Tracer</span><span class="p">(</span><span class="n">auto_patch</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+                    <span class="k">with</span> <span class="n">tracer</span><span class="o">.</span><span class="n">provider</span><span class="o">.</span><span class="n">in_subsegment</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;## </span><span class="si">{</span><span class="n">decorator</span><span class="o">.</span><span class="vm">__qualname__</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">):</span>
+                        <span class="n">response</span> <span class="o">=</span> <span class="n">middleware</span><span class="p">()</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">response</span> <span class="o">=</span> <span class="n">middleware</span><span class="p">()</span>
+                <span class="k">return</span> <span class="n">response</span>
+            <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
+                <span class="n">logger</span><span class="o">.</span><span class="n">exception</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Caught exception in </span><span class="si">{</span><span class="n">decorator</span><span class="o">.</span><span class="vm">__qualname__</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+                <span class="k">raise</span>
+
+        <span class="k">return</span> <span class="n">wrapper</span>
+
+    <span class="k">return</span> <span class="n">final_decorator</span>
 </code></pre></div></td></tr></table></div>
             </details>
     </div>
@@ -3627,478 +4079,6 @@ You're not viewing the latest version.
     </div>
 
 </div>
-
-
-
-
-  </div>
-
-    </div>
-
-</div>
-
-<div class="doc doc-object doc-module">
-
-
-
-<a id="aws_lambda_powertools.utilities.streaming.transformations.csv"></a>
-    <div class="doc doc-contents first">
-
-
-
-
-
-
-
-<table>
-      <thead>
-        <tr>
-          <th><span class="doc-section-title">CLASS</span></th>
-          <th><span>DESCRIPTION</span></th>
-        </tr>
-      </thead>
-      <tbody>
-          <tr class="doc-section-item">
-            <td><code><a class="autorefs autorefs-internal" title="aws_lambda_powertools.utilities.streaming.transformations.csv.CsvTransform" href="#aws_lambda_powertools.utilities.streaming.transformations.csv.CsvTransform">CsvTransform</a></code></td>
-            <td class="doc-class-details">
-              <div class="doc-md-description">
-                <p>CSV data transform.</p>
-              </div>
-            </td>
-          </tr>
-      </tbody>
-    </table>
-
-
-
-
-
-
-
-  <div class="doc doc-children">
-
-
-
-
-
-
-
-
-<div class="doc doc-object doc-class">
-
-
-
-<h2 id="aws_lambda_powertools.utilities.streaming.transformations.csv.CsvTransform" class="doc doc-heading">
-            <span class="doc doc-object-name doc-class-name">CsvTransform</span>
-
-
-<a href="#aws_lambda_powertools.utilities.streaming.transformations.csv.CsvTransform" class="headerlink" title="Permanent link">&para;</a></h2>
-<div class="doc-signature highlight"><pre><span></span><code><span class="nf">CsvTransform</span><span class="p">(</span><span class="o">**</span><span class="n">transform_options</span><span class="p">)</span>
-</code></pre></div>
-
-    <div class="doc doc-contents ">
-            <p class="doc doc-class-bases">
-              Bases: <code><span title="aws_lambda_powertools.utilities.streaming.transformations.base.BaseTransform">BaseTransform</span></code></p>
-
-
-        <p>CSV data transform.</p>
-<p>Returns a csv.DictReader that reads data from the input stream:
-https://docs.python.org/3/library/csv.html#csv.DictReader</p>
-
-
-<details class="example" open>
-  <summary>Example</summary>
-  <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
-<span class="normal">2</span>
-<span class="normal">3</span>
-<span class="normal">4</span>
-<span class="normal">5</span>
-<span class="normal">6</span>
-<span class="normal">7</span></pre></div></td><td class="code"><div><pre><span></span><code>&gt;&gt;&gt; from aws_lambda_powertools.utilities.streaming import S3Object
-&gt;&gt;&gt; from aws_lambda_powertools.utilities.streaming.transformations import CsvTransform
-&gt;&gt;&gt;
-&gt;&gt;&gt; s3object = S3Object(bucket=&quot;bucket&quot;, key=&quot;key&quot;)
-&gt;&gt;&gt; csv_reader = s3object.transform(CsvTransform())
-&gt;&gt;&gt; for row in csv_reader:
-&gt;&gt;&gt;   print(row)
-</code></pre></div></td></tr></table></div>
-<p>Since the underlying stream of bytes needs to be converted into a stream of characters (Iterator[str]),
-we wrap the input into an io.TextIOWrapper. This means you have control over the text encoding
-and line termination options.</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
-<span class="normal">2</span>
-<span class="normal">3</span>
-<span class="normal">4</span>
-<span class="normal">5</span>
-<span class="normal">6</span>
-<span class="normal">7</span></pre></div></td><td class="code"><div><pre><span></span><code>&gt;&gt;&gt; from aws_lambda_powertools.utilities.streaming import S3Object
-&gt;&gt;&gt; from aws_lambda_powertools.utilities.streaming.transformations import CsvTransform
-&gt;&gt;&gt;
-&gt;&gt;&gt; s3object = S3Object(bucket=&quot;bucket&quot;, key=&quot;key&quot;)
-&gt;&gt;&gt; csv_reader = s3object.transform(CsvTransform(encoding=&quot;utf-8&quot;, newline=&quot;\r\n&quot;))
-&gt;&gt;&gt; for row in csv_reader:
-&gt;&gt;&gt;   print(row)
-</code></pre></div></td></tr></table></div>
-<p>Additional options passed on the constructor, will be pased to the csv.DictReader constructor.</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
-<span class="normal">2</span>
-<span class="normal">3</span>
-<span class="normal">4</span>
-<span class="normal">5</span>
-<span class="normal">6</span>
-<span class="normal">7</span></pre></div></td><td class="code"><div><pre><span></span><code>&gt;&gt;&gt; from aws_lambda_powertools.utilities.streaming import S3Object
-&gt;&gt;&gt; from aws_lambda_powertools.utilities.streaming.transformations import CsvTransform
-&gt;&gt;&gt;
-&gt;&gt;&gt; s3object = S3Object(bucket=&quot;bucket&quot;, key=&quot;key&quot;)
-&gt;&gt;&gt; csv_reader = s3object.transform(CsvTransform(dialect=&quot;excel&quot;))
-&gt;&gt;&gt; for row in csv_reader:
-&gt;&gt;&gt;   print(row)
-</code></pre></div></td></tr></table></div>
-</details>
-
-
-
-
-
-
-
-
-
-                  <details class="quote">
-                    <summary>Source code in <code>aws_lambda_powertools/utilities/streaming/transformations/base.py</code></summary>
-                    <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">17</span>
-<span class="normal">18</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">transform_options</span><span class="p">):</span>
-    <span class="bp">self</span><span class="o">.</span><span class="n">transform_options</span> <span class="o">=</span> <span class="n">transform_options</span>
-</code></pre></div></td></tr></table></div>
-                  </details>
-
-
-
-  <div class="doc doc-children">
-
-
-
-
-
-
-
-
-
-
-
-  </div>
-
-    </div>
-
-</div>
-
-
-
-
-  </div>
-
-    </div>
-
-</div>
-
-<div class="doc doc-object doc-module">
-
-
-
-<a id="aws_lambda_powertools.utilities.streaming.transformations.gzip"></a>
-    <div class="doc doc-contents first">
-
-
-
-
-
-
-
-<table>
-      <thead>
-        <tr>
-          <th><span class="doc-section-title">CLASS</span></th>
-          <th><span>DESCRIPTION</span></th>
-        </tr>
-      </thead>
-      <tbody>
-          <tr class="doc-section-item">
-            <td><code><a class="autorefs autorefs-internal" title="aws_lambda_powertools.utilities.streaming.transformations.gzip.GzipTransform" href="#aws_lambda_powertools.utilities.streaming.transformations.gzip.GzipTransform">GzipTransform</a></code></td>
-            <td class="doc-class-details">
-              <div class="doc-md-description">
-                <p>Gzip data transform.</p>
-              </div>
-            </td>
-          </tr>
-      </tbody>
-    </table>
-
-
-
-
-
-
-
-  <div class="doc doc-children">
-
-
-
-
-
-
-
-
-<div class="doc doc-object doc-class">
-
-
-
-<h2 id="aws_lambda_powertools.utilities.streaming.transformations.gzip.GzipTransform" class="doc doc-heading">
-            <span class="doc doc-object-name doc-class-name">GzipTransform</span>
-
-
-<a href="#aws_lambda_powertools.utilities.streaming.transformations.gzip.GzipTransform" class="headerlink" title="Permanent link">&para;</a></h2>
-<div class="doc-signature highlight"><pre><span></span><code><span class="nf">GzipTransform</span><span class="p">(</span><span class="o">**</span><span class="n">transform_options</span><span class="p">)</span>
-</code></pre></div>
-
-    <div class="doc doc-contents ">
-            <p class="doc doc-class-bases">
-              Bases: <code><span title="aws_lambda_powertools.utilities.streaming.transformations.base.BaseTransform">BaseTransform</span></code></p>
-
-
-        <p>Gzip data transform.</p>
-<p>Returns a gzip.GzipFile instead that reads data from the input stream:
-https://docs.python.org/3/library/gzip.html#gzip.GzipFile</p>
-
-
-<details class="example" open>
-  <summary>Example</summary>
-  <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
-<span class="normal">2</span>
-<span class="normal">3</span>
-<span class="normal">4</span>
-<span class="normal">5</span>
-<span class="normal">6</span>
-<span class="normal">7</span></pre></div></td><td class="code"><div><pre><span></span><code>&gt;&gt;&gt; from aws_lambda_powertools.utilities.streaming import S3Object
-&gt;&gt;&gt; from aws_lambda_powertools.utilities.streaming.transformations import GzipTransform
-&gt;&gt;&gt;
-&gt;&gt;&gt; s3object = S3Object(bucket=&quot;bucket&quot;, key=&quot;key&quot;)
-&gt;&gt;&gt; reader = s3object.transform(GzipTransform())
-&gt;&gt;&gt; for line in reader:
-&gt;&gt;&gt;   print(line)
-</code></pre></div></td></tr></table></div>
-</details>
-
-
-
-
-
-
-
-
-
-                  <details class="quote">
-                    <summary>Source code in <code>aws_lambda_powertools/utilities/streaming/transformations/base.py</code></summary>
-                    <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">17</span>
-<span class="normal">18</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">transform_options</span><span class="p">):</span>
-    <span class="bp">self</span><span class="o">.</span><span class="n">transform_options</span> <span class="o">=</span> <span class="n">transform_options</span>
-</code></pre></div></td></tr></table></div>
-                  </details>
-
-
-
-  <div class="doc doc-children">
-
-
-
-
-
-
-
-
-
-
-
-  </div>
-
-    </div>
-
-</div>
-
-
-
-
-  </div>
-
-    </div>
-
-</div>
-
-<div class="doc doc-object doc-module">
-
-
-
-<a id="aws_lambda_powertools.utilities.streaming.transformations.zip"></a>
-    <div class="doc doc-contents first">
-
-
-
-
-
-
-
-<table>
-      <thead>
-        <tr>
-          <th><span class="doc-section-title">CLASS</span></th>
-          <th><span>DESCRIPTION</span></th>
-        </tr>
-      </thead>
-      <tbody>
-          <tr class="doc-section-item">
-            <td><code><a class="autorefs autorefs-internal" title="aws_lambda_powertools.utilities.streaming.transformations.zip.ZipTransform" href="#aws_lambda_powertools.utilities.streaming.transformations.zip.ZipTransform">ZipTransform</a></code></td>
-            <td class="doc-class-details">
-              <div class="doc-md-description">
-                <p>Zip data transform.</p>
-              </div>
-            </td>
-          </tr>
-      </tbody>
-    </table>
-
-
-
-
-
-
-
-  <div class="doc doc-children">
-
-
-
-
-
-
-
-
-<div class="doc doc-object doc-class">
-
-
-
-<h2 id="aws_lambda_powertools.utilities.streaming.transformations.zip.ZipTransform" class="doc doc-heading">
-            <span class="doc doc-object-name doc-class-name">ZipTransform</span>
-
-
-<a href="#aws_lambda_powertools.utilities.streaming.transformations.zip.ZipTransform" class="headerlink" title="Permanent link">&para;</a></h2>
-<div class="doc-signature highlight"><pre><span></span><code><span class="nf">ZipTransform</span><span class="p">(</span><span class="o">**</span><span class="n">transform_options</span><span class="p">)</span>
-</code></pre></div>
-
-    <div class="doc doc-contents ">
-            <p class="doc doc-class-bases">
-              Bases: <code><span title="aws_lambda_powertools.utilities.streaming.transformations.base.BaseTransform">BaseTransform</span></code></p>
-
-
-        <p>Zip data transform.</p>
-<p>Returns a zip.ZipFile that reads data from the input stream:
-https://docs.python.org/3/library/zipfile.html#zipfile.ZipFile</p>
-
-
-<details class="example" open>
-  <summary>Example</summary>
-  <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
-<span class="normal">2</span>
-<span class="normal">3</span>
-<span class="normal">4</span>
-<span class="normal">5</span>
-<span class="normal">6</span>
-<span class="normal">7</span>
-<span class="normal">8</span></pre></div></td><td class="code"><div><pre><span></span><code>&gt;&gt;&gt; from aws_lambda_powertools.utilities.streaming import S3Object
-&gt;&gt;&gt; from aws_lambda_powertools.utilities.streaming.transformations import ZipTransform
-&gt;&gt;&gt;
-&gt;&gt;&gt; s3object = S3Object(bucket=&quot;bucket&quot;, key=&quot;key&quot;)
-&gt;&gt;&gt; zip_reader = s3object.transform(ZipTransform())
-&gt;&gt;&gt; for file in zip_reader.namelist():
-&gt;&gt;&gt;   print(file)
-&gt;&gt;&gt;   zip_reader.extract(file)
-</code></pre></div></td></tr></table></div>
-<p>Additional options passed on the constructor, will be pased to the is_csv.DictReader constructor.</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
-<span class="normal">2</span>
-<span class="normal">3</span>
-<span class="normal">4</span>
-<span class="normal">5</span>
-<span class="normal">6</span>
-<span class="normal">7</span>
-<span class="normal">8</span>
-<span class="normal">9</span></pre></div></td><td class="code"><div><pre><span></span><code>&gt;&gt;&gt; from aws_lambda_powertools.utilities.streaming import S3Object
-&gt;&gt;&gt; from aws_lambda_powertools.utilities.streaming.transformations import ZipTransform
-&gt;&gt;&gt; import zipfile
-&gt;&gt;&gt;
-&gt;&gt;&gt; s3object = S3Object(bucket=&quot;bucket&quot;, key=&quot;key&quot;)
-&gt;&gt;&gt; zip_reader = s3object.transform(ZipTransform(compression=zipfile.ZIP_LZMA))
-&gt;&gt;&gt; for file in zip_reader.namelist():
-&gt;&gt;&gt;   print(file)
-&gt;&gt;&gt;   zip_reader.extract(file)
-</code></pre></div></td></tr></table></div>
-<p>Currently, it's not possible to pipe the Zip file stream into another data transformation,
-since a Zip file contains multiple files, and not a single stream. However, you can still
-open a specific file as a stream, reading only the necessary bytes to extract it:</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
-<span class="normal">2</span>
-<span class="normal">3</span>
-<span class="normal">4</span>
-<span class="normal">5</span>
-<span class="normal">6</span>
-<span class="normal">7</span>
-<span class="normal">8</span>
-<span class="normal">9</span></pre></div></td><td class="code"><div><pre><span></span><code>&gt;&gt;&gt; from aws_lambda_powertools.utilities.streaming import S3Object
-&gt;&gt;&gt; from aws_lambda_powertools.utilities.streaming.transformations import ZipTransform
-&gt;&gt;&gt; import zipfile
-&gt;&gt;&gt;
-&gt;&gt;&gt; s3object = S3Object(bucket=&quot;bucket&quot;, key=&quot;key&quot;)
-&gt;&gt;&gt; zip_reader = s3object.transform(ZipTransform())
-&gt;&gt;&gt; with zip_reader.open(&quot;filename.txt&quot;) as f:
-&gt;&gt;&gt;   for line in f:
-&gt;&gt;&gt;      print(line)
-</code></pre></div></td></tr></table></div>
-</details>
-
-
-
-
-
-
-
-
-
-                  <details class="quote">
-                    <summary>Source code in <code>aws_lambda_powertools/utilities/streaming/transformations/base.py</code></summary>
-                    <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">17</span>
-<span class="normal">18</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">transform_options</span><span class="p">):</span>
-    <span class="bp">self</span><span class="o">.</span><span class="n">transform_options</span> <span class="o">=</span> <span class="n">transform_options</span>
-</code></pre></div></td></tr></table></div>
-                  </details>
-
-
-
-  <div class="doc doc-children">
-
-
-
-
-
-
-
-
-
-
-
-  </div>
-
-    </div>
-
-</div>
-
-
 
 
   </div>
@@ -4126,7 +4106,7 @@ open a specific file as a stream, reading only the necessary bytes to extract it
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    2025-02-03
+    2025-02-04
   </span>
 
     
