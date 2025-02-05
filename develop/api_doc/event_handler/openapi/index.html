@@ -10905,7 +10905,10 @@ See RFC: https://www.rfc-editor.org/rfc/rfc9110.html#name-field-name-registry</p
 <span class="normal">959</span>
 <span class="normal">960</span>
 <span class="normal">961</span>
-<span class="normal">962</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">analyze_param</span><span class="p">(</span>
+<span class="normal">962</span>
+<span class="normal">963</span>
+<span class="normal">964</span>
+<span class="normal">965</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">analyze_param</span><span class="p">(</span>
     <span class="o">*</span><span class="p">,</span>
     <span class="n">param_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
     <span class="n">annotation</span><span class="p">:</span> <span class="n">Any</span><span class="p">,</span>
@@ -10935,7 +10938,10 @@ See RFC: https://www.rfc-editor.org/rfc/rfc9110.html#name-field-name-registry</p
 <span class="sd">        The type annotation and the Pydantic field representing the parameter</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">field_info</span><span class="p">,</span> <span class="n">type_annotation</span> <span class="o">=</span> <span class="n">get_field_info_and_type_annotation</span><span class="p">(</span>
-        <span class="n">annotation</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="n">is_path_param</span><span class="p">,</span> <span class="n">is_response_param</span><span class="p">,</span>
+        <span class="n">annotation</span><span class="p">,</span>
+        <span class="n">value</span><span class="p">,</span>
+        <span class="n">is_path_param</span><span class="p">,</span>
+        <span class="n">is_response_param</span><span class="p">,</span>
     <span class="p">)</span>
 
     <span class="c1"># If the value is a FieldInfo, we use it as the FieldInfo for the parameter</span>
@@ -10998,13 +11004,7 @@ See RFC: https://www.rfc-editor.org/rfc/rfc9110.html#name-field-name-registry</p
 
             <details class="quote">
               <summary>Source code in <code>aws_lambda_powertools/event_handler/openapi/params.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1043</span>
-<span class="normal">1044</span>
-<span class="normal">1045</span>
-<span class="normal">1046</span>
-<span class="normal">1047</span>
-<span class="normal">1048</span>
-<span class="normal">1049</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1049</span>
 <span class="normal">1050</span>
 <span class="normal">1051</span>
 <span class="normal">1052</span>
@@ -11019,7 +11019,13 @@ See RFC: https://www.rfc-editor.org/rfc/rfc9110.html#name-field-name-registry</p
 <span class="normal">1061</span>
 <span class="normal">1062</span>
 <span class="normal">1063</span>
-<span class="normal">1064</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">create_response_field</span><span class="p">(</span>
+<span class="normal">1064</span>
+<span class="normal">1065</span>
+<span class="normal">1066</span>
+<span class="normal">1067</span>
+<span class="normal">1068</span>
+<span class="normal">1069</span>
+<span class="normal">1070</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">create_response_field</span><span class="p">(</span>
     <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
     <span class="n">type_</span><span class="p">:</span> <span class="nb">type</span><span class="p">[</span><span class="n">Any</span><span class="p">],</span>
     <span class="n">default</span><span class="p">:</span> <span class="n">Any</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="n">Undefined</span><span class="p">,</span>
@@ -11069,10 +11075,7 @@ See RFC: https://www.rfc-editor.org/rfc/rfc9110.html#name-field-name-registry</p
 
             <details class="quote">
               <summary>Source code in <code>aws_lambda_powertools/event_handler/openapi/params.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">965</span>
-<span class="normal">966</span>
-<span class="normal">967</span>
-<span class="normal">968</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">968</span>
 <span class="normal">969</span>
 <span class="normal">970</span>
 <span class="normal">971</span>
@@ -11093,8 +11096,17 @@ See RFC: https://www.rfc-editor.org/rfc/rfc9110.html#name-field-name-registry</p
 <span class="normal">986</span>
 <span class="normal">987</span>
 <span class="normal">988</span>
-<span class="normal">989</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">get_field_info_and_type_annotation</span><span class="p">(</span>
-    <span class="n">annotation</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="n">is_path_param</span><span class="p">:</span> <span class="nb">bool</span><span class="p">,</span> <span class="n">is_response_param</span><span class="p">:</span> <span class="nb">bool</span><span class="p">,</span>
+<span class="normal">989</span>
+<span class="normal">990</span>
+<span class="normal">991</span>
+<span class="normal">992</span>
+<span class="normal">993</span>
+<span class="normal">994</span>
+<span class="normal">995</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">get_field_info_and_type_annotation</span><span class="p">(</span>
+    <span class="n">annotation</span><span class="p">,</span>
+    <span class="n">value</span><span class="p">,</span>
+    <span class="n">is_path_param</span><span class="p">:</span> <span class="nb">bool</span><span class="p">,</span>
+    <span class="n">is_response_param</span><span class="p">:</span> <span class="nb">bool</span><span class="p">,</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">[</span><span class="n">FieldInfo</span> <span class="o">|</span> <span class="kc">None</span><span class="p">,</span> <span class="n">Any</span><span class="p">]:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Get the FieldInfo and type annotation from an annotation and value.</span>
@@ -11143,13 +11155,7 @@ See RFC: https://www.rfc-editor.org/rfc/rfc9110.html#name-field-name-registry</p
 
             <details class="quote">
               <summary>Source code in <code>aws_lambda_powertools/event_handler/openapi/params.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1010</span>
-<span class="normal">1011</span>
-<span class="normal">1012</span>
-<span class="normal">1013</span>
-<span class="normal">1014</span>
-<span class="normal">1015</span>
-<span class="normal">1016</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1016</span>
 <span class="normal">1017</span>
 <span class="normal">1018</span>
 <span class="normal">1019</span>
@@ -11173,7 +11179,13 @@ See RFC: https://www.rfc-editor.org/rfc/rfc9110.html#name-field-name-registry</p
 <span class="normal">1037</span>
 <span class="normal">1038</span>
 <span class="normal">1039</span>
-<span class="normal">1040</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">get_field_info_annotated_type</span><span class="p">(</span><span class="n">annotation</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="n">is_path_param</span><span class="p">:</span> <span class="nb">bool</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">[</span><span class="n">FieldInfo</span> <span class="o">|</span> <span class="kc">None</span><span class="p">,</span> <span class="n">Any</span><span class="p">]:</span>
+<span class="normal">1040</span>
+<span class="normal">1041</span>
+<span class="normal">1042</span>
+<span class="normal">1043</span>
+<span class="normal">1044</span>
+<span class="normal">1045</span>
+<span class="normal">1046</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">get_field_info_annotated_type</span><span class="p">(</span><span class="n">annotation</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="n">is_path_param</span><span class="p">:</span> <span class="nb">bool</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">[</span><span class="n">FieldInfo</span> <span class="o">|</span> <span class="kc">None</span><span class="p">,</span> <span class="n">Any</span><span class="p">]:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Get the FieldInfo and type annotation from an Annotated type.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
