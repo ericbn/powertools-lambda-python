@@ -4682,7 +4682,7 @@ for more details.</p>
 <h3 id="api-gateway-authorizer">API Gateway Authorizer<a class="headerlink" href="#api-gateway-authorizer" title="Permanent link">&para;</a></h3>
 <p>It is used for <a href="https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-use-lambda-authorizer.html" target="_blank">API Gateway Rest API Lambda Authorizer payload</a>.</p>
 <p>Use <strong><code>APIGatewayAuthorizerRequestEvent</code></strong> for type <code>REQUEST</code> and <strong><code>APIGatewayAuthorizerTokenEvent</code></strong> for type <code>TOKEN</code>.</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="4:4"><input checked="checked" id="apppy_3" name="__tabbed_4" type="radio" /><input id="api-gateway-authorizer-request-example-event" name="__tabbed_4" type="radio" /><input id="app_tokenpy" name="__tabbed_4" type="radio" /><input id="api-gateway-authorizer-token-example-event" name="__tabbed_4" type="radio" /><div class="tabbed-labels"><label for="apppy_3">app.py</label><label for="api-gateway-authorizer-request-example-event">API Gateway Authorizer Request Example Event</label><label for="app_tokenpy">app_token.py</label><label for="api-gateway-authorizer-token-example-event">API Gateway Authorizer Token Example Event</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="4:5"><input checked="checked" id="rest-apis" name="__tabbed_4" type="radio" /><input id="websocket-apis" name="__tabbed_4" type="radio" /><input id="api-gateway-authorizer-request-example-event" name="__tabbed_4" type="radio" /><input id="app_tokenpy" name="__tabbed_4" type="radio" /><input id="api-gateway-authorizer-token-example-event" name="__tabbed_4" type="radio" /><div class="tabbed-labels"><label for="rest-apis">Rest APIs</label><label for="websocket-apis">WebSocket APIs</label><label for="api-gateway-authorizer-request-example-event">API Gateway Authorizer Request Example Event</label><label for="app_tokenpy">app_token.py</label><label for="api-gateway-authorizer-token-example-event">API Gateway Authorizer Token Example Event</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
@@ -4730,8 +4730,68 @@ for more details.</p>
 
     <span class="n">arn</span> <span class="o">=</span> <span class="n">event</span><span class="o">.</span><span class="n">parsed_arn</span>
 
-    <span class="n">policy</span> <span class="o">=</span> <span class="n">APIGatewayAuthorizerResponse</span><span class="p">(</span>
-        <span class="n">principal_id</span><span class="o">=</span><span class="s2">&quot;user&quot;</span><span class="p">,</span>
+<span class="hll">    <span class="n">policy</span> <span class="o">=</span> <span class="n">APIGatewayAuthorizerResponse</span><span class="p">(</span>
+</span>        <span class="n">principal_id</span><span class="o">=</span><span class="s2">&quot;user&quot;</span><span class="p">,</span>
+        <span class="n">context</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;user&quot;</span><span class="p">:</span> <span class="s2">&quot;example&quot;</span><span class="p">},</span>
+        <span class="n">region</span><span class="o">=</span><span class="n">arn</span><span class="o">.</span><span class="n">region</span><span class="p">,</span>
+        <span class="n">aws_account_id</span><span class="o">=</span><span class="n">arn</span><span class="o">.</span><span class="n">aws_account_id</span><span class="p">,</span>
+        <span class="n">api_id</span><span class="o">=</span><span class="n">arn</span><span class="o">.</span><span class="n">api_id</span><span class="p">,</span>
+        <span class="n">stage</span><span class="o">=</span><span class="n">arn</span><span class="o">.</span><span class="n">stage</span><span class="p">,</span>
+    <span class="p">)</span>
+
+    <span class="n">policy</span><span class="o">.</span><span class="n">allow_all_routes</span><span class="p">()</span>
+
+    <span class="k">return</span> <span class="n">policy</span><span class="o">.</span><span class="n">asdict</span><span class="p">()</span>
+</code></pre></div></td></tr></table></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">aws_lambda_powertools.utilities.data_classes</span><span class="w"> </span><span class="kn">import</span> <span class="n">event_source</span>
+<span class="hll"><span class="kn">from</span><span class="w"> </span><span class="nn">aws_lambda_powertools.utilities.data_classes.api_gateway_authorizer_event</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
+</span><span class="hll">    <span class="n">APIGatewayAuthorizerRequestEvent</span><span class="p">,</span>
+</span><span class="hll">    <span class="n">APIGatewayAuthorizerResponseWebSocket</span><span class="p">,</span>
+</span><span class="p">)</span>
+
+
+<span class="hll"><span class="nd">@event_source</span><span class="p">(</span><span class="n">data_class</span><span class="o">=</span><span class="n">APIGatewayAuthorizerRequestEvent</span><span class="p">)</span>
+</span><span class="k">def</span><span class="w"> </span><span class="nf">lambda_handler</span><span class="p">(</span><span class="n">event</span><span class="p">:</span> <span class="n">APIGatewayAuthorizerRequestEvent</span><span class="p">,</span> <span class="n">context</span><span class="p">):</span>
+    <span class="c1"># Simple auth check (replace with your actual auth logic)</span>
+    <span class="n">is_authorized</span> <span class="o">=</span> <span class="n">event</span><span class="o">.</span><span class="n">headers</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;HeaderAuth1&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="s2">&quot;headerValue1&quot;</span>
+
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">is_authorized</span><span class="p">:</span>
+        <span class="k">return</span> <span class="p">{</span><span class="s2">&quot;principalId&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="s2">&quot;policyDocument&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;Version&quot;</span><span class="p">:</span> <span class="s2">&quot;2012-10-17&quot;</span><span class="p">,</span> <span class="s2">&quot;Statement&quot;</span><span class="p">:</span> <span class="p">[]}}</span>
+
+    <span class="n">arn</span> <span class="o">=</span> <span class="n">event</span><span class="o">.</span><span class="n">parsed_arn</span>
+
+<span class="hll">    <span class="n">policy</span> <span class="o">=</span> <span class="n">APIGatewayAuthorizerResponseWebSocket</span><span class="p">(</span>
+</span>        <span class="n">principal_id</span><span class="o">=</span><span class="s2">&quot;user&quot;</span><span class="p">,</span>
         <span class="n">context</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;user&quot;</span><span class="p">:</span> <span class="s2">&quot;example&quot;</span><span class="p">},</span>
         <span class="n">region</span><span class="o">=</span><span class="n">arn</span><span class="o">.</span><span class="n">region</span><span class="p">,</span>
         <span class="n">aws_account_id</span><span class="o">=</span><span class="n">arn</span><span class="o">.</span><span class="n">aws_account_id</span><span class="p">,</span>
@@ -4985,7 +5045,7 @@ for more details.</p>
 <h3 id="api-gateway-authorizer-v2">API Gateway Authorizer V2<a class="headerlink" href="#api-gateway-authorizer-v2" title="Permanent link">&para;</a></h3>
 <p>It is used for <a href="https://docs.aws.amazon.com/apigateway/latest/developerguide/http-api-lambda-authorizer.html" target="_blank">API Gateway HTTP API Lambda Authorizer payload version 2</a>.
 See also <a href="https://aws.amazon.com/blogs/compute/introducing-iam-and-lambda-authorizers-for-amazon-api-gateway-http-apis/" target="_blank">this blog post</a> for more details.</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="5:2"><input checked="checked" id="apppy_4" name="__tabbed_5" type="radio" /><input id="api-gateway-authorizer-v2-example-event" name="__tabbed_5" type="radio" /><div class="tabbed-labels"><label for="apppy_4">app.py</label><label for="api-gateway-authorizer-v2-example-event">API Gateway Authorizer V2 Example Event</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="5:2"><input checked="checked" id="apppy_3" name="__tabbed_5" type="radio" /><input id="api-gateway-authorizer-v2-example-event" name="__tabbed_5" type="radio" /><div class="tabbed-labels"><label for="apppy_3">app.py</label><label for="api-gateway-authorizer-v2-example-event">API Gateway Authorizer V2 Example Event</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
@@ -5159,7 +5219,7 @@ See also <a href="https://aws.amazon.com/blogs/compute/introducing-iam-and-lambd
 </div>
 <h3 id="api-gateway-proxy">API Gateway Proxy<a class="headerlink" href="#api-gateway-proxy" title="Permanent link">&para;</a></h3>
 <p>It is used for either API Gateway REST API or HTTP API using v1 proxy event.</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="6:2"><input checked="checked" id="apppy_5" name="__tabbed_6" type="radio" /><input id="api-gateway-proxy-example-event_2" name="__tabbed_6" type="radio" /><div class="tabbed-labels"><label for="apppy_5">app.py</label><label for="api-gateway-proxy-example-event_2">API Gateway Proxy Example Event</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="6:2"><input checked="checked" id="apppy_4" name="__tabbed_6" type="radio" /><input id="api-gateway-proxy-example-event_2" name="__tabbed_6" type="radio" /><div class="tabbed-labels"><label for="apppy_4">app.py</label><label for="api-gateway-proxy-example-event_2">API Gateway Proxy Example Event</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
@@ -5227,7 +5287,7 @@ See also <a href="https://aws.amazon.com/blogs/compute/introducing-iam-and-lambd
 </div>
 <h3 id="api-gateway-proxy-v2">API Gateway Proxy V2<a class="headerlink" href="#api-gateway-proxy-v2" title="Permanent link">&para;</a></h3>
 <p>It is used for HTTP API using v2 proxy event.</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="7:2"><input checked="checked" id="apppy_6" name="__tabbed_7" type="radio" /><input id="api-gateway-proxy-v2-example-event" name="__tabbed_7" type="radio" /><div class="tabbed-labels"><label for="apppy_6">app.py</label><label for="api-gateway-proxy-v2-example-event">API Gateway Proxy V2 Example Event</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="7:2"><input checked="checked" id="apppy_5" name="__tabbed_7" type="radio" /><input id="api-gateway-proxy-v2-example-event" name="__tabbed_7" type="radio" /><div class="tabbed-labels"><label for="apppy_5">app.py</label><label for="api-gateway-proxy-v2-example-event">API Gateway Proxy V2 Example Event</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
@@ -5393,7 +5453,7 @@ See also <a href="https://aws.amazon.com/blogs/compute/introducing-iam-and-lambd
 </div>
 <h3 id="application-load-balancer">Application Load Balancer<a class="headerlink" href="#application-load-balancer" title="Permanent link">&para;</a></h3>
 <p>Is it used for <a href="https://docs.aws.amazon.com/elasticloadbalancing/latest/application/introduction.html">Application load balancer</a> event.</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="8:2"><input checked="checked" id="apppy_7" name="__tabbed_8" type="radio" /><input id="application-load-balancer-example-event" name="__tabbed_8" type="radio" /><div class="tabbed-labels"><label for="apppy_7">app.py</label><label for="application-load-balancer-example-event">Application Load Balancer Example Event</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="8:2"><input checked="checked" id="apppy_6" name="__tabbed_8" type="radio" /><input id="application-load-balancer-example-event" name="__tabbed_8" type="radio" /><div class="tabbed-labels"><label for="apppy_6">app.py</label><label for="application-load-balancer-example-event">Application Load Balancer Example Event</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
@@ -5479,7 +5539,7 @@ See also <a href="https://aws.amazon.com/blogs/compute/introducing-iam-and-lambd
 <p>Used when building an <a href="https://docs.aws.amazon.com/appsync/latest/devguide/security-authz.html#aws-lambda-authorization" target="_blank">AWS_LAMBDA Authorization</a> with AppSync.
 See blog post <a href="https://aws.amazon.com/blogs/mobile/appsync-lambda-auth/" target="_blank">Introducing Lambda authorization for AWS AppSync GraphQL APIs</a>
 or read the Amplify documentation on using <a href="https://docs.amplify.aws/lib/graphqlapi/authz/q/platform/js#aws-lambda" target="_blank">AWS Lambda for authorization</a> with AppSync.</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="9:2"><input checked="checked" id="apppy_8" name="__tabbed_9" type="radio" /><input id="appsync-authorizer-example-event" name="__tabbed_9" type="radio" /><div class="tabbed-labels"><label for="apppy_8">app.py</label><label for="appsync-authorizer-example-event">AppSync Authorizer Example Event</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="9:2"><input checked="checked" id="apppy_7" name="__tabbed_9" type="radio" /><input id="appsync-authorizer-example-event" name="__tabbed_9" type="radio" /><div class="tabbed-labels"><label for="apppy_7">app.py</label><label for="appsync-authorizer-example-event">AppSync Authorizer Example Event</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
@@ -5583,7 +5643,7 @@ or read the Amplify documentation on using <a href="https://docs.amplify.aws/lib
 <p>Used when building Lambda GraphQL Resolvers with <a href="https://docs.amplify.aws/cli/graphql-transformer/function" target="_blank">Amplify GraphQL Transform Library</a> (<code>@function</code>),
 and <a href="https://aws.amazon.com/blogs/mobile/appsync-direct-lambda/" target="_blank">AppSync Direct Lambda Resolvers</a>.</p>
 <p>The example serves as an AppSync resolver for the <code>locations</code> field of the <code>Merchant</code> type. It uses the <code>@event_source</code> decorator to parse the AppSync event, handles pagination and filtering for locations, and demonstrates <code>AppSyncIdentityCognito</code>.</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="10:2"><input checked="checked" id="apppy_9" name="__tabbed_10" type="radio" /><input id="appsync-resolver-example-event" name="__tabbed_10" type="radio" /><div class="tabbed-labels"><label for="apppy_9">app.py</label><label for="appsync-resolver-example-event">AppSync Resolver Example Event</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="10:2"><input checked="checked" id="apppy_8" name="__tabbed_10" type="radio" /><input id="appsync-resolver-example-event" name="__tabbed_10" type="radio" /><div class="tabbed-labels"><label for="apppy_8">app.py</label><label for="appsync-resolver-example-event">AppSync Resolver Example Event</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
@@ -5849,7 +5909,7 @@ and <a href="https://aws.amazon.com/blogs/mobile/appsync-direct-lambda/" target=
 </div>
 <h3 id="aws-config-rule">AWS Config Rule<a class="headerlink" href="#aws-config-rule" title="Permanent link">&para;</a></h3>
 <p>The example utilizes AWSConfigRuleEvent to parse the incoming event. The function logs the message type of the invoking event and returns a simple success response. The example event receives a Scheduled Event Notification, but could also be ItemChanged and Oversized.</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="11:2"><input checked="checked" id="apppy_10" name="__tabbed_11" type="radio" /><input id="schedulednotification-example-event" name="__tabbed_11" type="radio" /><div class="tabbed-labels"><label for="apppy_10">app.py</label><label for="schedulednotification-example-event">ScheduledNotification Example Event</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="11:2"><input checked="checked" id="apppy_9" name="__tabbed_11" type="radio" /><input id="schedulednotification-example-event" name="__tabbed_11" type="radio" /><div class="tabbed-labels"><label for="apppy_9">app.py</label><label for="schedulednotification-example-event">ScheduledNotification Example Event</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
@@ -5917,7 +5977,7 @@ and <a href="https://aws.amazon.com/blogs/mobile/appsync-direct-lambda/" target=
 </div>
 <h3 id="bedrock-agent">Bedrock Agent<a class="headerlink" href="#bedrock-agent" title="Permanent link">&para;</a></h3>
 <p>The example handles <a href="https://aws.amazon.com/bedrock/agents/">Bedrock Agent event</a> with <code>BedrockAgentEvent</code> to parse the incoming event. The function logs the action group and input text, then returns a structured response compatible with Bedrock Agent's expected format, including a mock response body.</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="12:2"><input checked="checked" id="apppy_11" name="__tabbed_12" type="radio" /><input id="bedrock-agent-example-event" name="__tabbed_12" type="radio" /><div class="tabbed-labels"><label for="apppy_11">app.py</label><label for="bedrock-agent-example-event">Bedrock Agent Example Event</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="12:2"><input checked="checked" id="apppy_10" name="__tabbed_12" type="radio" /><input id="bedrock-agent-example-event" name="__tabbed_12" type="radio" /><div class="tabbed-labels"><label for="apppy_10">app.py</label><label for="bedrock-agent-example-event">Bedrock Agent Example Event</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
@@ -6007,7 +6067,7 @@ and <a href="https://aws.amazon.com/blogs/mobile/appsync-direct-lambda/" target=
 </div>
 <h3 id="cloudformation-custom-resource">CloudFormation Custom Resource<a class="headerlink" href="#cloudformation-custom-resource" title="Permanent link">&para;</a></h3>
 <p>The example focuses on the <code>Create</code> request type, generating a unique physical resource ID and logging the process. The function is structured to potentially handle <code>Update</code> and <code>Delete</code> operations as well.</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="13:2"><input checked="checked" id="apppy_12" name="__tabbed_13" type="radio" /><input id="cloudformation-custom-resource-example-event" name="__tabbed_13" type="radio" /><div class="tabbed-labels"><label for="apppy_12">app.py</label><label for="cloudformation-custom-resource-example-event">CloudFormation Custom Resource Example Event</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="13:2"><input checked="checked" id="apppy_11" name="__tabbed_13" type="radio" /><input id="cloudformation-custom-resource-example-event" name="__tabbed_13" type="radio" /><div class="tabbed-labels"><label for="apppy_11">app.py</label><label for="cloudformation-custom-resource-example-event">CloudFormation Custom Resource Example Event</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
@@ -6097,7 +6157,7 @@ and <a href="https://aws.amazon.com/blogs/mobile/appsync-direct-lambda/" target=
 </div>
 <h3 id="cloudwatch-dashboard-custom-widget">CloudWatch Dashboard Custom Widget<a class="headerlink" href="#cloudwatch-dashboard-custom-widget" title="Permanent link">&para;</a></h3>
 <p>Thie example for <code>CloudWatchDashboardCustomWidgetEvent</code> logs the dashboard name, extracts key information like widget ID and time range, and returns a formatted response with a title and markdown content. Read more about <a href="https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/add_custom_widget_samples.html">custom widgets for Cloudwatch dashboard</a>.</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="14:2"><input checked="checked" id="apppy_13" name="__tabbed_14" type="radio" /><input id="cloudwatch-dashboard-example-event" name="__tabbed_14" type="radio" /><div class="tabbed-labels"><label for="apppy_13">app.py</label><label for="cloudwatch-dashboard-example-event">CloudWatch Dashboard Example Event</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="14:2"><input checked="checked" id="apppy_12" name="__tabbed_14" type="radio" /><input id="cloudwatch-dashboard-example-event" name="__tabbed_14" type="radio" /><div class="tabbed-labels"><label for="apppy_12">app.py</label><label for="cloudwatch-dashboard-example-event">CloudWatch Dashboard Example Event</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
@@ -6246,7 +6306,7 @@ and <a href="https://aws.amazon.com/blogs/mobile/appsync-direct-lambda/" target=
 <h3 id="cloudwatch-alarm-state-change-action">CloudWatch Alarm State Change Action<a class="headerlink" href="#cloudwatch-alarm-state-change-action" title="Permanent link">&para;</a></h3>
 <p><a href="https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/AlarmThatSendsEmail.html#alarms-and-actions" target="_blank">CloudWatch supports Lambda as an alarm state change action</a>.
 You can use the <code>CloudWathAlarmEvent</code> data class to access the fields containing such data as alarm information, current state, and previous state.</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="15:2"><input checked="checked" id="apppy_14" name="__tabbed_15" type="radio" /><input id="cloudwatch-alarm-example-event" name="__tabbed_15" type="radio" /><div class="tabbed-labels"><label for="apppy_14">app.py</label><label for="cloudwatch-alarm-example-event">CloudWatch Alarm Example Event</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="15:2"><input checked="checked" id="apppy_13" name="__tabbed_15" type="radio" /><input id="cloudwatch-alarm-example-event" name="__tabbed_15" type="radio" /><div class="tabbed-labels"><label for="apppy_13">app.py</label><label for="cloudwatch-alarm-example-event">CloudWatch Alarm Example Event</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
@@ -6413,7 +6473,7 @@ You can use the <code>CloudWathAlarmEvent</code> data class to access the fields
 <h3 id="cloudwatch-logs">CloudWatch Logs<a class="headerlink" href="#cloudwatch-logs" title="Permanent link">&para;</a></h3>
 <p>CloudWatch Logs events by default are compressed and base64 encoded. You can use the helper function provided to decode,
 decompress and parse json data from the event.</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="16:2"><input checked="checked" id="apppy_15" name="__tabbed_16" type="radio" /><input id="cloudwatch-logs-example-event" name="__tabbed_16" type="radio" /><div class="tabbed-labels"><label for="apppy_15">app.py</label><label for="cloudwatch-logs-example-event">CloudWatch Logs Example Event</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="16:2"><input checked="checked" id="apppy_14" name="__tabbed_16" type="radio" /><input id="cloudwatch-logs-example-event" name="__tabbed_16" type="radio" /><div class="tabbed-labels"><label for="apppy_14">app.py</label><label for="cloudwatch-logs-example-event">CloudWatch Logs Example Event</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
@@ -6469,7 +6529,7 @@ decompress and parse json data from the event.</p>
 </div>
 <h4 id="kinesis-integration">Kinesis integration<a class="headerlink" href="#kinesis-integration" title="Permanent link">&para;</a></h4>
 <p><a href="https://aws.amazon.com/premiumsupport/knowledge-center/streaming-cloudwatch-logs/" target="_blank">When streaming CloudWatch Logs to a Kinesis Data Stream</a> (cross-account or not), you can use <code>extract_cloudwatch_logs_from_event</code> to decode, decompress and extract logs as <code>CloudWatchLogsDecodedData</code> to ease log processing.</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="17:2"><input checked="checked" id="apppy_16" name="__tabbed_17" type="radio" /><input id="kinesis-stream-cloudwatch-logs-example-event" name="__tabbed_17" type="radio" /><div class="tabbed-labels"><label for="apppy_16">app.py</label><label for="kinesis-stream-cloudwatch-logs-example-event">Kinesis Stream CloudWatch Logs Example Event</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="17:2"><input checked="checked" id="apppy_15" name="__tabbed_17" type="radio" /><input id="kinesis-stream-cloudwatch-logs-example-event" name="__tabbed_17" type="radio" /><div class="tabbed-labels"><label for="apppy_15">app.py</label><label for="kinesis-stream-cloudwatch-logs-example-event">Kinesis Stream CloudWatch Logs Example Event</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
@@ -6584,7 +6644,7 @@ decompress and parse json data from the event.</p>
 </div>
 </div>
 <p>Alternatively, you can use <code>extract_cloudwatch_logs_from_record</code> to seamless integrate with the <a href="../batch/" target="_blank">Batch utility</a> for more robust log processing.</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="18:2"><input checked="checked" id="apppy_17" name="__tabbed_18" type="radio" /><input id="kinesis-stream-cloudwatch-logs-example-event_1" name="__tabbed_18" type="radio" /><div class="tabbed-labels"><label for="apppy_17">app.py</label><label for="kinesis-stream-cloudwatch-logs-example-event_1">Kinesis Stream CloudWatch Logs Example Event</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="18:2"><input checked="checked" id="apppy_16" name="__tabbed_18" type="radio" /><input id="kinesis-stream-cloudwatch-logs-example-event_1" name="__tabbed_18" type="radio" /><div class="tabbed-labels"><label for="apppy_16">app.py</label><label for="kinesis-stream-cloudwatch-logs-example-event_1">Kinesis Stream CloudWatch Logs Example Event</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
@@ -6726,7 +6786,7 @@ decompress and parse json data from the event.</p>
 <p>CodeDeploy triggers Lambdas with this event when defined in
 <a href="https://docs.aws.amazon.com/codedeploy/latest/userguide/reference-appspec-file-structure-hooks.html">AppSpec definitions</a>
 to test applications at different stages of deployment.</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="19:2"><input checked="checked" id="apppy_18" name="__tabbed_19" type="radio" /><input id="codedeploy-lifecycle-hook-example-event" name="__tabbed_19" type="radio" /><div class="tabbed-labels"><label for="apppy_18">app.py</label><label for="codedeploy-lifecycle-hook-example-event">CodeDeploy LifeCycle Hook Example Event</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="19:2"><input checked="checked" id="apppy_17" name="__tabbed_19" type="radio" /><input id="codedeploy-lifecycle-hook-example-event" name="__tabbed_19" type="radio" /><div class="tabbed-labels"><label for="apppy_17">app.py</label><label for="codedeploy-lifecycle-hook-example-event">CodeDeploy LifeCycle Hook Example Event</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
@@ -6762,7 +6822,7 @@ to test applications at different stages of deployment.</p>
 </div>
 <h3 id="codepipeline-job">CodePipeline Job<a class="headerlink" href="#codepipeline-job" title="Permanent link">&para;</a></h3>
 <p>Data classes and utility functions to help create continuous delivery pipelines tasks with AWS Lambda.</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="20:2"><input checked="checked" id="apppy_19" name="__tabbed_20" type="radio" /><input id="codepipeline-job-example-event" name="__tabbed_20" type="radio" /><div class="tabbed-labels"><label for="apppy_19">app.py</label><label for="codepipeline-job-example-event">CodePipeline Job Example Event</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="20:2"><input checked="checked" id="apppy_18" name="__tabbed_20" type="radio" /><input id="codepipeline-job-example-event" name="__tabbed_20" type="radio" /><div class="tabbed-labels"><label for="apppy_18">app.py</label><label for="codepipeline-job-example-event">CodePipeline Job Example Event</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
@@ -6925,7 +6985,7 @@ can be imported from <code>aws_lambda_powertools.data_classes.cognito_user_pool_
 </table>
 <p>Some examples for the Cognito User Pools Lambda triggers sources:</p>
 <h4 id="post-confirmation-example">Post Confirmation Example<a class="headerlink" href="#post-confirmation-example" title="Permanent link">&para;</a></h4>
-<div class="tabbed-set tabbed-alternate" data-tabs="21:2"><input checked="checked" id="apppy_20" name="__tabbed_21" type="radio" /><input id="cognito-post-confirmation-example-event" name="__tabbed_21" type="radio" /><div class="tabbed-labels"><label for="apppy_20">app.py</label><label for="cognito-post-confirmation-example-event">Cognito Post Confirmation Example Event</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="21:2"><input checked="checked" id="apppy_19" name="__tabbed_21" type="radio" /><input id="cognito-post-confirmation-example-event" name="__tabbed_21" type="radio" /><div class="tabbed-labels"><label for="apppy_19">app.py</label><label for="cognito-post-confirmation-example-event">Cognito Post Confirmation Example Event</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
@@ -6993,7 +7053,7 @@ can be imported from <code>aws_lambda_powertools.data_classes.cognito_user_pool_
 <p>In this example we are modifying the wrapped dict response fields, so we need to return the json serializable wrapped event in <code>event.raw_event</code>.</p>
 </details>
 <p>This example is based on the AWS Cognito docs for <a href="https://docs.aws.amazon.com/cognito/latest/developerguide/user-pool-lambda-define-auth-challenge.html" target="_blank">Define Auth Challenge Lambda Trigger</a>.</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="22:2"><input checked="checked" id="apppy_21" name="__tabbed_22" type="radio" /><input id="cognito-define-auth-challengen-example-event" name="__tabbed_22" type="radio" /><div class="tabbed-labels"><label for="apppy_21">app.py</label><label for="cognito-define-auth-challengen-example-event">Cognito Define Auth Challengen Example Event</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="22:2"><input checked="checked" id="apppy_20" name="__tabbed_22" type="radio" /><input id="cognito-define-auth-challengen-example-event" name="__tabbed_22" type="radio" /><div class="tabbed-labels"><label for="apppy_20">app.py</label><label for="cognito-define-auth-challengen-example-event">Cognito Define Auth Challengen Example Event</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
@@ -7127,7 +7187,7 @@ can be imported from <code>aws_lambda_powertools.data_classes.cognito_user_pool_
 </div>
 <h4 id="create-auth-challenge-example">Create Auth Challenge Example<a class="headerlink" href="#create-auth-challenge-example" title="Permanent link">&para;</a></h4>
 <p>This example is based on the AWS Cognito docs for <a href="https://docs.aws.amazon.com/cognito/latest/developerguide/user-pool-lambda-create-auth-challenge.html" target="_blank">Create Auth Challenge Lambda Trigger</a>.</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="23:2"><input checked="checked" id="apppy_22" name="__tabbed_23" type="radio" /><input id="cognito-create-auth-challengen-example-event" name="__tabbed_23" type="radio" /><div class="tabbed-labels"><label for="apppy_22">app.py</label><label for="cognito-create-auth-challengen-example-event">Cognito Create Auth Challengen Example Event</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="23:2"><input checked="checked" id="apppy_21" name="__tabbed_23" type="radio" /><input id="cognito-create-auth-challengen-example-event" name="__tabbed_23" type="radio" /><div class="tabbed-labels"><label for="apppy_21">app.py</label><label for="cognito-create-auth-challengen-example-event">Cognito Create Auth Challengen Example Event</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
@@ -7217,7 +7277,7 @@ can be imported from <code>aws_lambda_powertools.data_classes.cognito_user_pool_
 </div>
 <h4 id="verify-auth-challenge-response-example">Verify Auth Challenge Response Example<a class="headerlink" href="#verify-auth-challenge-response-example" title="Permanent link">&para;</a></h4>
 <p>This example is based on the AWS Cognito docs for <a href="https://docs.aws.amazon.com/cognito/latest/developerguide/user-pool-lambda-verify-auth-challenge-response.html" target="_blank">Verify Auth Challenge Response Lambda Trigger</a>.</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="24:2"><input checked="checked" id="apppy_23" name="__tabbed_24" type="radio" /><input id="cognito-verify-auth-challengen-example-event" name="__tabbed_24" type="radio" /><div class="tabbed-labels"><label for="apppy_23">app.py</label><label for="cognito-verify-auth-challengen-example-event">Cognito Verify Auth Challengen Example Event</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="24:2"><input checked="checked" id="apppy_22" name="__tabbed_24" type="radio" /><input id="cognito-verify-auth-challengen-example-event" name="__tabbed_24" type="radio" /><div class="tabbed-labels"><label for="apppy_22">app.py</label><label for="cognito-verify-auth-challengen-example-event">Cognito Verify Auth Challengen Example Event</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
@@ -7303,7 +7363,7 @@ can be imported from <code>aws_lambda_powertools.data_classes.cognito_user_pool_
 </div>
 <h3 id="connect-contact-flow">Connect Contact Flow<a class="headerlink" href="#connect-contact-flow" title="Permanent link">&para;</a></h3>
 <p>The example integrates with <a href="https://docs.aws.amazon.com/connect/latest/adminguide/what-is-amazon-connect.html">Amazon Connect</a> by handling contact flow events. The function converts the event into a <code>ConnectContactFlowEvent</code> object, providing a structured representation of the contact flow data.</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="25:2"><input checked="checked" id="apppy_24" name="__tabbed_25" type="radio" /><input id="connect-contact-flow-example-event" name="__tabbed_25" type="radio" /><div class="tabbed-labels"><label for="apppy_24">app.py</label><label for="connect-contact-flow-example-event">Connect Contact Flow Example Event</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="25:2"><input checked="checked" id="apppy_23" name="__tabbed_25" type="radio" /><input id="connect-contact-flow-example-event" name="__tabbed_25" type="radio" /><div class="tabbed-labels"><label for="apppy_23">app.py</label><label for="connect-contact-flow-example-event">Connect Contact Flow Example Event</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
@@ -7425,7 +7485,7 @@ can be imported from <code>aws_lambda_powertools.data_classes.cognito_user_pool_
 <p>The DynamoDB data class utility provides the base class for <code>DynamoDBStreamEvent</code>, as well as enums for stream view type (<code>StreamViewType</code>) and event type.
 (<code>DynamoDBRecordEventName</code>).
 The class automatically deserializes DynamoDB types into their equivalent Python types.</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="26:3"><input checked="checked" id="apppy_25" name="__tabbed_26" type="radio" /><input id="app_multiple_recordspy" name="__tabbed_26" type="radio" /><input id="dynamodb-streams-example-event" name="__tabbed_26" type="radio" /><div class="tabbed-labels"><label for="apppy_25">app.py</label><label for="app_multiple_recordspy">app_multiple_records.py</label><label for="dynamodb-streams-example-event">DynamoDB Streams Example Event</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="26:3"><input checked="checked" id="apppy_24" name="__tabbed_26" type="radio" /><input id="app_multiple_recordspy" name="__tabbed_26" type="radio" /><input id="dynamodb-streams-example-event" name="__tabbed_26" type="radio" /><div class="tabbed-labels"><label for="apppy_24">app.py</label><label for="app_multiple_recordspy">app_multiple_records.py</label><label for="dynamodb-streams-example-event">DynamoDB Streams Example Event</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
@@ -7625,7 +7685,7 @@ The class automatically deserializes DynamoDB types into their equivalent Python
 </div>
 <h3 id="eventbridge">EventBridge<a class="headerlink" href="#eventbridge" title="Permanent link">&para;</a></h3>
 <p>When an event matching a defined rule occurs in EventBridge, it can <a href="https://docs.aws.amazon.com/lambda/latest/dg/with-eventbridge-scheduler.html">automatically trigger a Lambda function</a>, passing the event data as input.</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="27:2"><input checked="checked" id="apppy_26" name="__tabbed_27" type="radio" /><input id="eventbridge-example-event" name="__tabbed_27" type="radio" /><div class="tabbed-labels"><label for="apppy_26">app.py</label><label for="eventbridge-example-event">EventBridge Example Event</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="27:2"><input checked="checked" id="apppy_25" name="__tabbed_27" type="radio" /><input id="eventbridge-example-event" name="__tabbed_27" type="radio" /><div class="tabbed-labels"><label for="apppy_25">app.py</label><label for="eventbridge-example-event">EventBridge Example Event</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
@@ -7691,7 +7751,7 @@ The class automatically deserializes DynamoDB types into their equivalent Python
 </div>
 <h3 id="kafka">Kafka<a class="headerlink" href="#kafka" title="Permanent link">&para;</a></h3>
 <p>This example is based on the AWS docs for <a href="https://docs.aws.amazon.com/lambda/latest/dg/with-msk.html" target="_blank">Amazon MSK</a> and <a href="https://docs.aws.amazon.com/lambda/latest/dg/with-kafka.html" target="_blank">self-managed Apache Kafka</a>.</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="28:2"><input checked="checked" id="apppy_27" name="__tabbed_28" type="radio" /><input id="kafka-example-event" name="__tabbed_28" type="radio" /><div class="tabbed-labels"><label for="apppy_27">app.py</label><label for="kafka-example-event">Kafka Example Event</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="28:2"><input checked="checked" id="apppy_26" name="__tabbed_28" type="radio" /><input id="kafka-example-event" name="__tabbed_28" type="radio" /><div class="tabbed-labels"><label for="apppy_26">app.py</label><label for="kafka-example-event">Kafka Example Event</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
@@ -7796,7 +7856,7 @@ The class automatically deserializes DynamoDB types into their equivalent Python
 <h3 id="kinesis-streams">Kinesis streams<a class="headerlink" href="#kinesis-streams" title="Permanent link">&para;</a></h3>
 <p>Kinesis events by default contain base64 encoded data. You can use the helper function to access the data either as json
 or plain text, depending on the original payload.</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="29:2"><input checked="checked" id="apppy_28" name="__tabbed_29" type="radio" /><input id="kinesis-streams-example-event" name="__tabbed_29" type="radio" /><div class="tabbed-labels"><label for="apppy_28">app.py</label><label for="kinesis-streams-example-event">Kinesis streams Example Event</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="29:2"><input checked="checked" id="apppy_27" name="__tabbed_29" type="radio" /><input id="kinesis-streams-example-event" name="__tabbed_29" type="radio" /><div class="tabbed-labels"><label for="apppy_27">app.py</label><label for="kinesis-streams-example-event">Kinesis streams Example Event</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
@@ -8266,7 +8326,7 @@ or plain text, depending on the original payload.</p>
 </div>
 <h3 id="lambda-function-url">Lambda Function URL<a class="headerlink" href="#lambda-function-url" title="Permanent link">&para;</a></h3>
 <p><a href="https://docs.aws.amazon.com/lambda/latest/dg/urls-invocation.html">Lambda Function URLs</a> provide a direct HTTP endpoint for invoking Lambda functions. This feature allows functions to receive and process HTTP requests without the need for additional services like API Gateway.</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="31:2"><input checked="checked" id="apppy_29" name="__tabbed_31" type="radio" /><input id="lambda-function-url-example-event" name="__tabbed_31" type="radio" /><div class="tabbed-labels"><label for="apppy_29">app.py</label><label for="lambda-function-url-example-event">Lambda Function URL Example Event</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="31:2"><input checked="checked" id="apppy_28" name="__tabbed_31" type="radio" /><input id="lambda-function-url-example-event" name="__tabbed_31" type="radio" /><div class="tabbed-labels"><label for="apppy_28">app.py</label><label for="lambda-function-url-example-event">Lambda Function URL Example Event</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
@@ -8386,7 +8446,7 @@ or plain text, depending on the original payload.</p>
 <p>It is used for <a href="https://docs.aws.amazon.com/lambda/latest/dg/with-mq.html" target="_blank">Rabbit MQ payloads</a>. See
 the <a href="https://aws.amazon.com/blogs/compute/using-amazon-mq-for-rabbitmq-as-an-event-source-for-lambda/" target="_blank">blog post</a>
 for more details.</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="32:2"><input checked="checked" id="apppy_30" name="__tabbed_32" type="radio" /><input id="rabbit-mq-example-event" name="__tabbed_32" type="radio" /><div class="tabbed-labels"><label for="apppy_30">app.py</label><label for="rabbit-mq-example-event">Rabbit MQ Example Event</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="32:2"><input checked="checked" id="apppy_29" name="__tabbed_32" type="radio" /><input id="rabbit-mq-example-event" name="__tabbed_32" type="radio" /><div class="tabbed-labels"><label for="apppy_29">app.py</label><label for="rabbit-mq-example-event">Rabbit MQ Example Event</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
@@ -8540,7 +8600,7 @@ for more details.</p>
 </div>
 <h3 id="s3">S3<a class="headerlink" href="#s3" title="Permanent link">&para;</a></h3>
 <p>Integration with Amazon S3 enables automatic, serverless processing of object-level events in S3 buckets. When triggered by actions like object creation or deletion, Lambda functions receive detailed event information, allowing for real-time file processing, data transformations, and automated workflows.</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="33:2"><input checked="checked" id="apppy_31" name="__tabbed_33" type="radio" /><input id="s3-example-event" name="__tabbed_33" type="radio" /><div class="tabbed-labels"><label for="apppy_31">app.py</label><label for="s3-example-event">S3 Example Event</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="33:2"><input checked="checked" id="apppy_30" name="__tabbed_33" type="radio" /><input id="s3-example-event" name="__tabbed_33" type="radio" /><div class="tabbed-labels"><label for="apppy_30">app.py</label><label for="s3-example-event">S3 Example Event</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
@@ -8662,7 +8722,7 @@ for more details.</p>
 </div>
 <h3 id="s3-batch-operations">S3 Batch Operations<a class="headerlink" href="#s3-batch-operations" title="Permanent link">&para;</a></h3>
 <p>This example is based on the AWS S3 Batch Operations documentation <a href="https://docs.aws.amazon.com/AmazonS3/latest/userguide/batch-ops-invoke-lambda.html" target="_blank">Example Lambda function for S3 Batch Operations</a>.</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="34:2"><input checked="checked" id="apppy_32" name="__tabbed_34" type="radio" /><input id="s3-batch-operations-example-event" name="__tabbed_34" type="radio" /><div class="tabbed-labels"><label for="apppy_32">app.py</label><label for="s3-batch-operations-example-event">S3 Batch Operations Example Event</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="34:2"><input checked="checked" id="apppy_31" name="__tabbed_34" type="radio" /><input id="s3-batch-operations-example-event" name="__tabbed_34" type="radio" /><div class="tabbed-labels"><label for="apppy_31">app.py</label><label for="s3-batch-operations-example-event">S3 Batch Operations Example Event</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
@@ -8784,7 +8844,7 @@ for more details.</p>
 </div>
 <h3 id="s3-object-lambda">S3 Object Lambda<a class="headerlink" href="#s3-object-lambda" title="Permanent link">&para;</a></h3>
 <p>This example is based on the AWS Blog post <a href="https://aws.amazon.com/blogs/aws/introducing-amazon-s3-object-lambda-use-your-code-to-process-data-as-it-is-being-retrieved-from-s3/" target="_blank">Introducing Amazon S3 Object Lambda – Use Your Code to Process Data as It Is Being Retrieved from S3</a>.</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="35:2"><input checked="checked" id="apppy_33" name="__tabbed_35" type="radio" /><input id="s3-object-lambda-example-event" name="__tabbed_35" type="radio" /><div class="tabbed-labels"><label for="apppy_33">app.py</label><label for="s3-object-lambda-example-event">S3 Object Lambda Example Event</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="35:2"><input checked="checked" id="apppy_32" name="__tabbed_35" type="radio" /><input id="s3-object-lambda-example-event" name="__tabbed_35" type="radio" /><div class="tabbed-labels"><label for="apppy_32">app.py</label><label for="s3-object-lambda-example-event">S3 Object Lambda Example Event</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
@@ -8914,7 +8974,7 @@ for more details.</p>
 </div>
 <h3 id="s3-eventbridge-notification">S3 EventBridge Notification<a class="headerlink" href="#s3-eventbridge-notification" title="Permanent link">&para;</a></h3>
 <p><a href="https://docs.aws.amazon.com/AmazonS3/latest/userguide/EventBridge.html">S3 EventBridge notifications</a> enhance Lambda's ability to process S3 events by routing them through Amazon EventBridge. This integration offers advanced filtering, multiple destination support, and standardized CloudEvents format.</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="36:2"><input checked="checked" id="apppy_34" name="__tabbed_36" type="radio" /><input id="s3-eventbridge-notification-example-event" name="__tabbed_36" type="radio" /><div class="tabbed-labels"><label for="apppy_34">app.py</label><label for="s3-eventbridge-notification-example-event">S3 EventBridge Notification Example Event</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="36:2"><input checked="checked" id="apppy_33" name="__tabbed_36" type="radio" /><input id="s3-eventbridge-notification-example-event" name="__tabbed_36" type="radio" /><div class="tabbed-labels"><label for="apppy_33">app.py</label><label for="s3-eventbridge-notification-example-event">S3 EventBridge Notification Example Event</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
@@ -9006,7 +9066,7 @@ for more details.</p>
 </div>
 <h3 id="secrets-manager">Secrets Manager<a class="headerlink" href="#secrets-manager" title="Permanent link">&para;</a></h3>
 <p>AWS Secrets Manager rotation uses an AWS Lambda function to update the secret. <a href="https://docs.aws.amazon.com/secretsmanager/latest/userguide/rotating-secrets.html" target="_blank">Click here</a> for more information about rotating AWS Secrets Manager secrets.</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="37:2"><input checked="checked" id="apppy_35" name="__tabbed_37" type="radio" /><input id="secrets-manager-example-event" name="__tabbed_37" type="radio" /><div class="tabbed-labels"><label for="apppy_35">app.py</label><label for="secrets-manager-example-event">Secrets Manager Example Event</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="37:2"><input checked="checked" id="apppy_34" name="__tabbed_37" type="radio" /><input id="secrets-manager-example-event" name="__tabbed_37" type="radio" /><div class="tabbed-labels"><label for="apppy_34">app.py</label><label for="secrets-manager-example-event">Secrets Manager Example Event</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
@@ -9058,7 +9118,7 @@ for more details.</p>
 </div>
 <h3 id="ses">SES<a class="headerlink" href="#ses" title="Permanent link">&para;</a></h3>
 <p>The integration with Simple Email Service (SES) enables serverless email processing. When configured, SES can trigger Lambda functions in response to incoming emails or delivery status notifications. The Lambda function receives an SES event containing details like sender, recipients, and email content.</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="38:2"><input checked="checked" id="apppy_36" name="__tabbed_38" type="radio" /><input id="ses-example-event" name="__tabbed_38" type="radio" /><div class="tabbed-labels"><label for="apppy_36">app.py</label><label for="ses-example-event">SES Example Event</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="38:2"><input checked="checked" id="apppy_35" name="__tabbed_38" type="radio" /><input id="ses-example-event" name="__tabbed_38" type="radio" /><div class="tabbed-labels"><label for="apppy_35">app.py</label><label for="ses-example-event">SES Example Event</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
@@ -9296,7 +9356,7 @@ for more details.</p>
 </div>
 <h3 id="sns">SNS<a class="headerlink" href="#sns" title="Permanent link">&para;</a></h3>
 <p>The integration with Simple Notification Service (SNS) enables serverless message processing. When configured, SNS can trigger Lambda functions in response to published messages or notifications. The Lambda function receives an SNS event containing details like the message body, subject, and metadata.</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="39:2"><input checked="checked" id="apppy_37" name="__tabbed_39" type="radio" /><input id="sns-example-event" name="__tabbed_39" type="radio" /><div class="tabbed-labels"><label for="apppy_37">app.py</label><label for="sns-example-event">SNS Example Event</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="39:2"><input checked="checked" id="apppy_36" name="__tabbed_39" type="radio" /><input id="sns-example-event" name="__tabbed_39" type="radio" /><div class="tabbed-labels"><label for="apppy_36">app.py</label><label for="sns-example-event">SNS Example Event</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
@@ -9394,7 +9454,7 @@ for more details.</p>
 </div>
 <h3 id="sqs">SQS<a class="headerlink" href="#sqs" title="Permanent link">&para;</a></h3>
 <p>The integration with Simple Queue Service (SQS) enables serverless queue processing. When configured, SQS can trigger Lambda functions in response to messages in the queue. The Lambda function receives an SQS event containing details like message body, attributes, and metadata.</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="40:2"><input checked="checked" id="apppy_38" name="__tabbed_40" type="radio" /><input id="sqs-example-event" name="__tabbed_40" type="radio" /><div class="tabbed-labels"><label for="apppy_38">app.py</label><label for="sqs-example-event">SQS Example Event</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="40:2"><input checked="checked" id="apppy_37" name="__tabbed_40" type="radio" /><input id="sqs-example-event" name="__tabbed_40" type="radio" /><div class="tabbed-labels"><label for="apppy_37">app.py</label><label for="sqs-example-event">SQS Example Event</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
@@ -9515,7 +9575,7 @@ for more details.</p>
 <h3 id="vpc-lattice-v2">VPC Lattice V2<a class="headerlink" href="#vpc-lattice-v2" title="Permanent link">&para;</a></h3>
 <p>You can register your Lambda functions as targets within an Amazon VPC Lattice service network. By doing this, your Lambda function becomes a service within the network, and clients that have access to the VPC Lattice service network can call your service using <a href="https://docs.aws.amazon.com/lambda/latest/dg/services-vpc-lattice.html#vpc-lattice-receiving-events" target="_blank">Payload V2</a>.</p>
 <p><a href="https://docs.aws.amazon.com/lambda/latest/dg/services-vpc-lattice.html" target="_blank">Click here</a> for more information about using AWS Lambda with Amazon VPC Lattice.</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="41:2"><input checked="checked" id="apppy_39" name="__tabbed_41" type="radio" /><input id="lattice-example-event" name="__tabbed_41" type="radio" /><div class="tabbed-labels"><label for="apppy_39">app.py</label><label for="lattice-example-event">Lattice Example Event</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="41:2"><input checked="checked" id="apppy_38" name="__tabbed_41" type="radio" /><input id="lattice-example-event" name="__tabbed_41" type="radio" /><div class="tabbed-labels"><label for="apppy_38">app.py</label><label for="lattice-example-event">Lattice Example Event</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
@@ -9624,7 +9684,7 @@ for more details.</p>
 <h3 id="vpc-lattice-v1">VPC Lattice V1<a class="headerlink" href="#vpc-lattice-v1" title="Permanent link">&para;</a></h3>
 <p>You can register your Lambda functions as targets within an Amazon VPC Lattice service network. By doing this, your Lambda function becomes a service within the network, and clients that have access to the VPC Lattice service network can call your service.</p>
 <p><a href="https://docs.aws.amazon.com/lambda/latest/dg/services-vpc-lattice.html" target="_blank">Click here</a> for more information about using AWS Lambda with Amazon VPC Lattice.</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="42:2"><input checked="checked" id="apppy_40" name="__tabbed_42" type="radio" /><input id="lattice-example-event_1" name="__tabbed_42" type="radio" /><div class="tabbed-labels"><label for="apppy_40">app.py</label><label for="lattice-example-event_1">Lattice Example Event</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="42:2"><input checked="checked" id="apppy_39" name="__tabbed_42" type="radio" /><input id="lattice-example-event_1" name="__tabbed_42" type="radio" /><div class="tabbed-labels"><label for="apppy_39">app.py</label><label for="lattice-example-event_1">Lattice Example Event</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
@@ -9923,7 +9983,7 @@ for more details.</p>
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    2025-01-27
+    2025-02-10
   </span>
 
     
