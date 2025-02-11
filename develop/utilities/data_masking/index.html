@@ -1201,6 +1201,21 @@ You're not viewing the latest version.
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Erasing data">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#custom-masking" class="md-nav__link">
+    <span class="md-ellipsis">
+      Custom masking
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
         
           <li class="md-nav__item">
@@ -3578,6 +3593,21 @@ You're not viewing the latest version.
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Erasing data">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#custom-masking" class="md-nav__link">
+    <span class="md-ellipsis">
+      Custom masking
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
         
           <li class="md-nav__item">
@@ -3848,7 +3878,7 @@ You're not viewing the latest version.
 <li>Seamless integration with <a href="https://docs.aws.amazon.com/encryption-sdk/latest/developer-guide/introduction.html" target="_blank">AWS Encryption SDK</a> for industry and AWS security best practices</li>
 </ul>
 <h2 id="terminology">Terminology<a class="headerlink" href="#terminology" title="Permanent link">&para;</a></h2>
-<p><strong>Erasing</strong> replaces sensitive information <strong>irreversibly</strong> with a non-sensitive placeholder <em>(<code>*****</code>)</em>. This operation replaces data in-memory, making it a one-way action.</p>
+<p><strong>Erasing</strong> replaces sensitive information <strong>irreversibly</strong> with a non-sensitive placeholder <em>(<code>*****</code>)</em>, or with a customized mask. This operation replaces data in-memory, making it a one-way action.</p>
 <p><strong>Encrypting</strong> transforms plaintext into ciphertext using an encryption algorithm and a cryptographic key. It allows you to encrypt any sensitive data, so only allowed personnel to decrypt it. Learn more about encryption <a href="https://aws.amazon.com/blogs/security/importance-of-encryption-and-how-aws-can-help/" target="_blank">here</a>.</p>
 <p><strong>Decrypting</strong> transforms ciphertext back into plaintext using a decryption algorithm and the correct decryption key.</p>
 <p><strong>Encryption context</strong> is a non-secret <code>key=value</code> data used for authentication like <code>tenant_id:&lt;id&gt;</code>. This adds extra security and confirms encrypted data relationship with a context.</p>
@@ -4146,6 +4176,211 @@ You're not viewing the latest version.
 </div>
 </div>
 </div>
+<h4 id="custom-masking">Custom masking<a class="headerlink" href="#custom-masking" title="Permanent link">&para;</a></h4>
+<p>The <code>erase</code> method also supports additional flags for more advanced and flexible masking:</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="3:6"><input checked="checked" id="dynamic_mask" name="__tabbed_3" type="radio" /><input id="custom_mask" name="__tabbed_3" type="radio" /><input id="regex_pattern--mask_format" name="__tabbed_3" type="radio" /><input id="masking_rules" name="__tabbed_3" type="radio" /><input id="input-example" name="__tabbed_3" type="radio" /><input id="masking-rules-output-example" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="dynamic_mask">dynamic_mask</label><label for="custom_mask">custom_mask</label><label for="regex_pattern--mask_format">regex_pattern &amp; mask_format</label><label for="masking_rules">masking_rules</label><label for="input-example">Input example</label><label for="masking-rules-output-example">Masking rules output example</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p>(bool) Enables dynamic masking behavior when set to <code>True</code>, by maintaining the original length and structure of the text replacing with *.</p>
+<blockquote>
+<p>Expression: <code>data_masker.erase(data, fields=["address.zip"], dynamic_mask=True)</code></p>
+<p>Field result: <code>'street': '*** **** **'</code></p>
+</blockquote>
+</div>
+<div class="tabbed-block">
+<p>(str) Specifies a simple pattern for masking data. This pattern is applied directly to the input string, replacing all the original characters. For example, with a <code>custom_mask</code> of "XX-XX" applied to "12345", the result would be "XX-XX".</p>
+<blockquote>
+<p>Expression: <code>data_masker.erase(data, fields=["address.zip"], custom_mask="XX")</code></p>
+<p>Field result: <code>'zip': 'XX'</code></p>
+</blockquote>
+</div>
+<div class="tabbed-block">
+<p>(str) <code>regex_pattern</code> defines a regular expression pattern used to identify parts of the input string that should be masked. This allows for more complex and flexible masking rules. It's used in conjunction with <code>mask_format</code>.
+<code>mask_format</code> specifies the format to use when replacing parts of the string matched by <code>regex_pattern</code>. It can include placeholders (like \1, \2) to refer to captured groups in the regex pattern, allowing some parts of the original string to be preserved.</p>
+<blockquote>
+<p>Expression: <code>data_masker.erase(data, fields=["email"], regex_pattern=r"(.)(.*)(@.*)", mask_format=r"\1****\3")</code></p>
+<p>Field result: <code>'email': 'j****@example.com'</code></p>
+</blockquote>
+</div>
+<div class="tabbed-block">
+<p>(dict) Allows you to apply different masking rules (flags) for each data field.
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">__future__</span><span class="w"> </span><span class="kn">import</span> <span class="n">annotations</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">aws_lambda_powertools.utilities.data_masking</span><span class="w"> </span><span class="kn">import</span> <span class="n">DataMasking</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">aws_lambda_powertools.utilities.typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">LambdaContext</span>
+
+<span class="n">data_masker</span> <span class="o">=</span> <span class="n">DataMasking</span><span class="p">()</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">lambda_handler</span><span class="p">(</span><span class="n">event</span><span class="p">:</span> <span class="nb">dict</span><span class="p">,</span> <span class="n">context</span><span class="p">:</span> <span class="n">LambdaContext</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">:</span>
+    <span class="n">data</span><span class="p">:</span> <span class="nb">dict</span> <span class="o">=</span> <span class="n">event</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;body&quot;</span><span class="p">,</span> <span class="p">{})</span>
+
+    <span class="c1"># Masking rules for each field</span>
+    <span class="n">masking_rules</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s2">&quot;email&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;regex_pattern&quot;</span><span class="p">:</span> <span class="s2">&quot;(.)(.*)(@.*)&quot;</span><span class="p">,</span> <span class="s2">&quot;mask_format&quot;</span><span class="p">:</span> <span class="sa">r</span><span class="s2">&quot;\1****\3&quot;</span><span class="p">},</span>
+        <span class="s2">&quot;age&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;dynamic_mask&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">},</span>
+        <span class="s2">&quot;address.zip&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;custom_mask&quot;</span><span class="p">:</span> <span class="s2">&quot;xxx&quot;</span><span class="p">},</span>
+        <span class="s2">&quot;$.other_address[?(@.postcode &gt; 12000)]&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;custom_mask&quot;</span><span class="p">:</span> <span class="s2">&quot;Masked&quot;</span><span class="p">},</span>
+    <span class="p">}</span>
+
+<span class="hll">    <span class="n">result</span> <span class="o">=</span> <span class="n">data_masker</span><span class="o">.</span><span class="n">erase</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">masking_rules</span><span class="o">=</span><span class="n">masking_rules</span><span class="p">)</span>
+</span>
+    <span class="k">return</span> <span class="n">result</span>
+</code></pre></div></td></tr></table></div></p>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;body&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Jane Doe&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;age&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">30</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;email&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;janedoe@example.com&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;address&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;street&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;123 Main St&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;city&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Anytown&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;state&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;CA&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;zip&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;12345&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;postcode&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">12345</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;product&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Car&quot;</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="nt">&quot;other_address&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">            </span><span class="p">{</span>
+<span class="w">                </span><span class="nt">&quot;postcode&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">11345</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">&quot;street&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;123 Any Drive&quot;</span>
+<span class="w">            </span><span class="p">},</span>
+<span class="w">            </span><span class="p">{</span>
+<span class="w">                </span><span class="nt">&quot;postcode&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">67890</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">&quot;street&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;100 Main Street,&quot;</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">        </span><span class="p">],</span>
+<span class="w">        </span><span class="nt">&quot;company_address&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;street&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;456 ACME Ave&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;city&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Anytown&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;state&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;CA&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;zip&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;12345&quot;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></td></tr></table></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;John Doe&quot;</span><span class="p">,</span>
+<span class="hll"><span class="w">    </span><span class="nt">&quot;age&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;**&quot;</span><span class="p">,</span>
+</span><span class="hll"><span class="w">    </span><span class="nt">&quot;email&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;j****@example.com&quot;</span><span class="p">,</span>
+</span><span class="w">    </span><span class="nt">&quot;address&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;street&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;123 Main St&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;city&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Anytown&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;state&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;CA&quot;</span><span class="p">,</span>
+<span class="hll"><span class="w">        </span><span class="nt">&quot;zip&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;xxx&quot;</span><span class="p">,</span>
+</span><span class="w">        </span><span class="nt">&quot;postcode&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">12345</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;product&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Car&quot;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">&quot;other_address&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;postcode&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">11345</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;street&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;123 Any Drive&quot;</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="hll"><span class="w">        </span><span class="s2">&quot;Masked&quot;</span>
+</span><span class="w">    </span><span class="p">],</span>
+<span class="w">    </span><span class="nt">&quot;company_address&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;street&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;456 ACME Ave&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;city&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Anytown&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;state&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;CA&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;zip&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;12345&quot;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></td></tr></table></div>
+</div>
+</div>
+</div>
 <h3 id="encrypting-data">Encrypting data<a class="headerlink" href="#encrypting-data" title="Permanent link">&para;</a></h3>
 <details class="note" open="open">
 <summary>About static typing and encryption</summary>
@@ -4153,7 +4388,7 @@ You're not viewing the latest version.
 </details>
 <p>To encrypt, you will need an <a href="#providers">encryption provider</a>. Here, we will use <code>AWSEncryptionSDKProvider</code>.</p>
 <p>Under the hood, we delegate a <a href="#encrypt-operation-with-encryption-sdk-kms">number of operations</a> to AWS Encryption SDK to authenticate, create a portable encryption message, and actual data encryption.</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="3:3"><input checked="checked" id="getting_started_encrypt_datapy" name="__tabbed_3" type="radio" /><input id="generic_data_inputjson_1" name="__tabbed_3" type="radio" /><input id="encrypt_data_outputjson" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="getting_started_encrypt_datapy">getting_started_encrypt_data.py</label><label for="generic_data_inputjson_1">generic_data_input.json</label><label for="encrypt_data_outputjson">encrypt_data_output.json</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="4:3"><input checked="checked" id="getting_started_encrypt_datapy" name="__tabbed_4" type="radio" /><input id="generic_data_inputjson_1" name="__tabbed_4" type="radio" /><input id="encrypt_data_outputjson" name="__tabbed_4" type="radio" /><div class="tabbed-labels"><label for="getting_started_encrypt_datapy">getting_started_encrypt_data.py</label><label for="generic_data_inputjson_1">generic_data_input.json</label><label for="encrypt_data_outputjson">encrypt_data_output.json</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
@@ -4277,7 +4512,7 @@ You're not viewing the latest version.
 </details>
 <p>To decrypt, you will need an <a href="#providers">encryption provider</a>. Here, we will use <code>AWSEncryptionSDKProvider</code>.</p>
 <p>Under the hood, we delegate a <a href="#decrypt-operation-with-encryption-sdk-kms">number of operations</a> to AWS Encryption SDK to verify authentication, integrity, and actual ciphertext decryption.</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="4:3"><input checked="checked" id="getting_started_decrypt_datapy" name="__tabbed_4" type="radio" /><input id="getting_started_decrypt_data_inputjson" name="__tabbed_4" type="radio" /><input id="getting_started_decrypt_data_outputjson" name="__tabbed_4" type="radio" /><div class="tabbed-labels"><label for="getting_started_decrypt_datapy">getting_started_decrypt_data.py</label><label for="getting_started_decrypt_data_inputjson">getting_started_decrypt_data_input.json</label><label for="getting_started_decrypt_data_outputjson">getting_started_decrypt_data_output.json</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="5:3"><input checked="checked" id="getting_started_decrypt_datapy" name="__tabbed_5" type="radio" /><input id="getting_started_decrypt_data_inputjson" name="__tabbed_5" type="radio" /><input id="getting_started_decrypt_data_outputjson" name="__tabbed_5" type="radio" /><div class="tabbed-labels"><label for="getting_started_decrypt_datapy">getting_started_decrypt_data.py</label><label for="getting_started_decrypt_data_inputjson">getting_started_decrypt_data_input.json</label><label for="getting_started_decrypt_data_outputjson">getting_started_decrypt_data_output.json</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <p><strong>NOTE</strong>. Decryption only works with KMS Key ARN.</p>
@@ -4399,7 +4634,7 @@ You're not viewing the latest version.
 <li><strong>Use non-sensitive data only</strong>. When using KMS, encryption context is available as plaintext in AWS CloudTrail, unless you <a href="https://docs.aws.amazon.com/kms/latest/developerguide/logging-using-cloudtrail.html#filtering-kms-events" target="_blank">intentionally disabled KMS events</a>.</li>
 </ol>
 </details>
-<div class="tabbed-set tabbed-alternate" data-tabs="5:2"><input checked="checked" id="getting_started_encryption_contextpy" name="__tabbed_5" type="radio" /><input id="getting_started_decryption_contextpy" name="__tabbed_5" type="radio" /><div class="tabbed-labels"><label for="getting_started_encryption_contextpy">getting_started_encryption_context.py</label><label for="getting_started_decryption_contextpy">getting_started_decryption_context.py</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="6:2"><input checked="checked" id="getting_started_encryption_contextpy" name="__tabbed_6" type="radio" /><input id="getting_started_decryption_contextpy" name="__tabbed_6" type="radio" /><div class="tabbed-labels"><label for="getting_started_encryption_contextpy">getting_started_encryption_context.py</label><label for="getting_started_decryption_contextpy">getting_started_decryption_context.py</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
@@ -4566,11 +4801,11 @@ You're not viewing the latest version.
 </tbody>
 </table>
 <p>Here are common scenarios to best visualize how to use <code>fields</code>.</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="6:8"><input checked="checked" id="top-keys-only" name="__tabbed_6" type="radio" /><input id="nested-key" name="__tabbed_6" type="radio" /><input id="multiple-keys" name="__tabbed_6" type="radio" /><input id="all-key-items" name="__tabbed_6" type="radio" /><input id="complex-nested-key" name="__tabbed_6" type="radio" /><input id="all-fields-in-a-list" name="__tabbed_6" type="radio" /><input id="slicing-a-list" name="__tabbed_6" type="radio" /><input id="complex-expressions" name="__tabbed_6" type="radio" /><div class="tabbed-labels"><label for="top-keys-only">Top keys only</label><label for="nested-key">Nested key</label><label for="multiple-keys">Multiple keys</label><label for="all-key-items">All key items</label><label for="complex-nested-key">Complex nested key</label><label for="all-fields-in-a-list">All fields in a list</label><label for="slicing-a-list">Slicing a list</label><label for="complex-expressions">Complex expressions</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="7:8"><input checked="checked" id="top-keys-only" name="__tabbed_7" type="radio" /><input id="nested-key" name="__tabbed_7" type="radio" /><input id="multiple-keys" name="__tabbed_7" type="radio" /><input id="all-key-items" name="__tabbed_7" type="radio" /><input id="complex-nested-key" name="__tabbed_7" type="radio" /><input id="all-fields-in-a-list" name="__tabbed_7" type="radio" /><input id="slicing-a-list" name="__tabbed_7" type="radio" /><input id="complex-expressions" name="__tabbed_7" type="radio" /><div class="tabbed-labels"><label for="top-keys-only">Top keys only</label><label for="nested-key">Nested key</label><label for="multiple-keys">Multiple keys</label><label for="all-key-items">All key items</label><label for="complex-nested-key">Complex nested key</label><label for="all-fields-in-a-list">All fields in a list</label><label for="slicing-a-list">Slicing a list</label><label for="complex-expressions">Complex expressions</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <p>You want to erase data in the <code>card_number</code> field.</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="7:2"><input checked="checked" id="data" name="__tabbed_7" type="radio" /><input id="result" name="__tabbed_7" type="radio" /><div class="tabbed-labels"><label for="data">Data</label><label for="result">Result</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="8:2"><input checked="checked" id="data" name="__tabbed_8" type="radio" /><input id="result" name="__tabbed_8" type="radio" /><div class="tabbed-labels"><label for="data">Data</label><label for="result">Result</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <blockquote>
@@ -4604,7 +4839,7 @@ You're not viewing the latest version.
 </div>
 <div class="tabbed-block">
 <p>You want to erase data in the <code>postcode</code> field.</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="8:2"><input checked="checked" id="data_1" name="__tabbed_8" type="radio" /><input id="result_1" name="__tabbed_8" type="radio" /><div class="tabbed-labels"><label for="data_1">Data</label><label for="result_1">Result</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="9:2"><input checked="checked" id="data_1" name="__tabbed_9" type="radio" /><input id="result_1" name="__tabbed_9" type="radio" /><div class="tabbed-labels"><label for="data_1">Data</label><label for="result_1">Result</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <blockquote>
@@ -4650,7 +4885,7 @@ You're not viewing the latest version.
 </div>
 <div class="tabbed-block">
 <p>You want to erase data in both <code>postcode</code> and <code>street</code> fields.</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="9:2"><input checked="checked" id="data_2" name="__tabbed_9" type="radio" /><input id="result_2" name="__tabbed_9" type="radio" /><div class="tabbed-labels"><label for="data_2">Data</label><label for="result_2">Result</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="10:2"><input checked="checked" id="data_2" name="__tabbed_10" type="radio" /><input id="result_2" name="__tabbed_10" type="radio" /><div class="tabbed-labels"><label for="data_2">Data</label><label for="result_2">Result</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <blockquote>
@@ -4700,7 +4935,7 @@ You're not viewing the latest version.
 </div>
 <div class="tabbed-block">
 <p>You want to erase data under <code>address</code> field.</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="10:2"><input checked="checked" id="data_3" name="__tabbed_10" type="radio" /><input id="result_3" name="__tabbed_10" type="radio" /><div class="tabbed-labels"><label for="data_3">Data</label><label for="result_3">Result</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="11:2"><input checked="checked" id="data_3" name="__tabbed_11" type="radio" /><input id="result_3" name="__tabbed_11" type="radio" /><div class="tabbed-labels"><label for="data_3">Data</label><label for="result_3">Result</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <blockquote>
@@ -4770,7 +5005,7 @@ You're not viewing the latest version.
 </div>
 <div class="tabbed-block">
 <p>You want to erase data under <code>name</code> field.</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="11:2"><input checked="checked" id="data_4" name="__tabbed_11" type="radio" /><input id="result_4" name="__tabbed_11" type="radio" /><div class="tabbed-labels"><label for="data_4">Data</label><label for="result_4">Result</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="12:2"><input checked="checked" id="data_4" name="__tabbed_12" type="radio" /><input id="result_4" name="__tabbed_12" type="radio" /><div class="tabbed-labels"><label for="data_4">Data</label><label for="result_4">Result</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <blockquote>
@@ -4828,7 +5063,7 @@ You're not viewing the latest version.
 </div>
 <div class="tabbed-block">
 <p>You want to erase data under <code>street</code> field located at the any index of the address list.</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="12:2"><input checked="checked" id="data_5" name="__tabbed_12" type="radio" /><input id="result_5" name="__tabbed_12" type="radio" /><div class="tabbed-labels"><label for="data_5">Data</label><label for="result_5">Result</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="13:2"><input checked="checked" id="data_5" name="__tabbed_13" type="radio" /><input id="result_5" name="__tabbed_13" type="radio" /><div class="tabbed-labels"><label for="data_5">Data</label><label for="result_5">Result</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <blockquote>
@@ -4902,7 +5137,7 @@ You're not viewing the latest version.
 </div>
 <div class="tabbed-block">
 <p>You want to erase data by slicing a list.</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="13:2"><input checked="checked" id="data_6" name="__tabbed_13" type="radio" /><input id="result_6" name="__tabbed_13" type="radio" /><div class="tabbed-labels"><label for="data_6">Data</label><label for="result_6">Result</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="14:2"><input checked="checked" id="data_6" name="__tabbed_14" type="radio" /><input id="result_6" name="__tabbed_14" type="radio" /><div class="tabbed-labels"><label for="data_6">Data</label><label for="result_6">Result</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <blockquote>
@@ -4992,7 +5227,7 @@ You're not viewing the latest version.
 </div>
 <div class="tabbed-block">
 <p>You want to erase data by finding for a field with conditional expression.</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="14:2"><input checked="checked" id="data_7" name="__tabbed_14" type="radio" /><input id="result_7" name="__tabbed_14" type="radio" /><div class="tabbed-labels"><label for="data_7">Data</label><label for="result_7">Result</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="15:2"><input checked="checked" id="data_7" name="__tabbed_15" type="radio" /><input id="result_7" name="__tabbed_15" type="radio" /><div class="tabbed-labels"><label for="data_7">Data</label><label for="result_7">Result</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <blockquote>
@@ -5089,7 +5324,7 @@ You're not viewing the latest version.
 <h4 id="json">JSON<a class="headerlink" href="#json" title="Permanent link">&para;</a></h4>
 <p>We also support data in JSON string format as input. We automatically deserialize it, then handle each field operation as expected.</p>
 <p>Note that the return will be a deserialized JSON and your desired fields updated.</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="15:2"><input checked="checked" id="data_8" name="__tabbed_15" type="radio" /><input id="result_8" name="__tabbed_15" type="radio" /><div class="tabbed-labels"><label for="data_8">Data</label><label for="result_8">Result</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="16:2"><input checked="checked" id="data_8" name="__tabbed_16" type="radio" /><input id="result_8" name="__tabbed_16" type="radio" /><div class="tabbed-labels"><label for="data_8">Data</label><label for="result_8">Result</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <p>Expression: <code>data_masker.erase(data, fields=["card_number", "address.postcode"])</code></p>
@@ -5561,7 +5796,7 @@ You're not viewing the latest version.
 <h2 id="testing-your-code">Testing your code<a class="headerlink" href="#testing-your-code" title="Permanent link">&para;</a></h2>
 <h3 id="testing-erase-operation">Testing erase operation<a class="headerlink" href="#testing-erase-operation" title="Permanent link">&para;</a></h3>
 <p>Testing your code with a simple erase operation</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="16:1"><input checked="checked" id="test_lambda_maskpy" name="__tabbed_16" type="radio" /><div class="tabbed-labels"><label for="test_lambda_maskpy">test_lambda_mask.py</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="17:1"><input checked="checked" id="test_lambda_maskpy" name="__tabbed_17" type="radio" /><div class="tabbed-labels"><label for="test_lambda_maskpy">test_lambda_mask.py</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block"></div>
 </div>
@@ -5626,7 +5861,7 @@ You're not viewing the latest version.
     <span class="c1"># THEN: Assert that the result matches the expected output</span>
     <span class="k">assert</span> <span class="n">result</span> <span class="o">==</span> <span class="p">{</span><span class="s2">&quot;testkey&quot;</span><span class="p">:</span> <span class="s2">&quot;*****&quot;</span><span class="p">}</span>
 </code></pre></div></td></tr></table></div>
-<div class="tabbed-set tabbed-alternate" data-tabs="17:1"><input checked="checked" id="lambda_maskpy" name="__tabbed_17" type="radio" /><div class="tabbed-labels"><label for="lambda_maskpy">lambda_mask.py</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="18:1"><input checked="checked" id="lambda_maskpy" name="__tabbed_18" type="radio" /><div class="tabbed-labels"><label for="lambda_maskpy">lambda_mask.py</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block"></div>
 </div>
@@ -5679,7 +5914,7 @@ You're not viewing the latest version.
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    2024-10-14
+    2025-02-11
   </span>
 
     
