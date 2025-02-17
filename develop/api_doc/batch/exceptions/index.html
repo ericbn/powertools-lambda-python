@@ -1817,6 +1817,15 @@ You're not viewing the latest version.
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#aws_lambda_powertools.utilities.batch.exceptions.UnexpectedBatchTypeError" class="md-nav__link">
+    <span class="md-ellipsis">
+      UnexpectedBatchTypeError
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -3356,6 +3365,15 @@ You're not viewing the latest version.
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#aws_lambda_powertools.utilities.batch.exceptions.UnexpectedBatchTypeError" class="md-nav__link">
+    <span class="md-ellipsis">
+      UnexpectedBatchTypeError
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -3424,6 +3442,14 @@ You're not viewing the latest version.
             <td class="doc-class-details">
               <div class="doc-md-description">
                 <p>Signals a record not processed due to the SQS FIFO message group processing being interrupted</p>
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td><code><a class="autorefs autorefs-internal" title="aws_lambda_powertools.utilities.batch.exceptions.UnexpectedBatchTypeError" href="#aws_lambda_powertools.utilities.batch.exceptions.UnexpectedBatchTypeError">UnexpectedBatchTypeError</a></code></td>
+            <td class="doc-class-details">
+              <div class="doc-md-description">
+                <p>Error thrown by the Batch Processing utility when a partial processor receives an unexpected batch type</p>
               </div>
             </td>
           </tr>
@@ -3563,6 +3589,65 @@ You're not viewing the latest version.
 
 
 
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-class">
+
+
+
+<h2 id="aws_lambda_powertools.utilities.batch.exceptions.UnexpectedBatchTypeError" class="doc doc-heading">
+            <span class="doc doc-object-name doc-class-name">UnexpectedBatchTypeError</span>
+
+
+<a href="#aws_lambda_powertools.utilities.batch.exceptions.UnexpectedBatchTypeError" class="headerlink" title="Permanent link">&para;</a></h2>
+<div class="doc-signature highlight"><pre><span></span><code><span class="nf">UnexpectedBatchTypeError</span><span class="p">(</span>
+    <span class="n">msg</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+    <span class="n">child_exceptions</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">ExceptionInfo</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+<span class="p">)</span>
+</code></pre></div>
+
+    <div class="doc doc-contents ">
+            <p class="doc doc-class-bases">
+              Bases: <code><a class="autorefs autorefs-internal" title="aws_lambda_powertools.utilities.batch.exceptions.BatchProcessingError" href="#aws_lambda_powertools.utilities.batch.exceptions.BatchProcessingError">BatchProcessingError</a></code></p>
+
+
+        <p>Error thrown by the Batch Processing utility when a partial processor receives an unexpected batch type</p>
+
+
+
+
+
+
+
+
+
+
+                  <details class="quote">
+                    <summary>Source code in <code>aws_lambda_powertools/utilities/batch/exceptions.py</code></summary>
+                    <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">33</span>
+<span class="normal">34</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">msg</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">child_exceptions</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">ExceptionInfo</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+    <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">msg</span><span class="p">,</span> <span class="n">child_exceptions</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+                  </details>
+
+
+
+  <div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+
+
+  </div>
 
     </div>
 
