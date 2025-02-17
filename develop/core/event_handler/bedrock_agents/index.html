@@ -5296,9 +5296,9 @@ use a combination of <a href="https://docs.pydantic.dev/latest/concepts/models/"
 <td>Maximum number of decimal places allowed for numbers</td>
 </tr>
 <tr>
-<td><code>examples</code></td>
-<td><code>List[Any]</code></td>
-<td>List of examples of the field</td>
+<td><code>openapi_examples</code></td>
+<td><code>dict[str, Example]</code></td>
+<td>A list of examples to be displayed in the SwaggerUI interface. Avoid using the <code>examples</code> field for this purpose.</td>
 </tr>
 <tr>
 <td><code>deprecated</code></td>
