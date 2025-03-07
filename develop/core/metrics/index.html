@@ -4828,22 +4828,24 @@ You're not viewing the latest version.
 <span class="normal">31</span>
 <span class="normal">32</span>
 <span class="normal">33</span>
-<span class="normal">34</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">json</span>
+<span class="normal">34</span>
+<span class="normal">35</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">json</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">dataclasses</span><span class="w"> </span><span class="kn">import</span> <span class="n">dataclass</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="nn">assert_multiple_emf_blobs_module</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">pytest</span>
 
 
-<span class="nd">@pytest</span><span class="o">.</span><span class="n">fixture</span>
-<span class="k">def</span><span class="w"> </span><span class="nf">lambda_context</span><span class="p">():</span>
-    <span class="nd">@dataclass</span>
-    <span class="k">class</span><span class="w"> </span><span class="nc">LambdaContext</span><span class="p">:</span>
-        <span class="n">function_name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;test&quot;</span>
-        <span class="n">memory_limit_in_mb</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">128</span>
-        <span class="n">invoked_function_arn</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;arn:aws:lambda:eu-west-1:809313241:function:test&quot;</span>
-        <span class="n">aws_request_id</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;52fdfc07-2182-154f-163f-5f0f9a621d72&quot;</span>
+<span class="nd">@dataclass</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">LambdaContext</span><span class="p">:</span>
+    <span class="n">function_name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;test&quot;</span>
+    <span class="n">memory_limit_in_mb</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">128</span>
+    <span class="n">invoked_function_arn</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;arn:aws:lambda:eu-west-1:809313241:function:test&quot;</span>
+    <span class="n">aws_request_id</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;52fdfc07-2182-154f-163f-5f0f9a621d72&quot;</span>
 
+
+<span class="nd">@pytest</span><span class="o">.</span><span class="n">fixture</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">lambda_context</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">LambdaContext</span><span class="p">:</span>
     <span class="k">return</span> <span class="n">LambdaContext</span><span class="p">()</span>
 
 
@@ -4851,7 +4853,7 @@ You're not viewing the latest version.
 </span><span class="hll">    <span class="k">return</span> <span class="p">[</span><span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">line</span><span class="o">.</span><span class="n">strip</span><span class="p">())</span> <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">capsys</span><span class="o">.</span><span class="n">readouterr</span><span class="p">()</span><span class="o">.</span><span class="n">out</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span> <span class="k">if</span> <span class="n">line</span><span class="p">]</span>
 </span>
 
-<span class="k">def</span><span class="w"> </span><span class="nf">test_log_metrics</span><span class="p">(</span><span class="n">capsys</span><span class="p">,</span> <span class="n">lambda_context</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">test_log_metrics</span><span class="p">(</span><span class="n">capsys</span><span class="p">,</span> <span class="n">lambda_context</span><span class="p">:</span> <span class="n">LambdaContext</span><span class="p">):</span>
     <span class="n">assert_multiple_emf_blobs_module</span><span class="o">.</span><span class="n">lambda_handler</span><span class="p">({},</span> <span class="n">lambda_context</span><span class="p">)</span>
 
 <span class="hll">    <span class="n">cold_start_blob</span><span class="p">,</span> <span class="n">custom_metrics_blob</span> <span class="o">=</span> <span class="n">capture_metrics_output_multiple_emf_objects</span><span class="p">(</span><span class="n">capsys</span><span class="p">)</span>

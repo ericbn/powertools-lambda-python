@@ -11661,31 +11661,33 @@ your development, building, deployment tooling need to accommodate the distinct 
 <span class="normal">26</span>
 <span class="normal">27</span>
 <span class="normal">28</span>
-<span class="normal">29</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">dataclasses</span><span class="w"> </span><span class="kn">import</span> <span class="n">dataclass</span>
+<span class="normal">29</span>
+<span class="normal">30</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">dataclasses</span><span class="w"> </span><span class="kn">import</span> <span class="n">dataclass</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="nn">assert_rest_api_resolver_response</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">pytest</span>
 
 
-<span class="nd">@pytest</span><span class="o">.</span><span class="n">fixture</span>
-<span class="k">def</span><span class="w"> </span><span class="nf">lambda_context</span><span class="p">():</span>
-    <span class="nd">@dataclass</span>
-    <span class="k">class</span><span class="w"> </span><span class="nc">LambdaContext</span><span class="p">:</span>
-        <span class="n">function_name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;test&quot;</span>
-        <span class="n">memory_limit_in_mb</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">128</span>
-        <span class="n">invoked_function_arn</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;arn:aws:lambda:eu-west-1:123456789012:function:test&quot;</span>
-        <span class="n">aws_request_id</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;da658bd3-2d6f-4e7b-8ec2-937234644fdc&quot;</span>
+<span class="nd">@dataclass</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">LambdaContext</span><span class="p">:</span>
+    <span class="n">function_name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;test&quot;</span>
+    <span class="n">memory_limit_in_mb</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">128</span>
+    <span class="n">invoked_function_arn</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;arn:aws:lambda:eu-west-1:123456789012:function:test&quot;</span>
+    <span class="n">aws_request_id</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;da658bd3-2d6f-4e7b-8ec2-937234644fdc&quot;</span>
 
+
+<span class="nd">@pytest</span><span class="o">.</span><span class="n">fixture</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">lambda_context</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">LambdaContext</span><span class="p">:</span>
     <span class="k">return</span> <span class="n">LambdaContext</span><span class="p">()</span>
 
 
 <span class="k">def</span><span class="w"> </span><span class="nf">test_lambda_handler</span><span class="p">(</span><span class="n">lambda_context</span><span class="p">):</span>
-    <span class="n">minimal_event</span> <span class="o">=</span> <span class="p">{</span>
-<span class="hll">        <span class="s2">&quot;path&quot;</span><span class="p">:</span> <span class="s2">&quot;/todos&quot;</span><span class="p">,</span>
+<span class="hll">    <span class="n">minimal_event</span> <span class="o">=</span> <span class="p">{</span>
+</span><span class="hll">        <span class="s2">&quot;path&quot;</span><span class="p">:</span> <span class="s2">&quot;/todos&quot;</span><span class="p">,</span>
 </span><span class="hll">        <span class="s2">&quot;httpMethod&quot;</span><span class="p">:</span> <span class="s2">&quot;GET&quot;</span><span class="p">,</span>
 </span><span class="hll">        <span class="s2">&quot;requestContext&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;requestId&quot;</span><span class="p">:</span> <span class="s2">&quot;227b78aa-779d-47d4-a48e-ce62120393b8&quot;</span><span class="p">},</span>  <span class="c1"># correlation ID</span>
-</span><span class="hll">    <span class="p">}</span>
-</span>    <span class="c1"># Example of API Gateway REST API request event:</span>
+</span>    <span class="p">}</span>
+    <span class="c1"># Example of API Gateway REST API request event:</span>
     <span class="c1"># https://docs.aws.amazon.com/lambda/latest/dg/services-apigateway.html#apigateway-example-event</span>
     <span class="n">ret</span> <span class="o">=</span> <span class="n">assert_rest_api_resolver_response</span><span class="o">.</span><span class="n">lambda_handler</span><span class="p">(</span><span class="n">minimal_event</span><span class="p">,</span> <span class="n">lambda_context</span><span class="p">)</span>
     <span class="k">assert</span> <span class="n">ret</span><span class="p">[</span><span class="s2">&quot;statusCode&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">200</span>
@@ -11789,27 +11791,29 @@ your development, building, deployment tooling need to accommodate the distinct 
 <span class="normal">32</span>
 <span class="normal">33</span>
 <span class="normal">34</span>
-<span class="normal">35</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">dataclasses</span><span class="w"> </span><span class="kn">import</span> <span class="n">dataclass</span>
+<span class="normal">35</span>
+<span class="normal">36</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">dataclasses</span><span class="w"> </span><span class="kn">import</span> <span class="n">dataclass</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="nn">assert_http_api_response_module</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">pytest</span>
 
 
-<span class="nd">@pytest</span><span class="o">.</span><span class="n">fixture</span>
-<span class="k">def</span><span class="w"> </span><span class="nf">lambda_context</span><span class="p">():</span>
-    <span class="nd">@dataclass</span>
-    <span class="k">class</span><span class="w"> </span><span class="nc">LambdaContext</span><span class="p">:</span>
-        <span class="n">function_name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;test&quot;</span>
-        <span class="n">memory_limit_in_mb</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">128</span>
-        <span class="n">invoked_function_arn</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;arn:aws:lambda:eu-west-1:123456789012:function:test&quot;</span>
-        <span class="n">aws_request_id</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;da658bd3-2d6f-4e7b-8ec2-937234644fdc&quot;</span>
+<span class="nd">@dataclass</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">LambdaContext</span><span class="p">:</span>
+    <span class="n">function_name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;test&quot;</span>
+    <span class="n">memory_limit_in_mb</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">128</span>
+    <span class="n">invoked_function_arn</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;arn:aws:lambda:eu-west-1:123456789012:function:test&quot;</span>
+    <span class="n">aws_request_id</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;da658bd3-2d6f-4e7b-8ec2-937234644fdc&quot;</span>
 
+
+<span class="nd">@pytest</span><span class="o">.</span><span class="n">fixture</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">lambda_context</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">LambdaContext</span><span class="p">:</span>
     <span class="k">return</span> <span class="n">LambdaContext</span><span class="p">()</span>
 
 
-<span class="k">def</span><span class="w"> </span><span class="nf">test_lambda_handler</span><span class="p">(</span><span class="n">lambda_context</span><span class="p">):</span>
-    <span class="n">minimal_event</span> <span class="o">=</span> <span class="p">{</span>
-<span class="hll">        <span class="s2">&quot;rawPath&quot;</span><span class="p">:</span> <span class="s2">&quot;/todos&quot;</span><span class="p">,</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">test_lambda_handler</span><span class="p">(</span><span class="n">lambda_context</span><span class="p">:</span> <span class="n">LambdaContext</span><span class="p">):</span>
+<span class="hll">    <span class="n">minimal_event</span> <span class="o">=</span> <span class="p">{</span>
+</span><span class="hll">        <span class="s2">&quot;rawPath&quot;</span><span class="p">:</span> <span class="s2">&quot;/todos&quot;</span><span class="p">,</span>
 </span><span class="hll">        <span class="s2">&quot;requestContext&quot;</span><span class="p">:</span> <span class="p">{</span>
 </span><span class="hll">            <span class="s2">&quot;requestContext&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;requestId&quot;</span><span class="p">:</span> <span class="s2">&quot;227b78aa-779d-47d4-a48e-ce62120393b8&quot;</span><span class="p">},</span>  <span class="c1"># correlation ID</span>
 </span><span class="hll">            <span class="s2">&quot;http&quot;</span><span class="p">:</span> <span class="p">{</span>
@@ -11817,8 +11821,8 @@ your development, building, deployment tooling need to accommodate the distinct 
 </span><span class="hll">            <span class="p">},</span>
 </span><span class="hll">            <span class="s2">&quot;stage&quot;</span><span class="p">:</span> <span class="s2">&quot;$default&quot;</span><span class="p">,</span>
 </span><span class="hll">        <span class="p">},</span>
-</span><span class="hll">    <span class="p">}</span>
-</span>    <span class="c1"># Example of API Gateway HTTP API request event:</span>
+</span>    <span class="p">}</span>
+    <span class="c1"># Example of API Gateway HTTP API request event:</span>
     <span class="c1"># https://docs.aws.amazon.com/apigateway/latest/developerguide/http-api-develop-integrations-lambda.html</span>
 
     <span class="n">ret</span> <span class="o">=</span> <span class="n">assert_http_api_response_module</span><span class="o">.</span><span class="n">lambda_handler</span><span class="p">(</span><span class="n">minimal_event</span><span class="p">,</span> <span class="n">lambda_context</span><span class="p">)</span>
@@ -11918,31 +11922,33 @@ your development, building, deployment tooling need to accommodate the distinct 
 <span class="normal">27</span>
 <span class="normal">28</span>
 <span class="normal">29</span>
-<span class="normal">30</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">dataclasses</span><span class="w"> </span><span class="kn">import</span> <span class="n">dataclass</span>
+<span class="normal">30</span>
+<span class="normal">31</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">dataclasses</span><span class="w"> </span><span class="kn">import</span> <span class="n">dataclass</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="nn">assert_alb_api_response_module</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">pytest</span>
 
 
-<span class="nd">@pytest</span><span class="o">.</span><span class="n">fixture</span>
-<span class="k">def</span><span class="w"> </span><span class="nf">lambda_context</span><span class="p">():</span>
-    <span class="nd">@dataclass</span>
-    <span class="k">class</span><span class="w"> </span><span class="nc">LambdaContext</span><span class="p">:</span>
-        <span class="n">function_name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;test&quot;</span>
-        <span class="n">memory_limit_in_mb</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">128</span>
-        <span class="n">invoked_function_arn</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;arn:aws:lambda:eu-west-1:123456789012:function:test&quot;</span>
-        <span class="n">aws_request_id</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;da658bd3-2d6f-4e7b-8ec2-937234644fdc&quot;</span>
+<span class="nd">@dataclass</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">LambdaContext</span><span class="p">:</span>
+    <span class="n">function_name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;test&quot;</span>
+    <span class="n">memory_limit_in_mb</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">128</span>
+    <span class="n">invoked_function_arn</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;arn:aws:lambda:eu-west-1:123456789012:function:test&quot;</span>
+    <span class="n">aws_request_id</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;da658bd3-2d6f-4e7b-8ec2-937234644fdc&quot;</span>
 
+
+<span class="nd">@pytest</span><span class="o">.</span><span class="n">fixture</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">lambda_context</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">LambdaContext</span><span class="p">:</span>
     <span class="k">return</span> <span class="n">LambdaContext</span><span class="p">()</span>
 
 
-<span class="k">def</span><span class="w"> </span><span class="nf">test_lambda_handler</span><span class="p">(</span><span class="n">lambda_context</span><span class="p">):</span>
-    <span class="n">minimal_event</span> <span class="o">=</span> <span class="p">{</span>
-<span class="hll">        <span class="s2">&quot;path&quot;</span><span class="p">:</span> <span class="s2">&quot;/todos&quot;</span><span class="p">,</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">test_lambda_handler</span><span class="p">(</span><span class="n">lambda_context</span><span class="p">:</span> <span class="n">LambdaContext</span><span class="p">):</span>
+<span class="hll">    <span class="n">minimal_event</span> <span class="o">=</span> <span class="p">{</span>
+</span><span class="hll">        <span class="s2">&quot;path&quot;</span><span class="p">:</span> <span class="s2">&quot;/todos&quot;</span><span class="p">,</span>
 </span><span class="hll">        <span class="s2">&quot;httpMethod&quot;</span><span class="p">:</span> <span class="s2">&quot;GET&quot;</span><span class="p">,</span>
 </span><span class="hll">        <span class="s2">&quot;headers&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;x-amzn-trace-id&quot;</span><span class="p">:</span> <span class="s2">&quot;b25827e5-0e30-4d52-85a8-4df449ee4c5a&quot;</span><span class="p">},</span>
-</span><span class="hll">    <span class="p">}</span>
-</span>    <span class="c1"># Example of Application Load Balancer request event:</span>
+</span>    <span class="p">}</span>
+    <span class="c1"># Example of Application Load Balancer request event:</span>
     <span class="c1"># https://docs.aws.amazon.com/lambda/latest/dg/services-alb.html</span>
 
     <span class="n">ret</span> <span class="o">=</span> <span class="n">assert_alb_api_response_module</span><span class="o">.</span><span class="n">lambda_handler</span><span class="p">(</span><span class="n">minimal_event</span><span class="p">,</span> <span class="n">lambda_context</span><span class="p">)</span>
@@ -12047,27 +12053,29 @@ your development, building, deployment tooling need to accommodate the distinct 
 <span class="normal">32</span>
 <span class="normal">33</span>
 <span class="normal">34</span>
-<span class="normal">35</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">dataclasses</span><span class="w"> </span><span class="kn">import</span> <span class="n">dataclass</span>
+<span class="normal">35</span>
+<span class="normal">36</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">dataclasses</span><span class="w"> </span><span class="kn">import</span> <span class="n">dataclass</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="nn">assert_function_url_api_response_module</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">pytest</span>
 
 
-<span class="nd">@pytest</span><span class="o">.</span><span class="n">fixture</span>
-<span class="k">def</span><span class="w"> </span><span class="nf">lambda_context</span><span class="p">():</span>
-    <span class="nd">@dataclass</span>
-    <span class="k">class</span><span class="w"> </span><span class="nc">LambdaContext</span><span class="p">:</span>
-        <span class="n">function_name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;test&quot;</span>
-        <span class="n">memory_limit_in_mb</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">128</span>
-        <span class="n">invoked_function_arn</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;arn:aws:lambda:eu-west-1:123456789012:function:test&quot;</span>
-        <span class="n">aws_request_id</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;da658bd3-2d6f-4e7b-8ec2-937234644fdc&quot;</span>
+<span class="nd">@dataclass</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">LambdaContext</span><span class="p">:</span>
+    <span class="n">function_name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;test&quot;</span>
+    <span class="n">memory_limit_in_mb</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">128</span>
+    <span class="n">invoked_function_arn</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;arn:aws:lambda:eu-west-1:123456789012:function:test&quot;</span>
+    <span class="n">aws_request_id</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;da658bd3-2d6f-4e7b-8ec2-937234644fdc&quot;</span>
 
+
+<span class="nd">@pytest</span><span class="o">.</span><span class="n">fixture</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">lambda_context</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">LambdaContext</span><span class="p">:</span>
     <span class="k">return</span> <span class="n">LambdaContext</span><span class="p">()</span>
 
 
-<span class="k">def</span><span class="w"> </span><span class="nf">test_lambda_handler</span><span class="p">(</span><span class="n">lambda_context</span><span class="p">):</span>
-    <span class="n">minimal_event</span> <span class="o">=</span> <span class="p">{</span>
-<span class="hll">        <span class="s2">&quot;rawPath&quot;</span><span class="p">:</span> <span class="s2">&quot;/todos&quot;</span><span class="p">,</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">test_lambda_handler</span><span class="p">(</span><span class="n">lambda_context</span><span class="p">:</span> <span class="n">LambdaContext</span><span class="p">):</span>
+<span class="hll">    <span class="n">minimal_event</span> <span class="o">=</span> <span class="p">{</span>
+</span><span class="hll">        <span class="s2">&quot;rawPath&quot;</span><span class="p">:</span> <span class="s2">&quot;/todos&quot;</span><span class="p">,</span>
 </span><span class="hll">        <span class="s2">&quot;requestContext&quot;</span><span class="p">:</span> <span class="p">{</span>
 </span><span class="hll">            <span class="s2">&quot;requestContext&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;requestId&quot;</span><span class="p">:</span> <span class="s2">&quot;227b78aa-779d-47d4-a48e-ce62120393b8&quot;</span><span class="p">},</span>  <span class="c1"># correlation ID</span>
 </span><span class="hll">            <span class="s2">&quot;http&quot;</span><span class="p">:</span> <span class="p">{</span>
@@ -12075,8 +12083,8 @@ your development, building, deployment tooling need to accommodate the distinct 
 </span><span class="hll">            <span class="p">},</span>
 </span><span class="hll">            <span class="s2">&quot;stage&quot;</span><span class="p">:</span> <span class="s2">&quot;$default&quot;</span><span class="p">,</span>
 </span><span class="hll">        <span class="p">},</span>
-</span><span class="hll">    <span class="p">}</span>
-</span>    <span class="c1"># Example of Lambda Function URL request event:</span>
+</span>    <span class="p">}</span>
+    <span class="c1"># Example of Lambda Function URL request event:</span>
     <span class="c1"># https://docs.aws.amazon.com/lambda/latest/dg/urls-invocation.html#urls-payloads</span>
 
     <span class="n">ret</span> <span class="o">=</span> <span class="n">assert_function_url_api_response_module</span><span class="o">.</span><span class="n">lambda_handler</span><span class="p">(</span><span class="n">minimal_event</span><span class="p">,</span> <span class="n">lambda_context</span><span class="p">)</span>

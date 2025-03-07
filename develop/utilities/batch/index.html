@@ -6787,7 +6787,8 @@ You're not viewing the latest version.
 <span class="normal">42</span>
 <span class="normal">43</span>
 <span class="normal">44</span>
-<span class="normal">45</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">json</span>
+<span class="normal">45</span>
+<span class="normal">46</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">json</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">dataclasses</span><span class="w"> </span><span class="kn">import</span> <span class="n">dataclass</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
 
@@ -6800,15 +6801,16 @@ You're not viewing the latest version.
         <span class="k">return</span> <span class="n">json</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
 
 
-<span class="nd">@pytest</span><span class="o">.</span><span class="n">fixture</span>
-<span class="k">def</span><span class="w"> </span><span class="nf">lambda_context</span><span class="p">():</span>
-    <span class="nd">@dataclass</span>
-    <span class="k">class</span><span class="w"> </span><span class="nc">LambdaContext</span><span class="p">:</span>
-        <span class="n">function_name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;test&quot;</span>
-        <span class="n">memory_limit_in_mb</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">128</span>
-        <span class="n">invoked_function_arn</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;arn:aws:lambda:eu-west-1:809313241:function:test&quot;</span>
-        <span class="n">aws_request_id</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;52fdfc07-2182-154f-163f-5f0f9a621d72&quot;</span>
+<span class="nd">@dataclass</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">LambdaContext</span><span class="p">:</span>
+    <span class="n">function_name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;test&quot;</span>
+    <span class="n">memory_limit_in_mb</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">128</span>
+    <span class="n">invoked_function_arn</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;arn:aws:lambda:eu-west-1:809313241:function:test&quot;</span>
+    <span class="n">aws_request_id</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;52fdfc07-2182-154f-163f-5f0f9a621d72&quot;</span>
 
+
+<span class="nd">@pytest</span><span class="o">.</span><span class="n">fixture</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">lambda_context</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">LambdaContext</span><span class="p">:</span>
     <span class="k">return</span> <span class="n">LambdaContext</span><span class="p">()</span>
 
 
@@ -6818,7 +6820,7 @@ You're not viewing the latest version.
     <span class="k">return</span> <span class="n">load_event</span><span class="p">(</span><span class="n">path</span><span class="o">=</span><span class="n">Path</span><span class="p">(</span><span class="s2">&quot;events/sqs_event.json&quot;</span><span class="p">))</span>
 
 
-<span class="k">def</span><span class="w"> </span><span class="nf">test_app_batch_partial_response</span><span class="p">(</span><span class="n">sqs_event</span><span class="p">,</span> <span class="n">lambda_context</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">test_app_batch_partial_response</span><span class="p">(</span><span class="n">sqs_event</span><span class="p">,</span> <span class="n">lambda_context</span><span class="p">:</span> <span class="n">LambdaContext</span><span class="p">):</span>
     <span class="c1"># GIVEN</span>
     <span class="n">processor_result</span> <span class="o">=</span> <span class="n">processor</span>  <span class="c1"># access processor for additional assertions</span>
     <span class="n">successful_record</span> <span class="o">=</span> <span class="n">sqs_event</span><span class="p">[</span><span class="s2">&quot;Records&quot;</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
