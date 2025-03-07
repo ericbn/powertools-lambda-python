@@ -1025,6 +1025,99 @@ You're not viewing the latest version.
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#buffering-logs" class="md-nav__link">
+    <span class="md-ellipsis">
+      Buffering logs
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Buffering logs">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#configuring-the-buffer" class="md-nav__link">
+    <span class="md-ellipsis">
+      Configuring the buffer
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#flushing-on-exceptions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Flushing on exceptions
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#reutilizing-same-logger-instance" class="md-nav__link">
+    <span class="md-ellipsis">
+      Reutilizing same logger instance
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#buffering-workflows" class="md-nav__link">
+    <span class="md-ellipsis">
+      Buffering workflows
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Buffering workflows">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#manual-flush" class="md-nav__link">
+    <span class="md-ellipsis">
+      Manual flush
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#flushing-when-logging-an-error" class="md-nav__link">
+    <span class="md-ellipsis">
+      Flushing when logging an error
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#flushing-on-exception" class="md-nav__link">
+    <span class="md-ellipsis">
+      Flushing on exception
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#buffering-faqs" class="md-nav__link">
+    <span class="md-ellipsis">
+      Buffering FAQs
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#built-in-correlation-id-expressions" class="md-nav__link">
     <span class="md-ellipsis">
       Built-in Correlation ID expressions
@@ -4138,6 +4231,99 @@ You're not viewing the latest version.
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#buffering-logs" class="md-nav__link">
+    <span class="md-ellipsis">
+      Buffering logs
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Buffering logs">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#configuring-the-buffer" class="md-nav__link">
+    <span class="md-ellipsis">
+      Configuring the buffer
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#flushing-on-exceptions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Flushing on exceptions
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#reutilizing-same-logger-instance" class="md-nav__link">
+    <span class="md-ellipsis">
+      Reutilizing same logger instance
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#buffering-workflows" class="md-nav__link">
+    <span class="md-ellipsis">
+      Buffering workflows
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Buffering workflows">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#manual-flush" class="md-nav__link">
+    <span class="md-ellipsis">
+      Manual flush
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#flushing-when-logging-an-error" class="md-nav__link">
+    <span class="md-ellipsis">
+      Flushing when logging an error
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#flushing-on-exception" class="md-nav__link">
+    <span class="md-ellipsis">
+      Flushing on exception
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#buffering-faqs" class="md-nav__link">
+    <span class="md-ellipsis">
+      Buffering FAQs
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#built-in-correlation-id-expressions" class="md-nav__link">
     <span class="md-ellipsis">
       Built-in Correlation ID expressions
@@ -4470,6 +4656,7 @@ You're not viewing the latest version.
 <li>Log Lambda event when instructed (disabled by default)</li>
 <li>Log sampling enables DEBUG log level for a percentage of requests (disabled by default)</li>
 <li>Append additional keys to structured log at any point in time</li>
+<li>Buffering logs for a specific request or invocation, and flushing them automatically on error or manually as needed.</li>
 </ul>
 <h2 id="getting-started">Getting started<a class="headerlink" href="#getting-started" title="Permanent link">&para;</a></h2>
 <details class="tip" open="open">
@@ -6021,6 +6208,373 @@ You're not viewing the latest version.
 </table>
 <p><a href="#logging-incoming-event"><code>POWERTOOLS_LOGGER_LOG_EVENT</code></a> can also be set on a per-method basis, and <a href="#sampling-debug-logs"><code>POWERTOOLS_LOGGER_SAMPLE_RATE</code></a> on a per-instance basis. These parameter values will override the environment variable value.</p>
 <h2 id="advanced">Advanced<a class="headerlink" href="#advanced" title="Permanent link">&para;</a></h2>
+<h3 id="buffering-logs">Buffering logs<a class="headerlink" href="#buffering-logs" title="Permanent link">&para;</a></h3>
+<p>Log buffering enables you to buffer logs for a specific request or invocation. Enable log buffering by passing <code>logger_buffer</code> when initializing a Logger instance. You can buffer logs at the <code>WARNING</code>, <code>INFO</code> or <code>DEBUG</code> level, and flush them automatically on error or manually as needed.</p>
+<div class="admonition tip">
+<p class="admonition-title">This is useful when you want to reduce the number of log messages emitted while still having detailed logs when needed, such as when troubleshooting issues.</p>
+</div>
+<div class="tabbed-set tabbed-alternate" data-tabs="18:1"><input checked="checked" id="getting_started_with_buffering_logspy" name="__tabbed_18" type="radio" /><div class="tabbed-labels"><label for="getting_started_with_buffering_logspy">getting_started_with_buffering_logs.py</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">aws_lambda_powertools</span><span class="w"> </span><span class="kn">import</span> <span class="n">Logger</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">aws_lambda_powertools.logging.buffer</span><span class="w"> </span><span class="kn">import</span> <span class="n">LoggerBufferConfig</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">aws_lambda_powertools.utilities.typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">LambdaContext</span>
+
+<span class="hll"><span class="n">logger_buffer_config</span> <span class="o">=</span> <span class="n">LoggerBufferConfig</span><span class="p">(</span><span class="n">max_bytes</span><span class="o">=</span><span class="mi">20480</span><span class="p">,</span> <span class="n">flush_on_error_log</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</span><span class="hll"><span class="n">logger</span> <span class="o">=</span> <span class="n">Logger</span><span class="p">(</span><span class="n">level</span><span class="o">=</span><span class="s2">&quot;INFO&quot;</span><span class="p">,</span> <span class="n">buffer_config</span><span class="o">=</span><span class="n">logger_buffer_config</span><span class="p">)</span>
+</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">lambda_handler</span><span class="p">(</span><span class="n">event</span><span class="p">:</span> <span class="nb">dict</span><span class="p">,</span> <span class="n">context</span><span class="p">:</span> <span class="n">LambdaContext</span><span class="p">):</span>
+    <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;a debug log&quot;</span><span class="p">)</span>  <span class="c1"># this is buffered</span>
+    <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;an info log&quot;</span><span class="p">)</span>  <span class="c1"># this is not buffered</span>
+
+    <span class="c1"># do stuff</span>
+
+<span class="hll">    <span class="n">logger</span><span class="o">.</span><span class="n">flush_buffer</span><span class="p">()</span>
+</span></code></pre></div></td></tr></table></div>
+</div>
+</div>
+</div>
+<h4 id="configuring-the-buffer">Configuring the buffer<a class="headerlink" href="#configuring-the-buffer" title="Permanent link">&para;</a></h4>
+<p>When configuring log buffering, you have options to fine-tune how logs are captured, stored, and emitted. You can configure the following parameters in the <code>LoggerBufferConfig</code> constructor:</p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+<th>Configuration</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>max_bytes</code></td>
+<td>Maximum size of the log buffer in bytes</td>
+<td><code>int</code> (default: 20480 bytes)</td>
+</tr>
+<tr>
+<td><code>buffer_at_verbosity</code></td>
+<td>Minimum log level to buffer</td>
+<td><code>DEBUG</code>, <code>INFO</code>, <code>WARNING</code></td>
+</tr>
+<tr>
+<td><code>flush_on_error_log</code></td>
+<td>Automatically flush buffer when an error occurs</td>
+<td><code>True</code> (default), <code>False</code></td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="admonition-title">When <code>flush_on_error_log</code> is enabled, it automatically flushes for <code>logger.exception()</code>, <code>logger.error()</code>, and <code>logger.critical()</code> statements.</p>
+</div>
+<div class="tabbed-set tabbed-alternate" data-tabs="19:2"><input checked="checked" id="working_with_buffering_logs_different_levelspy" name="__tabbed_19" type="radio" /><input id="working_with_buffering_logs_disable_on_errorpy" name="__tabbed_19" type="radio" /><div class="tabbed-labels"><label for="working_with_buffering_logs_different_levelspy">working_with_buffering_logs_different_levels.py</label><label for="working_with_buffering_logs_disable_on_errorpy">working_with_buffering_logs_disable_on_error.py</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">aws_lambda_powertools</span><span class="w"> </span><span class="kn">import</span> <span class="n">Logger</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">aws_lambda_powertools.logging.buffer</span><span class="w"> </span><span class="kn">import</span> <span class="n">LoggerBufferConfig</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">aws_lambda_powertools.utilities.typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">LambdaContext</span>
+
+<span class="hll"><span class="n">logger_buffer_config</span> <span class="o">=</span> <span class="n">LoggerBufferConfig</span><span class="p">(</span><span class="n">buffer_at_verbosity</span><span class="o">=</span><span class="s2">&quot;WARNING&quot;</span><span class="p">)</span>  <span class="c1"># (1)!</span>
+</span><span class="hll"><span class="n">logger</span> <span class="o">=</span> <span class="n">Logger</span><span class="p">(</span><span class="n">level</span><span class="o">=</span><span class="s2">&quot;INFO&quot;</span><span class="p">,</span> <span class="n">buffer_config</span><span class="o">=</span><span class="n">logger_buffer_config</span><span class="p">)</span>
+</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">lambda_handler</span><span class="p">(</span><span class="n">event</span><span class="p">:</span> <span class="nb">dict</span><span class="p">,</span> <span class="n">context</span><span class="p">:</span> <span class="n">LambdaContext</span><span class="p">):</span>
+<span class="hll">    <span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s2">&quot;a warning log&quot;</span><span class="p">)</span>  <span class="c1"># this is buffered</span>
+</span><span class="hll">    <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;an info log&quot;</span><span class="p">)</span>  <span class="c1"># this is buffered</span>
+</span><span class="hll">    <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;a debug log&quot;</span><span class="p">)</span>  <span class="c1"># this is buffered</span>
+</span>
+    <span class="c1"># do stuff</span>
+
+    <span class="n">logger</span><span class="o">.</span><span class="n">flush_buffer</span><span class="p">()</span>
+</code></pre></div></td></tr></table></div>
+<ol>
+<li>Setting <code>minimum_log_level="WARNING"</code> configures log buffering for <code>WARNING</code> and lower severity levels (<code>INFO</code>, <code>DEBUG</code>).</li>
+</ol>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">aws_lambda_powertools</span><span class="w"> </span><span class="kn">import</span> <span class="n">Logger</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">aws_lambda_powertools.logging.buffer</span><span class="w"> </span><span class="kn">import</span> <span class="n">LoggerBufferConfig</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">aws_lambda_powertools.utilities.typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">LambdaContext</span>
+
+<span class="hll"><span class="n">logger_buffer_config</span> <span class="o">=</span> <span class="n">LoggerBufferConfig</span><span class="p">(</span><span class="n">flush_on_error_log</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>  <span class="c1"># (1)!</span>
+</span><span class="hll"><span class="n">logger</span> <span class="o">=</span> <span class="n">Logger</span><span class="p">(</span><span class="n">level</span><span class="o">=</span><span class="s2">&quot;INFO&quot;</span><span class="p">,</span> <span class="n">buffer_config</span><span class="o">=</span><span class="n">logger_buffer_config</span><span class="p">)</span>
+</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">MyException</span><span class="p">(</span><span class="ne">Exception</span><span class="p">):</span>
+    <span class="k">pass</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">lambda_handler</span><span class="p">(</span><span class="n">event</span><span class="p">:</span> <span class="nb">dict</span><span class="p">,</span> <span class="n">context</span><span class="p">:</span> <span class="n">LambdaContext</span><span class="p">):</span>
+<span class="hll">    <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;a debug log&quot;</span><span class="p">)</span>  <span class="c1"># this is buffered</span>
+</span>
+    <span class="c1"># do stuff</span>
+
+    <span class="k">try</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="n">MyException</span>
+    <span class="k">except</span> <span class="n">MyException</span> <span class="k">as</span> <span class="n">error</span><span class="p">:</span>
+<span class="hll">        <span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s2">&quot;An error ocurrend&quot;</span><span class="p">,</span> <span class="n">exc_info</span><span class="o">=</span><span class="n">error</span><span class="p">)</span>  <span class="c1"># Logs won&#39;t be flushed here</span>
+</span>
+    <span class="c1"># Need to flush logs manually</span>
+<span class="hll">    <span class="n">logger</span><span class="o">.</span><span class="n">flush_buffer</span><span class="p">()</span>
+</span></code></pre></div></td></tr></table></div>
+<ol>
+<li>Disabling <code>flush_on_error_log</code> will not flush the buffer when logging an error. This is useful when you want to control when the buffer is flushed by calling the <code>logger.flush_buffer()</code> method.</li>
+</ol>
+</div>
+</div>
+</div>
+<h4 id="flushing-on-exceptions">Flushing on exceptions<a class="headerlink" href="#flushing-on-exceptions" title="Permanent link">&para;</a></h4>
+<p>Use the <code>@logger.inject_lambda_context</code> decorator to automatically flush buffered logs when an exception is raised in your Lambda function. This is done by setting the <code>flush_buffer_on_uncaught_error</code> option to <code>True</code> in the decorator.</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="20:1"><input checked="checked" id="working_with_buffering_logs_when_raise_exceptionpy" name="__tabbed_20" type="radio" /><div class="tabbed-labels"><label for="working_with_buffering_logs_when_raise_exceptionpy">working_with_buffering_logs_when_raise_exception.py</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">aws_lambda_powertools</span><span class="w"> </span><span class="kn">import</span> <span class="n">Logger</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">aws_lambda_powertools.logging.buffer</span><span class="w"> </span><span class="kn">import</span> <span class="n">LoggerBufferConfig</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">aws_lambda_powertools.utilities.typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">LambdaContext</span>
+
+<span class="hll"><span class="n">logger_buffer_config</span> <span class="o">=</span> <span class="n">LoggerBufferConfig</span><span class="p">(</span><span class="n">max_bytes</span><span class="o">=</span><span class="mi">20480</span><span class="p">,</span> <span class="n">flush_on_error_log</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</span><span class="hll"><span class="n">logger</span> <span class="o">=</span> <span class="n">Logger</span><span class="p">(</span><span class="n">level</span><span class="o">=</span><span class="s2">&quot;INFO&quot;</span><span class="p">,</span> <span class="n">buffer_config</span><span class="o">=</span><span class="n">logger_buffer_config</span><span class="p">)</span>
+</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">MyException</span><span class="p">(</span><span class="ne">Exception</span><span class="p">):</span>
+    <span class="k">pass</span>
+
+
+<span class="hll"><span class="nd">@logger</span><span class="o">.</span><span class="n">inject_lambda_context</span><span class="p">(</span><span class="n">flush_buffer_on_uncaught_error</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</span><span class="k">def</span><span class="w"> </span><span class="nf">lambda_handler</span><span class="p">(</span><span class="n">event</span><span class="p">:</span> <span class="nb">dict</span><span class="p">,</span> <span class="n">context</span><span class="p">:</span> <span class="n">LambdaContext</span><span class="p">):</span>
+    <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;a debug log&quot;</span><span class="p">)</span>  <span class="c1"># this is buffered</span>
+
+    <span class="c1"># do stuff</span>
+
+<span class="hll">    <span class="k">raise</span> <span class="n">MyException</span>  <span class="c1"># Logs will be flushed here</span>
+</span></code></pre></div></td></tr></table></div>
+</div>
+</div>
+</div>
+<h4 id="reutilizing-same-logger-instance">Reutilizing same logger instance<a class="headerlink" href="#reutilizing-same-logger-instance" title="Permanent link">&para;</a></h4>
+<p>If you are using log buffering, we recommend sharing the same log instance across your code/modules, so that the same buffer is also shared. Doing this you can centralize logger instance creation and prevent buffer configuration drift.</p>
+<div class="admonition note">
+<p class="admonition-title">Buffer Inheritance</p>
+<p>Loggers created with the same <code>service_name</code> automatically inherit the buffer configuration from the first initialized logger with a buffer configuration.</p>
+<p>Child loggers instances inherit their parent's buffer configuration but maintain a separate buffer.</p>
+</div>
+<div class="tabbed-set tabbed-alternate" data-tabs="21:3"><input checked="checked" id="working_with_buffering_logs_creating_instancepy" name="__tabbed_21" type="radio" /><input id="working_with_buffering_logs_reusing_handlerpy" name="__tabbed_21" type="radio" /><input id="working_with_buffering_logs_reusing_functionpy" name="__tabbed_21" type="radio" /><div class="tabbed-labels"><label for="working_with_buffering_logs_creating_instancepy">working_with_buffering_logs_creating_instance.py</label><label for="working_with_buffering_logs_reusing_handlerpy">working_with_buffering_logs_reusing_handler.py</label><label for="working_with_buffering_logs_reusing_functionpy">working_with_buffering_logs_reusing_function.py</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">aws_lambda_powertools</span><span class="w"> </span><span class="kn">import</span> <span class="n">Logger</span>
+<span class="hll"><span class="kn">from</span><span class="w"> </span><span class="nn">aws_lambda_powertools.logging.buffer</span><span class="w"> </span><span class="kn">import</span> <span class="n">LoggerBufferConfig</span>
+</span>
+<span class="n">logger_buffer_config</span> <span class="o">=</span> <span class="n">LoggerBufferConfig</span><span class="p">(</span><span class="n">max_bytes</span><span class="o">=</span><span class="mi">20480</span><span class="p">,</span> <span class="n">buffer_at_verbosity</span><span class="o">=</span><span class="s2">&quot;WARNING&quot;</span><span class="p">)</span>
+<span class="hll"><span class="n">logger</span> <span class="o">=</span> <span class="n">Logger</span><span class="p">(</span><span class="n">level</span><span class="o">=</span><span class="s2">&quot;INFO&quot;</span><span class="p">,</span> <span class="n">buffer_config</span><span class="o">=</span><span class="n">logger_buffer_config</span><span class="p">)</span>
+</span></code></pre></div></td></tr></table></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="hll"><span class="kn">from</span><span class="w"> </span><span class="nn">working_with_buffering_logs_creating_instance</span><span class="w"> </span><span class="kn">import</span> <span class="n">logger</span>  <span class="c1"># reusing same instance</span>
+</span><span class="kn">from</span><span class="w"> </span><span class="nn">working_with_buffering_logs_reusing_function</span><span class="w"> </span><span class="kn">import</span> <span class="n">my_function</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">aws_lambda_powertools.utilities.typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">LambdaContext</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">lambda_handler</span><span class="p">(</span><span class="n">event</span><span class="p">:</span> <span class="nb">dict</span><span class="p">,</span> <span class="n">context</span><span class="p">:</span> <span class="n">LambdaContext</span><span class="p">):</span>
+<span class="hll">    <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;a debug log&quot;</span><span class="p">)</span>  <span class="c1"># this is buffered</span>
+</span>
+    <span class="n">my_function</span><span class="p">()</span>
+
+<span class="hll">    <span class="n">logger</span><span class="o">.</span><span class="n">flush_buffer</span><span class="p">()</span>
+</span></code></pre></div></td></tr></table></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="hll"><span class="kn">from</span><span class="w"> </span><span class="nn">working_with_buffering_logs_creating_instance</span><span class="w"> </span><span class="kn">import</span> <span class="n">logger</span>  <span class="c1"># reusing same instance</span>
+</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">my_function</span><span class="p">():</span>
+    <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;This will be buffered&quot;</span><span class="p">)</span>
+    <span class="c1"># do stuff</span>
+</code></pre></div></td></tr></table></div>
+</div>
+</div>
+</div>
+<h4 id="buffering-workflows">Buffering workflows<a class="headerlink" href="#buffering-workflows" title="Permanent link">&para;</a></h4>
+<h5 id="manual-flush">Manual flush<a class="headerlink" href="#manual-flush" title="Permanent link">&para;</a></h5>
+<p><center>
+<pre class="mermaid"><code>sequenceDiagram
+    participant Client
+    participant Lambda
+    participant Logger
+    participant CloudWatch
+    Client-&gt;&gt;Lambda: Invoke Lambda
+    Lambda-&gt;&gt;Logger: Initialize with DEBUG level buffering
+    Logger--&gt;&gt;Lambda: Logger buffer ready
+    Lambda-&gt;&gt;Logger: logger.debug("First debug log")
+    Logger--&gt;&gt;Logger: Buffer first debug log
+    Lambda-&gt;&gt;Logger: logger.info("Info log")
+    Logger-&gt;&gt;CloudWatch: Directly log info message
+    Lambda-&gt;&gt;Logger: logger.debug("Second debug log")
+    Logger--&gt;&gt;Logger: Buffer second debug log
+    Lambda-&gt;&gt;Logger: logger.flush_buffer()
+    Logger-&gt;&gt;CloudWatch: Emit buffered logs to stdout
+    Lambda-&gt;&gt;Client: Return execution result</code></pre>
+<i>Flushing buffer manually</i>
+</center></p>
+<h5 id="flushing-when-logging-an-error">Flushing when logging an error<a class="headerlink" href="#flushing-when-logging-an-error" title="Permanent link">&para;</a></h5>
+<p><center>
+<pre class="mermaid"><code>sequenceDiagram
+    participant Client
+    participant Lambda
+    participant Logger
+    participant CloudWatch
+    Client-&gt;&gt;Lambda: Invoke Lambda
+    Lambda-&gt;&gt;Logger: Initialize with DEBUG level buffering
+    Logger--&gt;&gt;Lambda: Logger buffer ready
+    Lambda-&gt;&gt;Logger: logger.debug("First log")
+    Logger--&gt;&gt;Logger: Buffer first debug log
+    Lambda-&gt;&gt;Logger: logger.debug("Second log")
+    Logger--&gt;&gt;Logger: Buffer second debug log
+    Lambda-&gt;&gt;Logger: logger.debug("Third log")
+    Logger--&gt;&gt;Logger: Buffer third debug log
+    Lambda-&gt;&gt;Lambda: Exception occurs
+    Lambda-&gt;&gt;Logger: logger.error("Error details")
+    Logger-&gt;&gt;CloudWatch: Emit buffered debug logs
+    Logger-&gt;&gt;CloudWatch: Emit error log
+    Lambda-&gt;&gt;Client: Raise exception</code></pre>
+<i>Flushing buffer when an error happens</i>
+</center></p>
+<h5 id="flushing-on-exception">Flushing on exception<a class="headerlink" href="#flushing-on-exception" title="Permanent link">&para;</a></h5>
+<p>This works only when decorating your Lambda handler with the decorator <code>@logger.inject_lambda_context(flush_buffer_on_uncaught_error=True)</code></p>
+<p><center>
+<pre class="mermaid"><code>sequenceDiagram
+    participant Client
+    participant Lambda
+    participant Logger
+    participant CloudWatch
+    Client-&gt;&gt;Lambda: Invoke Lambda
+    Lambda-&gt;&gt;Logger: Using decorator
+    Logger--&gt;&gt;Lambda: Logger context injected
+    Lambda-&gt;&gt;Logger: logger.debug("First log")
+    Logger--&gt;&gt;Logger: Buffer first debug log
+    Lambda-&gt;&gt;Logger: logger.debug("Second log")
+    Logger--&gt;&gt;Logger: Buffer second debug log
+    Lambda-&gt;&gt;Lambda: Uncaught Exception
+    Lambda-&gt;&gt;CloudWatch: Automatically emit buffered debug logs
+    Lambda-&gt;&gt;Client: Raise uncaught exception</code></pre>
+<i>Flushing buffer when an uncaught exception happens</i>
+</center></p>
+<h4 id="buffering-faqs">Buffering FAQs<a class="headerlink" href="#buffering-faqs" title="Permanent link">&para;</a></h4>
+<ol>
+<li>
+<p><strong>Does the buffer persist across Lambda invocations?</strong> No, each Lambda invocation has its own buffer. The buffer is initialized when the Lambda function is invoked and is cleared after the function execution completes or when flushed manually.</p>
+</li>
+<li>
+<p><strong>Are my logs buffered during cold starts?</strong> No, we never buffer logs during cold starts. This is because we want to ensure that logs emitted during this phase are always available for debugging and monitoring purposes. The buffer is only used during the execution of the Lambda function.</p>
+</li>
+<li>
+<p><strong>How can I prevent log buffering from consuming excessive memory?</strong> You can limit the size of the buffer by setting the <code>max_bytes</code> option in the <code>LoggerBufferConfig</code> constructor parameter. This will ensure that the buffer does not grow indefinitely and consume excessive memory.</p>
+</li>
+<li>
+<p><strong>What happens if the log buffer reaches its maximum size?</strong> Older logs are removed from the buffer to make room for new logs. This means that if the buffer is full, you may lose some logs if they are not flushed before the buffer reaches its maximum size. When this happens, we emit a warning when flushing the buffer to indicate that some logs have been dropped.</p>
+</li>
+<li>
+<p><strong>What timestamp is used when I flush the logs?</strong> The timestamp preserves the original time when the log record was created. If you create a log record at 11:00:10 and flush it at 11:00:25, the log line will retain its original timestamp of 11:00:10.</p>
+</li>
+<li>
+<p><strong>What happens if I try to add a log line that is bigger than max buffer size?</strong> The log will be emitted directly to standard output and not buffered. When this happens, we emit a warning to indicate that the log line was too big to be buffered.</p>
+</li>
+<li>
+<p><strong>What happens if Lambda times out without flushing the buffer?</strong> Logs that are still in the buffer will be lost.</p>
+</li>
+<li>
+<p><strong>Do child loggers inherit the buffer?</strong>  No, child loggers do not inherit the buffer from their parent logger but only the buffer configuration. This means that if you create a child logger, it will have its own buffer and will not share the buffer with the parent logger.</p>
+</li>
+</ol>
 <h3 id="built-in-correlation-id-expressions">Built-in Correlation ID expressions<a class="headerlink" href="#built-in-correlation-id-expressions" title="Permanent link">&para;</a></h3>
 <p>You can use any of the following built-in JMESPath expressions as part of <a href="#setting-a-correlation-id">inject_lambda_context decorator</a>.</p>
 <details class="note" open="open">
@@ -6066,7 +6620,7 @@ You're not viewing the latest version.
 <h3 id="working-with-thread-safe-keys">Working with thread-safe keys<a class="headerlink" href="#working-with-thread-safe-keys" title="Permanent link">&para;</a></h3>
 <h4 id="appending-thread-safe-additional-keys">Appending thread-safe additional keys<a class="headerlink" href="#appending-thread-safe-additional-keys" title="Permanent link">&para;</a></h4>
 <p>You can append your own thread-local keys in your existing Logger via the <code>thread_safe_append_keys</code> method</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="18:2"><input checked="checked" id="thread_safe_append_keyspy" name="__tabbed_18" type="radio" /><input id="thread_safe_append_keys_outputjson" name="__tabbed_18" type="radio" /><div class="tabbed-labels"><label for="thread_safe_append_keyspy">thread_safe_append_keys.py</label><label for="thread_safe_append_keys_outputjson">thread_safe_append_keys_output.json</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="22:2"><input checked="checked" id="thread_safe_append_keyspy" name="__tabbed_22" type="radio" /><input id="thread_safe_append_keys_outputjson" name="__tabbed_22" type="radio" /><div class="tabbed-labels"><label for="thread_safe_append_keyspy">thread_safe_append_keys.py</label><label for="thread_safe_append_keys_outputjson">thread_safe_append_keys_output.json</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
@@ -6159,7 +6713,7 @@ You're not viewing the latest version.
 <h4 id="removing-thread-safe-additional-keys">Removing thread-safe additional keys<a class="headerlink" href="#removing-thread-safe-additional-keys" title="Permanent link">&para;</a></h4>
 <p>You can remove any additional thread-local keys from Logger using either <code>thread_safe_remove_keys</code> or <code>thread_safe_clear_keys</code>.</p>
 <p>Use the <code>thread_safe_remove_keys</code> method to remove a list of thread-local keys that were previously added using the <code>thread_safe_append_keys</code> method.</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="19:2"><input checked="checked" id="thread_safe_remove_keyspy" name="__tabbed_19" type="radio" /><input id="thread_safe_remove_keys_outputjson" name="__tabbed_19" type="radio" /><div class="tabbed-labels"><label for="thread_safe_remove_keyspy">thread_safe_remove_keys.py</label><label for="thread_safe_remove_keys_outputjson">thread_safe_remove_keys_output.json</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="23:2"><input checked="checked" id="thread_safe_remove_keyspy" name="__tabbed_23" type="radio" /><input id="thread_safe_remove_keys_outputjson" name="__tabbed_23" type="radio" /><div class="tabbed-labels"><label for="thread_safe_remove_keyspy">thread_safe_remove_keys.py</label><label for="thread_safe_remove_keys_outputjson">thread_safe_remove_keys_output.json</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
@@ -6287,7 +6841,7 @@ You're not viewing the latest version.
 </div>
 <h4 id="clearing-thread-safe-additional-keys">Clearing thread-safe additional keys<a class="headerlink" href="#clearing-thread-safe-additional-keys" title="Permanent link">&para;</a></h4>
 <p>Use the <code>thread_safe_clear_keys</code> method to remove all thread-local keys that were previously added using the <code>thread_safe_append_keys</code> method.</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="20:2"><input checked="checked" id="thread_safe_clear_keyspy" name="__tabbed_20" type="radio" /><input id="thread_safe_clear_keys_outputjson" name="__tabbed_20" type="radio" /><div class="tabbed-labels"><label for="thread_safe_clear_keyspy">thread_safe_clear_keys.py</label><label for="thread_safe_clear_keys_outputjson">thread_safe_clear_keys_output.json</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="24:2"><input checked="checked" id="thread_safe_clear_keyspy" name="__tabbed_24" type="radio" /><input id="thread_safe_clear_keys_outputjson" name="__tabbed_24" type="radio" /><div class="tabbed-labels"><label for="thread_safe_clear_keyspy">thread_safe_clear_keys.py</label><label for="thread_safe_clear_keys_outputjson">thread_safe_clear_keys_output.json</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
@@ -6411,7 +6965,7 @@ You're not viewing the latest version.
 </div>
 <h4 id="accessing-thread-safe-currently-keys">Accessing thread-safe currently keys<a class="headerlink" href="#accessing-thread-safe-currently-keys" title="Permanent link">&para;</a></h4>
 <p>You can view all currently thread-local keys from the Logger state using the <code>thread_safe_get_current_keys()</code> method. This method is useful when you need to avoid overwriting keys that are already configured.</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="21:1"><input checked="checked" id="thread_safe_get_current_keyspy" name="__tabbed_21" type="radio" /><div class="tabbed-labels"><label for="thread_safe_get_current_keyspy">thread_safe_get_current_keys.py</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="25:1"><input checked="checked" id="thread_safe_get_current_keyspy" name="__tabbed_25" type="radio" /><div class="tabbed-labels"><label for="thread_safe_get_current_keyspy">thread_safe_get_current_keys.py</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
@@ -6448,7 +7002,7 @@ You're not viewing the latest version.
 <h3 id="reusing-logger-across-your-code">Reusing Logger across your code<a class="headerlink" href="#reusing-logger-across-your-code" title="Permanent link">&para;</a></h3>
 <p>Similar to <a href="../tracer/#reusing-tracer-across-your-code" target="_blank">Tracer</a>, a new instance that uses the same <code>service</code> name will reuse a previous Logger instance.</p>
 <p>Notice in the CloudWatch Logs output how <code>payment_id</code> appears as expected when logging in <code>collect.py</code>.</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="22:3"><input checked="checked" id="logger_reusepy" name="__tabbed_22" type="radio" /><input id="logger_reuse_paymentpy" name="__tabbed_22" type="radio" /><input id="logger_reuse_outputjson" name="__tabbed_22" type="radio" /><div class="tabbed-labels"><label for="logger_reusepy">logger_reuse.py</label><label for="logger_reuse_paymentpy">logger_reuse_payment.py</label><label for="logger_reuse_outputjson">logger_reuse_output.json</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="26:3"><input checked="checked" id="logger_reusepy" name="__tabbed_26" type="radio" /><input id="logger_reuse_paymentpy" name="__tabbed_26" type="radio" /><input id="logger_reuse_outputjson" name="__tabbed_26" type="radio" /><div class="tabbed-labels"><label for="logger_reusepy">logger_reuse.py</label><label for="logger_reuse_paymentpy">logger_reuse_payment.py</label><label for="logger_reuse_outputjson">logger_reuse_output.json</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
@@ -6541,7 +7095,7 @@ You're not viewing the latest version.
 <p>Example: Imagine an e-commerce checkout process where you want to understand rare payment gateway errors. With 10% sampling, you'll log detailed information for a small subset of transactions, making troubleshooting easier without generating excessive logs.</p>
 </details>
 <p>The sampling decision happens automatically with each invocation when using <code>@logger.inject_lambda_context</code> decorator.  When not using the decorator, you're in charge of refreshing it via <code>refresh_sample_rate_calculation</code> method. Skipping both may lead to unexpected sampling results.</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="23:3"><input checked="checked" id="sampling_debug_logs_with_decoratorpy" name="__tabbed_23" type="radio" /><input id="sampling_debug_logs_with_standalone_functionpy" name="__tabbed_23" type="radio" /><input id="sampling_debug_logs_outputjson" name="__tabbed_23" type="radio" /><div class="tabbed-labels"><label for="sampling_debug_logs_with_decoratorpy">sampling_debug_logs_with_decorator.py</label><label for="sampling_debug_logs_with_standalone_functionpy">sampling_debug_logs_with_standalone_function.py</label><label for="sampling_debug_logs_outputjson">sampling_debug_logs_output.json</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="27:3"><input checked="checked" id="sampling_debug_logs_with_decoratorpy" name="__tabbed_27" type="radio" /><input id="sampling_debug_logs_with_standalone_functionpy" name="__tabbed_27" type="radio" /><input id="sampling_debug_logs_outputjson" name="__tabbed_27" type="radio" /><div class="tabbed-labels"><label for="sampling_debug_logs_with_decoratorpy">sampling_debug_logs_with_decorator.py</label><label for="sampling_debug_logs_with_standalone_functionpy">sampling_debug_logs_with_standalone_function.py</label><label for="sampling_debug_logs_outputjson">sampling_debug_logs_output.json</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
@@ -6787,7 +7341,7 @@ You're not viewing the latest version.
 </center></p>
 <p>For inheritance, Logger uses <code>child</code> parameter to ensure we don't compete with its parents config. We name child Loggers following Python's convention: <em><code>{service}</code>.<code>{filename}</code></em>.</p>
 <p>Changes are bidirectional between parents and loggers. That is, appending a key in a child or parent will ensure both have them. This means, having the same <code>service</code> name is important when instantiating them.</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="24:2"><input checked="checked" id="logging_inheritance_goodpy" name="__tabbed_24" type="radio" /><input id="logging_inheritance_modulepy" name="__tabbed_24" type="radio" /><div class="tabbed-labels"><label for="logging_inheritance_goodpy">logging_inheritance_good.py</label><label for="logging_inheritance_modulepy">logging_inheritance_module.py</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="28:2"><input checked="checked" id="logging_inheritance_goodpy" name="__tabbed_28" type="radio" /><input id="logging_inheritance_modulepy" name="__tabbed_28" type="radio" /><div class="tabbed-labels"><label for="logging_inheritance_goodpy">logging_inheritance_good.py</label><label for="logging_inheritance_modulepy">logging_inheritance_module.py</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
@@ -6852,7 +7406,7 @@ You're not viewing the latest version.
 </ul>
 </li>
 </ol>
-<div class="tabbed-set tabbed-alternate" data-tabs="25:2"><input checked="checked" id="logging_inheritance_badpy" name="__tabbed_25" type="radio" /><input id="logging_inheritance_modulepy_1" name="__tabbed_25" type="radio" /><div class="tabbed-labels"><label for="logging_inheritance_badpy">logging_inheritance_bad.py</label><label for="logging_inheritance_modulepy_1">logging_inheritance_module.py</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="29:2"><input checked="checked" id="logging_inheritance_badpy" name="__tabbed_29" type="radio" /><input id="logging_inheritance_modulepy_1" name="__tabbed_29" type="radio" /><div class="tabbed-labels"><label for="logging_inheritance_badpy">logging_inheritance_bad.py</label><label for="logging_inheritance_modulepy_1">logging_inheritance_module.py</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
@@ -6909,7 +7463,7 @@ You're not viewing the latest version.
 <h4 id="overriding-log-records">Overriding Log records<a class="headerlink" href="#overriding-log-records" title="Permanent link">&para;</a></h4>
 <p>You might want to continue to use the same date formatting style, or override <code>location</code> to display the <code>package.function_name:line_number</code> as you previously had.</p>
 <p>Logger allows you to either change the format or suppress the following keys at initialization: <code>location</code>, <code>timestamp</code>, <code>xray_trace_id</code>.</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="26:2"><input checked="checked" id="overriding_log_recordspy" name="__tabbed_26" type="radio" /><input id="overriding_log_records_outputjson" name="__tabbed_26" type="radio" /><div class="tabbed-labels"><label for="overriding_log_recordspy">overriding_log_records.py</label><label for="overriding_log_records_outputjson">overriding_log_records_output.json</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="30:2"><input checked="checked" id="overriding_log_recordspy" name="__tabbed_30" type="radio" /><input id="overriding_log_records_outputjson" name="__tabbed_30" type="radio" /><div class="tabbed-labels"><label for="overriding_log_recordspy">overriding_log_records.py</label><label for="overriding_log_records_outputjson">overriding_log_records_output.json</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
@@ -6971,7 +7525,7 @@ You're not viewing the latest version.
 </div>
 <h4 id="reordering-log-keys-position">Reordering log keys position<a class="headerlink" href="#reordering-log-keys-position" title="Permanent link">&para;</a></h4>
 <p>You can change the order of <a href="#standard-structured-keys">standard Logger keys</a> or any keys that will be appended later at runtime via the <code>log_record_order</code> parameter.</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="27:2"><input checked="checked" id="reordering_log_keyspy" name="__tabbed_27" type="radio" /><input id="reordering_log_keys_outputjson" name="__tabbed_27" type="radio" /><div class="tabbed-labels"><label for="reordering_log_keyspy">reordering_log_keys.py</label><label for="reordering_log_keys_outputjson">reordering_log_keys_output.json</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="31:2"><input checked="checked" id="reordering_log_keyspy" name="__tabbed_31" type="radio" /><input id="reordering_log_keys_outputjson" name="__tabbed_31" type="radio" /><div class="tabbed-labels"><label for="reordering_log_keyspy">reordering_log_keys.py</label><label for="reordering_log_keys_outputjson">reordering_log_keys_output.json</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
@@ -7045,7 +7599,7 @@ You're not viewing the latest version.
 <summary>Tip</summary>
 <p><code>TZ</code> environment variable will be ignored if <code>utc</code> is set to <code>True</code></p>
 </details>
-<div class="tabbed-set tabbed-alternate" data-tabs="28:2"><input checked="checked" id="setting_custom_timezonepy" name="__tabbed_28" type="radio" /><input id="setting_custom_timezone_outputjson" name="__tabbed_28" type="radio" /><div class="tabbed-labels"><label for="setting_custom_timezonepy">setting_custom_timezone.py</label><label for="setting_custom_timezone_outputjson">setting_custom_timezone_output.json</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="32:2"><input checked="checked" id="setting_custom_timezonepy" name="__tabbed_32" type="radio" /><input id="setting_custom_timezone_outputjson" name="__tabbed_32" type="radio" /><div class="tabbed-labels"><label for="setting_custom_timezonepy">setting_custom_timezone.py</label><label for="setting_custom_timezone_outputjson">setting_custom_timezone_output.json</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
@@ -7116,7 +7670,7 @@ You're not viewing the latest version.
 </div>
 <h4 id="custom-function-for-unserializable-values">Custom function for unserializable values<a class="headerlink" href="#custom-function-for-unserializable-values" title="Permanent link">&para;</a></h4>
 <p>By default, Logger uses <code>str</code> to handle values non-serializable by JSON. You can override this behavior via <code>json_default</code> parameter by passing a Callable:</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="29:2"><input checked="checked" id="unserializable_valuespy" name="__tabbed_29" type="radio" /><input id="unserializable_values_outputjson" name="__tabbed_29" type="radio" /><div class="tabbed-labels"><label for="unserializable_valuespy">unserializable_values.py</label><label for="unserializable_values_outputjson">unserializable_values_output.json</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="33:2"><input checked="checked" id="unserializable_valuespy" name="__tabbed_33" type="radio" /><input id="unserializable_values_outputjson" name="__tabbed_33" type="radio" /><div class="tabbed-labels"><label for="unserializable_valuespy">unserializable_values.py</label><label for="unserializable_values_outputjson">unserializable_values_output.json</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
@@ -7213,7 +7767,7 @@ You're not viewing the latest version.
 <p>The most common use cases are remapping keys by bringing your existing schema, and redacting sensitive information you know upfront.</p>
 </details>
 <p>For these, you can override the <code>serialize</code> method from <a href="#lambdapowertoolsformatter">LambdaPowertoolsFormatter</a>.</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="30:2"><input checked="checked" id="bring_your_own_formatterpy" name="__tabbed_30" type="radio" /><input id="bring_your_own_formatter_outputjson" name="__tabbed_30" type="radio" /><div class="tabbed-labels"><label for="bring_your_own_formatterpy">bring_your_own_formatter.py</label><label for="bring_your_own_formatter_outputjson">bring_your_own_formatter_output.json</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="34:2"><input checked="checked" id="bring_your_own_formatterpy" name="__tabbed_34" type="radio" /><input id="bring_your_own_formatter_outputjson" name="__tabbed_34" type="radio" /><div class="tabbed-labels"><label for="bring_your_own_formatterpy">bring_your_own_formatter.py</label><label for="bring_your_own_formatter_outputjson">bring_your_own_formatter_output.json</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
@@ -7273,7 +7827,7 @@ You're not viewing the latest version.
 <summary>Warning</summary>
 <p>You will need to implement <code>append_keys</code>, <code>clear_state</code>, override <code>format</code>, and optionally <code>get_current_keys</code>, and <code>remove_keys</code> to keep the same feature set Powertools for AWS Lambda (Python) Logger provides. This also means tracking the added logging keys.</p>
 </details>
-<div class="tabbed-set tabbed-alternate" data-tabs="31:2"><input checked="checked" id="bring_your_own_formatter_from_scratchpy" name="__tabbed_31" type="radio" /><input id="bring_your_own_formatter_from_scratch_outputjson" name="__tabbed_31" type="radio" /><div class="tabbed-labels"><label for="bring_your_own_formatter_from_scratchpy">bring_your_own_formatter_from_scratch.py</label><label for="bring_your_own_formatter_from_scratch_outputjson">bring_your_own_formatter_from_scratch_output.json</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="35:2"><input checked="checked" id="bring_your_own_formatter_from_scratchpy" name="__tabbed_35" type="radio" /><input id="bring_your_own_formatter_from_scratch_outputjson" name="__tabbed_35" type="radio" /><div class="tabbed-labels"><label for="bring_your_own_formatter_from_scratchpy">bring_your_own_formatter_from_scratch.py</label><label for="bring_your_own_formatter_from_scratch_outputjson">bring_your_own_formatter_from_scratch_output.json</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
@@ -7438,7 +7992,7 @@ You're not viewing the latest version.
 <h3 id="inject-lambda-context">Inject Lambda Context<a class="headerlink" href="#inject-lambda-context" title="Permanent link">&para;</a></h3>
 <p>When unit testing your code that makes use of <code>inject_lambda_context</code> decorator, you need to pass a dummy Lambda Context, or else Logger will fail.</p>
 <p>This is a Pytest sample that provides the minimum information necessary for Logger to succeed:</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="32:2"><input checked="checked" id="fake_lambda_context_for_loggerpy" name="__tabbed_32" type="radio" /><input id="fake_lambda_context_for_logger_modulepy" name="__tabbed_32" type="radio" /><div class="tabbed-labels"><label for="fake_lambda_context_for_loggerpy">fake_lambda_context_for_logger.py</label><label for="fake_lambda_context_for_logger_modulepy">fake_lambda_context_for_logger_module.py</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="36:2"><input checked="checked" id="fake_lambda_context_for_loggerpy" name="__tabbed_36" type="radio" /><input id="fake_lambda_context_for_logger_modulepy" name="__tabbed_36" type="radio" /><div class="tabbed-labels"><label for="fake_lambda_context_for_loggerpy">fake_lambda_context_for_logger.py</label><label for="fake_lambda_context_for_logger_modulepy">fake_lambda_context_for_logger_module.py</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
@@ -7595,7 +8149,7 @@ for the given name and level to the logging module. By default, this logs all bo
 <p>The Python standard library log records contains a <a href="https://docs.python.org/3/library/logging.html#logrecord-attributes" rel="nofollow" target="_blank">large set of attributes</a>, however only a few are included in Powertools for AWS Lambda (Python) Logger log record by default.</p>
 <p>You can include any of these logging attributes as key value arguments (<code>kwargs</code>) when instantiating <code>Logger</code> or <code>LambdaPowertoolsFormatter</code>.</p>
 <p>You can also add them later anywhere in your code with <code>append_keys</code>, or remove them with <code>remove_keys</code> methods.</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="33:2"><input checked="checked" id="append_and_remove_keyspy" name="__tabbed_33" type="radio" /><input id="append_and_remove_keys_outputjson" name="__tabbed_33" type="radio" /><div class="tabbed-labels"><label for="append_and_remove_keyspy">append_and_remove_keys.py</label><label for="append_and_remove_keys_outputjson">append_and_remove_keys_output.json</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="37:2"><input checked="checked" id="append_and_remove_keyspy" name="__tabbed_37" type="radio" /><input id="append_and_remove_keys_outputjson" name="__tabbed_37" type="radio" /><div class="tabbed-labels"><label for="append_and_remove_keyspy">append_and_remove_keys.py</label><label for="append_and_remove_keys_outputjson">append_and_remove_keys_output.json</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
@@ -7671,7 +8225,7 @@ for the given name and level to the logging module. By default, this logs all bo
 <h3 id="whats-the-difference-between-append_keys-and-extra">What's the difference between <code>append_keys</code> and <code>extra</code>?<a class="headerlink" href="#whats-the-difference-between-append_keys-and-extra" title="Permanent link">&para;</a></h3>
 <p>Keys added with <code>append_keys</code> will persist across multiple log messages while keys added via <code>extra</code> will only be available in a given log message operation.</p>
 <p>Here's an example where we persist <code>payment_id</code> not <code>request_id</code>. Note that <code>payment_id</code> remains in both log messages while <code>booking_id</code> is only available in the first message.</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="34:2"><input checked="checked" id="append_keys_vs_extrapy" name="__tabbed_34" type="radio" /><input id="append_keys_vs_extra_outputjson" name="__tabbed_34" type="radio" /><div class="tabbed-labels"><label for="append_keys_vs_extrapy">append_keys_vs_extra.py</label><label for="append_keys_vs_extra_outputjson">append_keys_vs_extra_output.json</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="38:2"><input checked="checked" id="append_keys_vs_extrapy" name="__tabbed_38" type="radio" /><input id="append_keys_vs_extra_outputjson" name="__tabbed_38" type="radio" /><div class="tabbed-labels"><label for="append_keys_vs_extrapy">append_keys_vs_extra.py</label><label for="append_keys_vs_extra_outputjson">append_keys_vs_extra_output.json</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
@@ -7800,7 +8354,7 @@ for the given name and level to the logging module. By default, this logs all bo
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    2025-02-27
+    2025-03-07
   </span>
 
     
