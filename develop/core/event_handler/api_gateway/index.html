@@ -9982,7 +9982,7 @@ Some event sources require headers and cookies to be encoded as <code>multiValue
 <h4 id="customizing-openapi-metadata">Customizing OpenAPI metadata<a class="headerlink" href="#customizing-openapi-metadata" title="Permanent link">&para;</a></h4>
 <!-- markdownlint-disable MD041 MD043 -->
 
-<p>Defining and customizing OpenAPI metadata gives detailed, top-level information about your API. Here's the method to set and tailor this metadata:</p>
+<p>Defining and customizing OpenAPI metadata gives detailed, top-level information about your API. Use the method <code>app.configure_openapi</code> to set and tailor this metadata:</p>
 <table>
 <thead>
 <tr>
@@ -10079,15 +10079,23 @@ Some event sources require headers and cookies to be encoded as <code>multiValue
 <span class="normal">29</span>
 <span class="normal">30</span>
 <span class="normal">31</span>
-<span class="normal">32</span>
-<span class="normal">33</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">requests</span>
+<span class="normal">32</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">requests</span>
 
 <span class="kn">from</span><span class="w"> </span><span class="nn">aws_lambda_powertools.event_handler</span><span class="w"> </span><span class="kn">import</span> <span class="n">APIGatewayRestResolver</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">aws_lambda_powertools.event_handler.openapi.models</span><span class="w"> </span><span class="kn">import</span> <span class="n">Contact</span><span class="p">,</span> <span class="n">Server</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">aws_lambda_powertools.utilities.typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">LambdaContext</span>
 
 <span class="n">app</span> <span class="o">=</span> <span class="n">APIGatewayRestResolver</span><span class="p">(</span><span class="n">enable_validation</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-
+<span class="hll"><span class="n">app</span><span class="o">.</span><span class="n">configure_openapi</span><span class="p">(</span>
+</span><span class="hll">    <span class="n">title</span><span class="o">=</span><span class="s2">&quot;TODO&#39;s API&quot;</span><span class="p">,</span>
+</span><span class="hll">    <span class="n">version</span><span class="o">=</span><span class="s2">&quot;1.21.3&quot;</span><span class="p">,</span>
+</span><span class="hll">    <span class="n">summary</span><span class="o">=</span><span class="s2">&quot;API to manage TODOs&quot;</span><span class="p">,</span>
+</span><span class="hll">    <span class="n">description</span><span class="o">=</span><span class="s2">&quot;This API implements all the CRUD operations for the TODO app&quot;</span><span class="p">,</span>
+</span><span class="hll">    <span class="n">tags</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;todos&quot;</span><span class="p">],</span>
+</span><span class="hll">    <span class="n">servers</span><span class="o">=</span><span class="p">[</span><span class="n">Server</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="s2">&quot;https://stg.example.org/orders&quot;</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s2">&quot;Staging server&quot;</span><span class="p">)],</span>
+</span><span class="hll">    <span class="n">contact</span><span class="o">=</span><span class="n">Contact</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;John Smith&quot;</span><span class="p">,</span> <span class="n">email</span><span class="o">=</span><span class="s2">&quot;john@smith.com&quot;</span><span class="p">),</span>
+</span><span class="hll"><span class="p">)</span>
+</span>
 
 <span class="nd">@app</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;/todos/&lt;todo_id&gt;&quot;</span><span class="p">)</span>
 <span class="k">def</span><span class="w"> </span><span class="nf">get_todo_title</span><span class="p">(</span><span class="n">todo_id</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
@@ -10102,17 +10110,7 @@ Some event sources require headers and cookies to be encoded as <code>multiValue
 
 
 <span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span>
-        <span class="n">app</span><span class="o">.</span><span class="n">get_openapi_json_schema</span><span class="p">(</span>
-<span class="hll">            <span class="n">title</span><span class="o">=</span><span class="s2">&quot;TODO&#39;s API&quot;</span><span class="p">,</span>
-</span><span class="hll">            <span class="n">version</span><span class="o">=</span><span class="s2">&quot;1.21.3&quot;</span><span class="p">,</span>
-</span><span class="hll">            <span class="n">summary</span><span class="o">=</span><span class="s2">&quot;API to manage TODOs&quot;</span><span class="p">,</span>
-</span><span class="hll">            <span class="n">description</span><span class="o">=</span><span class="s2">&quot;This API implements all the CRUD operations for the TODO app&quot;</span><span class="p">,</span>
-</span><span class="hll">            <span class="n">tags</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;todos&quot;</span><span class="p">],</span>
-</span><span class="hll">            <span class="n">servers</span><span class="o">=</span><span class="p">[</span><span class="n">Server</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="s2">&quot;https://stg.example.org/orders&quot;</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s2">&quot;Staging server&quot;</span><span class="p">)],</span>
-</span><span class="hll">            <span class="n">contact</span><span class="o">=</span><span class="n">Contact</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;John Smith&quot;</span><span class="p">,</span> <span class="n">email</span><span class="o">=</span><span class="s2">&quot;john@smith.com&quot;</span><span class="p">),</span>
-</span>        <span class="p">),</span>
-    <span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">app</span><span class="o">.</span><span class="n">get_openapi_json_schema</span><span class="p">())</span>
 </code></pre></div></td></tr></table></div>
 </div>
 </div>
@@ -10321,8 +10319,7 @@ Some event sources require headers and cookies to be encoded as <code>multiValue
 <span class="normal">40</span>
 <span class="normal">41</span>
 <span class="normal">42</span>
-<span class="normal">43</span>
-<span class="normal">44</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">aws_lambda_powertools</span><span class="w"> </span><span class="kn">import</span> <span class="n">Logger</span><span class="p">,</span> <span class="n">Tracer</span>
+<span class="normal">43</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">aws_lambda_powertools</span><span class="w"> </span><span class="kn">import</span> <span class="n">Logger</span><span class="p">,</span> <span class="n">Tracer</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">aws_lambda_powertools.event_handler</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
     <span class="n">APIGatewayRestResolver</span><span class="p">,</span>
 <span class="p">)</span>
@@ -10336,6 +10333,20 @@ Some event sources require headers and cookies to be encoded as <code>multiValue
 <span class="n">logger</span> <span class="o">=</span> <span class="n">Logger</span><span class="p">()</span>
 
 <span class="n">app</span> <span class="o">=</span> <span class="n">APIGatewayRestResolver</span><span class="p">(</span><span class="n">enable_validation</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">app</span><span class="o">.</span><span class="n">configure_openapi</span><span class="p">(</span>
+    <span class="n">title</span><span class="o">=</span><span class="s2">&quot;My API&quot;</span><span class="p">,</span>
+<span class="hll">    <span class="n">security_schemes</span><span class="o">=</span><span class="p">{</span>
+</span><span class="hll">        <span class="s2">&quot;oauth&quot;</span><span class="p">:</span> <span class="n">OAuth2</span><span class="p">(</span>
+</span><span class="hll">            <span class="n">flows</span><span class="o">=</span><span class="n">OAuthFlows</span><span class="p">(</span>
+</span><span class="hll">                <span class="n">authorizationCode</span><span class="o">=</span><span class="n">OAuthFlowAuthorizationCode</span><span class="p">(</span>
+</span><span class="hll">                    <span class="n">authorizationUrl</span><span class="o">=</span><span class="s2">&quot;https://xxx.amazoncognito.com/oauth2/authorize&quot;</span><span class="p">,</span>
+</span><span class="hll">                    <span class="n">tokenUrl</span><span class="o">=</span><span class="s2">&quot;https://xxx.amazoncognito.com/oauth2/token&quot;</span><span class="p">,</span>
+</span><span class="hll">                <span class="p">),</span>
+</span><span class="hll">            <span class="p">),</span>
+</span><span class="hll">        <span class="p">),</span>
+</span><span class="hll">    <span class="p">},</span>
+</span><span class="hll">    <span class="n">security</span><span class="o">=</span><span class="p">[{</span><span class="s2">&quot;oauth&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;admin&quot;</span><span class="p">]}],</span>  <span class="c1"># (1)!)</span>
+</span><span class="p">)</span>
 
 
 <span class="nd">@app</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;/&quot;</span><span class="p">)</span>
@@ -10350,22 +10361,7 @@ Some event sources require headers and cookies to be encoded as <code>multiValue
 
 
 <span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span>
-        <span class="n">app</span><span class="o">.</span><span class="n">get_openapi_json_schema</span><span class="p">(</span>
-            <span class="n">title</span><span class="o">=</span><span class="s2">&quot;My API&quot;</span><span class="p">,</span>
-<span class="hll">            <span class="n">security_schemes</span><span class="o">=</span><span class="p">{</span>
-</span><span class="hll">                <span class="s2">&quot;oauth&quot;</span><span class="p">:</span> <span class="n">OAuth2</span><span class="p">(</span>
-</span><span class="hll">                    <span class="n">flows</span><span class="o">=</span><span class="n">OAuthFlows</span><span class="p">(</span>
-</span><span class="hll">                        <span class="n">authorizationCode</span><span class="o">=</span><span class="n">OAuthFlowAuthorizationCode</span><span class="p">(</span>
-</span><span class="hll">                            <span class="n">authorizationUrl</span><span class="o">=</span><span class="s2">&quot;https://xxx.amazoncognito.com/oauth2/authorize&quot;</span><span class="p">,</span>
-</span><span class="hll">                            <span class="n">tokenUrl</span><span class="o">=</span><span class="s2">&quot;https://xxx.amazoncognito.com/oauth2/token&quot;</span><span class="p">,</span>
-</span><span class="hll">                        <span class="p">),</span>
-</span><span class="hll">                    <span class="p">),</span>
-</span><span class="hll">                <span class="p">),</span>
-</span><span class="hll">            <span class="p">},</span>
-</span><span class="hll">            <span class="n">security</span><span class="o">=</span><span class="p">[{</span><span class="s2">&quot;oauth&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;admin&quot;</span><span class="p">]}],</span>  <span class="c1"># (1)!</span>
-</span>        <span class="p">),</span>
-    <span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">app</span><span class="o">.</span><span class="n">get_openapi_json_schema</span><span class="p">())</span>
 </code></pre></div></td></tr></table></div>
 <ol>
 <li>Using the oauth security scheme defined earlier, scoped to the "admin" role.</li>
@@ -10413,8 +10409,7 @@ Some event sources require headers and cookies to be encoded as <code>multiValue
 <span class="normal">39</span>
 <span class="normal">40</span>
 <span class="normal">41</span>
-<span class="normal">42</span>
-<span class="normal">43</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">aws_lambda_powertools</span><span class="w"> </span><span class="kn">import</span> <span class="n">Logger</span><span class="p">,</span> <span class="n">Tracer</span>
+<span class="normal">42</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">aws_lambda_powertools</span><span class="w"> </span><span class="kn">import</span> <span class="n">Logger</span><span class="p">,</span> <span class="n">Tracer</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">aws_lambda_powertools.event_handler</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
     <span class="n">APIGatewayRestResolver</span><span class="p">,</span>
 <span class="p">)</span>
@@ -10428,6 +10423,19 @@ Some event sources require headers and cookies to be encoded as <code>multiValue
 <span class="n">logger</span> <span class="o">=</span> <span class="n">Logger</span><span class="p">()</span>
 
 <span class="n">app</span> <span class="o">=</span> <span class="n">APIGatewayRestResolver</span><span class="p">(</span><span class="n">enable_validation</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">app</span><span class="o">.</span><span class="n">configure_openapi</span><span class="p">(</span>
+    <span class="n">title</span><span class="o">=</span><span class="s2">&quot;My API&quot;</span><span class="p">,</span>
+<span class="hll">    <span class="n">security_schemes</span><span class="o">=</span><span class="p">{</span>
+</span><span class="hll">        <span class="s2">&quot;oauth&quot;</span><span class="p">:</span> <span class="n">OAuth2</span><span class="p">(</span>
+</span><span class="hll">            <span class="n">flows</span><span class="o">=</span><span class="n">OAuthFlows</span><span class="p">(</span>
+</span><span class="hll">                <span class="n">authorizationCode</span><span class="o">=</span><span class="n">OAuthFlowAuthorizationCode</span><span class="p">(</span>
+</span><span class="hll">                    <span class="n">authorizationUrl</span><span class="o">=</span><span class="s2">&quot;https://xxx.amazoncognito.com/oauth2/authorize&quot;</span><span class="p">,</span>
+</span><span class="hll">                    <span class="n">tokenUrl</span><span class="o">=</span><span class="s2">&quot;https://xxx.amazoncognito.com/oauth2/token&quot;</span><span class="p">,</span>
+</span><span class="hll">                <span class="p">),</span>
+</span><span class="hll">            <span class="p">),</span>
+</span><span class="hll">        <span class="p">),</span>
+</span><span class="hll">    <span class="p">},</span>
+</span><span class="p">)</span>
 
 
 <span class="hll"><span class="nd">@app</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;/&quot;</span><span class="p">,</span> <span class="n">security</span><span class="o">=</span><span class="p">[{</span><span class="s2">&quot;oauth&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;admin&quot;</span><span class="p">]}])</span>  <span class="c1"># (1)!</span>
@@ -10442,21 +10450,7 @@ Some event sources require headers and cookies to be encoded as <code>multiValue
 
 
 <span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span>
-        <span class="n">app</span><span class="o">.</span><span class="n">get_openapi_json_schema</span><span class="p">(</span>
-            <span class="n">title</span><span class="o">=</span><span class="s2">&quot;My API&quot;</span><span class="p">,</span>
-<span class="hll">            <span class="n">security_schemes</span><span class="o">=</span><span class="p">{</span>
-</span><span class="hll">                <span class="s2">&quot;oauth&quot;</span><span class="p">:</span> <span class="n">OAuth2</span><span class="p">(</span>
-</span><span class="hll">                    <span class="n">flows</span><span class="o">=</span><span class="n">OAuthFlows</span><span class="p">(</span>
-</span><span class="hll">                        <span class="n">authorizationCode</span><span class="o">=</span><span class="n">OAuthFlowAuthorizationCode</span><span class="p">(</span>
-</span><span class="hll">                            <span class="n">authorizationUrl</span><span class="o">=</span><span class="s2">&quot;https://xxx.amazoncognito.com/oauth2/authorize&quot;</span><span class="p">,</span>
-</span><span class="hll">                            <span class="n">tokenUrl</span><span class="o">=</span><span class="s2">&quot;https://xxx.amazoncognito.com/oauth2/token&quot;</span><span class="p">,</span>
-</span><span class="hll">                        <span class="p">),</span>
-</span><span class="hll">                    <span class="p">),</span>
-</span><span class="hll">                <span class="p">),</span>
-</span><span class="hll">            <span class="p">},</span>
-</span>        <span class="p">),</span>
-    <span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">app</span><span class="o">.</span><span class="n">get_openapi_json_schema</span><span class="p">())</span>
 </code></pre></div></td></tr></table></div>
 <ol>
 <li>Using the oauth security scheme defined bellow, scoped to the "admin" role.</li>
@@ -10509,8 +10503,7 @@ Some event sources require headers and cookies to be encoded as <code>multiValue
 <span class="normal">44</span>
 <span class="normal">45</span>
 <span class="normal">46</span>
-<span class="normal">47</span>
-<span class="normal">48</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">aws_lambda_powertools</span><span class="w"> </span><span class="kn">import</span> <span class="n">Logger</span><span class="p">,</span> <span class="n">Tracer</span>
+<span class="normal">47</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">aws_lambda_powertools</span><span class="w"> </span><span class="kn">import</span> <span class="n">Logger</span><span class="p">,</span> <span class="n">Tracer</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">aws_lambda_powertools.event_handler</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
     <span class="n">APIGatewayRestResolver</span><span class="p">,</span>
 <span class="p">)</span>
@@ -10524,6 +10517,19 @@ Some event sources require headers and cookies to be encoded as <code>multiValue
 <span class="n">logger</span> <span class="o">=</span> <span class="n">Logger</span><span class="p">()</span>
 
 <span class="n">app</span> <span class="o">=</span> <span class="n">APIGatewayRestResolver</span><span class="p">(</span><span class="n">enable_validation</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">app</span><span class="o">.</span><span class="n">configure_openapi</span><span class="p">(</span>
+    <span class="n">title</span><span class="o">=</span><span class="s2">&quot;My API&quot;</span><span class="p">,</span>
+<span class="hll">    <span class="n">security_schemes</span><span class="o">=</span><span class="p">{</span>
+</span><span class="hll">        <span class="s2">&quot;oauth&quot;</span><span class="p">:</span> <span class="n">OAuth2</span><span class="p">(</span>
+</span><span class="hll">            <span class="n">flows</span><span class="o">=</span><span class="n">OAuthFlows</span><span class="p">(</span>
+</span><span class="hll">                <span class="n">authorizationCode</span><span class="o">=</span><span class="n">OAuthFlowAuthorizationCode</span><span class="p">(</span>
+</span><span class="hll">                    <span class="n">authorizationUrl</span><span class="o">=</span><span class="s2">&quot;https://xxx.amazoncognito.com/oauth2/authorize&quot;</span><span class="p">,</span>
+</span><span class="hll">                    <span class="n">tokenUrl</span><span class="o">=</span><span class="s2">&quot;https://xxx.amazoncognito.com/oauth2/token&quot;</span><span class="p">,</span>
+</span><span class="hll">                <span class="p">),</span>
+</span><span class="hll">            <span class="p">),</span>
+</span><span class="hll">        <span class="p">),</span>
+</span><span class="hll">    <span class="p">},</span>
+</span><span class="p">)</span>
 
 
 <span class="nd">@app</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;/protected&quot;</span><span class="p">,</span> <span class="n">security</span><span class="o">=</span><span class="p">[{</span><span class="s2">&quot;oauth&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;admin&quot;</span><span class="p">]}])</span>
@@ -10543,21 +10549,7 @@ Some event sources require headers and cookies to be encoded as <code>multiValue
 
 
 <span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span>
-        <span class="n">app</span><span class="o">.</span><span class="n">get_openapi_json_schema</span><span class="p">(</span>
-            <span class="n">title</span><span class="o">=</span><span class="s2">&quot;My API&quot;</span><span class="p">,</span>
-<span class="hll">            <span class="n">security_schemes</span><span class="o">=</span><span class="p">{</span>
-</span><span class="hll">                <span class="s2">&quot;oauth&quot;</span><span class="p">:</span> <span class="n">OAuth2</span><span class="p">(</span>
-</span><span class="hll">                    <span class="n">flows</span><span class="o">=</span><span class="n">OAuthFlows</span><span class="p">(</span>
-</span><span class="hll">                        <span class="n">authorizationCode</span><span class="o">=</span><span class="n">OAuthFlowAuthorizationCode</span><span class="p">(</span>
-</span><span class="hll">                            <span class="n">authorizationUrl</span><span class="o">=</span><span class="s2">&quot;https://xxx.amazoncognito.com/oauth2/authorize&quot;</span><span class="p">,</span>
-</span><span class="hll">                            <span class="n">tokenUrl</span><span class="o">=</span><span class="s2">&quot;https://xxx.amazoncognito.com/oauth2/token&quot;</span><span class="p">,</span>
-</span><span class="hll">                        <span class="p">),</span>
-</span><span class="hll">                    <span class="p">),</span>
-</span><span class="hll">                <span class="p">),</span>
-</span><span class="hll">            <span class="p">},</span>
-</span>        <span class="p">),</span>
-    <span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">app</span><span class="o">.</span><span class="n">get_openapi_json_schema</span><span class="p">())</span>
 </code></pre></div></td></tr></table></div>
 <ol>
 <li>To make security optional in a specific route, an empty security requirement ({}) can be included in the array.</li>
