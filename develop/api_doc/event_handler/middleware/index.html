@@ -4519,6 +4519,7 @@ The next middleware handler is represented by <code>next_middleware</code>, retu
     <span class="n">validation_serializer</span><span class="p">:</span> <span class="p">(</span>
         <span class="n">Callable</span><span class="p">[[</span><span class="n">Any</span><span class="p">],</span> <span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span>
     <span class="p">)</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">has_response_validation_error</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
 <span class="p">)</span>
 </code></pre></div>
 
@@ -4594,6 +4595,27 @@ Use it when you have a custom type that cannot be serialized by the default json
               </p>
             </td>
           </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>has_response_validation_error</code>
+            </td>
+            <td class="doc-param-details">
+              <div class="doc-md-description">
+                <p>Optional flag used to distinguish between payload and validation errors.
+By setting this flag to True, ResponseValidationError will be raised if response could not be validated.</p>
+              </div>
+              <p>
+                  <span class="doc-param-annotation">
+                    <b>TYPE:</b>
+                      <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/functions.html#bool">bool</a></code>
+                  </span>
+                  <span class="doc-param-default">
+                    <b>DEFAULT:</b>
+                      <code>False</code>
+                  </span>
+              </p>
+            </td>
+          </tr>
       </tbody>
     </table>
 
@@ -4618,7 +4640,20 @@ Use it when you have a custom type that cannot be serialized by the default json
 <span class="normal">68</span>
 <span class="normal">69</span>
 <span class="normal">70</span>
-<span class="normal">71</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">validation_serializer</span><span class="p">:</span> <span class="n">Callable</span><span class="p">[[</span><span class="n">Any</span><span class="p">],</span> <span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+<span class="normal">71</span>
+<span class="normal">72</span>
+<span class="normal">73</span>
+<span class="normal">74</span>
+<span class="normal">75</span>
+<span class="normal">76</span>
+<span class="normal">77</span>
+<span class="normal">78</span>
+<span class="normal">79</span>
+<span class="normal">80</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
+    <span class="bp">self</span><span class="p">,</span>
+    <span class="n">validation_serializer</span><span class="p">:</span> <span class="n">Callable</span><span class="p">[[</span><span class="n">Any</span><span class="p">],</span> <span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">has_response_validation_error</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+<span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Initialize the OpenAPIValidationMiddleware.</span>
 
@@ -4627,8 +4662,13 @@ Use it when you have a custom type that cannot be serialized by the default json
 <span class="sd">    validation_serializer : Callable, optional</span>
 <span class="sd">        Optional serializer to use when serializing the response for validation.</span>
 <span class="sd">        Use it when you have a custom type that cannot be serialized by the default jsonable_encoder.</span>
+
+<span class="sd">    has_response_validation_error: bool, optional</span>
+<span class="sd">        Optional flag used to distinguish between payload and validation errors.</span>
+<span class="sd">        By setting this flag to True, ResponseValidationError will be raised if response could not be validated.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">_validation_serializer</span> <span class="o">=</span> <span class="n">validation_serializer</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">_has_response_validation_error</span> <span class="o">=</span> <span class="n">has_response_validation_error</span>
 </code></pre></div></td></tr></table></div>
                   </details>
 

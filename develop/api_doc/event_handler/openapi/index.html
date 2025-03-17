@@ -2226,6 +2226,15 @@ You're not viewing the latest version.
 </li>
         
           <li class="md-nav__item">
+  <a href="#aws_lambda_powertools.event_handler.openapi.exceptions.ResponseValidationError" class="md-nav__link">
+    <span class="md-ellipsis">
+      ResponseValidationError
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#aws_lambda_powertools.event_handler.openapi.exceptions.SchemaValidationError" class="md-nav__link">
     <span class="md-ellipsis">
       SchemaValidationError
@@ -3891,6 +3900,15 @@ You're not viewing the latest version.
   <a href="#aws_lambda_powertools.event_handler.openapi.exceptions.RequestValidationError" class="md-nav__link">
     <span class="md-ellipsis">
       RequestValidationError
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#aws_lambda_powertools.event_handler.openapi.exceptions.ResponseValidationError" class="md-nav__link">
+    <span class="md-ellipsis">
+      ResponseValidationError
     </span>
   </a>
   
@@ -6293,6 +6311,14 @@ by default False</p>
             </td>
           </tr>
           <tr class="doc-section-item">
+            <td><code><a class="autorefs autorefs-internal" title="aws_lambda_powertools.event_handler.openapi.exceptions.ResponseValidationError" href="#aws_lambda_powertools.event_handler.openapi.exceptions.ResponseValidationError">ResponseValidationError</a></code></td>
+            <td class="doc-class-details">
+              <div class="doc-md-description">
+                <p>Raised when the response body does not match the OpenAPI schema</p>
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
             <td><code><a class="autorefs autorefs-internal" title="aws_lambda_powertools.event_handler.openapi.exceptions.SchemaValidationError" href="#aws_lambda_powertools.event_handler.openapi.exceptions.SchemaValidationError">SchemaValidationError</a></code></td>
             <td class="doc-class-details">
               <div class="doc-md-description">
@@ -6369,6 +6395,66 @@ by default False</p>
                     <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">21</span>
 <span class="normal">22</span>
 <span class="normal">23</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">errors</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">[</span><span class="n">Any</span><span class="p">],</span> <span class="o">*</span><span class="p">,</span> <span class="n">body</span><span class="p">:</span> <span class="n">Any</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">errors</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">body</span> <span class="o">=</span> <span class="n">body</span>
+</code></pre></div></td></tr></table></div>
+                  </details>
+
+
+
+  <div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+
+
+  </div>
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-class">
+
+
+
+<h3 id="aws_lambda_powertools.event_handler.openapi.exceptions.ResponseValidationError" class="doc doc-heading">
+            <span class="doc doc-object-name doc-class-name">ResponseValidationError</span>
+
+
+<a href="#aws_lambda_powertools.event_handler.openapi.exceptions.ResponseValidationError" class="headerlink" title="Permanent link">&para;</a></h3>
+<div class="doc-signature highlight"><pre><span></span><code><span class="nf">ResponseValidationError</span><span class="p">(</span>
+    <span class="n">errors</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">[</span><span class="n">Any</span><span class="p">],</span> <span class="o">*</span><span class="p">,</span> <span class="n">body</span><span class="p">:</span> <span class="n">Any</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="p">)</span>
+</code></pre></div>
+
+    <div class="doc doc-contents ">
+            <p class="doc doc-class-bases">
+              Bases: <code><a class="autorefs autorefs-internal" title="aws_lambda_powertools.event_handler.openapi.exceptions.ValidationException" href="#aws_lambda_powertools.event_handler.openapi.exceptions.ValidationException">ValidationException</a></code></p>
+
+
+        <p>Raised when the response body does not match the OpenAPI schema</p>
+
+
+
+
+
+
+
+
+
+
+                  <details class="quote">
+                    <summary>Source code in <code>aws_lambda_powertools/event_handler/openapi/exceptions.py</code></summary>
+                    <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">errors</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">[</span><span class="n">Any</span><span class="p">],</span> <span class="o">*</span><span class="p">,</span> <span class="n">body</span><span class="p">:</span> <span class="n">Any</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
     <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">errors</span><span class="p">)</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">body</span> <span class="o">=</span> <span class="n">body</span>
 </code></pre></div></td></tr></table></div>
