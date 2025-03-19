@@ -3431,6 +3431,7 @@ You're not viewing the latest version.
 
 
 
+
 <table>
       <thead>
         <tr>
@@ -3440,7 +3441,7 @@ You're not viewing the latest version.
       </thead>
       <tbody>
           <tr class="doc-section-item">
-            <td><code><a class="autorefs autorefs-internal" title="aws_lambda_powertools.utilities.data_masking.base.DataMasking" href="#aws_lambda_powertools.utilities.data_masking.base.DataMasking">DataMasking</a></code></td>
+            <td><code><a class="autorefs autorefs-internal" title="DataMasking (aws_lambda_powertools.utilities.data_masking.base.DataMasking)" href="#aws_lambda_powertools.utilities.data_masking.base.DataMasking">DataMasking</a></code></td>
             <td class="doc-class-details">
               <div class="doc-md-description">
                 <p>The DataMasking class orchestrates erasing, encrypting, and decrypting</p>
@@ -3524,6 +3525,7 @@ for the base provider.</p>
 
 
 
+
 <table>
       <thead>
         <tr>
@@ -3533,7 +3535,7 @@ for the base provider.</p>
       </thead>
       <tbody>
             <tr class="doc-section-item">
-              <td><code><a class="autorefs autorefs-internal" title="aws_lambda_powertools.utilities.data_masking.base.DataMasking.decrypt" href="#aws_lambda_powertools.utilities.data_masking.base.DataMasking.decrypt">decrypt</a></code></td>
+              <td><code><a class="autorefs autorefs-internal" title="decrypt (aws_lambda_powertools.utilities.data_masking.base.DataMasking.decrypt)" href="#aws_lambda_powertools.utilities.data_masking.base.DataMasking.decrypt">decrypt</a></code></td>
               <td class="doc-function-details">
                 <div class="doc-md-description">
                   <p>Decrypt data using the configured encryption provider.</p>
@@ -3541,7 +3543,7 @@ for the base provider.</p>
               </td>
             </tr>
             <tr class="doc-section-item">
-              <td><code><a class="autorefs autorefs-internal" title="aws_lambda_powertools.utilities.data_masking.base.DataMasking.encrypt" href="#aws_lambda_powertools.utilities.data_masking.base.DataMasking.encrypt">encrypt</a></code></td>
+              <td><code><a class="autorefs autorefs-internal" title="encrypt (aws_lambda_powertools.utilities.data_masking.base.DataMasking.encrypt)" href="#aws_lambda_powertools.utilities.data_masking.base.DataMasking.encrypt">encrypt</a></code></td>
               <td class="doc-function-details">
                 <div class="doc-md-description">
                   <p>Encrypt data using the configured encryption provider.</p>
@@ -3549,7 +3551,7 @@ for the base provider.</p>
               </td>
             </tr>
             <tr class="doc-section-item">
-              <td><code><a class="autorefs autorefs-internal" title="aws_lambda_powertools.utilities.data_masking.base.DataMasking.erase" href="#aws_lambda_powertools.utilities.data_masking.base.DataMasking.erase">erase</a></code></td>
+              <td><code><a class="autorefs autorefs-internal" title="erase (aws_lambda_powertools.utilities.data_masking.base.DataMasking.erase)" href="#aws_lambda_powertools.utilities.data_masking.base.DataMasking.erase">erase</a></code></td>
               <td class="doc-function-details">
                 <div class="doc-md-description">
                   <p>Erase or mask sensitive data in the input.</p>
@@ -3718,6 +3720,7 @@ data_masker = DataMasking(provider=encryption_provider)
 encrypted = data_masker.decrypt(encrypted_data)
 </code></pre></div></td></tr></table></div>
 </details>
+
             <details class="quote">
               <summary>Source code in <code>aws_lambda_powertools/utilities/data_masking/base.py</code></summary>
               <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">108</span>
@@ -3930,6 +3933,7 @@ data_masker = DataMasking(provider=encryption_provider)
 encrypted = data_masker.encrypt({&quot;secret&quot;: &quot;value&quot;})
 </code></pre></div></td></tr></table></div>
 </details>
+
             <details class="quote">
               <summary>Source code in <code>aws_lambda_powertools/utilities/data_masking/base.py</code></summary>
               <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 66</span>
@@ -4214,6 +4218,7 @@ encrypted = data_masker.encrypt({&quot;secret&quot;: &quot;value&quot;})
           </tr>
       </tbody>
     </table>
+
 
             <details class="quote">
               <summary>Source code in <code>aws_lambda_powertools/utilities/data_masking/base.py</code></summary>

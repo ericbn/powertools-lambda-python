@@ -3623,6 +3623,7 @@ You're not viewing the latest version.
 
 
 
+
 <table>
       <thead>
         <tr>
@@ -3632,7 +3633,7 @@ You're not viewing the latest version.
       </thead>
       <tbody>
           <tr class="doc-section-item">
-            <td><code><a class="autorefs autorefs-internal" title="aws_lambda_powertools.tracing.base.BaseProvider" href="#aws_lambda_powertools.tracing.base.BaseProvider">BaseProvider</a></code></td>
+            <td><code><a class="autorefs autorefs-internal" title="BaseProvider (aws_lambda_powertools.tracing.base.BaseProvider)" href="#aws_lambda_powertools.tracing.base.BaseProvider">BaseProvider</a></code></td>
             <td class="doc-class-details">
               <div class="doc-md-description">
                 
@@ -3640,7 +3641,7 @@ You're not viewing the latest version.
             </td>
           </tr>
           <tr class="doc-section-item">
-            <td><code><a class="autorefs autorefs-internal" title="aws_lambda_powertools.tracing.base.BaseSegment" href="#aws_lambda_powertools.tracing.base.BaseSegment">BaseSegment</a></code></td>
+            <td><code><a class="autorefs autorefs-internal" title="BaseSegment (aws_lambda_powertools.tracing.base.BaseSegment)" href="#aws_lambda_powertools.tracing.base.BaseSegment">BaseSegment</a></code></td>
             <td class="doc-class-details">
               <div class="doc-md-description">
                 <p>Holds common properties and methods on segment and subsegment.</p>
@@ -3689,6 +3690,7 @@ You're not viewing the latest version.
 
 
 
+
 <table>
       <thead>
         <tr>
@@ -3698,7 +3700,12 @@ You're not viewing the latest version.
       </thead>
       <tbody>
             <tr class="doc-section-item">
-              <td><code><a class="autorefs autorefs-internal" title="aws_lambda_powertools.tracing.base.BaseProvider.in_subsegment" href="#aws_lambda_powertools.tracing.base.BaseProvider.in_subsegment">in_subsegment</a></code></td>
+              <td><code><a class="autorefs autorefs-internal" title="in_subsegment
+
+
+  
+      abstractmethod
+   (aws_lambda_powertools.tracing.base.BaseProvider.in_subsegment)" href="#aws_lambda_powertools.tracing.base.BaseProvider.in_subsegment">in_subsegment</a></code></td>
               <td class="doc-function-details">
                 <div class="doc-md-description">
                   <p>Return a subsegment context manger.</p>
@@ -3706,7 +3713,12 @@ You're not viewing the latest version.
               </td>
             </tr>
             <tr class="doc-section-item">
-              <td><code><a class="autorefs autorefs-internal" title="aws_lambda_powertools.tracing.base.BaseProvider.in_subsegment_async" href="#aws_lambda_powertools.tracing.base.BaseProvider.in_subsegment_async">in_subsegment_async</a></code></td>
+              <td><code><a class="autorefs autorefs-internal" title="in_subsegment_async
+
+
+  
+      abstractmethod
+   (aws_lambda_powertools.tracing.base.BaseProvider.in_subsegment_async)" href="#aws_lambda_powertools.tracing.base.BaseProvider.in_subsegment_async">in_subsegment_async</a></code></td>
               <td class="doc-function-details">
                 <div class="doc-md-description">
                   <p>Return a subsegment async context manger.</p>
@@ -3714,7 +3726,12 @@ You're not viewing the latest version.
               </td>
             </tr>
             <tr class="doc-section-item">
-              <td><code><a class="autorefs autorefs-internal" title="aws_lambda_powertools.tracing.base.BaseProvider.patch" href="#aws_lambda_powertools.tracing.base.BaseProvider.patch">patch</a></code></td>
+              <td><code><a class="autorefs autorefs-internal" title="patch
+
+
+  
+      abstractmethod
+   (aws_lambda_powertools.tracing.base.BaseProvider.patch)" href="#aws_lambda_powertools.tracing.base.BaseProvider.patch">patch</a></code></td>
               <td class="doc-function-details">
                 <div class="doc-md-description">
                   <p>Instrument a set of supported libraries</p>
@@ -3722,7 +3739,12 @@ You're not viewing the latest version.
               </td>
             </tr>
             <tr class="doc-section-item">
-              <td><code><a class="autorefs autorefs-internal" title="aws_lambda_powertools.tracing.base.BaseProvider.patch_all" href="#aws_lambda_powertools.tracing.base.BaseProvider.patch_all">patch_all</a></code></td>
+              <td><code><a class="autorefs autorefs-internal" title="patch_all
+
+
+  
+      abstractmethod
+   (aws_lambda_powertools.tracing.base.BaseProvider.patch_all)" href="#aws_lambda_powertools.tracing.base.BaseProvider.patch_all">patch_all</a></code></td>
               <td class="doc-function-details">
                 <div class="doc-md-description">
                   <p>Instrument all supported libraries</p>
@@ -3730,7 +3752,12 @@ You're not viewing the latest version.
               </td>
             </tr>
             <tr class="doc-section-item">
-              <td><code><a class="autorefs autorefs-internal" title="aws_lambda_powertools.tracing.base.BaseProvider.put_annotation" href="#aws_lambda_powertools.tracing.base.BaseProvider.put_annotation">put_annotation</a></code></td>
+              <td><code><a class="autorefs autorefs-internal" title="put_annotation
+
+
+  
+      abstractmethod
+   (aws_lambda_powertools.tracing.base.BaseProvider.put_annotation)" href="#aws_lambda_powertools.tracing.base.BaseProvider.put_annotation">put_annotation</a></code></td>
               <td class="doc-function-details">
                 <div class="doc-md-description">
                   <p>Annotate current active trace entity with a key-value pair.</p>
@@ -3738,7 +3765,12 @@ You're not viewing the latest version.
               </td>
             </tr>
             <tr class="doc-section-item">
-              <td><code><a class="autorefs autorefs-internal" title="aws_lambda_powertools.tracing.base.BaseProvider.put_metadata" href="#aws_lambda_powertools.tracing.base.BaseProvider.put_metadata">put_metadata</a></code></td>
+              <td><code><a class="autorefs autorefs-internal" title="put_metadata
+
+
+  
+      abstractmethod
+   (aws_lambda_powertools.tracing.base.BaseProvider.put_metadata)" href="#aws_lambda_powertools.tracing.base.BaseProvider.put_metadata">put_metadata</a></code></td>
               <td class="doc-function-details">
                 <div class="doc-md-description">
                   <p>Add metadata to the current active trace entity.</p>
@@ -3827,6 +3859,7 @@ You're not viewing the latest version.
           </tr>
       </tbody>
     </table>
+
 
             <details class="quote">
               <summary>Source code in <code>aws_lambda_powertools/tracing/base.py</code></summary>
@@ -3924,6 +3957,7 @@ You're not viewing the latest version.
       </tbody>
     </table>
 
+
             <details class="quote">
               <summary>Source code in <code>aws_lambda_powertools/tracing/base.py</code></summary>
               <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">100</span>
@@ -4002,6 +4036,7 @@ You're not viewing the latest version.
       </tbody>
     </table>
 
+
             <details class="quote">
               <summary>Source code in <code>aws_lambda_powertools/tracing/base.py</code></summary>
               <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">143</span>
@@ -4045,6 +4080,7 @@ You're not viewing the latest version.
     <div class="doc doc-contents ">
 
         <p>Instrument all supported libraries</p>
+
 
             <details class="quote">
               <summary>Source code in <code>aws_lambda_powertools/tracing/base.py</code></summary>
@@ -4124,6 +4160,7 @@ You're not viewing the latest version.
           </tr>
       </tbody>
     </table>
+
 
             <details class="quote">
               <summary>Source code in <code>aws_lambda_powertools/tracing/base.py</code></summary>
@@ -4244,6 +4281,7 @@ You're not viewing the latest version.
       </tbody>
     </table>
 
+
             <details class="quote">
               <summary>Source code in <code>aws_lambda_powertools/tracing/base.py</code></summary>
               <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">127</span>
@@ -4315,6 +4353,7 @@ You're not viewing the latest version.
 
 
 
+
 <table>
       <thead>
         <tr>
@@ -4324,7 +4363,12 @@ You're not viewing the latest version.
       </thead>
       <tbody>
             <tr class="doc-section-item">
-              <td><code><a class="autorefs autorefs-internal" title="aws_lambda_powertools.tracing.base.BaseSegment.add_exception" href="#aws_lambda_powertools.tracing.base.BaseSegment.add_exception">add_exception</a></code></td>
+              <td><code><a class="autorefs autorefs-internal" title="add_exception
+
+
+  
+      abstractmethod
+   (aws_lambda_powertools.tracing.base.BaseSegment.add_exception)" href="#aws_lambda_powertools.tracing.base.BaseSegment.add_exception">add_exception</a></code></td>
               <td class="doc-function-details">
                 <div class="doc-md-description">
                   <p>Add an exception to trace entities.</p>
@@ -4332,7 +4376,12 @@ You're not viewing the latest version.
               </td>
             </tr>
             <tr class="doc-section-item">
-              <td><code><a class="autorefs autorefs-internal" title="aws_lambda_powertools.tracing.base.BaseSegment.add_subsegment" href="#aws_lambda_powertools.tracing.base.BaseSegment.add_subsegment">add_subsegment</a></code></td>
+              <td><code><a class="autorefs autorefs-internal" title="add_subsegment
+
+
+  
+      abstractmethod
+   (aws_lambda_powertools.tracing.base.BaseSegment.add_subsegment)" href="#aws_lambda_powertools.tracing.base.BaseSegment.add_subsegment">add_subsegment</a></code></td>
               <td class="doc-function-details">
                 <div class="doc-md-description">
                   <p>Add input subsegment as a child subsegment.</p>
@@ -4340,7 +4389,12 @@ You're not viewing the latest version.
               </td>
             </tr>
             <tr class="doc-section-item">
-              <td><code><a class="autorefs autorefs-internal" title="aws_lambda_powertools.tracing.base.BaseSegment.close" href="#aws_lambda_powertools.tracing.base.BaseSegment.close">close</a></code></td>
+              <td><code><a class="autorefs autorefs-internal" title="close
+
+
+  
+      abstractmethod
+   (aws_lambda_powertools.tracing.base.BaseSegment.close)" href="#aws_lambda_powertools.tracing.base.BaseSegment.close">close</a></code></td>
               <td class="doc-function-details">
                 <div class="doc-md-description">
                   <p>Close the trace entity by setting <code>end_time</code></p>
@@ -4348,7 +4402,12 @@ You're not viewing the latest version.
               </td>
             </tr>
             <tr class="doc-section-item">
-              <td><code><a class="autorefs autorefs-internal" title="aws_lambda_powertools.tracing.base.BaseSegment.put_annotation" href="#aws_lambda_powertools.tracing.base.BaseSegment.put_annotation">put_annotation</a></code></td>
+              <td><code><a class="autorefs autorefs-internal" title="put_annotation
+
+
+  
+      abstractmethod
+   (aws_lambda_powertools.tracing.base.BaseSegment.put_annotation)" href="#aws_lambda_powertools.tracing.base.BaseSegment.put_annotation">put_annotation</a></code></td>
               <td class="doc-function-details">
                 <div class="doc-md-description">
                   <p>Annotate segment or subsegment with a key-value pair.</p>
@@ -4356,7 +4415,12 @@ You're not viewing the latest version.
               </td>
             </tr>
             <tr class="doc-section-item">
-              <td><code><a class="autorefs autorefs-internal" title="aws_lambda_powertools.tracing.base.BaseSegment.put_metadata" href="#aws_lambda_powertools.tracing.base.BaseSegment.put_metadata">put_metadata</a></code></td>
+              <td><code><a class="autorefs autorefs-internal" title="put_metadata
+
+
+  
+      abstractmethod
+   (aws_lambda_powertools.tracing.base.BaseSegment.put_metadata)" href="#aws_lambda_powertools.tracing.base.BaseSegment.put_metadata">put_metadata</a></code></td>
               <td class="doc-function-details">
                 <div class="doc-md-description">
                   <p>Add metadata to segment or subsegment. Metadata is not indexed</p>
@@ -4364,7 +4428,12 @@ You're not viewing the latest version.
               </td>
             </tr>
             <tr class="doc-section-item">
-              <td><code><a class="autorefs autorefs-internal" title="aws_lambda_powertools.tracing.base.BaseSegment.remove_subsegment" href="#aws_lambda_powertools.tracing.base.BaseSegment.remove_subsegment">remove_subsegment</a></code></td>
+              <td><code><a class="autorefs autorefs-internal" title="remove_subsegment
+
+
+  
+      abstractmethod
+   (aws_lambda_powertools.tracing.base.BaseSegment.remove_subsegment)" href="#aws_lambda_powertools.tracing.base.BaseSegment.remove_subsegment">remove_subsegment</a></code></td>
               <td class="doc-function-details">
                 <div class="doc-md-description">
                   <p>Remove input subsegment from child subsegments.</p>
@@ -4477,6 +4546,7 @@ You're not viewing the latest version.
       </tbody>
     </table>
 
+
             <details class="quote">
               <summary>Source code in <code>aws_lambda_powertools/tracing/base.py</code></summary>
               <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">69</span>
@@ -4532,6 +4602,7 @@ You're not viewing the latest version.
     <div class="doc doc-contents ">
 
         <p>Add input subsegment as a child subsegment.</p>
+
 
             <details class="quote">
               <summary>Source code in <code>aws_lambda_powertools/tracing/base.py</code></summary>
@@ -4597,6 +4668,7 @@ and flip the in progress flag to False.</p>
           </tr>
       </tbody>
     </table>
+
 
             <details class="quote">
               <summary>Source code in <code>aws_lambda_powertools/tracing/base.py</code></summary>
@@ -4690,6 +4762,7 @@ and flip the in progress flag to False.</p>
           </tr>
       </tbody>
     </table>
+
 
             <details class="quote">
               <summary>Source code in <code>aws_lambda_powertools/tracing/base.py</code></summary>
@@ -4810,6 +4883,7 @@ but can be later retrieved by BatchGetTraces API.</p>
       </tbody>
     </table>
 
+
             <details class="quote">
               <summary>Source code in <code>aws_lambda_powertools/tracing/base.py</code></summary>
               <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">54</span>
@@ -4863,6 +4937,7 @@ but can be later retrieved by BatchGetTraces API.</p>
     <div class="doc doc-contents ">
 
         <p>Remove input subsegment from child subsegments.</p>
+
 
             <details class="quote">
               <summary>Source code in <code>aws_lambda_powertools/tracing/base.py</code></summary>
