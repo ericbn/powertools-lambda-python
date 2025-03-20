@@ -3329,6 +3329,21 @@ You're not viewing the latest version.
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Capturing cold start metric">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#customizing-function-name-for-cold-start-metrics" class="md-nav__link">
+    <span class="md-ellipsis">
+      Customizing function name for cold start metrics
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
         
           <li class="md-nav__item">
@@ -3520,7 +3535,7 @@ You're not viewing the latest version.
 <summary>Tip</summary>
 <p>All examples shared in this documentation are available within the <a href="https://github.com/aws-powertools/powertools-lambda-python/tree/develop/examples" target="_blank">project repository</a>.</p>
 </details>
-<p>Metric has three global settings that will be used across all metrics emitted:</p>
+<p>Metric has two global settings that will be used across all metrics emitted:</p>
 <table>
 <thead>
 <tr>
@@ -3542,12 +3557,6 @@ You're not viewing the latest version.
 <td>Optionally, sets <strong>service</strong> metric dimension across all metrics e.g. <code>payment</code></td>
 <td><code>POWERTOOLS_SERVICE_NAME</code></td>
 <td><code>service</code></td>
-</tr>
-<tr>
-<td><strong>Disable Powertools Metrics</strong></td>
-<td>Optionally, disables all Powertools metrics.</td>
-<td><code>POWERTOOLS_METRICS_DISABLED</code></td>
-<td>N/A</td>
 </tr>
 </tbody>
 </table>
@@ -3583,7 +3592,8 @@ You're not viewing the latest version.
 <span class="normal">22</span>
 <span class="normal">23</span>
 <span class="normal">24</span>
-<span class="normal">25</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nt">AWSTemplateFormatVersion</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;2010-09-09&quot;</span>
+<span class="normal">25</span>
+<span class="normal">26</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nt">AWSTemplateFormatVersion</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;2010-09-09&quot;</span>
 <span class="nt">Transform</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">AWS::Serverless-2016-10-31</span>
 <span class="nt">Description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Powertools for AWS Lambda (Python) version</span>
 
@@ -3594,8 +3604,9 @@ You're not viewing the latest version.
 <span class="w">    </span><span class="nt">Tracing</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Active</span>
 <span class="w">    </span><span class="nt">Environment</span><span class="p">:</span>
 <span class="w">      </span><span class="nt">Variables</span><span class="p">:</span>
-<span class="w">        </span><span class="nt">POWERTOOLS_SERVICE_NAME</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">booking</span>
-<span class="hll"><span class="w">        </span><span class="nt">POWERTOOLS_METRICS_NAMESPACE</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ServerlessAirline</span>
+<span class="hll"><span class="w">        </span><span class="nt">POWERTOOLS_SERVICE_NAME</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">booking</span>
+</span><span class="hll"><span class="w">        </span><span class="nt">POWERTOOLS_METRICS_NAMESPACE</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ServerlessAirline</span>
+</span><span class="hll"><span class="w">        </span><span class="nt">POWERTOOLS_METRICS_FUNCTION_NAME</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">my-function-name</span>
 </span>
 <span class="w">    </span><span class="nt">Layers</span><span class="p">:</span>
 <span class="w">      </span><span class="c1"># Find the latest Layer version in the official documentation</span>
@@ -4145,6 +4156,36 @@ You're not viewing the latest version.
 <summary>Info</summary>
 <p>We do not emit 0 as a value for ColdStart metric for cost reasons. <a href="https://github.com/aws-powertools/powertools-lambda-python/issues/new?assignees=&amp;labels=feature-request%2C+triage&amp;template=feature_request.md&amp;title=" target="_blank">Let us know</a> if you'd prefer a flag to override it.</p>
 </details>
+<h4 id="customizing-function-name-for-cold-start-metrics">Customizing function name for cold start metrics<a class="headerlink" href="#customizing-function-name-for-cold-start-metrics" title="Permanent link">&para;</a></h4>
+<p>When emitting cold start metrics, the <code>function_name</code> dimension defaults to <code>context.function_name</code>. If you want to change the value you can set the <code>function_name</code> parameter in the metrics constructor, or define the environment variable <code>POWERTOOLS_METRICS_FUNCTION_NAME</code>.</p>
+<p>The priority of the <code>function_name</code> dimension value is defined as:</p>
+<ol>
+<li><code>function_name</code> constructor option</li>
+<li><code>POWERTOOLS_METRICS_FUNCTION_NAME</code> environment variable</li>
+<li><code>context.function_name</code> property</li>
+</ol>
+<div class="tabbed-set tabbed-alternate" data-tabs="8:1"><input checked="checked" id="working_with_custom_cold_start_function_namepy" name="__tabbed_8" type="radio" /><div class="tabbed-labels"><label for="working_with_custom_cold_start_function_namepy">working_with_custom_cold_start_function_name.py</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span>
+<span class="normal">8</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">aws_lambda_powertools</span><span class="w"> </span><span class="kn">import</span> <span class="n">Metrics</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">aws_lambda_powertools.utilities.typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">LambdaContext</span>
+
+<span class="hll"><span class="n">metrics</span> <span class="o">=</span> <span class="n">Metrics</span><span class="p">(</span><span class="n">function_name</span><span class="o">=</span><span class="s2">&quot;my-function-name&quot;</span><span class="p">)</span>
+</span>
+
+<span class="nd">@metrics</span><span class="o">.</span><span class="n">log_metrics</span><span class="p">(</span><span class="n">capture_cold_start_metric</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">lambda_handler</span><span class="p">(</span><span class="n">event</span><span class="p">:</span> <span class="nb">dict</span><span class="p">,</span> <span class="n">context</span><span class="p">:</span> <span class="n">LambdaContext</span><span class="p">):</span> <span class="o">...</span>
+</code></pre></div></td></tr></table></div>
+</div>
+</div>
+</div>
 <h3 id="environment-variables">Environment variables<a class="headerlink" href="#environment-variables" title="Permanent link">&para;</a></h3>
 <p>The following environment variable is available to configure Metrics at a global scope:</p>
 <table>
@@ -4159,8 +4200,26 @@ You're not viewing the latest version.
 <tbody>
 <tr>
 <td><strong>Namespace Name</strong></td>
-<td>Sets namespace used for metrics.</td>
+<td>Sets <strong>namespace</strong> used for metrics.</td>
 <td><code>POWERTOOLS_METRICS_NAMESPACE</code></td>
+<td><code>None</code></td>
+</tr>
+<tr>
+<td><strong>Service</strong></td>
+<td>Sets <strong>service</strong> metric dimension across all metrics e.g. <code>payment</code></td>
+<td><code>POWERTOOLS_SERVICE_NAME</code></td>
+<td><code>None</code></td>
+</tr>
+<tr>
+<td><strong>Function Name</strong></td>
+<td>Function name used as dimension for the <strong>ColdStart</strong> metric.</td>
+<td><code>POWERTOOLS_METRICS_FUNCTION_NAME</code></td>
+<td><code>None</code></td>
+</tr>
+<tr>
+<td><strong>Disable Powertools Metrics</strong></td>
+<td><strong>Disables</strong> all metrics emitted by Powertools.</td>
+<td><code>POWERTOOLS_METRICS_DISABLED</code></td>
 <td><code>None</code></td>
 </tr>
 </tbody>
@@ -4173,7 +4232,7 @@ You're not viewing the latest version.
 <summary>Info</summary>
 <p><strong>This will not be available during metrics visualization</strong> - Use <strong>dimensions</strong> for this purpose</p>
 </details>
-<div class="tabbed-set tabbed-alternate" data-tabs="8:2"><input checked="checked" id="add_metadatapy" name="__tabbed_8" type="radio" /><input id="add_metadata_outputjson" name="__tabbed_8" type="radio" /><div class="tabbed-labels"><label for="add_metadatapy">add_metadata.py</label><label for="add_metadata_outputjson">add_metadata_output.json</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="9:2"><input checked="checked" id="add_metadatapy" name="__tabbed_9" type="radio" /><input id="add_metadata_outputjson" name="__tabbed_9" type="radio" /><div class="tabbed-labels"><label for="add_metadatapy">add_metadata.py</label><label for="add_metadata_outputjson">add_metadata_output.json</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
@@ -4264,7 +4323,7 @@ You're not viewing the latest version.
 <h4 id="working-with-different-dimensions">Working with different dimensions<a class="headerlink" href="#working-with-different-dimensions" title="Permanent link">&para;</a></h4>
 <p>Generally, using different dimensions would be an edge case since you <a href="https://aws.amazon.com/cloudwatch/pricing" target="_blank">pay for unique metric</a>.</p>
 <p>Keep the following formula in mind: <strong>unique metric = (metric_name + dimension_name + dimension_value)</strong></p>
-<div class="tabbed-set tabbed-alternate" data-tabs="9:2"><input checked="checked" id="single_metricpy" name="__tabbed_9" type="radio" /><input id="single_metric_outputjson" name="__tabbed_9" type="radio" /><div class="tabbed-labels"><label for="single_metricpy">single_metric.py</label><label for="single_metric_outputjson">single_metric_output.json</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="10:2"><input checked="checked" id="single_metricpy" name="__tabbed_10" type="radio" /><input id="single_metric_outputjson" name="__tabbed_10" type="radio" /><div class="tabbed-labels"><label for="single_metricpy">single_metric.py</label><label for="single_metric_outputjson">single_metric_output.json</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
@@ -4351,7 +4410,7 @@ You're not viewing the latest version.
 </div>
 </div>
 <p>By default it will skip all previously defined dimensions including default dimensions. Use <code>default_dimensions</code> keyword argument if you want to reuse default dimensions or specify custom dimensions from a dictionary.</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="10:2"><input checked="checked" id="single_metric_default_dimensions_inheritpy" name="__tabbed_10" type="radio" /><input id="single_metric_default_dimensionspy" name="__tabbed_10" type="radio" /><div class="tabbed-labels"><label for="single_metric_default_dimensions_inheritpy">single_metric_default_dimensions_inherit.py</label><label for="single_metric_default_dimensionspy">single_metric_default_dimensions.py</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="11:2"><input checked="checked" id="single_metric_default_dimensions_inheritpy" name="__tabbed_11" type="radio" /><input id="single_metric_default_dimensionspy" name="__tabbed_11" type="radio" /><div class="tabbed-labels"><label for="single_metric_default_dimensions_inheritpy">single_metric_default_dimensions_inherit.py</label><label for="single_metric_default_dimensionspy">single_metric_default_dimensions.py</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
@@ -4435,7 +4494,7 @@ You're not viewing the latest version.
 </div>
 <h4 id="working-with-different-timestamp">Working with different timestamp<a class="headerlink" href="#working-with-different-timestamp" title="Permanent link">&para;</a></h4>
 <p>When working with multiple metrics, customers may need different timestamps between them. In such cases, utilize <code>single_metric</code> to flush individual metrics with specific timestamps.</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="11:2"><input checked="checked" id="single_metric_with_different_timestamppy" name="__tabbed_11" type="radio" /><input id="single_metric_with_different_timestamp_payloadjson" name="__tabbed_11" type="radio" /><div class="tabbed-labels"><label for="single_metric_with_different_timestamppy">single_metric_with_different_timestamp.py</label><label for="single_metric_with_different_timestamp_payloadjson">single_metric_with_different_timestamp_payload.json</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="12:2"><input checked="checked" id="single_metric_with_different_timestamppy" name="__tabbed_12" type="radio" /><input id="single_metric_with_different_timestamp_payloadjson" name="__tabbed_12" type="radio" /><div class="tabbed-labels"><label for="single_metric_with_different_timestamppy">single_metric_with_different_timestamp.py</label><label for="single_metric_with_different_timestamp_payloadjson">single_metric_with_different_timestamp_payload.json</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
@@ -4737,7 +4796,7 @@ You're not viewing the latest version.
 </code></pre></div></td></tr></table></div>
 <h3 id="functional-testing">Functional testing<a class="headerlink" href="#functional-testing" title="Permanent link">&para;</a></h3>
 <p>You can read standard output and assert whether metrics have been flushed. Here's an example using <code>pytest</code> with <code>capsys</code> built-in fixture:</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="12:4"><input checked="checked" id="assert_single_emf_blobpy" name="__tabbed_12" type="radio" /><input id="add_metricspy_2" name="__tabbed_12" type="radio" /><input id="assert_multiple_emf_blobspy" name="__tabbed_12" type="radio" /><input id="assert_multiple_emf_blobs_modulepy" name="__tabbed_12" type="radio" /><div class="tabbed-labels"><label for="assert_single_emf_blobpy">assert_single_emf_blob.py</label><label for="add_metricspy_2">add_metrics.py</label><label for="assert_multiple_emf_blobspy">assert_multiple_emf_blobs.py</label><label for="assert_multiple_emf_blobs_modulepy">assert_multiple_emf_blobs_module.py</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="13:4"><input checked="checked" id="assert_single_emf_blobpy" name="__tabbed_13" type="radio" /><input id="add_metricspy_2" name="__tabbed_13" type="radio" /><input id="assert_multiple_emf_blobspy" name="__tabbed_13" type="radio" /><input id="assert_multiple_emf_blobs_modulepy" name="__tabbed_13" type="radio" /><div class="tabbed-labels"><label for="assert_single_emf_blobpy">assert_single_emf_blob.py</label><label for="add_metricspy_2">add_metrics.py</label><label for="assert_multiple_emf_blobspy">assert_multiple_emf_blobs.py</label><label for="assert_multiple_emf_blobs_modulepy">assert_multiple_emf_blobs_module.py</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
