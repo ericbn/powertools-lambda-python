@@ -4205,28 +4205,25 @@ General<span class="w"> </span>information
 </div>
 <div class="tabbed-block">
 <p>We provide a SAR App that deploys a CloudFormation stack with a copy of our Lambda Layer in your AWS account and region.</p>
-<p>Compared with the <a href="#lambda-layer">public Layer ARN</a> option, the advantage is being able to use a semantic version.</p>
+<p>Compared with the <a href="#lambda-layer">public Layer ARN</a> option, the advantage is being able to use a semantic version. Make sure to replace <code>{python_version}</code> without the period (.), e.g., <code>python313</code> for <code>Python 3.13</code>.</p>
 <table>
 <thead>
 <tr>
 <th>App</th>
-<th></th>
-<th></th>
 <th>ARN</th>
+<th>Architecture</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><a href="https://serverlessrepo.aws.amazon.com/applications/eu-west-1/057560766410/aws-lambda-powertools-python-layer" target="_blank"><strong>aws-lambda-powertools-python-layer</strong></a></td>
-<td></td>
-<td></td>
-<td><strong class="copyMe">arn:aws:serverlessrepo:eu-west-1:057560766410:applications/aws-lambda-powertools-python-layer</strong><img alt="📋" class="twemoji" src="assets/external/cdn.jsdelivr.net/gh/jdecked/twemoji@15.1.0/assets/svg/1f4cb.svg" title=":clipboard:"></td>
+<td>aws-lambda-powertools-python-layer-v3-{python_version}-x86-64</td>
+<td>arn:aws:serverlessrepo:eu-west-1:057560766410:applications/aws-lambda-powertools-python-layer-v3-{python_version}-x86-64</td>
+<td>X86_64</td>
 </tr>
 <tr>
-<td><a href="https://serverlessrepo.aws.amazon.com/applications/eu-west-1/057560766410/aws-lambda-powertools-python-layer-arm64" target="_blank"><strong>aws-lambda-powertools-python-layer-arm64</strong></a></td>
-<td></td>
-<td></td>
-<td><strong class="copyMe">arn:aws:serverlessrepo:eu-west-1:057560766410:applications/aws-lambda-powertools-python-layer-arm64</strong><img alt="📋" class="twemoji" src="assets/external/cdn.jsdelivr.net/gh/jdecked/twemoji@15.1.0/assets/svg/1f4cb.svg" title=":clipboard:"></td>
+<td>aws-lambda-powertools-python-layer-v3-{python_version}-arm64</td>
+<td>arn:aws:serverlessrepo:eu-west-1:057560766410:applications/aws-lambda-powertools-python-layer-v3-{python_version}-arm64</td>
+<td>ARM64</td>
 </tr>
 </tbody>
 </table>
@@ -4322,7 +4319,7 @@ General<span class="w"> </span>information
 </span><span class="hll"><span class="w">                        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">serverlessrepo:GetCloudFormationTemplate</span>
 </span><span class="hll"><span class="w">                      </span><span class="nt">Resource</span><span class="p">:</span>
 </span><span class="hll"><span class="w">                        </span><span class="c1"># this is arn of the Powertools for AWS Lambda (Python) SAR app</span>
-</span><span class="hll"><span class="w">                        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">arn:aws:serverlessrepo:eu-west-1:057560766410:applications/aws-lambda-powertools-python-layer-v3-python312-x86_64</span>
+</span><span class="hll"><span class="w">                        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">arn:aws:serverlessrepo:eu-west-1:057560766410:applications/aws-lambda-powertools-python-layer-v3-python313-x86-64</span>
 </span><span class="hll"><span class="w">                    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">Sid</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">S3AccessLayer</span>
 </span><span class="hll"><span class="w">                      </span><span class="nt">Effect</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Allow</span>
 </span><span class="hll"><span class="w">                      </span><span class="nt">Action</span><span class="p">:</span>
@@ -4331,7 +4328,7 @@ General<span class="w"> </span>information
 </span><span class="hll"><span class="w">                        </span><span class="c1"># AWS publishes to an external S3 bucket locked down to your account ID</span>
 </span><span class="hll"><span class="w">                        </span><span class="c1"># The below example is us publishing Powertools for AWS Lambda (Python)</span>
 </span><span class="hll"><span class="w">                        </span><span class="c1"># Bucket: awsserverlessrepo-changesets-plntc6bfnfj</span>
-</span><span class="hll"><span class="w">                        </span><span class="c1"># Key: *****/arn:aws:serverlessrepo:eu-west-1:057560766410:applications-aws-lambda-powertools-python-layer-versions-1.10.2/aeeccf50-****-****-****-*********</span>
+</span><span class="hll"><span class="w">                        </span><span class="c1"># Key: *****/arn:aws:serverlessrepo:eu-west-1:057560766410:applications-aws-lambda-powertools-python-layer-v3-python313-x86-64-3.0.9/aeeccf50-****-****-****-*********</span>
 </span><span class="hll"><span class="w">                        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">arn:aws:s3:::awsserverlessrepo-changesets-*/*</span>
 </span><span class="hll"><span class="w">                    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">Sid</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">GetLayerVersion</span>
 </span><span class="hll"><span class="w">                      </span><span class="nt">Effect</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Allow</span>
@@ -4339,7 +4336,7 @@ General<span class="w"> </span>information
 </span><span class="hll"><span class="w">                        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">lambda:PublishLayerVersion</span>
 </span><span class="hll"><span class="w">                        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">lambda:GetLayerVersion</span>
 </span><span class="hll"><span class="w">                      </span><span class="nt">Resource</span><span class="p">:</span>
-</span><span class="w">                        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="kt">!Sub</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">arn:aws:lambda:${AWS::Region}:${AWS::AccountId}:layer:aws-lambda-powertools-python-layer*</span>
+</span><span class="w">                        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="kt">!Sub</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">arn:aws:lambda:${AWS::Region}:${AWS::AccountId}:layer:aws-lambda-powertools-python-layer-v3*</span>
 <span class="w">            </span><span class="nt">Roles</span><span class="p">:</span>
 <span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">Ref</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;PowertoolsLayerIamRole&quot;</span>
 </code></pre></div></td></tr></table></div>
@@ -4374,13 +4371,13 @@ General<span class="w"> </span>information
 <span class="hll"><span class="w">      </span><span class="nt">Type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">AWS::Serverless::Application</span>
 </span><span class="w">      </span><span class="nt">Properties</span><span class="p">:</span>
 <span class="w">          </span><span class="nt">Location</span><span class="p">:</span>
-<span class="hll"><span class="w">              </span><span class="nt">ApplicationId</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">arn:aws:serverlessrepo:eu-west-1:057560766410:applications/aws-lambda-powertools-python-layer</span>
-</span><span class="hll"><span class="w">              </span><span class="nt">SemanticVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2.43.1</span><span class="w"> </span><span class="c1"># change to latest semantic version available in SAR</span>
+<span class="hll"><span class="w">              </span><span class="nt">ApplicationId</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">arn:aws:serverlessrepo:eu-west-1:057560766410:applications/aws-lambda-powertools-python-layer-v3-python313-x86-64</span>
+</span><span class="hll"><span class="w">              </span><span class="nt">SemanticVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3.0.9</span><span class="w"> </span><span class="c1"># change to latest semantic version available in SAR</span>
 </span>
 <span class="w">  </span><span class="nt">MyLambdaFunction</span><span class="p">:</span>
 <span class="w">      </span><span class="nt">Type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">AWS::Serverless::Function</span>
 <span class="w">      </span><span class="nt">Properties</span><span class="p">:</span>
-<span class="w">        </span><span class="nt">Runtime</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">python3.12</span>
+<span class="w">        </span><span class="nt">Runtime</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">python3.13</span>
 <span class="w">        </span><span class="nt">Handler</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">app.lambda_handler</span>
 <span class="hll"><span class="w">        </span><span class="nt">Layers</span><span class="p">:</span>
 </span><span class="hll"><span class="w">            </span><span class="c1"># fetch Layer ARN from SAR App stack output</span>
@@ -4411,7 +4408,7 @@ General<span class="w"> </span>information
 
 <span class="nt">provider</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">aws</span>
-<span class="w">  </span><span class="nt">runtime</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">python3.12</span>
+<span class="w">  </span><span class="nt">runtime</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">python3.13</span>
 <span class="w">  </span><span class="nt">region</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">us-east-1</span>
 
 <span class="nt">functions</span><span class="p">:</span>
@@ -4425,8 +4422,8 @@ General<span class="w"> </span>information
 <span class="w">      </span><span class="nt">Type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">AWS::Serverless::Application</span>
 <span class="w">      </span><span class="nt">Properties</span><span class="p">:</span>
 <span class="w">        </span><span class="nt">Location</span><span class="p">:</span>
-<span class="hll"><span class="w">          </span><span class="nt">ApplicationId</span><span class="p">:</span><span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">arn:aws:serverlessrepo:us-east-1:057560766410:applications/aws-lambda-powertools-python-layer</span>
-</span><span class="hll"><span class="w">          </span><span class="nt">SemanticVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2.43.1</span>
+<span class="hll"><span class="w">          </span><span class="nt">ApplicationId</span><span class="p">:</span><span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">arn:aws:serverlessrepo:eu-west-1:057560766410:applications/aws-lambda-powertools-python-layer-v3-python313-x86-64</span>
+</span><span class="hll"><span class="w">          </span><span class="nt">SemanticVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3.0.9</span>
 </span></code></pre></div></td></tr></table></div>
 </div>
 <div class="tabbed-block">
@@ -4473,9 +4470,9 @@ General<span class="w"> </span>information
 
 <span class="n">POWERTOOLS_BASE_NAME</span> <span class="o">=</span> <span class="s2">&quot;AWSLambdaPowertools&quot;</span>
 <span class="c1"># Find latest from github.com/aws-powertools/powertools-lambda-python/releases</span>
-<span class="n">POWERTOOLS_VER</span> <span class="o">=</span> <span class="s2">&quot;2.43.1&quot;</span>
+<span class="n">POWERTOOLS_VER</span> <span class="o">=</span> <span class="s2">&quot;3.0.9&quot;</span>
 <span class="hll"><span class="n">POWERTOOLS_ARN</span> <span class="o">=</span> <span class="p">(</span>
-</span>    <span class="s2">&quot;arn:aws:serverlessrepo:eu-west-1:057560766410:applications/aws-lambda-powertools-python-layer&quot;</span>
+</span>    <span class="s2">&quot;arn:aws:serverlessrepo:eu-west-1:057560766410:applications/aws-lambda-powertools-python-layer-v3-python313-x86-64&quot;</span>
 <span class="p">)</span>
 
 
@@ -4501,7 +4498,7 @@ General<span class="w"> </span>information
         <span class="n">aws_lambda</span><span class="o">.</span><span class="n">Function</span><span class="p">(</span>
             <span class="bp">self</span><span class="p">,</span>
             <span class="s2">&quot;sample-app-lambda&quot;</span><span class="p">,</span>
-            <span class="n">runtime</span><span class="o">=</span><span class="n">aws_lambda</span><span class="o">.</span><span class="n">Runtime</span><span class="o">.</span><span class="n">PYTHON_3_12</span><span class="p">,</span>
+            <span class="n">runtime</span><span class="o">=</span><span class="n">aws_lambda</span><span class="o">.</span><span class="n">Runtime</span><span class="o">.</span><span class="n">PYTHON_3_13</span><span class="p">,</span>
             <span class="n">function_name</span><span class="o">=</span><span class="s2">&quot;sample-lambda&quot;</span><span class="p">,</span>
             <span class="n">code</span><span class="o">=</span><span class="n">aws_lambda</span><span class="o">.</span><span class="n">Code</span><span class="o">.</span><span class="n">from_asset</span><span class="p">(</span><span class="s2">&quot;lambda&quot;</span><span class="p">),</span>
             <span class="n">handler</span><span class="o">=</span><span class="s2">&quot;hello.handler&quot;</span><span class="p">,</span>
@@ -4576,13 +4573,13 @@ General<span class="w"> </span>information
 </span><span class="p">}</span>
 
 <span class="hll"><span class="kr">data</span><span class="w"> </span><span class="nc">&quot;aws_serverlessapplicationrepository_application&quot;</span><span class="w"> </span><span class="nv">&quot;sar_app&quot;</span><span class="w"> </span><span class="p">{</span>
-</span><span class="hll"><span class="w">  </span><span class="na">application_id</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;arn:aws:serverlessrepo:us-east-1:057560766410:applications/aws-lambda-powertools-python-layer&quot;</span>
+</span><span class="hll"><span class="w">  </span><span class="na">application_id</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;arn:aws:serverlessrepo:eu-west-1:057560766410:applications/aws-lambda-powertools-python-layer-v3-python313-x86-64&quot;</span>
 </span><span class="hll"><span class="w">  </span><span class="na">semantic_version</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">var.aws_powertools_version</span>
 </span><span class="p">}</span>
 
 <span class="kr">variable</span><span class="w"> </span><span class="nv">&quot;aws_powertools_version&quot;</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="na">type</span><span class="w">        </span><span class="o">=</span><span class="w"> </span><span class="kt">string</span>
-<span class="w">  </span><span class="na">default</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;2.43.1&quot;</span>
+<span class="w">  </span><span class="na">default</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;3.0.9&quot;</span>
 <span class="w">  </span><span class="na">description</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;The Powertools for AWS Lambda (Python) release version&quot;</span>
 <span class="p">}</span>
 
@@ -6044,19 +6041,70 @@ General<span class="w"> </span>information
 <tr>
 <th>App</th>
 <th>ARN</th>
-<th>Description</th>
+<th>Python version</th>
+<th>Architecture</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><a href="https://serverlessrepo.aws.amazon.com/applications/eu-west-1/057560766410/aws-lambda-powertools-python-layer" target="_blank"><strong>aws-lambda-powertools-python-layer</strong></a></td>
-<td><a class="copyMe" href="#">arn:aws:serverlessrepo:eu-west-1:057560766410:applications/aws-lambda-powertools-python-layer</a><img alt="📋" class="twemoji" src="assets/external/cdn.jsdelivr.net/gh/jdecked/twemoji@15.1.0/assets/svg/1f4cb.svg" title=":clipboard:"></td>
-<td>Contains all extra dependencies (e.g: pydantic).</td>
+<td><a href="https://serverlessrepo.aws.amazon.com/applications/eu-west-1/057560766410/aws-lambda-powertools-python-layer-v3-python39-x86-64" target="_blank">aws-lambda-powertools-python-layer-v3-python39-x86-64</a></td>
+<td><a class="copyMe" href="#">arn:aws:serverlessrepo:eu-west-1:057560766410:applications/aws-lambda-powertools-python-layer-v3-python39-x86-64</a><img alt="📋" class="twemoji" src="assets/external/cdn.jsdelivr.net/gh/jdecked/twemoji@15.1.0/assets/svg/1f4cb.svg" title=":clipboard:"></td>
+<td>Python 3.9</td>
+<td>X86_64</td>
 </tr>
 <tr>
-<td><a href="https://serverlessrepo.aws.amazon.com/applications/eu-west-1/057560766410/aws-lambda-powertools-python-layer-arm64" target="_blank"><strong>aws-lambda-powertools-python-layer-arm64</strong></a></td>
-<td><a class="copyMe" href="#">arn:aws:serverlessrepo:eu-west-1:057560766410:applications/aws-lambda-powertools-python-layer-arm64</a><img alt="📋" class="twemoji" src="assets/external/cdn.jsdelivr.net/gh/jdecked/twemoji@15.1.0/assets/svg/1f4cb.svg" title=":clipboard:"></td>
-<td>Contains all extra dependencies (e.g: pydantic). For arm64 functions.</td>
+<td><a href="https://serverlessrepo.aws.amazon.com/applications/eu-west-1/057560766410/aws-lambda-powertools-python-layer-v3-python310-x86-64" target="_blank">aws-lambda-powertools-python-layer-v3-python310-x86-64</a></td>
+<td><a class="copyMe" href="#">arn:aws:serverlessrepo:eu-west-1:057560766410:applications/aws-lambda-powertools-python-layer-v3-python310-x86-64</a><img alt="📋" class="twemoji" src="assets/external/cdn.jsdelivr.net/gh/jdecked/twemoji@15.1.0/assets/svg/1f4cb.svg" title=":clipboard:"></td>
+<td>Python 3.10</td>
+<td>X86_64</td>
+</tr>
+<tr>
+<td><a href="https://serverlessrepo.aws.amazon.com/applications/eu-west-1/057560766410/aws-lambda-powertools-python-layer-v3-python11-x86-64" target="_blank">aws-lambda-powertools-python-layer-v3-python311-x86-64</a></td>
+<td><a class="copyMe" href="#">arn:aws:serverlessrepo:eu-west-1:057560766410:applications/aws-lambda-powertools-python-layer-v3-python311-x86-64</a><img alt="📋" class="twemoji" src="assets/external/cdn.jsdelivr.net/gh/jdecked/twemoji@15.1.0/assets/svg/1f4cb.svg" title=":clipboard:"></td>
+<td>Python 3.11</td>
+<td>X86_64</td>
+</tr>
+<tr>
+<td><a href="https://serverlessrepo.aws.amazon.com/applications/eu-west-1/057560766410/aws-lambda-powertools-python-layer-v3-python12-x86-64" target="_blank">aws-lambda-powertools-python-layer-v3-python312-x86-64</a></td>
+<td><a class="copyMe" href="#">arn:aws:serverlessrepo:eu-west-1:057560766410:applications/aws-lambda-powertools-python-layer-v3-python312-x86-64</a><img alt="📋" class="twemoji" src="assets/external/cdn.jsdelivr.net/gh/jdecked/twemoji@15.1.0/assets/svg/1f4cb.svg" title=":clipboard:"></td>
+<td>Python 3.12</td>
+<td>X86_64</td>
+</tr>
+<tr>
+<td><a href="https://serverlessrepo.aws.amazon.com/applications/eu-west-1/057560766410/aws-lambda-powertools-python-layer-v3-python313-x86-64" target="_blank">aws-lambda-powertools-python-layer-v3-python313-x86-64</a></td>
+<td><a class="copyMe" href="#">arn:aws:serverlessrepo:eu-west-1:057560766410:applications/aws-lambda-powertools-python-layer-v3-python313-x86-64</a><img alt="📋" class="twemoji" src="assets/external/cdn.jsdelivr.net/gh/jdecked/twemoji@15.1.0/assets/svg/1f4cb.svg" title=":clipboard:"></td>
+<td>Python 3.13</td>
+<td>X86_64</td>
+</tr>
+<tr>
+<td><a href="https://serverlessrepo.aws.amazon.com/applications/eu-west-1/057560766410/aws-lambda-powertools-python-layer-v3-python39-arm64" target="_blank">aws-lambda-powertools-python-layer-v3-python39-arm64</a></td>
+<td><a class="copyMe" href="#">arn:aws:serverlessrepo:eu-west-1:057560766410:applications/aws-lambda-powertools-python-layer-v3-python39-arm64</a><img alt="📋" class="twemoji" src="assets/external/cdn.jsdelivr.net/gh/jdecked/twemoji@15.1.0/assets/svg/1f4cb.svg" title=":clipboard:"></td>
+<td>Python 3.9</td>
+<td>ARM64</td>
+</tr>
+<tr>
+<td><a href="https://serverlessrepo.aws.amazon.com/applications/eu-west-1/057560766410/aws-lambda-powertools-python-layer-v3-python310-arm64" target="_blank">aws-lambda-powertools-python-layer-v3-python310-arm64</a></td>
+<td><a class="copyMe" href="#">arn:aws:serverlessrepo:eu-west-1:057560766410:applications/aws-lambda-powertools-python-layer-v3-python310-arm64</a><img alt="📋" class="twemoji" src="assets/external/cdn.jsdelivr.net/gh/jdecked/twemoji@15.1.0/assets/svg/1f4cb.svg" title=":clipboard:"></td>
+<td>Python 3.10</td>
+<td>ARM64</td>
+</tr>
+<tr>
+<td><a href="https://serverlessrepo.aws.amazon.com/applications/eu-west-1/057560766410/aws-lambda-powertools-python-layer-v3-python11-arm64" target="_blank">aws-lambda-powertools-python-layer-v3-python311-arm64</a></td>
+<td><a class="copyMe" href="#">arn:aws:serverlessrepo:eu-west-1:057560766410:applications/aws-lambda-powertools-python-layer-v3-python311-arm64</a><img alt="📋" class="twemoji" src="assets/external/cdn.jsdelivr.net/gh/jdecked/twemoji@15.1.0/assets/svg/1f4cb.svg" title=":clipboard:"></td>
+<td>Python 3.11</td>
+<td>ARM64</td>
+</tr>
+<tr>
+<td><a href="https://serverlessrepo.aws.amazon.com/applications/eu-west-1/057560766410/aws-lambda-powertools-python-layer-v3-python12-arm64" target="_blank">aws-lambda-powertools-python-layer-v3-python312-arm64</a></td>
+<td><a class="copyMe" href="#">arn:aws:serverlessrepo:eu-west-1:057560766410:applications/aws-lambda-powertools-python-layer-v3-python312-arm64</a><img alt="📋" class="twemoji" src="assets/external/cdn.jsdelivr.net/gh/jdecked/twemoji@15.1.0/assets/svg/1f4cb.svg" title=":clipboard:"></td>
+<td>Python 3.12</td>
+<td>ARM64</td>
+</tr>
+<tr>
+<td><a href="https://serverlessrepo.aws.amazon.com/applications/eu-west-1/057560766410/aws-lambda-powertools-python-layer-v3-python313-arm64" target="_blank">aws-lambda-powertools-python-layer-v3-python313-arm64</a></td>
+<td><a class="copyMe" href="#">arn:aws:serverlessrepo:eu-west-1:057560766410:applications/aws-lambda-powertools-python-layer-v3-python313-arm64</a><img alt="📋" class="twemoji" src="assets/external/cdn.jsdelivr.net/gh/jdecked/twemoji@15.1.0/assets/svg/1f4cb.svg" title=":clipboard:"></td>
+<td>Python 3.13</td>
+<td>ARM64</td>
 </tr>
 </tbody>
 </table>
@@ -6092,13 +6140,13 @@ General<span class="w"> </span>information
 <span class="hll"><span class="w">      </span><span class="nt">Type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">AWS::Serverless::Application</span>
 </span><span class="w">      </span><span class="nt">Properties</span><span class="p">:</span>
 <span class="w">          </span><span class="nt">Location</span><span class="p">:</span>
-<span class="hll"><span class="w">              </span><span class="nt">ApplicationId</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">arn:aws:serverlessrepo:eu-west-1:057560766410:applications/aws-lambda-powertools-python-layer</span>
-</span><span class="hll"><span class="w">              </span><span class="nt">SemanticVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2.43.1</span><span class="w"> </span><span class="c1"># change to latest semantic version available in SAR</span>
+<span class="hll"><span class="w">              </span><span class="nt">ApplicationId</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">arn:aws:serverlessrepo:eu-west-1:057560766410:applications/aws-lambda-powertools-python-layer-v3-python313-x86-64</span>
+</span><span class="hll"><span class="w">              </span><span class="nt">SemanticVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3.0.9</span><span class="w"> </span><span class="c1"># change to latest semantic version available in SAR</span>
 </span>
 <span class="w">  </span><span class="nt">MyLambdaFunction</span><span class="p">:</span>
 <span class="w">      </span><span class="nt">Type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">AWS::Serverless::Function</span>
 <span class="w">      </span><span class="nt">Properties</span><span class="p">:</span>
-<span class="w">        </span><span class="nt">Runtime</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">python3.12</span>
+<span class="w">        </span><span class="nt">Runtime</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">python3.13</span>
 <span class="w">        </span><span class="nt">Handler</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">app.lambda_handler</span>
 <span class="hll"><span class="w">        </span><span class="nt">Layers</span><span class="p">:</span>
 </span><span class="hll"><span class="w">            </span><span class="c1"># fetch Layer ARN from SAR App stack output</span>
@@ -6129,7 +6177,7 @@ General<span class="w"> </span>information
 
 <span class="nt">provider</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">aws</span>
-<span class="w">  </span><span class="nt">runtime</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">python3.12</span>
+<span class="w">  </span><span class="nt">runtime</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">python3.13</span>
 <span class="w">  </span><span class="nt">region</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">us-east-1</span>
 
 <span class="nt">functions</span><span class="p">:</span>
@@ -6143,8 +6191,8 @@ General<span class="w"> </span>information
 <span class="w">      </span><span class="nt">Type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">AWS::Serverless::Application</span>
 <span class="w">      </span><span class="nt">Properties</span><span class="p">:</span>
 <span class="w">        </span><span class="nt">Location</span><span class="p">:</span>
-<span class="hll"><span class="w">          </span><span class="nt">ApplicationId</span><span class="p">:</span><span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">arn:aws:serverlessrepo:us-east-1:057560766410:applications/aws-lambda-powertools-python-layer</span>
-</span><span class="hll"><span class="w">          </span><span class="nt">SemanticVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2.43.1</span>
+<span class="hll"><span class="w">          </span><span class="nt">ApplicationId</span><span class="p">:</span><span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">arn:aws:serverlessrepo:eu-west-1:057560766410:applications/aws-lambda-powertools-python-layer-v3-python313-x86-64</span>
+</span><span class="hll"><span class="w">          </span><span class="nt">SemanticVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3.0.9</span>
 </span></code></pre></div></td></tr></table></div>
 </div>
 <div class="tabbed-block">
@@ -6191,10 +6239,10 @@ General<span class="w"> </span>information
 
 <span class="n">POWERTOOLS_BASE_NAME</span> <span class="o">=</span> <span class="s2">&quot;AWSLambdaPowertools&quot;</span>
 <span class="c1"># Find latest from github.com/aws-powertools/powertools-lambda-python/releases</span>
-<span class="n">POWERTOOLS_VER</span> <span class="o">=</span> <span class="s2">&quot;2.43.1&quot;</span>
-<span class="hll"><span class="n">POWERTOOLS_ARN</span> <span class="o">=</span> <span class="p">(</span>
-</span>    <span class="s2">&quot;arn:aws:serverlessrepo:eu-west-1:057560766410:applications/aws-lambda-powertools-python-layer&quot;</span>
-<span class="p">)</span>
+<span class="n">POWERTOOLS_VER</span> <span class="o">=</span> <span class="s2">&quot;3.0.9&quot;</span>
+<span class="n">POWERTOOLS_ARN</span> <span class="o">=</span> <span class="p">(</span>
+<span class="hll">    <span class="s2">&quot;arn:aws:serverlessrepo:eu-west-1:057560766410:applications/aws-lambda-powertools-python-layer-v3-python313-x86-64&quot;</span>
+</span><span class="p">)</span>
 
 
 <span class="k">class</span><span class="w"> </span><span class="nc">SampleApp</span><span class="p">(</span><span class="n">Stack</span><span class="p">):</span>
@@ -6219,7 +6267,7 @@ General<span class="w"> </span>information
         <span class="n">aws_lambda</span><span class="o">.</span><span class="n">Function</span><span class="p">(</span>
             <span class="bp">self</span><span class="p">,</span>
             <span class="s2">&quot;sample-app-lambda&quot;</span><span class="p">,</span>
-            <span class="n">runtime</span><span class="o">=</span><span class="n">aws_lambda</span><span class="o">.</span><span class="n">Runtime</span><span class="o">.</span><span class="n">PYTHON_3_12</span><span class="p">,</span>
+            <span class="n">runtime</span><span class="o">=</span><span class="n">aws_lambda</span><span class="o">.</span><span class="n">Runtime</span><span class="o">.</span><span class="n">PYTHON_3_13</span><span class="p">,</span>
             <span class="n">function_name</span><span class="o">=</span><span class="s2">&quot;sample-lambda&quot;</span><span class="p">,</span>
             <span class="n">code</span><span class="o">=</span><span class="n">aws_lambda</span><span class="o">.</span><span class="n">Code</span><span class="o">.</span><span class="n">from_asset</span><span class="p">(</span><span class="s2">&quot;lambda&quot;</span><span class="p">),</span>
             <span class="n">handler</span><span class="o">=</span><span class="s2">&quot;hello.handler&quot;</span><span class="p">,</span>
@@ -6294,13 +6342,13 @@ General<span class="w"> </span>information
 </span><span class="p">}</span>
 
 <span class="hll"><span class="kr">data</span><span class="w"> </span><span class="nc">&quot;aws_serverlessapplicationrepository_application&quot;</span><span class="w"> </span><span class="nv">&quot;sar_app&quot;</span><span class="w"> </span><span class="p">{</span>
-</span><span class="hll"><span class="w">  </span><span class="na">application_id</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;arn:aws:serverlessrepo:us-east-1:057560766410:applications/aws-lambda-powertools-python-layer&quot;</span>
+</span><span class="hll"><span class="w">  </span><span class="na">application_id</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;arn:aws:serverlessrepo:eu-west-1:057560766410:applications/aws-lambda-powertools-python-layer-v3-python313-x86-64&quot;</span>
 </span><span class="hll"><span class="w">  </span><span class="na">semantic_version</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">var.aws_powertools_version</span>
 </span><span class="p">}</span>
 
 <span class="kr">variable</span><span class="w"> </span><span class="nv">&quot;aws_powertools_version&quot;</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="na">type</span><span class="w">        </span><span class="o">=</span><span class="w"> </span><span class="kt">string</span>
-<span class="w">  </span><span class="na">default</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;2.43.1&quot;</span>
+<span class="w">  </span><span class="na">default</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;3.0.9&quot;</span>
 <span class="w">  </span><span class="na">description</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;The Powertools for AWS Lambda (Python) release version&quot;</span>
 <span class="p">}</span>
 
@@ -6406,7 +6454,7 @@ General<span class="w"> </span>information
 </span><span class="hll"><span class="w">                        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">serverlessrepo:GetCloudFormationTemplate</span>
 </span><span class="hll"><span class="w">                      </span><span class="nt">Resource</span><span class="p">:</span>
 </span><span class="hll"><span class="w">                        </span><span class="c1"># this is arn of the Powertools for AWS Lambda (Python) SAR app</span>
-</span><span class="hll"><span class="w">                        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">arn:aws:serverlessrepo:eu-west-1:057560766410:applications/aws-lambda-powertools-python-layer-v3-python312-x86_64</span>
+</span><span class="hll"><span class="w">                        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">arn:aws:serverlessrepo:eu-west-1:057560766410:applications/aws-lambda-powertools-python-layer-v3-python313-x86-64</span>
 </span><span class="hll"><span class="w">                    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">Sid</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">S3AccessLayer</span>
 </span><span class="hll"><span class="w">                      </span><span class="nt">Effect</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Allow</span>
 </span><span class="hll"><span class="w">                      </span><span class="nt">Action</span><span class="p">:</span>
@@ -6415,7 +6463,7 @@ General<span class="w"> </span>information
 </span><span class="hll"><span class="w">                        </span><span class="c1"># AWS publishes to an external S3 bucket locked down to your account ID</span>
 </span><span class="hll"><span class="w">                        </span><span class="c1"># The below example is us publishing Powertools for AWS Lambda (Python)</span>
 </span><span class="hll"><span class="w">                        </span><span class="c1"># Bucket: awsserverlessrepo-changesets-plntc6bfnfj</span>
-</span><span class="hll"><span class="w">                        </span><span class="c1"># Key: *****/arn:aws:serverlessrepo:eu-west-1:057560766410:applications-aws-lambda-powertools-python-layer-versions-1.10.2/aeeccf50-****-****-****-*********</span>
+</span><span class="hll"><span class="w">                        </span><span class="c1"># Key: *****/arn:aws:serverlessrepo:eu-west-1:057560766410:applications-aws-lambda-powertools-python-layer-v3-python313-x86-64-3.0.9/aeeccf50-****-****-****-*********</span>
 </span><span class="hll"><span class="w">                        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">arn:aws:s3:::awsserverlessrepo-changesets-*/*</span>
 </span><span class="hll"><span class="w">                    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">Sid</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">GetLayerVersion</span>
 </span><span class="hll"><span class="w">                      </span><span class="nt">Effect</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Allow</span>
@@ -6423,7 +6471,7 @@ General<span class="w"> </span>information
 </span><span class="hll"><span class="w">                        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">lambda:PublishLayerVersion</span>
 </span><span class="hll"><span class="w">                        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">lambda:GetLayerVersion</span>
 </span><span class="hll"><span class="w">                      </span><span class="nt">Resource</span><span class="p">:</span>
-</span><span class="w">                        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="kt">!Sub</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">arn:aws:lambda:${AWS::Region}:${AWS::AccountId}:layer:aws-lambda-powertools-python-layer*</span>
+</span><span class="w">                        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="kt">!Sub</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">arn:aws:lambda:${AWS::Region}:${AWS::AccountId}:layer:aws-lambda-powertools-python-layer-v3*</span>
 <span class="w">            </span><span class="nt">Roles</span><span class="p">:</span>
 <span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">Ref</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;PowertoolsLayerIamRole&quot;</span>
 </code></pre></div></td></tr></table></div>
