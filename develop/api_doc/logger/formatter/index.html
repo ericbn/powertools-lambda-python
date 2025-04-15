@@ -4330,8 +4330,7 @@ logger.info(&quot;Log without context&quot;)
 
             <details class="quote">
               <summary>Source code in <code>aws_lambda_powertools/logging/formatter.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">271</span>
-<span class="normal">272</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">272</span>
 <span class="normal">273</span>
 <span class="normal">274</span>
 <span class="normal">275</span>
@@ -4353,7 +4352,8 @@ logger.info(&quot;Log without context&quot;)
 <span class="normal">291</span>
 <span class="normal">292</span>
 <span class="normal">293</span>
-<span class="normal">294</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@contextmanager</span>
+<span class="normal">294</span>
+<span class="normal">295</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@contextmanager</span>
 <span class="k">def</span><span class="w"> </span><span class="nf">append_context_keys</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">additional_keys</span><span class="p">:</span> <span class="n">Any</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Generator</span><span class="p">[</span><span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">]:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Context manager to temporarily add logging keys.</span>
@@ -4417,16 +4417,18 @@ logger.info(&quot;Log without context&quot;)
 <span class="normal">203</span>
 <span class="normal">204</span>
 <span class="normal">205</span>
-<span class="normal">206</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">format</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">record</span><span class="p">:</span> <span class="n">logging</span><span class="o">.</span><span class="n">LogRecord</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>  <span class="c1"># noqa: A003</span>
+<span class="normal">206</span>
+<span class="normal">207</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">format</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">record</span><span class="p">:</span> <span class="n">logging</span><span class="o">.</span><span class="n">LogRecord</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>  <span class="c1"># noqa: A003</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Format logging record as structured JSON str&quot;&quot;&quot;</span>
     <span class="n">formatted_log</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_extract_log_keys</span><span class="p">(</span><span class="n">log_record</span><span class="o">=</span><span class="n">record</span><span class="p">)</span>
     <span class="n">formatted_log</span><span class="p">[</span><span class="s2">&quot;message&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_extract_log_message</span><span class="p">(</span><span class="n">log_record</span><span class="o">=</span><span class="n">record</span><span class="p">)</span>
 
     <span class="c1"># exception and exception_name fields can be added as extra key</span>
     <span class="c1"># in any log level, we try to extract and use them first</span>
-    <span class="n">extracted_exception</span><span class="p">,</span> <span class="n">extracted_exception_name</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_extract_log_exception</span><span class="p">(</span><span class="n">log_record</span><span class="o">=</span><span class="n">record</span><span class="p">)</span>
+    <span class="n">extracted_exception</span><span class="p">,</span> <span class="n">extracted_exception_name</span><span class="p">,</span> <span class="n">exception_notes</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_extract_log_exception</span><span class="p">(</span><span class="n">log_record</span><span class="o">=</span><span class="n">record</span><span class="p">)</span>
     <span class="n">formatted_log</span><span class="p">[</span><span class="s2">&quot;exception&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">formatted_log</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;exception&quot;</span><span class="p">,</span> <span class="n">extracted_exception</span><span class="p">)</span>
     <span class="n">formatted_log</span><span class="p">[</span><span class="s2">&quot;exception_name&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">formatted_log</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;exception_name&quot;</span><span class="p">,</span> <span class="n">extracted_exception_name</span><span class="p">)</span>
+    <span class="n">formatted_log</span><span class="p">[</span><span class="s2">&quot;exception_notes&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">formatted_log</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;exception_notes&quot;</span><span class="p">,</span> <span class="n">exception_notes</span><span class="p">)</span>
     <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">serialize_stacktrace</span><span class="p">:</span>
         <span class="c1"># Generate the traceback from the traceback library</span>
         <span class="n">formatted_log</span><span class="p">[</span><span class="s2">&quot;stack_trace&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_serialize_stacktrace</span><span class="p">(</span><span class="n">log_record</span><span class="o">=</span><span class="n">record</span><span class="p">)</span>
