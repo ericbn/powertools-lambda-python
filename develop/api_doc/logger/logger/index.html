@@ -4350,9 +4350,7 @@ $ export POWERTOOLS_LOGGER_SAMPLE_RATE=0.01 # 1% debug sampling
 
                   <details class="quote">
                     <summary>Source code in <code>aws_lambda_powertools/logging/logger.py</code></summary>
-                    <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">221</span>
-<span class="normal">222</span>
-<span class="normal">223</span>
+                    <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">223</span>
 <span class="normal">224</span>
 <span class="normal">225</span>
 <span class="normal">226</span>
@@ -4425,7 +4423,9 @@ $ export POWERTOOLS_LOGGER_SAMPLE_RATE=0.01 # 1% debug sampling
 <span class="normal">293</span>
 <span class="normal">294</span>
 <span class="normal">295</span>
-<span class="normal">296</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
+<span class="normal">296</span>
+<span class="normal">297</span>
+<span class="normal">298</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
     <span class="bp">self</span><span class="p">,</span>
     <span class="n">service</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="n">level</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
@@ -4658,9 +4658,7 @@ logger.info(&quot;Log without context&quot;)
 
             <details class="quote">
               <summary>Source code in <code>aws_lambda_powertools/logging/logger.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">809</span>
-<span class="normal">810</span>
-<span class="normal">811</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">811</span>
 <span class="normal">812</span>
 <span class="normal">813</span>
 <span class="normal">814</span>
@@ -4678,7 +4676,9 @@ logger.info(&quot;Log without context&quot;)
 <span class="normal">826</span>
 <span class="normal">827</span>
 <span class="normal">828</span>
-<span class="normal">829</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@contextmanager</span>
+<span class="normal">829</span>
+<span class="normal">830</span>
+<span class="normal">831</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@contextmanager</span>
 <span class="k">def</span><span class="w"> </span><span class="nf">append_context_keys</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">additional_keys</span><span class="p">:</span> <span class="n">Any</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Generator</span><span class="p">[</span><span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">]:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Context manager to temporarily add logging keys.</span>
@@ -4748,9 +4748,7 @@ logger.info(&quot;Log without context&quot;)
 
             <details class="quote">
               <summary>Source code in <code>aws_lambda_powertools/logging/logger.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1208</span>
-<span class="normal">1209</span>
-<span class="normal">1210</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1210</span>
 <span class="normal">1211</span>
 <span class="normal">1212</span>
 <span class="normal">1213</span>
@@ -4759,7 +4757,9 @@ logger.info(&quot;Log without context&quot;)
 <span class="normal">1216</span>
 <span class="normal">1217</span>
 <span class="normal">1218</span>
-<span class="normal">1219</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">clear_buffer</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="normal">1219</span>
+<span class="normal">1220</span>
+<span class="normal">1221</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">clear_buffer</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Clear the internal buffer cache.</span>
 
@@ -4795,13 +4795,13 @@ logger.info(&quot;Log without context&quot;)
 
             <details class="quote">
               <summary>Source code in <code>aws_lambda_powertools/logging/logger.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">831</span>
-<span class="normal">832</span>
-<span class="normal">833</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">833</span>
 <span class="normal">834</span>
 <span class="normal">835</span>
 <span class="normal">836</span>
-<span class="normal">837</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">clear_state</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="normal">837</span>
+<span class="normal">838</span>
+<span class="normal">839</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">clear_state</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Removes all custom keys that were appended to the Logger.&quot;&quot;&quot;</span>
     <span class="c1"># Clear all custom keys from the formatter</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">registered_formatter</span><span class="o">.</span><span class="n">clear_state</span><span class="p">()</span>
@@ -4876,9 +4876,7 @@ Clears buffer after complete processing</p>
 
             <details class="quote">
               <summary>Source code in <code>aws_lambda_powertools/logging/logger.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1165</span>
-<span class="normal">1166</span>
-<span class="normal">1167</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1167</span>
 <span class="normal">1168</span>
 <span class="normal">1169</span>
 <span class="normal">1170</span>
@@ -4917,7 +4915,9 @@ Clears buffer after complete processing</p>
 <span class="normal">1203</span>
 <span class="normal">1204</span>
 <span class="normal">1205</span>
-<span class="normal">1206</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">flush_buffer</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="normal">1206</span>
+<span class="normal">1207</span>
+<span class="normal">1208</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">flush_buffer</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Flush all buffered log records associated with current execution.</span>
 
@@ -5007,9 +5007,7 @@ Clears buffer after complete processing</p>
 
             <details class="quote">
               <summary>Source code in <code>aws_lambda_powertools/logging/logger.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">914</span>
-<span class="normal">915</span>
-<span class="normal">916</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">916</span>
 <span class="normal">917</span>
 <span class="normal">918</span>
 <span class="normal">919</span>
@@ -5017,7 +5015,9 @@ Clears buffer after complete processing</p>
 <span class="normal">921</span>
 <span class="normal">922</span>
 <span class="normal">923</span>
-<span class="normal">924</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">get_correlation_id</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span><span class="p">:</span>
+<span class="normal">924</span>
+<span class="normal">925</span>
+<span class="normal">926</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">get_correlation_id</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Gets the correlation_id in the logging json</span>
 
 <span class="sd">    Returns</span>
@@ -5111,7 +5111,7 @@ Clears buffer after complete processing</p>
               <p>
                   <span class="doc-param-annotation">
                     <b>TYPE:</b>
-                      <code><a class="autorefs autorefs-external" title="typing.Callable" href="https://docs.python.org/3/library/typing.html#typing.Callable">Callable</a></code>
+                      <code><a class="autorefs autorefs-external" title="collections.abc.Callable" href="https://docs.python.org/3/library/collections.abc.html#collections.abc.Callable">Callable</a></code>
                   </span>
                   <span class="doc-param-default">
                     <b>DEFAULT:</b>
@@ -5223,7 +5223,7 @@ def handler(event, context):
                 <p>
                   <span class="doc-returns-annotation">
                     <b>TYPE:</b>
-                      <code><a class="autorefs autorefs-external" title="typing.Callable" href="https://docs.python.org/3/library/typing.html#typing.Callable">Callable</a></code>
+                      <code><a class="autorefs autorefs-external" title="collections.abc.Callable" href="https://docs.python.org/3/library/collections.abc.html#collections.abc.Callable">Callable</a></code>
                   </span>
                 </p>
             </td>
@@ -5234,9 +5234,7 @@ def handler(event, context):
 
             <details class="quote">
               <summary>Source code in <code>aws_lambda_powertools/logging/logger.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">446</span>
-<span class="normal">447</span>
-<span class="normal">448</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">448</span>
 <span class="normal">449</span>
 <span class="normal">450</span>
 <span class="normal">451</span>
@@ -5346,7 +5344,9 @@ def handler(event, context):
 <span class="normal">555</span>
 <span class="normal">556</span>
 <span class="normal">557</span>
-<span class="normal">558</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">inject_lambda_context</span><span class="p">(</span>
+<span class="normal">558</span>
+<span class="normal">559</span>
+<span class="normal">560</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">inject_lambda_context</span><span class="p">(</span>
     <span class="bp">self</span><span class="p">,</span>
     <span class="n">lambda_handler</span><span class="p">:</span> <span class="n">AnyCallableT</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="n">log_event</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
@@ -5507,16 +5507,16 @@ def handler(event, context):
 
             <details class="quote">
               <summary>Source code in <code>aws_lambda_powertools/logging/logger.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">390</span>
-<span class="normal">391</span>
-<span class="normal">392</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">392</span>
 <span class="normal">393</span>
 <span class="normal">394</span>
 <span class="normal">395</span>
 <span class="normal">396</span>
 <span class="normal">397</span>
 <span class="normal">398</span>
-<span class="normal">399</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">refresh_sample_rate_calculation</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="normal">399</span>
+<span class="normal">400</span>
+<span class="normal">401</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">refresh_sample_rate_calculation</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Refreshes the sample rate calculation by reconfiguring logging settings.</span>
 
@@ -5578,15 +5578,15 @@ def handler(event, context):
 
             <details class="quote">
               <summary>Source code in <code>aws_lambda_powertools/logging/logger.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">904</span>
-<span class="normal">905</span>
-<span class="normal">906</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">906</span>
 <span class="normal">907</span>
 <span class="normal">908</span>
 <span class="normal">909</span>
 <span class="normal">910</span>
 <span class="normal">911</span>
-<span class="normal">912</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">set_correlation_id</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="normal">912</span>
+<span class="normal">913</span>
+<span class="normal">914</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">set_correlation_id</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Sets the correlation_id in the logging json</span>
 
 <span class="sd">    Parameters</span>
@@ -5678,9 +5678,7 @@ to an existing logger, so it is available across future log statements.</p>
 
             <details class="quote">
               <summary>Source code in <code>aws_lambda_powertools/logging/logger.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">857</span>
-<span class="normal">858</span>
-<span class="normal">859</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">859</span>
 <span class="normal">860</span>
 <span class="normal">861</span>
 <span class="normal">862</span>
@@ -5723,7 +5721,9 @@ to an existing logger, so it is available across future log statements.</p>
 <span class="normal">899</span>
 <span class="normal">900</span>
 <span class="normal">901</span>
-<span class="normal">902</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">structure_logs</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">append</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> <span class="n">formatter_options</span><span class="p">:</span> <span class="nb">dict</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">keys</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="normal">902</span>
+<span class="normal">903</span>
+<span class="normal">904</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">structure_logs</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">append</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> <span class="n">formatter_options</span><span class="p">:</span> <span class="nb">dict</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">keys</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Sets logging formatting to JSON.</span>
 
 <span class="sd">    Optionally, it can append keyword arguments</span>
@@ -5804,9 +5804,9 @@ to an existing logger, so it is available across future log statements.</p>
 
             <details class="quote">
               <summary>Source code in <code>aws_lambda_powertools/logging/logger.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1261</span>
-<span class="normal">1262</span>
-<span class="normal">1263</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">log_uncaught_exception_hook</span><span class="p">(</span><span class="n">exc_type</span><span class="p">,</span> <span class="n">exc_value</span><span class="p">,</span> <span class="n">exc_traceback</span><span class="p">,</span> <span class="n">logger</span><span class="p">:</span> <span class="n">Logger</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1263</span>
+<span class="normal">1264</span>
+<span class="normal">1265</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">log_uncaught_exception_hook</span><span class="p">(</span><span class="n">exc_type</span><span class="p">,</span> <span class="n">exc_value</span><span class="p">,</span> <span class="n">exc_traceback</span><span class="p">,</span> <span class="n">logger</span><span class="p">:</span> <span class="n">Logger</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Callback function for sys.excepthook to use Logger to log uncaught exceptions&quot;&quot;&quot;</span>
     <span class="n">logger</span><span class="o">.</span><span class="n">exception</span><span class="p">(</span><span class="n">exc_value</span><span class="p">,</span> <span class="n">exc_info</span><span class="o">=</span><span class="p">(</span><span class="n">exc_type</span><span class="p">,</span> <span class="n">exc_value</span><span class="p">,</span> <span class="n">exc_traceback</span><span class="p">))</span>  <span class="c1"># pragma: no cover</span>
 </code></pre></div></td></tr></table></div>
@@ -5920,9 +5920,7 @@ This is separate from application Logger class utility</strong></p>
 
             <details class="quote">
               <summary>Source code in <code>aws_lambda_powertools/logging/logger.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1222</span>
-<span class="normal">1223</span>
-<span class="normal">1224</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1224</span>
 <span class="normal">1225</span>
 <span class="normal">1226</span>
 <span class="normal">1227</span>
@@ -5956,7 +5954,9 @@ This is separate from application Logger class utility</strong></p>
 <span class="normal">1255</span>
 <span class="normal">1256</span>
 <span class="normal">1257</span>
-<span class="normal">1258</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">set_package_logger</span><span class="p">(</span>
+<span class="normal">1258</span>
+<span class="normal">1259</span>
+<span class="normal">1260</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">set_package_logger</span><span class="p">(</span>
     <span class="n">level</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="nb">int</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">DEBUG</span><span class="p">,</span>
     <span class="n">stream</span><span class="p">:</span> <span class="n">IO</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="n">formatter</span><span class="p">:</span> <span class="n">logging</span><span class="o">.</span><span class="n">Formatter</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>

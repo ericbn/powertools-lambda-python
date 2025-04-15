@@ -3596,7 +3596,7 @@ You're not viewing the latest version.
               <p>
                   <span class="doc-param-annotation">
                     <b>TYPE:</b>
-                      <code><a class="autorefs autorefs-external" title="typing.Callable" href="https://docs.python.org/3/library/typing.html#typing.Callable">Callable</a></code>
+                      <code><a class="autorefs autorefs-external" title="collections.abc.Callable" href="https://docs.python.org/3/library/collections.abc.html#collections.abc.Callable">Callable</a></code>
                   </span>
                   <span class="doc-param-default">
                     <b>DEFAULT:</b>
@@ -3617,7 +3617,7 @@ by default json.loads</p>
               <p>
                   <span class="doc-param-annotation">
                     <b>TYPE:</b>
-                      <code><a class="autorefs autorefs-external" title="typing.Callable" href="https://docs.python.org/3/library/typing.html#typing.Callable">Callable</a></code>
+                      <code><a class="autorefs autorefs-external" title="collections.abc.Callable" href="https://docs.python.org/3/library/collections.abc.html#collections.abc.Callable">Callable</a></code>
                   </span>
                   <span class="doc-param-default">
                     <b>DEFAULT:</b>
@@ -3638,7 +3638,7 @@ by default json.loads</p>
               <p>
                   <span class="doc-param-annotation">
                     <b>TYPE:</b>
-                      <code><a class="autorefs autorefs-external" title="typing.Callable" href="https://docs.python.org/3/library/typing.html#typing.Callable">Callable</a></code>
+                      <code><a class="autorefs autorefs-external" title="collections.abc.Callable" href="https://docs.python.org/3/library/collections.abc.html#collections.abc.Callable">Callable</a></code>
                   </span>
                   <span class="doc-param-default">
                     <b>DEFAULT:</b>
@@ -3783,9 +3783,7 @@ e.g., 2022-10-27T16:27:43.738+02:00.</p>
 
                   <details class="quote">
                     <summary>Source code in <code>aws_lambda_powertools/logging/formatters/datadog.py</code></summary>
-                    <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">12</span>
-<span class="normal">13</span>
-<span class="normal">14</span>
+                    <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">14</span>
 <span class="normal">15</span>
 <span class="normal">16</span>
 <span class="normal">17</span>
@@ -3851,7 +3849,9 @@ e.g., 2022-10-27T16:27:43.738+02:00.</p>
 <span class="normal">77</span>
 <span class="normal">78</span>
 <span class="normal">79</span>
-<span class="normal">80</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
+<span class="normal">80</span>
+<span class="normal">81</span>
+<span class="normal">82</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
     <span class="bp">self</span><span class="p">,</span>
     <span class="n">json_serializer</span><span class="p">:</span> <span class="n">Callable</span><span class="p">[[</span><span class="n">LogRecord</span><span class="p">],</span> <span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="n">json_deserializer</span><span class="p">:</span> <span class="n">Callable</span><span class="p">[[</span><span class="nb">dict</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="nb">bool</span> <span class="o">|</span> <span class="nb">int</span> <span class="o">|</span> <span class="nb">float</span><span class="p">],</span> <span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
