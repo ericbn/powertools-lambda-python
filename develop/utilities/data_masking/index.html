@@ -5767,7 +5767,8 @@ You're not viewing the latest version.
 <span class="normal">31</span>
 <span class="normal">32</span>
 <span class="normal">33</span>
-<span class="normal">34</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">__future__</span><span class="w"> </span><span class="kn">import</span> <span class="n">annotations</span>
+<span class="normal">34</span>
+<span class="normal">35</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">__future__</span><span class="w"> </span><span class="kn">import</span> <span class="n">annotations</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
 
@@ -5785,8 +5786,9 @@ You're not viewing the latest version.
 </span><span class="hll">    <span class="n">local_cache_capacity</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span>
 </span><span class="hll">    <span class="n">max_cache_age_seconds</span><span class="o">=</span><span class="mi">400</span><span class="p">,</span>
 </span><span class="hll">    <span class="n">max_messages_encrypted</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span>
-</span><span class="hll">    <span class="n">max_bytes_encrypted</span><span class="o">=</span><span class="mi">2000</span><span class="p">)</span>
-</span>
+</span><span class="hll">    <span class="n">max_bytes_encrypted</span><span class="o">=</span><span class="mi">2000</span><span class="p">,</span>
+</span><span class="p">)</span>
+
 <span class="n">data_masker</span> <span class="o">=</span> <span class="n">DataMasking</span><span class="p">(</span><span class="n">provider</span><span class="o">=</span><span class="n">encryption_provider</span><span class="p">)</span>
 
 <span class="n">logger</span> <span class="o">=</span> <span class="n">Logger</span><span class="p">()</span>

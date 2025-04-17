@@ -6349,7 +6349,7 @@ This means there could be differences in whitespace even when the JSON payload i
 <span class="k">class</span><span class="w"> </span><span class="nc">PaymentError</span><span class="p">(</span><span class="ne">Exception</span><span class="p">):</span> <span class="o">...</span>
 
 
-<span class="hll"><span class="nd">@idempotent</span><span class="p">(</span><span class="n">persistence_store</span><span class="o">=</span><span class="n">persistence_layer</span><span class="p">,</span> <span class="n">key_prefix</span><span class="o">=</span><span class="s2">&quot;my_custom_prefix&quot;</span><span class="p">)</span> <span class="c1"># (1)!</span>
+<span class="hll"><span class="nd">@idempotent</span><span class="p">(</span><span class="n">persistence_store</span><span class="o">=</span><span class="n">persistence_layer</span><span class="p">,</span> <span class="n">key_prefix</span><span class="o">=</span><span class="s2">&quot;my_custom_prefix&quot;</span><span class="p">)</span>  <span class="c1"># (1)!</span>
 </span><span class="k">def</span><span class="w"> </span><span class="nf">lambda_handler</span><span class="p">(</span><span class="n">event</span><span class="p">:</span> <span class="nb">dict</span><span class="p">,</span> <span class="n">context</span><span class="p">:</span> <span class="n">LambdaContext</span><span class="p">):</span>
     <span class="k">try</span><span class="p">:</span>
         <span class="n">payment</span><span class="p">:</span> <span class="n">Payment</span> <span class="o">=</span> <span class="n">create_subscription_payment</span><span class="p">(</span><span class="n">event</span><span class="p">)</span>
@@ -6446,15 +6446,15 @@ This means there could be differences in whitespace even when the JSON payload i
     <span class="n">data_keyword_argument</span><span class="o">=</span><span class="s2">&quot;order&quot;</span><span class="p">,</span>
     <span class="n">config</span><span class="o">=</span><span class="n">config</span><span class="p">,</span>
     <span class="n">persistence_store</span><span class="o">=</span><span class="n">dynamodb</span><span class="p">,</span>
-<span class="hll">    <span class="n">key_prefix</span><span class="o">=</span><span class="s2">&quot;my_custom_prefix&quot;</span><span class="p">,</span> <span class="c1"># (1)!</span>
+<span class="hll">    <span class="n">key_prefix</span><span class="o">=</span><span class="s2">&quot;my_custom_prefix&quot;</span><span class="p">,</span>  <span class="c1"># (1)!</span>
 </span><span class="p">)</span>
-<span class="k">def</span><span class="w"> </span><span class="nf">process_order</span><span class="p">(</span><span class="n">order</span><span class="p">:</span> <span class="n">Order</span><span class="p">):</span> 
+<span class="k">def</span><span class="w"> </span><span class="nf">process_order</span><span class="p">(</span><span class="n">order</span><span class="p">:</span> <span class="n">Order</span><span class="p">):</span>
     <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;processed order </span><span class="si">{</span><span class="n">order</span><span class="o">.</span><span class="n">order_id</span><span class="si">}</span><span class="s2">&quot;</span>
 
 
 <span class="k">def</span><span class="w"> </span><span class="nf">lambda_handler</span><span class="p">(</span><span class="n">event</span><span class="p">:</span> <span class="nb">dict</span><span class="p">,</span> <span class="n">context</span><span class="p">:</span> <span class="n">LambdaContext</span><span class="p">):</span>
     <span class="c1"># see Lambda timeouts section</span>
-    <span class="n">config</span><span class="o">.</span><span class="n">register_lambda_context</span><span class="p">(</span><span class="n">context</span><span class="p">)</span> 
+    <span class="n">config</span><span class="o">.</span><span class="n">register_lambda_context</span><span class="p">(</span><span class="n">context</span><span class="p">)</span>
 
     <span class="n">order_item</span> <span class="o">=</span> <span class="n">OrderItem</span><span class="p">(</span><span class="n">sku</span><span class="o">=</span><span class="s2">&quot;fake&quot;</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s2">&quot;sample&quot;</span><span class="p">)</span>
     <span class="n">order</span> <span class="o">=</span> <span class="n">Order</span><span class="p">(</span><span class="n">item</span><span class="o">=</span><span class="n">order_item</span><span class="p">,</span> <span class="n">order_id</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>

@@ -4334,8 +4334,7 @@ You're not viewing the latest version.
 <span class="normal">19</span>
 <span class="normal">20</span>
 <span class="normal">21</span>
-<span class="normal">22</span>
-<span class="normal">23</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Any</span>
+<span class="normal">22</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Any</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="nn">requests</span>
 
@@ -4344,14 +4343,13 @@ You're not viewing the latest version.
 
 
 <span class="k">def</span><span class="w"> </span><span class="nf">lambda_handler</span><span class="p">(</span><span class="n">event</span><span class="p">:</span> <span class="nb">dict</span><span class="p">,</span> <span class="n">context</span><span class="p">:</span> <span class="n">LambdaContext</span><span class="p">):</span>
-
     <span class="k">try</span><span class="p">:</span>
         <span class="c1"># Usually an endpoint is not sensitive data, so we store it in SSM Parameters</span>
         <span class="n">endpoint_comments</span><span class="p">:</span> <span class="n">Any</span> <span class="o">=</span> <span class="n">parameters</span><span class="o">.</span><span class="n">get_parameter</span><span class="p">(</span><span class="s2">&quot;/lambda-powertools/endpoint_comments&quot;</span><span class="p">)</span>
         <span class="c1"># An API-KEY is a sensitive data and should be stored in SecretsManager</span>
-<span class="hll">        <span class="n">api_key</span><span class="p">:</span> <span class="n">Any</span> <span class="o">=</span> <span class="n">parameters</span><span class="o">.</span><span class="n">get_secret</span><span class="p">(</span><span class="s2">&quot;/lambda-powertools/api-key&quot;</span><span class="p">)</span>
-</span>
-        <span class="n">headers</span><span class="p">:</span> <span class="nb">dict</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;X-API-Key&quot;</span><span class="p">:</span> <span class="n">api_key</span><span class="p">}</span>
+        <span class="n">api_key</span><span class="p">:</span> <span class="n">Any</span> <span class="o">=</span> <span class="n">parameters</span><span class="o">.</span><span class="n">get_secret</span><span class="p">(</span><span class="s2">&quot;/lambda-powertools/api-key&quot;</span><span class="p">)</span>
+<span class="hll">
+</span>        <span class="n">headers</span><span class="p">:</span> <span class="nb">dict</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;X-API-Key&quot;</span><span class="p">:</span> <span class="n">api_key</span><span class="p">}</span>
 
         <span class="n">comments</span><span class="p">:</span> <span class="n">requests</span><span class="o">.</span><span class="n">Response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">endpoint_comments</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
 
@@ -4586,8 +4584,7 @@ You're not viewing the latest version.
 <span class="normal">21</span>
 <span class="normal">22</span>
 <span class="normal">23</span>
-<span class="normal">24</span>
-<span class="normal">25</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Any</span>
+<span class="normal">24</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Any</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="nn">requests</span>
 
@@ -4602,7 +4599,6 @@ You're not viewing the latest version.
 </span>        <span class="n">endpoint_comments</span> <span class="o">=</span> <span class="s2">&quot;https://jsonplaceholder.typicode.com/noexists/&quot;</span>
 
         <span class="k">for</span> <span class="n">parameter</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">all_parameters</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
-
             <span class="k">if</span> <span class="n">parameter</span> <span class="o">==</span> <span class="s2">&quot;endpoint_comments&quot;</span><span class="p">:</span>
                 <span class="n">endpoint_comments</span> <span class="o">=</span> <span class="n">value</span>
 
@@ -4636,8 +4632,7 @@ You're not viewing the latest version.
 <span class="normal">19</span>
 <span class="normal">20</span>
 <span class="normal">21</span>
-<span class="normal">22</span>
-<span class="normal">23</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Any</span>
+<span class="normal">22</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Any</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="nn">requests</span>
 
@@ -4646,14 +4641,13 @@ You're not viewing the latest version.
 
 
 <span class="k">def</span><span class="w"> </span><span class="nf">lambda_handler</span><span class="p">(</span><span class="n">event</span><span class="p">:</span> <span class="nb">dict</span><span class="p">,</span> <span class="n">context</span><span class="p">:</span> <span class="n">LambdaContext</span><span class="p">):</span>
-
     <span class="k">try</span><span class="p">:</span>
         <span class="c1"># Usually an endpoint is not sensitive data, so we store it in SSM Parameters</span>
         <span class="n">endpoint_comments</span><span class="p">:</span> <span class="n">Any</span> <span class="o">=</span> <span class="n">parameters</span><span class="o">.</span><span class="n">get_parameter</span><span class="p">(</span><span class="s2">&quot;/lambda-powertools/endpoint_comments&quot;</span><span class="p">)</span>
         <span class="c1"># An API-KEY is a sensitive data and should be stored in SecretsManager</span>
-<span class="hll">        <span class="n">api_key</span><span class="p">:</span> <span class="n">Any</span> <span class="o">=</span> <span class="n">parameters</span><span class="o">.</span><span class="n">get_secret</span><span class="p">(</span><span class="s2">&quot;/lambda-powertools/api-key&quot;</span><span class="p">,</span> <span class="n">max_age</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
-</span>
-        <span class="n">headers</span><span class="p">:</span> <span class="nb">dict</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;X-API-Key&quot;</span><span class="p">:</span> <span class="n">api_key</span><span class="p">}</span>
+        <span class="n">api_key</span><span class="p">:</span> <span class="n">Any</span> <span class="o">=</span> <span class="n">parameters</span><span class="o">.</span><span class="n">get_secret</span><span class="p">(</span><span class="s2">&quot;/lambda-powertools/api-key&quot;</span><span class="p">,</span> <span class="n">max_age</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+<span class="hll">
+</span>        <span class="n">headers</span><span class="p">:</span> <span class="nb">dict</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;X-API-Key&quot;</span><span class="p">:</span> <span class="n">api_key</span><span class="p">}</span>
 
         <span class="n">comments</span><span class="p">:</span> <span class="n">requests</span><span class="o">.</span><span class="n">Response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">endpoint_comments</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
 
@@ -4782,8 +4776,7 @@ You're not viewing the latest version.
 <span class="normal">21</span>
 <span class="normal">22</span>
 <span class="normal">23</span>
-<span class="normal">24</span>
-<span class="normal">25</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Any</span>
+<span class="normal">24</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Any</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="nn">requests</span>
 
@@ -4798,7 +4791,6 @@ You're not viewing the latest version.
 </span>        <span class="n">endpoint_comments</span> <span class="o">=</span> <span class="s2">&quot;https://jsonplaceholder.typicode.com/noexists/&quot;</span>
 
         <span class="k">for</span> <span class="n">parameter</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">all_parameters</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
-
             <span class="k">if</span> <span class="n">parameter</span> <span class="o">==</span> <span class="s2">&quot;endpoint_comments&quot;</span><span class="p">:</span>
                 <span class="n">endpoint_comments</span> <span class="o">=</span> <span class="n">value</span>
 
@@ -4832,8 +4824,7 @@ You're not viewing the latest version.
 <span class="normal">19</span>
 <span class="normal">20</span>
 <span class="normal">21</span>
-<span class="normal">22</span>
-<span class="normal">23</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Any</span>
+<span class="normal">22</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Any</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="nn">requests</span>
 
@@ -4842,14 +4833,13 @@ You're not viewing the latest version.
 
 
 <span class="k">def</span><span class="w"> </span><span class="nf">lambda_handler</span><span class="p">(</span><span class="n">event</span><span class="p">:</span> <span class="nb">dict</span><span class="p">,</span> <span class="n">context</span><span class="p">:</span> <span class="n">LambdaContext</span><span class="p">):</span>
-
     <span class="k">try</span><span class="p">:</span>
         <span class="c1"># Usually an endpoint is not sensitive data, so we store it in SSM Parameters</span>
         <span class="n">endpoint_comments</span><span class="p">:</span> <span class="n">Any</span> <span class="o">=</span> <span class="n">parameters</span><span class="o">.</span><span class="n">get_parameter</span><span class="p">(</span><span class="s2">&quot;/lambda-powertools/endpoint_comments&quot;</span><span class="p">)</span>
         <span class="c1"># An API-KEY is a sensitive data and should be stored in SecretsManager</span>
-<span class="hll">        <span class="n">api_key</span><span class="p">:</span> <span class="n">Any</span> <span class="o">=</span> <span class="n">parameters</span><span class="o">.</span><span class="n">get_secret</span><span class="p">(</span><span class="s2">&quot;/lambda-powertools/api-key&quot;</span><span class="p">,</span> <span class="n">force_fetch</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-</span>
-        <span class="n">headers</span><span class="p">:</span> <span class="nb">dict</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;X-API-Key&quot;</span><span class="p">:</span> <span class="n">api_key</span><span class="p">}</span>
+        <span class="n">api_key</span><span class="p">:</span> <span class="n">Any</span> <span class="o">=</span> <span class="n">parameters</span><span class="o">.</span><span class="n">get_secret</span><span class="p">(</span><span class="s2">&quot;/lambda-powertools/api-key&quot;</span><span class="p">,</span> <span class="n">force_fetch</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="hll">
+</span>        <span class="n">headers</span><span class="p">:</span> <span class="nb">dict</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;X-API-Key&quot;</span><span class="p">:</span> <span class="n">api_key</span><span class="p">}</span>
 
         <span class="n">comments</span><span class="p">:</span> <span class="n">requests</span><span class="o">.</span><span class="n">Response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">endpoint_comments</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
 
@@ -5195,9 +5185,7 @@ You're not viewing the latest version.
 <span class="normal">34</span>
 <span class="normal">35</span>
 <span class="normal">36</span>
-<span class="normal">37</span>
-<span class="normal">38</span>
-<span class="normal">39</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Any</span>
+<span class="normal">37</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Any</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="nn">requests</span>
 
@@ -5207,8 +5195,7 @@ You're not viewing the latest version.
 <span class="hll"><span class="n">ssm_provider</span> <span class="o">=</span> <span class="n">parameters</span><span class="o">.</span><span class="n">SSMProvider</span><span class="p">()</span>
 </span>
 
-<span class="k">class</span><span class="w"> </span><span class="nc">ConfigNotFound</span><span class="p">(</span><span class="ne">Exception</span><span class="p">):</span>
-    <span class="o">...</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">ConfigNotFound</span><span class="p">(</span><span class="ne">Exception</span><span class="p">):</span> <span class="o">...</span>
 
 
 <span class="k">def</span><span class="w"> </span><span class="nf">lambda_handler</span><span class="p">(</span><span class="n">event</span><span class="p">:</span> <span class="nb">dict</span><span class="p">,</span> <span class="n">context</span><span class="p">:</span> <span class="n">LambdaContext</span><span class="p">):</span>
@@ -5217,11 +5204,10 @@ You're not viewing the latest version.
         <span class="c1"># /config = root</span>
         <span class="c1"># /config/endpoint = url</span>
         <span class="c1"># /config/endpoint/query = querystring</span>
-<span class="hll">        <span class="n">all_parameters</span><span class="p">:</span> <span class="n">Any</span> <span class="o">=</span> <span class="n">ssm_provider</span><span class="o">.</span><span class="n">get_multiple</span><span class="p">(</span><span class="s2">&quot;/config&quot;</span><span class="p">,</span> <span class="n">recursive</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-</span>        <span class="n">endpoint_comments</span> <span class="o">=</span> <span class="s2">&quot;https://jsonplaceholder.typicode.com/comments/&quot;</span>
-
+        <span class="n">all_parameters</span><span class="p">:</span> <span class="n">Any</span> <span class="o">=</span> <span class="n">ssm_provider</span><span class="o">.</span><span class="n">get_multiple</span><span class="p">(</span><span class="s2">&quot;/config&quot;</span><span class="p">,</span> <span class="n">recursive</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="hll">        <span class="n">endpoint_comments</span> <span class="o">=</span> <span class="s2">&quot;https://jsonplaceholder.typicode.com/comments/&quot;</span>
+</span>
         <span class="k">for</span> <span class="n">parameter</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">all_parameters</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
-
             <span class="c1"># query parameter is used to query endpoint</span>
             <span class="k">if</span> <span class="s2">&quot;query&quot;</span> <span class="ow">in</span> <span class="n">parameter</span><span class="p">:</span>
                 <span class="n">endpoint_comments</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">endpoint_comments</span><span class="si">}{</span><span class="n">value</span><span class="si">}</span><span class="s2">&quot;</span>
@@ -5269,8 +5255,7 @@ You're not viewing the latest version.
 <span class="normal">23</span>
 <span class="normal">24</span>
 <span class="normal">25</span>
-<span class="normal">26</span>
-<span class="normal">27</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Any</span>
+<span class="normal">26</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Any</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="nn">requests</span>
 <span class="hll"><span class="kn">from</span><span class="w"> </span><span class="nn">botocore.config</span><span class="w"> </span><span class="kn">import</span> <span class="n">Config</span>
@@ -5283,7 +5268,6 @@ You're not viewing the latest version.
 
 
 <span class="k">def</span><span class="w"> </span><span class="nf">lambda_handler</span><span class="p">(</span><span class="n">event</span><span class="p">:</span> <span class="nb">dict</span><span class="p">,</span> <span class="n">context</span><span class="p">:</span> <span class="n">LambdaContext</span><span class="p">):</span>
-
     <span class="k">try</span><span class="p">:</span>
         <span class="c1"># Usually an endpoint is not sensitive data, so we store it in SSM Parameters</span>
         <span class="n">endpoint_comments</span><span class="p">:</span> <span class="n">Any</span> <span class="o">=</span> <span class="n">parameters</span><span class="o">.</span><span class="n">get_parameter</span><span class="p">(</span><span class="s2">&quot;/lambda-powertools/endpoint_comments&quot;</span><span class="p">)</span>
@@ -5347,8 +5331,7 @@ You're not viewing the latest version.
 <span class="normal">18</span>
 <span class="normal">19</span>
 <span class="normal">20</span>
-<span class="normal">21</span>
-<span class="normal">22</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Any</span>
+<span class="normal">21</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Any</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="nn">requests</span>
 
@@ -5359,12 +5342,11 @@ You're not viewing the latest version.
 </span>
 
 <span class="k">def</span><span class="w"> </span><span class="nf">lambda_handler</span><span class="p">(</span><span class="n">event</span><span class="p">:</span> <span class="nb">dict</span><span class="p">,</span> <span class="n">context</span><span class="p">:</span> <span class="n">LambdaContext</span><span class="p">):</span>
-
     <span class="k">try</span><span class="p">:</span>
         <span class="c1"># Usually an endpoint is not sensitive data, so we store it in DynamoDB Table</span>
-<span class="hll">        <span class="n">endpoint_comments</span><span class="p">:</span> <span class="n">Any</span> <span class="o">=</span> <span class="n">dynamodb_provider</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;comments_endpoint&quot;</span><span class="p">)</span>
-</span>
-        <span class="n">comments</span><span class="p">:</span> <span class="n">requests</span><span class="o">.</span><span class="n">Response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">endpoint_comments</span><span class="p">)</span>
+        <span class="n">endpoint_comments</span><span class="p">:</span> <span class="n">Any</span> <span class="o">=</span> <span class="n">dynamodb_provider</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;comments_endpoint&quot;</span><span class="p">)</span>
+<span class="hll">
+</span>        <span class="n">comments</span><span class="p">:</span> <span class="n">requests</span><span class="o">.</span><span class="n">Response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">endpoint_comments</span><span class="p">)</span>
 
         <span class="k">return</span> <span class="p">{</span><span class="s2">&quot;comments&quot;</span><span class="p">:</span> <span class="n">comments</span><span class="o">.</span><span class="n">json</span><span class="p">()[:</span><span class="mi">10</span><span class="p">],</span> <span class="s2">&quot;statusCode&quot;</span><span class="p">:</span> <span class="mi">200</span><span class="p">}</span>
     <span class="c1"># general exception</span>
@@ -5436,8 +5418,7 @@ You're not viewing the latest version.
 <span class="normal">18</span>
 <span class="normal">19</span>
 <span class="normal">20</span>
-<span class="normal">21</span>
-<span class="normal">22</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Any</span>
+<span class="normal">21</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Any</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="nn">requests</span>
 
@@ -5448,12 +5429,11 @@ You're not viewing the latest version.
 </span>
 
 <span class="k">def</span><span class="w"> </span><span class="nf">lambda_handler</span><span class="p">(</span><span class="n">event</span><span class="p">:</span> <span class="nb">dict</span><span class="p">,</span> <span class="n">context</span><span class="p">:</span> <span class="n">LambdaContext</span><span class="p">):</span>
-
     <span class="k">try</span><span class="p">:</span>
         <span class="c1"># Usually an endpoint is not sensitive data, so we store it in DynamoDB Table</span>
-<span class="hll">        <span class="n">endpoint_comments</span><span class="p">:</span> <span class="n">Any</span> <span class="o">=</span> <span class="n">dynamodb_provider</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;comments_endpoint&quot;</span><span class="p">)</span>
-</span>
-        <span class="n">comments</span><span class="p">:</span> <span class="n">requests</span><span class="o">.</span><span class="n">Response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">endpoint_comments</span><span class="p">)</span>
+        <span class="n">endpoint_comments</span><span class="p">:</span> <span class="n">Any</span> <span class="o">=</span> <span class="n">dynamodb_provider</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;comments_endpoint&quot;</span><span class="p">)</span>
+<span class="hll">
+</span>        <span class="n">comments</span><span class="p">:</span> <span class="n">requests</span><span class="o">.</span><span class="n">Response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">endpoint_comments</span><span class="p">)</span>
 
         <span class="k">return</span> <span class="p">{</span><span class="s2">&quot;comments&quot;</span><span class="p">:</span> <span class="n">comments</span><span class="o">.</span><span class="n">json</span><span class="p">()[:</span><span class="mi">10</span><span class="p">],</span> <span class="s2">&quot;statusCode&quot;</span><span class="p">:</span> <span class="mi">200</span><span class="p">}</span>
     <span class="c1"># general exception</span>
@@ -5524,9 +5504,7 @@ You're not viewing the latest version.
 <span class="normal">28</span>
 <span class="normal">29</span>
 <span class="normal">30</span>
-<span class="normal">31</span>
-<span class="normal">32</span>
-<span class="normal">33</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Any</span>
+<span class="normal">31</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Any</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="nn">requests</span>
 
@@ -5537,15 +5515,13 @@ You're not viewing the latest version.
 </span>
 
 <span class="k">def</span><span class="w"> </span><span class="nf">lambda_handler</span><span class="p">(</span><span class="n">event</span><span class="p">:</span> <span class="nb">dict</span><span class="p">,</span> <span class="n">context</span><span class="p">:</span> <span class="n">LambdaContext</span><span class="p">):</span>
-
     <span class="k">try</span><span class="p">:</span>
         <span class="c1"># Retrieve multiple parameters using HASH KEY</span>
-<span class="hll">        <span class="n">all_parameters</span><span class="p">:</span> <span class="n">Any</span> <span class="o">=</span> <span class="n">dynamodb_provider</span><span class="o">.</span><span class="n">get_multiple</span><span class="p">(</span><span class="s2">&quot;config&quot;</span><span class="p">)</span>
-</span>        <span class="n">endpoint_comments</span> <span class="o">=</span> <span class="s2">&quot;https://jsonplaceholder.typicode.com/noexists/&quot;</span>
-        <span class="n">limit</span> <span class="o">=</span> <span class="mi">2</span>
+        <span class="n">all_parameters</span><span class="p">:</span> <span class="n">Any</span> <span class="o">=</span> <span class="n">dynamodb_provider</span><span class="o">.</span><span class="n">get_multiple</span><span class="p">(</span><span class="s2">&quot;config&quot;</span><span class="p">)</span>
+<span class="hll">        <span class="n">endpoint_comments</span> <span class="o">=</span> <span class="s2">&quot;https://jsonplaceholder.typicode.com/noexists/&quot;</span>
+</span>        <span class="n">limit</span> <span class="o">=</span> <span class="mi">2</span>
 
         <span class="k">for</span> <span class="n">parameter</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">all_parameters</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
-
             <span class="k">if</span> <span class="n">parameter</span> <span class="o">==</span> <span class="s2">&quot;endpoint_comments&quot;</span><span class="p">:</span>
                 <span class="n">endpoint_comments</span> <span class="o">=</span> <span class="n">value</span>
 
@@ -5975,8 +5951,7 @@ You're not viewing the latest version.
 <span class="normal">26</span>
 <span class="normal">27</span>
 <span class="normal">28</span>
-<span class="normal">29</span>
-<span class="normal">30</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Any</span>
+<span class="normal">29</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Any</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="nn">requests</span>
 <span class="hll"><span class="kn">from</span><span class="w"> </span><span class="nn">custom_provider_s3</span><span class="w"> </span><span class="kn">import</span> <span class="n">S3Provider</span>
@@ -5990,15 +5965,14 @@ You're not viewing the latest version.
 </span>
 
 <span class="k">def</span><span class="w"> </span><span class="nf">lambda_handler</span><span class="p">(</span><span class="n">event</span><span class="p">:</span> <span class="nb">dict</span><span class="p">,</span> <span class="n">context</span><span class="p">:</span> <span class="n">LambdaContext</span><span class="p">):</span>
-
     <span class="k">try</span><span class="p">:</span>
         <span class="c1"># Retrieve a single parameter using key</span>
-<span class="hll">        <span class="n">endpoint_comments</span><span class="p">:</span> <span class="n">Any</span> <span class="o">=</span> <span class="n">s3_provider</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;comments_endpoint&quot;</span><span class="p">)</span>
-</span>        <span class="c1"># you can get all parameters using get_multiple and specifying a bucket prefix</span>
-        <span class="c1"># # for testing purposes we will not use it</span>
-<span class="hll">        <span class="n">all_parameters</span><span class="p">:</span> <span class="n">Any</span> <span class="o">=</span> <span class="n">s3_provider</span><span class="o">.</span><span class="n">get_multiple</span><span class="p">(</span><span class="s2">&quot;/&quot;</span><span class="p">)</span>
-</span>        <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="n">all_parameters</span><span class="p">)</span>
-
+        <span class="n">endpoint_comments</span><span class="p">:</span> <span class="n">Any</span> <span class="o">=</span> <span class="n">s3_provider</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;comments_endpoint&quot;</span><span class="p">)</span>
+<span class="hll">        <span class="c1"># you can get all parameters using get_multiple and specifying a bucket prefix</span>
+</span>        <span class="c1"># # for testing purposes we will not use it</span>
+        <span class="n">all_parameters</span><span class="p">:</span> <span class="n">Any</span> <span class="o">=</span> <span class="n">s3_provider</span><span class="o">.</span><span class="n">get_multiple</span><span class="p">(</span><span class="s2">&quot;/&quot;</span><span class="p">)</span>
+<span class="hll">        <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="n">all_parameters</span><span class="p">)</span>
+</span>
         <span class="c1"># the value of this parameter is https://jsonplaceholder.typicode.com/comments/</span>
         <span class="n">comments</span><span class="p">:</span> <span class="n">requests</span><span class="o">.</span><span class="n">Response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">endpoint_comments</span><span class="p">)</span>
 

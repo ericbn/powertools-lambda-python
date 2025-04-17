@@ -4361,8 +4361,7 @@ side effects for file-like objects like boto S3 <a href="https://botocore.amazon
 <span class="normal">27</span>
 <span class="normal">28</span>
 <span class="normal">29</span>
-<span class="normal">30</span>
-<span class="normal">31</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+<span class="normal">30</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="nn">requests</span>
 
@@ -4373,13 +4372,12 @@ side effects for file-like objects like boto S3 <a href="https://botocore.amazon
 <span class="n">ENDPOINT</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">&quot;PAYMENT_API&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>
 
 
-<span class="k">class</span><span class="w"> </span><span class="nc">PaymentError</span><span class="p">(</span><span class="ne">Exception</span><span class="p">):</span>
-    <span class="o">...</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">PaymentError</span><span class="p">(</span><span class="ne">Exception</span><span class="p">):</span> <span class="o">...</span>
 
 
-<span class="hll"><span class="nd">@tracer</span><span class="o">.</span><span class="n">capture_method</span><span class="p">(</span><span class="n">capture_error</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-</span><span class="k">def</span><span class="w"> </span><span class="nf">collect_payment</span><span class="p">(</span><span class="n">charge_id</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">:</span>
-    <span class="k">try</span><span class="p">:</span>
+<span class="nd">@tracer</span><span class="o">.</span><span class="n">capture_method</span><span class="p">(</span><span class="n">capture_error</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="hll"><span class="k">def</span><span class="w"> </span><span class="nf">collect_payment</span><span class="p">(</span><span class="n">charge_id</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">:</span>
+</span>    <span class="k">try</span><span class="p">:</span>
         <span class="n">ret</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">ENDPOINT</span><span class="si">}</span><span class="s2">/collect&quot;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;charge_id&quot;</span><span class="p">:</span> <span class="n">charge_id</span><span class="p">})</span>
         <span class="n">ret</span><span class="o">.</span><span class="n">raise_for_status</span><span class="p">()</span>
         <span class="k">return</span> <span class="n">ret</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
@@ -4387,9 +4385,9 @@ side effects for file-like objects like boto S3 <a href="https://botocore.amazon
         <span class="k">raise</span> <span class="n">PaymentError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Unable to collect payment for charge </span><span class="si">{</span><span class="n">charge_id</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span> <span class="kn">from</span><span class="w"> </span><span class="nn">e</span>
 
 
-<span class="hll"><span class="nd">@tracer</span><span class="o">.</span><span class="n">capture_lambda_handler</span><span class="p">(</span><span class="n">capture_error</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-</span><span class="k">def</span><span class="w"> </span><span class="nf">lambda_handler</span><span class="p">(</span><span class="n">event</span><span class="p">:</span> <span class="nb">dict</span><span class="p">,</span> <span class="n">context</span><span class="p">:</span> <span class="n">LambdaContext</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
-    <span class="n">charge_id</span> <span class="o">=</span> <span class="n">event</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;charge_id&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>
+<span class="nd">@tracer</span><span class="o">.</span><span class="n">capture_lambda_handler</span><span class="p">(</span><span class="n">capture_error</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="hll"><span class="k">def</span><span class="w"> </span><span class="nf">lambda_handler</span><span class="p">(</span><span class="n">event</span><span class="p">:</span> <span class="nb">dict</span><span class="p">,</span> <span class="n">context</span><span class="p">:</span> <span class="n">LambdaContext</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+</span>    <span class="n">charge_id</span> <span class="o">=</span> <span class="n">event</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;charge_id&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>
     <span class="n">ret</span> <span class="o">=</span> <span class="n">collect_payment</span><span class="p">(</span><span class="n">charge_id</span><span class="o">=</span><span class="n">charge_id</span><span class="p">)</span>
 
     <span class="k">return</span> <span class="n">ret</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;receipt_id&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>
@@ -4430,8 +4428,7 @@ side effects for file-like objects like boto S3 <a href="https://botocore.amazon
 <span class="normal">31</span>
 <span class="normal">32</span>
 <span class="normal">33</span>
-<span class="normal">34</span>
-<span class="normal">35</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+<span class="normal">34</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="nn">requests</span>
 
@@ -4446,8 +4443,7 @@ side effects for file-like objects like boto S3 <a href="https://botocore.amazon
 </span><span class="hll"><span class="n">tracer</span><span class="o">.</span><span class="n">ignore_endpoint</span><span class="p">(</span><span class="n">hostname</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;*.</span><span class="si">{</span><span class="n">ENDPOINT</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">urls</span><span class="o">=</span><span class="n">IGNORE_URLS</span><span class="p">)</span>  <span class="c1"># `&lt;stage&gt;.ENDPOINT`</span>
 </span>
 
-<span class="k">class</span><span class="w"> </span><span class="nc">PaymentError</span><span class="p">(</span><span class="ne">Exception</span><span class="p">):</span>
-    <span class="o">...</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">PaymentError</span><span class="p">(</span><span class="ne">Exception</span><span class="p">):</span> <span class="o">...</span>
 
 
 <span class="nd">@tracer</span><span class="o">.</span><span class="n">capture_method</span><span class="p">(</span><span class="n">capture_error</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>

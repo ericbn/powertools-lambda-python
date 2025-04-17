@@ -3761,7 +3761,7 @@ for the base provider.</p>
 <div class="doc-signature highlight"><pre><span></span><code><span class="nf">decrypt</span><span class="p">(</span>
     <span class="n">data</span><span class="p">,</span>
     <span class="n">provider_options</span><span class="p">:</span> <span class="nb">dict</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-    <span class="o">**</span><span class="n">encryption_context</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="o">**</span><span class="n">encryption_context</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Any</span>
 </code></pre></div>
 
@@ -3974,7 +3974,7 @@ encrypted = data_masker.decrypt(encrypted_data)
 <div class="doc-signature highlight"><pre><span></span><code><span class="nf">encrypt</span><span class="p">(</span>
     <span class="n">data</span><span class="p">:</span> <span class="nb">dict</span> <span class="o">|</span> <span class="n">Mapping</span> <span class="o">|</span> <span class="n">Sequence</span> <span class="o">|</span> <span class="n">Number</span><span class="p">,</span>
     <span class="n">provider_options</span><span class="p">:</span> <span class="nb">dict</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-    <span class="o">**</span><span class="n">encryption_context</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="o">**</span><span class="n">encryption_context</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span>
 </code></pre></div>
 
@@ -4192,7 +4192,7 @@ encrypted = data_masker.encrypt({&quot;secret&quot;: &quot;value&quot;})
     <span class="n">custom_mask</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="n">regex_pattern</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="n">mask_format</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-    <span class="n">masking_rules</span><span class="p">:</span> <span class="nb">dict</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="n">masking_rules</span><span class="p">:</span> <span class="nb">dict</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Any</span>
 </code></pre></div>
 

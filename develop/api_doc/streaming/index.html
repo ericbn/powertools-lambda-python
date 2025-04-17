@@ -3695,7 +3695,7 @@ You're not viewing the latest version.
     <span class="n">boto3_client</span><span class="p">:</span> <span class="n">S3Client</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="n">is_gzip</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
     <span class="n">is_csv</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-    <span class="o">**</span><span class="n">sdk_options</span>
+    <span class="o">**</span><span class="n">sdk_options</span><span class="p">,</span>
 <span class="p">)</span>
 </code></pre></div>
 
@@ -4080,27 +4080,23 @@ You're not viewing the latest version.
 <a href="#aws_lambda_powertools.utilities.streaming.s3_object.S3Object.transform" class="headerlink" title="Permanent link">&para;</a></h3>
           <div class="doc-overloads">
 <div class="doc-signature highlight"><pre><span></span><code><span class="nf">transform</span><span class="p">(</span>
-    <span class="n">transformations</span><span class="p">:</span> <span class="p">(</span>
-        <span class="n">BaseTransform</span><span class="p">[</span><span class="n">T</span><span class="p">]</span> <span class="o">|</span> <span class="n">Sequence</span><span class="p">[</span><span class="n">BaseTransform</span><span class="p">[</span><span class="n">T</span><span class="p">]]</span>
-    <span class="p">),</span>
+    <span class="n">transformations</span><span class="p">:</span> <span class="n">BaseTransform</span><span class="p">[</span><span class="n">T</span><span class="p">]</span>
+    <span class="o">|</span> <span class="n">Sequence</span><span class="p">[</span><span class="n">BaseTransform</span><span class="p">[</span><span class="n">T</span><span class="p">]],</span>
     <span class="n">in_place</span><span class="p">:</span> <span class="n">Literal</span><span class="p">[</span><span class="kc">True</span><span class="p">],</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">T</span>
 </code></pre></div><div class="doc-signature highlight"><pre><span></span><code><span class="nf">transform</span><span class="p">(</span>
-    <span class="n">transformations</span><span class="p">:</span> <span class="p">(</span>
-        <span class="n">BaseTransform</span><span class="p">[</span><span class="n">T</span><span class="p">]</span> <span class="o">|</span> <span class="n">Sequence</span><span class="p">[</span><span class="n">BaseTransform</span><span class="p">[</span><span class="n">T</span><span class="p">]]</span>
-    <span class="p">),</span>
+    <span class="n">transformations</span><span class="p">:</span> <span class="n">BaseTransform</span><span class="p">[</span><span class="n">T</span><span class="p">]</span>
+    <span class="o">|</span> <span class="n">Sequence</span><span class="p">[</span><span class="n">BaseTransform</span><span class="p">[</span><span class="n">T</span><span class="p">]],</span>
     <span class="n">in_place</span><span class="p">:</span> <span class="n">Literal</span><span class="p">[</span><span class="kc">False</span><span class="p">],</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span>
 </code></pre></div><div class="doc-signature highlight"><pre><span></span><code><span class="nf">transform</span><span class="p">(</span>
-    <span class="n">transformations</span><span class="p">:</span> <span class="p">(</span>
-        <span class="n">BaseTransform</span><span class="p">[</span><span class="n">T</span><span class="p">]</span> <span class="o">|</span> <span class="n">Sequence</span><span class="p">[</span><span class="n">BaseTransform</span><span class="p">[</span><span class="n">T</span><span class="p">]]</span>
-    <span class="p">),</span>
+    <span class="n">transformations</span><span class="p">:</span> <span class="n">BaseTransform</span><span class="p">[</span><span class="n">T</span><span class="p">]</span>
+    <span class="o">|</span> <span class="n">Sequence</span><span class="p">[</span><span class="n">BaseTransform</span><span class="p">[</span><span class="n">T</span><span class="p">]],</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">T</span>
 </code></pre></div>          </div>
 <div class="doc-signature highlight"><pre><span></span><code><span class="nf">transform</span><span class="p">(</span>
-    <span class="n">transformations</span><span class="p">:</span> <span class="p">(</span>
-        <span class="n">BaseTransform</span><span class="p">[</span><span class="n">T</span><span class="p">]</span> <span class="o">|</span> <span class="n">Sequence</span><span class="p">[</span><span class="n">BaseTransform</span><span class="p">[</span><span class="n">T</span><span class="p">]]</span>
-    <span class="p">),</span>
+    <span class="n">transformations</span><span class="p">:</span> <span class="n">BaseTransform</span><span class="p">[</span><span class="n">T</span><span class="p">]</span>
+    <span class="o">|</span> <span class="n">Sequence</span><span class="p">[</span><span class="n">BaseTransform</span><span class="p">[</span><span class="n">T</span><span class="p">]],</span>
     <span class="n">in_place</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">T</span> <span class="o">|</span> <span class="kc">None</span>
 </code></pre></div>

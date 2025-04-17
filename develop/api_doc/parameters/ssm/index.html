@@ -4021,7 +4021,7 @@ My parameter value
     <span class="n">transform</span><span class="p">:</span> <span class="n">TransformOptions</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="n">decrypt</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="n">force_fetch</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-    <span class="o">**</span><span class="n">sdk_options</span>
+    <span class="o">**</span><span class="n">sdk_options</span><span class="p">,</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span> <span class="o">|</span> <span class="nb">bytes</span> <span class="o">|</span> <span class="nb">dict</span> <span class="o">|</span> <span class="kc">None</span>
 </code></pre></div>
 
@@ -4318,7 +4318,7 @@ a given name.</p>
     <span class="n">decrypt</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="n">force_fetch</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
     <span class="n">recursive</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-    <span class="o">**</span><span class="n">sdk_options</span>
+    <span class="o">**</span><span class="n">sdk_options</span><span class="p">,</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">bytes</span><span class="p">]</span> <span class="o">|</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">dict</span><span class="p">]</span>
 </code></pre></div>
 
@@ -5014,7 +5014,7 @@ a given path.</p>
         <span class="s2">&quot;Standard&quot;</span><span class="p">,</span> <span class="s2">&quot;Advanced&quot;</span><span class="p">,</span> <span class="s2">&quot;Intelligent-Tiering&quot;</span>
     <span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;Standard&quot;</span><span class="p">,</span>
     <span class="n">kms_key_id</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="s2">&quot;None&quot;</span><span class="p">,</span>
-    <span class="o">**</span><span class="n">sdk_options</span>
+    <span class="o">**</span><span class="n">sdk_options</span><span class="p">,</span>
 <span class="p">)</span>
 </code></pre></div><div class="doc-signature highlight"><pre><span></span><code><span class="nb">set</span><span class="p">(</span>
     <span class="nf">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
@@ -5029,7 +5029,7 @@ a given path.</p>
         <span class="s2">&quot;Standard&quot;</span><span class="p">,</span> <span class="s2">&quot;Advanced&quot;</span><span class="p">,</span> <span class="s2">&quot;Intelligent-Tiering&quot;</span>
     <span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;Standard&quot;</span><span class="p">,</span>
     <span class="n">kms_key_id</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
-    <span class="o">**</span><span class="n">sdk_options</span>
+    <span class="o">**</span><span class="n">sdk_options</span><span class="p">,</span>
 <span class="p">)</span>
 </code></pre></div><div class="doc-signature highlight"><pre><span></span><code><span class="nb">set</span><span class="p">(</span>
     <span class="nf">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
@@ -5042,7 +5042,7 @@ a given path.</p>
         <span class="s2">&quot;Standard&quot;</span><span class="p">,</span> <span class="s2">&quot;Advanced&quot;</span><span class="p">,</span> <span class="s2">&quot;Intelligent-Tiering&quot;</span>
     <span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;Standard&quot;</span><span class="p">,</span>
     <span class="n">kms_key_id</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-    <span class="o">**</span><span class="n">sdk_options</span>
+    <span class="o">**</span><span class="n">sdk_options</span><span class="p">,</span>
 <span class="p">)</span>
 </code></pre></div>          </div>
 <div class="doc-signature highlight"><pre><span></span><code><span class="nb">set</span><span class="p">(</span>
@@ -5054,7 +5054,7 @@ a given path.</p>
     <span class="n">parameter_type</span><span class="p">:</span> <span class="n">SSM_PARAMETER_TYPES</span> <span class="o">=</span> <span class="s2">&quot;String&quot;</span><span class="p">,</span>
     <span class="n">tier</span><span class="p">:</span> <span class="n">SSM_PARAMETER_TIER</span> <span class="o">=</span> <span class="s2">&quot;Standard&quot;</span><span class="p">,</span>
     <span class="n">kms_key_id</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-    <span class="o">**</span><span class="n">sdk_options</span>
+    <span class="o">**</span><span class="n">sdk_options</span><span class="p">,</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">PutParameterResultTypeDef</span>
 </code></pre></div>
 
@@ -5480,7 +5480,7 @@ a given name.</p>
     <span class="n">decrypt</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="n">force_fetch</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
     <span class="n">max_age</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-    <span class="o">**</span><span class="n">sdk_options</span>
+    <span class="o">**</span><span class="n">sdk_options</span><span class="p">,</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span>
 </code></pre></div><div class="doc-signature highlight"><pre><span></span><code><span class="nf">get_parameter</span><span class="p">(</span>
     <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
@@ -5488,7 +5488,7 @@ a given name.</p>
     <span class="n">decrypt</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="n">force_fetch</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
     <span class="n">max_age</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-    <span class="o">**</span><span class="n">sdk_options</span>
+    <span class="o">**</span><span class="n">sdk_options</span><span class="p">,</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span>
 </code></pre></div><div class="doc-signature highlight"><pre><span></span><code><span class="nf">get_parameter</span><span class="p">(</span>
     <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
@@ -5496,7 +5496,7 @@ a given name.</p>
     <span class="n">decrypt</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="n">force_fetch</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
     <span class="n">max_age</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-    <span class="o">**</span><span class="n">sdk_options</span>
+    <span class="o">**</span><span class="n">sdk_options</span><span class="p">,</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span> <span class="o">|</span> <span class="nb">bytes</span> <span class="o">|</span> <span class="nb">dict</span>
 </code></pre></div><div class="doc-signature highlight"><pre><span></span><code><span class="nf">get_parameter</span><span class="p">(</span>
     <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
@@ -5504,7 +5504,7 @@ a given name.</p>
     <span class="n">decrypt</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="n">force_fetch</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
     <span class="n">max_age</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-    <span class="o">**</span><span class="n">sdk_options</span>
+    <span class="o">**</span><span class="n">sdk_options</span><span class="p">,</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bytes</span>
 </code></pre></div>          </div>
 <div class="doc-signature highlight"><pre><span></span><code><span class="nf">get_parameter</span><span class="p">(</span>
@@ -5513,7 +5513,7 @@ a given name.</p>
     <span class="n">decrypt</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="n">force_fetch</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
     <span class="n">max_age</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-    <span class="o">**</span><span class="n">sdk_options</span>
+    <span class="o">**</span><span class="n">sdk_options</span><span class="p">,</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span> <span class="o">|</span> <span class="nb">bytes</span> <span class="o">|</span> <span class="nb">dict</span>
 </code></pre></div>
 
@@ -5889,7 +5889,7 @@ My parameter value
     <span class="n">force_fetch</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
     <span class="n">max_age</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="n">raise_on_transform_error</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-    <span class="o">**</span><span class="n">sdk_options</span>
+    <span class="o">**</span><span class="n">sdk_options</span><span class="p">,</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">]</span>
 </code></pre></div><div class="doc-signature highlight"><pre><span></span><code><span class="nf">get_parameters</span><span class="p">(</span>
     <span class="n">path</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
@@ -5899,7 +5899,7 @@ My parameter value
     <span class="n">force_fetch</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
     <span class="n">max_age</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="n">raise_on_transform_error</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-    <span class="o">**</span><span class="n">sdk_options</span>
+    <span class="o">**</span><span class="n">sdk_options</span><span class="p">,</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">dict</span><span class="p">]</span>
 </code></pre></div><div class="doc-signature highlight"><pre><span></span><code><span class="nf">get_parameters</span><span class="p">(</span>
     <span class="n">path</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
@@ -5909,7 +5909,7 @@ My parameter value
     <span class="n">force_fetch</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
     <span class="n">max_age</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="n">raise_on_transform_error</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-    <span class="o">**</span><span class="n">sdk_options</span>
+    <span class="o">**</span><span class="n">sdk_options</span><span class="p">,</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">bytes</span><span class="p">]</span>
 </code></pre></div><div class="doc-signature highlight"><pre><span></span><code><span class="nf">get_parameters</span><span class="p">(</span>
     <span class="n">path</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
@@ -5919,7 +5919,7 @@ My parameter value
     <span class="n">force_fetch</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
     <span class="n">max_age</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="n">raise_on_transform_error</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-    <span class="o">**</span><span class="n">sdk_options</span>
+    <span class="o">**</span><span class="n">sdk_options</span><span class="p">,</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">bytes</span><span class="p">]</span> <span class="o">|</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">dict</span><span class="p">]</span>
 </code></pre></div>          </div>
 <div class="doc-signature highlight"><pre><span></span><code><span class="nf">get_parameters</span><span class="p">(</span>
@@ -5930,7 +5930,7 @@ My parameter value
     <span class="n">force_fetch</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
     <span class="n">max_age</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="n">raise_on_transform_error</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-    <span class="o">**</span><span class="n">sdk_options</span>
+    <span class="o">**</span><span class="n">sdk_options</span><span class="p">,</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">bytes</span><span class="p">]</span> <span class="o">|</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">dict</span><span class="p">]</span>
 </code></pre></div>
 
@@ -6757,7 +6757,7 @@ a given name.</p>
     <span class="n">parameter_type</span><span class="p">:</span> <span class="n">SSM_PARAMETER_TYPES</span> <span class="o">=</span> <span class="s2">&quot;String&quot;</span><span class="p">,</span>
     <span class="n">tier</span><span class="p">:</span> <span class="n">SSM_PARAMETER_TIER</span> <span class="o">=</span> <span class="s2">&quot;Standard&quot;</span><span class="p">,</span>
     <span class="n">kms_key_id</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-    <span class="o">**</span><span class="n">sdk_options</span>
+    <span class="o">**</span><span class="n">sdk_options</span><span class="p">,</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">PutParameterResultTypeDef</span>
 </code></pre></div>
 
