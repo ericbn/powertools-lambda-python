@@ -265,6 +265,10 @@
          <lastmod>2025-04-24</lastmod>
     </url>
     <url>
+         <loc>https://docs.powertools.aws.dev/lambda/python/develop/core/event_handler/appsync_events/</loc>
+         <lastmod>2025-04-24</lastmod>
+    </url>
+    <url>
          <loc>https://docs.powertools.aws.dev/lambda/python/develop/core/event_handler/bedrock_agents/</loc>
          <lastmod>2025-04-24</lastmod>
     </url>
