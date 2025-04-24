@@ -22,7 +22,7 @@
       
       
       <link rel="icon" href="../../../media/aws-logo-light.svg">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.11">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.12">
     
     
       
@@ -30,7 +30,7 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.4af4bdda.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.2afb09e1.min.css">
       
         
         <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
@@ -845,6 +845,8 @@ You're not viewing the latest version.
       
         
       
+        
+      
     
     
     
@@ -919,6 +921,36 @@ You're not viewing the latest version.
     GraphQL API
     
   </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../core/event_handler/appsync_events/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    AppSync Events
+    
+  </span>
+  
+    
+  
+  
+    <span class="md-status md-status--new"></span>
+  
+
   
 
       </a>
@@ -3557,9 +3589,8 @@ You're not viewing the latest version.
     <span class="n">function_payload</span><span class="p">:</span> <span class="n">Any</span><span class="p">,</span>
     <span class="n">config</span><span class="p">:</span> <span class="n">IdempotencyConfig</span><span class="p">,</span>
     <span class="n">persistence_store</span><span class="p">:</span> <span class="n">BasePersistenceLayer</span><span class="p">,</span>
-    <span class="n">output_serializer</span><span class="p">:</span> <span class="p">(</span>
-        <span class="n">BaseIdempotencySerializer</span> <span class="o">|</span> <span class="kc">None</span>
-    <span class="p">)</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">output_serializer</span><span class="p">:</span> <span class="n">BaseIdempotencySerializer</span>
+    <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="n">key_prefix</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="n">function_args</span><span class="p">:</span> <span class="nb">tuple</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="n">function_kwargs</span><span class="p">:</span> <span class="nb">dict</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
@@ -3745,9 +3776,7 @@ If not supplied, no serialization is done via the NoOpSerializer</p>
 
                   <details class="quote">
                     <summary>Source code in <code>aws_lambda_powertools/utilities/idempotency/base.py</code></summary>
-                    <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 76</span>
-<span class="normal"> 77</span>
-<span class="normal"> 78</span>
+                    <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 78</span>
 <span class="normal"> 79</span>
 <span class="normal"> 80</span>
 <span class="normal"> 81</span>
@@ -3791,7 +3820,9 @@ If not supplied, no serialization is done via the NoOpSerializer</p>
 <span class="normal">119</span>
 <span class="normal">120</span>
 <span class="normal">121</span>
-<span class="normal">122</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
+<span class="normal">122</span>
+<span class="normal">123</span>
+<span class="normal">124</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
     <span class="bp">self</span><span class="p">,</span>
     <span class="n">function</span><span class="p">:</span> <span class="n">Callable</span><span class="p">,</span>
     <span class="n">function_payload</span><span class="p">:</span> <span class="n">Any</span><span class="p">,</span>
@@ -3895,9 +3926,7 @@ If not supplied, no serialization is done via the NoOpSerializer</p>
 
             <details class="quote">
               <summary>Source code in <code>aws_lambda_powertools/utilities/idempotency/base.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">124</span>
-<span class="normal">125</span>
-<span class="normal">126</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">126</span>
 <span class="normal">127</span>
 <span class="normal">128</span>
 <span class="normal">129</span>
@@ -3913,7 +3942,9 @@ If not supplied, no serialization is done via the NoOpSerializer</p>
 <span class="normal">139</span>
 <span class="normal">140</span>
 <span class="normal">141</span>
-<span class="normal">142</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">handle</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Any</span><span class="p">:</span>
+<span class="normal">142</span>
+<span class="normal">143</span>
+<span class="normal">144</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">handle</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Any</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Main entry point for handling idempotent execution of a function.</span>
 

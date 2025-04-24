@@ -22,7 +22,7 @@
       
       
       <link rel="icon" href="../../media/aws-logo-light.svg">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.11">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.12">
     
     
       
@@ -30,7 +30,7 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.4af4bdda.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.2afb09e1.min.css">
       
         
         <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
@@ -845,6 +845,8 @@ You're not viewing the latest version.
       
         
       
+        
+      
     
     
     
@@ -919,6 +921,36 @@ You're not viewing the latest version.
     GraphQL API
     
   </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../core/event_handler/appsync_events/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    AppSync Events
+    
+  </span>
+  
+    
+  
+  
+    <span class="md-status md-status--new"></span>
+  
+
   
 
       </a>
@@ -3695,7 +3727,7 @@ You're not viewing the latest version.
     <span class="n">boto3_client</span><span class="p">:</span> <span class="n">S3Client</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="n">is_gzip</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
     <span class="n">is_csv</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-    <span class="o">**</span><span class="n">sdk_options</span>
+    <span class="o">**</span><span class="n">sdk_options</span><span class="p">,</span>
 <span class="p">)</span>
 </code></pre></div>
 
@@ -3944,9 +3976,7 @@ You're not viewing the latest version.
 
                   <details class="quote">
                     <summary>Source code in <code>aws_lambda_powertools/utilities/streaming/s3_object.py</code></summary>
-                    <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">60</span>
-<span class="normal">61</span>
-<span class="normal">62</span>
+                    <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">62</span>
 <span class="normal">63</span>
 <span class="normal">64</span>
 <span class="normal">65</span>
@@ -3975,7 +4005,9 @@ You're not viewing the latest version.
 <span class="normal">88</span>
 <span class="normal">89</span>
 <span class="normal">90</span>
-<span class="normal">91</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
+<span class="normal">91</span>
+<span class="normal">92</span>
+<span class="normal">93</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
     <span class="bp">self</span><span class="p">,</span>
     <span class="n">bucket</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
     <span class="n">key</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
@@ -4080,27 +4112,23 @@ You're not viewing the latest version.
 <a href="#aws_lambda_powertools.utilities.streaming.s3_object.S3Object.transform" class="headerlink" title="Permanent link">&para;</a></h3>
           <div class="doc-overloads">
 <div class="doc-signature highlight"><pre><span></span><code><span class="nf">transform</span><span class="p">(</span>
-    <span class="n">transformations</span><span class="p">:</span> <span class="p">(</span>
-        <span class="n">BaseTransform</span><span class="p">[</span><span class="n">T</span><span class="p">]</span> <span class="o">|</span> <span class="n">Sequence</span><span class="p">[</span><span class="n">BaseTransform</span><span class="p">[</span><span class="n">T</span><span class="p">]]</span>
-    <span class="p">),</span>
+    <span class="n">transformations</span><span class="p">:</span> <span class="n">BaseTransform</span><span class="p">[</span><span class="n">T</span><span class="p">]</span>
+    <span class="o">|</span> <span class="n">Sequence</span><span class="p">[</span><span class="n">BaseTransform</span><span class="p">[</span><span class="n">T</span><span class="p">]],</span>
     <span class="n">in_place</span><span class="p">:</span> <span class="n">Literal</span><span class="p">[</span><span class="kc">True</span><span class="p">],</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">T</span>
 </code></pre></div><div class="doc-signature highlight"><pre><span></span><code><span class="nf">transform</span><span class="p">(</span>
-    <span class="n">transformations</span><span class="p">:</span> <span class="p">(</span>
-        <span class="n">BaseTransform</span><span class="p">[</span><span class="n">T</span><span class="p">]</span> <span class="o">|</span> <span class="n">Sequence</span><span class="p">[</span><span class="n">BaseTransform</span><span class="p">[</span><span class="n">T</span><span class="p">]]</span>
-    <span class="p">),</span>
+    <span class="n">transformations</span><span class="p">:</span> <span class="n">BaseTransform</span><span class="p">[</span><span class="n">T</span><span class="p">]</span>
+    <span class="o">|</span> <span class="n">Sequence</span><span class="p">[</span><span class="n">BaseTransform</span><span class="p">[</span><span class="n">T</span><span class="p">]],</span>
     <span class="n">in_place</span><span class="p">:</span> <span class="n">Literal</span><span class="p">[</span><span class="kc">False</span><span class="p">],</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span>
 </code></pre></div><div class="doc-signature highlight"><pre><span></span><code><span class="nf">transform</span><span class="p">(</span>
-    <span class="n">transformations</span><span class="p">:</span> <span class="p">(</span>
-        <span class="n">BaseTransform</span><span class="p">[</span><span class="n">T</span><span class="p">]</span> <span class="o">|</span> <span class="n">Sequence</span><span class="p">[</span><span class="n">BaseTransform</span><span class="p">[</span><span class="n">T</span><span class="p">]]</span>
-    <span class="p">),</span>
+    <span class="n">transformations</span><span class="p">:</span> <span class="n">BaseTransform</span><span class="p">[</span><span class="n">T</span><span class="p">]</span>
+    <span class="o">|</span> <span class="n">Sequence</span><span class="p">[</span><span class="n">BaseTransform</span><span class="p">[</span><span class="n">T</span><span class="p">]],</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">T</span>
 </code></pre></div>          </div>
 <div class="doc-signature highlight"><pre><span></span><code><span class="nf">transform</span><span class="p">(</span>
-    <span class="n">transformations</span><span class="p">:</span> <span class="p">(</span>
-        <span class="n">BaseTransform</span><span class="p">[</span><span class="n">T</span><span class="p">]</span> <span class="o">|</span> <span class="n">Sequence</span><span class="p">[</span><span class="n">BaseTransform</span><span class="p">[</span><span class="n">T</span><span class="p">]]</span>
-    <span class="p">),</span>
+    <span class="n">transformations</span><span class="p">:</span> <span class="n">BaseTransform</span><span class="p">[</span><span class="n">T</span><span class="p">]</span>
+    <span class="o">|</span> <span class="n">Sequence</span><span class="p">[</span><span class="n">BaseTransform</span><span class="p">[</span><span class="n">T</span><span class="p">]],</span>
     <span class="n">in_place</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">T</span> <span class="o">|</span> <span class="kc">None</span>
 </code></pre></div>
@@ -4129,7 +4157,7 @@ You're not viewing the latest version.
               <p>
                   <span class="doc-param-annotation">
                     <b>TYPE:</b>
-                      <code><span title="aws_lambda_powertools.utilities.streaming.transformations.base.BaseTransform">BaseTransform</span>[<span title="aws_lambda_powertools.utilities.streaming.types.T">T</span>] | <a class="autorefs autorefs-external" title="typing.Sequence" href="https://docs.python.org/3/library/typing.html#typing.Sequence">Sequence</a>[<span title="aws_lambda_powertools.utilities.streaming.transformations.base.BaseTransform">BaseTransform</span>[<span title="aws_lambda_powertools.utilities.streaming.types.T">T</span>]]</code>
+                      <code><span title="aws_lambda_powertools.utilities.streaming.transformations.base.BaseTransform">BaseTransform</span>[<span title="aws_lambda_powertools.utilities.streaming.types.T">T</span>] | <a class="autorefs autorefs-external" title="collections.abc.Sequence" href="https://docs.python.org/3/library/collections.abc.html#collections.abc.Sequence">Sequence</a>[<span title="aws_lambda_powertools.utilities.streaming.transformations.base.BaseTransform">BaseTransform</span>[<span title="aws_lambda_powertools.utilities.streaming.types.T">T</span>]]</code>
                   </span>
               </p>
             </td>
@@ -4184,9 +4212,7 @@ You're not viewing the latest version.
 
             <details class="quote">
               <summary>Source code in <code>aws_lambda_powertools/utilities/streaming/s3_object.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">139</span>
-<span class="normal">140</span>
-<span class="normal">141</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">141</span>
 <span class="normal">142</span>
 <span class="normal">143</span>
 <span class="normal">144</span>
@@ -4229,7 +4255,9 @@ You're not viewing the latest version.
 <span class="normal">181</span>
 <span class="normal">182</span>
 <span class="normal">183</span>
-<span class="normal">184</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">transform</span><span class="p">(</span>
+<span class="normal">184</span>
+<span class="normal">185</span>
+<span class="normal">186</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">transform</span><span class="p">(</span>
     <span class="bp">self</span><span class="p">,</span>
     <span class="n">transformations</span><span class="p">:</span> <span class="n">BaseTransform</span><span class="p">[</span><span class="n">T</span><span class="p">]</span> <span class="o">|</span> <span class="n">Sequence</span><span class="p">[</span><span class="n">BaseTransform</span><span class="p">[</span><span class="n">T</span><span class="p">]],</span>
     <span class="n">in_place</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>

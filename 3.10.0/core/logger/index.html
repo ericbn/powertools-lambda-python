@@ -22,7 +22,7 @@
       
       
       <link rel="icon" href="../../media/aws-logo-light.svg">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.11">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.12">
     
     
       
@@ -30,7 +30,7 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.4af4bdda.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.2afb09e1.min.css">
       
         
         <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
@@ -999,6 +999,15 @@ You're not viewing the latest version.
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#adding-exception-notes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Adding exception notes
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -1575,6 +1584,8 @@ You're not viewing the latest version.
       
         
       
+        
+      
     
     
     
@@ -1649,6 +1660,36 @@ You're not viewing the latest version.
     GraphQL API
     
   </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../event_handler/appsync_events/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    AppSync Events
+    
+  </span>
+  
+    
+  
+  
+    <span class="md-status md-status--new"></span>
+  
+
   
 
       </a>
@@ -4305,6 +4346,15 @@ You're not viewing the latest version.
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#adding-exception-notes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Adding exception notes
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -6002,8 +6052,8 @@ You're not viewing the latest version.
 <span class="kn">from</span><span class="w"> </span><span class="nn">aws_lambda_powertools</span><span class="w"> </span><span class="kn">import</span> <span class="n">Logger</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">aws_lambda_powertools.utilities.typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">LambdaContext</span>
 
-<span class="n">ENDPOINT</span> <span class="o">=</span> <span class="s2">&quot;http://httpbin.org/status/500&quot;</span>
-<span class="n">logger</span> <span class="o">=</span> <span class="n">Logger</span><span class="p">()</span>
+<span class="n">ENDPOINT</span> <span class="o">=</span> <span class="s2">&quot;https://httpbin.org/status/500&quot;</span>
+<span class="n">logger</span> <span class="o">=</span> <span class="n">Logger</span><span class="p">(</span><span class="n">serialize_stacktrace</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 
 
 <span class="k">def</span><span class="w"> </span><span class="nf">lambda_handler</span><span class="p">(</span><span class="n">event</span><span class="p">:</span> <span class="nb">dict</span><span class="p">,</span> <span class="n">context</span><span class="p">:</span> <span class="n">LambdaContext</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
@@ -6137,7 +6187,7 @@ You're not viewing the latest version.
 <span class="kn">from</span><span class="w"> </span><span class="nn">aws_lambda_powertools</span><span class="w"> </span><span class="kn">import</span> <span class="n">Logger</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">aws_lambda_powertools.utilities.typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">LambdaContext</span>
 
-<span class="n">ENDPOINT</span> <span class="o">=</span> <span class="s2">&quot;http://httpbin.org/status/500&quot;</span>
+<span class="n">ENDPOINT</span> <span class="o">=</span> <span class="s2">&quot;https://httpbin.org/status/500&quot;</span>
 <span class="hll"><span class="n">logger</span> <span class="o">=</span> <span class="n">Logger</span><span class="p">(</span><span class="n">serialize_stacktrace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </span>
 
@@ -6212,6 +6262,78 @@ You're not viewing the latest version.
 </div>
 </div>
 </div>
+<h4 id="adding-exception-notes">Adding exception notes<a class="headerlink" href="#adding-exception-notes" title="Permanent link">&para;</a></h4>
+<p>You can add notes to exceptions, which <code>logger.exception</code> propagates via a new <code>exception_notes</code> key in the log line. This works only in <a href="https://peps.python.org/pep-0678/" rel="nofollow" target="_blank">Python 3.11 and later</a>.</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="17:2"><input checked="checked" id="logging_exception_notespy" name="__tabbed_17" type="radio" /><input id="logging_exception_notes_outputjson" name="__tabbed_17" type="radio" /><div class="tabbed-labels"><label for="logging_exception_notespy">logging_exception_notes.py</label><label for="logging_exception_notes_outputjson">logging_exception_notes_output.json</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">requests</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">aws_lambda_powertools</span><span class="w"> </span><span class="kn">import</span> <span class="n">Logger</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">aws_lambda_powertools.utilities.typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">LambdaContext</span>
+
+<span class="n">ENDPOINT</span> <span class="o">=</span> <span class="s2">&quot;https://httpbin.org/status/500&quot;</span>
+<span class="n">logger</span> <span class="o">=</span> <span class="n">Logger</span><span class="p">(</span><span class="n">serialize_stacktrace</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">lambda_handler</span><span class="p">(</span><span class="n">event</span><span class="p">:</span> <span class="nb">dict</span><span class="p">,</span> <span class="n">context</span><span class="p">:</span> <span class="n">LambdaContext</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">ret</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">ENDPOINT</span><span class="p">)</span>
+        <span class="n">ret</span><span class="o">.</span><span class="n">raise_for_status</span><span class="p">()</span>
+    <span class="k">except</span> <span class="n">requests</span><span class="o">.</span><span class="n">HTTPError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+<span class="hll">        <span class="n">e</span><span class="o">.</span><span class="n">add_note</span><span class="p">(</span><span class="s2">&quot;Can&#39;t connect to the endpoint&quot;</span><span class="p">)</span>  <span class="c1"># type: ignore[attr-defined]</span>
+</span>        <span class="n">logger</span><span class="o">.</span><span class="n">exception</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="s2">&quot;Unable to fullfil request&quot;</span><span class="p">)</span> <span class="kn">from</span><span class="w"> </span><span class="nn">e</span>
+
+    <span class="k">return</span> <span class="s2">&quot;hello world&quot;</span>
+</code></pre></div></td></tr></table></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;level&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ERROR&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;location&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;collect.handler:15&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;message&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Received a HTTP 5xx error&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;timestamp&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2021-05-03 11:47:12,494+0000&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;service&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;payment&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;exception_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;RuntimeError&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;exception&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Traceback (most recent call last):\n  File \&quot;&lt;input&gt;\&quot;, line 2, in &lt;module&gt; RuntimeError: Unable to fullfil request&quot;</span><span class="p">,</span>
+<span class="hll"><span class="w">    </span><span class="nt">&quot;exception_notes&quot;</span><span class="p">:[</span>
+</span><span class="hll"><span class="w">       </span><span class="s2">&quot;Can&#39;t connect to the endpoint&quot;</span>
+</span><span class="hll"><span class="w">    </span><span class="p">]</span>
+</span><span class="p">}</span>
+</code></pre></div></td></tr></table></div>
+</div>
+</div>
+</div>
 <h3 id="date-formatting">Date formatting<a class="headerlink" href="#date-formatting" title="Permanent link">&para;</a></h3>
 <p>Logger uses Python's standard logging date format with the addition of timezone: <code>2021-05-03 11:47:12,494+0000</code>.</p>
 <p>You can easily change the date format using one of the following parameters:</p>
@@ -6223,7 +6345,7 @@ You're not viewing the latest version.
 <summary>Prefer using <a href="https://docs.python.org/3/library/datetime.html#strftime-and-strptime-format-codes" rel="nofollow" target="_blank">datetime string formats</a>?</summary>
 <p>Use <code>use_datetime_directive</code> flag along with <code>datefmt</code> to instruct Logger to use <code>datetime</code> instead of <code>time.strftime</code>.</p>
 </details>
-<div class="tabbed-set tabbed-alternate" data-tabs="17:2"><input checked="checked" id="date_formattingpy" name="__tabbed_17" type="radio" /><input id="date_formatting_outputjson" name="__tabbed_17" type="radio" /><div class="tabbed-labels"><label for="date_formattingpy">date_formatting.py</label><label for="date_formatting_outputjson">date_formatting_output.json</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="18:2"><input checked="checked" id="date_formattingpy" name="__tabbed_18" type="radio" /><input id="date_formatting_outputjson" name="__tabbed_18" type="radio" /><div class="tabbed-labels"><label for="date_formattingpy">date_formatting.py</label><label for="date_formatting_outputjson">date_formatting_output.json</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
@@ -6326,7 +6448,7 @@ You're not viewing the latest version.
 <div class="admonition tip">
 <p class="admonition-title">This is useful when you want to reduce the number of log messages emitted while still having detailed logs when needed, such as when troubleshooting issues.</p>
 </div>
-<div class="tabbed-set tabbed-alternate" data-tabs="18:1"><input checked="checked" id="getting_started_with_buffering_logspy" name="__tabbed_18" type="radio" /><div class="tabbed-labels"><label for="getting_started_with_buffering_logspy">getting_started_with_buffering_logs.py</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="19:1"><input checked="checked" id="getting_started_with_buffering_logspy" name="__tabbed_19" type="radio" /><div class="tabbed-labels"><label for="getting_started_with_buffering_logspy">getting_started_with_buffering_logs.py</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
@@ -6393,7 +6515,7 @@ You're not viewing the latest version.
 <div class="admonition note">
 <p class="admonition-title">When <code>flush_on_error_log</code> is enabled, it automatically flushes for <code>logger.exception()</code>, <code>logger.error()</code>, and <code>logger.critical()</code> statements.</p>
 </div>
-<div class="tabbed-set tabbed-alternate" data-tabs="19:2"><input checked="checked" id="working_with_buffering_logs_different_levelspy" name="__tabbed_19" type="radio" /><input id="working_with_buffering_logs_disable_on_errorpy" name="__tabbed_19" type="radio" /><div class="tabbed-labels"><label for="working_with_buffering_logs_different_levelspy">working_with_buffering_logs_different_levels.py</label><label for="working_with_buffering_logs_disable_on_errorpy">working_with_buffering_logs_disable_on_error.py</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="20:2"><input checked="checked" id="working_with_buffering_logs_different_levelspy" name="__tabbed_20" type="radio" /><input id="working_with_buffering_logs_disable_on_errorpy" name="__tabbed_20" type="radio" /><div class="tabbed-labels"><label for="working_with_buffering_logs_different_levelspy">working_with_buffering_logs_different_levels.py</label><label for="working_with_buffering_logs_disable_on_errorpy">working_with_buffering_logs_disable_on_error.py</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
@@ -6489,7 +6611,7 @@ You're not viewing the latest version.
 </div>
 <h4 id="flushing-on-exceptions">Flushing on exceptions<a class="headerlink" href="#flushing-on-exceptions" title="Permanent link">&para;</a></h4>
 <p>Use the <code>@logger.inject_lambda_context</code> decorator to automatically flush buffered logs when an exception is raised in your Lambda function. This is done by setting the <code>flush_buffer_on_uncaught_error</code> option to <code>True</code> in the decorator.</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="20:1"><input checked="checked" id="working_with_buffering_logs_when_raise_exceptionpy" name="__tabbed_20" type="radio" /><div class="tabbed-labels"><label for="working_with_buffering_logs_when_raise_exceptionpy">working_with_buffering_logs_when_raise_exception.py</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="21:1"><input checked="checked" id="working_with_buffering_logs_when_raise_exceptionpy" name="__tabbed_21" type="radio" /><div class="tabbed-labels"><label for="working_with_buffering_logs_when_raise_exceptionpy">working_with_buffering_logs_when_raise_exception.py</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
@@ -6540,7 +6662,7 @@ You're not viewing the latest version.
 <p>Loggers created with the same <code>service_name</code> automatically inherit the buffer configuration from the first initialized logger with a buffer configuration.</p>
 <p>Child loggers instances inherit their parent's buffer configuration but maintain a separate buffer.</p>
 </div>
-<div class="tabbed-set tabbed-alternate" data-tabs="21:3"><input checked="checked" id="working_with_buffering_logs_creating_instancepy" name="__tabbed_21" type="radio" /><input id="working_with_buffering_logs_reusing_handlerpy" name="__tabbed_21" type="radio" /><input id="working_with_buffering_logs_reusing_functionpy" name="__tabbed_21" type="radio" /><div class="tabbed-labels"><label for="working_with_buffering_logs_creating_instancepy">working_with_buffering_logs_creating_instance.py</label><label for="working_with_buffering_logs_reusing_handlerpy">working_with_buffering_logs_reusing_handler.py</label><label for="working_with_buffering_logs_reusing_functionpy">working_with_buffering_logs_reusing_function.py</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="22:3"><input checked="checked" id="working_with_buffering_logs_creating_instancepy" name="__tabbed_22" type="radio" /><input id="working_with_buffering_logs_reusing_handlerpy" name="__tabbed_22" type="radio" /><input id="working_with_buffering_logs_reusing_functionpy" name="__tabbed_22" type="radio" /><div class="tabbed-labels"><label for="working_with_buffering_logs_creating_instancepy">working_with_buffering_logs_creating_instance.py</label><label for="working_with_buffering_logs_reusing_handlerpy">working_with_buffering_logs_reusing_handler.py</label><label for="working_with_buffering_logs_reusing_functionpy">working_with_buffering_logs_reusing_function.py</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
@@ -6737,7 +6859,7 @@ The log size is calculated based on the size of the log line in bytes. This incl
 <h3 id="working-with-thread-safe-keys">Working with thread-safe keys<a class="headerlink" href="#working-with-thread-safe-keys" title="Permanent link">&para;</a></h3>
 <h4 id="appending-thread-safe-additional-keys">Appending thread-safe additional keys<a class="headerlink" href="#appending-thread-safe-additional-keys" title="Permanent link">&para;</a></h4>
 <p>You can append your own thread-local keys in your existing Logger via the <code>thread_safe_append_keys</code> method</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="22:2"><input checked="checked" id="thread_safe_append_keyspy" name="__tabbed_22" type="radio" /><input id="thread_safe_append_keys_outputjson" name="__tabbed_22" type="radio" /><div class="tabbed-labels"><label for="thread_safe_append_keyspy">thread_safe_append_keys.py</label><label for="thread_safe_append_keys_outputjson">thread_safe_append_keys_output.json</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="23:2"><input checked="checked" id="thread_safe_append_keyspy" name="__tabbed_23" type="radio" /><input id="thread_safe_append_keys_outputjson" name="__tabbed_23" type="radio" /><div class="tabbed-labels"><label for="thread_safe_append_keyspy">thread_safe_append_keys.py</label><label for="thread_safe_append_keys_outputjson">thread_safe_append_keys_output.json</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
@@ -6830,7 +6952,7 @@ The log size is calculated based on the size of the log line in bytes. This incl
 <h4 id="removing-thread-safe-additional-keys">Removing thread-safe additional keys<a class="headerlink" href="#removing-thread-safe-additional-keys" title="Permanent link">&para;</a></h4>
 <p>You can remove any additional thread-local keys from Logger using either <code>thread_safe_remove_keys</code> or <code>thread_safe_clear_keys</code>.</p>
 <p>Use the <code>thread_safe_remove_keys</code> method to remove a list of thread-local keys that were previously added using the <code>thread_safe_append_keys</code> method.</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="23:2"><input checked="checked" id="thread_safe_remove_keyspy" name="__tabbed_23" type="radio" /><input id="thread_safe_remove_keys_outputjson" name="__tabbed_23" type="radio" /><div class="tabbed-labels"><label for="thread_safe_remove_keyspy">thread_safe_remove_keys.py</label><label for="thread_safe_remove_keys_outputjson">thread_safe_remove_keys_output.json</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="24:2"><input checked="checked" id="thread_safe_remove_keyspy" name="__tabbed_24" type="radio" /><input id="thread_safe_remove_keys_outputjson" name="__tabbed_24" type="radio" /><div class="tabbed-labels"><label for="thread_safe_remove_keyspy">thread_safe_remove_keys.py</label><label for="thread_safe_remove_keys_outputjson">thread_safe_remove_keys_output.json</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
@@ -6958,7 +7080,7 @@ The log size is calculated based on the size of the log line in bytes. This incl
 </div>
 <h4 id="clearing-thread-safe-additional-keys">Clearing thread-safe additional keys<a class="headerlink" href="#clearing-thread-safe-additional-keys" title="Permanent link">&para;</a></h4>
 <p>Use the <code>thread_safe_clear_keys</code> method to remove all thread-local keys that were previously added using the <code>thread_safe_append_keys</code> method.</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="24:2"><input checked="checked" id="thread_safe_clear_keyspy" name="__tabbed_24" type="radio" /><input id="thread_safe_clear_keys_outputjson" name="__tabbed_24" type="radio" /><div class="tabbed-labels"><label for="thread_safe_clear_keyspy">thread_safe_clear_keys.py</label><label for="thread_safe_clear_keys_outputjson">thread_safe_clear_keys_output.json</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="25:2"><input checked="checked" id="thread_safe_clear_keyspy" name="__tabbed_25" type="radio" /><input id="thread_safe_clear_keys_outputjson" name="__tabbed_25" type="radio" /><div class="tabbed-labels"><label for="thread_safe_clear_keyspy">thread_safe_clear_keys.py</label><label for="thread_safe_clear_keys_outputjson">thread_safe_clear_keys_output.json</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
@@ -7082,7 +7204,7 @@ The log size is calculated based on the size of the log line in bytes. This incl
 </div>
 <h4 id="accessing-thread-safe-currently-keys">Accessing thread-safe currently keys<a class="headerlink" href="#accessing-thread-safe-currently-keys" title="Permanent link">&para;</a></h4>
 <p>You can view all currently thread-local keys from the Logger state using the <code>thread_safe_get_current_keys()</code> method. This method is useful when you need to avoid overwriting keys that are already configured.</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="25:1"><input checked="checked" id="thread_safe_get_current_keyspy" name="__tabbed_25" type="radio" /><div class="tabbed-labels"><label for="thread_safe_get_current_keyspy">thread_safe_get_current_keys.py</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="26:1"><input checked="checked" id="thread_safe_get_current_keyspy" name="__tabbed_26" type="radio" /><div class="tabbed-labels"><label for="thread_safe_get_current_keyspy">thread_safe_get_current_keys.py</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
@@ -7119,7 +7241,7 @@ The log size is calculated based on the size of the log line in bytes. This incl
 <h3 id="reusing-logger-across-your-code">Reusing Logger across your code<a class="headerlink" href="#reusing-logger-across-your-code" title="Permanent link">&para;</a></h3>
 <p>Similar to <a href="../tracer/#reusing-tracer-across-your-code" target="_blank">Tracer</a>, a new instance that uses the same <code>service</code> name will reuse a previous Logger instance.</p>
 <p>Notice in the CloudWatch Logs output how <code>payment_id</code> appears as expected when logging in <code>collect.py</code>.</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="26:3"><input checked="checked" id="logger_reusepy" name="__tabbed_26" type="radio" /><input id="logger_reuse_paymentpy" name="__tabbed_26" type="radio" /><input id="logger_reuse_outputjson" name="__tabbed_26" type="radio" /><div class="tabbed-labels"><label for="logger_reusepy">logger_reuse.py</label><label for="logger_reuse_paymentpy">logger_reuse_payment.py</label><label for="logger_reuse_outputjson">logger_reuse_output.json</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="27:3"><input checked="checked" id="logger_reusepy" name="__tabbed_27" type="radio" /><input id="logger_reuse_paymentpy" name="__tabbed_27" type="radio" /><input id="logger_reuse_outputjson" name="__tabbed_27" type="radio" /><div class="tabbed-labels"><label for="logger_reusepy">logger_reuse.py</label><label for="logger_reuse_paymentpy">logger_reuse_payment.py</label><label for="logger_reuse_outputjson">logger_reuse_output.json</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
@@ -7212,7 +7334,7 @@ The log size is calculated based on the size of the log line in bytes. This incl
 <p>Example: Imagine an e-commerce checkout process where you want to understand rare payment gateway errors. With 10% sampling, you'll log detailed information for a small subset of transactions, making troubleshooting easier without generating excessive logs.</p>
 </details>
 <p>The sampling decision happens automatically with each invocation when using <code>@logger.inject_lambda_context</code> decorator.  When not using the decorator, you're in charge of refreshing it via <code>refresh_sample_rate_calculation</code> method. Skipping both may lead to unexpected sampling results.</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="27:3"><input checked="checked" id="sampling_debug_logs_with_decoratorpy" name="__tabbed_27" type="radio" /><input id="sampling_debug_logs_with_standalone_functionpy" name="__tabbed_27" type="radio" /><input id="sampling_debug_logs_outputjson" name="__tabbed_27" type="radio" /><div class="tabbed-labels"><label for="sampling_debug_logs_with_decoratorpy">sampling_debug_logs_with_decorator.py</label><label for="sampling_debug_logs_with_standalone_functionpy">sampling_debug_logs_with_standalone_function.py</label><label for="sampling_debug_logs_outputjson">sampling_debug_logs_output.json</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="28:3"><input checked="checked" id="sampling_debug_logs_with_decoratorpy" name="__tabbed_28" type="radio" /><input id="sampling_debug_logs_with_standalone_functionpy" name="__tabbed_28" type="radio" /><input id="sampling_debug_logs_outputjson" name="__tabbed_28" type="radio" /><div class="tabbed-labels"><label for="sampling_debug_logs_with_decoratorpy">sampling_debug_logs_with_decorator.py</label><label for="sampling_debug_logs_with_standalone_functionpy">sampling_debug_logs_with_standalone_function.py</label><label for="sampling_debug_logs_outputjson">sampling_debug_logs_output.json</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
@@ -7458,7 +7580,7 @@ The log size is calculated based on the size of the log line in bytes. This incl
 </center></p>
 <p>For inheritance, Logger uses <code>child</code> parameter to ensure we don't compete with its parents config. We name child Loggers following Python's convention: <em><code>{service}</code>.<code>{filename}</code></em>.</p>
 <p>Changes are bidirectional between parents and loggers. That is, appending a key in a child or parent will ensure both have them. This means, having the same <code>service</code> name is important when instantiating them.</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="28:2"><input checked="checked" id="logging_inheritance_goodpy" name="__tabbed_28" type="radio" /><input id="logging_inheritance_modulepy" name="__tabbed_28" type="radio" /><div class="tabbed-labels"><label for="logging_inheritance_goodpy">logging_inheritance_good.py</label><label for="logging_inheritance_modulepy">logging_inheritance_module.py</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="29:2"><input checked="checked" id="logging_inheritance_goodpy" name="__tabbed_29" type="radio" /><input id="logging_inheritance_modulepy" name="__tabbed_29" type="radio" /><div class="tabbed-labels"><label for="logging_inheritance_goodpy">logging_inheritance_good.py</label><label for="logging_inheritance_modulepy">logging_inheritance_module.py</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
@@ -7523,7 +7645,7 @@ The log size is calculated based on the size of the log line in bytes. This incl
 </ul>
 </li>
 </ol>
-<div class="tabbed-set tabbed-alternate" data-tabs="29:2"><input checked="checked" id="logging_inheritance_badpy" name="__tabbed_29" type="radio" /><input id="logging_inheritance_modulepy_1" name="__tabbed_29" type="radio" /><div class="tabbed-labels"><label for="logging_inheritance_badpy">logging_inheritance_bad.py</label><label for="logging_inheritance_modulepy_1">logging_inheritance_module.py</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="30:2"><input checked="checked" id="logging_inheritance_badpy" name="__tabbed_30" type="radio" /><input id="logging_inheritance_modulepy_1" name="__tabbed_30" type="radio" /><div class="tabbed-labels"><label for="logging_inheritance_badpy">logging_inheritance_bad.py</label><label for="logging_inheritance_modulepy_1">logging_inheritance_module.py</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
@@ -7580,7 +7702,7 @@ The log size is calculated based on the size of the log line in bytes. This incl
 <h4 id="overriding-log-records">Overriding Log records<a class="headerlink" href="#overriding-log-records" title="Permanent link">&para;</a></h4>
 <p>You might want to continue to use the same date formatting style, or override <code>location</code> to display the <code>package.function_name:line_number</code> as you previously had.</p>
 <p>Logger allows you to either change the format or suppress the following keys at initialization: <code>location</code>, <code>timestamp</code>, <code>xray_trace_id</code>.</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="30:2"><input checked="checked" id="overriding_log_recordspy" name="__tabbed_30" type="radio" /><input id="overriding_log_records_outputjson" name="__tabbed_30" type="radio" /><div class="tabbed-labels"><label for="overriding_log_recordspy">overriding_log_records.py</label><label for="overriding_log_records_outputjson">overriding_log_records_output.json</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="31:2"><input checked="checked" id="overriding_log_recordspy" name="__tabbed_31" type="radio" /><input id="overriding_log_records_outputjson" name="__tabbed_31" type="radio" /><div class="tabbed-labels"><label for="overriding_log_recordspy">overriding_log_records.py</label><label for="overriding_log_records_outputjson">overriding_log_records_output.json</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
@@ -7642,7 +7764,7 @@ The log size is calculated based on the size of the log line in bytes. This incl
 </div>
 <h4 id="reordering-log-keys-position">Reordering log keys position<a class="headerlink" href="#reordering-log-keys-position" title="Permanent link">&para;</a></h4>
 <p>You can change the order of <a href="#standard-structured-keys">standard Logger keys</a> or any keys that will be appended later at runtime via the <code>log_record_order</code> parameter.</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="31:2"><input checked="checked" id="reordering_log_keyspy" name="__tabbed_31" type="radio" /><input id="reordering_log_keys_outputjson" name="__tabbed_31" type="radio" /><div class="tabbed-labels"><label for="reordering_log_keyspy">reordering_log_keys.py</label><label for="reordering_log_keys_outputjson">reordering_log_keys_output.json</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="32:2"><input checked="checked" id="reordering_log_keyspy" name="__tabbed_32" type="radio" /><input id="reordering_log_keys_outputjson" name="__tabbed_32" type="radio" /><div class="tabbed-labels"><label for="reordering_log_keyspy">reordering_log_keys.py</label><label for="reordering_log_keys_outputjson">reordering_log_keys_output.json</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
@@ -7716,7 +7838,7 @@ The log size is calculated based on the size of the log line in bytes. This incl
 <summary>Tip</summary>
 <p><code>TZ</code> environment variable will be ignored if <code>utc</code> is set to <code>True</code></p>
 </details>
-<div class="tabbed-set tabbed-alternate" data-tabs="32:2"><input checked="checked" id="setting_custom_timezonepy" name="__tabbed_32" type="radio" /><input id="setting_custom_timezone_outputjson" name="__tabbed_32" type="radio" /><div class="tabbed-labels"><label for="setting_custom_timezonepy">setting_custom_timezone.py</label><label for="setting_custom_timezone_outputjson">setting_custom_timezone_output.json</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="33:2"><input checked="checked" id="setting_custom_timezonepy" name="__tabbed_33" type="radio" /><input id="setting_custom_timezone_outputjson" name="__tabbed_33" type="radio" /><div class="tabbed-labels"><label for="setting_custom_timezonepy">setting_custom_timezone.py</label><label for="setting_custom_timezone_outputjson">setting_custom_timezone_output.json</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
@@ -7787,7 +7909,7 @@ The log size is calculated based on the size of the log line in bytes. This incl
 </div>
 <h4 id="custom-function-for-unserializable-values">Custom function for unserializable values<a class="headerlink" href="#custom-function-for-unserializable-values" title="Permanent link">&para;</a></h4>
 <p>By default, Logger uses <code>str</code> to handle values non-serializable by JSON. You can override this behavior via <code>json_default</code> parameter by passing a Callable:</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="33:2"><input checked="checked" id="unserializable_valuespy" name="__tabbed_33" type="radio" /><input id="unserializable_values_outputjson" name="__tabbed_33" type="radio" /><div class="tabbed-labels"><label for="unserializable_valuespy">unserializable_values.py</label><label for="unserializable_values_outputjson">unserializable_values_output.json</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="34:2"><input checked="checked" id="unserializable_valuespy" name="__tabbed_34" type="radio" /><input id="unserializable_values_outputjson" name="__tabbed_34" type="radio" /><div class="tabbed-labels"><label for="unserializable_valuespy">unserializable_values.py</label><label for="unserializable_values_outputjson">unserializable_values_output.json</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
@@ -7884,7 +8006,7 @@ The log size is calculated based on the size of the log line in bytes. This incl
 <p>The most common use cases are remapping keys by bringing your existing schema, and redacting sensitive information you know upfront.</p>
 </details>
 <p>For these, you can override the <code>serialize</code> method from <a href="#lambdapowertoolsformatter">LambdaPowertoolsFormatter</a>.</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="34:2"><input checked="checked" id="bring_your_own_formatterpy" name="__tabbed_34" type="radio" /><input id="bring_your_own_formatter_outputjson" name="__tabbed_34" type="radio" /><div class="tabbed-labels"><label for="bring_your_own_formatterpy">bring_your_own_formatter.py</label><label for="bring_your_own_formatter_outputjson">bring_your_own_formatter_output.json</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="35:2"><input checked="checked" id="bring_your_own_formatterpy" name="__tabbed_35" type="radio" /><input id="bring_your_own_formatter_outputjson" name="__tabbed_35" type="radio" /><div class="tabbed-labels"><label for="bring_your_own_formatterpy">bring_your_own_formatter.py</label><label for="bring_your_own_formatter_outputjson">bring_your_own_formatter_output.json</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
@@ -7944,7 +8066,7 @@ The log size is calculated based on the size of the log line in bytes. This incl
 <summary>Warning</summary>
 <p>You will need to implement <code>append_keys</code>, <code>clear_state</code>, override <code>format</code>, and optionally <code>get_current_keys</code>, and <code>remove_keys</code> to keep the same feature set Powertools for AWS Lambda (Python) Logger provides. This also means tracking the added logging keys.</p>
 </details>
-<div class="tabbed-set tabbed-alternate" data-tabs="35:2"><input checked="checked" id="bring_your_own_formatter_from_scratchpy" name="__tabbed_35" type="radio" /><input id="bring_your_own_formatter_from_scratch_outputjson" name="__tabbed_35" type="radio" /><div class="tabbed-labels"><label for="bring_your_own_formatter_from_scratchpy">bring_your_own_formatter_from_scratch.py</label><label for="bring_your_own_formatter_from_scratch_outputjson">bring_your_own_formatter_from_scratch_output.json</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="36:2"><input checked="checked" id="bring_your_own_formatter_from_scratchpy" name="__tabbed_36" type="radio" /><input id="bring_your_own_formatter_from_scratch_outputjson" name="__tabbed_36" type="radio" /><div class="tabbed-labels"><label for="bring_your_own_formatter_from_scratchpy">bring_your_own_formatter_from_scratch.py</label><label for="bring_your_own_formatter_from_scratch_outputjson">bring_your_own_formatter_from_scratch_output.json</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
@@ -8109,7 +8231,7 @@ The log size is calculated based on the size of the log line in bytes. This incl
 <h3 id="inject-lambda-context">Inject Lambda Context<a class="headerlink" href="#inject-lambda-context" title="Permanent link">&para;</a></h3>
 <p>When unit testing your code that makes use of <code>inject_lambda_context</code> decorator, you need to pass a dummy Lambda Context, or else Logger will fail.</p>
 <p>This is a Pytest sample that provides the minimum information necessary for Logger to succeed:</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="36:2"><input checked="checked" id="fake_lambda_context_for_loggerpy" name="__tabbed_36" type="radio" /><input id="fake_lambda_context_for_logger_modulepy" name="__tabbed_36" type="radio" /><div class="tabbed-labels"><label for="fake_lambda_context_for_loggerpy">fake_lambda_context_for_logger.py</label><label for="fake_lambda_context_for_logger_modulepy">fake_lambda_context_for_logger_module.py</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="37:2"><input checked="checked" id="fake_lambda_context_for_loggerpy" name="__tabbed_37" type="radio" /><input id="fake_lambda_context_for_logger_modulepy" name="__tabbed_37" type="radio" /><div class="tabbed-labels"><label for="fake_lambda_context_for_loggerpy">fake_lambda_context_for_logger.py</label><label for="fake_lambda_context_for_logger_modulepy">fake_lambda_context_for_logger_module.py</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
@@ -8268,7 +8390,7 @@ for the given name and level to the logging module. By default, this logs all bo
 <p>The Python standard library log records contains a <a href="https://docs.python.org/3/library/logging.html#logrecord-attributes" rel="nofollow" target="_blank">large set of attributes</a>, however only a few are included in Powertools for AWS Lambda (Python) Logger log record by default.</p>
 <p>You can include any of these logging attributes as key value arguments (<code>kwargs</code>) when instantiating <code>Logger</code> or <code>LambdaPowertoolsFormatter</code>.</p>
 <p>You can also add them later anywhere in your code with <code>append_keys</code>, or remove them with <code>remove_keys</code> methods.</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="37:2"><input checked="checked" id="append_and_remove_keyspy" name="__tabbed_37" type="radio" /><input id="append_and_remove_keys_outputjson" name="__tabbed_37" type="radio" /><div class="tabbed-labels"><label for="append_and_remove_keyspy">append_and_remove_keys.py</label><label for="append_and_remove_keys_outputjson">append_and_remove_keys_output.json</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="38:2"><input checked="checked" id="append_and_remove_keyspy" name="__tabbed_38" type="radio" /><input id="append_and_remove_keys_outputjson" name="__tabbed_38" type="radio" /><div class="tabbed-labels"><label for="append_and_remove_keyspy">append_and_remove_keys.py</label><label for="append_and_remove_keys_outputjson">append_and_remove_keys_output.json</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
@@ -8344,7 +8466,7 @@ for the given name and level to the logging module. By default, this logs all bo
 <h3 id="whats-the-difference-between-append_keys-and-extra">What's the difference between <code>append_keys</code> and <code>extra</code>?<a class="headerlink" href="#whats-the-difference-between-append_keys-and-extra" title="Permanent link">&para;</a></h3>
 <p>Keys added with <code>append_keys</code> will persist across multiple log messages while keys added via <code>extra</code> will only be available in a given log message operation.</p>
 <p>Here's an example where we persist <code>payment_id</code> not <code>request_id</code>. Note that <code>payment_id</code> remains in both log messages while <code>booking_id</code> is only available in the first message.</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="38:2"><input checked="checked" id="append_keys_vs_extrapy" name="__tabbed_38" type="radio" /><input id="append_keys_vs_extra_outputjson" name="__tabbed_38" type="radio" /><div class="tabbed-labels"><label for="append_keys_vs_extrapy">append_keys_vs_extra.py</label><label for="append_keys_vs_extra_outputjson">append_keys_vs_extra_output.json</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="39:2"><input checked="checked" id="append_keys_vs_extrapy" name="__tabbed_39" type="radio" /><input id="append_keys_vs_extra_outputjson" name="__tabbed_39" type="radio" /><div class="tabbed-labels"><label for="append_keys_vs_extrapy">append_keys_vs_extra.py</label><label for="append_keys_vs_extra_outputjson">append_keys_vs_extra_output.json</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
@@ -8373,8 +8495,7 @@ for the given name and level to the logging module. By default, this logs all bo
 <span class="normal">24</span>
 <span class="normal">25</span>
 <span class="normal">26</span>
-<span class="normal">27</span>
-<span class="normal">28</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+<span class="normal">27</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="nn">requests</span>
 
@@ -8384,21 +8505,20 @@ for the given name and level to the logging module. By default, this logs all bo
 <span class="n">logger</span> <span class="o">=</span> <span class="n">Logger</span><span class="p">(</span><span class="n">service</span><span class="o">=</span><span class="s2">&quot;payment&quot;</span><span class="p">)</span>
 
 
-<span class="k">class</span><span class="w"> </span><span class="nc">PaymentError</span><span class="p">(</span><span class="ne">Exception</span><span class="p">):</span>
-    <span class="o">...</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">PaymentError</span><span class="p">(</span><span class="ne">Exception</span><span class="p">):</span> <span class="o">...</span>
 
 
 <span class="k">def</span><span class="w"> </span><span class="nf">lambda_handler</span><span class="p">(</span><span class="n">event</span><span class="p">,</span> <span class="n">context</span><span class="p">):</span>
-<span class="hll">    <span class="n">logger</span><span class="o">.</span><span class="n">append_keys</span><span class="p">(</span><span class="n">payment_id</span><span class="o">=</span><span class="s2">&quot;123456789&quot;</span><span class="p">)</span>
-</span>    <span class="n">charge_id</span> <span class="o">=</span> <span class="n">event</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;charge_id&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>
-
+    <span class="n">logger</span><span class="o">.</span><span class="n">append_keys</span><span class="p">(</span><span class="n">payment_id</span><span class="o">=</span><span class="s2">&quot;123456789&quot;</span><span class="p">)</span>
+<span class="hll">    <span class="n">charge_id</span> <span class="o">=</span> <span class="n">event</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;charge_id&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>
+</span>
     <span class="k">try</span><span class="p">:</span>
         <span class="n">ret</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">ENDPOINT</span><span class="si">}</span><span class="s2">/collect&quot;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;charge_id&quot;</span><span class="p">:</span> <span class="n">charge_id</span><span class="p">})</span>
         <span class="n">ret</span><span class="o">.</span><span class="n">raise_for_status</span><span class="p">()</span>
 
-<span class="hll">        <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Charge collected successfully&quot;</span><span class="p">,</span> <span class="n">extra</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;charge_id&quot;</span><span class="p">:</span> <span class="n">charge_id</span><span class="p">})</span>
-</span>        <span class="k">return</span> <span class="n">ret</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
-    <span class="k">except</span> <span class="n">requests</span><span class="o">.</span><span class="n">HTTPError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Charge collected successfully&quot;</span><span class="p">,</span> <span class="n">extra</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;charge_id&quot;</span><span class="p">:</span> <span class="n">charge_id</span><span class="p">})</span>
+<span class="hll">        <span class="k">return</span> <span class="n">ret</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+</span>    <span class="k">except</span> <span class="n">requests</span><span class="o">.</span><span class="n">HTTPError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
         <span class="k">raise</span> <span class="n">PaymentError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Unable to collect payment for charge </span><span class="si">{</span><span class="n">charge_id</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span> <span class="kn">from</span><span class="w"> </span><span class="nn">e</span>
 
     <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;goodbye&quot;</span><span class="p">)</span>
@@ -8473,7 +8593,7 @@ for the given name and level to the logging module. By default, this logs all bo
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    2025-03-20
+    2025-04-15
   </span>
 
     

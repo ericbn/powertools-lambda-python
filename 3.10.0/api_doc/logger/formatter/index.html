@@ -22,7 +22,7 @@
       
       
       <link rel="icon" href="../../../media/aws-logo-light.svg">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.11">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.12">
     
     
       
@@ -30,7 +30,7 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.4af4bdda.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.2afb09e1.min.css">
       
         
         <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
@@ -845,6 +845,8 @@ You're not viewing the latest version.
       
         
       
+        
+      
     
     
     
@@ -919,6 +921,36 @@ You're not viewing the latest version.
     GraphQL API
     
   </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../core/event_handler/appsync_events/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    AppSync Events
+    
+  </span>
+  
+    
+  
+  
+    <span class="md-status md-status--new"></span>
+  
+
   
 
       </a>
@@ -3741,10 +3773,10 @@ You're not viewing the latest version.
 
             <details class="quote">
               <summary>Source code in <code>aws_lambda_powertools/logging/formatter.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">61</span>
-<span class="normal">62</span>
-<span class="normal">63</span>
-<span class="normal">64</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@abstractmethod</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">63</span>
+<span class="normal">64</span>
+<span class="normal">65</span>
+<span class="normal">66</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@abstractmethod</span>
 <span class="k">def</span><span class="w"> </span><span class="nf">clear_state</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Removes any previously added logging keys&quot;&quot;&quot;</span>
     <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">()</span>
@@ -3772,9 +3804,9 @@ You're not viewing the latest version.
 
             <details class="quote">
               <summary>Source code in <code>aws_lambda_powertools/logging/formatter.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">81</span>
-<span class="normal">82</span>
-<span class="normal">83</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">thread_safe_clear_keys</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">83</span>
+<span class="normal">84</span>
+<span class="normal">85</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">thread_safe_clear_keys</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Removes any previously added logging keys in a specific thread&quot;&quot;&quot;</span>
     <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">()</span>
 </code></pre></div></td></tr></table></div>
@@ -3801,13 +3833,12 @@ You're not viewing the latest version.
 
 <a href="#aws_lambda_powertools.logging.formatter.LambdaPowertoolsFormatter" class="headerlink" title="Permanent link">&para;</a></h2>
 <div class="doc-signature highlight"><pre><span></span><code><span class="nf">LambdaPowertoolsFormatter</span><span class="p">(</span>
-    <span class="n">json_serializer</span><span class="p">:</span> <span class="p">(</span>
-        <span class="n">Callable</span><span class="p">[[</span><span class="n">LogRecord</span><span class="p">],</span> <span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span>
-    <span class="p">)</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-    <span class="n">json_deserializer</span><span class="p">:</span> <span class="p">(</span>
-        <span class="n">Callable</span><span class="p">[[</span><span class="nb">dict</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="nb">bool</span> <span class="o">|</span> <span class="nb">int</span> <span class="o">|</span> <span class="nb">float</span><span class="p">],</span> <span class="nb">str</span><span class="p">]</span>
-        <span class="o">|</span> <span class="kc">None</span>
-    <span class="p">)</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">json_serializer</span><span class="p">:</span> <span class="n">Callable</span><span class="p">[[</span><span class="n">LogRecord</span><span class="p">],</span> <span class="nb">str</span><span class="p">]</span>
+    <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">json_deserializer</span><span class="p">:</span> <span class="n">Callable</span><span class="p">[</span>
+        <span class="p">[</span><span class="nb">dict</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="nb">bool</span> <span class="o">|</span> <span class="nb">int</span> <span class="o">|</span> <span class="nb">float</span><span class="p">],</span> <span class="nb">str</span>
+    <span class="p">]</span>
+    <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="n">json_default</span><span class="p">:</span> <span class="n">Callable</span><span class="p">[[</span><span class="n">Any</span><span class="p">],</span> <span class="n">Any</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="n">datefmt</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="n">use_datetime_directive</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
@@ -3815,7 +3846,7 @@ You're not viewing the latest version.
     <span class="n">utc</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
     <span class="n">use_rfc3339</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
     <span class="n">serialize_stacktrace</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
-    <span class="o">**</span><span class="n">kwargs</span>
+    <span class="o">**</span><span class="n">kwargs</span><span class="p">,</span>
 <span class="p">)</span>
 </code></pre></div>
 
@@ -3853,7 +3884,7 @@ the structured json logs. By default the order is: "level", "location", "message
               <p>
                   <span class="doc-param-annotation">
                     <b>TYPE:</b>
-                      <code><a class="autorefs autorefs-external" title="typing.Callable" href="https://docs.python.org/3/library/typing.html#typing.Callable">Callable</a></code>
+                      <code><a class="autorefs autorefs-external" title="collections.abc.Callable" href="https://docs.python.org/3/library/collections.abc.html#collections.abc.Callable">Callable</a></code>
                   </span>
                   <span class="doc-param-default">
                     <b>DEFAULT:</b>
@@ -3874,7 +3905,7 @@ by default json.loads</p>
               <p>
                   <span class="doc-param-annotation">
                     <b>TYPE:</b>
-                      <code><a class="autorefs autorefs-external" title="typing.Callable" href="https://docs.python.org/3/library/typing.html#typing.Callable">Callable</a></code>
+                      <code><a class="autorefs autorefs-external" title="collections.abc.Callable" href="https://docs.python.org/3/library/collections.abc.html#collections.abc.Callable">Callable</a></code>
                   </span>
                   <span class="doc-param-default">
                     <b>DEFAULT:</b>
@@ -3895,7 +3926,7 @@ by default json.loads</p>
               <p>
                   <span class="doc-param-annotation">
                     <b>TYPE:</b>
-                      <code><a class="autorefs autorefs-external" title="typing.Callable" href="https://docs.python.org/3/library/typing.html#typing.Callable">Callable</a></code>
+                      <code><a class="autorefs autorefs-external" title="collections.abc.Callable" href="https://docs.python.org/3/library/collections.abc.html#collections.abc.Callable">Callable</a></code>
                   </span>
                   <span class="doc-param-default">
                     <b>DEFAULT:</b>
@@ -4076,9 +4107,7 @@ e.g., 2022-10-27T16:27:43.738+02:00.</p>
 
                   <details class="quote">
                     <summary>Source code in <code>aws_lambda_powertools/logging/formatter.py</code></summary>
-                    <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 97</span>
-<span class="normal"> 98</span>
-<span class="normal"> 99</span>
+                    <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 99</span>
 <span class="normal">100</span>
 <span class="normal">101</span>
 <span class="normal">102</span>
@@ -4163,7 +4192,9 @@ e.g., 2022-10-27T16:27:43.738+02:00.</p>
 <span class="normal">181</span>
 <span class="normal">182</span>
 <span class="normal">183</span>
-<span class="normal">184</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
+<span class="normal">184</span>
+<span class="normal">185</span>
+<span class="normal">186</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
     <span class="bp">self</span><span class="p">,</span>
     <span class="n">json_serializer</span><span class="p">:</span> <span class="n">Callable</span><span class="p">[[</span><span class="n">LogRecord</span><span class="p">],</span> <span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="n">json_deserializer</span><span class="p">:</span> <span class="n">Callable</span><span class="p">[[</span><span class="nb">dict</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="nb">bool</span> <span class="o">|</span> <span class="nb">int</span> <span class="o">|</span> <span class="nb">float</span><span class="p">],</span> <span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
@@ -4330,10 +4361,7 @@ logger.info(&quot;Log without context&quot;)
 
             <details class="quote">
               <summary>Source code in <code>aws_lambda_powertools/logging/formatter.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">271</span>
-<span class="normal">272</span>
-<span class="normal">273</span>
-<span class="normal">274</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">274</span>
 <span class="normal">275</span>
 <span class="normal">276</span>
 <span class="normal">277</span>
@@ -4353,7 +4381,10 @@ logger.info(&quot;Log without context&quot;)
 <span class="normal">291</span>
 <span class="normal">292</span>
 <span class="normal">293</span>
-<span class="normal">294</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@contextmanager</span>
+<span class="normal">294</span>
+<span class="normal">295</span>
+<span class="normal">296</span>
+<span class="normal">297</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@contextmanager</span>
 <span class="k">def</span><span class="w"> </span><span class="nf">append_context_keys</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">additional_keys</span><span class="p">:</span> <span class="n">Any</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Generator</span><span class="p">[</span><span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">]:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Context manager to temporarily add logging keys.</span>
@@ -4401,9 +4432,7 @@ logger.info(&quot;Log without context&quot;)
 
             <details class="quote">
               <summary>Source code in <code>aws_lambda_powertools/logging/formatter.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">190</span>
-<span class="normal">191</span>
-<span class="normal">192</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">192</span>
 <span class="normal">193</span>
 <span class="normal">194</span>
 <span class="normal">195</span>
@@ -4417,16 +4446,20 @@ logger.info(&quot;Log without context&quot;)
 <span class="normal">203</span>
 <span class="normal">204</span>
 <span class="normal">205</span>
-<span class="normal">206</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">format</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">record</span><span class="p">:</span> <span class="n">logging</span><span class="o">.</span><span class="n">LogRecord</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>  <span class="c1"># noqa: A003</span>
+<span class="normal">206</span>
+<span class="normal">207</span>
+<span class="normal">208</span>
+<span class="normal">209</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">format</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">record</span><span class="p">:</span> <span class="n">logging</span><span class="o">.</span><span class="n">LogRecord</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>  <span class="c1"># noqa: A003</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Format logging record as structured JSON str&quot;&quot;&quot;</span>
     <span class="n">formatted_log</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_extract_log_keys</span><span class="p">(</span><span class="n">log_record</span><span class="o">=</span><span class="n">record</span><span class="p">)</span>
     <span class="n">formatted_log</span><span class="p">[</span><span class="s2">&quot;message&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_extract_log_message</span><span class="p">(</span><span class="n">log_record</span><span class="o">=</span><span class="n">record</span><span class="p">)</span>
 
     <span class="c1"># exception and exception_name fields can be added as extra key</span>
     <span class="c1"># in any log level, we try to extract and use them first</span>
-    <span class="n">extracted_exception</span><span class="p">,</span> <span class="n">extracted_exception_name</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_extract_log_exception</span><span class="p">(</span><span class="n">log_record</span><span class="o">=</span><span class="n">record</span><span class="p">)</span>
+    <span class="n">extracted_exception</span><span class="p">,</span> <span class="n">extracted_exception_name</span><span class="p">,</span> <span class="n">exception_notes</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_extract_log_exception</span><span class="p">(</span><span class="n">log_record</span><span class="o">=</span><span class="n">record</span><span class="p">)</span>
     <span class="n">formatted_log</span><span class="p">[</span><span class="s2">&quot;exception&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">formatted_log</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;exception&quot;</span><span class="p">,</span> <span class="n">extracted_exception</span><span class="p">)</span>
     <span class="n">formatted_log</span><span class="p">[</span><span class="s2">&quot;exception_name&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">formatted_log</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;exception_name&quot;</span><span class="p">,</span> <span class="n">extracted_exception_name</span><span class="p">)</span>
+    <span class="n">formatted_log</span><span class="p">[</span><span class="s2">&quot;exception_notes&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">formatted_log</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;exception_notes&quot;</span><span class="p">,</span> <span class="n">exception_notes</span><span class="p">)</span>
     <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">serialize_stacktrace</span><span class="p">:</span>
         <span class="c1"># Generate the traceback from the traceback library</span>
         <span class="n">formatted_log</span><span class="p">[</span><span class="s2">&quot;stack_trace&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_serialize_stacktrace</span><span class="p">(</span><span class="n">log_record</span><span class="o">=</span><span class="n">record</span><span class="p">)</span>
@@ -4458,9 +4491,9 @@ logger.info(&quot;Log without context&quot;)
 
             <details class="quote">
               <summary>Source code in <code>aws_lambda_powertools/logging/formatter.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">186</span>
-<span class="normal">187</span>
-<span class="normal">188</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">serialize</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">log</span><span class="p">:</span> <span class="n">LogRecord</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">188</span>
+<span class="normal">189</span>
+<span class="normal">190</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">serialize</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">log</span><span class="p">:</span> <span class="n">LogRecord</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Serialize structured log dict to JSON str&quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">json_serializer</span><span class="p">(</span><span class="n">log</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>

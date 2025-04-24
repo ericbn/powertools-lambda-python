@@ -22,7 +22,7 @@
       
       
       <link rel="icon" href="../../../media/aws-logo-light.svg">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.11">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.12">
     
     
       
@@ -30,7 +30,7 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.4af4bdda.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.2afb09e1.min.css">
       
         
         <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
@@ -855,6 +855,8 @@ You're not viewing the latest version.
       
         
       
+        
+      
     
     
     
@@ -1615,6 +1617,36 @@ You're not viewing the latest version.
     GraphQL API
     
   </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../appsync_events/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    AppSync Events
+    
+  </span>
+  
+    
+  
+  
+    <span class="md-status md-status--new"></span>
+  
+
   
 
       </a>
@@ -4710,8 +4742,7 @@ You're not viewing the latest version.
 <div class="admonition info">
 <p class="admonition-title">This is not necessary if you're installing Powertools for AWS Lambda (Python) via <a href="../../../#lambda-layer" target="_blank">Lambda Layer/SAR</a>.</p>
 </div>
-<p><strong>When using the data validation feature</strong>, you need to add <code>pydantic</code> as a dependency in your preferred tool <em>e.g., requirements.txt, pyproject.toml</em>.</p>
-<p>As of now, both Pydantic V1 and V2 are supported. For a future major version, we will only support Pydantic V2.</p>
+<p><strong>When using the data validation feature</strong>, you need to add <code>pydantic</code> as a dependency in your preferred tool <em>e.g., requirements.txt, pyproject.toml</em>. At this time, we only support Pydantic V2.</p>
 <h3 id="required-resources">Required resources<a class="headerlink" href="#required-resources" title="Permanent link">&para;</a></h3>
 <!-- markdownlint-disable-next-line MD013 -->
 <p>If you're using any API Gateway integration, you must have an existing <a href="https://docs.aws.amazon.com/apigateway/latest/developerguide/set-up-lambda-proxy-integrations.html" target="_blank">API Gateway Proxy integration</a> or <a href="https://docs.aws.amazon.com/elasticloadbalancing/latest/application/lambda-functions.html" target="_blank">ALB</a> configured to invoke your Lambda function.</p>
@@ -6800,7 +6831,9 @@ You're not viewing the latest version.
 </div>
 <h4 id="validating-responses">Validating responses<a class="headerlink" href="#validating-responses" title="Permanent link">&para;</a></h4>
 <p>You can use <code>response_validation_error_http_code</code> to set a custom HTTP code for failed response validation. When this field is set, we will raise a <code>ResponseValidationError</code> instead of a <code>RequestValidationError</code>.</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="13:2"><input checked="checked" id="customizing_response_validationpy" name="__tabbed_13" type="radio" /><input id="customizing_response_validation_exceptionpy" name="__tabbed_13" type="radio" /><div class="tabbed-labels"><label for="customizing_response_validationpy">customizing_response_validation.py</label><label for="customizing_response_validation_exceptionpy">customizing_response_validation_exception.py</label></div>
+<p>For a more granular control over the failed response validation http code, the <code>custom_response_validation_http_code</code> argument can be set per route.
+This value will override the value of the failed response validation http code set at constructor level (if any).</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="13:3"><input checked="checked" id="customizing_response_validationpy" name="__tabbed_13" type="radio" /><input id="customizing_route_response_validationpy" name="__tabbed_13" type="radio" /><input id="customizing_response_validation_exceptionpy" name="__tabbed_13" type="radio" /><div class="tabbed-labels"><label for="customizing_response_validationpy">customizing_response_validation.py</label><label for="customizing_route_response_validationpy">customizing_route_response_validation.py</label><label for="customizing_response_validation_exceptionpy">customizing_response_validation_exception.py</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
@@ -6841,7 +6874,19 @@ You're not viewing the latest version.
 <span class="normal">36</span>
 <span class="normal">37</span>
 <span class="normal">38</span>
-<span class="normal">39</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="hll"><span class="kn">from</span><span class="w"> </span><span class="nn">http</span><span class="w"> </span><span class="kn">import</span> <span class="n">HTTPStatus</span>
+<span class="normal">39</span>
+<span class="normal">40</span>
+<span class="normal">41</span>
+<span class="normal">42</span>
+<span class="normal">43</span>
+<span class="normal">44</span>
+<span class="normal">45</span>
+<span class="normal">46</span>
+<span class="normal">47</span>
+<span class="normal">48</span>
+<span class="normal">49</span>
+<span class="normal">50</span>
+<span class="normal">51</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="hll"><span class="kn">from</span><span class="w"> </span><span class="nn">http</span><span class="w"> </span><span class="kn">import</span> <span class="n">HTTPStatus</span>
 </span><span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Optional</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="nn">requests</span>
@@ -6875,6 +6920,127 @@ You're not viewing the latest version.
 
 <span class="hll">    <span class="k">return</span> <span class="n">todo</span><span class="o">.</span><span class="n">json</span><span class="p">()[</span><span class="s2">&quot;title&quot;</span><span class="p">]</span>  <span class="c1"># (2)!</span>
 </span>
+
+<span class="nd">@app</span><span class="o">.</span><span class="n">get</span><span class="p">(</span>
+    <span class="s2">&quot;/todos_bad_response_with_custom_http_code/&lt;todo_id&gt;&quot;</span><span class="p">,</span>
+<span class="hll">    <span class="n">custom_response_validation_http_code</span><span class="o">=</span><span class="n">HTTPStatus</span><span class="o">.</span><span class="n">UNPROCESSABLE_ENTITY</span><span class="p">,</span>  <span class="c1"># (3)!</span>
+</span><span class="p">)</span>
+<span class="nd">@tracer</span><span class="o">.</span><span class="n">capture_method</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">get_todo_by_id_custom</span><span class="p">(</span><span class="n">todo_id</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Todo</span><span class="p">:</span>
+    <span class="n">todo</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;https://jsonplaceholder.typicode.com/todos/</span><span class="si">{</span><span class="n">todo_id</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="n">todo</span><span class="o">.</span><span class="n">raise_for_status</span><span class="p">()</span>
+
+    <span class="k">return</span> <span class="n">todo</span><span class="o">.</span><span class="n">json</span><span class="p">()[</span><span class="s2">&quot;title&quot;</span><span class="p">]</span>
+
+
+<span class="nd">@logger</span><span class="o">.</span><span class="n">inject_lambda_context</span><span class="p">(</span><span class="n">correlation_id_path</span><span class="o">=</span><span class="n">correlation_paths</span><span class="o">.</span><span class="n">API_GATEWAY_HTTP</span><span class="p">)</span>
+<span class="nd">@tracer</span><span class="o">.</span><span class="n">capture_lambda_handler</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">lambda_handler</span><span class="p">(</span><span class="n">event</span><span class="p">:</span> <span class="nb">dict</span><span class="p">,</span> <span class="n">context</span><span class="p">:</span> <span class="n">LambdaContext</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">:</span>
+    <span class="k">return</span> <span class="n">app</span><span class="o">.</span><span class="n">resolve</span><span class="p">(</span><span class="n">event</span><span class="p">,</span> <span class="n">context</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+<ol>
+<li>A response with status code set here will be returned if response data is not valid.</li>
+<li>Operation returns a string as oppose to a <code>Todo</code> object. This will lead to a <code>500</code> response as set in line 16.</li>
+<li>Operation will return a <code>422 Unprocessable Entity</code> response if response is not a <code>Todo</code> object. This overrides the custom http code set in line 16.</li>
+</ol>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span>
+<span class="normal">35</span>
+<span class="normal">36</span>
+<span class="normal">37</span>
+<span class="normal">38</span>
+<span class="normal">39</span>
+<span class="normal">40</span>
+<span class="normal">41</span>
+<span class="normal">42</span>
+<span class="normal">43</span>
+<span class="normal">44</span>
+<span class="normal">45</span>
+<span class="normal">46</span>
+<span class="normal">47</span>
+<span class="normal">48</span>
+<span class="normal">49</span>
+<span class="normal">50</span>
+<span class="normal">51</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="hll"><span class="kn">from</span><span class="w"> </span><span class="nn">http</span><span class="w"> </span><span class="kn">import</span> <span class="n">HTTPStatus</span>
+</span><span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Optional</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">requests</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pydantic</span><span class="w"> </span><span class="kn">import</span> <span class="n">BaseModel</span><span class="p">,</span> <span class="n">Field</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">aws_lambda_powertools</span><span class="w"> </span><span class="kn">import</span> <span class="n">Logger</span><span class="p">,</span> <span class="n">Tracer</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">aws_lambda_powertools.event_handler</span><span class="w"> </span><span class="kn">import</span> <span class="n">APIGatewayRestResolver</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">aws_lambda_powertools.logging</span><span class="w"> </span><span class="kn">import</span> <span class="n">correlation_paths</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">aws_lambda_powertools.utilities.typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">LambdaContext</span>
+
+<span class="n">tracer</span> <span class="o">=</span> <span class="n">Tracer</span><span class="p">()</span>
+<span class="n">logger</span> <span class="o">=</span> <span class="n">Logger</span><span class="p">()</span>
+<span class="n">app</span> <span class="o">=</span> <span class="n">APIGatewayRestResolver</span><span class="p">(</span>
+    <span class="n">enable_validation</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+<span class="hll">    <span class="n">response_validation_error_http_code</span><span class="o">=</span><span class="n">HTTPStatus</span><span class="o">.</span><span class="n">INTERNAL_SERVER_ERROR</span><span class="p">,</span>  <span class="c1"># (1)!</span>
+</span><span class="p">)</span>
+
+
+<span class="k">class</span><span class="w"> </span><span class="nc">Todo</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>
+    <span class="n">userId</span><span class="p">:</span> <span class="nb">int</span>
+    <span class="n">id_</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="n">Field</span><span class="p">(</span><span class="n">alias</span><span class="o">=</span><span class="s2">&quot;id&quot;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+    <span class="n">title</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="n">completed</span><span class="p">:</span> <span class="nb">bool</span>
+
+
+<span class="nd">@app</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;/todos_bad_response/&lt;todo_id&gt;&quot;</span><span class="p">)</span>
+<span class="nd">@tracer</span><span class="o">.</span><span class="n">capture_method</span>
+<span class="hll"><span class="k">def</span><span class="w"> </span><span class="nf">get_todo_by_id</span><span class="p">(</span><span class="n">todo_id</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Todo</span><span class="p">:</span>
+</span>    <span class="n">todo</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;https://jsonplaceholder.typicode.com/todos/</span><span class="si">{</span><span class="n">todo_id</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="n">todo</span><span class="o">.</span><span class="n">raise_for_status</span><span class="p">()</span>
+
+<span class="hll">    <span class="k">return</span> <span class="n">todo</span><span class="o">.</span><span class="n">json</span><span class="p">()[</span><span class="s2">&quot;title&quot;</span><span class="p">]</span>  <span class="c1"># (2)!</span>
+</span>
+
+<span class="nd">@app</span><span class="o">.</span><span class="n">get</span><span class="p">(</span>
+    <span class="s2">&quot;/todos_bad_response_with_custom_http_code/&lt;todo_id&gt;&quot;</span><span class="p">,</span>
+    <span class="n">custom_response_validation_http_code</span><span class="o">=</span><span class="n">HTTPStatus</span><span class="o">.</span><span class="n">UNPROCESSABLE_ENTITY</span><span class="p">,</span>  <span class="c1"># (3)!</span>
+<span class="p">)</span>
+<span class="nd">@tracer</span><span class="o">.</span><span class="n">capture_method</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">get_todo_by_id_custom</span><span class="p">(</span><span class="n">todo_id</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Todo</span><span class="p">:</span>
+    <span class="n">todo</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;https://jsonplaceholder.typicode.com/todos/</span><span class="si">{</span><span class="n">todo_id</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="n">todo</span><span class="o">.</span><span class="n">raise_for_status</span><span class="p">()</span>
+
+    <span class="k">return</span> <span class="n">todo</span><span class="o">.</span><span class="n">json</span><span class="p">()[</span><span class="s2">&quot;title&quot;</span><span class="p">]</span>
+
 
 <span class="nd">@logger</span><span class="o">.</span><span class="n">inject_lambda_context</span><span class="p">(</span><span class="n">correlation_id_path</span><span class="o">=</span><span class="n">correlation_paths</span><span class="o">.</span><span class="n">API_GATEWAY_HTTP</span><span class="p">)</span>
 <span class="nd">@tracer</span><span class="o">.</span><span class="n">capture_lambda_handler</span>
@@ -7919,7 +8085,7 @@ You're not viewing the latest version.
 <summary>Info</summary>
 <p>If you need to send custom headers, use <a href="#fine-grained-responses">Response</a> class instead.</p>
 </details>
-<p>We provide pre-defined errors for the most popular ones such as HTTP 400, 401, 404, 500.</p>
+<p>We provide pre-defined errors for the most popular ones based on <a href="https://docs.aws.amazon.com/lambda/latest/api/CommonErrors.html">AWS Lambda API Reference Common Erros</a>.</p>
 <div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Raising common HTTP Status errors (4xx, 5xx)</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -7978,16 +8144,44 @@ You're not viewing the latest version.
 <span class="normal">56</span>
 <span class="normal">57</span>
 <span class="normal">58</span>
-<span class="normal">59</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">requests</span>
+<span class="normal">59</span>
+<span class="normal">60</span>
+<span class="normal">61</span>
+<span class="normal">62</span>
+<span class="normal">63</span>
+<span class="normal">64</span>
+<span class="normal">65</span>
+<span class="normal">66</span>
+<span class="normal">67</span>
+<span class="normal">68</span>
+<span class="normal">69</span>
+<span class="normal">70</span>
+<span class="normal">71</span>
+<span class="normal">72</span>
+<span class="normal">73</span>
+<span class="normal">74</span>
+<span class="normal">75</span>
+<span class="normal">76</span>
+<span class="normal">77</span>
+<span class="normal">78</span>
+<span class="normal">79</span>
+<span class="normal">80</span>
+<span class="normal">81</span>
+<span class="normal">82</span>
+<span class="normal">83</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">requests</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">requests</span><span class="w"> </span><span class="kn">import</span> <span class="n">Response</span>
 
 <span class="kn">from</span><span class="w"> </span><span class="nn">aws_lambda_powertools</span><span class="w"> </span><span class="kn">import</span> <span class="n">Logger</span><span class="p">,</span> <span class="n">Tracer</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">aws_lambda_powertools.event_handler</span><span class="w"> </span><span class="kn">import</span> <span class="n">APIGatewayRestResolver</span>
-<span class="hll"><span class="kn">from</span><span class="w"> </span><span class="nn">aws_lambda_powertools.event_handler.exceptions</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
-</span><span class="hll">    <span class="n">BadRequestError</span><span class="p">,</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">aws_lambda_powertools.event_handler.exceptions</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
+<span class="hll">    <span class="n">BadRequestError</span><span class="p">,</span>
+</span><span class="hll">    <span class="n">ForbiddenError</span><span class="p">,</span>
 </span><span class="hll">    <span class="n">InternalServerError</span><span class="p">,</span>
 </span><span class="hll">    <span class="n">NotFoundError</span><span class="p">,</span>
+</span><span class="hll">    <span class="n">RequestEntityTooLargeError</span><span class="p">,</span>
+</span><span class="hll">    <span class="n">RequestTimeoutError</span><span class="p">,</span>
 </span><span class="hll">    <span class="n">ServiceError</span><span class="p">,</span>
+</span><span class="hll">    <span class="n">ServiceUnavailableError</span><span class="p">,</span>
 </span><span class="hll">    <span class="n">UnauthorizedError</span><span class="p">,</span>
 </span><span class="p">)</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">aws_lambda_powertools.logging</span><span class="w"> </span><span class="kn">import</span> <span class="n">correlation_paths</span>
@@ -8008,9 +8202,19 @@ You're not viewing the latest version.
 <span class="hll">    <span class="k">raise</span> <span class="n">UnauthorizedError</span><span class="p">(</span><span class="s2">&quot;Unauthorized&quot;</span><span class="p">)</span>  <span class="c1"># HTTP 401</span>
 </span>
 
+<span class="nd">@app</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">rule</span><span class="o">=</span><span class="s2">&quot;/forbidden-error&quot;</span><span class="p">)</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">forbidden_error</span><span class="p">():</span>
+<span class="hll">    <span class="k">raise</span> <span class="n">ForbiddenError</span><span class="p">(</span><span class="s2">&quot;Access denied&quot;</span><span class="p">)</span>  <span class="c1"># HTTP 403</span>
+</span>
+
 <span class="nd">@app</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">rule</span><span class="o">=</span><span class="s2">&quot;/not-found-error&quot;</span><span class="p">)</span>
 <span class="k">def</span><span class="w"> </span><span class="nf">not_found_error</span><span class="p">():</span>
 <span class="hll">    <span class="k">raise</span> <span class="n">NotFoundError</span>  <span class="c1"># HTTP 404</span>
+</span>
+
+<span class="nd">@app</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">rule</span><span class="o">=</span><span class="s2">&quot;/request-timeout-error&quot;</span><span class="p">)</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">request_timeout_error</span><span class="p">():</span>
+<span class="hll">    <span class="k">raise</span> <span class="n">RequestTimeoutError</span><span class="p">(</span><span class="s2">&quot;Request timed out&quot;</span><span class="p">)</span>  <span class="c1"># HTTP 408</span>
 </span>
 
 <span class="nd">@app</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">rule</span><span class="o">=</span><span class="s2">&quot;/internal-server-error&quot;</span><span class="p">)</span>
@@ -8018,9 +8222,19 @@ You're not viewing the latest version.
 <span class="hll">    <span class="k">raise</span> <span class="n">InternalServerError</span><span class="p">(</span><span class="s2">&quot;Internal server error&quot;</span><span class="p">)</span>  <span class="c1"># HTTP 500</span>
 </span>
 
+<span class="nd">@app</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">rule</span><span class="o">=</span><span class="s2">&quot;/request-entity-too-large-error&quot;</span><span class="p">)</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">request_entity_too_large_error</span><span class="p">():</span>
+<span class="hll">    <span class="k">raise</span> <span class="n">RequestEntityTooLargeError</span><span class="p">(</span><span class="s2">&quot;Request payload too large&quot;</span><span class="p">)</span>  <span class="c1"># HTTP 413</span>
+</span>
+
 <span class="nd">@app</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">rule</span><span class="o">=</span><span class="s2">&quot;/service-error&quot;</span><span class="p">,</span> <span class="n">cors</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="k">def</span><span class="w"> </span><span class="nf">service_error</span><span class="p">():</span>
 <span class="hll">    <span class="k">raise</span> <span class="n">ServiceError</span><span class="p">(</span><span class="mi">502</span><span class="p">,</span> <span class="s2">&quot;Something went wrong!&quot;</span><span class="p">)</span>
+</span>
+
+<span class="nd">@app</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">rule</span><span class="o">=</span><span class="s2">&quot;/service-unavailable-error&quot;</span><span class="p">)</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">service_unavailable_error</span><span class="p">():</span>
+<span class="hll">    <span class="k">raise</span> <span class="n">ServiceUnavailableError</span><span class="p">(</span><span class="s2">&quot;Service is temporarily unavailable&quot;</span><span class="p">)</span>  <span class="c1"># HTTP 503</span>
 </span>
 
 <span class="nd">@app</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;/todos&quot;</span><span class="p">)</span>
@@ -10686,7 +10900,7 @@ Some event sources require headers and cookies to be encoded as <code>multiValue
 <td>HTTP authentication schemes using the Authorization header (e.g: <a href="https://swagger.io/docs/specification/authentication/basic-authentication/" target="_blank">Basic auth</a>, <a href="https://swagger.io/docs/specification/authentication/bearer-authentication/" target="_blank">Bearer</a>)</td>
 </tr>
 <tr>
-<td><a href="https://swagger.io/docs/specification/authentication/api-keys/https://swagger.io/docs/specification/authentication/api-keys/" target="_blank">API keys</a> (e.g: query strings, cookies)</td>
+<td><a href="https://swagger.io/docs/specification/authentication/api-keys/" target="_blank">API keys</a> (e.g: query strings, cookies)</td>
 <td><code>APIKey</code></td>
 <td>API keys in headers, query strings or <a href="https://swagger.io/docs/specification/authentication/cookie-authentication/" target="_blank">cookies</a>.</td>
 </tr>
@@ -12504,7 +12718,7 @@ it made it impossible for static checkers like Mypy and IDEs IntelliSense to kno
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    2025-03-17
+    2025-04-22
   </span>
 
     

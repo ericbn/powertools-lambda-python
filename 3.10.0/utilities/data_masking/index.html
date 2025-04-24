@@ -22,7 +22,7 @@
       
       
       <link rel="icon" href="../../media/aws-logo-light.svg">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.11">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.12">
     
     
       
@@ -30,7 +30,7 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.4af4bdda.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.2afb09e1.min.css">
       
         
         <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
@@ -853,6 +853,8 @@ You're not viewing the latest version.
       
         
       
+        
+      
     
     
     
@@ -927,6 +929,36 @@ You're not viewing the latest version.
     GraphQL API
     
   </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../core/event_handler/appsync_events/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    AppSync Events
+    
+  </span>
+  
+    
+  
+  
+    <span class="md-status md-status--new"></span>
+  
+
   
 
       </a>
@@ -5468,20 +5500,123 @@ You're not viewing the latest version.
 </div>
 <h2 id="advanced">Advanced<a class="headerlink" href="#advanced" title="Permanent link">&para;</a></h2>
 <h3 id="data-serialization">Data serialization<a class="headerlink" href="#data-serialization" title="Permanent link">&para;</a></h3>
-<details class="note" open="open">
-<summary>Current limitations</summary>
-<ol>
-<li>Python classes, <code>Dataclasses</code>, and <code>Pydantic models</code> are not supported yet.</li>
-</ol>
+<details class="tip" open="open">
+<summary>Extended input support</summary>
+<p>We support <code>Pydantic models</code>, <code>Dataclasses</code>, and custom classes with <code>dict()</code> or <code>__dict__</code> for input.</p>
+<p>These types are automatically converted into dictionaries before <code>masking</code> and <code>encrypting</code> operations. Please not that we <strong>don't convert back</strong> to the original type, and the returned object will be a dictionary.</p>
 </details>
 <p>Before we traverse the data structure, we perform two important operations on input data:</p>
 <ol>
 <li>If <code>JSON string</code>, <strong>deserialize</strong> using default or provided deserializer.</li>
-<li>If <code>dictionary</code>, <strong>normalize</strong> into <code>JSON</code> to prevent traversing unsupported data types.</li>
+<li>If <code>dictionary or complex types</code>, <strong>normalize</strong> into <code>JSON</code> to prevent traversing unsupported data types.</li>
 </ol>
-<p>When decrypting, we revert the operation to restore the original data structure.</p>
 <p>For compatibility or performance, you can optionally pass your own JSON serializer and deserializer to replace <code>json.dumps</code> and <code>json.loads</code> respectively:</p>
-<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">advanced_custom_serializer.py</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<div class="tabbed-set tabbed-alternate" data-tabs="17:4"><input checked="checked" id="working-with-custom-types" name="__tabbed_17" type="radio" /><input id="working-with-pydantic" name="__tabbed_17" type="radio" /><input id="working-with-dataclasses" name="__tabbed_17" type="radio" /><input id="working-with-serializer" name="__tabbed_17" type="radio" /><div class="tabbed-labels"><label for="working-with-custom-types">Working with custom types</label><label for="working-with-pydantic">Working with Pydantic</label><label for="working-with-dataclasses">Working with dataclasses</label><label for="working-with-serializer">Working with serializer</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">aws_lambda_powertools.utilities.data_masking</span><span class="w"> </span><span class="kn">import</span> <span class="n">DataMasking</span>
+
+<span class="n">data_masker</span> <span class="o">=</span> <span class="n">DataMasking</span><span class="p">()</span>
+
+
+<span class="k">class</span><span class="w"> </span><span class="nc">User</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">age</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">age</span> <span class="o">=</span> <span class="n">age</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">dict</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="s2">&quot;age&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">age</span><span class="p">}</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">lambda_handler</span><span class="p">(</span><span class="n">event</span><span class="p">,</span> <span class="n">context</span><span class="p">):</span>
+    <span class="n">user</span> <span class="o">=</span> <span class="n">User</span><span class="p">(</span><span class="s2">&quot;powertools&quot;</span><span class="p">,</span> <span class="mi">42</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">data_masker</span><span class="o">.</span><span class="n">erase</span><span class="p">(</span><span class="n">user</span><span class="p">,</span> <span class="n">fields</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;age&quot;</span><span class="p">])</span>
+</code></pre></div></td></tr></table></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">pydantic</span><span class="w"> </span><span class="kn">import</span> <span class="n">BaseModel</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">aws_lambda_powertools.utilities.data_masking</span><span class="w"> </span><span class="kn">import</span> <span class="n">DataMasking</span>
+
+<span class="n">data_masker</span> <span class="o">=</span> <span class="n">DataMasking</span><span class="p">()</span>
+
+
+<span class="k">class</span><span class="w"> </span><span class="nc">User</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>
+    <span class="n">name</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="n">age</span><span class="p">:</span> <span class="nb">int</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">lambda_handler</span><span class="p">(</span><span class="n">event</span><span class="p">,</span> <span class="n">context</span><span class="p">):</span>
+    <span class="n">user</span> <span class="o">=</span> <span class="n">User</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;powertools&quot;</span><span class="p">,</span> <span class="n">age</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">data_masker</span><span class="o">.</span><span class="n">erase</span><span class="p">(</span><span class="n">user</span><span class="p">,</span> <span class="n">fields</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;age&quot;</span><span class="p">])</span>
+</code></pre></div></td></tr></table></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">dataclasses</span><span class="w"> </span><span class="kn">import</span> <span class="n">dataclass</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">aws_lambda_powertools.utilities.data_masking</span><span class="w"> </span><span class="kn">import</span> <span class="n">DataMasking</span>
+
+<span class="n">data_masker</span> <span class="o">=</span> <span class="n">DataMasking</span><span class="p">()</span>
+
+
+<span class="nd">@dataclass</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">User</span><span class="p">:</span>
+    <span class="n">name</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="n">age</span><span class="p">:</span> <span class="nb">int</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">lambda_handler</span><span class="p">(</span><span class="n">event</span><span class="p">,</span> <span class="n">context</span><span class="p">):</span>
+    <span class="n">user</span> <span class="o">=</span> <span class="n">User</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;powertools&quot;</span><span class="p">,</span> <span class="n">age</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">data_masker</span><span class="o">.</span><span class="n">erase</span><span class="p">(</span><span class="n">user</span><span class="p">,</span> <span class="n">fields</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;age&quot;</span><span class="p">])</span>
+</code></pre></div></td></tr></table></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
 <span class="normal"> 4</span>
@@ -5522,9 +5657,9 @@ You're not viewing the latest version.
 
 <span class="n">encryption_provider</span> <span class="o">=</span> <span class="n">AWSEncryptionSDKProvider</span><span class="p">(</span>
     <span class="n">keys</span><span class="o">=</span><span class="p">[</span><span class="n">KMS_KEY_ARN</span><span class="p">],</span>
-<span class="hll">    <span class="n">json_serializer</span><span class="o">=</span><span class="n">ujson</span><span class="o">.</span><span class="n">dumps</span><span class="p">,</span>
-</span><span class="hll">    <span class="n">json_deserializer</span><span class="o">=</span><span class="n">ujson</span><span class="o">.</span><span class="n">loads</span><span class="p">,</span>
-</span><span class="p">)</span>
+    <span class="n">json_serializer</span><span class="o">=</span><span class="n">ujson</span><span class="o">.</span><span class="n">dumps</span><span class="p">,</span>
+    <span class="n">json_deserializer</span><span class="o">=</span><span class="n">ujson</span><span class="o">.</span><span class="n">loads</span><span class="p">,</span>
+<span class="p">)</span>
 <span class="n">data_masker</span> <span class="o">=</span> <span class="n">DataMasking</span><span class="p">(</span><span class="n">provider</span><span class="o">=</span><span class="n">encryption_provider</span><span class="p">)</span>
 
 
@@ -5533,6 +5668,9 @@ You're not viewing the latest version.
 
     <span class="k">return</span> <span class="n">data_masker</span><span class="o">.</span><span class="n">encrypt</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
+</div>
+</div>
+</div>
 <h3 id="using-multiple-keys">Using multiple keys<a class="headerlink" href="#using-multiple-keys" title="Permanent link">&para;</a></h3>
 <p>You can use multiple KMS keys from more than one AWS account for higher availability, when instantiating <code>AWSEncryptionSDKProvider</code>.</p>
 <div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">using_multiple_keys.py</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
@@ -5661,7 +5799,8 @@ You're not viewing the latest version.
 <span class="normal">31</span>
 <span class="normal">32</span>
 <span class="normal">33</span>
-<span class="normal">34</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">__future__</span><span class="w"> </span><span class="kn">import</span> <span class="n">annotations</span>
+<span class="normal">34</span>
+<span class="normal">35</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">__future__</span><span class="w"> </span><span class="kn">import</span> <span class="n">annotations</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
 
@@ -5679,8 +5818,9 @@ You're not viewing the latest version.
 </span><span class="hll">    <span class="n">local_cache_capacity</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span>
 </span><span class="hll">    <span class="n">max_cache_age_seconds</span><span class="o">=</span><span class="mi">400</span><span class="p">,</span>
 </span><span class="hll">    <span class="n">max_messages_encrypted</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span>
-</span><span class="hll">    <span class="n">max_bytes_encrypted</span><span class="o">=</span><span class="mi">2000</span><span class="p">)</span>
-</span>
+</span><span class="hll">    <span class="n">max_bytes_encrypted</span><span class="o">=</span><span class="mi">2000</span><span class="p">,</span>
+</span><span class="p">)</span>
+
 <span class="n">data_masker</span> <span class="o">=</span> <span class="n">DataMasking</span><span class="p">(</span><span class="n">provider</span><span class="o">=</span><span class="n">encryption_provider</span><span class="p">)</span>
 
 <span class="n">logger</span> <span class="o">=</span> <span class="n">Logger</span><span class="p">()</span>
@@ -5911,7 +6051,7 @@ You're not viewing the latest version.
 <h2 id="testing-your-code">Testing your code<a class="headerlink" href="#testing-your-code" title="Permanent link">&para;</a></h2>
 <h3 id="testing-erase-operation">Testing erase operation<a class="headerlink" href="#testing-erase-operation" title="Permanent link">&para;</a></h3>
 <p>Testing your code with a simple erase operation</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="17:1"><input checked="checked" id="test_lambda_maskpy" name="__tabbed_17" type="radio" /><div class="tabbed-labels"><label for="test_lambda_maskpy">test_lambda_mask.py</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="18:1"><input checked="checked" id="test_lambda_maskpy" name="__tabbed_18" type="radio" /><div class="tabbed-labels"><label for="test_lambda_maskpy">test_lambda_mask.py</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block"></div>
 </div>
@@ -5978,7 +6118,7 @@ You're not viewing the latest version.
     <span class="c1"># THEN: Assert that the result matches the expected output</span>
     <span class="k">assert</span> <span class="n">result</span> <span class="o">==</span> <span class="p">{</span><span class="s2">&quot;testkey&quot;</span><span class="p">:</span> <span class="s2">&quot;*****&quot;</span><span class="p">}</span>
 </code></pre></div></td></tr></table></div>
-<div class="tabbed-set tabbed-alternate" data-tabs="18:1"><input checked="checked" id="lambda_maskpy" name="__tabbed_18" type="radio" /><div class="tabbed-labels"><label for="lambda_maskpy">lambda_mask.py</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="19:1"><input checked="checked" id="lambda_maskpy" name="__tabbed_19" type="radio" /><div class="tabbed-labels"><label for="lambda_maskpy">lambda_mask.py</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block"></div>
 </div>
@@ -6031,7 +6171,7 @@ You're not viewing the latest version.
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    2025-03-07
+    2025-04-11
   </span>
 
     
