@@ -3972,7 +3972,8 @@ You're not viewing the latest version.
 <li>Easily handle publish and subscribe events with dedicated handler methods</li>
 <li>Automatic routing based on namespace and channel patterns</li>
 <li>Support for wildcard patterns to create catch-all handlers</li>
-<li>Process events in parallel corontrol aggregation for batch processing</li>
+<li>Support for async functions</li>
+<li>Aggregation for batch processing</li>
 <li>Graceful error handling for individual events</li>
 </ul>
 <h2 id="terminology">Terminology<a class="headerlink" href="#terminology" title="Permanent link">&para;</a></h2>
@@ -3985,9 +3986,201 @@ You're not viewing the latest version.
 </details>
 <h3 id="required-resources">Required resources<a class="headerlink" href="#required-resources" title="Permanent link">&para;</a></h3>
 <p>You must have an existing AppSync Events API with real-time capabilities enabled and IAM permissions to invoke your Lambda function. That said, there are no additional permissions required to use Event Handler as routing requires no dependency (<em>standard library</em>).</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:1"><input checked="checked" id="getting_started_with_appsync_eventsyaml" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="getting_started_with_appsync_eventsyaml">getting_started_with_appsync_events.yaml</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span>
+<span class="normal">35</span>
+<span class="normal">36</span>
+<span class="normal">37</span>
+<span class="normal">38</span>
+<span class="normal">39</span>
+<span class="normal">40</span>
+<span class="normal">41</span>
+<span class="normal">42</span>
+<span class="normal">43</span>
+<span class="normal">44</span>
+<span class="normal">45</span>
+<span class="normal">46</span>
+<span class="normal">47</span>
+<span class="normal">48</span>
+<span class="normal">49</span>
+<span class="normal">50</span>
+<span class="normal">51</span>
+<span class="normal">52</span>
+<span class="normal">53</span>
+<span class="normal">54</span>
+<span class="normal">55</span>
+<span class="normal">56</span>
+<span class="normal">57</span>
+<span class="normal">58</span>
+<span class="normal">59</span>
+<span class="normal">60</span>
+<span class="normal">61</span>
+<span class="normal">62</span>
+<span class="normal">63</span>
+<span class="normal">64</span>
+<span class="normal">65</span>
+<span class="normal">66</span>
+<span class="normal">67</span>
+<span class="normal">68</span>
+<span class="normal">69</span>
+<span class="normal">70</span>
+<span class="normal">71</span>
+<span class="normal">72</span>
+<span class="normal">73</span>
+<span class="normal">74</span>
+<span class="normal">75</span>
+<span class="normal">76</span>
+<span class="normal">77</span>
+<span class="normal">78</span>
+<span class="normal">79</span>
+<span class="normal">80</span>
+<span class="normal">81</span>
+<span class="normal">82</span>
+<span class="normal">83</span>
+<span class="normal">84</span>
+<span class="normal">85</span>
+<span class="normal">86</span>
+<span class="normal">87</span>
+<span class="normal">88</span>
+<span class="normal">89</span>
+<span class="normal">90</span>
+<span class="normal">91</span>
+<span class="normal">92</span>
+<span class="normal">93</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nt">AWSTemplateFormatVersion</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;2010-09-09&#39;</span>
+<span class="nt">Transform</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">AWS::Serverless-2016-10-31</span>
+
+<span class="nt">Metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">cfn-lint</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">ignore_checks</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">E3002</span>
+
+<span class="nt">Globals</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">Function</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">Timeout</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">5</span>
+<span class="w">    </span><span class="nt">MemorySize</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">256</span>
+<span class="w">    </span><span class="nt">Runtime</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">python3.13</span>
+<span class="w">    </span><span class="nt">Tracing</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Active</span>
+<span class="w">    </span><span class="nt">Environment</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">Variables</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">POWERTOOLS_LOG_LEVEL</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">INFO</span>
+<span class="w">        </span><span class="nt">POWERTOOLS_SERVICE_NAME</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">hello</span>
+
+<span class="nt">Resources</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">HelloWorldFunction</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">Type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">AWS::Serverless::Function</span>
+<span class="w">    </span><span class="nt">Properties</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">Handler</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">index.handler</span>
+<span class="w">      </span><span class="nt">CodeUri</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">hello_world</span>
+
+<span class="w">  </span><span class="nt">WebsocketAPI</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">Type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">AWS::AppSync::Api</span>
+<span class="w">    </span><span class="nt">Properties</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">EventConfig</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">AuthProviders</span><span class="p">:</span>
+<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">AuthType</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">API_KEY</span>
+<span class="w">        </span><span class="nt">ConnectionAuthModes</span><span class="p">:</span>
+<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">AuthType</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">API_KEY</span>
+<span class="w">        </span><span class="nt">DefaultPublishAuthModes</span><span class="p">:</span>
+<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">AuthType</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">API_KEY</span>
+<span class="w">        </span><span class="nt">DefaultSubscribeAuthModes</span><span class="p">:</span>
+<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">AuthType</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">API_KEY</span>
+<span class="w">      </span><span class="nt">Name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">RealTimeEventAPI</span>
+
+<span class="w">  </span><span class="nt">NameSpaceDataSource</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">Type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">AWS::AppSync::DataSource</span>
+<span class="w">    </span><span class="nt">Properties</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">ApiId</span><span class="p">:</span><span class="w"> </span><span class="kt">!GetAtt</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">WebsocketAPI.ApiId</span>
+<span class="w">      </span><span class="nt">LambdaConfig</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">LambdaFunctionArn</span><span class="p">:</span><span class="w"> </span><span class="kt">!GetAtt</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">HelloWorldFunction.Arn</span>
+<span class="w">      </span><span class="nt">Name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">powertools_lambda</span>
+<span class="w">      </span><span class="nt">ServiceRoleArn</span><span class="p">:</span><span class="w"> </span><span class="kt">!GetAtt</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DataSourceIAMRole.Arn</span>
+<span class="w">      </span><span class="nt">Type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">AWS_LAMBDA</span>
+
+<span class="w">  </span><span class="nt">WebsocketApiKey</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">Type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">AWS::AppSync::ApiKey</span>
+<span class="w">    </span><span class="nt">Properties</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">ApiId</span><span class="p">:</span><span class="w"> </span><span class="kt">!GetAtt</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">WebsocketAPI.ApiId</span>
+
+<span class="w">  </span><span class="nt">WebsocketAPINamespace</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">Type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">AWS::AppSync::ChannelNamespace</span>
+<span class="w">    </span><span class="nt">Properties</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">ApiId</span><span class="p">:</span><span class="w"> </span><span class="kt">!GetAtt</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">WebsocketAPI.ApiId</span>
+<span class="w">      </span><span class="nt">Name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">powertools</span>
+<span class="w">      </span><span class="nt">HandlerConfigs</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">OnPublish</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">Behavior</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DIRECT</span>
+<span class="w">          </span><span class="nt">Integration</span><span class="p">:</span>
+<span class="w">            </span><span class="nt">DataSourceName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">powertools_lambda</span>
+<span class="w">            </span><span class="nt">LambdaConfig</span><span class="p">:</span>
+<span class="w">              </span><span class="nt">InvokeType</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">REQUEST_RESPONSE</span>
+<span class="w">        </span><span class="nt">OnSubscribe</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">Behavior</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DIRECT</span>
+<span class="w">          </span><span class="nt">Integration</span><span class="p">:</span>
+<span class="w">            </span><span class="nt">DataSourceName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">powertools_lambda</span>
+<span class="w">            </span><span class="nt">LambdaConfig</span><span class="p">:</span>
+<span class="w">              </span><span class="nt">InvokeType</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">REQUEST_RESPONSE</span>
+
+<span class="w">  </span><span class="nt">DataSourceIAMRole</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">Type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">AWS::IAM::Role</span>
+<span class="w">    </span><span class="nt">Properties</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">AssumeRolePolicyDocument</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">Version</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;2012-10-17&#39;</span>
+<span class="w">        </span><span class="nt">Statement</span><span class="p">:</span>
+<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">Effect</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Allow</span>
+<span class="w">            </span><span class="nt">Principal</span><span class="p">:</span>
+<span class="w">              </span><span class="nt">Service</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">appsync.amazonaws.com</span>
+<span class="w">            </span><span class="nt">Action</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">sts:AssumeRole</span>
+<span class="w">      </span><span class="nt">Policies</span><span class="p">:</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">PolicyName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">LambdaInvokePolicy</span>
+<span class="w">          </span><span class="nt">PolicyDocument</span><span class="p">:</span>
+<span class="w">            </span><span class="nt">Version</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;2012-10-17&#39;</span>
+<span class="w">            </span><span class="nt">Statement</span><span class="p">:</span>
+<span class="w">              </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">Effect</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Allow</span>
+<span class="w">                </span><span class="nt">Action</span><span class="p">:</span>
+<span class="w">                  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">lambda:InvokeFunction</span>
+<span class="w">                </span><span class="nt">Resource</span><span class="p">:</span><span class="w"> </span><span class="kt">!GetAtt</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">HelloWorldFunction.Arn</span>
+</code></pre></div></td></tr></table></div>
+</div>
+</div>
+</div>
 <h3 id="appsync-request-and-response-format">AppSync request and response format<a class="headerlink" href="#appsync-request-and-response-format" title="Permanent link">&para;</a></h3>
 <p>AppSync Events uses a specific event format for Lambda requests and responses. In most scenarios, Powertools for AWS simplifies this interaction by automatically formatting resolver returns to match the expected AppSync response structure.</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="1:4"><input checked="checked" id="payload_requestjson" name="__tabbed_1" type="radio" /><input id="payload_responsejson" name="__tabbed_1" type="radio" /><input id="payload_response_with_errorjson" name="__tabbed_1" type="radio" /><input id="payload_response_fail_requestjson" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="payload_requestjson">payload_request.json</label><label for="payload_responsejson">payload_response.json</label><label for="payload_response_with_errorjson">payload_response_with_error.json</label><label for="payload_response_fail_requestjson">payload_response_fail_request.json</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="2:4"><input checked="checked" id="payload_requestjson" name="__tabbed_2" type="radio" /><input id="payload_responsejson" name="__tabbed_2" type="radio" /><input id="payload_response_with_errorjson" name="__tabbed_2" type="radio" /><input id="payload_response_fail_requestjson" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="payload_requestjson">payload_request.json</label><label for="payload_responsejson">payload_response.json</label><label for="payload_response_with_errorjson">payload_response_with_error.json</label><label for="payload_response_fail_requestjson">payload_response_fail_request.json</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
@@ -4170,7 +4363,8 @@ You're not viewing the latest version.
 <p>The event handler automatically parses the incoming event data and invokes the appropriate handler based on the namespace/channel pattern you register.</p>
 </details>
 <p>You can define your handlers for different event types using the <code>app.on_publish()</code>, <code>app.async_on_publish()</code>, and <code>app.on_subscribe()</code> methods.</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="getting_started_with_publish_eventspy" name="__tabbed_2" type="radio" /><input id="getting_started_with_subscribe_eventspy" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="getting_started_with_publish_eventspy">getting_started_with_publish_events.py</label><label for="getting_started_with_subscribe_eventspy">getting_started_with_subscribe_events.py</label></div>
+<p>By default, the resolver processes messages individually. For batch processing, see the <a href="#aggregated-processing">Aggregated Processing</a> section.</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="3:2"><input checked="checked" id="getting_started_with_publish_eventspy" name="__tabbed_3" type="radio" /><input id="getting_started_with_subscribe_eventspy" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="getting_started_with_publish_eventspy">getting_started_with_publish_events.py</label><label for="getting_started_with_subscribe_eventspy">getting_started_with_subscribe_events.py</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
@@ -4208,7 +4402,7 @@ You're not viewing the latest version.
 </span>
 
 <span class="hll"><span class="nd">@app</span><span class="o">.</span><span class="n">on_publish</span><span class="p">(</span><span class="s2">&quot;/default/channel&quot;</span><span class="p">)</span>
-</span><span class="k">def</span><span class="w"> </span><span class="nf">handle_channel1_publish</span><span class="p">(</span><span class="n">payload</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]):</span>
+</span><span class="k">def</span><span class="w"> </span><span class="nf">handle_channel1_publish</span><span class="p">(</span><span class="n">payload</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]):</span>  <span class="c1"># (1)!</span>
     <span class="c1"># Process the payload for this specific channel</span>
     <span class="k">return</span> <span class="p">{</span>
         <span class="s2">&quot;processed&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
@@ -4219,6 +4413,9 @@ You're not viewing the latest version.
 <span class="k">def</span><span class="w"> </span><span class="nf">lambda_handler</span><span class="p">(</span><span class="n">event</span><span class="p">:</span> <span class="nb">dict</span><span class="p">,</span> <span class="n">context</span><span class="p">:</span> <span class="n">LambdaContext</span><span class="p">):</span>
     <span class="k">return</span> <span class="n">app</span><span class="o">.</span><span class="n">resolve</span><span class="p">(</span><span class="n">event</span><span class="p">,</span> <span class="n">context</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
+<ol>
+<li>The <code>payload</code> argument is mandatory and will be passed as a dictionary.</li>
+</ol>
 </div>
 <div class="tabbed-block">
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
@@ -4314,7 +4511,7 @@ You're not viewing the latest version.
 <p>Patterns like <code>/namespace/channel*</code> or <code>/namespace/*/subpath</code> are not supported.</p>
 <p>More specific routes will always take precedence over less specific ones. For example, <code>/default/channel1</code> will take precedence over <code>/default/*</code>, which will take precedence over <code>/*</code>.</p>
 </details>
-<div class="tabbed-set tabbed-alternate" data-tabs="3:1"><input checked="checked" id="working_with_wildcard_resolverspy" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="working_with_wildcard_resolverspy">working_with_wildcard_resolvers.py</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="4:1"><input checked="checked" id="working_with_wildcard_resolverspy" name="__tabbed_4" type="radio" /><div class="tabbed-labels"><label for="working_with_wildcard_resolverspy">working_with_wildcard_resolvers.py</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
@@ -4401,7 +4598,7 @@ You're not viewing the latest version.
 <li>Apply custom error handling logic for the entire batch</li>
 </ul>
 <p>You can enable this with the <code>aggregate</code> parameter:</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="4:1"><input checked="checked" id="working_with_aggregated_eventspy" name="__tabbed_4" type="radio" /><div class="tabbed-labels"><label for="working_with_aggregated_eventspy">working_with_aggregated_events.py</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="5:1"><input checked="checked" id="working_with_aggregated_eventspy" name="__tabbed_5" type="radio" /><div class="tabbed-labels"><label for="working_with_aggregated_eventspy">working_with_aggregated_events.py</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
@@ -4442,8 +4639,7 @@ You're not viewing the latest version.
 <span class="normal">36</span>
 <span class="normal">37</span>
 <span class="normal">38</span>
-<span class="normal">39</span>
-<span class="normal">40</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">__future__</span><span class="w"> </span><span class="kn">import</span> <span class="n">annotations</span>
+<span class="normal">39</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">__future__</span><span class="w"> </span><span class="kn">import</span> <span class="n">annotations</span>
 
 <span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">TYPE_CHECKING</span><span class="p">,</span> <span class="n">Any</span>
 
@@ -4465,12 +4661,11 @@ You're not viewing the latest version.
 
 
 <span class="hll"><span class="nd">@app</span><span class="o">.</span><span class="n">on_publish</span><span class="p">(</span><span class="s2">&quot;/default/foo/*&quot;</span><span class="p">,</span> <span class="n">aggregate</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-</span><span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">handle_default_namespace_batch</span><span class="p">(</span><span class="n">payload</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]]):</span>
+</span><span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">handle_default_namespace_batch</span><span class="p">(</span><span class="n">payload</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]]):</span>  <span class="c1"># (1)!</span>
     <span class="n">write_operations</span><span class="p">:</span> <span class="nb">list</span> <span class="o">=</span> <span class="p">[]</span>
 
     <span class="n">write_operations</span><span class="o">.</span><span class="n">extend</span><span class="p">({</span><span class="s2">&quot;PutRequest&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;Item&quot;</span><span class="p">:</span> <span class="n">marshall</span><span class="p">(</span><span class="n">item</span><span class="p">)}}</span> <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">payload</span><span class="p">)</span>
 
-    <span class="c1"># Executar operação de lote no DynamoDB</span>
     <span class="k">if</span> <span class="n">write_operations</span><span class="p">:</span>
         <span class="n">dynamodb</span><span class="o">.</span><span class="n">batch_write_item</span><span class="p">(</span>
             <span class="n">RequestItems</span><span class="o">=</span><span class="p">{</span>
@@ -4484,6 +4679,9 @@ You're not viewing the latest version.
 <span class="k">def</span><span class="w"> </span><span class="nf">lambda_handler</span><span class="p">(</span><span class="n">event</span><span class="p">:</span> <span class="nb">dict</span><span class="p">,</span> <span class="n">context</span><span class="p">:</span> <span class="n">LambdaContext</span><span class="p">):</span>
     <span class="k">return</span> <span class="n">app</span><span class="o">.</span><span class="n">resolve</span><span class="p">(</span><span class="n">event</span><span class="p">,</span> <span class="n">context</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
+<ol>
+<li>The <code>payload</code> argument is mandatory and will be passed as a list of dictionary.</li>
+</ol>
 </div>
 </div>
 </div>
@@ -4491,7 +4689,7 @@ You're not viewing the latest version.
 <p>You can filter or reject events by raising exceptions in your resolvers or by formatting the payload according to the expected response structure. This instructs AppSync not to propagate that specific message, so subscribers will not receive it.</p>
 <h4 id="handling-errors-with-individual-items">Handling errors with individual items<a class="headerlink" href="#handling-errors-with-individual-items" title="Permanent link">&para;</a></h4>
 <p>When processing items individually with <code>aggregate=False</code>, you can raise an exception to fail a specific message. When this happens, the Event Handler will catch it and include the exception name and message in the response.</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="5:2"><input checked="checked" id="working_with_error_handlingpy" name="__tabbed_5" type="radio" /><input id="working_with_error_handling_responsejson" name="__tabbed_5" type="radio" /><div class="tabbed-labels"><label for="working_with_error_handlingpy">working_with_error_handling.py</label><label for="working_with_error_handling_responsejson">working_with_error_handling_response.json</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="6:2"><input checked="checked" id="working_with_error_handlingpy" name="__tabbed_6" type="radio" /><input id="working_with_error_handling_responsejson" name="__tabbed_6" type="radio" /><div class="tabbed-labels"><label for="working_with_error_handlingpy">working_with_error_handling.py</label><label for="working_with_error_handling_responsejson">working_with_error_handling_response.json</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
@@ -4589,7 +4787,7 @@ You're not viewing the latest version.
 </div>
 <h4 id="handling-errors-with-batch-of-items">Handling errors with batch of items<a class="headerlink" href="#handling-errors-with-batch-of-items" title="Permanent link">&para;</a></h4>
 <p>When processing batch of items with <code>aggregate=True</code>, you must format the payload according the expected response.</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="6:2"><input checked="checked" id="working_with_error_handling_multiplepy" name="__tabbed_6" type="radio" /><input id="working_with_error_handling_responsejson_1" name="__tabbed_6" type="radio" /><div class="tabbed-labels"><label for="working_with_error_handling_multiplepy">working_with_error_handling_multiple.py</label><label for="working_with_error_handling_responsejson_1">working_with_error_handling_response.json</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="7:2"><input checked="checked" id="working_with_error_handling_multiplepy" name="__tabbed_7" type="radio" /><input id="working_with_error_handling_responsejson_1" name="__tabbed_7" type="radio" /><div class="tabbed-labels"><label for="working_with_error_handling_multiplepy">working_with_error_handling_multiple.py</label><label for="working_with_error_handling_responsejson_1">working_with_error_handling_response.json</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
@@ -4678,25 +4876,120 @@ You're not viewing the latest version.
 <span class="normal">12</span>
 <span class="normal">13</span>
 <span class="normal">14</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="p">{</span>
-    <span class="s2">&quot;events&quot;</span><span class="p">:[</span>
-       <span class="p">{</span>
-<span class="hll">          <span class="s2">&quot;error&quot;</span><span class="p">:</span> <span class="s2">&quot;Error message&quot;</span><span class="p">,</span>
-</span>          <span class="s2">&quot;id&quot;</span><span class="p">:</span><span class="s2">&quot;1&quot;</span>
-       <span class="p">},</span>
-       <span class="p">{</span>
-          <span class="s2">&quot;payload&quot;</span><span class="p">:{</span>
-             <span class="s2">&quot;data&quot;</span><span class="p">:</span><span class="s2">&quot;data_2&quot;</span>
-          <span class="p">},</span>
-          <span class="s2">&quot;id&quot;</span><span class="p">:</span><span class="s2">&quot;2&quot;</span>
-       <span class="p">}</span>
-    <span class="p">]</span>
-  <span class="p">}</span>
+<span class="w">    </span><span class="nt">&quot;events&quot;</span><span class="p">:[</span>
+<span class="w">       </span><span class="p">{</span>
+<span class="hll"><span class="w">          </span><span class="nt">&quot;error&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Error message&quot;</span><span class="p">,</span>
+</span><span class="w">          </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="s2">&quot;1&quot;</span>
+<span class="w">       </span><span class="p">},</span>
+<span class="w">       </span><span class="p">{</span>
+<span class="w">          </span><span class="nt">&quot;payload&quot;</span><span class="p">:{</span>
+<span class="w">             </span><span class="nt">&quot;data&quot;</span><span class="p">:</span><span class="s2">&quot;data_2&quot;</span>
+<span class="w">          </span><span class="p">},</span>
+<span class="w">          </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="s2">&quot;2&quot;</span>
+<span class="w">       </span><span class="p">}</span>
+<span class="w">    </span><span class="p">]</span>
+<span class="w">  </span><span class="p">}</span>
 </code></pre></div></td></tr></table></div>
 </div>
 </div>
 </div>
 <p>If instead you want to fail the entire batch, you can throw an exception. This will cause the Event Handler to return an error response to AppSync and fail the entire batch.</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="7:2"><input checked="checked" id="working_with_error_handling_multiplepy_1" name="__tabbed_7" type="radio" /><input id="working_with_error_handling_responsejson_2" name="__tabbed_7" type="radio" /><div class="tabbed-labels"><label for="working_with_error_handling_multiplepy_1">working_with_error_handling_multiple.py</label><label for="working_with_error_handling_responsejson_2">working_with_error_handling_response.json</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="8:2"><input checked="checked" id="fail_entire_batchpy" name="__tabbed_8" type="radio" /><input id="fail_entire_batch_responsejson" name="__tabbed_8" type="radio" /><div class="tabbed-labels"><label for="fail_entire_batchpy">fail_entire_batch.py</label><label for="fail_entire_batch_responsejson">fail_entire_batch_response.json</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span>
+<span class="normal">35</span>
+<span class="normal">36</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">__future__</span><span class="w"> </span><span class="kn">import</span> <span class="n">annotations</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">TYPE_CHECKING</span><span class="p">,</span> <span class="n">Any</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">aws_lambda_powertools</span><span class="w"> </span><span class="kn">import</span> <span class="n">Logger</span>
+<span class="hll"><span class="kn">from</span><span class="w"> </span><span class="nn">aws_lambda_powertools.event_handler</span><span class="w"> </span><span class="kn">import</span> <span class="n">AppSyncEventsResolver</span>
+</span>
+<span class="k">if</span> <span class="n">TYPE_CHECKING</span><span class="p">:</span>
+    <span class="kn">from</span><span class="w"> </span><span class="nn">aws_lambda_powertools.utilities.typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">LambdaContext</span>
+
+<span class="n">app</span> <span class="o">=</span> <span class="n">AppSyncEventsResolver</span><span class="p">()</span>
+<span class="n">logger</span> <span class="o">=</span> <span class="n">Logger</span><span class="p">()</span>
+
+
+<span class="hll"><span class="k">class</span><span class="w"> </span><span class="nc">ChannelException</span><span class="p">(</span><span class="ne">Exception</span><span class="p">):</span>
+</span>    <span class="k">pass</span>
+
+
+<span class="hll"><span class="nd">@app</span><span class="o">.</span><span class="n">on_publish</span><span class="p">(</span><span class="s2">&quot;/default/*&quot;</span><span class="p">,</span> <span class="n">aggregate</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</span><span class="k">def</span><span class="w"> </span><span class="nf">handle_default_namespace_batch</span><span class="p">(</span><span class="n">payload</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]]):</span>
+    <span class="n">results</span><span class="p">:</span> <span class="nb">list</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="c1"># Process all events in the batch together</span>
+    <span class="k">for</span> <span class="n">event</span> <span class="ow">in</span> <span class="n">payload</span><span class="p">:</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="c1"># Process each event</span>
+            <span class="n">results</span><span class="o">.</span><span class="n">append</span><span class="p">({</span><span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="n">event</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;id&quot;</span><span class="p">),</span> <span class="s2">&quot;payload&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;processed&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span> <span class="s2">&quot;originalEvent&quot;</span><span class="p">:</span> <span class="n">event</span><span class="p">}})</span>
+        <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s2">&quot;Found and error&quot;</span><span class="p">)</span>
+<span class="hll">            <span class="k">raise</span> <span class="n">ChannelException</span><span class="p">(</span><span class="s2">&quot;An exception occurred&quot;</span><span class="p">)</span> <span class="kn">from</span><span class="w"> </span><span class="nn">e</span>
+</span>
+    <span class="k">return</span> <span class="n">results</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">lambda_handler</span><span class="p">(</span><span class="n">event</span><span class="p">:</span> <span class="nb">dict</span><span class="p">,</span> <span class="n">context</span><span class="p">:</span> <span class="n">LambdaContext</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">app</span><span class="o">.</span><span class="n">resolve</span><span class="p">(</span><span class="n">event</span><span class="p">,</span> <span class="n">context</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;error&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ChannelException - An exception occurred&quot;</span>
+<span class="p">}</span>
+</code></pre></div></td></tr></table></div>
+</div>
+</div>
+</div>
+<h4 id="authorization-control">Authorization control<a class="headerlink" href="#authorization-control" title="Permanent link">&para;</a></h4>
+<div class="admonition warning">
+<p class="admonition-title">Raising <code>UnauthorizedException</code> will cause the Lambda invocation to fail.</p>
+</div>
+<p>You can also do content based authorization for channel by raising the <code>UnauthorizedException</code> exception. This can cause two situations:</p>
+<ul>
+<li><strong>When working with publish events</strong> Powertools for AWS stop processing messages and subscribers will not receive any message.</li>
+<li><strong>When working with subscribe events</strong> the subscription won't be established.</li>
+</ul>
+<div class="tabbed-set tabbed-alternate" data-tabs="9:1"><input checked="checked" id="working_with_authorization_controlpy" name="__tabbed_9" type="radio" /><div class="tabbed-labels"><label for="working_with_authorization_controlpy">working_with_authorization_control.py</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
@@ -4737,172 +5030,37 @@ You're not viewing the latest version.
 
 <span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">TYPE_CHECKING</span><span class="p">,</span> <span class="n">Any</span>
 
-<span class="hll"><span class="kn">from</span><span class="w"> </span><span class="nn">aws_lambda_powertools.event_handler</span><span class="w"> </span><span class="kn">import</span> <span class="n">AppSyncEventsResolver</span>
-</span><span class="hll">
-</span><span class="k">if</span> <span class="n">TYPE_CHECKING</span><span class="p">:</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">aws_lambda_powertools.event_handler</span><span class="w"> </span><span class="kn">import</span> <span class="n">AppSyncEventsResolver</span>
+<span class="hll"><span class="kn">from</span><span class="w"> </span><span class="nn">aws_lambda_powertools.event_handler.events_appsync.exceptions</span><span class="w"> </span><span class="kn">import</span> <span class="n">UnauthorizedException</span>
+</span>
+<span class="k">if</span> <span class="n">TYPE_CHECKING</span><span class="p">:</span>
     <span class="kn">from</span><span class="w"> </span><span class="nn">aws_lambda_powertools.utilities.typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">LambdaContext</span>
 
 <span class="n">app</span> <span class="o">=</span> <span class="n">AppSyncEventsResolver</span><span class="p">()</span>
 
 
-<span class="hll"><span class="nd">@app</span><span class="o">.</span><span class="n">on_publish</span><span class="p">(</span><span class="s2">&quot;/default/*&quot;</span><span class="p">,</span> <span class="n">aggregate</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-</span><span class="k">def</span><span class="w"> </span><span class="nf">handle_default_namespace_batch</span><span class="p">(</span><span class="n">payload</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]]):</span>
-    <span class="n">results</span><span class="p">:</span> <span class="nb">list</span> <span class="o">=</span> <span class="p">[]</span>
-
-    <span class="c1"># Process all events in the batch together</span>
-    <span class="k">for</span> <span class="n">event</span> <span class="ow">in</span> <span class="n">payload</span><span class="p">:</span>
-        <span class="k">try</span><span class="p">:</span>
-            <span class="c1"># Process each event</span>
-            <span class="n">results</span><span class="o">.</span><span class="n">append</span><span class="p">({</span><span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="n">event</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;id&quot;</span><span class="p">),</span> <span class="s2">&quot;payload&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;processed&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span> <span class="s2">&quot;originalEvent&quot;</span><span class="p">:</span> <span class="n">event</span><span class="p">}})</span>
-        <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
-            <span class="c1"># Handle errors for individual events</span>
-            <span class="n">results</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
-                <span class="p">{</span>
-                    <span class="s2">&quot;error&quot;</span><span class="p">:</span> <span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">),</span>
-                    <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="n">event</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;id&quot;</span><span class="p">),</span>
-                <span class="p">},</span>
-            <span class="p">)</span>
-
-    <span class="k">return</span> <span class="n">results</span>
+<span class="nd">@app</span><span class="o">.</span><span class="n">on_publish</span><span class="p">(</span><span class="s2">&quot;/default/foo&quot;</span><span class="p">)</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">handle_specific_channel</span><span class="p">(</span><span class="n">payload</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]):</span>
+    <span class="k">return</span> <span class="n">payload</span>
 
 
-<span class="k">def</span><span class="w"> </span><span class="nf">lambda_handler</span><span class="p">(</span><span class="n">event</span><span class="p">:</span> <span class="nb">dict</span><span class="p">,</span> <span class="n">context</span><span class="p">:</span> <span class="n">LambdaContext</span><span class="p">):</span>
-    <span class="k">return</span> <span class="n">app</span><span class="o">.</span><span class="n">resolve</span><span class="p">(</span><span class="n">event</span><span class="p">,</span> <span class="n">context</span><span class="p">)</span>
-</code></pre></div></td></tr></table></div>
-</div>
-<div class="tabbed-block">
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
-<span class="normal"> 2</span>
-<span class="normal"> 3</span>
-<span class="normal"> 4</span>
-<span class="normal"> 5</span>
-<span class="normal"> 6</span>
-<span class="normal"> 7</span>
-<span class="normal"> 8</span>
-<span class="normal"> 9</span>
-<span class="normal">10</span>
-<span class="normal">11</span>
-<span class="normal">12</span>
-<span class="normal">13</span>
-<span class="normal">14</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="p">{</span>
-    <span class="s2">&quot;events&quot;</span><span class="p">:[</span>
-       <span class="p">{</span>
-          <span class="s2">&quot;error&quot;</span><span class="p">:</span> <span class="s2">&quot;Error message&quot;</span><span class="p">,</span>
-<span class="hll">          <span class="s2">&quot;id&quot;</span><span class="p">:</span><span class="s2">&quot;1&quot;</span>
-</span><span class="hll">       <span class="p">},</span>
-</span>       <span class="p">{</span>
-          <span class="s2">&quot;payload&quot;</span><span class="p">:{</span>
-             <span class="s2">&quot;data&quot;</span><span class="p">:</span><span class="s2">&quot;data_2&quot;</span>
-          <span class="p">},</span>
-          <span class="s2">&quot;id&quot;</span><span class="p">:</span><span class="s2">&quot;2&quot;</span>
-       <span class="p">}</span>
-<span class="hll">    <span class="p">]</span>
-</span>  <span class="p">}</span>
-</code></pre></div></td></tr></table></div>
-</div>
-</div>
-</div>
-<h4 id="authorization-control">Authorization control<a class="headerlink" href="#authorization-control" title="Permanent link">&para;</a></h4>
-<div class="admonition warning">
-<p class="admonition-title">Raising <code>UnauthorizedException</code> will cause the Lambda invocation to fail.</p>
-</div>
-<p>You can also do content based authorization for channel by raising the <code>UnauthorizedException</code> exception. This can cause two situations:</p>
-<ul>
-<li><strong>When working with publish events</strong> Powertools for AWS stop processing messages and subscribers will not receive any message.</li>
-<li><strong>When working with subscribe events</strong> the subscription won't be established.</li>
-</ul>
-<div class="tabbed-set tabbed-alternate" data-tabs="8:2"><input checked="checked" id="working_with_error_handlingpy_1" name="__tabbed_8" type="radio" /><input id="working_with_error_handling_responsejson_3" name="__tabbed_8" type="radio" /><div class="tabbed-labels"><label for="working_with_error_handlingpy_1">working_with_error_handling.py</label><label for="working_with_error_handling_responsejson_3">working_with_error_handling_response.json</label></div>
-<div class="tabbed-content">
-<div class="tabbed-block">
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
-<span class="normal"> 2</span>
-<span class="normal"> 3</span>
-<span class="normal"> 4</span>
-<span class="normal"> 5</span>
-<span class="normal"> 6</span>
-<span class="normal"> 7</span>
-<span class="normal"> 8</span>
-<span class="normal"> 9</span>
-<span class="normal">10</span>
-<span class="normal">11</span>
-<span class="normal">12</span>
-<span class="normal">13</span>
-<span class="normal">14</span>
-<span class="normal">15</span>
-<span class="normal">16</span>
-<span class="normal">17</span>
-<span class="normal">18</span>
-<span class="normal">19</span>
-<span class="normal">20</span>
-<span class="normal">21</span>
-<span class="normal">22</span>
-<span class="normal">23</span>
-<span class="normal">24</span>
-<span class="normal">25</span>
-<span class="normal">26</span>
-<span class="normal">27</span>
-<span class="normal">28</span>
-<span class="normal">29</span>
-<span class="normal">30</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">__future__</span><span class="w"> </span><span class="kn">import</span> <span class="n">annotations</span>
+<span class="nd">@app</span><span class="o">.</span><span class="n">on_publish</span><span class="p">(</span><span class="s2">&quot;/*&quot;</span><span class="p">)</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">handle_root_channel</span><span class="p">(</span><span class="n">payload</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]):</span>
+<span class="hll">    <span class="k">raise</span> <span class="n">UnauthorizedException</span><span class="p">(</span><span class="s2">&quot;You can only publish to /default/foo&quot;</span><span class="p">)</span>
+</span>
 
-<span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">TYPE_CHECKING</span><span class="p">,</span> <span class="n">Any</span>
-
-<span class="hll"><span class="kn">from</span><span class="w"> </span><span class="nn">aws_lambda_powertools.event_handler</span><span class="w"> </span><span class="kn">import</span> <span class="n">AppSyncEventsResolver</span>
-</span><span class="hll">
-</span><span class="k">if</span> <span class="n">TYPE_CHECKING</span><span class="p">:</span>
-    <span class="kn">from</span><span class="w"> </span><span class="nn">aws_lambda_powertools.utilities.typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">LambdaContext</span>
-
-<span class="n">app</span> <span class="o">=</span> <span class="n">AppSyncEventsResolver</span><span class="p">()</span>
+<span class="nd">@app</span><span class="o">.</span><span class="n">on_subscribe</span><span class="p">(</span><span class="s2">&quot;/default/foo&quot;</span><span class="p">)</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">handle_subscription_specific_channel</span><span class="p">():</span>
+    <span class="k">return</span> <span class="kc">True</span>
 
 
-<span class="hll"><span class="k">class</span><span class="w"> </span><span class="nc">ValidationError</span><span class="p">(</span><span class="ne">Exception</span><span class="p">):</span>
-</span>    <span class="k">pass</span>
-
-
-<span class="nd">@app</span><span class="o">.</span><span class="n">on_publish</span><span class="p">(</span><span class="s2">&quot;/default/channel&quot;</span><span class="p">)</span>
-<span class="k">def</span><span class="w"> </span><span class="nf">handle_channel1_publish</span><span class="p">(</span><span class="n">payload</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]):</span>
-    <span class="k">if</span> <span class="ow">not</span> <span class="n">is_valid_payload</span><span class="p">(</span><span class="n">payload</span><span class="p">):</span>
-        <span class="k">raise</span> <span class="n">ValidationError</span><span class="p">(</span><span class="s2">&quot;Invalid payload format&quot;</span><span class="p">)</span>
-
-    <span class="k">return</span> <span class="p">{</span><span class="s2">&quot;processed&quot;</span><span class="p">:</span> <span class="n">payload</span><span class="p">[</span><span class="s2">&quot;data&quot;</span><span class="p">]}</span>
-
-
-<span class="k">def</span><span class="w"> </span><span class="nf">is_valid_payload</span><span class="p">(</span><span class="n">payload</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]):</span>
-    <span class="k">return</span> <span class="s2">&quot;data&quot;</span> <span class="ow">in</span> <span class="n">payload</span>
-
+<span class="nd">@app</span><span class="o">.</span><span class="n">on_subscribe</span><span class="p">(</span><span class="s2">&quot;/*&quot;</span><span class="p">)</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">handle_subscription_root_channel</span><span class="p">():</span>
+<span class="hll">    <span class="k">raise</span> <span class="n">UnauthorizedException</span><span class="p">(</span><span class="s2">&quot;You can only subscribe to /default/foo&quot;</span><span class="p">)</span>
+</span>
 
 <span class="k">def</span><span class="w"> </span><span class="nf">lambda_handler</span><span class="p">(</span><span class="n">event</span><span class="p">:</span> <span class="nb">dict</span><span class="p">,</span> <span class="n">context</span><span class="p">:</span> <span class="n">LambdaContext</span><span class="p">):</span>
     <span class="k">return</span> <span class="n">app</span><span class="o">.</span><span class="n">resolve</span><span class="p">(</span><span class="n">event</span><span class="p">,</span> <span class="n">context</span><span class="p">)</span>
-</code></pre></div></td></tr></table></div>
-</div>
-<div class="tabbed-block">
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
-<span class="normal"> 2</span>
-<span class="normal"> 3</span>
-<span class="normal"> 4</span>
-<span class="normal"> 5</span>
-<span class="normal"> 6</span>
-<span class="normal"> 7</span>
-<span class="normal"> 8</span>
-<span class="normal"> 9</span>
-<span class="normal">10</span>
-<span class="normal">11</span>
-<span class="normal">12</span>
-<span class="normal">13</span>
-<span class="normal">14</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="p">{</span>
-    <span class="s2">&quot;events&quot;</span><span class="p">:[</span>
-       <span class="p">{</span>
-          <span class="s2">&quot;error&quot;</span><span class="p">:</span> <span class="s2">&quot;Error message&quot;</span><span class="p">,</span>
-<span class="hll">          <span class="s2">&quot;id&quot;</span><span class="p">:</span><span class="s2">&quot;1&quot;</span>
-</span><span class="hll">       <span class="p">},</span>
-</span>       <span class="p">{</span>
-          <span class="s2">&quot;payload&quot;</span><span class="p">:{</span>
-             <span class="s2">&quot;data&quot;</span><span class="p">:</span><span class="s2">&quot;data_2&quot;</span>
-          <span class="p">},</span>
-          <span class="s2">&quot;id&quot;</span><span class="p">:</span><span class="s2">&quot;2&quot;</span>
-       <span class="p">}</span>
-<span class="hll">    <span class="p">]</span>
-</span>  <span class="p">}</span>
 </code></pre></div></td></tr></table></div>
 </div>
 </div>
@@ -4914,7 +5072,7 @@ You're not viewing the latest version.
 <summary>Events order and AppSync Events</summary>
 <p>AppSync does not rely on event order. As long as each event includes the original <code>id</code>, AppSync processes them correctly regardless of the order in which they are received.</p>
 </details>
-<div class="tabbed-set tabbed-alternate" data-tabs="9:1"><input checked="checked" id="working_with_async_resolverspy" name="__tabbed_9" type="radio" /><div class="tabbed-labels"><label for="working_with_async_resolverspy">working_with_async_resolvers.py</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="10:1"><input checked="checked" id="working_with_async_resolverspy" name="__tabbed_10" type="radio" /><div class="tabbed-labels"><label for="working_with_async_resolverspy">working_with_async_resolvers.py</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
@@ -4941,24 +5099,22 @@ You're not viewing the latest version.
 <span class="normal">22</span>
 <span class="normal">23</span>
 <span class="normal">24</span>
-<span class="normal">25</span>
-<span class="normal">26</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">__future__</span><span class="w"> </span><span class="kn">import</span> <span class="n">annotations</span>
+<span class="normal">25</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">__future__</span><span class="w"> </span><span class="kn">import</span> <span class="n">annotations</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="nn">asyncio</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">TYPE_CHECKING</span><span class="p">,</span> <span class="n">Any</span>
-<span class="hll">
-</span><span class="hll"><span class="kn">from</span><span class="w"> </span><span class="nn">aws_lambda_powertools.event_handler</span><span class="w"> </span><span class="kn">import</span> <span class="n">AppSyncEventsResolver</span>  <span class="c1"># type: ignore[attr-defined]</span>
+
+<span class="hll"><span class="kn">from</span><span class="w"> </span><span class="nn">aws_lambda_powertools.event_handler</span><span class="w"> </span><span class="kn">import</span> <span class="n">AppSyncEventsResolver</span>
 </span>
 <span class="k">if</span> <span class="n">TYPE_CHECKING</span><span class="p">:</span>
     <span class="kn">from</span><span class="w"> </span><span class="nn">aws_lambda_powertools.utilities.typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">LambdaContext</span>
 
 <span class="n">app</span> <span class="o">=</span> <span class="n">AppSyncEventsResolver</span><span class="p">()</span>
 
-<span class="hll">
-</span><span class="nd">@app</span><span class="o">.</span><span class="n">async_on_publish</span><span class="p">(</span><span class="s2">&quot;/default/channel1&quot;</span><span class="p">)</span>
-<span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">handle_channel1_publish</span><span class="p">(</span><span class="n">payload</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]):</span>
-    <span class="n">result</span> <span class="o">=</span> <span class="k">await</span> <span class="n">async_process_data</span><span class="p">(</span><span class="n">payload</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">result</span>
+
+<span class="hll"><span class="nd">@app</span><span class="o">.</span><span class="n">async_on_publish</span><span class="p">(</span><span class="s2">&quot;/default/channel1&quot;</span><span class="p">)</span>
+</span><span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">handle_channel1_publish</span><span class="p">(</span><span class="n">payload</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]):</span>
+    <span class="k">return</span> <span class="k">await</span> <span class="n">async_process_data</span><span class="p">(</span><span class="n">payload</span><span class="p">)</span>
 
 
 <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">async_process_data</span><span class="p">(</span><span class="n">payload</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]):</span>
@@ -4974,7 +5130,7 @@ You're not viewing the latest version.
 </div>
 <h3 id="accessing-lambda-context-and-event">Accessing Lambda context and event<a class="headerlink" href="#accessing-lambda-context-and-event" title="Permanent link">&para;</a></h3>
 <p>You can access to the original Lambda event or context for additional information. These are accessible via the app instance:</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="10:1"><input checked="checked" id="accessing_event_and_contextpy" name="__tabbed_10" type="radio" /><div class="tabbed-labels"><label for="accessing_event_and_contextpy">accessing_event_and_context.py</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="11:1"><input checked="checked" id="accessing_event_and_contextpy" name="__tabbed_11" type="radio" /><div class="tabbed-labels"><label for="accessing_event_and_contextpy">accessing_event_and_context.py</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
@@ -5005,32 +5161,24 @@ You're not viewing the latest version.
 <span class="normal">26</span>
 <span class="normal">27</span>
 <span class="normal">28</span>
-<span class="normal">29</span>
-<span class="normal">30</span>
-<span class="normal">31</span>
-<span class="normal">32</span>
-<span class="normal">33</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">__future__</span><span class="w"> </span><span class="kn">import</span> <span class="n">annotations</span>
+<span class="normal">29</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">__future__</span><span class="w"> </span><span class="kn">import</span> <span class="n">annotations</span>
 
 <span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">TYPE_CHECKING</span><span class="p">,</span> <span class="n">Any</span>
 
-<span class="hll"><span class="kn">from</span><span class="w"> </span><span class="nn">aws_lambda_powertools.event_handler</span><span class="w"> </span><span class="kn">import</span> <span class="n">AppSyncEventsResolver</span>
-</span><span class="hll"><span class="kn">from</span><span class="w"> </span><span class="nn">aws_lambda_powertools.utilities.data_classes</span><span class="w"> </span><span class="kn">import</span> <span class="n">AppSyncResolverEventsEvent</span>
-</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">aws_lambda_powertools.event_handler</span><span class="w"> </span><span class="kn">import</span> <span class="n">AppSyncEventsResolver</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">aws_lambda_powertools.utilities.data_classes</span><span class="w"> </span><span class="kn">import</span> <span class="n">AppSyncResolverEventsEvent</span>
+
 <span class="k">if</span> <span class="n">TYPE_CHECKING</span><span class="p">:</span>
     <span class="kn">from</span><span class="w"> </span><span class="nn">aws_lambda_powertools.utilities.typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">LambdaContext</span>
 
 <span class="n">app</span> <span class="o">=</span> <span class="n">AppSyncEventsResolver</span><span class="p">()</span>
 
-<span class="hll">
-</span><span class="k">class</span><span class="w"> </span><span class="nc">ValidationError</span><span class="p">(</span><span class="ne">Exception</span><span class="p">):</span>
-    <span class="k">pass</span>
-
 
 <span class="nd">@app</span><span class="o">.</span><span class="n">on_publish</span><span class="p">(</span><span class="s2">&quot;/default/channel1&quot;</span><span class="p">)</span>
 <span class="k">def</span><span class="w"> </span><span class="nf">handle_channel1_publish</span><span class="p">(</span><span class="n">payload</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]):</span>
     <span class="c1"># Access the full event and context</span>
-    <span class="n">lambda_event</span><span class="p">:</span> <span class="n">AppSyncResolverEventsEvent</span> <span class="o">=</span> <span class="n">app</span><span class="o">.</span><span class="n">current_event</span>
-
+<span class="hll">    <span class="n">lambda_event</span><span class="p">:</span> <span class="n">AppSyncResolverEventsEvent</span> <span class="o">=</span> <span class="n">app</span><span class="o">.</span><span class="n">current_event</span>
+</span>
     <span class="c1"># Access request headers</span>
     <span class="n">header_user_agent</span> <span class="o">=</span> <span class="n">lambda_event</span><span class="o">.</span><span class="n">request_headers</span><span class="p">[</span><span class="s2">&quot;user-agent&quot;</span><span class="p">]</span>
 
@@ -5132,7 +5280,7 @@ You're not viewing the latest version.
 <h2 id="testing-your-code">Testing your code<a class="headerlink" href="#testing-your-code" title="Permanent link">&para;</a></h2>
 <p>You can test your event handlers by passing a mocked or actual AppSync Events Lambda event.</p>
 <h3 id="testing-publish-events">Testing publish events<a class="headerlink" href="#testing-publish-events" title="Permanent link">&para;</a></h3>
-<div class="tabbed-set tabbed-alternate" data-tabs="11:2"><input checked="checked" id="getting_started_with_testing_publishpy" name="__tabbed_11" type="radio" /><input id="getting_started_with_testing_publish_eventjson" name="__tabbed_11" type="radio" /><div class="tabbed-labels"><label for="getting_started_with_testing_publishpy">getting_started_with_testing_publish.py</label><label for="getting_started_with_testing_publish_eventjson">getting_started_with_testing_publish_event.json</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="12:2"><input checked="checked" id="getting_started_with_testing_publishpy" name="__tabbed_12" type="radio" /><input id="getting_started_with_testing_publish_eventjson" name="__tabbed_12" type="radio" /><div class="tabbed-labels"><label for="getting_started_with_testing_publishpy">getting_started_with_testing_publish.py</label><label for="getting_started_with_testing_publish_eventjson">getting_started_with_testing_publish_event.json</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
@@ -5180,16 +5328,16 @@ You're not viewing the latest version.
 <span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
 
 <span class="kn">from</span><span class="w"> </span><span class="nn">aws_lambda_powertools.event_handler</span><span class="w"> </span><span class="kn">import</span> <span class="n">AppSyncEventsResolver</span>
-<span class="hll">
-</span><span class="hll">
-</span><span class="k">class</span><span class="w"> </span><span class="nc">LambdaContext</span><span class="p">:</span>
+
+
+<span class="k">class</span><span class="w"> </span><span class="nc">LambdaContext</span><span class="p">:</span>
     <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">function_name</span> <span class="o">=</span> <span class="s2">&quot;test-func&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">memory_limit_in_mb</span> <span class="o">=</span> <span class="mi">128</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">invoked_function_arn</span> <span class="o">=</span> <span class="s2">&quot;arn:aws:lambda:eu-west-1:809313241234:function:test-func&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">aws_request_id</span> <span class="o">=</span> <span class="s2">&quot;52fdfc07-2182-154f-163f-5f0f9a621d72&quot;</span>
-<span class="hll">
-</span>    <span class="k">def</span><span class="w"> </span><span class="nf">get_remaining_time_in_millis</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">get_remaining_time_in_millis</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
         <span class="k">return</span> <span class="mi">1000</span>
 
 
@@ -5285,75 +5433,75 @@ You're not viewing the latest version.
 <span class="normal">62</span>
 <span class="normal">63</span>
 <span class="normal">64</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="p">{</span>
-    <span class="s2">&quot;identity&quot;</span><span class="p">:</span><span class="s2">&quot;None&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;result&quot;</span><span class="p">:</span><span class="s2">&quot;None&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;request&quot;</span><span class="p">:{</span>
-<span class="hll">       <span class="s2">&quot;headers&quot;</span><span class="p">:</span> <span class="p">{</span>
-</span><span class="hll">        <span class="s2">&quot;x-forwarded-for&quot;</span><span class="p">:</span> <span class="s2">&quot;1.1.1.1, 2.2.2.2&quot;</span><span class="p">,</span>
-</span>        <span class="s2">&quot;cloudfront-viewer-country&quot;</span><span class="p">:</span> <span class="s2">&quot;US&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;cloudfront-is-tablet-viewer&quot;</span><span class="p">:</span> <span class="s2">&quot;false&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;via&quot;</span><span class="p">:</span> <span class="s2">&quot;2.0 xxxxxxxxxxxxxxxx.cloudfront.net (CloudFront)&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;cloudfront-forwarded-proto&quot;</span><span class="p">:</span> <span class="s2">&quot;https&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;origin&quot;</span><span class="p">:</span> <span class="s2">&quot;https://us-west-1.console.aws.amazon.com&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;content-length&quot;</span><span class="p">:</span> <span class="s2">&quot;217&quot;</span><span class="p">,</span>
-<span class="hll">        <span class="s2">&quot;accept-language&quot;</span><span class="p">:</span> <span class="s2">&quot;en-US,en;q=0.9&quot;</span><span class="p">,</span>
-</span>        <span class="s2">&quot;host&quot;</span><span class="p">:</span> <span class="s2">&quot;xxxxxxxxxxxxxxxx.appsync-api.us-west-1.amazonaws.com&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;x-forwarded-proto&quot;</span><span class="p">:</span> <span class="s2">&quot;https&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;user-agent&quot;</span><span class="p">:</span> <span class="s2">&quot;Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.83 Safari/537.36&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;accept&quot;</span><span class="p">:</span> <span class="s2">&quot;*/*&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;cloudfront-is-mobile-viewer&quot;</span><span class="p">:</span> <span class="s2">&quot;false&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;cloudfront-is-smarttv-viewer&quot;</span><span class="p">:</span> <span class="s2">&quot;false&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;accept-encoding&quot;</span><span class="p">:</span> <span class="s2">&quot;gzip, deflate, br&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;referer&quot;</span><span class="p">:</span> <span class="s2">&quot;https://us-west-1.console.aws.amazon.com/appsync/home?region=us-west-1&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;content-type&quot;</span><span class="p">:</span> <span class="s2">&quot;application/json&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;sec-fetch-mode&quot;</span><span class="p">:</span> <span class="s2">&quot;cors&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;x-amz-cf-id&quot;</span><span class="p">:</span> <span class="s2">&quot;3aykhqlUwQeANU-HGY7E_guV5EkNeMMtwyOgiA==&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;x-amzn-trace-id&quot;</span><span class="p">:</span> <span class="s2">&quot;Root=1-5f512f51-fac632066c5e848ae714&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;authorization&quot;</span><span class="p">:</span> <span class="s2">&quot;eyJraWQiOiJScWFCSlJqYVJlM0hrSnBTUFpIcVRXazNOW...&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;sec-fetch-dest&quot;</span><span class="p">:</span> <span class="s2">&quot;empty&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;x-amz-user-agent&quot;</span><span class="p">:</span> <span class="s2">&quot;AWS-Console-AppSync/&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;cloudfront-is-desktop-viewer&quot;</span><span class="p">:</span> <span class="s2">&quot;true&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;sec-fetch-site&quot;</span><span class="p">:</span> <span class="s2">&quot;cross-site&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;x-forwarded-port&quot;</span><span class="p">:</span> <span class="s2">&quot;443&quot;</span>
-      <span class="p">},</span>
-       <span class="s2">&quot;domainName&quot;</span><span class="p">:</span><span class="s2">&quot;None&quot;</span>
-    <span class="p">},</span>
-    <span class="s2">&quot;info&quot;</span><span class="p">:{</span>
-       <span class="s2">&quot;channel&quot;</span><span class="p">:{</span>
-          <span class="s2">&quot;path&quot;</span><span class="p">:</span><span class="s2">&quot;/default/channel&quot;</span><span class="p">,</span>
-          <span class="s2">&quot;segments&quot;</span><span class="p">:[</span>
-             <span class="s2">&quot;default&quot;</span><span class="p">,</span>
-             <span class="s2">&quot;channel&quot;</span>
-          <span class="p">]</span>
-       <span class="p">},</span>
-       <span class="s2">&quot;channelNamespace&quot;</span><span class="p">:{</span>
-          <span class="s2">&quot;name&quot;</span><span class="p">:</span><span class="s2">&quot;default&quot;</span>
-       <span class="p">},</span>
-       <span class="s2">&quot;operation&quot;</span><span class="p">:</span><span class="s2">&quot;PUBLISH&quot;</span>
-    <span class="p">},</span>
-    <span class="s2">&quot;error&quot;</span><span class="p">:</span><span class="s2">&quot;None&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;prev&quot;</span><span class="p">:</span><span class="s2">&quot;None&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;stash&quot;</span><span class="p">:{</span>
+<span class="w">    </span><span class="nt">&quot;identity&quot;</span><span class="p">:</span><span class="s2">&quot;None&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;result&quot;</span><span class="p">:</span><span class="s2">&quot;None&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;request&quot;</span><span class="p">:{</span>
+<span class="w">       </span><span class="nt">&quot;headers&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;x-forwarded-for&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1.1.1.1, 2.2.2.2&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;cloudfront-viewer-country&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;US&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;cloudfront-is-tablet-viewer&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;false&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;via&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2.0 xxxxxxxxxxxxxxxx.cloudfront.net (CloudFront)&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;cloudfront-forwarded-proto&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;origin&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://us-west-1.console.aws.amazon.com&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;content-length&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;217&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;accept-language&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;en-US,en;q=0.9&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;host&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;xxxxxxxxxxxxxxxx.appsync-api.us-west-1.amazonaws.com&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;x-forwarded-proto&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;user-agent&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.83 Safari/537.36&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;accept&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;*/*&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;cloudfront-is-mobile-viewer&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;false&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;cloudfront-is-smarttv-viewer&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;false&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;accept-encoding&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;gzip, deflate, br&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;referer&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://us-west-1.console.aws.amazon.com/appsync/home?region=us-west-1&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;content-type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;application/json&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;sec-fetch-mode&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;cors&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;x-amz-cf-id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;3aykhqlUwQeANU-HGY7E_guV5EkNeMMtwyOgiA==&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;x-amzn-trace-id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Root=1-5f512f51-fac632066c5e848ae714&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;authorization&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;eyJraWQiOiJScWFCSlJqYVJlM0hrSnBTUFpIcVRXazNOW...&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;sec-fetch-dest&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;empty&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;x-amz-user-agent&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;AWS-Console-AppSync/&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;cloudfront-is-desktop-viewer&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;true&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;sec-fetch-site&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;cross-site&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;x-forwarded-port&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;443&quot;</span>
+<span class="w">      </span><span class="p">},</span>
+<span class="w">       </span><span class="nt">&quot;domainName&quot;</span><span class="p">:</span><span class="s2">&quot;None&quot;</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">&quot;info&quot;</span><span class="p">:{</span>
+<span class="w">       </span><span class="nt">&quot;channel&quot;</span><span class="p">:{</span>
+<span class="w">          </span><span class="nt">&quot;path&quot;</span><span class="p">:</span><span class="s2">&quot;/default/channel&quot;</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">&quot;segments&quot;</span><span class="p">:[</span>
+<span class="w">             </span><span class="s2">&quot;default&quot;</span><span class="p">,</span>
+<span class="w">             </span><span class="s2">&quot;channel&quot;</span>
+<span class="w">          </span><span class="p">]</span>
+<span class="w">       </span><span class="p">},</span>
+<span class="w">       </span><span class="nt">&quot;channelNamespace&quot;</span><span class="p">:{</span>
+<span class="w">          </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="s2">&quot;default&quot;</span>
+<span class="w">       </span><span class="p">},</span>
+<span class="w">       </span><span class="nt">&quot;operation&quot;</span><span class="p">:</span><span class="s2">&quot;PUBLISH&quot;</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">&quot;error&quot;</span><span class="p">:</span><span class="s2">&quot;None&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;prev&quot;</span><span class="p">:</span><span class="s2">&quot;None&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;stash&quot;</span><span class="p">:{</span>
 
-    <span class="p">},</span>
-    <span class="s2">&quot;outErrors&quot;</span><span class="p">:[</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">&quot;outErrors&quot;</span><span class="p">:[</span>
 
-    <span class="p">],</span>
-    <span class="s2">&quot;events&quot;</span><span class="p">:[</span>
-       <span class="p">{</span>
-          <span class="s2">&quot;payload&quot;</span><span class="p">:{</span>
-            <span class="s2">&quot;data&quot;</span><span class="p">:</span> <span class="s2">&quot;test data&quot;</span>
-          <span class="p">},</span>
-          <span class="s2">&quot;id&quot;</span><span class="p">:</span><span class="s2">&quot;123&quot;</span>
-       <span class="p">}</span>
-    <span class="p">]</span>
-  <span class="p">}</span>
+<span class="w">    </span><span class="p">],</span>
+<span class="w">    </span><span class="nt">&quot;events&quot;</span><span class="p">:[</span>
+<span class="w">       </span><span class="p">{</span>
+<span class="w">          </span><span class="nt">&quot;payload&quot;</span><span class="p">:{</span>
+<span class="w">            </span><span class="nt">&quot;data&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;test data&quot;</span>
+<span class="w">          </span><span class="p">},</span>
+<span class="w">          </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="s2">&quot;123&quot;</span>
+<span class="w">       </span><span class="p">}</span>
+<span class="w">    </span><span class="p">]</span>
+<span class="w">  </span><span class="p">}</span>
 </code></pre></div></td></tr></table></div>
 </div>
 </div>
 </div>
 <h3 id="testing-subscribe-events">Testing subscribe events<a class="headerlink" href="#testing-subscribe-events" title="Permanent link">&para;</a></h3>
-<div class="tabbed-set tabbed-alternate" data-tabs="12:2"><input checked="checked" id="getting_started_with_testing_subscribepy" name="__tabbed_12" type="radio" /><input id="getting_started_with_testing_subscribe_eventjson" name="__tabbed_12" type="radio" /><div class="tabbed-labels"><label for="getting_started_with_testing_subscribepy">getting_started_with_testing_subscribe.py</label><label for="getting_started_with_testing_subscribe_eventjson">getting_started_with_testing_subscribe_event.json</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="13:2"><input checked="checked" id="getting_started_with_testing_subscribepy" name="__tabbed_13" type="radio" /><input id="getting_started_with_testing_subscribe_eventjson" name="__tabbed_13" type="radio" /><div class="tabbed-labels"><label for="getting_started_with_testing_subscribepy">getting_started_with_testing_subscribe.py</label><label for="getting_started_with_testing_subscribe_eventjson">getting_started_with_testing_subscribe_event.json</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
@@ -5396,16 +5544,16 @@ You're not viewing the latest version.
 <span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
 
 <span class="kn">from</span><span class="w"> </span><span class="nn">aws_lambda_powertools.event_handler</span><span class="w"> </span><span class="kn">import</span> <span class="n">AppSyncEventsResolver</span>
-<span class="hll">
-</span><span class="hll">
-</span><span class="k">class</span><span class="w"> </span><span class="nc">LambdaContext</span><span class="p">:</span>
+
+
+<span class="k">class</span><span class="w"> </span><span class="nc">LambdaContext</span><span class="p">:</span>
     <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">function_name</span> <span class="o">=</span> <span class="s2">&quot;test-func&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">memory_limit_in_mb</span> <span class="o">=</span> <span class="mi">128</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">invoked_function_arn</span> <span class="o">=</span> <span class="s2">&quot;arn:aws:lambda:eu-west-1:809313241234:function:test-func&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">aws_request_id</span> <span class="o">=</span> <span class="s2">&quot;52fdfc07-2182-154f-163f-5f0f9a621d72&quot;</span>
-<span class="hll">
-</span>    <span class="k">def</span><span class="w"> </span><span class="nf">get_remaining_time_in_millis</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">get_remaining_time_in_millis</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
         <span class="k">return</span> <span class="mi">1000</span>
 
 
@@ -5489,62 +5637,62 @@ You're not viewing the latest version.
 <span class="normal">55</span>
 <span class="normal">56</span>
 <span class="normal">57</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="p">{</span>
-    <span class="s2">&quot;identity&quot;</span><span class="p">:</span><span class="s2">&quot;None&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;result&quot;</span><span class="p">:</span><span class="s2">&quot;None&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;request&quot;</span><span class="p">:{</span>
-<span class="hll">       <span class="s2">&quot;headers&quot;</span><span class="p">:</span> <span class="p">{</span>
-</span><span class="hll">        <span class="s2">&quot;x-forwarded-for&quot;</span><span class="p">:</span> <span class="s2">&quot;1.1.1.1, 2.2.2.2&quot;</span><span class="p">,</span>
-</span>        <span class="s2">&quot;cloudfront-viewer-country&quot;</span><span class="p">:</span> <span class="s2">&quot;US&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;cloudfront-is-tablet-viewer&quot;</span><span class="p">:</span> <span class="s2">&quot;false&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;via&quot;</span><span class="p">:</span> <span class="s2">&quot;2.0 xxxxxxxxxxxxxxxx.cloudfront.net (CloudFront)&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;cloudfront-forwarded-proto&quot;</span><span class="p">:</span> <span class="s2">&quot;https&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;origin&quot;</span><span class="p">:</span> <span class="s2">&quot;https://us-west-1.console.aws.amazon.com&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;content-length&quot;</span><span class="p">:</span> <span class="s2">&quot;217&quot;</span><span class="p">,</span>
-<span class="hll">        <span class="s2">&quot;accept-language&quot;</span><span class="p">:</span> <span class="s2">&quot;en-US,en;q=0.9&quot;</span><span class="p">,</span>
-</span>        <span class="s2">&quot;host&quot;</span><span class="p">:</span> <span class="s2">&quot;xxxxxxxxxxxxxxxx.appsync-api.us-west-1.amazonaws.com&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;x-forwarded-proto&quot;</span><span class="p">:</span> <span class="s2">&quot;https&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;user-agent&quot;</span><span class="p">:</span> <span class="s2">&quot;Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.83 Safari/537.36&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;accept&quot;</span><span class="p">:</span> <span class="s2">&quot;*/*&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;cloudfront-is-mobile-viewer&quot;</span><span class="p">:</span> <span class="s2">&quot;false&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;cloudfront-is-smarttv-viewer&quot;</span><span class="p">:</span> <span class="s2">&quot;false&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;accept-encoding&quot;</span><span class="p">:</span> <span class="s2">&quot;gzip, deflate, br&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;referer&quot;</span><span class="p">:</span> <span class="s2">&quot;https://us-west-1.console.aws.amazon.com/appsync/home?region=us-west-1&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;content-type&quot;</span><span class="p">:</span> <span class="s2">&quot;application/json&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;sec-fetch-mode&quot;</span><span class="p">:</span> <span class="s2">&quot;cors&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;x-amz-cf-id&quot;</span><span class="p">:</span> <span class="s2">&quot;3aykhqlUwQeANU-HGY7E_guV5EkNeMMtwyOgiA==&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;x-amzn-trace-id&quot;</span><span class="p">:</span> <span class="s2">&quot;Root=1-5f512f51-fac632066c5e848ae714&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;authorization&quot;</span><span class="p">:</span> <span class="s2">&quot;eyJraWQiOiJScWFCSlJqYVJlM0hrSnBTUFpIcVRXazNOW...&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;sec-fetch-dest&quot;</span><span class="p">:</span> <span class="s2">&quot;empty&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;x-amz-user-agent&quot;</span><span class="p">:</span> <span class="s2">&quot;AWS-Console-AppSync/&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;cloudfront-is-desktop-viewer&quot;</span><span class="p">:</span> <span class="s2">&quot;true&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;sec-fetch-site&quot;</span><span class="p">:</span> <span class="s2">&quot;cross-site&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;x-forwarded-port&quot;</span><span class="p">:</span> <span class="s2">&quot;443&quot;</span>
-      <span class="p">},</span>
-       <span class="s2">&quot;domainName&quot;</span><span class="p">:</span><span class="s2">&quot;None&quot;</span>
-    <span class="p">},</span>
-    <span class="s2">&quot;info&quot;</span><span class="p">:{</span>
-       <span class="s2">&quot;channel&quot;</span><span class="p">:{</span>
-          <span class="s2">&quot;path&quot;</span><span class="p">:</span><span class="s2">&quot;/default/channel&quot;</span><span class="p">,</span>
-          <span class="s2">&quot;segments&quot;</span><span class="p">:[</span>
-             <span class="s2">&quot;default&quot;</span><span class="p">,</span>
-             <span class="s2">&quot;channel&quot;</span>
-          <span class="p">]</span>
-       <span class="p">},</span>
-       <span class="s2">&quot;channelNamespace&quot;</span><span class="p">:{</span>
-          <span class="s2">&quot;name&quot;</span><span class="p">:</span><span class="s2">&quot;default&quot;</span>
-       <span class="p">},</span>
-       <span class="s2">&quot;operation&quot;</span><span class="p">:</span><span class="s2">&quot;SUBSCRIBE&quot;</span>
-    <span class="p">},</span>
-    <span class="s2">&quot;error&quot;</span><span class="p">:</span><span class="s2">&quot;None&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;prev&quot;</span><span class="p">:</span><span class="s2">&quot;None&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;stash&quot;</span><span class="p">:{</span>
+<span class="w">    </span><span class="nt">&quot;identity&quot;</span><span class="p">:</span><span class="s2">&quot;None&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;result&quot;</span><span class="p">:</span><span class="s2">&quot;None&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;request&quot;</span><span class="p">:{</span>
+<span class="w">       </span><span class="nt">&quot;headers&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;x-forwarded-for&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1.1.1.1, 2.2.2.2&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;cloudfront-viewer-country&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;US&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;cloudfront-is-tablet-viewer&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;false&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;via&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2.0 xxxxxxxxxxxxxxxx.cloudfront.net (CloudFront)&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;cloudfront-forwarded-proto&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;origin&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://us-west-1.console.aws.amazon.com&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;content-length&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;217&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;accept-language&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;en-US,en;q=0.9&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;host&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;xxxxxxxxxxxxxxxx.appsync-api.us-west-1.amazonaws.com&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;x-forwarded-proto&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;user-agent&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.83 Safari/537.36&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;accept&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;*/*&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;cloudfront-is-mobile-viewer&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;false&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;cloudfront-is-smarttv-viewer&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;false&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;accept-encoding&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;gzip, deflate, br&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;referer&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://us-west-1.console.aws.amazon.com/appsync/home?region=us-west-1&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;content-type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;application/json&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;sec-fetch-mode&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;cors&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;x-amz-cf-id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;3aykhqlUwQeANU-HGY7E_guV5EkNeMMtwyOgiA==&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;x-amzn-trace-id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Root=1-5f512f51-fac632066c5e848ae714&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;authorization&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;eyJraWQiOiJScWFCSlJqYVJlM0hrSnBTUFpIcVRXazNOW...&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;sec-fetch-dest&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;empty&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;x-amz-user-agent&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;AWS-Console-AppSync/&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;cloudfront-is-desktop-viewer&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;true&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;sec-fetch-site&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;cross-site&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;x-forwarded-port&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;443&quot;</span>
+<span class="w">      </span><span class="p">},</span>
+<span class="w">       </span><span class="nt">&quot;domainName&quot;</span><span class="p">:</span><span class="s2">&quot;None&quot;</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">&quot;info&quot;</span><span class="p">:{</span>
+<span class="w">       </span><span class="nt">&quot;channel&quot;</span><span class="p">:{</span>
+<span class="w">          </span><span class="nt">&quot;path&quot;</span><span class="p">:</span><span class="s2">&quot;/default/channel&quot;</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">&quot;segments&quot;</span><span class="p">:[</span>
+<span class="w">             </span><span class="s2">&quot;default&quot;</span><span class="p">,</span>
+<span class="w">             </span><span class="s2">&quot;channel&quot;</span>
+<span class="w">          </span><span class="p">]</span>
+<span class="w">       </span><span class="p">},</span>
+<span class="w">       </span><span class="nt">&quot;channelNamespace&quot;</span><span class="p">:{</span>
+<span class="w">          </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="s2">&quot;default&quot;</span>
+<span class="w">       </span><span class="p">},</span>
+<span class="w">       </span><span class="nt">&quot;operation&quot;</span><span class="p">:</span><span class="s2">&quot;SUBSCRIBE&quot;</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">&quot;error&quot;</span><span class="p">:</span><span class="s2">&quot;None&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;prev&quot;</span><span class="p">:</span><span class="s2">&quot;None&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;stash&quot;</span><span class="p">:{</span>
 
-    <span class="p">},</span>
-    <span class="s2">&quot;outErrors&quot;</span><span class="p">:[</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">&quot;outErrors&quot;</span><span class="p">:[</span>
 
-    <span class="p">],</span>
-    <span class="s2">&quot;events&quot;</span><span class="p">:[]</span>
-  <span class="p">}</span>
+<span class="w">    </span><span class="p">],</span>
+<span class="w">    </span><span class="nt">&quot;events&quot;</span><span class="p">:[]</span>
+<span class="w">  </span><span class="p">}</span>
 </code></pre></div></td></tr></table></div>
 </div>
 </div>
@@ -5569,7 +5717,7 @@ You're not viewing the latest version.
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    2025-04-24
+    2025-04-28
   </span>
 
     
