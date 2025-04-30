@@ -1193,6 +1193,15 @@ You're not viewing the latest version.
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#fine-grained-responses" class="md-nav__link">
+    <span class="md-ellipsis">
+      Fine grained responses
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -3765,6 +3774,15 @@ You're not viewing the latest version.
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#fine-grained-responses" class="md-nav__link">
+    <span class="md-ellipsis">
+      Fine grained responses
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -5728,6 +5746,82 @@ use a combination of <a href="https://docs.pydantic.dev/latest/concepts/models/"
 <ol>
 <li>Add an openapi extension</li>
 </ol>
+<h3 id="fine-grained-responses">Fine grained responses<a class="headerlink" href="#fine-grained-responses" title="Permanent link">&para;</a></h3>
+<details class="info" open="open">
+<summary>Note</summary>
+<p>The default response only includes the essential fields to keep the payload size minimal, as AWS Lambda has a maximum response size of 25 KB.</p>
+</details>
+<p>You can use <code>BedrockResponse</code> class to add additional fields as needed, such as <a href="https://docs.aws.amazon.com/bedrock/latest/userguide/agents-lambda.html#agents-lambda-response" target="_blank">session attributes, prompt session attributes, and knowledge base configurations</a>.</p>
+<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Customzing your Bedrock Response</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span>
+<span class="normal">35</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">http</span><span class="w"> </span><span class="kn">import</span> <span class="n">HTTPStatus</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">aws_lambda_powertools</span><span class="w"> </span><span class="kn">import</span> <span class="n">Logger</span><span class="p">,</span> <span class="n">Tracer</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">aws_lambda_powertools.event_handler</span><span class="w"> </span><span class="kn">import</span> <span class="n">BedrockAgentResolver</span>
+<span class="hll"><span class="kn">from</span><span class="w"> </span><span class="nn">aws_lambda_powertools.event_handler.api_gateway</span><span class="w"> </span><span class="kn">import</span> <span class="n">BedrockResponse</span>
+</span><span class="kn">from</span><span class="w"> </span><span class="nn">aws_lambda_powertools.utilities.typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">LambdaContext</span>
+
+<span class="n">tracer</span> <span class="o">=</span> <span class="n">Tracer</span><span class="p">()</span>
+<span class="n">logger</span> <span class="o">=</span> <span class="n">Logger</span><span class="p">()</span>
+<span class="n">app</span> <span class="o">=</span> <span class="n">BedrockAgentResolver</span><span class="p">()</span>
+
+
+<span class="nd">@app</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;/return_with_session&quot;</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s2">&quot;Returns a hello world with session attributes&quot;</span><span class="p">)</span>
+<span class="nd">@tracer</span><span class="o">.</span><span class="n">capture_method</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">hello_world</span><span class="p">():</span>
+<span class="hll">    <span class="k">return</span> <span class="n">BedrockResponse</span><span class="p">(</span>
+</span>        <span class="n">status_code</span><span class="o">=</span><span class="n">HTTPStatus</span><span class="o">.</span><span class="n">OK</span><span class="o">.</span><span class="n">value</span><span class="p">,</span>
+        <span class="n">body</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;message&quot;</span><span class="p">:</span> <span class="s2">&quot;Hello from Bedrock!&quot;</span><span class="p">},</span>
+        <span class="n">session_attributes</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;user_id&quot;</span><span class="p">:</span> <span class="s2">&quot;123&quot;</span><span class="p">},</span>
+        <span class="n">prompt_session_attributes</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;context&quot;</span><span class="p">:</span> <span class="s2">&quot;testing&quot;</span><span class="p">},</span>
+        <span class="n">knowledge_bases_configuration</span><span class="o">=</span><span class="p">[</span>
+            <span class="p">{</span>
+                <span class="s2">&quot;knowledgeBaseId&quot;</span><span class="p">:</span> <span class="s2">&quot;kb-123&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;retrievalConfiguration&quot;</span><span class="p">:</span> <span class="p">{</span>
+                    <span class="s2">&quot;vectorSearchConfiguration&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;numberOfResults&quot;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="s2">&quot;overrideSearchType&quot;</span><span class="p">:</span> <span class="s2">&quot;HYBRID&quot;</span><span class="p">},</span>
+                <span class="p">},</span>
+            <span class="p">},</span>
+        <span class="p">],</span>
+    <span class="p">)</span>
+
+
+<span class="nd">@logger</span><span class="o">.</span><span class="n">inject_lambda_context</span>
+<span class="nd">@tracer</span><span class="o">.</span><span class="n">capture_lambda_handler</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">lambda_handler</span><span class="p">(</span><span class="n">event</span><span class="p">:</span> <span class="nb">dict</span><span class="p">,</span> <span class="n">context</span><span class="p">:</span> <span class="n">LambdaContext</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">app</span><span class="o">.</span><span class="n">resolve</span><span class="p">(</span><span class="n">event</span><span class="p">,</span> <span class="n">context</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
 <h2 id="testing-your-code">Testing your code<a class="headerlink" href="#testing-your-code" title="Permanent link">&para;</a></h2>
 <p>Test your routes by passing an <a href="https://docs.aws.amazon.com/bedrock/latest/userguide/agents-lambda.html#agents-lambda-input">Agent for Amazon Bedrock proxy event</a> request:</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="7:2"><input checked="checked" id="assert_bedrock_agent_responsepy" name="__tabbed_7" type="radio" /><input id="assert_bedrock_agent_response_modulepy" name="__tabbed_7" type="radio" /><div class="tabbed-labels"><label for="assert_bedrock_agent_responsepy">assert_bedrock_agent_response.py</label><label for="assert_bedrock_agent_response_modulepy">assert_bedrock_agent_response_module.py</label></div>
@@ -5866,7 +5960,7 @@ use a combination of <a href="https://docs.pydantic.dev/latest/concepts/models/"
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    2025-04-17
+    2025-04-30
   </span>
 
     
