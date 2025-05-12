@@ -9884,19 +9884,29 @@ for more details.</p>
 <span class="normal">10</span>
 <span class="normal">11</span>
 <span class="normal">12</span>
-<span class="normal">13</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="hll"><span class="kn">from</span><span class="w"> </span><span class="nn">aws_lambda_powertools.utilities.data_classes</span><span class="w"> </span><span class="kn">import</span> <span class="n">SQSEvent</span><span class="p">,</span> <span class="n">event_source</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="hll"><span class="kn">from</span><span class="w"> </span><span class="nn">aws_lambda_powertools.utilities.data_classes</span><span class="w"> </span><span class="kn">import</span> <span class="n">SQSEvent</span><span class="p">,</span> <span class="n">SQSRecord</span><span class="p">,</span> <span class="n">event_source</span>
 </span>
 
 <span class="hll"><span class="nd">@event_source</span><span class="p">(</span><span class="n">data_class</span><span class="o">=</span><span class="n">SQSEvent</span><span class="p">)</span>
 </span><span class="k">def</span><span class="w"> </span><span class="nf">lambda_handler</span><span class="p">(</span><span class="n">event</span><span class="p">:</span> <span class="n">SQSEvent</span><span class="p">,</span> <span class="n">context</span><span class="p">):</span>
     <span class="c1"># Multiple records can be delivered in a single event</span>
     <span class="k">for</span> <span class="n">record</span> <span class="ow">in</span> <span class="n">event</span><span class="o">.</span><span class="n">records</span><span class="p">:</span>
-        <span class="n">message</span> <span class="o">=</span> <span class="n">record</span><span class="o">.</span><span class="n">body</span>
-        <span class="n">message_id</span> <span class="o">=</span> <span class="n">record</span><span class="o">.</span><span class="n">message_id</span>
+        <span class="n">message</span><span class="p">,</span> <span class="n">message_id</span> <span class="o">=</span> <span class="n">process_record</span><span class="p">(</span><span class="n">record</span><span class="p">)</span>
     <span class="k">return</span> <span class="p">{</span>
         <span class="s2">&quot;message&quot;</span><span class="p">:</span> <span class="n">message</span><span class="p">,</span>
         <span class="s2">&quot;message_id&quot;</span><span class="p">:</span> <span class="n">message_id</span><span class="p">,</span>
     <span class="p">}</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">process_record</span><span class="p">(</span><span class="n">record</span><span class="p">:</span> <span class="n">SQSRecord</span><span class="p">):</span>
+    <span class="n">message</span> <span class="o">=</span> <span class="n">record</span><span class="o">.</span><span class="n">body</span>
+    <span class="n">message_id</span> <span class="o">=</span> <span class="n">record</span><span class="o">.</span><span class="n">message_id</span>
+    <span class="k">return</span> <span class="n">message</span><span class="p">,</span> <span class="n">message_id</span>
 </code></pre></div></td></tr></table></div>
 </div>
 <div class="tabbed-block">
