@@ -3574,10 +3574,12 @@ You're not viewing the latest version.
 <div class="admonition note">
 <p class="admonition-title">Starting from v2.20.0 releases, builds are <a href="https://slsa.dev/spec/v0.1/faq#q-what-about-reproducible-builds" rel="nofollow" target="_blank">reproducible</a> and signed publicly.</p>
 </div>
-<p><center>
-<img alt="SLSA Supply Chain Threats" src="../assets/external/slsa.dev/images/v1.0/supply-chain-threats.svg"></p>
-<p><i>Supply Chain Threats visualized by SLSA</i>
-</center></p>
+<center>
+![SLSA Supply Chain Threats](https://slsa.dev/images/v1.0/supply-chain-threats.svg)
+
+<i>Supply Chain Threats visualized by SLSA</i>
+</center>
+
 <h4 id="terminology">Terminology<a class="headerlink" href="#terminology" title="Permanent link">&para;</a></h4>
 <p>We use <a href="https://slsa.dev/spec/v1.0/about" rel="nofollow" target="_blank">SLSA</a> to ensure our builds are reproducible and to adhere to <a href="https://slsa.dev/spec/v1.0/threats-overview">supply chain security practices</a>.</p>
 <p>Within our <a href="https://github.com/aws-powertools/powertools-lambda-python/releases">releases page</a>, you will notice a new metadata file: <code>multiple.intoto.jsonl</code>. It's metadata to describe <strong>where</strong>, <strong>when</strong>, and <strong>how</strong> our build artifacts were produced - or simply, <strong>attestation</strong> in SLSA terminology.</p>

@@ -8951,11 +8951,13 @@ matches one of the allowed values.</p>
 </div>
 </div>
 <h4 id="global-middlewares">Global middlewares<a class="headerlink" href="#global-middlewares" title="Permanent link">&para;</a></h4>
-<p><center>
-<img alt="Combining middlewares" src="../../../media/middlewares_normal_processing-light.svg#only-light" />
-<img alt="Combining middlewares" src="../../../media/middlewares_normal_processing-dark.svg#only-dark" /></p>
-<p><em>Request flowing through multiple registered middlewares</em>
-</center></p>
+<center>
+![Combining middlewares](../../media/middlewares_normal_processing-light.svg#only-light)
+![Combining middlewares](../../media/middlewares_normal_processing-dark.svg#only-dark)
+
+_Request flowing through multiple registered middlewares_
+</center>
+
 <p>You can use <code>app.use</code> to register middlewares that should always run regardless of the route, also known as global middlewares.</p>
 <p>Event Handler <strong>calls global middlewares first</strong>, then middlewares defined at the route level. Here's an example with both middlewares:</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="20:2"><input checked="checked" id="middleware_global_middlewarespy" name="__tabbed_20" type="radio" /><input id="middleware_global_middlewares_modulepy" name="__tabbed_20" type="radio" /><div class="tabbed-labels"><label for="middleware_global_middlewarespy">middleware_global_middlewares.py</label><label for="middleware_global_middlewares_modulepy">middleware_global_middlewares_module.py</label></div>
@@ -9113,11 +9115,13 @@ matches one of the allowed values.</p>
 </div>
 </div>
 <h4 id="returning-early">Returning early<a class="headerlink" href="#returning-early" title="Permanent link">&para;</a></h4>
-<p><center>
-<img alt="Short-circuiting middleware chain" src="../../../media/middlewares_early_return-light.svg#only-light" />
-<img alt="Short-circuiting middleware chain" src="../../../media/middlewares_early_return-dark.svg#only-dark" /></p>
-<p><em>Interrupting request flow by returning early</em>
-</center></p>
+<center>
+![Short-circuiting middleware chain](../../media/middlewares_early_return-light.svg#only-light)
+![Short-circuiting middleware chain](../../media/middlewares_early_return-dark.svg#only-dark)
+
+_Interrupting request flow by returning early_
+</center>
+
 <p>Imagine you want to stop processing a request if something is missing, or return immediately if you've seen this request before.</p>
 <p>In these scenarios, you short-circuit the middleware processing logic by returning a <a href="#fine-grained-responses">Response object</a>, or raising a <a href="#raising-http-errors">HTTP Error</a>. This signals to Event Handler to stop and run each <code>After</code> logic left in the chain all the way back.</p>
 <p>Here's an example where we prevent any request that doesn't include a correlation ID header:</p>

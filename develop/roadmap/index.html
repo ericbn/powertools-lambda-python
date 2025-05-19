@@ -3770,11 +3770,12 @@ You're not viewing the latest version.
 <li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Write a PoC with Event Handler support for async.</li>
 </ul>
 <h2 id="roadmap-status-definition">Roadmap status definition<a class="headerlink" href="#roadmap-status-definition" title="Permanent link">&para;</a></h2>
-<p><center>
+<center>
 <pre class="mermaid"><code>graph LR
     Ideas --&gt; Backlog --&gt; Work["Working on it"] --&gt; Merged["Coming soon"] --&gt; Shipped</code></pre>
 <i>Visual representation</i>
-</center></p>
+</center>
+
 <p>Within our <a href="https://github.com/orgs/aws-powertools/projects/3/views/1?query=is%3Aopen+sort%3Aupdated-desc" target="_blank">public board</a>, you'll see the following values in the <code>Status</code> column:</p>
 <ul>
 <li><strong>Ideas</strong>. Incoming and existing feature requests that are not being actively considered yet. These will be reviewed when bandwidth permits.</li>
@@ -3787,7 +3788,7 @@ You're not viewing the latest version.
 <p>Tasks or issues with empty <code>Status</code> will be categorized in upcoming review cycles.</p>
 </blockquote>
 <h2 id="process">Process<a class="headerlink" href="#process" title="Permanent link">&para;</a></h2>
-<p><center>
+<center>
 <pre class="mermaid"><code>graph LR
     PFR[Feature request] --&gt; Triage{Need RFC?}
     Triage --&gt; |Complex/major change or new utility?| RFC[Ask or write RFC] --&gt; Approval{Approved?}
@@ -3797,7 +3798,8 @@ You're not viewing the latest version.
     Backlog --&gt; |Prioritized| Implementation
     Backlog --&gt; |Defer| WelcomeContributions["help-wanted label"]</code></pre>
 <i>Visual representation</i>
-</center></p>
+</center>
+
 <p>Our end-to-end mechanism follows four major steps:</p>
 <ul>
 <li><strong>Feature Request</strong>. Ideas start with a <a href="https://github.com/aws-powertools/powertools-lambda-python/issues/new?assignees=&amp;labels=feature-request%2Ctriage&amp;template=feature_request.yml&amp;title=Feature+request%3A+TITLE" target="_blank">feature request</a> to outline their use case at a high level. For complex use cases, maintainers might ask for/write a RFC.<ul>

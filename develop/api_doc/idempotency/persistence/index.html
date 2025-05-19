@@ -6232,7 +6232,7 @@ This will be used if the sort_key_attr is set.</p>
             <td><code><a class="autorefs autorefs-internal" title="RedisClientProtocol (aws_lambda_powertools.utilities.idempotency.persistence.redis.RedisClientProtocol)" href="#aws_lambda_powertools.utilities.idempotency.persistence.redis.RedisClientProtocol">RedisClientProtocol</a></code></td>
             <td class="doc-class-details">
               <div class="doc-md-description">
-                <p>Protocol class defining the interface for a Redis client.</p>
+                <p>Protocol class defining the interface for a Cache client.</p>
               </div>
             </td>
           </tr>
@@ -6310,7 +6310,7 @@ This will be used if the sort_key_attr is set.</p>
             </td>
             <td class="doc-param-details">
               <div class="doc-md-description">
-                <p>Redis host</p>
+                <p>Cache host</p>
               </div>
               <p>
                   <span class="doc-param-annotation">
@@ -6330,7 +6330,7 @@ This will be used if the sort_key_attr is set.</p>
             </td>
             <td class="doc-param-details">
               <div class="doc-md-description">
-                <p>Redis port</p>
+                <p>Cache port</p>
               </div>
               <p>
                   <span class="doc-param-annotation">
@@ -6350,7 +6350,7 @@ This will be used if the sort_key_attr is set.</p>
             </td>
             <td class="doc-param-details">
               <div class="doc-md-description">
-                <p>Redis username</p>
+                <p>Cache username</p>
               </div>
               <p>
                   <span class="doc-param-annotation">
@@ -6370,7 +6370,7 @@ This will be used if the sort_key_attr is set.</p>
             </td>
             <td class="doc-param-details">
               <div class="doc-md-description">
-                <p>Redis password</p>
+                <p>Cache password</p>
               </div>
               <p>
                   <span class="doc-param-annotation">
@@ -6390,7 +6390,7 @@ This will be used if the sort_key_attr is set.</p>
             </td>
             <td class="doc-param-details">
               <div class="doc-md-description">
-                <p>Redis connection string, using url will override the host/port in the previous parameters</p>
+                <p>Cache connection string, using url will override the host/port in the previous parameters</p>
               </div>
               <p>
                   <span class="doc-param-annotation">
@@ -6410,7 +6410,7 @@ This will be used if the sort_key_attr is set.</p>
             </td>
             <td class="doc-param-details">
               <div class="doc-md-description">
-                <p>Redis db index</p>
+                <p>Cache db index</p>
               </div>
               <p>
                   <span class="doc-param-annotation">
@@ -6430,7 +6430,7 @@ This will be used if the sort_key_attr is set.</p>
             </td>
             <td class="doc-param-details">
               <div class="doc-md-description">
-                <p>set Redis client mode, choose from standalone/cluster</p>
+                <p>set Cache client mode, choose from standalone/cluster</p>
               </div>
               <p>
                   <span class="doc-param-annotation">
@@ -6450,7 +6450,7 @@ This will be used if the sort_key_attr is set.</p>
             </td>
             <td class="doc-param-details">
               <div class="doc-md-description">
-                <p>set whether to use ssl for Redis connection</p>
+                <p>set whether to use ssl for Cache connection</p>
               </div>
               <p>
                   <span class="doc-param-annotation">
@@ -6470,7 +6470,7 @@ This will be used if the sort_key_attr is set.</p>
             </td>
             <td class="doc-param-details">
               <div class="doc-md-description">
-                <p>Bring your own Redis client that follows RedisClientProtocol.
+                <p>Bring your own Cache client that follows CacheClientProtocol.
 If provided, all other connection configuration options will be ignored</p>
               </div>
               <p>
@@ -6491,7 +6491,7 @@ If provided, all other connection configuration options will be ignored</p>
             </td>
             <td class="doc-param-details">
               <div class="doc-md-description">
-                <p>Redis json attribute name for expiry timestamp, by default "expiration"</p>
+                <p>Cache json attribute name for expiry timestamp, by default "expiration"</p>
               </div>
               <p>
                   <span class="doc-param-annotation">
@@ -6511,7 +6511,7 @@ If provided, all other connection configuration options will be ignored</p>
             </td>
             <td class="doc-param-details">
               <div class="doc-md-description">
-                <p>Redis json attribute name for in-progress expiry timestamp, by default "in_progress_expiration"</p>
+                <p>Cache json attribute name for in-progress expiry timestamp, by default "in_progress_expiration"</p>
               </div>
               <p>
                   <span class="doc-param-annotation">
@@ -6531,7 +6531,7 @@ If provided, all other connection configuration options will be ignored</p>
             </td>
             <td class="doc-param-details">
               <div class="doc-md-description">
-                <p>Redis json attribute name for status, by default "status"</p>
+                <p>Cache json attribute name for status, by default "status"</p>
               </div>
               <p>
                   <span class="doc-param-annotation">
@@ -6551,7 +6551,7 @@ If provided, all other connection configuration options will be ignored</p>
             </td>
             <td class="doc-param-details">
               <div class="doc-md-description">
-                <p>Redis json attribute name for response data, by default "data"</p>
+                <p>Cache json attribute name for response data, by default "data"</p>
               </div>
               <p>
                   <span class="doc-param-annotation">
@@ -6571,7 +6571,7 @@ If provided, all other connection configuration options will be ignored</p>
             </td>
             <td class="doc-param-details">
               <div class="doc-md-description">
-                <p>Redis json attribute name for hashed representation of the parts of the event used for validation</p>
+                <p>Cache json attribute name for hashed representation of the parts of the event used for validation</p>
               </div>
               <p>
                   <span class="doc-param-annotation">
@@ -6618,8 +6618,8 @@ If provided, all other connection configuration options will be ignored</p>
     <span class="n">idempotent</span><span class="p">,</span>
 <span class="p">)</span>
 
-<span class="kn">from</span><span class="w"> </span><span class="nn">aws_lambda_powertools.utilities.idempotency.persistence.redis</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
-    <span class="n">RedisCachePersistenceLayer</span><span class="p">,</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">aws_lambda_powertools.utilities.idempotency.persistence.cache</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
+    <span class="n">CachePersistenceLayer</span><span class="p">,</span>
 <span class="p">)</span>
 
 <span class="n">client</span> <span class="o">=</span> <span class="n">redis</span><span class="o">.</span><span class="n">Redis</span><span class="p">(</span>
@@ -6627,7 +6627,7 @@ If provided, all other connection configuration options will be ignored</p>
     <span class="n">port</span><span class="o">=</span><span class="s2">&quot;6379&quot;</span><span class="p">,</span>
     <span class="n">decode_responses</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
 <span class="p">)</span>
-<span class="n">persistence_layer</span> <span class="o">=</span> <span class="n">RedisCachePersistenceLayer</span><span class="p">(</span><span class="n">client</span><span class="o">=</span><span class="n">client</span><span class="p">)</span>
+<span class="n">persistence_layer</span> <span class="o">=</span> <span class="n">CachePersistenceLayer</span><span class="p">(</span><span class="n">client</span><span class="o">=</span><span class="n">client</span><span class="p">)</span>
 
 <span class="nd">@idempotent</span><span class="p">(</span><span class="n">persistence_store</span><span class="o">=</span><span class="n">persistence_layer</span><span class="p">)</span>
 <span class="k">def</span><span class="w"> </span><span class="nf">lambda_handler</span><span class="p">(</span><span class="n">event</span><span class="p">:</span> <span class="nb">dict</span><span class="p">,</span> <span class="n">context</span><span class="p">:</span> <span class="n">LambdaContext</span><span class="p">):</span>
@@ -6651,11 +6651,7 @@ If provided, all other connection configuration options will be ignored</p>
 
                   <details class="quote">
                     <summary>Source code in <code>aws_lambda_powertools/utilities/idempotency/persistence/redis.py</code></summary>
-                    <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">208</span>
-<span class="normal">209</span>
-<span class="normal">210</span>
-<span class="normal">211</span>
-<span class="normal">212</span>
+                    <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">212</span>
 <span class="normal">213</span>
 <span class="normal">214</span>
 <span class="normal">215</span>
@@ -6757,13 +6753,17 @@ If provided, all other connection configuration options will be ignored</p>
 <span class="normal">311</span>
 <span class="normal">312</span>
 <span class="normal">313</span>
-<span class="normal">314</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
+<span class="normal">314</span>
+<span class="normal">315</span>
+<span class="normal">316</span>
+<span class="normal">317</span>
+<span class="normal">318</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
     <span class="bp">self</span><span class="p">,</span>
     <span class="n">url</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
     <span class="n">host</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
     <span class="n">port</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">6379</span><span class="p">,</span>
     <span class="n">username</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
-    <span class="n">password</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>  <span class="c1"># nosec - password for Redis connection</span>
+    <span class="n">password</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>  <span class="c1"># nosec - password for Cache connection</span>
     <span class="n">db_index</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>
     <span class="n">mode</span><span class="p">:</span> <span class="n">Literal</span><span class="p">[</span><span class="s2">&quot;standalone&quot;</span><span class="p">,</span> <span class="s2">&quot;cluster&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;standalone&quot;</span><span class="p">,</span>
     <span class="n">ssl</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
@@ -6775,39 +6775,39 @@ If provided, all other connection configuration options will be ignored</p>
     <span class="n">validation_key_attr</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;validation&quot;</span><span class="p">,</span>
 <span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Initialize the Redis Persistence Layer</span>
+<span class="sd">    Initialize the Cache Persistence Layer</span>
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
 <span class="sd">    host: str, optional</span>
-<span class="sd">        Redis host</span>
+<span class="sd">        Cache host</span>
 <span class="sd">    port: int, optional: default 6379</span>
-<span class="sd">        Redis port</span>
+<span class="sd">        Cache port</span>
 <span class="sd">    username: str, optional</span>
-<span class="sd">        Redis username</span>
+<span class="sd">        Cache username</span>
 <span class="sd">    password: str, optional</span>
-<span class="sd">        Redis password</span>
+<span class="sd">        Cache password</span>
 <span class="sd">    url: str, optional</span>
-<span class="sd">        Redis connection string, using url will override the host/port in the previous parameters</span>
+<span class="sd">        Cache connection string, using url will override the host/port in the previous parameters</span>
 <span class="sd">    db_index: int, optional: default 0</span>
-<span class="sd">        Redis db index</span>
+<span class="sd">        Cache db index</span>
 <span class="sd">    mode: str, Literal[&quot;standalone&quot;,&quot;cluster&quot;]</span>
-<span class="sd">        set Redis client mode, choose from standalone/cluster</span>
+<span class="sd">        set Cache client mode, choose from standalone/cluster</span>
 <span class="sd">    ssl: bool, optional: default True</span>
-<span class="sd">        set whether to use ssl for Redis connection</span>
-<span class="sd">    client: RedisClientProtocol, optional</span>
-<span class="sd">        Bring your own Redis client that follows RedisClientProtocol.</span>
+<span class="sd">        set whether to use ssl for Cache connection</span>
+<span class="sd">    client: CacheClientProtocol, optional</span>
+<span class="sd">        Bring your own Cache client that follows CacheClientProtocol.</span>
 <span class="sd">        If provided, all other connection configuration options will be ignored</span>
 <span class="sd">    expiry_attr: str, optional</span>
-<span class="sd">        Redis json attribute name for expiry timestamp, by default &quot;expiration&quot;</span>
+<span class="sd">        Cache json attribute name for expiry timestamp, by default &quot;expiration&quot;</span>
 <span class="sd">    in_progress_expiry_attr: str, optional</span>
-<span class="sd">        Redis json attribute name for in-progress expiry timestamp, by default &quot;in_progress_expiration&quot;</span>
+<span class="sd">        Cache json attribute name for in-progress expiry timestamp, by default &quot;in_progress_expiration&quot;</span>
 <span class="sd">    status_attr: str, optional</span>
-<span class="sd">        Redis json attribute name for status, by default &quot;status&quot;</span>
+<span class="sd">        Cache json attribute name for status, by default &quot;status&quot;</span>
 <span class="sd">    data_attr: str, optional</span>
-<span class="sd">        Redis json attribute name for response data, by default &quot;data&quot;</span>
+<span class="sd">        Cache json attribute name for response data, by default &quot;data&quot;</span>
 <span class="sd">    validation_key_attr: str, optional</span>
-<span class="sd">        Redis json attribute name for hashed representation of the parts of the event used for validation</span>
+<span class="sd">        Cache json attribute name for hashed representation of the parts of the event used for validation</span>
 
 <span class="sd">    Examples</span>
 <span class="sd">    --------</span>
@@ -6818,8 +6818,8 @@ If provided, all other connection configuration options will be ignored</p>
 <span class="sd">        idempotent,</span>
 <span class="sd">    )</span>
 
-<span class="sd">    from aws_lambda_powertools.utilities.idempotency.persistence.redis import (</span>
-<span class="sd">        RedisCachePersistenceLayer,</span>
+<span class="sd">    from aws_lambda_powertools.utilities.idempotency.persistence.cache import (</span>
+<span class="sd">        CachePersistenceLayer,</span>
 <span class="sd">    )</span>
 
 <span class="sd">    client = redis.Redis(</span>
@@ -6827,7 +6827,7 @@ If provided, all other connection configuration options will be ignored</p>
 <span class="sd">        port=&quot;6379&quot;,</span>
 <span class="sd">        decode_responses=True,</span>
 <span class="sd">    )</span>
-<span class="sd">    persistence_layer = RedisCachePersistenceLayer(client=client)</span>
+<span class="sd">    persistence_layer = CachePersistenceLayer(client=client)</span>
 
 <span class="sd">    @idempotent(persistence_store=persistence_layer)</span>
 <span class="sd">    def lambda_handler(event: dict, context: LambdaContext):</span>
@@ -6840,7 +6840,7 @@ If provided, all other connection configuration options will be ignored</p>
 <span class="sd">    ```</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
-    <span class="c1"># Initialize Redis client with Redis config if no client is passed in</span>
+    <span class="c1"># Initialize Cache client with cache config if no client is passed in</span>
     <span class="k">if</span> <span class="n">client</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">client</span> <span class="o">=</span> <span class="n">RedisConnection</span><span class="p">(</span>
             <span class="n">host</span><span class="o">=</span><span class="n">host</span><span class="p">,</span>
@@ -6903,8 +6903,8 @@ If provided, all other connection configuration options will be ignored</p>
               Bases: <code><a class="autorefs autorefs-external" title="typing.Protocol" href="https://docs.python.org/3/library/typing.html#typing.Protocol">Protocol</a></code></p>
 
 
-        <p>Protocol class defining the interface for a Redis client.</p>
-<p>This protocol outlines the expected behavior of a Redis client, allowing for
+        <p>Protocol class defining the interface for a Cache client.</p>
+<p>This protocol outlines the expected behavior of a Cache client, allowing for
 standardization among different implementations and allowing customers to extend it
 in their own implementation.</p>
 
@@ -7056,7 +7056,7 @@ in their own implementation.</p>
             </td>
             <td class="doc-param-details">
               <div class="doc-md-description">
-                <p>Redis host</p>
+                <p>Cache host</p>
               </div>
               <p>
                   <span class="doc-param-annotation">
@@ -7076,7 +7076,7 @@ in their own implementation.</p>
             </td>
             <td class="doc-param-details">
               <div class="doc-md-description">
-                <p>Redis port</p>
+                <p>Cache port</p>
               </div>
               <p>
                   <span class="doc-param-annotation">
@@ -7096,7 +7096,7 @@ in their own implementation.</p>
             </td>
             <td class="doc-param-details">
               <div class="doc-md-description">
-                <p>Redis username</p>
+                <p>Cache username</p>
               </div>
               <p>
                   <span class="doc-param-annotation">
@@ -7116,7 +7116,7 @@ in their own implementation.</p>
             </td>
             <td class="doc-param-details">
               <div class="doc-md-description">
-                <p>Redis password</p>
+                <p>Cache password</p>
               </div>
               <p>
                   <span class="doc-param-annotation">
@@ -7136,7 +7136,7 @@ in their own implementation.</p>
             </td>
             <td class="doc-param-details">
               <div class="doc-md-description">
-                <p>Redis connection string, using url will override the host/port in the previous parameters</p>
+                <p>Cache connection string, using url will override the host/port in the previous parameters</p>
               </div>
               <p>
                   <span class="doc-param-annotation">
@@ -7156,7 +7156,7 @@ in their own implementation.</p>
             </td>
             <td class="doc-param-details">
               <div class="doc-md-description">
-                <p>Redis db index</p>
+                <p>Cache db index</p>
               </div>
               <p>
                   <span class="doc-param-annotation">
@@ -7176,7 +7176,7 @@ in their own implementation.</p>
             </td>
             <td class="doc-param-details">
               <div class="doc-md-description">
-                <p>set Redis client mode, choose from standalone/cluster. The default is standalone</p>
+                <p>set Cache client mode, choose from standalone/cluster. The default is standalone</p>
               </div>
               <p>
                   <span class="doc-param-annotation">
@@ -7196,7 +7196,7 @@ in their own implementation.</p>
             </td>
             <td class="doc-param-details">
               <div class="doc-md-description">
-                <p>set whether to use ssl for Redis connection</p>
+                <p>set whether to use ssl for Cache connection</p>
               </div>
               <p>
                   <span class="doc-param-annotation">
@@ -7262,13 +7262,13 @@ in their own implementation.</p>
 <span class="kn">from</span><span class="w"> </span><span class="nn">aws_lambda_powertools.utilities.idempotency</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
     <span class="n">idempotent</span><span class="p">,</span>
 <span class="p">)</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">aws_lambda_powertools.utilities.idempotency.persistence.redis</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
-    <span class="n">RedisCachePersistenceLayer</span><span class="p">,</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">aws_lambda_powertools.utilities.idempotency.persistence.cache</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
+    <span class="n">CachePersistenceLayer</span><span class="p">,</span>
 <span class="p">)</span>
 
 <span class="kn">from</span><span class="w"> </span><span class="nn">aws_lambda_powertools.utilities.typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">LambdaContext</span>
 
-<span class="n">persistence_layer</span> <span class="o">=</span> <span class="n">RedisCachePersistenceLayer</span><span class="p">(</span><span class="n">host</span><span class="o">=</span><span class="s2">&quot;localhost&quot;</span><span class="p">,</span> <span class="n">port</span><span class="o">=</span><span class="mi">6379</span><span class="p">)</span>
+<span class="n">persistence_layer</span> <span class="o">=</span> <span class="n">CachePersistenceLayer</span><span class="p">(</span><span class="n">host</span><span class="o">=</span><span class="s2">&quot;localhost&quot;</span><span class="p">,</span> <span class="n">port</span><span class="o">=</span><span class="mi">6379</span><span class="p">)</span>
 
 
 <span class="nd">@dataclass</span>
@@ -7311,10 +7311,7 @@ in their own implementation.</p>
 
                   <details class="quote">
                     <summary>Source code in <code>aws_lambda_powertools/utilities/idempotency/persistence/redis.py</code></summary>
-                    <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 82</span>
-<span class="normal"> 83</span>
-<span class="normal"> 84</span>
-<span class="normal"> 85</span>
+                    <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 85</span>
 <span class="normal"> 86</span>
 <span class="normal"> 87</span>
 <span class="normal"> 88</span>
@@ -7399,38 +7396,41 @@ in their own implementation.</p>
 <span class="normal">167</span>
 <span class="normal">168</span>
 <span class="normal">169</span>
-<span class="normal">170</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
+<span class="normal">170</span>
+<span class="normal">171</span>
+<span class="normal">172</span>
+<span class="normal">173</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
     <span class="bp">self</span><span class="p">,</span>
     <span class="n">url</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
     <span class="n">host</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
     <span class="n">port</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">6379</span><span class="p">,</span>
     <span class="n">username</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
-    <span class="n">password</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>  <span class="c1"># nosec - password for Redis connection</span>
+    <span class="n">password</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>  <span class="c1"># nosec - password for Cache connection</span>
     <span class="n">db_index</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>
     <span class="n">mode</span><span class="p">:</span> <span class="n">Literal</span><span class="p">[</span><span class="s2">&quot;standalone&quot;</span><span class="p">,</span> <span class="s2">&quot;cluster&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;standalone&quot;</span><span class="p">,</span>
     <span class="n">ssl</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Initialize Redis connection which will be used in Redis persistence_store to support Idempotency</span>
+<span class="sd">    Initialize Cache connection which will be used in Cache persistence_store to support Idempotency</span>
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
 <span class="sd">    host: str, optional</span>
-<span class="sd">        Redis host</span>
+<span class="sd">        Cache host</span>
 <span class="sd">    port: int, optional: default 6379</span>
-<span class="sd">        Redis port</span>
+<span class="sd">        Cache port</span>
 <span class="sd">    username: str, optional</span>
-<span class="sd">        Redis username</span>
+<span class="sd">        Cache username</span>
 <span class="sd">    password: str, optional</span>
-<span class="sd">        Redis password</span>
+<span class="sd">        Cache password</span>
 <span class="sd">    url: str, optional</span>
-<span class="sd">        Redis connection string, using url will override the host/port in the previous parameters</span>
+<span class="sd">        Cache connection string, using url will override the host/port in the previous parameters</span>
 <span class="sd">    db_index: int, optional: default 0</span>
-<span class="sd">        Redis db index</span>
+<span class="sd">        Cache db index</span>
 <span class="sd">    mode: str, Literal[&quot;standalone&quot;,&quot;cluster&quot;]</span>
-<span class="sd">        set Redis client mode, choose from standalone/cluster. The default is standalone</span>
+<span class="sd">        set Cache client mode, choose from standalone/cluster. The default is standalone</span>
 <span class="sd">    ssl: bool, optional: default True</span>
-<span class="sd">        set whether to use ssl for Redis connection</span>
+<span class="sd">        set whether to use ssl for Cache connection</span>
 
 <span class="sd">    Example</span>
 <span class="sd">    --------</span>
@@ -7442,13 +7442,13 @@ in their own implementation.</p>
 <span class="sd">    from aws_lambda_powertools.utilities.idempotency import (</span>
 <span class="sd">        idempotent,</span>
 <span class="sd">    )</span>
-<span class="sd">    from aws_lambda_powertools.utilities.idempotency.persistence.redis import (</span>
-<span class="sd">        RedisCachePersistenceLayer,</span>
+<span class="sd">    from aws_lambda_powertools.utilities.idempotency.persistence.cache import (</span>
+<span class="sd">        CachePersistenceLayer,</span>
 <span class="sd">    )</span>
 
 <span class="sd">    from aws_lambda_powertools.utilities.typing import LambdaContext</span>
 
-<span class="sd">    persistence_layer = RedisCachePersistenceLayer(host=&quot;localhost&quot;, port=6379)</span>
+<span class="sd">    persistence_layer = CachePersistenceLayer(host=&quot;localhost&quot;, port=6379)</span>
 
 
 <span class="sd">    @dataclass</span>

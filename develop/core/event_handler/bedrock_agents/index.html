@@ -3819,7 +3819,7 @@ You're not viewing the latest version.
   <h1>Agents for Amazon Bedrock</h1>
 
 <p>Create <a href="https://docs.aws.amazon.com/bedrock/latest/userguide/agents.html#agents-how" target="_blank">Agents for Amazon Bedrock</a> using event handlers and auto generation of OpenAPI schemas.</p>
-<p><center>
+<center>
 <pre class="mermaid"><code>flowchart LR
     Bedrock[LLM] &lt;-- uses --&gt; Agent
     You[User input] --&gt; Agent
@@ -3849,7 +3849,8 @@ You're not viewing the latest version.
 
 
 </code></pre>
-</center></p>
+</center>
+
 <h2 id="key-features">Key features<a class="headerlink" href="#key-features" title="Permanent link">&para;</a></h2>
 <ul>
 <li>Minimal boilerplate to build Agents for Amazon Bedrock</li>
@@ -4943,7 +4944,7 @@ However, how Amazon Bedrock interprets that failure is non-deterministic, since 
 </div>
 </div>
 </div>
-<p><center>
+<center>
 <pre class="mermaid"><code>sequenceDiagram
     Agent-&gt;&gt;Lambda: input payload
     activate Lambda
@@ -4961,7 +4962,8 @@ However, how Amazon Bedrock interprets that failure is non-deterministic, since 
     Validation-&gt;&gt;Agent: 422 response
     deactivate Lambda
 </code></pre>
-</center></p>
+</center>
+
 <h3 id="generating-openapi-schemas">Generating OpenAPI schemas<a class="headerlink" href="#generating-openapi-schemas" title="Permanent link">&para;</a></h3>
 <p>Use the <code>get_openapi_json_schema</code> function provided by the resolver to produce a JSON-serialized string that represents your OpenAPI schema.
 You can print this string or save it to a file. You'll use the file later when creating the Agent.</p>
@@ -5240,9 +5242,10 @@ To achieve that, keep the following suggestions in mind:</p>
 <h3 id="video-walkthrough">Video walkthrough<a class="headerlink" href="#video-walkthrough" title="Permanent link">&para;</a></h3>
 <p>To create an Agent for Amazon Bedrock, refer to the <a href="https://docs.aws.amazon.com/bedrock/latest/userguide/agents-create.html">official documentation</a> provided by AWS.</p>
 <p>The following video demonstrates the end-to-end process:</p>
-<p><center></p>
+<center>
 <iframe width="720" height="405" src="https://www.youtube-nocookie.com/embed/NWoC5FTSt7s?si=AG2qpLJbxCkyiLma&amp;controls=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-<p></center></p>
+</center>
+
 <p>During the creation process, you should use the schema <a href="#generating-openapi-schemas">previously generated</a> when prompted for an OpenAPI specification.</p>
 <h2 id="advanced">Advanced<a class="headerlink" href="#advanced" title="Permanent link">&para;</a></h2>
 <h3 id="accessing-custom-request-fields">Accessing custom request fields<a class="headerlink" href="#accessing-custom-request-fields" title="Permanent link">&para;</a></h3>

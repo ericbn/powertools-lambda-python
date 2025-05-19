@@ -5382,7 +5382,7 @@ You're not viewing the latest version.
 <p>Read more about <a href="https://docs.aws.amazon.com/lambda/latest/dg/with-sqs.html#services-sqs-batchfailurereporting" target="_blank">Batch Failure Reporting feature in AWS Lambda</a>.</p>
 </blockquote>
 <p>Sequence diagram to explain how <a href="#processing-messages-from-sqs"><code>BatchProcessor</code> works</a> with SQS Standard queues.</p>
-<p><center>
+<center>
 <pre class="mermaid"><code>sequenceDiagram
     autonumber
     participant SQS queue
@@ -5397,13 +5397,14 @@ You're not viewing the latest version.
     Note over SQS queue,Lambda service: Process repeat
     deactivate SQS queue</code></pre>
 <i>SQS mechanism with Batch Item Failures</i>
-</center></p>
+</center>
+
 <h4 id="sqs-fifo">SQS FIFO<a class="headerlink" href="#sqs-fifo" title="Permanent link">&para;</a></h4>
 <blockquote>
 <p>Read more about <a href="https://docs.aws.amazon.com/lambda/latest/dg/with-sqs.html#services-sqs-batchfailurereporting" target="_blank">Batch Failure Reporting feature in AWS Lambda</a>.</p>
 </blockquote>
 <p>Sequence diagram to explain how <a href="#fifo-queues"><code>SqsFifoPartialProcessor</code> works</a> with SQS FIFO queues without <code>skip_group_on_error</code> flag.</p>
-<p><center>
+<center>
 <pre class="mermaid"><code>sequenceDiagram
     autonumber
     participant SQS queue
@@ -5421,9 +5422,10 @@ You're not viewing the latest version.
     SQS queue--&gt;&gt;SQS queue: Failed messages return (3-10)
     deactivate SQS queue</code></pre>
 <i>SQS FIFO mechanism with Batch Item Failures</i>
-</center></p>
+</center>
+
 <p>Sequence diagram to explain how <a href="#fifo-queues"><code>SqsFifoPartialProcessor</code> works</a> with SQS FIFO queues with <code>skip_group_on_error</code> flag.</p>
-<p><center>
+<center>
 <pre class="mermaid"><code>sequenceDiagram
     autonumber
     participant SQS queue
@@ -5442,14 +5444,15 @@ You're not viewing the latest version.
     SQS queue--&gt;&gt;SQS queue: Failed messages return
     deactivate SQS queue</code></pre>
 <i>SQS FIFO mechanism with Batch Item Failures</i>
-</center></p>
+</center>
+
 <h4 id="kinesis-and-dynamodb-streams">Kinesis and DynamoDB Streams<a class="headerlink" href="#kinesis-and-dynamodb-streams" title="Permanent link">&para;</a></h4>
 <blockquote>
 <p>Read more about <a href="https://docs.aws.amazon.com/lambda/latest/dg/with-kinesis.html#services-kinesis-batchfailurereporting" target="_blank">Batch Failure Reporting feature</a>.</p>
 </blockquote>
 <p>Sequence diagram to explain how <code>BatchProcessor</code> works with both <a href="#processing-messages-from-kinesis">Kinesis Data Streams</a> and <a href="#processing-messages-from-dynamodb">DynamoDB Streams</a>.</p>
 <p>For brevity, we will use <code>Streams</code> to refer to either services. For theory on stream checkpoints, see this <a href="https://aws.amazon.com/blogs/compute/optimizing-batch-processing-with-custom-checkpoints-in-aws-lambda/" target="_blank">blog post</a></p>
-<p><center>
+<center>
 <pre class="mermaid"><code>sequenceDiagram
     autonumber
     participant Streams
@@ -5468,12 +5471,13 @@ You're not viewing the latest version.
     Lambda service-&gt;&gt;Streams: Poll records starting from updated checkpoint
     deactivate Streams</code></pre>
 <i>Kinesis and DynamoDB streams mechanism with single batch item failure</i>
-</center></p>
+</center>
+
 <p>The behavior changes slightly when there are multiple item failures. Stream checkpoint is updated to the lowest sequence number reported.</p>
 <div class="admonition important">
 <p class="admonition-title">Note that the batch item sequence number could be different from batch item number in the illustration.</p>
 </div>
-<p><center>
+<center>
 <pre class="mermaid"><code>sequenceDiagram
     autonumber
     participant Streams
@@ -5492,7 +5496,8 @@ You're not viewing the latest version.
     Lambda service-&gt;&gt;Streams: Poll records starting from updated checkpoint
     deactivate Streams</code></pre>
 <i>Kinesis and DynamoDB streams mechanism with multiple batch item failures</i>
-</center></p>
+</center>
+
 <h3 id="processing-messages-asynchronously">Processing messages asynchronously<a class="headerlink" href="#processing-messages-asynchronously" title="Permanent link">&para;</a></h3>
 <blockquote>
 <p>New to AsyncIO? Read this <a href="https://realpython.com/async-io-python/" rel="nofollow" target="_blank">comprehensive guide first</a>.</p>
@@ -6560,7 +6565,7 @@ You're not viewing the latest version.
 <h3 id="create-your-own-partial-processor">Create your own partial processor<a class="headerlink" href="#create-your-own-partial-processor" title="Permanent link">&para;</a></h3>
 <p>You can create your own partial batch processor from scratch by inheriting the <code>BasePartialProcessor</code> class, and implementing <code>_prepare()</code>, <code>_clean()</code>, <code>_process_record()</code> and <code>_async_process_record()</code>.</p>
 <!-- markdownlint-disable MD031 MD040 -->
-<p><center>
+<center>
 <pre class="mermaid"><code>classDiagram
     direction LR
     class BasePartialProcessor {
@@ -6580,7 +6585,8 @@ You're not viewing the latest version.
 
     BasePartialProcessor &lt;|-- YourCustomProcessor : implement</code></pre>
 <i>Visual representation to bring your own processor</i>
-</center></p>
+</center>
+
 <ul>
 <li><strong><code>_process_record()</code></strong> – handles all processing logic for each individual message of a batch, including calling the <code>record_handler</code> (self.handler)</li>
 <li><strong><code>_prepare()</code></strong> – called once as part of the processor initialization</li>

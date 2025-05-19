@@ -1269,19 +1269,19 @@ You're not viewing the latest version.
 </li>
         
           <li class="md-nav__item">
-  <a href="#redis-database" class="md-nav__link">
+  <a href="#cache-database" class="md-nav__link">
     <span class="md-ellipsis">
-      Redis database
+      Cache database
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Redis database">
+    <nav class="md-nav" aria-label="Cache database">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#redis-iac-examples" class="md-nav__link">
+  <a href="#cache-configuration" class="md-nav__link">
     <span class="md-ellipsis">
-      Redis IaC examples
+      Cache configuration
     </span>
   </a>
   
@@ -1428,28 +1428,28 @@ You're not viewing the latest version.
 </li>
         
           <li class="md-nav__item">
-  <a href="#redispersistencelayer" class="md-nav__link">
+  <a href="#cachepersistencelayer" class="md-nav__link">
     <span class="md-ellipsis">
-      RedisPersistenceLayer
+      CachePersistenceLayer
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="RedisPersistenceLayer">
+    <nav class="md-nav" aria-label="CachePersistenceLayer">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#redis-ssl-connections" class="md-nav__link">
+  <a href="#cache-ssl-connections" class="md-nav__link">
     <span class="md-ellipsis">
-      Redis SSL connections
+      Cache SSL connections
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#redis-attributes" class="md-nav__link">
+  <a href="#cache-attributes" class="md-nav__link">
     <span class="md-ellipsis">
-      Redis attributes
+      Cache attributes
     </span>
   </a>
   
@@ -1572,9 +1572,9 @@ You're not viewing the latest version.
 </li>
         
           <li class="md-nav__item">
-  <a href="#race-condition-with-redis" class="md-nav__link">
+  <a href="#race-condition-with-cache" class="md-nav__link">
     <span class="md-ellipsis">
-      Race condition with Redis
+      Race condition with Cache
     </span>
   </a>
   
@@ -4098,19 +4098,19 @@ You're not viewing the latest version.
 </li>
         
           <li class="md-nav__item">
-  <a href="#redis-database" class="md-nav__link">
+  <a href="#cache-database" class="md-nav__link">
     <span class="md-ellipsis">
-      Redis database
+      Cache database
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Redis database">
+    <nav class="md-nav" aria-label="Cache database">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#redis-iac-examples" class="md-nav__link">
+  <a href="#cache-configuration" class="md-nav__link">
     <span class="md-ellipsis">
-      Redis IaC examples
+      Cache configuration
     </span>
   </a>
   
@@ -4257,28 +4257,28 @@ You're not viewing the latest version.
 </li>
         
           <li class="md-nav__item">
-  <a href="#redispersistencelayer" class="md-nav__link">
+  <a href="#cachepersistencelayer" class="md-nav__link">
     <span class="md-ellipsis">
-      RedisPersistenceLayer
+      CachePersistenceLayer
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="RedisPersistenceLayer">
+    <nav class="md-nav" aria-label="CachePersistenceLayer">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#redis-ssl-connections" class="md-nav__link">
+  <a href="#cache-ssl-connections" class="md-nav__link">
     <span class="md-ellipsis">
-      Redis SSL connections
+      Cache SSL connections
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#redis-attributes" class="md-nav__link">
+  <a href="#cache-attributes" class="md-nav__link">
     <span class="md-ellipsis">
-      Redis attributes
+      Cache attributes
     </span>
   </a>
   
@@ -4401,9 +4401,9 @@ You're not viewing the latest version.
 </li>
         
           <li class="md-nav__item">
-  <a href="#race-condition-with-redis" class="md-nav__link">
+  <a href="#race-condition-with-cache" class="md-nav__link">
     <span class="md-ellipsis">
-      Race condition with Redis
+      Race condition with Cache
     </span>
   </a>
   
@@ -4658,7 +4658,7 @@ You're not viewing the latest version.
 <li>Produces the previous successful result when a function is called repeatedly with the same idempotency key</li>
 <li>Choose your idempotency key from one or more fields, or entire payload</li>
 <li>Safeguard concurrent requests, timeouts, missing idempotency keys, and payload tampering</li>
-<li>Support for Amazon DynamoDB, Redis, bring your own persistence layer, and in-memory caching</li>
+<li>Support for Amazon DynamoDB, Valkey, Redis OSS, or any Redis-compatible cache as the persistence layer</li>
 </ul>
 <h2 id="terminology">Terminology<a class="headerlink" href="#terminology" title="Permanent link">&para;</a></h2>
 <p>The property of idempotency means that an operation does not cause additional side effects if it is called more than once with the same input parameters.</p>
@@ -4669,7 +4669,7 @@ You're not viewing the latest version.
 <p><strong>Idempotent request</strong> is an operation with the same input previously processed that is not expired in your persistent storage or in-memory cache.</p>
 <p><strong>Persistence layer</strong> is a storage we use to create, read, expire, and delete idempotency records.</p>
 <p><strong>Idempotency record</strong> is the data representation of an idempotent request saved in the persistent layer and in its various status. We use it to coordinate  whether <strong>(a)</strong> a request is idempotent, <strong>(b)</strong> it's not expired, <strong>(c)</strong> JSON response to return, and more.</p>
-<p><center>
+<center>
 <pre class="mermaid"><code>classDiagram
     direction LR
     class IdempotencyRecord {
@@ -4686,9 +4686,11 @@ You're not viewing the latest version.
         COMPLETE
         EXPIRED internal_only
     }
-    IdempotencyRecord -- Status</code></pre></p>
-<p><i>Idempotency record representation</i>
-</center></p>
+    IdempotencyRecord -- Status</code></pre>
+
+<i>Idempotency record representation</i>
+</center>
+
 <h2 id="getting-started">Getting started<a class="headerlink" href="#getting-started" title="Permanent link">&para;</a></h2>
 <p>We use Amazon DynamoDB as the default persistence layer in the documentation. If you prefer Redis, you can learn more from <a href="#redis-database">this section</a>.</p>
 <h3 id="iam-permissions">IAM Permissions<a class="headerlink" href="#iam-permissions" title="Permanent link">&para;</a></h3>
@@ -4730,7 +4732,7 @@ You're not viewing the latest version.
 <li>
 <p><span class="twemoji lg middle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M1 3.5c0-.626.292-1.165.7-1.59.406-.422.956-.767 1.579-1.041C4.525.32 6.195 0 8 0s3.475.32 4.722.869c.622.274 1.172.62 1.578 1.04.408.426.7.965.7 1.591v9c0 .626-.292 1.165-.7 1.59-.406.422-.956.767-1.579 1.041C11.476 15.68 9.806 16 8 16c-1.805 0-3.475-.32-4.721-.869-.623-.274-1.173-.62-1.579-1.04-.408-.426-.7-.965-.7-1.591Zm1.5 0c0 .133.058.318.282.551.227.237.591.483 1.101.707C4.898 5.205 6.353 5.5 8 5.5s3.101-.295 4.118-.742c.508-.224.873-.471 1.1-.708.224-.232.282-.417.282-.55s-.058-.318-.282-.551c-.227-.237-.591-.483-1.101-.707C11.102 1.795 9.647 1.5 8 1.5s-3.101.295-4.118.742c-.508.224-.873.471-1.1.708-.224.232-.282.417-.282.55m0 4.5c0 .133.058.318.282.551.227.237.591.483 1.101.707C4.898 9.705 6.353 10 8 10s3.101-.295 4.118-.742c.508-.224.873-.471 1.1-.708.224-.232.282-.417.282-.55V5.724c-.241.15-.503.286-.778.407C11.475 6.68 9.805 7 8 7s-3.475-.32-4.721-.869a6 6 0 0 1-.779-.407Zm0 2.225V12.5c0 .133.058.318.282.55.227.237.592.484 1.1.708 1.016.447 2.471.742 4.118.742s3.102-.295 4.117-.742c.51-.224.874-.47 1.101-.707.224-.233.282-.418.282-.551v-2.275c-.241.15-.503.285-.778.406-1.247.549-2.917.869-4.722.869s-3.475-.32-4.721-.869a6 6 0 0 1-.779-.406"/></svg></span> <strong>Persistent storage</strong></p>
 <hr />
-<p><a href="#dynamodb-table">Amazon DynamoDB</a> or <a href="#redis-database">Redis</a></p>
+<p><a href="#dynamodb-table">Amazon DynamoDB</a> or <a href="#cache-database">Valkey/Redis OSS/Redis compatible</a></p>
 </li>
 <li>
 <p><span class="twemoji lg middle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4.986 0a.545.545 0 0 0-.534.548l-.006 4.908c0 .145.06.283.159.39a.53.53 0 0 0 .38.155h3.429l8.197 17.68a.54.54 0 0 0 .488.319h5.811a.547.547 0 0 0 .543-.548v-4.908a.543.543 0 0 0-.543-.548h-2.013L12.739.316A.55.55 0 0 0 12.245 0H4.991Zm.54 1.09h6.367l8.16 17.681a.54.54 0 0 0 .489.318h1.817v3.817h-4.922L9.24 5.226a.54.54 0 0 0-.488-.318h-3.23Zm2.013 8.237a.54.54 0 0 0-.486.31L.6 23.213a.55.55 0 0 0 .032.528.53.53 0 0 0 .454.25h6.169a.55.55 0 0 0 .497-.31l3.38-7.165a.54.54 0 0 0-.003-.469l-3.093-6.41a.55.55 0 0 0-.494-.31Zm.006 1.804 2.488 5.152-3.122 6.62H1.947Z"/></svg></span> <strong>AWS Lambda function</strong></p>
@@ -5071,10 +5073,10 @@ prevent accidental reuse for similar code sharing input/output.</p>
 <p><strong>Old boto3 versions can increase costs</strong>. For cost optimization, we use a conditional <code>PutItem</code> to always lock a new idempotency record. If locking fails, it means we already have an idempotency record saving us an additional <code>GetItem</code> call. However, this is only supported in boto3 <code>1.26.194</code> and higher <em>(<a href="https://aws.amazon.com/about-aws/whats-new/2023/06/amazon-dynamodb-cost-failed-conditional-writes/" target="_blank">June 30th 2023</a>)</em>.</p>
 </li>
 </ul>
-<h4 id="redis-database">Redis database<a class="headerlink" href="#redis-database" title="Permanent link">&para;</a></h4>
-<p>We recommend you start with a Redis compatible management services such as <a href="https://aws.amazon.com/elasticache/redis/" target="_blank">Amazon ElastiCache for Redis</a> or <a href="https://aws.amazon.com/memorydb/" target="_blank">Amazon MemoryDB for Redis</a>.</p>
+<h4 id="cache-database">Cache database<a class="headerlink" href="#cache-database" title="Permanent link">&para;</a></h4>
+<p>We recommend starting with a managed cache service, such as <a href="https://aws.amazon.com/elasticache/redis/" target="_blank">Amazon ElastiCache for Valkey and for Redis OSS</a> or <a href="https://aws.amazon.com/memorydb/" target="_blank">Amazon MemoryDB</a>.</p>
 <p>In both services, you'll need to configure <a href="https://docs.aws.amazon.com/lambda/latest/dg/configuration-vpc.html" target="_blank">VPC access</a> to your AWS Lambda.</p>
-<h5 id="redis-iac-examples">Redis IaC examples<a class="headerlink" href="#redis-iac-examples" title="Permanent link">&para;</a></h5>
+<h5 id="cache-configuration">Cache configuration<a class="headerlink" href="#cache-configuration" title="Permanent link">&para;</a></h5>
 <div class="tabbed-set tabbed-alternate" data-tabs="2:1"><input checked="checked" id="aws-cloudformation-example" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="aws-cloudformation-example">AWS CloudFormation example</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
@@ -5116,33 +5118,33 @@ prevent accidental reuse for similar code sharing input/output.</p>
 <span class="nt">Transform</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">AWS::Serverless-2016-10-31</span>
 
 <span class="nt">Resources</span><span class="p">:</span>
-<span class="hll"><span class="w">  </span><span class="nt">RedisServerlessIdempotency</span><span class="p">:</span>
+<span class="hll"><span class="w">  </span><span class="nt">CacheServerlessIdempotency</span><span class="p">:</span>
 </span><span class="w">    </span><span class="nt">Type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">AWS::ElastiCache::ServerlessCache</span>
 <span class="w">    </span><span class="nt">Properties</span><span class="p">:</span>
 <span class="w">      </span><span class="nt">Engine</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">redis</span>
 <span class="w">      </span><span class="nt">ServerlessCacheName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">redis-cache</span>
 <span class="w">      </span><span class="nt">SecurityGroupIds</span><span class="p">:</span><span class="w"> </span><span class="c1"># (1)!</span>
-<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">security-{your_sg_id}</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">sg-07d998809154f9d88</span>
 <span class="w">      </span><span class="nt">SubnetIds</span><span class="p">:</span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">subnet-{your_subnet_id_1}</span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">subnet-{your_subnet_id_2}</span>
 
-<span class="w">  </span><span class="nt">HelloWorldFunction</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">IdempotencyFunction</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">Type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">AWS::Serverless::Function</span>
 <span class="w">    </span><span class="nt">Properties</span><span class="p">:</span>
-<span class="w">      </span><span class="nt">Runtime</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">python3.12</span>
+<span class="w">      </span><span class="nt">Runtime</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">python3.13</span>
 <span class="w">      </span><span class="nt">Handler</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">app.py</span>
 <span class="hll"><span class="w">      </span><span class="nt">VpcConfig</span><span class="p">:</span><span class="w"> </span><span class="c1"># (1)!</span>
 </span><span class="w">        </span><span class="nt">SecurityGroupIds</span><span class="p">:</span>
-<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">security-{your_sg_id}</span>
+<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">sg-07d998809154f9d88</span>
 <span class="w">        </span><span class="nt">SubnetIds</span><span class="p">:</span>
 <span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">subnet-{your_subnet_id_1}</span>
 <span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">subnet-{your_subnet_id_2}</span>
 <span class="w">      </span><span class="nt">Environment</span><span class="p">:</span>
 <span class="w">        </span><span class="nt">Variables</span><span class="p">:</span>
 <span class="w">          </span><span class="nt">POWERTOOLS_SERVICE_NAME</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">sample</span>
-<span class="w">          </span><span class="nt">REDIS_HOST</span><span class="p">:</span><span class="w"> </span><span class="kt">!GetAtt</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">RedisServerlessIdempotency.Endpoint.Address</span>
-<span class="w">          </span><span class="nt">REDIS_PORT</span><span class="p">:</span><span class="w"> </span><span class="kt">!GetAtt</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">RedisServerlessIdempotency.Endpoint.Port</span>
+<span class="w">          </span><span class="nt">CACHE_HOST</span><span class="p">:</span><span class="w"> </span><span class="kt">!GetAtt</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">CacheServerlessIdempotency.Endpoint.Address</span>
+<span class="w">          </span><span class="nt">CACHE_PORT</span><span class="p">:</span><span class="w"> </span><span class="kt">!GetAtt</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">CacheServerlessIdempotency.Endpoint.Port</span>
 </code></pre></div></td></tr></table></div>
 <ol>
 <li>Replace the Security Group ID and Subnet ID to match your VPC settings.</li>
@@ -5151,7 +5153,7 @@ prevent accidental reuse for similar code sharing input/output.</p>
 </div>
 </div>
 </div>
-<p>Once setup, you can find a quick start and advanced examples for Redis in <a href="#redispersistencelayer">the persistent layers section</a>.</p>
+<p>Once setup, you can find a quick start and advanced examples for Cache in <a href="#cachepersistencelayer">the persistent layers section</a>.</p>
 <!-- markdownlint-enable MD013 -->
 
 <h3 id="idempotent-decorator">Idempotent decorator<a class="headerlink" href="#idempotent-decorator" title="Permanent link">&para;</a></h3>
@@ -6848,16 +6850,14 @@ This means there could be differences in whitespace even when the JSON payload i
 </tr>
 </tbody>
 </table>
-<h4 id="redispersistencelayer">RedisPersistenceLayer<a class="headerlink" href="#redispersistencelayer" title="Permanent link">&para;</a></h4>
-<div class="admonition info">
-<p class="admonition-title">We recommend Redis version 7 or higher for optimal performance.</p>
-</div>
-<p>For simple setups, initialize <code>RedisCachePersistenceLayer</code> with your Redis endpoint and port to connect.</p>
-<p>For security, we enforce SSL connections by default; to disable it, set <code>ssl=False</code>.</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="13:3"><input checked="checked" id="redis-quick-start" name="__tabbed_13" type="radio" /><input id="using-an-existing-redis-client" name="__tabbed_13" type="radio" /><input id="sample-event_5" name="__tabbed_13" type="radio" /><div class="tabbed-labels"><label for="redis-quick-start">Redis quick start</label><label for="using-an-existing-redis-client">Using an existing Redis client</label><label for="sample-event_5">Sample event</label></div>
+<h4 id="cachepersistencelayer">CachePersistenceLayer<a class="headerlink" href="#cachepersistencelayer" title="Permanent link">&para;</a></h4>
+<p>The <code>CachePersistenceLayer</code> enables you to use Valkey, Redis OSS, or any Redis-compatible cache as the persistence layer for idempotency state.</p>
+<p>We recommend using <a href="https://pypi.org/project/valkey-glide/" target="_blank"><code>valkey-glide</code></a> for Valkey or <a href="https://pypi.org/project/redis/" target="_blank"><code>redis</code></a> for Redis. However, any Redis OSS-compatible client should work.</p>
+<p>For simple setups, initialize <code>CachePersistenceLayer</code> with your Cache endpoint and port to connect. Note that for security, we enforce SSL connections by default; to disable it, set <code>ssl=False</code>.</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="13:4"><input checked="checked" id="cache-quick-start" name="__tabbed_13" type="radio" /><input id="using-an-existing-valkey-glide-client" name="__tabbed_13" type="radio" /><input id="using-an-existing-redis-client" name="__tabbed_13" type="radio" /><input id="sample-event_5" name="__tabbed_13" type="radio" /><div class="tabbed-labels"><label for="cache-quick-start">Cache quick start</label><label for="using-an-existing-valkey-glide-client">Using an existing Valkey Glide client</label><label for="using-an-existing-redis-client">Using an existing Redis client</label><label for="sample-event_5">Sample event</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">getting_started_with_idempotency_redis_config.py</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">getting_started_with_idempotency_cache_config.py</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
 <span class="normal"> 4</span>
@@ -6904,13 +6904,13 @@ This means there could be differences in whitespace even when the JSON payload i
 <span class="kn">from</span><span class="w"> </span><span class="nn">aws_lambda_powertools.utilities.idempotency</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
     <span class="n">idempotent</span><span class="p">,</span>
 <span class="p">)</span>
-<span class="hll"><span class="kn">from</span><span class="w"> </span><span class="nn">aws_lambda_powertools.utilities.idempotency.persistence.redis</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
-</span><span class="hll">    <span class="n">RedisCachePersistenceLayer</span><span class="p">,</span>
+<span class="hll"><span class="kn">from</span><span class="w"> </span><span class="nn">aws_lambda_powertools.utilities.idempotency.persistence.cache</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
+</span><span class="hll">    <span class="n">CachePersistenceLayer</span><span class="p">,</span>
 </span><span class="hll"><span class="p">)</span>
 </span><span class="kn">from</span><span class="w"> </span><span class="nn">aws_lambda_powertools.utilities.typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">LambdaContext</span>
 
-<span class="n">redis_endpoint</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">&quot;REDIS_CLUSTER_ENDPOINT&quot;</span><span class="p">,</span> <span class="s2">&quot;localhost&quot;</span><span class="p">)</span>
-<span class="hll"><span class="n">persistence_layer</span> <span class="o">=</span> <span class="n">RedisCachePersistenceLayer</span><span class="p">(</span><span class="n">host</span><span class="o">=</span><span class="n">redis_endpoint</span><span class="p">,</span> <span class="n">port</span><span class="o">=</span><span class="mi">6379</span><span class="p">)</span>
+<span class="n">redis_endpoint</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">&quot;CACHE_CLUSTER_ENDPOINT&quot;</span><span class="p">,</span> <span class="s2">&quot;localhost&quot;</span><span class="p">)</span>
+<span class="hll"><span class="n">persistence_layer</span> <span class="o">=</span> <span class="n">CachePersistenceLayer</span><span class="p">(</span><span class="n">host</span><span class="o">=</span><span class="n">redis_endpoint</span><span class="p">,</span> <span class="n">port</span><span class="o">=</span><span class="mi">6379</span><span class="p">)</span>
 </span>
 
 <span class="nd">@dataclass</span>
@@ -6925,6 +6925,114 @@ This means there could be differences in whitespace even when the JSON payload i
 
 <span class="hll"><span class="nd">@idempotent</span><span class="p">(</span><span class="n">persistence_store</span><span class="o">=</span><span class="n">persistence_layer</span><span class="p">)</span>
 </span><span class="k">def</span><span class="w"> </span><span class="nf">lambda_handler</span><span class="p">(</span><span class="n">event</span><span class="p">:</span> <span class="nb">dict</span><span class="p">,</span> <span class="n">context</span><span class="p">:</span> <span class="n">LambdaContext</span><span class="p">):</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">payment</span><span class="p">:</span> <span class="n">Payment</span> <span class="o">=</span> <span class="n">create_subscription_payment</span><span class="p">(</span><span class="n">event</span><span class="p">)</span>
+        <span class="k">return</span> <span class="p">{</span>
+            <span class="s2">&quot;payment_id&quot;</span><span class="p">:</span> <span class="n">payment</span><span class="o">.</span><span class="n">payment_id</span><span class="p">,</span>
+            <span class="s2">&quot;message&quot;</span><span class="p">:</span> <span class="s2">&quot;success&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;statusCode&quot;</span><span class="p">:</span> <span class="mi">200</span><span class="p">,</span>
+        <span class="p">}</span>
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">exc</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="n">PaymentError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Error creating payment </span><span class="si">{</span><span class="nb">str</span><span class="p">(</span><span class="n">exc</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span> <span class="kn">from</span><span class="w"> </span><span class="nn">exc</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">create_subscription_payment</span><span class="p">(</span><span class="n">event</span><span class="p">:</span> <span class="nb">dict</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Payment</span><span class="p">:</span>
+    <span class="k">return</span> <span class="n">Payment</span><span class="p">(</span><span class="o">**</span><span class="n">event</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">getting_started_with_idempotency_valkey_client.py</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span>
+<span class="normal">35</span>
+<span class="normal">36</span>
+<span class="normal">37</span>
+<span class="normal">38</span>
+<span class="normal">39</span>
+<span class="normal">40</span>
+<span class="normal">41</span>
+<span class="normal">42</span>
+<span class="normal">43</span>
+<span class="normal">44</span>
+<span class="normal">45</span>
+<span class="normal">46</span>
+<span class="normal">47</span>
+<span class="normal">48</span>
+<span class="normal">49</span>
+<span class="normal">50</span>
+<span class="normal">51</span>
+<span class="normal">52</span>
+<span class="normal">53</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">dataclasses</span><span class="w"> </span><span class="kn">import</span> <span class="n">dataclass</span><span class="p">,</span> <span class="n">field</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">uuid</span><span class="w"> </span><span class="kn">import</span> <span class="n">uuid4</span>
+
+<span class="hll"><span class="kn">from</span><span class="w"> </span><span class="nn">glide</span><span class="w"> </span><span class="kn">import</span> <span class="n">GlideClient</span><span class="p">,</span> <span class="n">GlideClientConfiguration</span><span class="p">,</span> <span class="n">NodeAddress</span>
+</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">aws_lambda_powertools.utilities.idempotency</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
+    <span class="n">idempotent</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="hll"><span class="kn">from</span><span class="w"> </span><span class="nn">aws_lambda_powertools.utilities.idempotency.persistence.cache</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
+</span><span class="hll">    <span class="n">CachePersistenceLayer</span><span class="p">,</span>
+</span><span class="hll"><span class="p">)</span>
+</span><span class="kn">from</span><span class="w"> </span><span class="nn">aws_lambda_powertools.utilities.typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">LambdaContext</span>
+
+<span class="n">cache_endpoint</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">&quot;CACHE_CLUSTER_ENDPOINT&quot;</span><span class="p">,</span> <span class="s2">&quot;localhost&quot;</span><span class="p">)</span>
+<span class="hll"><span class="n">client_config</span> <span class="o">=</span> <span class="n">GlideClientConfiguration</span><span class="p">(</span>
+</span><span class="hll">    <span class="n">addresses</span><span class="o">=</span><span class="p">[</span>
+</span><span class="hll">        <span class="n">NodeAddress</span><span class="p">(</span>
+</span><span class="hll">            <span class="n">host</span><span class="o">=</span><span class="s2">&quot;localhost&quot;</span><span class="p">,</span>
+</span><span class="hll">            <span class="n">port</span><span class="o">=</span><span class="mi">6379</span><span class="p">,</span>
+</span><span class="hll">        <span class="p">),</span>
+</span><span class="hll">    <span class="p">],</span>
+</span><span class="p">)</span>
+<span class="hll"><span class="n">client</span> <span class="o">=</span> <span class="n">GlideClient</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">config</span><span class="o">=</span><span class="n">client_config</span><span class="p">)</span>
+</span>
+<span class="n">persistence_layer</span> <span class="o">=</span> <span class="n">CachePersistenceLayer</span><span class="p">(</span><span class="n">client</span><span class="o">=</span><span class="n">client</span><span class="p">)</span>  <span class="c1"># type: ignore[arg-type]</span>
+
+
+<span class="nd">@dataclass</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">Payment</span><span class="p">:</span>
+    <span class="n">user_id</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="n">product_id</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="n">payment_id</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="n">field</span><span class="p">(</span><span class="n">default_factory</span><span class="o">=</span><span class="k">lambda</span><span class="p">:</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">uuid4</span><span class="p">()</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+
+<span class="k">class</span><span class="w"> </span><span class="nc">PaymentError</span><span class="p">(</span><span class="ne">Exception</span><span class="p">):</span> <span class="o">...</span>
+<span class="hll">
+</span>
+<span class="nd">@idempotent</span><span class="p">(</span><span class="n">persistence_store</span><span class="o">=</span><span class="n">persistence_layer</span><span class="p">)</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">lambda_handler</span><span class="p">(</span><span class="n">event</span><span class="p">:</span> <span class="nb">dict</span><span class="p">,</span> <span class="n">context</span><span class="p">:</span> <span class="n">LambdaContext</span><span class="p">):</span>
     <span class="k">try</span><span class="p">:</span>
         <span class="n">payment</span><span class="p">:</span> <span class="n">Payment</span> <span class="o">=</span> <span class="n">create_subscription_payment</span><span class="p">(</span><span class="n">event</span><span class="p">)</span>
         <span class="k">return</span> <span class="p">{</span>
@@ -7000,21 +7108,21 @@ This means there could be differences in whitespace even when the JSON payload i
 <span class="kn">from</span><span class="w"> </span><span class="nn">aws_lambda_powertools.utilities.idempotency</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
     <span class="n">idempotent</span><span class="p">,</span>
 <span class="p">)</span>
-<span class="hll"><span class="kn">from</span><span class="w"> </span><span class="nn">aws_lambda_powertools.utilities.idempotency.persistence.redis</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
-</span><span class="hll">    <span class="n">RedisCachePersistenceLayer</span><span class="p">,</span>
+<span class="hll"><span class="kn">from</span><span class="w"> </span><span class="nn">aws_lambda_powertools.utilities.idempotency.persistence.cache</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
+</span><span class="hll">    <span class="n">CachePersistenceLayer</span><span class="p">,</span>
 </span><span class="p">)</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">aws_lambda_powertools.utilities.typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">LambdaContext</span>
 
-<span class="n">redis_endpoint</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">&quot;REDIS_CLUSTER_ENDPOINT&quot;</span><span class="p">,</span> <span class="s2">&quot;localhost&quot;</span><span class="p">)</span>
+<span class="n">cache_endpoint</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">&quot;CACHE_CLUSTER_ENDPOINT&quot;</span><span class="p">,</span> <span class="s2">&quot;localhost&quot;</span><span class="p">)</span>
 <span class="hll"><span class="n">client</span> <span class="o">=</span> <span class="n">Redis</span><span class="p">(</span>
-</span>    <span class="n">host</span><span class="o">=</span><span class="n">redis_endpoint</span><span class="p">,</span>
+</span>    <span class="n">host</span><span class="o">=</span><span class="n">cache_endpoint</span><span class="p">,</span>
     <span class="n">port</span><span class="o">=</span><span class="mi">6379</span><span class="p">,</span>
     <span class="n">socket_connect_timeout</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>
     <span class="n">socket_timeout</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>
     <span class="n">max_connections</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span>
 <span class="p">)</span>
 
-<span class="hll"><span class="n">persistence_layer</span> <span class="o">=</span> <span class="n">RedisCachePersistenceLayer</span><span class="p">(</span><span class="n">client</span><span class="o">=</span><span class="n">client</span><span class="p">)</span>
+<span class="hll"><span class="n">persistence_layer</span> <span class="o">=</span> <span class="n">CachePersistenceLayer</span><span class="p">(</span><span class="n">client</span><span class="o">=</span><span class="n">client</span><span class="p">)</span>
 </span>
 
 <span class="nd">@dataclass</span>
@@ -7056,13 +7164,13 @@ This means there could be differences in whitespace even when the JSON payload i
 </div>
 </div>
 </div>
-<h5 id="redis-ssl-connections">Redis SSL connections<a class="headerlink" href="#redis-ssl-connections" title="Permanent link">&para;</a></h5>
+<h5 id="cache-ssl-connections">Cache SSL connections<a class="headerlink" href="#cache-ssl-connections" title="Permanent link">&para;</a></h5>
 <p>We recommend using AWS Secrets Manager to store and rotate certificates safely, and the <a href="../parameters/" target="_blank">Parameters feature</a> to fetch and cache optimally.</p>
-<p>For advanced configurations, we recommend using an existing Redis client for optimal compatibility like SSL certificates and timeout.</p>
+<p>For advanced configurations, we recommend using an existing Valkey client for optimal compatibility like SSL certificates and timeout.</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="14:2"><input checked="checked" id="advanced-configuration-using-aws-secrets" name="__tabbed_14" type="radio" /><input id="advanced-configuration-with-local-certificates" name="__tabbed_14" type="radio" /><div class="tabbed-labels"><label for="advanced-configuration-using-aws-secrets">Advanced configuration using AWS Secrets</label><label for="advanced-configuration-with-local-certificates">Advanced configuration with local certificates</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">using_redis_client_with_aws_secrets.py</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">using_cache_client_with_aws_secrets.py</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
 <span class="normal"> 4</span>
@@ -7094,32 +7202,44 @@ This means there could be differences in whitespace even when the JSON payload i
 <span class="normal">30</span>
 <span class="normal">31</span>
 <span class="normal">32</span>
-<span class="normal">33</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">__future__</span><span class="w"> </span><span class="kn">import</span> <span class="n">annotations</span>
+<span class="normal">33</span>
+<span class="normal">34</span>
+<span class="normal">35</span>
+<span class="normal">36</span>
+<span class="normal">37</span>
+<span class="normal">38</span>
+<span class="normal">39</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">__future__</span><span class="w"> </span><span class="kn">import</span> <span class="n">annotations</span>
 
 <span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Any</span>
 
-<span class="kn">from</span><span class="w"> </span><span class="nn">redis</span><span class="w"> </span><span class="kn">import</span> <span class="n">Redis</span>
-
+<span class="hll"><span class="kn">from</span><span class="w"> </span><span class="nn">glide</span><span class="w"> </span><span class="kn">import</span> <span class="n">BackoffStrategy</span><span class="p">,</span> <span class="n">GlideClient</span><span class="p">,</span> <span class="n">GlideClientConfiguration</span><span class="p">,</span> <span class="n">NodeAddress</span><span class="p">,</span> <span class="n">ServerCredentials</span>
+</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">aws_lambda_powertools.utilities</span><span class="w"> </span><span class="kn">import</span> <span class="n">parameters</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">aws_lambda_powertools.utilities.idempotency</span><span class="w"> </span><span class="kn">import</span> <span class="n">IdempotencyConfig</span><span class="p">,</span> <span class="n">idempotent</span>
-<span class="hll"><span class="kn">from</span><span class="w"> </span><span class="nn">aws_lambda_powertools.utilities.idempotency.persistence.redis</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
-</span><span class="hll">    <span class="n">RedisCachePersistenceLayer</span><span class="p">,</span>
+<span class="hll"><span class="kn">from</span><span class="w"> </span><span class="nn">aws_lambda_powertools.utilities.idempotency.persistence.cache</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
+</span><span class="hll">    <span class="n">CachePersistenceLayer</span><span class="p">,</span>
 </span><span class="hll"><span class="p">)</span>
 </span>
-<span class="hll"><span class="n">redis_values</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span> <span class="o">=</span> <span class="n">parameters</span><span class="o">.</span><span class="n">get_secret</span><span class="p">(</span><span class="s2">&quot;redis_info&quot;</span><span class="p">,</span> <span class="n">transform</span><span class="o">=</span><span class="s2">&quot;json&quot;</span><span class="p">)</span>  <span class="c1"># (1)!</span>
+<span class="hll"><span class="n">cache_values</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span> <span class="o">=</span> <span class="n">parameters</span><span class="o">.</span><span class="n">get_secret</span><span class="p">(</span><span class="s2">&quot;cache_info&quot;</span><span class="p">,</span> <span class="n">transform</span><span class="o">=</span><span class="s2">&quot;json&quot;</span><span class="p">)</span>  <span class="c1"># (1)!</span>
 </span>
-<span class="hll"><span class="n">redis_client</span> <span class="o">=</span> <span class="n">Redis</span><span class="p">(</span>
-</span>    <span class="n">host</span><span class="o">=</span><span class="n">redis_values</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;REDIS_HOST&quot;</span><span class="p">,</span> <span class="s2">&quot;localhost&quot;</span><span class="p">),</span>
-    <span class="n">port</span><span class="o">=</span><span class="n">redis_values</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;REDIS_PORT&quot;</span><span class="p">,</span> <span class="mi">6379</span><span class="p">),</span>
-    <span class="n">password</span><span class="o">=</span><span class="n">redis_values</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;REDIS_PASSWORD&quot;</span><span class="p">),</span>
-    <span class="n">decode_responses</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-    <span class="n">socket_timeout</span><span class="o">=</span><span class="mf">10.0</span><span class="p">,</span>
-    <span class="n">ssl</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-    <span class="n">retry_on_timeout</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+<span class="hll"><span class="n">client_config</span> <span class="o">=</span> <span class="n">GlideClientConfiguration</span><span class="p">(</span>
+</span>    <span class="n">addresses</span><span class="o">=</span><span class="p">[</span>
+        <span class="n">NodeAddress</span><span class="p">(</span>
+<span class="hll">            <span class="n">host</span><span class="o">=</span><span class="n">cache_values</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;CACHE_HOST&quot;</span><span class="p">,</span> <span class="s2">&quot;localhost&quot;</span><span class="p">),</span>
+</span><span class="hll">            <span class="n">port</span><span class="o">=</span><span class="n">cache_values</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;CACHE_PORT&quot;</span><span class="p">,</span> <span class="mi">6379</span><span class="p">),</span>
+</span>        <span class="p">),</span>
+    <span class="p">],</span>
+    <span class="n">credentials</span><span class="o">=</span><span class="n">ServerCredentials</span><span class="p">(</span>
+<span class="hll">        <span class="n">password</span><span class="o">=</span><span class="n">cache_values</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;CACHE_PASSWORD&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">),</span>
+</span>    <span class="p">),</span>
+    <span class="n">request_timeout</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
+    <span class="n">use_tls</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">reconnect_strategy</span><span class="o">=</span><span class="n">BackoffStrategy</span><span class="p">(</span><span class="n">num_of_retries</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">factor</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">exponent_base</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span>
 <span class="p">)</span>
+<span class="n">valkey_client</span> <span class="o">=</span> <span class="n">GlideClient</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">config</span><span class="o">=</span><span class="n">client_config</span><span class="p">)</span>
 
-<span class="hll"><span class="n">persistence_layer</span> <span class="o">=</span> <span class="n">RedisCachePersistenceLayer</span><span class="p">(</span><span class="n">client</span><span class="o">=</span><span class="n">redis_client</span><span class="p">)</span>
-</span><span class="n">config</span> <span class="o">=</span> <span class="n">IdempotencyConfig</span><span class="p">(</span>
+<span class="n">persistence_layer</span> <span class="o">=</span> <span class="n">CachePersistenceLayer</span><span class="p">(</span><span class="n">client</span><span class="o">=</span><span class="n">valkey_client</span><span class="p">)</span>  <span class="c1"># type: ignore[arg-type]</span>
+<span class="n">config</span> <span class="o">=</span> <span class="n">IdempotencyConfig</span><span class="p">(</span>
     <span class="n">expires_after_seconds</span><span class="o">=</span><span class="mi">2</span> <span class="o">*</span> <span class="mi">60</span><span class="p">,</span>  <span class="c1"># 2 minutes</span>
 <span class="p">)</span>
 
@@ -7135,9 +7255,9 @@ This means there could be differences in whitespace even when the JSON payload i
 <span class="normal">3</span>
 <span class="normal">4</span>
 <span class="normal">5</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="p">{</span>
-<span class="nt">&quot;REDIS_ENDPOINT&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;127.0.0.1&quot;</span><span class="p">,</span>
-<span class="nt">&quot;REDIS_PORT&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;6379&quot;</span><span class="p">,</span>
-<span class="nt">&quot;REDIS_PASSWORD&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;redis-secret&quot;</span>
+<span class="nt">&quot;CACHE_HOST&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;127.0.0.1&quot;</span><span class="p">,</span>
+<span class="nt">&quot;CACHE_PORT&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;6379&quot;</span><span class="p">,</span>
+<span class="nt">&quot;CACHE_PASSWORD&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;cache-secret&quot;</span>
 <span class="p">}</span>
 </code></pre></div></td></tr></table></div></li>
 </ol>
@@ -7189,27 +7309,27 @@ This means there could be differences in whitespace even when the JSON payload i
 <span class="kn">from</span><span class="w"> </span><span class="nn">aws_lambda_powertools.shared.functions</span><span class="w"> </span><span class="kn">import</span> <span class="n">abs_lambda_path</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">aws_lambda_powertools.utilities</span><span class="w"> </span><span class="kn">import</span> <span class="n">parameters</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">aws_lambda_powertools.utilities.idempotency</span><span class="w"> </span><span class="kn">import</span> <span class="n">IdempotencyConfig</span><span class="p">,</span> <span class="n">idempotent</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">aws_lambda_powertools.utilities.idempotency.persistence.redis</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
-    <span class="n">RedisCachePersistenceLayer</span><span class="p">,</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">aws_lambda_powertools.utilities.idempotency.persistence.cache</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
+    <span class="n">CachePersistenceLayer</span><span class="p">,</span>
 <span class="p">)</span>
 
-<span class="hll"><span class="n">redis_values</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span> <span class="o">=</span> <span class="n">parameters</span><span class="o">.</span><span class="n">get_secret</span><span class="p">(</span><span class="s2">&quot;redis_info&quot;</span><span class="p">,</span> <span class="n">transform</span><span class="o">=</span><span class="s2">&quot;json&quot;</span><span class="p">)</span>  <span class="c1"># (1)!</span>
+<span class="hll"><span class="n">cache_values</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span> <span class="o">=</span> <span class="n">parameters</span><span class="o">.</span><span class="n">get_secret</span><span class="p">(</span><span class="s2">&quot;cache_info&quot;</span><span class="p">,</span> <span class="n">transform</span><span class="o">=</span><span class="s2">&quot;json&quot;</span><span class="p">)</span>  <span class="c1"># (1)!</span>
 </span>
 
 <span class="n">redis_client</span> <span class="o">=</span> <span class="n">Redis</span><span class="p">(</span>
-    <span class="n">host</span><span class="o">=</span><span class="n">redis_values</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;REDIS_HOST&quot;</span><span class="p">,</span> <span class="s2">&quot;localhost&quot;</span><span class="p">),</span>
-    <span class="n">port</span><span class="o">=</span><span class="n">redis_values</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;REDIS_PORT&quot;</span><span class="p">,</span> <span class="mi">6379</span><span class="p">),</span>
-    <span class="n">password</span><span class="o">=</span><span class="n">redis_values</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;REDIS_PASSWORD&quot;</span><span class="p">),</span>
+    <span class="n">host</span><span class="o">=</span><span class="n">cache_values</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;REDIS_HOST&quot;</span><span class="p">,</span> <span class="s2">&quot;localhost&quot;</span><span class="p">),</span>
+    <span class="n">port</span><span class="o">=</span><span class="n">cache_values</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;REDIS_PORT&quot;</span><span class="p">,</span> <span class="mi">6379</span><span class="p">),</span>
+    <span class="n">password</span><span class="o">=</span><span class="n">cache_values</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;REDIS_PASSWORD&quot;</span><span class="p">),</span>
     <span class="n">decode_responses</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
     <span class="n">socket_timeout</span><span class="o">=</span><span class="mf">10.0</span><span class="p">,</span>
     <span class="n">ssl</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
     <span class="n">retry_on_timeout</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-<span class="hll">    <span class="n">ssl_certfile</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">abs_lambda_path</span><span class="p">()</span><span class="si">}</span><span class="s2">/certs/redis_user.crt&quot;</span><span class="p">,</span>  <span class="c1"># (2)!</span>
-</span><span class="hll">    <span class="n">ssl_keyfile</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">abs_lambda_path</span><span class="p">()</span><span class="si">}</span><span class="s2">/certs/redis_user_private.key&quot;</span><span class="p">,</span>  <span class="c1"># (3)!</span>
-</span><span class="hll">    <span class="n">ssl_ca_certs</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">abs_lambda_path</span><span class="p">()</span><span class="si">}</span><span class="s2">/certs/redis_ca.pem&quot;</span><span class="p">,</span>  <span class="c1"># (4)!</span>
+<span class="hll">    <span class="n">ssl_certfile</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">abs_lambda_path</span><span class="p">()</span><span class="si">}</span><span class="s2">/certs/cache_user.crt&quot;</span><span class="p">,</span>  <span class="c1"># (2)!</span>
+</span><span class="hll">    <span class="n">ssl_keyfile</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">abs_lambda_path</span><span class="p">()</span><span class="si">}</span><span class="s2">/certs/cache_user_private.key&quot;</span><span class="p">,</span>  <span class="c1"># (3)!</span>
+</span><span class="hll">    <span class="n">ssl_ca_certs</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">abs_lambda_path</span><span class="p">()</span><span class="si">}</span><span class="s2">/certs/cache_ca.pem&quot;</span><span class="p">,</span>  <span class="c1"># (4)!</span>
 </span><span class="p">)</span>
 
-<span class="n">persistence_layer</span> <span class="o">=</span> <span class="n">RedisCachePersistenceLayer</span><span class="p">(</span><span class="n">client</span><span class="o">=</span><span class="n">redis_client</span><span class="p">)</span>
+<span class="n">persistence_layer</span> <span class="o">=</span> <span class="n">CachePersistenceLayer</span><span class="p">(</span><span class="n">client</span><span class="o">=</span><span class="n">redis_client</span><span class="p">)</span>
 <span class="n">config</span> <span class="o">=</span> <span class="n">IdempotencyConfig</span><span class="p">(</span>
     <span class="n">expires_after_seconds</span><span class="o">=</span><span class="mi">2</span> <span class="o">*</span> <span class="mi">60</span><span class="p">,</span>  <span class="c1"># 2 minutes</span>
 <span class="p">)</span>
@@ -7226,19 +7346,19 @@ This means there could be differences in whitespace even when the JSON payload i
 <span class="normal">3</span>
 <span class="normal">4</span>
 <span class="normal">5</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="p">{</span>
-<span class="nt">&quot;REDIS_ENDPOINT&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;127.0.0.1&quot;</span><span class="p">,</span>
-<span class="nt">&quot;REDIS_PORT&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;6379&quot;</span><span class="p">,</span>
-<span class="nt">&quot;REDIS_PASSWORD&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;redis-secret&quot;</span>
+<span class="nt">&quot;CACHE_HOST&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;127.0.0.1&quot;</span><span class="p">,</span>
+<span class="nt">&quot;CACHE_PORT&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;6379&quot;</span><span class="p">,</span>
+<span class="nt">&quot;CACHE_PASSWORD&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;cache-secret&quot;</span>
 <span class="p">}</span>
 </code></pre></div></td></tr></table></div></li>
-<li>redis_user.crt file stored in the "certs" directory of your Lambda function</li>
-<li>redis_user_private.key file stored in the "certs" directory of your Lambda function</li>
-<li>redis_ca.pem file stored in the "certs" directory of your Lambda function</li>
+<li>cache_user.crt file stored in the "certs" directory of your Lambda function</li>
+<li>cache_user_private.key file stored in the "certs" directory of your Lambda function</li>
+<li>cache_ca.pem file stored in the "certs" directory of your Lambda function</li>
 </ol>
 </div>
 </div>
 </div>
-<h5 id="redis-attributes">Redis attributes<a class="headerlink" href="#redis-attributes" title="Permanent link">&para;</a></h5>
+<h5 id="cache-attributes">Cache attributes<a class="headerlink" href="#cache-attributes" title="Permanent link">&para;</a></h5>
 <p>You can customize the attribute names during initialization:</p>
 <table>
 <thead>
@@ -7461,7 +7581,7 @@ This means there could be differences in whitespace even when the JSON payload i
 <h3 id="idempotency-request-flow">Idempotency request flow<a class="headerlink" href="#idempotency-request-flow" title="Permanent link">&para;</a></h3>
 <p>The following sequence diagrams explain how the Idempotency feature behaves under different scenarios.</p>
 <h4 id="successful-request">Successful request<a class="headerlink" href="#successful-request" title="Permanent link">&para;</a></h4>
-<p><center>
+<center>
 <pre class="mermaid"><code>sequenceDiagram
     participant Client
     participant Lambda
@@ -7487,12 +7607,13 @@ This means there could be differences in whitespace even when the JSON payload i
         Lambda--&gt;&gt;Client: Same response sent to client
     end</code></pre>
 <i>Idempotent successful request</i>
-</center></p>
+</center>
+
 <h4 id="successful-request-with-cache-enabled">Successful request with cache enabled<a class="headerlink" href="#successful-request-with-cache-enabled" title="Permanent link">&para;</a></h4>
 <div class="admonition note">
 <p class="admonition-title"><a href="#using-in-memory-cache">In-memory cache is disabled by default</a>.</p>
 </div>
-<p><center>
+<center>
 <pre class="mermaid"><code>sequenceDiagram
     participant Client
     participant Lambda
@@ -7516,9 +7637,10 @@ This means there could be differences in whitespace even when the JSON payload i
       Lambda--&gt;&gt;Client: Same response sent to client
     end</code></pre>
 <i>Idempotent successful request cached</i>
-</center></p>
+</center>
+
 <h4 id="successful-request-with-response_hook-configured">Successful request with response_hook configured<a class="headerlink" href="#successful-request-with-response_hook-configured" title="Permanent link">&para;</a></h4>
-<p><center>
+<center>
 <pre class="mermaid"><code>sequenceDiagram
     participant Client
     participant Lambda
@@ -7546,9 +7668,10 @@ This means there could be differences in whitespace even when the JSON payload i
         Lambda--&gt;&gt;Client: Manipulated idempotent response sent to client
     end</code></pre>
 <i>Successful idempotent request with a response hook</i>
-</center></p>
+</center>
+
 <h4 id="expired-idempotency-records">Expired idempotency records<a class="headerlink" href="#expired-idempotency-records" title="Permanent link">&para;</a></h4>
-<p><center>
+<center>
 <pre class="mermaid"><code>sequenceDiagram
     participant Client
     participant Lambda
@@ -7577,9 +7700,10 @@ This means there could be differences in whitespace even when the JSON payload i
         Lambda--&gt;&gt;Client: Same response sent to client
     end</code></pre>
 <i>Previous Idempotent request expired</i>
-</center></p>
+</center>
+
 <h4 id="concurrent-identical-in-flight-requests">Concurrent identical in-flight requests<a class="headerlink" href="#concurrent-identical-in-flight-requests" title="Permanent link">&para;</a></h4>
-<p><center>
+<center>
 <pre class="mermaid"><code>sequenceDiagram
     participant Client
     participant Lambda
@@ -7601,9 +7725,10 @@ This means there could be differences in whitespace even when the JSON payload i
     Note over Lambda,Persistence Layer: Set record status to COMPLETE. &lt;br&gt; New invocations with the same payload &lt;br&gt; now return the same result
     Lambda--&gt;&gt;Client: Response sent to client</code></pre>
 <i>Concurrent identical in-flight requests</i>
-</center></p>
+</center>
+
 <h4 id="unhandled-exception">Unhandled exception<a class="headerlink" href="#unhandled-exception" title="Permanent link">&para;</a></h4>
-<p><center>
+<center>
 <pre class="mermaid"><code>sequenceDiagram
     participant Client
     participant Lambda
@@ -7617,9 +7742,10 @@ This means there could be differences in whitespace even when the JSON payload i
     deactivate Persistence Layer
     Lambda--&gt;&gt;Client: Return error response</code></pre>
 <i>Idempotent sequence exception</i>
-</center></p>
+</center>
+
 <h4 id="lambda-request-timeout">Lambda request timeout<a class="headerlink" href="#lambda-request-timeout" title="Permanent link">&para;</a></h4>
-<p><center>
+<center>
 <pre class="mermaid"><code>sequenceDiagram
     participant Client
     participant Lambda
@@ -7646,9 +7772,10 @@ This means there could be differences in whitespace even when the JSON payload i
         Lambda--&gt;&gt;Client: Response sent to client
     end</code></pre>
 <i>Idempotent request during and after Lambda timeouts</i>
-</center></p>
+</center>
+
 <h4 id="optional-idempotency-key">Optional idempotency key<a class="headerlink" href="#optional-idempotency-key" title="Permanent link">&para;</a></h4>
-<p><center>
+<center>
 <pre class="mermaid"><code>sequenceDiagram
     participant Client
     participant Lambda
@@ -7672,27 +7799,29 @@ This means there could be differences in whitespace even when the JSON payload i
         Lambda--&gt;&gt;Client: Response sent to client
     end</code></pre>
 <i>Optional idempotency key</i>
-</center></p>
-<h4 id="race-condition-with-redis">Race condition with Redis<a class="headerlink" href="#race-condition-with-redis" title="Permanent link">&para;</a></h4>
-<p><center>
+</center>
+
+<h4 id="race-condition-with-cache">Race condition with Cache<a class="headerlink" href="#race-condition-with-cache" title="Permanent link">&para;</a></h4>
+<center>
 <pre class="mermaid"><code>graph TD;
-    A(Existing orphan record in redis)--&gt;A1;
+    A(Existing orphan record in cache)--&gt;A1;
     A1[Two Lambda invoke at same time]--&gt;B1[Lambda handler1];
-    B1--&gt;B2[Fetch from Redis];
+    B1--&gt;B2[Fetch from Cache];
     B2--&gt;B3[Handler1 got orphan record];
     B3--&gt;B4[Handler1 acquired lock];
     B4--&gt;B5[Handler1 overwrite orphan record]
     B5--&gt;B6[Handler1 continue to execution];
     A1--&gt;C1[Lambda handler2];
-    C1--&gt;C2[Fetch from Redis];
+    C1--&gt;C2[Fetch from Cache];
     C2--&gt;C3[Handler2 got orphan record];
     C3--&gt;C4[Handler2 failed to acquire lock];
-    C4--&gt;C5[Handler2 wait and fetch from Redis];
+    C4--&gt;C5[Handler2 wait and fetch from Cache];
     C5--&gt;C6[Handler2 return without executing];
     B6--&gt;D(Lambda handler executed only once);
     C6--&gt;D;</code></pre>
-<i>Race condition with Redis</i>
-</center></p>
+<i>Race condition with Cache</i>
+</center>
+
 <h2 id="advanced">Advanced<a class="headerlink" href="#advanced" title="Permanent link">&para;</a></h2>
 <h3 id="customizing-the-default-behavior">Customizing the default behavior<a class="headerlink" href="#customizing-the-default-behavior" title="Permanent link">&para;</a></h3>
 <p>You can override and further extend idempotency behavior via <strong><code>IdempotencyConfig</code></strong> with the following options:</p>
@@ -9392,7 +9521,7 @@ This means it is possible to pass a mocked Table resource, or stub various metho
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    2025-01-23
+    2025-05-19
   </span>
 
     

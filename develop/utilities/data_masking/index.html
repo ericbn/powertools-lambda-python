@@ -4034,12 +4034,13 @@ You're not viewing the latest version.
 <p><strong><a href="https://docs.aws.amazon.com/encryption-sdk/latest/developer-guide/concepts.html#envelope-encryption" target="_blank">Envelope encryption</a></strong> uses two different keys to encrypt data safely: master and data key. The data key encrypts the plaintext, and the master key encrypts the data key. It simplifies key management <em>(you own the master key)</em>, isolates compromises to data key, and scales better with large data volumes.</p>
 <!-- markdownlint-enable MD013 -->
 
-<p><center>
+<center>
 <pre class="mermaid"><code>graph LR
     M(Master key) --&gt; |Encrypts| D(Data key)
     D(Data key) --&gt; |Encrypts| S(Sensitive data)</code></pre>
 <i>Envelope encryption visualized.</i>
-</center></p>
+</center>
+
 <h2 id="getting-started">Getting started<a class="headerlink" href="#getting-started" title="Permanent link">&para;</a></h2>
 <details class="tip" open="open">
 <summary>Tip</summary>
@@ -5912,7 +5913,7 @@ You're not viewing the latest version.
 <p>The following sequence diagrams explain how <code>DataMasking</code> behaves under different scenarios.</p>
 <h4 id="erase-operation">Erase operation<a class="headerlink" href="#erase-operation" title="Permanent link">&para;</a></h4>
 <p>Erasing operations occur in-memory and we cannot recover the original value.</p>
-<p><center>
+<center>
 <pre class="mermaid"><code>sequenceDiagram
     autonumber
     participant Client
@@ -5925,11 +5926,12 @@ You're not viewing the latest version.
     DataMasking-&gt;&gt;Lambda: data masked
     Lambda--&gt;&gt;Client: Return response</code></pre>
 <i>Simple masking operation</i>
-</center></p>
+</center>
+
 <h4 id="encrypt-operation-with-encryption-sdk-kms">Encrypt operation with Encryption SDK (KMS)<a class="headerlink" href="#encrypt-operation-with-encryption-sdk-kms" title="Permanent link">&para;</a></h4>
 <p>We call KMS to generate an unique data key that can be used for multiple <code>encrypt</code> operation in-memory. It improves performance, cost and prevent throttling.</p>
 <p>To make this operation simpler to visualize, we keep caching details in a <a href="#caching-encrypt-operations-with-encryption-sdk">separate sequence diagram</a>. Caching is enabled by default.</p>
-<p><center>
+<center>
 <pre class="mermaid"><code>sequenceDiagram
     autonumber
     participant Client
@@ -5950,10 +5952,11 @@ You're not viewing the latest version.
     DataMasking-&gt;&gt;Lambda: Ciphertext from encrypted message
     Lambda--&gt;&gt;Client: Return response</code></pre>
 <i>Encrypting operation using envelope encryption.</i>
-</center></p>
+</center>
+
 <h4 id="encrypt-operation-with-multiple-kms-keys">Encrypt operation with multiple KMS Keys<a class="headerlink" href="#encrypt-operation-with-multiple-kms-keys" title="Permanent link">&para;</a></h4>
 <p>When encrypting data with multiple KMS keys, the <code>aws_encryption_sdk</code> makes additional API calls to encrypt the data with each of the specified keys.</p>
-<p><center>
+<center>
 <pre class="mermaid"><code>sequenceDiagram
     autonumber
     participant Client
@@ -5978,11 +5981,12 @@ You're not viewing the latest version.
     DataMasking-&gt;&gt;Lambda: Ciphertext from encrypted message
     Lambda--&gt;&gt;Client: Return response</code></pre>
 <i>Encrypting operation using envelope encryption.</i>
-</center></p>
+</center>
+
 <h4 id="decrypt-operation-with-encryption-sdk-kms">Decrypt operation with Encryption SDK (KMS)<a class="headerlink" href="#decrypt-operation-with-encryption-sdk-kms" title="Permanent link">&para;</a></h4>
 <p>We call KMS to decrypt the encrypted data key available in the encrypted message. If successful, we run authentication <em>(context)</em> and integrity checks (<em>algorithm, data key length, etc</em>) to confirm its proceedings.</p>
 <p>Lastly, we decrypt the original encrypted data, throw away the decrypted data key for security reasons, and return the original plaintext data.</p>
-<p><center>
+<center>
 <pre class="mermaid"><code>sequenceDiagram
     autonumber
     participant Client
@@ -6002,7 +6006,8 @@ You're not viewing the latest version.
     DataMasking-&gt;&gt;Lambda: Plaintext
     Lambda--&gt;&gt;Client: Return response</code></pre>
 <i>Decrypting operation using envelope encryption.</i>
-</center></p>
+</center>
+
 <h4 id="caching-encrypt-operations-with-encryption-sdk">Caching encrypt operations with Encryption SDK<a class="headerlink" href="#caching-encrypt-operations-with-encryption-sdk" title="Permanent link">&para;</a></h4>
 <p>Without caching, every <code>encrypt()</code> operation would generate a new data key. It significantly increases latency and cost for ephemeral and short running environments like Lambda.</p>
 <p>With caching, we balance ephemeral Lambda environment performance characteristics with <a href="#aws-encryption-sdk">adjustable thresholds</a> to meet your security needs.</p>
@@ -6015,7 +6020,7 @@ You're not viewing the latest version.
 <li><strong>Max bytes encrypted</strong> across all operations</li>
 </ol>
 </div>
-<p><center>
+<center>
 <pre class="mermaid"><code>sequenceDiagram
     autonumber
     participant Client
@@ -6047,7 +6052,8 @@ You're not viewing the latest version.
     DataMasking-&gt;&gt;Lambda: Ciphertext from encrypted message
     Lambda--&gt;&gt;Client: Return response</code></pre>
 <i>Caching data keys during encrypt operation.</i>
-</center></p>
+</center>
+
 <h2 id="testing-your-code">Testing your code<a class="headerlink" href="#testing-your-code" title="Permanent link">&para;</a></h2>
 <h3 id="testing-erase-operation">Testing erase operation<a class="headerlink" href="#testing-erase-operation" title="Permanent link">&para;</a></h3>
 <p>Testing your code with a simple erase operation</p>

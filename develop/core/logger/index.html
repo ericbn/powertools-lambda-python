@@ -6720,7 +6720,7 @@ You're not viewing the latest version.
 </div>
 <h4 id="buffering-workflows">Buffering workflows<a class="headerlink" href="#buffering-workflows" title="Permanent link">&para;</a></h4>
 <h5 id="manual-flush">Manual flush<a class="headerlink" href="#manual-flush" title="Permanent link">&para;</a></h5>
-<p><center>
+<center>
 <pre class="mermaid"><code>sequenceDiagram
     participant Client
     participant Lambda
@@ -6739,9 +6739,10 @@ You're not viewing the latest version.
     Logger-&gt;&gt;CloudWatch: Emit buffered logs to stdout
     Lambda-&gt;&gt;Client: Return execution result</code></pre>
 <i>Flushing buffer manually</i>
-</center></p>
+</center>
+
 <h5 id="flushing-when-logging-an-error">Flushing when logging an error<a class="headerlink" href="#flushing-when-logging-an-error" title="Permanent link">&para;</a></h5>
-<p><center>
+<center>
 <pre class="mermaid"><code>sequenceDiagram
     participant Client
     participant Lambda
@@ -6762,10 +6763,11 @@ You're not viewing the latest version.
     Logger-&gt;&gt;CloudWatch: Emit error log
     Lambda-&gt;&gt;Client: Raise exception</code></pre>
 <i>Flushing buffer when an error happens</i>
-</center></p>
+</center>
+
 <h5 id="flushing-on-exception">Flushing on exception<a class="headerlink" href="#flushing-on-exception" title="Permanent link">&para;</a></h5>
 <p>This works only when decorating your Lambda handler with the decorator <code>@logger.inject_lambda_context(flush_buffer_on_uncaught_error=True)</code></p>
-<p><center>
+<center>
 <pre class="mermaid"><code>sequenceDiagram
     participant Client
     participant Lambda
@@ -6782,7 +6784,8 @@ You're not viewing the latest version.
     Lambda-&gt;&gt;CloudWatch: Automatically emit buffered debug logs
     Lambda-&gt;&gt;Client: Raise uncaught exception</code></pre>
 <i>Flushing buffer when an uncaught exception happens</i>
-</center></p>
+</center>
+
 <h4 id="buffering-faqs">Buffering FAQs<a class="headerlink" href="#buffering-faqs" title="Permanent link">&para;</a></h4>
 <ol>
 <li>
@@ -7568,7 +7571,7 @@ The log size is calculated based on the size of the log line in bytes. This incl
 <p>Service is what defines the Logger name, including what the Lambda function is responsible for, or part of (e.g payment service).</p>
 <p>For Logger, the <code>service</code> is the logging key customers can use to search log operations for one or more functions - For example, <strong>search for all errors, or messages like X, where service is payment</strong>.</p>
 <h4 id="child-loggers">Child Loggers<a class="headerlink" href="#child-loggers" title="Permanent link">&para;</a></h4>
-<p><center>
+<center>
 <pre class="mermaid"><code>stateDiagram-v2
     direction LR
     Parent: Logger()
@@ -7577,7 +7580,8 @@ The log size is calculated based on the size of the log line in bytes. This incl
     Note right of Child
         Both have the same service
     end note</code></pre>
-</center></p>
+</center>
+
 <p>For inheritance, Logger uses <code>child</code> parameter to ensure we don't compete with its parents config. We name child Loggers following Python's convention: <em><code>{service}</code>.<code>{filename}</code></em>.</p>
 <p>Changes are bidirectional between parents and loggers. That is, appending a key in a child or parent will ensure both have them. This means, having the same <code>service</code> name is important when instantiating them.</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="29:2"><input checked="checked" id="logging_inheritance_goodpy" name="__tabbed_29" type="radio" /><input id="logging_inheritance_modulepy" name="__tabbed_29" type="radio" /><div class="tabbed-labels"><label for="logging_inheritance_goodpy">logging_inheritance_good.py</label><label for="logging_inheritance_modulepy">logging_inheritance_module.py</label></div>

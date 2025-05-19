@@ -5196,7 +5196,7 @@ You're not viewing the latest version.
 </div>
 <h2 id="event-handler-workflow">Event Handler workflow<a class="headerlink" href="#event-handler-workflow" title="Permanent link">&para;</a></h2>
 <h3 id="working-with-single-items">Working with single items<a class="headerlink" href="#working-with-single-items" title="Permanent link">&para;</a></h3>
-<p><center>
+<center>
 <pre class="mermaid"><code>sequenceDiagram
     participant Client
     participant AppSync
@@ -5212,9 +5212,10 @@ You're not viewing the latest version.
     EventHandler--&gt;&gt;-Lambda: Return array of processed events
     Lambda--&gt;&gt;-AppSync: Return event-by-event responses
     AppSync--&gt;&gt;-Client: Report individual event statuses</code></pre>
-</center></p>
+</center>
+
 <h3 id="working-with-aggregated-items">Working with aggregated items<a class="headerlink" href="#working-with-aggregated-items" title="Permanent link">&para;</a></h3>
-<p><center>
+<center>
 <pre class="mermaid"><code>sequenceDiagram
     participant Client
     participant AppSync
@@ -5230,9 +5231,10 @@ You're not viewing the latest version.
     EventHandler--&gt;&gt;-Lambda: Return aggregated results
     Lambda--&gt;&gt;-AppSync: Return success responses
     AppSync--&gt;&gt;-Client: Confirm all events processed</code></pre>
-</center></p>
+</center>
+
 <h3 id="authorization-fails-for-publish">Authorization fails for publish<a class="headerlink" href="#authorization-fails-for-publish" title="Permanent link">&para;</a></h3>
-<p><center>
+<center>
 <pre class="mermaid"><code>sequenceDiagram
     participant Client
     participant AppSync
@@ -5254,9 +5256,10 @@ You're not viewing the latest version.
         AppSync-&gt;&gt;Client: Acknowledge message
         AppSync-&gt;&gt;AppSync: Distribute to subscribers
     end</code></pre>
-</center></p>
+</center>
+
 <h3 id="authorization-fails-for-subscribe">Authorization fails for subscribe<a class="headerlink" href="#authorization-fails-for-subscribe" title="Permanent link">&para;</a></h3>
-<p><center>
+<center>
 <pre class="mermaid"><code>sequenceDiagram
     participant Client
     participant AppSync
@@ -5276,7 +5279,8 @@ You're not viewing the latest version.
         Lambda-&gt;&gt;AppSync: Return authorization success
         AppSync-&gt;&gt;Client: Subscription established
     end</code></pre>
-</center></p>
+</center>
+
 <h2 id="testing-your-code">Testing your code<a class="headerlink" href="#testing-your-code" title="Permanent link">&para;</a></h2>
 <p>You can test your event handlers by passing a mocked or actual AppSync Events Lambda event.</p>
 <h3 id="testing-publish-events">Testing publish events<a class="headerlink" href="#testing-publish-events" title="Permanent link">&para;</a></h3>
