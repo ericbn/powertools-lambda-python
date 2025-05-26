@@ -3676,6 +3676,41 @@ def lambda_handler(event: dict, context: LambdaContext) -> dict:
 
 ```
 
+### Custom body deserializer
+
+You can customize how the integrated [Event Source Data Classes](https://docs.powertools.aws.dev/lambda/python/latest/utilities/data_classes/#api-gateway-proxy) parse the JSON request body by providing your own deserializer function. By default it is `json.loads`
+
+```
+import json
+from decimal import Decimal
+from functools import partial
+
+from aws_lambda_powertools import Logger, Tracer
+from aws_lambda_powertools.event_handler import APIGatewayRestResolver
+from aws_lambda_powertools.logging import correlation_paths
+from aws_lambda_powertools.utilities.typing import LambdaContext
+
+tracer = Tracer()
+logger = Logger()
+app = APIGatewayRestResolver()
+
+
+app = APIGatewayRestResolver(json_body_deserializer=partial(json.loads, parse_float=Decimal))
+
+
+@app.get("/body")
+def get_body():
+    return app.current_event.json_body
+
+
+# You can continue to use other utilities just as before
+@logger.inject_lambda_context(correlation_id_path=correlation_paths.API_GATEWAY_REST)
+@tracer.capture_lambda_handler
+def lambda_handler(event: dict, context: LambdaContext) -> dict:
+    return app.resolve(event, context)
+
+```
+
 ### Split routes with Router
 
 As you grow the number of routes a given Lambda function should handle, it is natural to either break into smaller Lambda functions, or split routes into separate files to ease maintenance - that's where the `Router` feature is useful.
