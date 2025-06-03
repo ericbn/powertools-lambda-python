@@ -1019,6 +1019,8 @@ Knowing which companies are using this library is important to help prioritize t
 
 [**Guild**](https://guild.com/)
 
+[**Instil**](https://instil.co/)
+
 [**IMS**](https://ims.tech/)
 
 [**Jit Security**](https://www.jit.io/)
