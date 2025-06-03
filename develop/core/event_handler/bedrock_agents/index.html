@@ -26,7 +26,7 @@
     
     
       
-        <title>Agents for Amazon Bedrock - Powertools for AWS Lambda (Python)</title>
+        <title>Amazon Bedrock Agents - Powertools for AWS Lambda (Python)</title>
       
     
     
@@ -131,7 +131,7 @@ You're not viewing the latest version.
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Agents for Amazon Bedrock
+              Amazon Bedrock Agents
             
           </span>
         </div>
@@ -990,7 +990,7 @@ You're not viewing the latest version.
   
   
   <span class="md-ellipsis">
-    Agents for Amazon Bedrock
+    Amazon Bedrock Agents
     
   </span>
   
@@ -1003,7 +1003,7 @@ You're not viewing the latest version.
   
   
   <span class="md-ellipsis">
-    Agents for Amazon Bedrock
+    Amazon Bedrock Agents
     
   </span>
   
@@ -1042,6 +1042,15 @@ You're not viewing the latest version.
 </li>
       
         <li class="md-nav__item">
+  <a href="#choose-your-action-group" class="md-nav__link">
+    <span class="md-ellipsis">
+      Choose your Action Group
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#getting-started" class="md-nav__link">
     <span class="md-ellipsis">
       Getting started
@@ -1061,18 +1070,51 @@ You're not viewing the latest version.
 </li>
         
           <li class="md-nav__item">
-  <a href="#required-resources" class="md-nav__link">
+  <a href="#your-first-agent" class="md-nav__link">
     <span class="md-ellipsis">
-      Required resources
+      Your first Agent
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#your-first-agent" class="md-nav__link">
+  <a href="#accessing-custom-request-fields" class="md-nav__link">
     <span class="md-ellipsis">
-      Your first Agent
+      Accessing custom request fields
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#openapi-based-actions" class="md-nav__link">
+    <span class="md-ellipsis">
+      OpenAPI-based actions
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="OpenAPI-based actions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#generating-openapi-schemas" class="md-nav__link">
+    <span class="md-ellipsis">
+      Generating OpenAPI schemas
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#crafting-effective-openapi-schemas" class="md-nav__link">
+    <span class="md-ellipsis">
+      Crafting effective OpenAPI schemas
     </span>
   </a>
   
@@ -1103,24 +1145,6 @@ You're not viewing the latest version.
 </li>
         
           <li class="md-nav__item">
-  <a href="#generating-openapi-schemas" class="md-nav__link">
-    <span class="md-ellipsis">
-      Generating OpenAPI schemas
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#crafting-effective-openapi-schemas" class="md-nav__link">
-    <span class="md-ellipsis">
-      Crafting effective OpenAPI schemas
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
   <a href="#video-walkthrough" class="md-nav__link">
     <span class="md-ellipsis">
       Video walkthrough
@@ -1129,12 +1153,7 @@ You're not viewing the latest version.
   
 </li>
         
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
+          <li class="md-nav__item">
   <a href="#advanced" class="md-nav__link">
     <span class="md-ellipsis">
       Advanced
@@ -1145,23 +1164,13 @@ You're not viewing the latest version.
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#accessing-custom-request-fields" class="md-nav__link">
-    <span class="md-ellipsis">
-      Accessing custom request fields
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
   <a href="#additional-metadata" class="md-nav__link">
     <span class="md-ellipsis">
       Additional metadata
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Additional metadata">
-      <ul class="md-nav__list">
+</li>
         
           <li class="md-nav__item">
   <a href="#customizing-openapi-parameters" class="md-nav__link">
@@ -1190,15 +1199,33 @@ You're not viewing the latest version.
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#openapi-based-responses" class="md-nav__link">
+    <span class="md-ellipsis">
+      OpenAPI-based Responses
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bedrock-requests-under-the-hood" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bedrock requests under the hood
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#fine-grained-responses" class="md-nav__link">
+  <a href="#testing-your-code" class="md-nav__link">
     <span class="md-ellipsis">
-      Fine grained responses
+      Testing your code
     </span>
   </a>
   
@@ -1210,11 +1237,26 @@ You're not viewing the latest version.
 </li>
       
         <li class="md-nav__item">
-  <a href="#testing-your-code" class="md-nav__link">
+  <a href="#function-based-actions" class="md-nav__link">
     <span class="md-ellipsis">
-      Testing your code
+      Function-based Actions
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="Function-based Actions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#function-based-responses" class="md-nav__link">
+    <span class="md-ellipsis">
+      Function-based Responses
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -3729,6 +3771,15 @@ You're not viewing the latest version.
 </li>
       
         <li class="md-nav__item">
+  <a href="#choose-your-action-group" class="md-nav__link">
+    <span class="md-ellipsis">
+      Choose your Action Group
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#getting-started" class="md-nav__link">
     <span class="md-ellipsis">
       Getting started
@@ -3748,18 +3799,51 @@ You're not viewing the latest version.
 </li>
         
           <li class="md-nav__item">
-  <a href="#required-resources" class="md-nav__link">
+  <a href="#your-first-agent" class="md-nav__link">
     <span class="md-ellipsis">
-      Required resources
+      Your first Agent
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#your-first-agent" class="md-nav__link">
+  <a href="#accessing-custom-request-fields" class="md-nav__link">
     <span class="md-ellipsis">
-      Your first Agent
+      Accessing custom request fields
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#openapi-based-actions" class="md-nav__link">
+    <span class="md-ellipsis">
+      OpenAPI-based actions
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="OpenAPI-based actions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#generating-openapi-schemas" class="md-nav__link">
+    <span class="md-ellipsis">
+      Generating OpenAPI schemas
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#crafting-effective-openapi-schemas" class="md-nav__link">
+    <span class="md-ellipsis">
+      Crafting effective OpenAPI schemas
     </span>
   </a>
   
@@ -3790,24 +3874,6 @@ You're not viewing the latest version.
 </li>
         
           <li class="md-nav__item">
-  <a href="#generating-openapi-schemas" class="md-nav__link">
-    <span class="md-ellipsis">
-      Generating OpenAPI schemas
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#crafting-effective-openapi-schemas" class="md-nav__link">
-    <span class="md-ellipsis">
-      Crafting effective OpenAPI schemas
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
   <a href="#video-walkthrough" class="md-nav__link">
     <span class="md-ellipsis">
       Video walkthrough
@@ -3816,12 +3882,7 @@ You're not viewing the latest version.
   
 </li>
         
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
+          <li class="md-nav__item">
   <a href="#advanced" class="md-nav__link">
     <span class="md-ellipsis">
       Advanced
@@ -3832,23 +3893,13 @@ You're not viewing the latest version.
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#accessing-custom-request-fields" class="md-nav__link">
-    <span class="md-ellipsis">
-      Accessing custom request fields
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
   <a href="#additional-metadata" class="md-nav__link">
     <span class="md-ellipsis">
       Additional metadata
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Additional metadata">
-      <ul class="md-nav__list">
+</li>
         
           <li class="md-nav__item">
   <a href="#customizing-openapi-parameters" class="md-nav__link">
@@ -3877,15 +3928,33 @@ You're not viewing the latest version.
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#openapi-based-responses" class="md-nav__link">
+    <span class="md-ellipsis">
+      OpenAPI-based Responses
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bedrock-requests-under-the-hood" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bedrock requests under the hood
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#fine-grained-responses" class="md-nav__link">
+  <a href="#testing-your-code" class="md-nav__link">
     <span class="md-ellipsis">
-      Fine grained responses
+      Testing your code
     </span>
   </a>
   
@@ -3897,11 +3966,26 @@ You're not viewing the latest version.
 </li>
       
         <li class="md-nav__item">
-  <a href="#testing-your-code" class="md-nav__link">
+  <a href="#function-based-actions" class="md-nav__link">
     <span class="md-ellipsis">
-      Testing your code
+      Function-based Actions
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="Function-based Actions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#function-based-responses" class="md-nav__link">
+    <span class="md-ellipsis">
+      Function-based Responses
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -3924,18 +4008,27 @@ You're not viewing the latest version.
   
 
 
-  <h1>Agents for Amazon Bedrock</h1>
+  <h1>Amazon Bedrock Agents</h1>
 
-<p>Create <a href="https://docs.aws.amazon.com/bedrock/latest/userguide/agents.html#agents-how" target="_blank">Agents for Amazon Bedrock</a> using event handlers and auto generation of OpenAPI schemas.</p>
+<p>Create <a href="https://docs.aws.amazon.com/bedrock/latest/userguide/agents.html#agents-how" target="_blank">Amazon Bedrock Agents</a> using event handlers with two different action groups approaches:</p>
+<ul>
+<li>OpenAPI schema</li>
+<li>Function details</li>
+</ul>
 <center>
 <pre class="mermaid"><code>flowchart LR
     Bedrock[LLM] &lt;-- uses --&gt; Agent
     You[User input] --&gt; Agent
     Agent -- consults --&gt; OpenAPI
-    Agent[Agents for Amazon Bedrock] -- invokes --&gt; Lambda
+    Agent -- consults --&gt; Functions
+    Agent[Amazon Bedrock Agents] -- invokes --&gt; Lambda
 
     subgraph OpenAPI
         Schema
+    end
+
+    subgraph Functions
+        ToolDescriptions[Tool Descriptions]
     end
 
     subgraph Lambda[Lambda Function]
@@ -3949,19 +4042,17 @@ You're not viewing the latest version.
 
     subgraph ActionGroup[Action Group]
         OpenAPI -. generated from .-&gt; Lambda
+        Functions -. defined in .-&gt; Lambda
     end
 
     style Code fill:#ffa500,color:black,font-weight:bold,stroke-width:3px
-    style You stroke:#0F0,stroke-width:2px
-
-
-
-</code></pre>
+    style You stroke:#0F0,stroke-width:2px</code></pre>
 </center>
 
 <h2 id="key-features">Key features<a class="headerlink" href="#key-features" title="Permanent link">&para;</a></h2>
 <ul>
-<li>Minimal boilerplate to build Agents for Amazon Bedrock</li>
+<li>Minimal boilerplate to build Amazon Bedrock Agents</li>
+<li>Support for both OpenAPI-based and Function-based actions</li>
 <li>Automatic generation of <a href="https://www.openapis.org/" target="_blank">OpenAPI schemas</a> from your business logic code</li>
 <li>Built-in data validation for requests and responses</li>
 <li>Similar experience to authoring <a href="../api_gateway/" target="_blank">REST and HTTP APIs</a></li>
@@ -3970,285 +4061,66 @@ You're not viewing the latest version.
 <p><strong>Data validation</strong> automatically validates the user input and the response of your AWS Lambda function against a set of constraints defined by you.</p>
 <p><strong>Event handler</strong> is a Powertools for AWS feature that processes an event, runs data parsing and validation, routes the request to a specific function, and returns a response to the caller in the proper format.</p>
 <p><strong><a href="https://www.openapis.org/" target="_blank">OpenAPI schema</a></strong> is an industry standard JSON-serialized string that represents the structure and parameters of your API.</p>
-<p><strong>Action group</strong> is a collection of two resources where you define the actions that the agent should carry out: an OpenAPI schema to define the APIs that the agent can invoke to carry out its tasks, and a Lambda function to execute those actions.</p>
+<p><strong>Function details</strong> consist of a list of parameters, defined by their name, <a href="https://docs.aws.amazon.com/bedrock/latest/APIReference/API_agent_ParameterDetail.html">data type</a>, and whether they are required. The agent uses these configurations to determine what information it needs to elicit from the user.</p>
+<p><strong>Action group</strong> is a collection of two resources where you define the actions that the agent should carry out when invoking your Lambda function.</p>
 <p><strong>Large Language Models (LLM)</strong> are very large deep learning models that are pre-trained on vast amounts of data, capable of extracting meanings from a sequence of text and understanding the relationship between words and phrases on it.</p>
-<p><strong>Agent for Amazon Bedrock</strong> is an Amazon Bedrock feature to build and deploy conversational agents that can interact with your customers using Large Language Models (LLM) and AWS Lambda functions.</p>
-<h2 id="getting-started">Getting started<a class="headerlink" href="#getting-started" title="Permanent link">&para;</a></h2>
+<p><strong>Amazon Bedrock Agent</strong> is an Amazon Bedrock feature to build and deploy conversational agents that can interact with your customers using Large Language Models (LLM) and AWS Lambda functions.</p>
 <div class="admonition tip">
 <p class="admonition-title">All examples shared in this documentation are available within the <a href="https://github.com/aws-powertools/powertools-lambda-python/tree/develop/examples">project repository</a></p>
 </div>
-<h3 id="install">Install<a class="headerlink" href="#install" title="Permanent link">&para;</a></h3>
-<div class="admonition info">
-<p class="admonition-title">This is unnecessary if you're installing Powertools for AWS Lambda (Python) via <a href="../../../#lambda-layer" target="_blank">Lambda Layer/SAR</a>.</p>
-</div>
-<p>You need to add <code>pydantic</code> as a dependency in your preferred tool <em>e.g., requirements.txt, pyproject.toml</em>. At this time, we only support Pydantic V2.</p>
-<h3 id="required-resources">Required resources<a class="headerlink" href="#required-resources" title="Permanent link">&para;</a></h3>
-<p>To build Agents for Amazon Bedrock, you will need:</p>
+<h2 id="choose-your-action-group">Choose your Action Group<a class="headerlink" href="#choose-your-action-group" title="Permanent link">&para;</a></h2>
+<p>An action group defines actions that the agent can help the user perform. You can define action groups as OpenAPI-based or Function-based.</p>
 <table>
 <thead>
 <tr>
-<th>Requirement</th>
-<th>Description</th>
-<th style="text-align: center;">SAM Supported</th>
-<th style="text-align: center;">CDK Supported</th>
+<th>Aspect</th>
+<th>OpenAPI-based Actions</th>
+<th>Function-based Actions</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><a href="#your-first-agent">Lambda Function</a></td>
-<td>Defines your business logic for the action group</td>
-<td style="text-align: center;">✅</td>
-<td style="text-align: center;">✅</td>
+<td>Definition Style</td>
+<td><code>@app.get("/path", description="")</code><br><code>@app.post("/path", description="")</code></td>
+<td><code>@app.tool(name="")</code></td>
 </tr>
 <tr>
-<td><a href="#generating-openapi-schemas">OpenAPI Schema</a></td>
-<td>API description, structure, and action group parameters</td>
-<td style="text-align: center;">❌</td>
-<td style="text-align: center;">✅</td>
+<td>Parameter Handling</td>
+<td>Path, query, and body parameters</td>
+<td>Function parameters</td>
 </tr>
 <tr>
-<td><a href="https://docs.aws.amazon.com/bedrock/latest/userguide/agents-permissions.html" target="_blank">Bedrock Service Role</a></td>
-<td>Allows Amazon Bedrock to invoke foundation models</td>
-<td style="text-align: center;">✅</td>
-<td style="text-align: center;">✅</td>
+<td>Use Case</td>
+<td>REST-like APIs, complex request/response structures</td>
+<td>Direct function calls, simpler input</td>
 </tr>
 <tr>
-<td>Agents for Bedrock</td>
-<td>The service that will combine all the above to create the conversational agent</td>
-<td style="text-align: center;">❌</td>
-<td style="text-align: center;">✅</td>
+<td>Response object</td>
+<td>Via <code>BedrockResponse</code></td>
+<td>Via <code>BedrockFunctionResponse</code></td>
+</tr>
+<tr>
+<td>Best For</td>
+<td>- Complex APIs with multiple endpoints<br>- When OpenAPI spec is required<br>- Integration with existing REST APIs</td>
+<td>- Simple function-based actions<br>- Direct LLM-to-function mapping</td>
 </tr>
 </tbody>
 </table>
-<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="using-aws-serverless-application-model-sam" name="__tabbed_1" type="radio" /><input id="using-aws-cloud-developer-kit-cdk" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="using-aws-serverless-application-model-sam">Using AWS Serverless Application Model (SAM)</label><label for="using-aws-cloud-developer-kit-cdk">Using AWS Cloud Developer Kit (CDK)</label></div>
-<div class="tabbed-content">
-<div class="tabbed-block">
-<p>Using <a href="https://aws.amazon.com/serverless/sam/" target="_blank">AWS SAM</a> you can create your Lambda function and the necessary permissions. However, you still have to create your Agent for Amazon Bedrock <a href="https://docs.aws.amazon.com/bedrock/latest/userguide/agents-create.html" target="_blank">using the AWS console</a>.</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
-<span class="normal"> 2</span>
-<span class="normal"> 3</span>
-<span class="normal"> 4</span>
-<span class="normal"> 5</span>
-<span class="normal"> 6</span>
-<span class="normal"> 7</span>
-<span class="normal"> 8</span>
-<span class="normal"> 9</span>
-<span class="normal">10</span>
-<span class="normal">11</span>
-<span class="normal">12</span>
-<span class="normal">13</span>
-<span class="normal">14</span>
-<span class="normal">15</span>
-<span class="normal">16</span>
-<span class="normal">17</span>
-<span class="normal">18</span>
-<span class="normal">19</span>
-<span class="normal">20</span>
-<span class="normal">21</span>
-<span class="normal">22</span>
-<span class="normal">23</span>
-<span class="normal">24</span>
-<span class="normal">25</span>
-<span class="normal">26</span>
-<span class="normal">27</span>
-<span class="normal">28</span>
-<span class="normal">29</span>
-<span class="normal">30</span>
-<span class="normal">31</span>
-<span class="normal">32</span>
-<span class="normal">33</span>
-<span class="normal">34</span>
-<span class="normal">35</span>
-<span class="normal">36</span>
-<span class="normal">37</span>
-<span class="normal">38</span>
-<span class="normal">39</span>
-<span class="normal">40</span>
-<span class="normal">41</span>
-<span class="normal">42</span>
-<span class="normal">43</span>
-<span class="normal">44</span>
-<span class="normal">45</span>
-<span class="normal">46</span>
-<span class="normal">47</span>
-<span class="normal">48</span>
-<span class="normal">49</span>
-<span class="normal">50</span>
-<span class="normal">51</span>
-<span class="normal">52</span>
-<span class="normal">53</span>
-<span class="normal">54</span>
-<span class="normal">55</span>
-<span class="normal">56</span>
-<span class="normal">57</span>
-<span class="normal">58</span>
-<span class="normal">59</span>
-<span class="normal">60</span>
-<span class="normal">61</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nt">AWSTemplateFormatVersion</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;2010-09-09&quot;</span>
-<span class="nt">Transform</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">AWS::Serverless-2016-10-31</span>
-<span class="nt">Description</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">&gt;</span>
-<span class="w">  </span><span class="no">Agents for Amazon Bedrock example with Powertools for AWS Lambda (Python)</span>
-
-<span class="nt">Globals</span><span class="p">:</span><span class="w"> </span><span class="c1"># https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/sam-specification-template-anatomy-globals.html</span>
-<span class="w">  </span><span class="nt">Function</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">Timeout</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">30</span>
-<span class="w">    </span><span class="nt">Runtime</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">python3.12</span>
-<span class="w">    </span><span class="nt">Tracing</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Active</span>
-<span class="w">    </span><span class="nt">Environment</span><span class="p">:</span>
-<span class="w">      </span><span class="nt">Variables</span><span class="p">:</span>
-<span class="w">        </span><span class="nt">POWERTOOLS_SERVICE_NAME</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">PowertoolsHelloWorld</span>
-<span class="w">        </span><span class="nt">POWERTOOLS_LOG_LEVEL</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">INFO</span>
-
-<span class="nt">Resources</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">ApiFunction</span><span class="p">:</span>
-<span class="hll"><span class="w">    </span><span class="nt">Type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">AWS::Serverless::Function</span>
-</span><span class="w">    </span><span class="nt">Properties</span><span class="p">:</span>
-<span class="w">      </span><span class="nt">Handler</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">getting_started.lambda_handler</span>
-<span class="w">      </span><span class="nt">Description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Agent for Amazon Bedrock handler function</span>
-<span class="w">      </span><span class="nt">CodeUri</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">../src</span>
-
-
-<span class="w">  </span><span class="nt">BedrockPermission</span><span class="p">:</span><span class="w"> </span><span class="c1"># (1)!</span>
-<span class="hll"><span class="w">    </span><span class="nt">Type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">AWS::Lambda::Permission</span>
-</span><span class="w">    </span><span class="nt">Properties</span><span class="p">:</span>
-<span class="w">      </span><span class="nt">Action</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">lambda:InvokeFunction</span>
-<span class="w">      </span><span class="nt">FunctionName</span><span class="p">:</span><span class="w"> </span><span class="kt">!GetAtt</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ApiFunction.Arn</span>
-<span class="w">      </span><span class="nt">Principal</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">bedrock.amazonaws.com</span>
-<span class="w">      </span><span class="nt">SourceAccount</span><span class="p">:</span><span class="w"> </span><span class="kt">!Sub</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">${AWS::AccountId}</span>
-
-<span class="w">  </span><span class="nt">BedrockServiceRole</span><span class="p">:</span>
-<span class="hll"><span class="w">    </span><span class="nt">Type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">AWS::IAM::Role</span>
-</span><span class="w">    </span><span class="nt">Properties</span><span class="p">:</span>
-<span class="w">      </span><span class="nt">AssumeRolePolicyDocument</span><span class="p">:</span>
-<span class="w">        </span><span class="nt">Version</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;2012-10-17&quot;</span>
-<span class="w">        </span><span class="nt">Statement</span><span class="p">:</span>
-<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">Effect</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Allow</span>
-<span class="w">            </span><span class="nt">Principal</span><span class="p">:</span>
-<span class="w">              </span><span class="nt">Service</span><span class="p">:</span>
-<span class="w">                </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">bedrock.amazonaws.com</span>
-<span class="w">            </span><span class="nt">Action</span><span class="p">:</span>
-<span class="w">              </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">sts:AssumeRole</span>
-<span class="w">      </span><span class="nt">Policies</span><span class="p">:</span>
-<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">PolicyName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">bedrock</span>
-<span class="w">          </span><span class="nt">PolicyDocument</span><span class="p">:</span>
-<span class="w">            </span><span class="nt">Version</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;2012-10-17&quot;</span>
-<span class="w">            </span><span class="nt">Statement</span><span class="p">:</span>
-<span class="w">              </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">Effect</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Allow</span>
-<span class="w">                </span><span class="nt">Action</span><span class="p">:</span>
-<span class="w">                  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">bedrock:InvokeModel</span>
-<span class="w">                </span><span class="nt">Resource</span><span class="p">:</span><span class="w"> </span><span class="c1"># (2)!</span>
-<span class="w">                  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="kt">!Sub</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">arn:aws:${AWS::Region}:region::foundation-model/anthropic.claude-v2</span>
-<span class="w">                  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="kt">!Sub</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">arn:aws:${AWS::Region}:region::foundation-model/anthropic.claude-v2:1</span>
-<span class="w">                  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="kt">!Sub</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">arn:aws:${AWS::Region}:region::foundation-model/anthropic.claude-instant-v1</span>
-
-<span class="nt">Outputs</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">BedrockServiceRole</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">Description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">The role ARN to be used by Amazon Bedrock</span>
-<span class="hll"><span class="w">    </span><span class="nt">Value</span><span class="p">:</span><span class="w"> </span><span class="kt">!GetAtt</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">BedrockServiceRole.Arn</span><span class="w">  </span><span class="c1"># (3)!</span>
-</span></code></pre></div></td></tr></table></div>
-<ol>
-<li>Amazon Bedrock needs permissions to invoke this Lambda function</li>
-<li>Check the <a href="https://docs.aws.amazon.com/bedrock/latest/userguide/agents-supported.html" target="_blank">supported foundational models</a></li>
-<li>You need the role ARN when creating the Agent for Amazon Bedrock</li>
-</ol>
+<h2 id="getting-started">Getting started<a class="headerlink" href="#getting-started" title="Permanent link">&para;</a></h2>
+<h3 id="install">Install<a class="headerlink" href="#install" title="Permanent link">&para;</a></h3>
+<div class="admonition info">
+<p class="admonition-title">This is unnecessary if you're installing Powertools for AWS Lambda (Python) via <a href="../../../#lambda-layer" target="_blank">Lambda Layer/SAR</a>.</p>
 </div>
-<div class="tabbed-block">
-<p>This example uses the <a href="https://awslabs.github.io/generative-ai-cdk-constructs/src/cdk-lib/bedrock/#agents" target="_blank">Generative AI CDK constructs</a> to create your Agent with <a href="https://aws.amazon.com/cdk/" target="_blank">AWS CDK</a>.
-These constructs abstract the underlying permission setup and code bundling of your Lambda function.</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
-<span class="normal"> 2</span>
-<span class="normal"> 3</span>
-<span class="normal"> 4</span>
-<span class="normal"> 5</span>
-<span class="normal"> 6</span>
-<span class="normal"> 7</span>
-<span class="normal"> 8</span>
-<span class="normal"> 9</span>
-<span class="normal">10</span>
-<span class="normal">11</span>
-<span class="normal">12</span>
-<span class="normal">13</span>
-<span class="normal">14</span>
-<span class="normal">15</span>
-<span class="normal">16</span>
-<span class="normal">17</span>
-<span class="normal">18</span>
-<span class="normal">19</span>
-<span class="normal">20</span>
-<span class="normal">21</span>
-<span class="normal">22</span>
-<span class="normal">23</span>
-<span class="normal">24</span>
-<span class="normal">25</span>
-<span class="normal">26</span>
-<span class="normal">27</span>
-<span class="normal">28</span>
-<span class="normal">29</span>
-<span class="normal">30</span>
-<span class="normal">31</span>
-<span class="normal">32</span>
-<span class="normal">33</span>
-<span class="normal">34</span>
-<span class="normal">35</span>
-<span class="normal">36</span>
-<span class="normal">37</span>
-<span class="normal">38</span>
-<span class="normal">39</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">aws_cdk</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
-    <span class="n">Stack</span><span class="p">,</span>
-<span class="p">)</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">aws_cdk.aws_lambda</span><span class="w"> </span><span class="kn">import</span> <span class="n">Runtime</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">aws_cdk.aws_lambda_python_alpha</span><span class="w"> </span><span class="kn">import</span> <span class="n">PythonFunction</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">cdklabs.generative_ai_cdk_constructs</span><span class="w"> </span><span class="kn">import</span> <span class="n">bedrock</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">constructs</span><span class="w"> </span><span class="kn">import</span> <span class="n">Construct</span>
-
-
-<span class="k">class</span><span class="w"> </span><span class="nc">AgentsCdkStack</span><span class="p">(</span><span class="n">Stack</span><span class="p">):</span>
-    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">scope</span><span class="p">:</span> <span class="n">Construct</span><span class="p">,</span> <span class="n">construct_id</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">scope</span><span class="p">,</span> <span class="n">construct_id</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-
-        <span class="n">action_group_function</span> <span class="o">=</span> <span class="n">PythonFunction</span><span class="p">(</span>
-            <span class="bp">self</span><span class="p">,</span>
-            <span class="s2">&quot;LambdaFunction&quot;</span><span class="p">,</span>
-            <span class="n">runtime</span><span class="o">=</span><span class="n">Runtime</span><span class="o">.</span><span class="n">PYTHON_3_12</span><span class="p">,</span>
-            <span class="n">entry</span><span class="o">=</span><span class="s2">&quot;./lambda&quot;</span><span class="p">,</span>  <span class="c1"># (1)!</span>
-            <span class="n">index</span><span class="o">=</span><span class="s2">&quot;app.py&quot;</span><span class="p">,</span>
-            <span class="n">handler</span><span class="o">=</span><span class="s2">&quot;lambda_handler&quot;</span><span class="p">,</span>
-        <span class="p">)</span>
-
-        <span class="n">agent</span> <span class="o">=</span> <span class="n">bedrock</span><span class="o">.</span><span class="n">Agent</span><span class="p">(</span>
-            <span class="bp">self</span><span class="p">,</span>
-            <span class="s2">&quot;Agent&quot;</span><span class="p">,</span>
-            <span class="n">foundation_model</span><span class="o">=</span><span class="n">bedrock</span><span class="o">.</span><span class="n">BedrockFoundationModel</span><span class="o">.</span><span class="n">ANTHROPIC_CLAUDE_INSTANT_V1_2</span><span class="p">,</span>
-            <span class="n">instruction</span><span class="o">=</span><span class="s2">&quot;You are a helpful and friendly agent that answers questions about insurance claims.&quot;</span><span class="p">,</span>
-        <span class="p">)</span>
-
-        <span class="n">action_group</span><span class="p">:</span> <span class="n">bedrock</span><span class="o">.</span><span class="n">AgentActionGroup</span> <span class="o">=</span> <span class="n">bedrock</span><span class="o">.</span><span class="n">AgentActionGroup</span><span class="p">(</span>
-            <span class="n">name</span><span class="o">=</span><span class="s2">&quot;InsureClaimsSupport&quot;</span><span class="p">,</span>
-            <span class="n">description</span><span class="o">=</span><span class="s2">&quot;Use these functions for insurance claims support&quot;</span><span class="p">,</span>
-            <span class="n">executor</span><span class="o">=</span><span class="n">bedrock</span><span class="o">.</span><span class="n">ActionGroupExecutor</span><span class="o">.</span><span class="n">fromlambda_function</span><span class="p">(</span>
-                <span class="n">lambda_function</span><span class="o">=</span><span class="n">action_group_function</span><span class="p">,</span>
-            <span class="p">),</span>
-            <span class="n">enabled</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-            <span class="n">api_schema</span><span class="o">=</span><span class="n">bedrock</span><span class="o">.</span><span class="n">ApiSchema</span><span class="o">.</span><span class="n">from_local_asset</span><span class="p">(</span><span class="s2">&quot;./lambda/openapi.json&quot;</span><span class="p">),</span>  <span class="c1"># (2)!</span>
-        <span class="p">)</span>
-        <span class="n">agent</span><span class="o">.</span><span class="n">add_action_group</span><span class="p">(</span><span class="n">action_group</span><span class="p">)</span>
-</code></pre></div></td></tr></table></div>
-<ol>
-<li>The path to your Lambda function handler</li>
-<li>The path to the OpenAPI schema describing your API</li>
-</ol>
-</div>
-</div>
-</div>
+<p>If you define the action group setting up an <strong>OpenAPI schema</strong>, you need to add <code>pydantic</code> as a dependency in your preferred tool <em>e.g., requirements.txt, pyproject.toml</em>. At this time, we only support Pydantic V2.</p>
 <h3 id="your-first-agent">Your first Agent<a class="headerlink" href="#your-first-agent" title="Permanent link">&para;</a></h3>
-<p>To create an agent, use the <code>BedrockAgentResolver</code> to annotate your actions.
+<p>To create an agent, use the <code>BedrockAgentResolver</code> or the <code>BedrockAgentFunctionResolver</code> to annotate your actions.
 This is similar to the way <a href="../api_gateway/">all the other Event Handler</a> resolvers work.</p>
-<p>You are required to add a <code>description</code> parameter in each endpoint, doing so will improve Bedrock's understanding of your actions.</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="2:4"><input checked="checked" id="lambda-handler" name="__tabbed_2" type="radio" /><input id="openapi-schema" name="__tabbed_2" type="radio" /><input id="input-payload" name="__tabbed_2" type="radio" /><input id="output-payload" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="lambda-handler">Lambda handler</label><label for="openapi-schema">OpenAPI schema</label><label for="input-payload">Input payload</label><label for="output-payload">Output payload</label></div>
+<p>The resolvers used by Amazon Bedrock Agents are compatible with all Powertools for AWS Lambda <a href="../../../#features" target="blank">features</a>.
+For reference, we use <a href="../../logger/">Logger</a> and <a href="../../tracer/">Tracer</a> in this example.</p>
+<p><strong>OpenAPI-based actions</strong></p>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:4"><input checked="checked" id="lambda-handler" name="__tabbed_1" type="radio" /><input id="openapi-schema" name="__tabbed_1" type="radio" /><input id="input-payload" name="__tabbed_1" type="radio" /><input id="output-payload" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="lambda-handler">Lambda handler</label><label for="openapi-schema">OpenAPI schema</label><label for="input-payload">Input payload</label><label for="output-payload">Output payload</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<p>The resolvers used by Agents for Amazon Bedrock are compatible with all Powertools for AWS Lambda <a href="../../../#features" target="blank">features</a>.
-For reference, we use <a href="../../logger/">Logger</a> and <a href="../../tracer/">Tracer</a> in this example.</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -4292,7 +4164,7 @@ For reference, we use <a href="../../logger/">Logger</a> and <a href="../../trac
 <span class="hll">    <span class="k">return</span> <span class="n">app</span><span class="o">.</span><span class="n">resolve</span><span class="p">(</span><span class="n">event</span><span class="p">,</span> <span class="n">context</span><span class="p">)</span>  <span class="c1"># (2)!</span>
 </span></code></pre></div></td></tr></table></div>
 <ol>
-<li><code>description</code> is a <strong>required</strong> field that should contain a human readable description of your action</li>
+<li><code>description</code> is a <strong>required</strong> field that should contain a human readable description of your action.</li>
 <li>We take care of <strong>parsing</strong>, <strong>validating</strong>, <strong>routing</strong> and <strong>responding</strong> to the request.</li>
 </ol>
 </div>
@@ -4553,56 +4425,571 @@ For reference, we use <a href="../../logger/">Logger</a> and <a href="../../trac
 </div>
 </div>
 </div>
-<details class="note">
-<summary>What happens under the hood?</summary>
-<p>Powertools will handle the request from the Agent, parse, validate, and route it to the correct method in your code.
-The response is then validated and formatted back to the Agent.</p>
-<p><center>
-<pre class="mermaid"><code>sequenceDiagram
-    actor User
+<p><strong>Function-based actions</strong></p>
+<div class="tabbed-set tabbed-alternate" data-tabs="2:3"><input checked="checked" id="lambda-handler_1" name="__tabbed_2" type="radio" /><input id="input-payload_1" name="__tabbed_2" type="radio" /><input id="output-payload_1" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="lambda-handler_1">Lambda handler</label><label for="input-payload_1">Input payload</label><label for="output-payload_1">Output payload</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">time</span><span class="w"> </span><span class="kn">import</span> <span class="n">time</span>
 
-    User-&gt;&gt;Agent: What is the current time?
-    Agent-&gt;&gt;OpenAPI schema: consults
-    OpenAPI schema--&gt;&gt;Agent: GET /current_time
-    Agent--&gt;&gt;Agent: LLM interaction
+<span class="kn">from</span><span class="w"> </span><span class="nn">aws_lambda_powertools</span><span class="w"> </span><span class="kn">import</span> <span class="n">Logger</span><span class="p">,</span> <span class="n">Tracer</span>
+<span class="hll"><span class="kn">from</span><span class="w"> </span><span class="nn">aws_lambda_powertools.event_handler</span><span class="w"> </span><span class="kn">import</span> <span class="n">BedrockAgentFunctionResolver</span>
+</span><span class="kn">from</span><span class="w"> </span><span class="nn">aws_lambda_powertools.utilities.typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">LambdaContext</span>
 
-    box Powertools
-        participant Lambda
-        participant Parsing
-        participant Validation
-        participant Routing
-        participant Your Code
-    end
+<span class="n">tracer</span> <span class="o">=</span> <span class="n">Tracer</span><span class="p">()</span>
+<span class="n">logger</span> <span class="o">=</span> <span class="n">Logger</span><span class="p">()</span>
+<span class="hll"><span class="n">app</span> <span class="o">=</span> <span class="n">BedrockAgentFunctionResolver</span><span class="p">()</span>
+</span>
 
-    Agent-&gt;&gt;Lambda: GET /current_time
-    activate Lambda
-    Lambda-&gt;&gt;Parsing: parses parameters
-    Parsing-&gt;&gt;Validation: validates input
-    Validation-&gt;&gt;Routing: finds method to call
-    Routing-&gt;&gt;Your Code: executes
-    activate Your Code
-    Your Code-&gt;&gt;Routing: 1709215709
-    deactivate Your Code
-    Routing-&gt;&gt;Validation: returns output
-    Validation-&gt;&gt;Parsing: validates output
-    Parsing-&gt;&gt;Lambda: formats response
-    Lambda-&gt;&gt;Agent: 1709215709
-    deactivate Lambda
+<span class="hll"><span class="nd">@app</span><span class="o">.</span><span class="n">tool</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;currentTime&quot;</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s2">&quot;Gets the current time in seconds&quot;</span><span class="p">)</span>  <span class="c1"># (1)!</span>
+</span><span class="nd">@tracer</span><span class="o">.</span><span class="n">capture_method</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">current_time</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+    <span class="k">return</span> <span class="nb">int</span><span class="p">(</span><span class="n">time</span><span class="p">())</span>
 
-    Agent--&gt;&gt;Agent: LLM interaction
-    Agent-&gt;&gt;User: "The current time is 14:08:29 GMT"
-</code></pre>
-</center></p>
+
+<span class="nd">@logger</span><span class="o">.</span><span class="n">inject_lambda_context</span>
+<span class="nd">@tracer</span><span class="o">.</span><span class="n">capture_lambda_handler</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">lambda_handler</span><span class="p">(</span><span class="n">event</span><span class="p">:</span> <span class="nb">dict</span><span class="p">,</span> <span class="n">context</span><span class="p">:</span> <span class="n">LambdaContext</span><span class="p">):</span>
+<span class="hll">    <span class="k">return</span> <span class="n">app</span><span class="o">.</span><span class="n">resolve</span><span class="p">(</span><span class="n">event</span><span class="p">,</span> <span class="n">context</span><span class="p">)</span>  <span class="c1"># (2)!</span>
+</span></code></pre></div></td></tr></table></div>
+<ol>
+<li><code>name</code> and <code>description</code> are optional here.</li>
+<li>We take care of <strong>parsing</strong>, <strong>validating</strong>, <strong>routing</strong> and <strong>responding</strong> to the request.</li>
+</ol>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;messageVersion&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1.0&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;agent&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;TimeAgent&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;XLHH72XNF2&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;alias&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;TSTALIASID&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;version&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;DRAFT&quot;</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="hll"><span class="w">  </span><span class="nt">&quot;inputText&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;What is the current time?&quot;</span><span class="p">,</span>
+</span><span class="w">  </span><span class="nt">&quot;sessionId&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;123456789012345&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;actionGroup&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;CurrentTime&quot;</span><span class="p">,</span>
+<span class="hll"><span class="w">  </span><span class="nt">&quot;function&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;CurrentTime&quot;</span><span class="p">,</span>
+</span><span class="w">  </span><span class="nt">&quot;parameters&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span>
+<span class="w">  </span><span class="nt">&quot;sessionAttributes&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span>
+<span class="w">  </span><span class="nt">&quot;promptSessionAttributes&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span>
+<span class="p">}</span>
+</code></pre></div></td></tr></table></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;messageVersion&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1.0&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;response&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;actionGroup&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;CurrentTime&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;function&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;CurrentTime&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;functionResponse&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;responseBody&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="nt">&quot;application/json&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="hll"><span class="w">                    </span><span class="nt">&quot;body&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1704708165&quot;</span>
+</span><span class="w">                </span><span class="p">}</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></td></tr></table></div>
+</div>
+</div>
+</div>
+<h3 id="accessing-custom-request-fields">Accessing custom request fields<a class="headerlink" href="#accessing-custom-request-fields" title="Permanent link">&para;</a></h3>
+<p>The event sent by Amazon Bedrock Agents into your Lambda function contains a <a href="#request_fields_table">number of extra event fields</a>, exposed in the <code>app.current_event</code> field.</p>
+<details class="note" open="open">
+<summary>Why is this useful?</summary>
+<p>You can for instance identify new conversations (<code>session_id</code>) or store and analyze entire conversations (<code>input_text</code>).</p>
 </details>
+<div class="tabbed-set tabbed-alternate" data-tabs="3:1"><input checked="checked" id="accessing-request-fields" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="accessing-request-fields">Accessing request fields</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p>In this example, we <a href="../../logger/#appending-additional-keys">append correlation data</a> to all generated logs.
+This can be used to aggregate logs by <code>session_id</code> and observe the entire conversation between a user and the Agent.</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">time</span><span class="w"> </span><span class="kn">import</span> <span class="n">time</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">aws_lambda_powertools</span><span class="w"> </span><span class="kn">import</span> <span class="n">Logger</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">aws_lambda_powertools.event_handler</span><span class="w"> </span><span class="kn">import</span> <span class="n">BedrockAgentResolver</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">aws_lambda_powertools.utilities.typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">LambdaContext</span>
+
+<span class="n">logger</span> <span class="o">=</span> <span class="n">Logger</span><span class="p">()</span>
+<span class="n">app</span> <span class="o">=</span> <span class="n">BedrockAgentResolver</span><span class="p">()</span>
+
+
+<span class="nd">@app</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;/current_time&quot;</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s2">&quot;Gets the current time in seconds&quot;</span><span class="p">)</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">current_time</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<span class="hll">    <span class="n">logger</span><span class="o">.</span><span class="n">append_keys</span><span class="p">(</span>
+</span><span class="hll">        <span class="n">session_id</span><span class="o">=</span><span class="n">app</span><span class="o">.</span><span class="n">current_event</span><span class="o">.</span><span class="n">session_id</span><span class="p">,</span>
+</span><span class="hll">        <span class="n">action_group</span><span class="o">=</span><span class="n">app</span><span class="o">.</span><span class="n">current_event</span><span class="o">.</span><span class="n">action_group</span><span class="p">,</span>
+</span><span class="hll">        <span class="n">input_text</span><span class="o">=</span><span class="n">app</span><span class="o">.</span><span class="n">current_event</span><span class="o">.</span><span class="n">input_text</span><span class="p">,</span>
+</span>    <span class="p">)</span>
+
+    <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Serving current_time&quot;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="nb">int</span><span class="p">(</span><span class="n">time</span><span class="p">())</span>
+
+
+<span class="nd">@logger</span><span class="o">.</span><span class="n">inject_lambda_context</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">lambda_handler</span><span class="p">(</span><span class="n">event</span><span class="p">:</span> <span class="nb">dict</span><span class="p">,</span> <span class="n">context</span><span class="p">:</span> <span class="n">LambdaContext</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">app</span><span class="o">.</span><span class="n">resolve</span><span class="p">(</span><span class="n">event</span><span class="p">,</span> <span class="n">context</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+</div>
+</div>
+</div>
+<p><a id="request_fields_table"></a></p>
+<p>The input event fields available depend on your Agent's configuration (OpenAPI-based or Function-based):</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>OpenAPI</th>
+<th>Function</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>message_version</td>
+<td>str</td>
+<td>The version of the message format. Amazon Bedrock only supports version 1.0.</td>
+<td>✅</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>agent</td>
+<td>BedrockAgentInfo</td>
+<td>Contains information about the name, ID, alias, and version of the agent.</td>
+<td>✅</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>input_text</td>
+<td>str</td>
+<td>The user input for the conversation turn.</td>
+<td>✅</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>session_id</td>
+<td>str</td>
+<td>The unique identifier of the agent session.</td>
+<td>✅</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>action_group</td>
+<td>str</td>
+<td>The name of the action group.</td>
+<td>✅</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>api_path</td>
+<td>str</td>
+<td>The path to the API operation, as defined in the OpenAPI schema.</td>
+<td>✅</td>
+<td>❌</td>
+</tr>
+<tr>
+<td>http_method</td>
+<td>str</td>
+<td>The method of the API operation, as defined in the OpenAPI schema.</td>
+<td>✅</td>
+<td>❌</td>
+</tr>
+<tr>
+<td>function</td>
+<td>str</td>
+<td>The name of the function being called.</td>
+<td>❌</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>parameters</td>
+<td>List[Parameter]</td>
+<td>Contains parameters with name, type, and value properties.</td>
+<td>✅</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>request_body</td>
+<td>BedrockAgentRequestBody</td>
+<td>Contains the request body and its properties.</td>
+<td>✅</td>
+<td>❌</td>
+</tr>
+<tr>
+<td>session_attributes</td>
+<td>Dict[str, str]</td>
+<td>Contains session attributes and their values.</td>
+<td>✅</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>prompt_session_attributes</td>
+<td>Dict[str, str]</td>
+<td>Contains prompt attributes and their values.</td>
+<td>✅</td>
+<td>✅</td>
+</tr>
+</tbody>
+</table>
+<h2 id="openapi-based-actions">OpenAPI-based actions<a class="headerlink" href="#openapi-based-actions" title="Permanent link">&para;</a></h2>
+<h3 id="generating-openapi-schemas">Generating OpenAPI schemas<a class="headerlink" href="#generating-openapi-schemas" title="Permanent link">&para;</a></h3>
+<p>Use the <code>get_openapi_json_schema</code> function provided by the resolver to produce a JSON-serialized string that represents your OpenAPI schema.
+You can print this string or save it to a file. You'll use the file later when creating the Agent.</p>
+<p>You'll need to regenerate the OpenAPI schema and update your Agent everytime your API changes.</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="4:2"><input checked="checked" id="apppy" name="__tabbed_4" type="radio" /><input id="openapi-schema_1" name="__tabbed_4" type="radio" /><div class="tabbed-labels"><label for="apppy">app.py</label><label for="openapi-schema_1">OpenAPI schema</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">time</span><span class="w"> </span><span class="kn">import</span> <span class="n">time</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">aws_lambda_powertools</span><span class="w"> </span><span class="kn">import</span> <span class="n">Logger</span><span class="p">,</span> <span class="n">Tracer</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">aws_lambda_powertools.event_handler</span><span class="w"> </span><span class="kn">import</span> <span class="n">BedrockAgentResolver</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">aws_lambda_powertools.utilities.typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">LambdaContext</span>
+
+<span class="n">tracer</span> <span class="o">=</span> <span class="n">Tracer</span><span class="p">()</span>
+<span class="n">logger</span> <span class="o">=</span> <span class="n">Logger</span><span class="p">()</span>
+<span class="n">app</span> <span class="o">=</span> <span class="n">BedrockAgentResolver</span><span class="p">()</span>
+
+
+<span class="nd">@app</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;/current_time&quot;</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s2">&quot;Gets the current time in seconds&quot;</span><span class="p">)</span>
+<span class="nd">@tracer</span><span class="o">.</span><span class="n">capture_method</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">current_time</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+    <span class="k">return</span> <span class="nb">int</span><span class="p">(</span><span class="n">time</span><span class="p">())</span>
+
+
+<span class="nd">@logger</span><span class="o">.</span><span class="n">inject_lambda_context</span>
+<span class="nd">@tracer</span><span class="o">.</span><span class="n">capture_lambda_handler</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">lambda_handler</span><span class="p">(</span><span class="n">event</span><span class="p">:</span> <span class="nb">dict</span><span class="p">,</span> <span class="n">context</span><span class="p">:</span> <span class="n">LambdaContext</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">app</span><span class="o">.</span><span class="n">resolve</span><span class="p">(</span><span class="n">event</span><span class="p">,</span> <span class="n">context</span><span class="p">)</span>
+
+
+<span class="hll"><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>  <span class="c1"># (1)!</span>
+</span><span class="hll">    <span class="nb">print</span><span class="p">(</span><span class="n">app</span><span class="o">.</span><span class="n">get_openapi_json_schema</span><span class="p">())</span>  <span class="c1"># (2)!</span>
+</span></code></pre></div></td></tr></table></div>
+<ol>
+<li>This ensures that it's only executed when running the file directly, and not when running on the Lambda runtime.</li>
+<li>You can use <a href="#customizing-openapi-metadata">additional options</a> to customize the OpenAPI schema.</li>
+</ol>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span>
+<span class="normal">35</span>
+<span class="normal">36</span>
+<span class="normal">37</span>
+<span class="normal">38</span>
+<span class="normal">39</span>
+<span class="normal">40</span>
+<span class="normal">41</span>
+<span class="normal">42</span>
+<span class="normal">43</span>
+<span class="normal">44</span>
+<span class="normal">45</span>
+<span class="normal">46</span>
+<span class="normal">47</span>
+<span class="normal">48</span>
+<span class="normal">49</span>
+<span class="normal">50</span>
+<span class="normal">51</span>
+<span class="normal">52</span>
+<span class="normal">53</span>
+<span class="normal">54</span>
+<span class="normal">55</span>
+<span class="normal">56</span>
+<span class="normal">57</span>
+<span class="normal">58</span>
+<span class="normal">59</span>
+<span class="normal">60</span>
+<span class="normal">61</span>
+<span class="normal">62</span>
+<span class="normal">63</span>
+<span class="normal">64</span>
+<span class="normal">65</span>
+<span class="normal">66</span>
+<span class="normal">67</span>
+<span class="normal">68</span>
+<span class="normal">69</span>
+<span class="normal">70</span>
+<span class="normal">71</span>
+<span class="normal">72</span>
+<span class="normal">73</span>
+<span class="normal">74</span>
+<span class="normal">75</span>
+<span class="normal">76</span>
+<span class="normal">77</span>
+<span class="normal">78</span>
+<span class="normal">79</span>
+<span class="normal">80</span>
+<span class="normal">81</span>
+<span class="normal">82</span>
+<span class="normal">83</span>
+<span class="normal">84</span>
+<span class="normal">85</span>
+<span class="normal">86</span>
+<span class="normal">87</span>
+<span class="normal">88</span>
+<span class="normal">89</span>
+<span class="normal">90</span>
+<span class="normal">91</span>
+<span class="normal">92</span>
+<span class="normal">93</span>
+<span class="normal">94</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;openapi&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;3.0.3&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;info&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Powertools API&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;version&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1.0.0&quot;</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="w">  </span><span class="nt">&quot;servers&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;url&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/&quot;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">],</span>
+<span class="w">  </span><span class="nt">&quot;paths&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="hll"><span class="w">    </span><span class="nt">&quot;/current_time&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+</span><span class="w">      </span><span class="nt">&quot;get&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;summary&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;GET /current_time&quot;</span><span class="p">,</span>
+<span class="hll"><span class="w">        </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Gets the current time in seconds&quot;</span><span class="p">,</span>
+</span><span class="w">        </span><span class="nt">&quot;operationId&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;current_time_current_time_get&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;responses&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">          </span><span class="nt">&quot;200&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Successful Response&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;content&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">              </span><span class="nt">&quot;application/json&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="nt">&quot;schema&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="hll"><span class="w">                  </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;integer&quot;</span><span class="p">,</span>
+</span><span class="w">                  </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Return&quot;</span>
+<span class="w">                </span><span class="p">}</span>
+<span class="w">              </span><span class="p">}</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">          </span><span class="p">},</span>
+<span class="w">          </span><span class="nt">&quot;422&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Validation Error&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;content&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">              </span><span class="nt">&quot;application/json&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="nt">&quot;schema&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                  </span><span class="nt">&quot;$ref&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;#/components/schemas/HTTPValidationError&quot;</span>
+<span class="w">                </span><span class="p">}</span>
+<span class="w">              </span><span class="p">}</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">          </span><span class="p">}</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">      </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="w">  </span><span class="nt">&quot;components&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;schemas&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;HTTPValidationError&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;properties&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">          </span><span class="nt">&quot;detail&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;items&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">              </span><span class="nt">&quot;$ref&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;#/components/schemas/ValidationError&quot;</span>
+<span class="w">            </span><span class="p">},</span>
+<span class="w">            </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;array&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Detail&quot;</span>
+<span class="w">          </span><span class="p">}</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;object&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;HTTPValidationError&quot;</span>
+<span class="w">      </span><span class="p">},</span>
+<span class="w">      </span><span class="nt">&quot;ValidationError&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;properties&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">          </span><span class="nt">&quot;loc&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;items&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">              </span><span class="nt">&quot;anyOf&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                </span><span class="p">{</span>
+<span class="w">                  </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;string&quot;</span>
+<span class="w">                </span><span class="p">},</span>
+<span class="w">                </span><span class="p">{</span>
+<span class="w">                  </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;integer&quot;</span>
+<span class="w">                </span><span class="p">}</span>
+<span class="w">              </span><span class="p">]</span>
+<span class="w">            </span><span class="p">},</span>
+<span class="w">            </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;array&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Location&quot;</span>
+<span class="w">          </span><span class="p">},</span>
+<span class="w">          </span><span class="nt">&quot;msg&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;string&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Message&quot;</span>
+<span class="w">          </span><span class="p">},</span>
+<span class="w">          </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;string&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Error Type&quot;</span>
+<span class="w">          </span><span class="p">}</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;object&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;required&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">          </span><span class="s2">&quot;loc&quot;</span><span class="p">,</span>
+<span class="w">          </span><span class="s2">&quot;msg&quot;</span><span class="p">,</span>
+<span class="w">          </span><span class="s2">&quot;type&quot;</span>
+<span class="w">        </span><span class="p">],</span>
+<span class="w">        </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ValidationError&quot;</span>
+<span class="w">      </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></td></tr></table></div>
+</div>
+</div>
+</div>
+<p>To get the OpenAPI schema, run the Python script from your terminal.
+The script will generate the schema directly to standard output, which you can redirect to a file.</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>python3<span class="w"> </span>app.py<span class="w"> </span>&gt;<span class="w"> </span>schema.json
+</code></pre></div></td></tr></table></div>
+<h3 id="crafting-effective-openapi-schemas">Crafting effective OpenAPI schemas<a class="headerlink" href="#crafting-effective-openapi-schemas" title="Permanent link">&para;</a></h3>
+<p>Working with Amazon Bedrock Agents will introduce <a href="https://docs.aws.amazon.com/bedrock/latest/userguide/agents-how.html#agents-rt" target="_blank">non-deterministic behaviour to your system</a>.</p>
+<details class="note" open="open">
+<summary>Why is that?</summary>
+<p>Amazon Bedrock uses LLMs to understand and respond to user input.
+These models are trained on vast amounts of data and are capable of extracting meanings from a sequence of text and understanding the relationship between words and phrases on it.
+However, this means that the same input can result in different outputs, depending on the characteristics of the LLM being used.</p>
+</details>
+<p>The OpenAPI schema provides context and semantics to the Agent that will support the decision process for invoking our Lambda function.
+Sparse or ambiguous schemas can result in unexpected outcomes.</p>
+<p>We recommend enriching your OpenAPI schema with as many details as possible to help the Agent understand your functions, and make correct invocations.
+To achieve that, keep the following suggestions in mind:</p>
+<ul>
+<li>Always describe your function behaviour using the <code>description</code> field in your annotations</li>
+<li>When refactoring, update your description field to match the function outcomes</li>
+<li>Use distinct <code>description</code> for each function to have clear separation of semantics</li>
+</ul>
 <h3 id="validating-input-and-output">Validating input and output<a class="headerlink" href="#validating-input-and-output" title="Permanent link">&para;</a></h3>
 <p>You can define the expected format for incoming data and responses by using type annotations.
 Define constraints using standard Python types, <a href="https://docs.python.org/3/library/dataclasses.html">dataclasses</a> or <a href="https://docs.pydantic.dev/latest/concepts/models/">Pydantic models</a>.
 Pydantic is a popular library for data validation using Python type annotations.</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="3:4"><input checked="checked" id="lambda-handler_1" name="__tabbed_3" type="radio" /><input id="openapi-schema_1" name="__tabbed_3" type="radio" /><input id="input-payload_1" name="__tabbed_3" type="radio" /><input id="output-payload_1" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="lambda-handler_1">Lambda handler</label><label for="openapi-schema_1">OpenAPI schema</label><label for="input-payload_1">Input payload</label><label for="output-payload_1">Output payload</label></div>
+<p>The examples below uses <a href="https://docs.pydantic.dev/2.0/usage/types/string_types/#emailstr" target="_blank">Pydantic's EmailStr</a> to validate the email address passed to the <code>schedule_meeting</code> function.
+The function then returns a boolean indicating if the meeting was successfully scheduled.</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="5:4"><input checked="checked" id="lambda-handler_2" name="__tabbed_5" type="radio" /><input id="openapi-schema_2" name="__tabbed_5" type="radio" /><input id="input-payload_2" name="__tabbed_5" type="radio" /><input id="output-payload_2" name="__tabbed_5" type="radio" /><div class="tabbed-labels"><label for="lambda-handler_2">Lambda handler</label><label for="openapi-schema_2">OpenAPI schema</label><label for="input-payload_2">Input payload</label><label for="output-payload_2">Output payload</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<p>This example uses <a href="https://docs.pydantic.dev/2.0/usage/types/string_types/#emailstr" target="_blank">Pydantic's EmailStr</a> to validate the email address passed to the <code>schedule_meeting</code> function.
-The function then returns a boolean indicating if the meeting was successfully scheduled.</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -4966,11 +5353,11 @@ The function then returns a boolean indicating if the meeting was successfully s
 Similarly, if the response fails validation, your handler will abort the response.</p>
 <details class="info" open="open">
 <summary>What does this mean for my Agent?</summary>
-<p>The event handler will always return a response according to the OpenAPI schema.
-A validation failure always results in a <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/422">422 response</a>.
-However, how Amazon Bedrock interprets that failure is non-deterministic, since it depends on the characteristics of the LLM being used.</p>
+<p>The event handler will always return a response according to the schema (OpenAPI) or type hints (Function-based).
+A validation failure in OpenAPI-based actions results in a <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/422">422 response</a>.
+For both approaches, how Amazon Bedrock interprets that failure is non-deterministic, since it depends on the characteristics of the LLM being used.</p>
 </details>
-<div class="tabbed-set tabbed-alternate" data-tabs="4:2"><input checked="checked" id="input-payload_2" name="__tabbed_4" type="radio" /><input id="output-payload_2" name="__tabbed_4" type="radio" /><div class="tabbed-labels"><label for="input-payload_2">Input payload</label><label for="output-payload_2">Output payload</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="6:2"><input checked="checked" id="openapi-based-input-payload" name="__tabbed_6" type="radio" /><input id="openapi-based-output-payload" name="__tabbed_6" type="radio" /><div class="tabbed-labels"><label for="openapi-based-input-payload">OpenAPI-based Input payload</label><label for="openapi-based-output-payload">OpenAPI-based Output payload</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
@@ -5072,281 +5459,6 @@ However, how Amazon Bedrock interprets that failure is non-deterministic, since 
 </code></pre>
 </center>
 
-<h3 id="generating-openapi-schemas">Generating OpenAPI schemas<a class="headerlink" href="#generating-openapi-schemas" title="Permanent link">&para;</a></h3>
-<p>Use the <code>get_openapi_json_schema</code> function provided by the resolver to produce a JSON-serialized string that represents your OpenAPI schema.
-You can print this string or save it to a file. You'll use the file later when creating the Agent.</p>
-<p>You'll need to regenerate the OpenAPI schema and update your Agent everytime your API changes.</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="5:2"><input checked="checked" id="apppy" name="__tabbed_5" type="radio" /><input id="openapi-schema_2" name="__tabbed_5" type="radio" /><div class="tabbed-labels"><label for="apppy">app.py</label><label for="openapi-schema_2">OpenAPI schema</label></div>
-<div class="tabbed-content">
-<div class="tabbed-block">
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
-<span class="normal"> 2</span>
-<span class="normal"> 3</span>
-<span class="normal"> 4</span>
-<span class="normal"> 5</span>
-<span class="normal"> 6</span>
-<span class="normal"> 7</span>
-<span class="normal"> 8</span>
-<span class="normal"> 9</span>
-<span class="normal">10</span>
-<span class="normal">11</span>
-<span class="normal">12</span>
-<span class="normal">13</span>
-<span class="normal">14</span>
-<span class="normal">15</span>
-<span class="normal">16</span>
-<span class="normal">17</span>
-<span class="normal">18</span>
-<span class="normal">19</span>
-<span class="normal">20</span>
-<span class="normal">21</span>
-<span class="normal">22</span>
-<span class="normal">23</span>
-<span class="normal">24</span>
-<span class="normal">25</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">time</span><span class="w"> </span><span class="kn">import</span> <span class="n">time</span>
-
-<span class="kn">from</span><span class="w"> </span><span class="nn">aws_lambda_powertools</span><span class="w"> </span><span class="kn">import</span> <span class="n">Logger</span><span class="p">,</span> <span class="n">Tracer</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">aws_lambda_powertools.event_handler</span><span class="w"> </span><span class="kn">import</span> <span class="n">BedrockAgentResolver</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">aws_lambda_powertools.utilities.typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">LambdaContext</span>
-
-<span class="n">tracer</span> <span class="o">=</span> <span class="n">Tracer</span><span class="p">()</span>
-<span class="n">logger</span> <span class="o">=</span> <span class="n">Logger</span><span class="p">()</span>
-<span class="n">app</span> <span class="o">=</span> <span class="n">BedrockAgentResolver</span><span class="p">()</span>
-
-
-<span class="nd">@app</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;/current_time&quot;</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s2">&quot;Gets the current time in seconds&quot;</span><span class="p">)</span>
-<span class="nd">@tracer</span><span class="o">.</span><span class="n">capture_method</span>
-<span class="k">def</span><span class="w"> </span><span class="nf">current_time</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
-    <span class="k">return</span> <span class="nb">int</span><span class="p">(</span><span class="n">time</span><span class="p">())</span>
-
-
-<span class="nd">@logger</span><span class="o">.</span><span class="n">inject_lambda_context</span>
-<span class="nd">@tracer</span><span class="o">.</span><span class="n">capture_lambda_handler</span>
-<span class="k">def</span><span class="w"> </span><span class="nf">lambda_handler</span><span class="p">(</span><span class="n">event</span><span class="p">:</span> <span class="nb">dict</span><span class="p">,</span> <span class="n">context</span><span class="p">:</span> <span class="n">LambdaContext</span><span class="p">):</span>
-    <span class="k">return</span> <span class="n">app</span><span class="o">.</span><span class="n">resolve</span><span class="p">(</span><span class="n">event</span><span class="p">,</span> <span class="n">context</span><span class="p">)</span>
-
-
-<span class="hll"><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>  <span class="c1"># (1)!</span>
-</span><span class="hll">    <span class="nb">print</span><span class="p">(</span><span class="n">app</span><span class="o">.</span><span class="n">get_openapi_json_schema</span><span class="p">())</span>  <span class="c1"># (2)!</span>
-</span></code></pre></div></td></tr></table></div>
-<ol>
-<li>This ensures that it's only executed when running the file directly, and not when running on the Lambda runtime.</li>
-<li>You can use <a href="#customizing-openapi-metadata">additional options</a> to customize the OpenAPI schema.</li>
-</ol>
-</div>
-<div class="tabbed-block">
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
-<span class="normal"> 2</span>
-<span class="normal"> 3</span>
-<span class="normal"> 4</span>
-<span class="normal"> 5</span>
-<span class="normal"> 6</span>
-<span class="normal"> 7</span>
-<span class="normal"> 8</span>
-<span class="normal"> 9</span>
-<span class="normal">10</span>
-<span class="normal">11</span>
-<span class="normal">12</span>
-<span class="normal">13</span>
-<span class="normal">14</span>
-<span class="normal">15</span>
-<span class="normal">16</span>
-<span class="normal">17</span>
-<span class="normal">18</span>
-<span class="normal">19</span>
-<span class="normal">20</span>
-<span class="normal">21</span>
-<span class="normal">22</span>
-<span class="normal">23</span>
-<span class="normal">24</span>
-<span class="normal">25</span>
-<span class="normal">26</span>
-<span class="normal">27</span>
-<span class="normal">28</span>
-<span class="normal">29</span>
-<span class="normal">30</span>
-<span class="normal">31</span>
-<span class="normal">32</span>
-<span class="normal">33</span>
-<span class="normal">34</span>
-<span class="normal">35</span>
-<span class="normal">36</span>
-<span class="normal">37</span>
-<span class="normal">38</span>
-<span class="normal">39</span>
-<span class="normal">40</span>
-<span class="normal">41</span>
-<span class="normal">42</span>
-<span class="normal">43</span>
-<span class="normal">44</span>
-<span class="normal">45</span>
-<span class="normal">46</span>
-<span class="normal">47</span>
-<span class="normal">48</span>
-<span class="normal">49</span>
-<span class="normal">50</span>
-<span class="normal">51</span>
-<span class="normal">52</span>
-<span class="normal">53</span>
-<span class="normal">54</span>
-<span class="normal">55</span>
-<span class="normal">56</span>
-<span class="normal">57</span>
-<span class="normal">58</span>
-<span class="normal">59</span>
-<span class="normal">60</span>
-<span class="normal">61</span>
-<span class="normal">62</span>
-<span class="normal">63</span>
-<span class="normal">64</span>
-<span class="normal">65</span>
-<span class="normal">66</span>
-<span class="normal">67</span>
-<span class="normal">68</span>
-<span class="normal">69</span>
-<span class="normal">70</span>
-<span class="normal">71</span>
-<span class="normal">72</span>
-<span class="normal">73</span>
-<span class="normal">74</span>
-<span class="normal">75</span>
-<span class="normal">76</span>
-<span class="normal">77</span>
-<span class="normal">78</span>
-<span class="normal">79</span>
-<span class="normal">80</span>
-<span class="normal">81</span>
-<span class="normal">82</span>
-<span class="normal">83</span>
-<span class="normal">84</span>
-<span class="normal">85</span>
-<span class="normal">86</span>
-<span class="normal">87</span>
-<span class="normal">88</span>
-<span class="normal">89</span>
-<span class="normal">90</span>
-<span class="normal">91</span>
-<span class="normal">92</span>
-<span class="normal">93</span>
-<span class="normal">94</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="p">{</span>
-<span class="w">  </span><span class="nt">&quot;openapi&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;3.0.3&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;info&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Powertools API&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;version&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1.0.0&quot;</span>
-<span class="w">  </span><span class="p">},</span>
-<span class="w">  </span><span class="nt">&quot;servers&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">    </span><span class="p">{</span>
-<span class="w">      </span><span class="nt">&quot;url&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/&quot;</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="w">  </span><span class="p">],</span>
-<span class="w">  </span><span class="nt">&quot;paths&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="hll"><span class="w">    </span><span class="nt">&quot;/current_time&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-</span><span class="w">      </span><span class="nt">&quot;get&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="nt">&quot;summary&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;GET /current_time&quot;</span><span class="p">,</span>
-<span class="hll"><span class="w">        </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Gets the current time in seconds&quot;</span><span class="p">,</span>
-</span><span class="w">        </span><span class="nt">&quot;operationId&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;current_time_current_time_get&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="nt">&quot;responses&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">          </span><span class="nt">&quot;200&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Successful Response&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">&quot;content&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">              </span><span class="nt">&quot;application/json&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">                </span><span class="nt">&quot;schema&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="hll"><span class="w">                  </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;integer&quot;</span><span class="p">,</span>
-</span><span class="w">                  </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Return&quot;</span>
-<span class="w">                </span><span class="p">}</span>
-<span class="w">              </span><span class="p">}</span>
-<span class="w">            </span><span class="p">}</span>
-<span class="w">          </span><span class="p">},</span>
-<span class="w">          </span><span class="nt">&quot;422&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Validation Error&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">&quot;content&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">              </span><span class="nt">&quot;application/json&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">                </span><span class="nt">&quot;schema&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">                  </span><span class="nt">&quot;$ref&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;#/components/schemas/HTTPValidationError&quot;</span>
-<span class="w">                </span><span class="p">}</span>
-<span class="w">              </span><span class="p">}</span>
-<span class="w">            </span><span class="p">}</span>
-<span class="w">          </span><span class="p">}</span>
-<span class="w">        </span><span class="p">}</span>
-<span class="w">      </span><span class="p">}</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="w">  </span><span class="p">},</span>
-<span class="w">  </span><span class="nt">&quot;components&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;schemas&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="nt">&quot;HTTPValidationError&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="nt">&quot;properties&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">          </span><span class="nt">&quot;detail&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="nt">&quot;items&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">              </span><span class="nt">&quot;$ref&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;#/components/schemas/ValidationError&quot;</span>
-<span class="w">            </span><span class="p">},</span>
-<span class="w">            </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;array&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Detail&quot;</span>
-<span class="w">          </span><span class="p">}</span>
-<span class="w">        </span><span class="p">},</span>
-<span class="w">        </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;object&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;HTTPValidationError&quot;</span>
-<span class="w">      </span><span class="p">},</span>
-<span class="w">      </span><span class="nt">&quot;ValidationError&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="nt">&quot;properties&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">          </span><span class="nt">&quot;loc&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="nt">&quot;items&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">              </span><span class="nt">&quot;anyOf&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">                </span><span class="p">{</span>
-<span class="w">                  </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;string&quot;</span>
-<span class="w">                </span><span class="p">},</span>
-<span class="w">                </span><span class="p">{</span>
-<span class="w">                  </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;integer&quot;</span>
-<span class="w">                </span><span class="p">}</span>
-<span class="w">              </span><span class="p">]</span>
-<span class="w">            </span><span class="p">},</span>
-<span class="w">            </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;array&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Location&quot;</span>
-<span class="w">          </span><span class="p">},</span>
-<span class="w">          </span><span class="nt">&quot;msg&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;string&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Message&quot;</span>
-<span class="w">          </span><span class="p">},</span>
-<span class="w">          </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;string&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Error Type&quot;</span>
-<span class="w">          </span><span class="p">}</span>
-<span class="w">        </span><span class="p">},</span>
-<span class="w">        </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;object&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="nt">&quot;required&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">          </span><span class="s2">&quot;loc&quot;</span><span class="p">,</span>
-<span class="w">          </span><span class="s2">&quot;msg&quot;</span><span class="p">,</span>
-<span class="w">          </span><span class="s2">&quot;type&quot;</span>
-<span class="w">        </span><span class="p">],</span>
-<span class="w">        </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ValidationError&quot;</span>
-<span class="w">      </span><span class="p">}</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="w">  </span><span class="p">}</span>
-<span class="p">}</span>
-</code></pre></div></td></tr></table></div>
-</div>
-</div>
-</div>
-<p>To get the OpenAPI schema, run the Python script from your terminal.
-The script will generate the schema directly to standard output, which you can redirect to a file.</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>python3<span class="w"> </span>app.py<span class="w"> </span>&gt;<span class="w"> </span>schema.json
-</code></pre></div></td></tr></table></div>
-<h3 id="crafting-effective-openapi-schemas">Crafting effective OpenAPI schemas<a class="headerlink" href="#crafting-effective-openapi-schemas" title="Permanent link">&para;</a></h3>
-<p>Working with Agents for Amazon Bedrock will introduce <a href="https://docs.aws.amazon.com/bedrock/latest/userguide/agents-how.html#agents-rt" target="_blank">non-deterministic behaviour to your system</a>.</p>
-<details class="note" open="open">
-<summary>Why is that?</summary>
-<p>Amazon Bedrock uses LLMs to understand and respond to user input.
-These models are trained on vast amounts of data and are capable of extracting meanings from a sequence of text and understanding the relationship between words and phrases on it.
-However, this means that the same input can result in different outputs, depending on the characteristics of the LLM being used.</p>
-</details>
-<p>The OpenAPI schema provides context and semantics to the Agent that will support the decision process for invoking our Lambda function.
-Sparse or ambiguous schemas can result in unexpected outcomes.</p>
-<p>We recommend enriching your OpenAPI schema with as many details as possible to help the Agent understand your functions, and make correct invocations.
-To achieve that, keep the following suggestions in mind:</p>
-<ul>
-<li>Always describe your function behaviour using the <code>description</code> field in your annotations</li>
-<li>When refactoring, update your description field to match the function outcomes</li>
-<li>Use distinct <code>description</code> for each function to have clear separation of semantics</li>
-</ul>
 <h3 id="video-walkthrough">Video walkthrough<a class="headerlink" href="#video-walkthrough" title="Permanent link">&para;</a></h3>
 <p>To create an Agent for Amazon Bedrock, refer to the <a href="https://docs.aws.amazon.com/bedrock/latest/userguide/agents-create.html">official documentation</a> provided by AWS.</p>
 <p>The following video demonstrates the end-to-end process:</p>
@@ -5355,141 +5467,9 @@ To achieve that, keep the following suggestions in mind:</p>
 </center>
 
 <p>During the creation process, you should use the schema <a href="#generating-openapi-schemas">previously generated</a> when prompted for an OpenAPI specification.</p>
-<h2 id="advanced">Advanced<a class="headerlink" href="#advanced" title="Permanent link">&para;</a></h2>
-<h3 id="accessing-custom-request-fields">Accessing custom request fields<a class="headerlink" href="#accessing-custom-request-fields" title="Permanent link">&para;</a></h3>
-<p>The event sent by Agents for Amazon Bedrock into your Lambda function contains a <a href="#request_fields_table">number of extra event fields</a>, exposed in the <code>app.current_event</code> field.</p>
-<details class="note" open="open">
-<summary>Why is this useful?</summary>
-<p>You can for instance identify new conversations (<code>session_id</code>) or store and analyze entire conversations (<code>input_text</code>).</p>
-</details>
-<div class="tabbed-set tabbed-alternate" data-tabs="6:1"><input checked="checked" id="accessing-request-fields" name="__tabbed_6" type="radio" /><div class="tabbed-labels"><label for="accessing-request-fields">Accessing request fields</label></div>
-<div class="tabbed-content">
-<div class="tabbed-block">
-<p>In this example, we <a href="../../logger/#appending-additional-keys">append correlation data</a> to all generated logs.
-This can be used to aggregate logs by <code>session_id</code> and observe the entire conversation between a user and the Agent.</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
-<span class="normal"> 2</span>
-<span class="normal"> 3</span>
-<span class="normal"> 4</span>
-<span class="normal"> 5</span>
-<span class="normal"> 6</span>
-<span class="normal"> 7</span>
-<span class="normal"> 8</span>
-<span class="normal"> 9</span>
-<span class="normal">10</span>
-<span class="normal">11</span>
-<span class="normal">12</span>
-<span class="normal">13</span>
-<span class="normal">14</span>
-<span class="normal">15</span>
-<span class="normal">16</span>
-<span class="normal">17</span>
-<span class="normal">18</span>
-<span class="normal">19</span>
-<span class="normal">20</span>
-<span class="normal">21</span>
-<span class="normal">22</span>
-<span class="normal">23</span>
-<span class="normal">24</span>
-<span class="normal">25</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">time</span><span class="w"> </span><span class="kn">import</span> <span class="n">time</span>
-
-<span class="kn">from</span><span class="w"> </span><span class="nn">aws_lambda_powertools</span><span class="w"> </span><span class="kn">import</span> <span class="n">Logger</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">aws_lambda_powertools.event_handler</span><span class="w"> </span><span class="kn">import</span> <span class="n">BedrockAgentResolver</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">aws_lambda_powertools.utilities.typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">LambdaContext</span>
-
-<span class="n">logger</span> <span class="o">=</span> <span class="n">Logger</span><span class="p">()</span>
-<span class="n">app</span> <span class="o">=</span> <span class="n">BedrockAgentResolver</span><span class="p">()</span>
-
-
-<span class="nd">@app</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;/current_time&quot;</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s2">&quot;Gets the current time in seconds&quot;</span><span class="p">)</span>  <span class="c1"># (1)!</span>
-<span class="k">def</span><span class="w"> </span><span class="nf">current_time</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
-<span class="hll">    <span class="n">logger</span><span class="o">.</span><span class="n">append_keys</span><span class="p">(</span>
-</span><span class="hll">        <span class="n">session_id</span><span class="o">=</span><span class="n">app</span><span class="o">.</span><span class="n">current_event</span><span class="o">.</span><span class="n">session_id</span><span class="p">,</span>
-</span><span class="hll">        <span class="n">action_group</span><span class="o">=</span><span class="n">app</span><span class="o">.</span><span class="n">current_event</span><span class="o">.</span><span class="n">action_group</span><span class="p">,</span>
-</span><span class="hll">        <span class="n">input_text</span><span class="o">=</span><span class="n">app</span><span class="o">.</span><span class="n">current_event</span><span class="o">.</span><span class="n">input_text</span><span class="p">,</span>
-</span>    <span class="p">)</span>
-
-    <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Serving current_time&quot;</span><span class="p">)</span>
-    <span class="k">return</span> <span class="nb">int</span><span class="p">(</span><span class="n">time</span><span class="p">())</span>
-
-
-<span class="nd">@logger</span><span class="o">.</span><span class="n">inject_lambda_context</span>
-<span class="k">def</span><span class="w"> </span><span class="nf">lambda_handler</span><span class="p">(</span><span class="n">event</span><span class="p">:</span> <span class="nb">dict</span><span class="p">,</span> <span class="n">context</span><span class="p">:</span> <span class="n">LambdaContext</span><span class="p">):</span>
-    <span class="k">return</span> <span class="n">app</span><span class="o">.</span><span class="n">resolve</span><span class="p">(</span><span class="n">event</span><span class="p">,</span> <span class="n">context</span><span class="p">)</span>
-</code></pre></div></td></tr></table></div>
-</div>
-</div>
-</div>
-<p><a id="request_fields_table"></a>
-The input event fields are:</p>
-<table>
-<thead>
-<tr>
-<th>Name</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>message_version</td>
-<td><code>str</code></td>
-<td>The version of the message that identifies the format of the event data going into the Lambda function and the expected format of the response from a Lambda function. Amazon Bedrock only supports version 1.0.</td>
-</tr>
-<tr>
-<td>agent</td>
-<td><code>BedrockAgentInfo</code></td>
-<td>Contains information about the name, ID, alias, and version of the agent that the action group belongs to.</td>
-</tr>
-<tr>
-<td>input_text</td>
-<td><code>str</code></td>
-<td>The user input for the conversation turn.</td>
-</tr>
-<tr>
-<td>session_id</td>
-<td><code>str</code></td>
-<td>The unique identifier of the agent session.</td>
-</tr>
-<tr>
-<td>action_group</td>
-<td><code>str</code></td>
-<td>The name of the action group.</td>
-</tr>
-<tr>
-<td>api_path</td>
-<td><code>str</code></td>
-<td>The path to the API operation, as defined in the OpenAPI schema.</td>
-</tr>
-<tr>
-<td>http_method</td>
-<td><code>str</code></td>
-<td>The method of the API operation, as defined in the OpenAPI schema.</td>
-</tr>
-<tr>
-<td>parameters</td>
-<td><code>List[BedrockAgentProperty]</code></td>
-<td>Contains a list of objects. Each object contains the name, type, and value of a parameter in the API operation, as defined in the OpenAPI schema.</td>
-</tr>
-<tr>
-<td>request_body</td>
-<td><code>BedrockAgentRequestBody</code></td>
-<td>Contains the request body and its properties, as defined in the OpenAPI schema.</td>
-</tr>
-<tr>
-<td>session_attributes</td>
-<td><code>Dict[str, str]</code></td>
-<td>Contains session attributes and their values.</td>
-</tr>
-<tr>
-<td>prompt_session_attributes</td>
-<td><code>Dict[str, str]</code></td>
-<td>Contains prompt attributes and their values.</td>
-</tr>
-</tbody>
-</table>
-<h3 id="additional-metadata">Additional metadata<a class="headerlink" href="#additional-metadata" title="Permanent link">&para;</a></h3>
-<p>To enrich the view that Agents for Amazon Bedrock has of your Lambda functions,
+<h3 id="advanced">Advanced<a class="headerlink" href="#advanced" title="Permanent link">&para;</a></h3>
+<h4 id="additional-metadata">Additional metadata<a class="headerlink" href="#additional-metadata" title="Permanent link">&para;</a></h4>
+<p>To enrich the view that Amazon Bedrock Agents has of your Lambda functions,
 use a combination of <a href="https://docs.pydantic.dev/latest/concepts/models/" target="_blank">Pydantic Models</a> and <a href="https://www.openapis.org/" target="_blank">OpenAPI</a> type annotations to add constraints to your APIs parameters.</p>
 <details class="info" open="open">
 <summary>When is this useful?</summary>
@@ -5857,7 +5837,7 @@ use a combination of <a href="https://docs.pydantic.dev/latest/concepts/models/"
 <ol>
 <li>Add an openapi extension</li>
 </ol>
-<h3 id="fine-grained-responses">Fine grained responses<a class="headerlink" href="#fine-grained-responses" title="Permanent link">&para;</a></h3>
+<h4 id="openapi-based-responses">OpenAPI-based Responses<a class="headerlink" href="#openapi-based-responses" title="Permanent link">&para;</a></h4>
 <details class="info" open="open">
 <summary>Note</summary>
 <p>The default response only includes the essential fields to keep the payload size minimal, as AWS Lambda has a maximum response size of 25 KB.</p>
@@ -5933,7 +5913,51 @@ use a combination of <a href="https://docs.pydantic.dev/latest/concepts/models/"
 <span class="k">def</span><span class="w"> </span><span class="nf">lambda_handler</span><span class="p">(</span><span class="n">event</span><span class="p">:</span> <span class="nb">dict</span><span class="p">,</span> <span class="n">context</span><span class="p">:</span> <span class="n">LambdaContext</span><span class="p">):</span>
     <span class="k">return</span> <span class="n">app</span><span class="o">.</span><span class="n">resolve</span><span class="p">(</span><span class="n">event</span><span class="p">,</span> <span class="n">context</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
-<h2 id="testing-your-code">Testing your code<a class="headerlink" href="#testing-your-code" title="Permanent link">&para;</a></h2>
+<h4 id="bedrock-requests-under-the-hood">Bedrock requests under the hood<a class="headerlink" href="#bedrock-requests-under-the-hood" title="Permanent link">&para;</a></h4>
+<p>Powertools handle the request from the Agent, parse, validate, and route it to the correct method in your code. The response is then validated and formatted back to the Agent.</p>
+<center>
+<pre class="mermaid"><code>sequenceDiagram
+    actor User
+
+    User-&gt;&gt;Agent: What is the current time?
+    Agent-&gt;&gt;OpenAPI schema: consults
+    OpenAPI schema--&gt;&gt;Agent: GET /current_time
+    Agent--&gt;&gt;Agent: LLM interaction
+
+    box Powertools
+        participant Lambda
+        participant Parsing
+        participant Validation
+        participant Routing
+        participant Your Code
+    end
+
+    alt Function-based
+        Agent-&gt;&gt;Lambda: {function: "current_time", parameters: [], ...}
+    end
+
+    activate Lambda
+    Lambda-&gt;&gt;Parsing: parses parameters
+    Parsing-&gt;&gt;Validation: validates input
+    Validation-&gt;&gt;Routing: finds method to call
+    Routing-&gt;&gt;Your Code: executes
+    activate Your Code
+    Your Code-&gt;&gt;Routing: 1709215709
+    deactivate Your Code
+    Routing-&gt;&gt;Validation: returns output
+    Validation-&gt;&gt;Parsing: validates output
+    Parsing-&gt;&gt;Lambda: formats response
+
+    alt Function-based
+        Lambda-&gt;&gt;Agent: {response: {functionResponse: {responseBody: {...}}}}
+    end
+    deactivate Lambda
+
+    Agent--&gt;&gt;Agent: LLM interaction
+    Agent-&gt;&gt;User: "The current time is 14:08:29 GMT"</code></pre>
+</center>
+
+<h3 id="testing-your-code">Testing your code<a class="headerlink" href="#testing-your-code" title="Permanent link">&para;</a></h3>
 <p>Test your routes by passing an <a href="https://docs.aws.amazon.com/bedrock/latest/userguide/agents-lambda.html#agents-lambda-input">Agent for Amazon Bedrock proxy event</a> request:</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="7:2"><input checked="checked" id="assert_bedrock_agent_responsepy" name="__tabbed_7" type="radio" /><input id="assert_bedrock_agent_response_modulepy" name="__tabbed_7" type="radio" /><div class="tabbed-labels"><label for="assert_bedrock_agent_responsepy">assert_bedrock_agent_response.py</label><label for="assert_bedrock_agent_response_modulepy">assert_bedrock_agent_response_module.py</label></div>
 <div class="tabbed-content">
@@ -6051,6 +6075,87 @@ use a combination of <a href="https://docs.pydantic.dev/latest/concepts/models/"
 </div>
 </div>
 </div>
+<h2 id="function-based-actions">Function-based Actions<a class="headerlink" href="#function-based-actions" title="Permanent link">&para;</a></h2>
+<p>The <code>BedrockAgentFunctionResolver</code> streamlines agent function development through three core capabilities:</p>
+<ul>
+<li><strong>Register Functions</strong>: Use the <code>@app.tool()</code> decorator to expose your functions to Bedrock Agents</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>name</td>
+<td>No</td>
+<td>Custom name for your function. Uses the actual function name if omitted.</td>
+</tr>
+<tr>
+<td>description</td>
+<td>No</td>
+<td>Explain what your function does to guide the agent's usage.</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><strong>Process Parameters</strong>: Automatically maps input parameters from the agent to your function arguments</li>
+<li><strong>Format Responses</strong>: Transforms your function outputs into properly structured Bedrock Agent responses</li>
+</ul>
+<h3 id="function-based-responses">Function-based Responses<a class="headerlink" href="#function-based-responses" title="Permanent link">&para;</a></h3>
+<details class="info" open="open">
+<summary>Note</summary>
+<p>The default response only includes the essential fields to keep the payload size minimal, as AWS Lambda has a maximum response size of 25 KB.</p>
+</details>
+<p>You can use <code>BedrockFunctionResponse</code> class to customize your response <a href="https://docs.aws.amazon.com/bedrock/latest/userguide/agents-lambda.html#agents-lambda-response" target="_blank">with additional fields</a>. This class allows you to:</p>
+<ul>
+<li>Return a response body</li>
+<li>Set session and prompt session attributes</li>
+<li>Set knowledge bases configurations</li>
+<li>Control the response state ("FAILURE" or "REPROMPT")</li>
+</ul>
+<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Customzing your Bedrock Function Response</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="hll"><span class="kn">from</span><span class="w"> </span><span class="nn">aws_lambda_powertools.event_handler</span><span class="w"> </span><span class="kn">import</span> <span class="n">BedrockAgentFunctionResolver</span><span class="p">,</span> <span class="n">BedrockFunctionResponse</span>
+</span><span class="kn">from</span><span class="w"> </span><span class="nn">aws_lambda_powertools.utilities.typing.lambda_context</span><span class="w"> </span><span class="kn">import</span> <span class="n">LambdaContext</span>
+
+<span class="hll"><span class="n">app</span> <span class="o">=</span> <span class="n">BedrockAgentFunctionResolver</span><span class="p">()</span>
+</span>
+
+<span class="hll"><span class="nd">@app</span><span class="o">.</span><span class="n">tool</span><span class="p">(</span><span class="n">description</span><span class="o">=</span><span class="s2">&quot;Function that demonstrates response customization&quot;</span><span class="p">)</span>
+</span><span class="k">def</span><span class="w"> </span><span class="nf">custom_response</span><span class="p">():</span>
+    <span class="k">return</span> <span class="n">BedrockFunctionResponse</span><span class="p">(</span>
+        <span class="n">body</span><span class="o">=</span><span class="s2">&quot;Hello World&quot;</span><span class="p">,</span>
+        <span class="n">session_attributes</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;user_id&quot;</span><span class="p">:</span> <span class="s2">&quot;123&quot;</span><span class="p">},</span>
+        <span class="n">prompt_session_attributes</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;last_action&quot;</span><span class="p">:</span> <span class="s2">&quot;greeting&quot;</span><span class="p">},</span>
+        <span class="n">response_state</span><span class="o">=</span><span class="s2">&quot;REPROMPT&quot;</span><span class="p">,</span>
+        <span class="n">knowledge_bases</span><span class="o">=</span><span class="p">[{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;kb1&quot;</span><span class="p">,</span> <span class="s2">&quot;enabled&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">}],</span>
+    <span class="p">)</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">lambda_handler</span><span class="p">(</span><span class="n">event</span><span class="p">:</span> <span class="nb">dict</span><span class="p">,</span> <span class="n">context</span><span class="p">:</span> <span class="n">LambdaContext</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">app</span><span class="o">.</span><span class="n">resolve</span><span class="p">(</span><span class="n">event</span><span class="p">,</span> <span class="n">context</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+<!-- markdownlint-disable MD043 -->
 
 
 
@@ -6071,7 +6176,7 @@ use a combination of <a href="https://docs.pydantic.dev/latest/concepts/models/"
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    2025-04-30
+    2025-06-03
   </span>
 
     

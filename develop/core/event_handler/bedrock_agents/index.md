@@ -1,14 +1,22 @@
-Create [Agents for Amazon Bedrock](https://docs.aws.amazon.com/bedrock/latest/userguide/agents.html#agents-how) using event handlers and auto generation of OpenAPI schemas.
+Create [Amazon Bedrock Agents](https://docs.aws.amazon.com/bedrock/latest/userguide/agents.html#agents-how) using event handlers with two different action groups approaches:
+
+- OpenAPI schema
+- Function details
 
 ```
 flowchart LR
     Bedrock[LLM] <-- uses --> Agent
     You[User input] --> Agent
     Agent -- consults --> OpenAPI
-    Agent[Agents for Amazon Bedrock] -- invokes --> Lambda
+    Agent -- consults --> Functions
+    Agent[Amazon Bedrock Agents] -- invokes --> Lambda
 
     subgraph OpenAPI
         Schema
+    end
+
+    subgraph Functions
+        ToolDescriptions[Tool Descriptions]
     end
 
     subgraph Lambda[Lambda Function]
@@ -22,19 +30,17 @@ flowchart LR
 
     subgraph ActionGroup[Action Group]
         OpenAPI -. generated from .-> Lambda
+        Functions -. defined in .-> Lambda
     end
 
     style Code fill:#ffa500,color:black,font-weight:bold,stroke-width:3px
     style You stroke:#0F0,stroke-width:2px
-
-
-
-
 ```
 
 ## Key features
 
-- Minimal boilerplate to build Agents for Amazon Bedrock
+- Minimal boilerplate to build Amazon Bedrock Agents
+- Support for both OpenAPI-based and Function-based actions
 - Automatic generation of [OpenAPI schemas](https://www.openapis.org/) from your business logic code
 - Built-in data validation for requests and responses
 - Similar experience to authoring [REST and HTTP APIs](../api_gateway/)
@@ -47,154 +53,37 @@ flowchart LR
 
 **[OpenAPI schema](https://www.openapis.org/)** is an industry standard JSON-serialized string that represents the structure and parameters of your API.
 
-**Action group** is a collection of two resources where you define the actions that the agent should carry out: an OpenAPI schema to define the APIs that the agent can invoke to carry out its tasks, and a Lambda function to execute those actions.
+**Function details** consist of a list of parameters, defined by their name, [data type](https://docs.aws.amazon.com/bedrock/latest/APIReference/API_agent_ParameterDetail.html), and whether they are required. The agent uses these configurations to determine what information it needs to elicit from the user.
+
+**Action group** is a collection of two resources where you define the actions that the agent should carry out when invoking your Lambda function.
 
 **Large Language Models (LLM)** are very large deep learning models that are pre-trained on vast amounts of data, capable of extracting meanings from a sequence of text and understanding the relationship between words and phrases on it.
 
-**Agent for Amazon Bedrock** is an Amazon Bedrock feature to build and deploy conversational agents that can interact with your customers using Large Language Models (LLM) and AWS Lambda functions.
-
-## Getting started
+**Amazon Bedrock Agent** is an Amazon Bedrock feature to build and deploy conversational agents that can interact with your customers using Large Language Models (LLM) and AWS Lambda functions.
 
 All examples shared in this documentation are available within the [project repository](https://github.com/aws-powertools/powertools-lambda-python/tree/develop/examples)
+
+## Choose your Action Group
+
+An action group defines actions that the agent can help the user perform. You can define action groups as OpenAPI-based or Function-based.
+
+| Aspect | OpenAPI-based Actions | Function-based Actions | | --- | --- | --- | | Definition Style | `@app.get("/path", description="")` `@app.post("/path", description="")` | `@app.tool(name="")` | | Parameter Handling | Path, query, and body parameters | Function parameters | | Use Case | REST-like APIs, complex request/response structures | Direct function calls, simpler input | | Response object | Via `BedrockResponse` | Via `BedrockFunctionResponse` | | Best For | - Complex APIs with multiple endpoints - When OpenAPI spec is required - Integration with existing REST APIs | - Simple function-based actions - Direct LLM-to-function mapping |
+
+## Getting started
 
 ### Install
 
 This is unnecessary if you're installing Powertools for AWS Lambda (Python) via [Lambda Layer/SAR](../../../#lambda-layer).
 
-You need to add `pydantic` as a dependency in your preferred tool *e.g., requirements.txt, pyproject.toml*. At this time, we only support Pydantic V2.
-
-### Required resources
-
-To build Agents for Amazon Bedrock, you will need:
-
-| Requirement | Description | SAM Supported | CDK Supported | | --- | --- | --- | --- | | [Lambda Function](#your-first-agent) | Defines your business logic for the action group | ✅ | ✅ | | [OpenAPI Schema](#generating-openapi-schemas) | API description, structure, and action group parameters | ❌ | ✅ | | [Bedrock Service Role](https://docs.aws.amazon.com/bedrock/latest/userguide/agents-permissions.html) | Allows Amazon Bedrock to invoke foundation models | ✅ | ✅ | | Agents for Bedrock | The service that will combine all the above to create the conversational agent | ❌ | ✅ |
-
-Using [AWS SAM](https://aws.amazon.com/serverless/sam/) you can create your Lambda function and the necessary permissions. However, you still have to create your Agent for Amazon Bedrock [using the AWS console](https://docs.aws.amazon.com/bedrock/latest/userguide/agents-create.html).
-
-```
-AWSTemplateFormatVersion: "2010-09-09"
-Transform: AWS::Serverless-2016-10-31
-Description: >
-  Agents for Amazon Bedrock example with Powertools for AWS Lambda (Python)
-
-Globals: # https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/sam-specification-template-anatomy-globals.html
-  Function:
-    Timeout: 30
-    Runtime: python3.12
-    Tracing: Active
-    Environment:
-      Variables:
-        POWERTOOLS_SERVICE_NAME: PowertoolsHelloWorld
-        POWERTOOLS_LOG_LEVEL: INFO
-
-Resources:
-  ApiFunction:
-    Type: AWS::Serverless::Function
-    Properties:
-      Handler: getting_started.lambda_handler
-      Description: Agent for Amazon Bedrock handler function
-      CodeUri: ../src
-
-
-  BedrockPermission: # (1)!
-    Type: AWS::Lambda::Permission
-    Properties:
-      Action: lambda:InvokeFunction
-      FunctionName: !GetAtt ApiFunction.Arn
-      Principal: bedrock.amazonaws.com
-      SourceAccount: !Sub ${AWS::AccountId}
-
-  BedrockServiceRole:
-    Type: AWS::IAM::Role
-    Properties:
-      AssumeRolePolicyDocument:
-        Version: "2012-10-17"
-        Statement:
-          - Effect: Allow
-            Principal:
-              Service:
-                - bedrock.amazonaws.com
-            Action:
-              - sts:AssumeRole
-      Policies:
-        - PolicyName: bedrock
-          PolicyDocument:
-            Version: "2012-10-17"
-            Statement:
-              - Effect: Allow
-                Action:
-                  - bedrock:InvokeModel
-                Resource: # (2)!
-                  - !Sub arn:aws:${AWS::Region}:region::foundation-model/anthropic.claude-v2
-                  - !Sub arn:aws:${AWS::Region}:region::foundation-model/anthropic.claude-v2:1
-                  - !Sub arn:aws:${AWS::Region}:region::foundation-model/anthropic.claude-instant-v1
-
-Outputs:
-  BedrockServiceRole:
-    Description: The role ARN to be used by Amazon Bedrock
-    Value: !GetAtt BedrockServiceRole.Arn  # (3)!
-
-```
-
-1. Amazon Bedrock needs permissions to invoke this Lambda function
-1. Check the [supported foundational models](https://docs.aws.amazon.com/bedrock/latest/userguide/agents-supported.html)
-1. You need the role ARN when creating the Agent for Amazon Bedrock
-
-This example uses the [Generative AI CDK constructs](https://awslabs.github.io/generative-ai-cdk-constructs/src/cdk-lib/bedrock/#agents) to create your Agent with [AWS CDK](https://aws.amazon.com/cdk/). These constructs abstract the underlying permission setup and code bundling of your Lambda function.
-
-```
-from aws_cdk import (
-    Stack,
-)
-from aws_cdk.aws_lambda import Runtime
-from aws_cdk.aws_lambda_python_alpha import PythonFunction
-from cdklabs.generative_ai_cdk_constructs import bedrock
-from constructs import Construct
-
-
-class AgentsCdkStack(Stack):
-    def __init__(self, scope: Construct, construct_id: str, **kwargs) -> None:
-        super().__init__(scope, construct_id, **kwargs)
-
-        action_group_function = PythonFunction(
-            self,
-            "LambdaFunction",
-            runtime=Runtime.PYTHON_3_12,
-            entry="./lambda",  # (1)!
-            index="app.py",
-            handler="lambda_handler",
-        )
-
-        agent = bedrock.Agent(
-            self,
-            "Agent",
-            foundation_model=bedrock.BedrockFoundationModel.ANTHROPIC_CLAUDE_INSTANT_V1_2,
-            instruction="You are a helpful and friendly agent that answers questions about insurance claims.",
-        )
-
-        action_group: bedrock.AgentActionGroup = bedrock.AgentActionGroup(
-            name="InsureClaimsSupport",
-            description="Use these functions for insurance claims support",
-            executor=bedrock.ActionGroupExecutor.fromlambda_function(
-                lambda_function=action_group_function,
-            ),
-            enabled=True,
-            api_schema=bedrock.ApiSchema.from_local_asset("./lambda/openapi.json"),  # (2)!
-        )
-        agent.add_action_group(action_group)
-
-```
-
-1. The path to your Lambda function handler
-1. The path to the OpenAPI schema describing your API
+If you define the action group setting up an **OpenAPI schema**, you need to add `pydantic` as a dependency in your preferred tool *e.g., requirements.txt, pyproject.toml*. At this time, we only support Pydantic V2.
 
 ### Your first Agent
 
-To create an agent, use the `BedrockAgentResolver` to annotate your actions. This is similar to the way [all the other Event Handler](../api_gateway/) resolvers work.
+To create an agent, use the `BedrockAgentResolver` or the `BedrockAgentFunctionResolver` to annotate your actions. This is similar to the way [all the other Event Handler](../api_gateway/) resolvers work.
 
-You are required to add a `description` parameter in each endpoint, doing so will improve Bedrock's understanding of your actions.
+The resolvers used by Amazon Bedrock Agents are compatible with all Powertools for AWS Lambda [features](../../../#features). For reference, we use [Logger](../../logger/) and [Tracer](../../tracer/) in this example.
 
-The resolvers used by Agents for Amazon Bedrock are compatible with all Powertools for AWS Lambda [features](../../../#features). For reference, we use [Logger](../../logger/) and [Tracer](../../tracer/) in this example.
+**OpenAPI-based actions**
 
 ```
 from time import time
@@ -221,7 +110,7 @@ def lambda_handler(event: dict, context: LambdaContext):
 
 ```
 
-1. `description` is a **required** field that should contain a human readable description of your action
+1. `description` is a **required** field that should contain a human readable description of your action.
 1. We take care of **parsing**, **validating**, **routing** and **responding** to the request.
 
 Powertools for AWS Lambda [generates this automatically](#generating-openapi-schemas) from the Lambda handler.
@@ -362,52 +251,283 @@ Powertools for AWS Lambda [generates this automatically](#generating-openapi-sch
 
 ```
 
-What happens under the hood?
-
-Powertools will handle the request from the Agent, parse, validate, and route it to the correct method in your code. The response is then validated and formatted back to the Agent.
+**Function-based actions**
 
 ```
-sequenceDiagram
-    actor User
+from time import time
 
-    User->>Agent: What is the current time?
-    Agent->>OpenAPI schema: consults
-    OpenAPI schema-->>Agent: GET /current_time
-    Agent-->>Agent: LLM interaction
+from aws_lambda_powertools import Logger, Tracer
+from aws_lambda_powertools.event_handler import BedrockAgentFunctionResolver
+from aws_lambda_powertools.utilities.typing import LambdaContext
 
-    box Powertools
-        participant Lambda
-        participant Parsing
-        participant Validation
-        participant Routing
-        participant Your Code
-    end
+tracer = Tracer()
+logger = Logger()
+app = BedrockAgentFunctionResolver()
 
-    Agent->>Lambda: GET /current_time
-    activate Lambda
-    Lambda->>Parsing: parses parameters
-    Parsing->>Validation: validates input
-    Validation->>Routing: finds method to call
-    Routing->>Your Code: executes
-    activate Your Code
-    Your Code->>Routing: 1709215709
-    deactivate Your Code
-    Routing->>Validation: returns output
-    Validation->>Parsing: validates output
-    Parsing->>Lambda: formats response
-    Lambda->>Agent: 1709215709
-    deactivate Lambda
 
-    Agent-->>Agent: LLM interaction
-    Agent->>User: "The current time is 14:08:29 GMT"
+@app.tool(name="currentTime", description="Gets the current time in seconds")  # (1)!
+@tracer.capture_method
+def current_time() -> int:
+    return int(time())
+
+
+@logger.inject_lambda_context
+@tracer.capture_lambda_handler
+def lambda_handler(event: dict, context: LambdaContext):
+    return app.resolve(event, context)  # (2)!
 
 ```
+
+1. `name` and `description` are optional here.
+1. We take care of **parsing**, **validating**, **routing** and **responding** to the request.
+
+```
+{
+  "messageVersion": "1.0",
+  "agent": {
+    "name": "TimeAgent",
+    "id": "XLHH72XNF2",
+    "alias": "TSTALIASID",
+    "version": "DRAFT"
+  },
+  "inputText": "What is the current time?",
+  "sessionId": "123456789012345",
+  "actionGroup": "CurrentTime",
+  "function": "CurrentTime",
+  "parameters": [],
+  "sessionAttributes": {},
+  "promptSessionAttributes": {}
+}
+
+```
+
+```
+{
+    "messageVersion": "1.0",
+    "response": {
+        "actionGroup": "CurrentTime",
+        "function": "CurrentTime",
+        "functionResponse": {
+            "responseBody": {
+                "application/json": {
+                    "body": "1704708165"
+                }
+            }
+        }
+    }
+}
+
+```
+
+### Accessing custom request fields
+
+The event sent by Amazon Bedrock Agents into your Lambda function contains a [number of extra event fields](#request_fields_table), exposed in the `app.current_event` field.
+
+Why is this useful?
+
+You can for instance identify new conversations (`session_id`) or store and analyze entire conversations (`input_text`).
+
+In this example, we [append correlation data](../../logger/#appending-additional-keys) to all generated logs. This can be used to aggregate logs by `session_id` and observe the entire conversation between a user and the Agent.
+
+```
+from time import time
+
+from aws_lambda_powertools import Logger
+from aws_lambda_powertools.event_handler import BedrockAgentResolver
+from aws_lambda_powertools.utilities.typing import LambdaContext
+
+logger = Logger()
+app = BedrockAgentResolver()
+
+
+@app.get("/current_time", description="Gets the current time in seconds")
+def current_time() -> int:
+    logger.append_keys(
+        session_id=app.current_event.session_id,
+        action_group=app.current_event.action_group,
+        input_text=app.current_event.input_text,
+    )
+
+    logger.info("Serving current_time")
+    return int(time())
+
+
+@logger.inject_lambda_context
+def lambda_handler(event: dict, context: LambdaContext):
+    return app.resolve(event, context)
+
+```
+
+The input event fields available depend on your Agent's configuration (OpenAPI-based or Function-based):
+
+| Name | Type | Description | OpenAPI | Function | | --- | --- | --- | --- | --- | | message_version | str | The version of the message format. Amazon Bedrock only supports version 1.0. | ✅ | ✅ | | agent | BedrockAgentInfo | Contains information about the name, ID, alias, and version of the agent. | ✅ | ✅ | | input_text | str | The user input for the conversation turn. | ✅ | ✅ | | session_id | str | The unique identifier of the agent session. | ✅ | ✅ | | action_group | str | The name of the action group. | ✅ | ✅ | | api_path | str | The path to the API operation, as defined in the OpenAPI schema. | ✅ | ❌ | | http_method | str | The method of the API operation, as defined in the OpenAPI schema. | ✅ | ❌ | | function | str | The name of the function being called. | ❌ | ✅ | | parameters | List[Parameter] | Contains parameters with name, type, and value properties. | ✅ | ✅ | | request_body | BedrockAgentRequestBody | Contains the request body and its properties. | ✅ | ❌ | | session_attributes | Dict[str, str] | Contains session attributes and their values. | ✅ | ✅ | | prompt_session_attributes | Dict[str, str] | Contains prompt attributes and their values. | ✅ | ✅ |
+
+## OpenAPI-based actions
+
+### Generating OpenAPI schemas
+
+Use the `get_openapi_json_schema` function provided by the resolver to produce a JSON-serialized string that represents your OpenAPI schema. You can print this string or save it to a file. You'll use the file later when creating the Agent.
+
+You'll need to regenerate the OpenAPI schema and update your Agent everytime your API changes.
+
+```
+from time import time
+
+from aws_lambda_powertools import Logger, Tracer
+from aws_lambda_powertools.event_handler import BedrockAgentResolver
+from aws_lambda_powertools.utilities.typing import LambdaContext
+
+tracer = Tracer()
+logger = Logger()
+app = BedrockAgentResolver()
+
+
+@app.get("/current_time", description="Gets the current time in seconds")
+@tracer.capture_method
+def current_time() -> int:
+    return int(time())
+
+
+@logger.inject_lambda_context
+@tracer.capture_lambda_handler
+def lambda_handler(event: dict, context: LambdaContext):
+    return app.resolve(event, context)
+
+
+if __name__ == "__main__":  # (1)!
+    print(app.get_openapi_json_schema())  # (2)!
+
+```
+
+1. This ensures that it's only executed when running the file directly, and not when running on the Lambda runtime.
+1. You can use [additional options](#customizing-openapi-metadata) to customize the OpenAPI schema.
+
+```
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "Powertools API",
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "/"
+    }
+  ],
+  "paths": {
+    "/current_time": {
+      "get": {
+        "summary": "GET /current_time",
+        "description": "Gets the current time in seconds",
+        "operationId": "current_time_current_time_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "integer",
+                  "title": "Return"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "HTTPValidationError": {
+        "properties": {
+          "detail": {
+            "items": {
+              "$ref": "#/components/schemas/ValidationError"
+            },
+            "type": "array",
+            "title": "Detail"
+          }
+        },
+        "type": "object",
+        "title": "HTTPValidationError"
+      },
+      "ValidationError": {
+        "properties": {
+          "loc": {
+            "items": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "integer"
+                }
+              ]
+            },
+            "type": "array",
+            "title": "Location"
+          },
+          "msg": {
+            "type": "string",
+            "title": "Message"
+          },
+          "type": {
+            "type": "string",
+            "title": "Error Type"
+          }
+        },
+        "type": "object",
+        "required": [
+          "loc",
+          "msg",
+          "type"
+        ],
+        "title": "ValidationError"
+      }
+    }
+  }
+}
+
+```
+
+To get the OpenAPI schema, run the Python script from your terminal. The script will generate the schema directly to standard output, which you can redirect to a file.
+
+```
+python3 app.py > schema.json
+
+```
+
+### Crafting effective OpenAPI schemas
+
+Working with Amazon Bedrock Agents will introduce [non-deterministic behaviour to your system](https://docs.aws.amazon.com/bedrock/latest/userguide/agents-how.html#agents-rt).
+
+Why is that?
+
+Amazon Bedrock uses LLMs to understand and respond to user input. These models are trained on vast amounts of data and are capable of extracting meanings from a sequence of text and understanding the relationship between words and phrases on it. However, this means that the same input can result in different outputs, depending on the characteristics of the LLM being used.
+
+The OpenAPI schema provides context and semantics to the Agent that will support the decision process for invoking our Lambda function. Sparse or ambiguous schemas can result in unexpected outcomes.
+
+We recommend enriching your OpenAPI schema with as many details as possible to help the Agent understand your functions, and make correct invocations. To achieve that, keep the following suggestions in mind:
+
+- Always describe your function behaviour using the `description` field in your annotations
+- When refactoring, update your description field to match the function outcomes
+- Use distinct `description` for each function to have clear separation of semantics
 
 ### Validating input and output
 
 You can define the expected format for incoming data and responses by using type annotations. Define constraints using standard Python types, [dataclasses](https://docs.python.org/3/library/dataclasses.html) or [Pydantic models](https://docs.pydantic.dev/latest/concepts/models/). Pydantic is a popular library for data validation using Python type annotations.
 
-This example uses [Pydantic's EmailStr](https://docs.pydantic.dev/2.0/usage/types/string_types/#emailstr) to validate the email address passed to the `schedule_meeting` function. The function then returns a boolean indicating if the meeting was successfully scheduled.
+The examples below uses [Pydantic's EmailStr](https://docs.pydantic.dev/2.0/usage/types/string_types/#emailstr) to validate the email address passed to the `schedule_meeting` function. The function then returns a boolean indicating if the meeting was successfully scheduled.
 
 ```
 from pydantic import EmailStr
@@ -607,7 +727,7 @@ If the request validation fails, your event handler will not be called, and an e
 
 What does this mean for my Agent?
 
-The event handler will always return a response according to the OpenAPI schema. A validation failure always results in a [422 response](https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/422). However, how Amazon Bedrock interprets that failure is non-deterministic, since it depends on the characteristics of the LLM being used.
+The event handler will always return a response according to the schema (OpenAPI) or type hints (Function-based). A validation failure in OpenAPI-based actions results in a [422 response](https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/422). For both approaches, how Amazon Bedrock interprets that failure is non-deterministic, since it depends on the characteristics of the LLM being used.
 
 ```
 {
@@ -674,165 +794,6 @@ sequenceDiagram
 
 ```
 
-### Generating OpenAPI schemas
-
-Use the `get_openapi_json_schema` function provided by the resolver to produce a JSON-serialized string that represents your OpenAPI schema. You can print this string or save it to a file. You'll use the file later when creating the Agent.
-
-You'll need to regenerate the OpenAPI schema and update your Agent everytime your API changes.
-
-```
-from time import time
-
-from aws_lambda_powertools import Logger, Tracer
-from aws_lambda_powertools.event_handler import BedrockAgentResolver
-from aws_lambda_powertools.utilities.typing import LambdaContext
-
-tracer = Tracer()
-logger = Logger()
-app = BedrockAgentResolver()
-
-
-@app.get("/current_time", description="Gets the current time in seconds")
-@tracer.capture_method
-def current_time() -> int:
-    return int(time())
-
-
-@logger.inject_lambda_context
-@tracer.capture_lambda_handler
-def lambda_handler(event: dict, context: LambdaContext):
-    return app.resolve(event, context)
-
-
-if __name__ == "__main__":  # (1)!
-    print(app.get_openapi_json_schema())  # (2)!
-
-```
-
-1. This ensures that it's only executed when running the file directly, and not when running on the Lambda runtime.
-1. You can use [additional options](#customizing-openapi-metadata) to customize the OpenAPI schema.
-
-```
-{
-  "openapi": "3.0.3",
-  "info": {
-    "title": "Powertools API",
-    "version": "1.0.0"
-  },
-  "servers": [
-    {
-      "url": "/"
-    }
-  ],
-  "paths": {
-    "/current_time": {
-      "get": {
-        "summary": "GET /current_time",
-        "description": "Gets the current time in seconds",
-        "operationId": "current_time_current_time_get",
-        "responses": {
-          "200": {
-            "description": "Successful Response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "integer",
-                  "title": "Return"
-                }
-              }
-            }
-          },
-          "422": {
-            "description": "Validation Error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/HTTPValidationError"
-                }
-              }
-            }
-          }
-        }
-      }
-    }
-  },
-  "components": {
-    "schemas": {
-      "HTTPValidationError": {
-        "properties": {
-          "detail": {
-            "items": {
-              "$ref": "#/components/schemas/ValidationError"
-            },
-            "type": "array",
-            "title": "Detail"
-          }
-        },
-        "type": "object",
-        "title": "HTTPValidationError"
-      },
-      "ValidationError": {
-        "properties": {
-          "loc": {
-            "items": {
-              "anyOf": [
-                {
-                  "type": "string"
-                },
-                {
-                  "type": "integer"
-                }
-              ]
-            },
-            "type": "array",
-            "title": "Location"
-          },
-          "msg": {
-            "type": "string",
-            "title": "Message"
-          },
-          "type": {
-            "type": "string",
-            "title": "Error Type"
-          }
-        },
-        "type": "object",
-        "required": [
-          "loc",
-          "msg",
-          "type"
-        ],
-        "title": "ValidationError"
-      }
-    }
-  }
-}
-
-```
-
-To get the OpenAPI schema, run the Python script from your terminal. The script will generate the schema directly to standard output, which you can redirect to a file.
-
-```
-python3 app.py > schema.json
-
-```
-
-### Crafting effective OpenAPI schemas
-
-Working with Agents for Amazon Bedrock will introduce [non-deterministic behaviour to your system](https://docs.aws.amazon.com/bedrock/latest/userguide/agents-how.html#agents-rt).
-
-Why is that?
-
-Amazon Bedrock uses LLMs to understand and respond to user input. These models are trained on vast amounts of data and are capable of extracting meanings from a sequence of text and understanding the relationship between words and phrases on it. However, this means that the same input can result in different outputs, depending on the characteristics of the LLM being used.
-
-The OpenAPI schema provides context and semantics to the Agent that will support the decision process for invoking our Lambda function. Sparse or ambiguous schemas can result in unexpected outcomes.
-
-We recommend enriching your OpenAPI schema with as many details as possible to help the Agent understand your functions, and make correct invocations. To achieve that, keep the following suggestions in mind:
-
-- Always describe your function behaviour using the `description` field in your annotations
-- When refactoring, update your description field to match the function outcomes
-- Use distinct `description` for each function to have clear separation of semantics
-
 ### Video walkthrough
 
 To create an Agent for Amazon Bedrock, refer to the [official documentation](https://docs.aws.amazon.com/bedrock/latest/userguide/agents-create.html) provided by AWS.
@@ -841,54 +802,11 @@ The following video demonstrates the end-to-end process:
 
 During the creation process, you should use the schema [previously generated](#generating-openapi-schemas) when prompted for an OpenAPI specification.
 
-## Advanced
+### Advanced
 
-### Accessing custom request fields
+#### Additional metadata
 
-The event sent by Agents for Amazon Bedrock into your Lambda function contains a [number of extra event fields](#request_fields_table), exposed in the `app.current_event` field.
-
-Why is this useful?
-
-You can for instance identify new conversations (`session_id`) or store and analyze entire conversations (`input_text`).
-
-In this example, we [append correlation data](../../logger/#appending-additional-keys) to all generated logs. This can be used to aggregate logs by `session_id` and observe the entire conversation between a user and the Agent.
-
-```
-from time import time
-
-from aws_lambda_powertools import Logger
-from aws_lambda_powertools.event_handler import BedrockAgentResolver
-from aws_lambda_powertools.utilities.typing import LambdaContext
-
-logger = Logger()
-app = BedrockAgentResolver()
-
-
-@app.get("/current_time", description="Gets the current time in seconds")  # (1)!
-def current_time() -> int:
-    logger.append_keys(
-        session_id=app.current_event.session_id,
-        action_group=app.current_event.action_group,
-        input_text=app.current_event.input_text,
-    )
-
-    logger.info("Serving current_time")
-    return int(time())
-
-
-@logger.inject_lambda_context
-def lambda_handler(event: dict, context: LambdaContext):
-    return app.resolve(event, context)
-
-```
-
-The input event fields are:
-
-| Name | Type | Description | | --- | --- | --- | | message_version | `str` | The version of the message that identifies the format of the event data going into the Lambda function and the expected format of the response from a Lambda function. Amazon Bedrock only supports version 1.0. | | agent | `BedrockAgentInfo` | Contains information about the name, ID, alias, and version of the agent that the action group belongs to. | | input_text | `str` | The user input for the conversation turn. | | session_id | `str` | The unique identifier of the agent session. | | action_group | `str` | The name of the action group. | | api_path | `str` | The path to the API operation, as defined in the OpenAPI schema. | | http_method | `str` | The method of the API operation, as defined in the OpenAPI schema. | | parameters | `List[BedrockAgentProperty]` | Contains a list of objects. Each object contains the name, type, and value of a parameter in the API operation, as defined in the OpenAPI schema. | | request_body | `BedrockAgentRequestBody` | Contains the request body and its properties, as defined in the OpenAPI schema. | | session_attributes | `Dict[str, str]` | Contains session attributes and their values. | | prompt_session_attributes | `Dict[str, str]` | Contains prompt attributes and their values. |
-
-### Additional metadata
-
-To enrich the view that Agents for Amazon Bedrock has of your Lambda functions, use a combination of [Pydantic Models](https://docs.pydantic.dev/latest/concepts/models/) and [OpenAPI](https://www.openapis.org/) type annotations to add constraints to your APIs parameters.
+To enrich the view that Amazon Bedrock Agents has of your Lambda functions, use a combination of [Pydantic Models](https://docs.pydantic.dev/latest/concepts/models/) and [OpenAPI](https://www.openapis.org/) type annotations to add constraints to your APIs parameters.
 
 When is this useful?
 
@@ -1023,7 +941,7 @@ if __name__ == "__main__":
 
 1. Add an openapi extension
 
-### Fine grained responses
+#### OpenAPI-based Responses
 
 Note
 
@@ -1070,7 +988,53 @@ def lambda_handler(event: dict, context: LambdaContext):
 
 ```
 
-## Testing your code
+#### Bedrock requests under the hood
+
+Powertools handle the request from the Agent, parse, validate, and route it to the correct method in your code. The response is then validated and formatted back to the Agent.
+
+```
+sequenceDiagram
+    actor User
+
+    User->>Agent: What is the current time?
+    Agent->>OpenAPI schema: consults
+    OpenAPI schema-->>Agent: GET /current_time
+    Agent-->>Agent: LLM interaction
+
+    box Powertools
+        participant Lambda
+        participant Parsing
+        participant Validation
+        participant Routing
+        participant Your Code
+    end
+
+    alt Function-based
+        Agent->>Lambda: {function: "current_time", parameters: [], ...}
+    end
+
+    activate Lambda
+    Lambda->>Parsing: parses parameters
+    Parsing->>Validation: validates input
+    Validation->>Routing: finds method to call
+    Routing->>Your Code: executes
+    activate Your Code
+    Your Code->>Routing: 1709215709
+    deactivate Your Code
+    Routing->>Validation: returns output
+    Validation->>Parsing: validates output
+    Parsing->>Lambda: formats response
+
+    alt Function-based
+        Lambda->>Agent: {response: {functionResponse: {responseBody: {...}}}}
+    end
+    deactivate Lambda
+
+    Agent-->>Agent: LLM interaction
+    Agent->>User: "The current time is 14:08:29 GMT"
+```
+
+### Testing your code
 
 Test your routes by passing an [Agent for Amazon Bedrock proxy event](https://docs.aws.amazon.com/bedrock/latest/userguide/agents-lambda.html#agents-lambda-input) request:
 
@@ -1132,6 +1096,53 @@ def current_time() -> Annotated[int, Body(description="Current time in milliseco
 @logger.inject_lambda_context
 @tracer.capture_lambda_handler
 def lambda_handler(event: dict, context: LambdaContext) -> dict:
+    return app.resolve(event, context)
+
+```
+
+## Function-based Actions
+
+The `BedrockAgentFunctionResolver` streamlines agent function development through three core capabilities:
+
+- **Register Functions**: Use the `@app.tool()` decorator to expose your functions to Bedrock Agents
+
+| Field | Required | Description | | --- | --- | --- | | name | No | Custom name for your function. Uses the actual function name if omitted. | | description | No | Explain what your function does to guide the agent's usage. |
+
+- **Process Parameters**: Automatically maps input parameters from the agent to your function arguments
+- **Format Responses**: Transforms your function outputs into properly structured Bedrock Agent responses
+
+### Function-based Responses
+
+Note
+
+The default response only includes the essential fields to keep the payload size minimal, as AWS Lambda has a maximum response size of 25 KB.
+
+You can use `BedrockFunctionResponse` class to customize your response [with additional fields](https://docs.aws.amazon.com/bedrock/latest/userguide/agents-lambda.html#agents-lambda-response). This class allows you to:
+
+- Return a response body
+- Set session and prompt session attributes
+- Set knowledge bases configurations
+- Control the response state ("FAILURE" or "REPROMPT")
+
+```
+from aws_lambda_powertools.event_handler import BedrockAgentFunctionResolver, BedrockFunctionResponse
+from aws_lambda_powertools.utilities.typing.lambda_context import LambdaContext
+
+app = BedrockAgentFunctionResolver()
+
+
+@app.tool(description="Function that demonstrates response customization")
+def custom_response():
+    return BedrockFunctionResponse(
+        body="Hello World",
+        session_attributes={"user_id": "123"},
+        prompt_session_attributes={"last_action": "greeting"},
+        response_state="REPROMPT",
+        knowledge_bases=[{"name": "kb1", "enabled": True}],
+    )
+
+
+def lambda_handler(event: dict, context: LambdaContext):
     return app.resolve(event, context)
 
 ```

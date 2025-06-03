@@ -19,7 +19,7 @@ Powertools for AWS Lambda (Python) is a developer toolkit to implement Serverles
 - [REST API](https://docs.powertools.aws.dev/lambda/python/latest/develop/core/event_handler/api_gateway/index.md)
 - [GraphQL API](https://docs.powertools.aws.dev/lambda/python/latest/develop/core/event_handler/appsync/index.md)
 - [AppSync Events](https://docs.powertools.aws.dev/lambda/python/latest/develop/core/event_handler/appsync_events/index.md)
-- [Agents for Amazon Bedrock](https://docs.powertools.aws.dev/lambda/python/latest/develop/core/event_handler/bedrock_agents/index.md)
+- [Amazon Bedrock Agents](https://docs.powertools.aws.dev/lambda/python/latest/develop/core/event_handler/bedrock_agents/index.md)
 - [Metrics](https://docs.powertools.aws.dev/lambda/python/latest/develop/core/metrics/index.md)
 - [Datadog](https://docs.powertools.aws.dev/lambda/python/latest/develop/core/metrics/datadog/index.md)
 
