@@ -1934,7 +1934,15 @@ def lambda_handler(event: KafkaEvent, context):
                     101
                  ]
               }
-           ]
+           ],
+           "valueSchemaMetadata": {
+              "dataFormat": "AVRO",
+              "schemaId": "1234"
+           },
+           "keySchemaMetadata": {
+              "dataFormat": "AVRO",
+              "schemaId": "1234"
+           }
         },
         {
            "topic":"mytopic",
@@ -1959,7 +1967,15 @@ def lambda_handler(event: KafkaEvent, context):
                     101
                  ]
               }
-           ]
+           ],
+           "valueSchemaMetadata": {
+              "dataFormat": "AVRO",
+              "schemaId": "1234"
+           },
+           "keySchemaMetadata": {
+              "dataFormat": "AVRO",
+              "schemaId": "1234"
+           }
         },
         {
            "topic":"mytopic",
@@ -1985,7 +2001,15 @@ def lambda_handler(event: KafkaEvent, context):
                     101
                  ]
               }
-           ]
+           ],
+           "valueSchemaMetadata": {
+              "dataFormat": "AVRO",
+              "schemaId": "1234"
+           },
+           "keySchemaMetadata": {
+              "dataFormat": "AVRO",
+              "schemaId": "1234"
+           }
         }
      ]
   }
