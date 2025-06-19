@@ -31,6 +31,7 @@ Powertools for AWS Lambda (Python) is a developer toolkit to implement Serverles
 - [Feature flags](https://docs.powertools.aws.dev/lambda/python/latest/develop/utilities/feature_flags/index.md)
 - [Idempotency](https://docs.powertools.aws.dev/lambda/python/latest/develop/utilities/idempotency/index.md)
 - [JMESPath Functions](https://docs.powertools.aws.dev/lambda/python/latest/develop/utilities/jmespath_functions/index.md)
+- [Kafka Consumer](https://docs.powertools.aws.dev/lambda/python/latest/develop/utilities/kafka/index.md)
 - [Middleware factory](https://docs.powertools.aws.dev/lambda/python/latest/develop/utilities/middleware_factory/index.md)
 - [Parameters](https://docs.powertools.aws.dev/lambda/python/latest/develop/utilities/parameters/index.md)
 - [Parser (Pydantic)](https://docs.powertools.aws.dev/lambda/python/latest/develop/utilities/parser/index.md)
