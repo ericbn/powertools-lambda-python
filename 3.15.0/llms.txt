@@ -1,0 +1,45 @@
+# Powertools for AWS Lambda (Python)
+
+> Powertools for AWS Lambda (Python)
+
+Powertools for AWS Lambda (Python) is a developer toolkit to implement Serverless best practices and increase developer velocity. It provides a suite of utilities for AWS Lambda Functions that makes tracing with AWS X-Ray, structured logging and creating custom metrics asynchronously easier.
+
+## Project Overview
+
+- [Homepage](https://docs.powertools.aws.dev/lambda/python/latest/3.15.0/index.md)
+- [Changelog](https://docs.powertools.aws.dev/lambda/python/latest/3.15.0/changelog/index.md)
+- [Roadmap](https://docs.powertools.aws.dev/lambda/python/latest/3.15.0/roadmap/index.md)
+- [Upgrade guide](https://docs.powertools.aws.dev/lambda/python/latest/3.15.0/upgrade/index.md)
+
+## Core Utilities
+
+- [Logger](https://docs.powertools.aws.dev/lambda/python/latest/3.15.0/core/logger/index.md)
+- [Amazon CloudWatch EMF](https://docs.powertools.aws.dev/lambda/python/latest/3.15.0/core/metrics/index.md)
+- [Tracer](https://docs.powertools.aws.dev/lambda/python/latest/3.15.0/core/tracer/index.md)
+- [REST API](https://docs.powertools.aws.dev/lambda/python/latest/3.15.0/core/event_handler/api_gateway/index.md)
+- [GraphQL API](https://docs.powertools.aws.dev/lambda/python/latest/3.15.0/core/event_handler/appsync/index.md)
+- [AppSync Events](https://docs.powertools.aws.dev/lambda/python/latest/3.15.0/core/event_handler/appsync_events/index.md)
+- [Amazon Bedrock Agents](https://docs.powertools.aws.dev/lambda/python/latest/3.15.0/core/event_handler/bedrock_agents/index.md)
+- [Metrics](https://docs.powertools.aws.dev/lambda/python/latest/3.15.0/core/metrics/index.md)
+- [Datadog](https://docs.powertools.aws.dev/lambda/python/latest/3.15.0/core/metrics/datadog/index.md)
+
+## Utilities
+
+- [Batch Processing](https://docs.powertools.aws.dev/lambda/python/latest/3.15.0/utilities/batch/index.md)
+- [Event Source Data Classes](https://docs.powertools.aws.dev/lambda/python/latest/3.15.0/utilities/data_classes/index.md)
+- [Data Masking](https://docs.powertools.aws.dev/lambda/python/latest/3.15.0/utilities/data_masking/index.md)
+- [Feature flags](https://docs.powertools.aws.dev/lambda/python/latest/3.15.0/utilities/feature_flags/index.md)
+- [Idempotency](https://docs.powertools.aws.dev/lambda/python/latest/3.15.0/utilities/idempotency/index.md)
+- [JMESPath Functions](https://docs.powertools.aws.dev/lambda/python/latest/3.15.0/utilities/jmespath_functions/index.md)
+- [Kafka Consumer](https://docs.powertools.aws.dev/lambda/python/latest/3.15.0/utilities/kafka/index.md)
+- [Middleware factory](https://docs.powertools.aws.dev/lambda/python/latest/3.15.0/utilities/middleware_factory/index.md)
+- [Parameters](https://docs.powertools.aws.dev/lambda/python/latest/3.15.0/utilities/parameters/index.md)
+- [Parser (Pydantic)](https://docs.powertools.aws.dev/lambda/python/latest/3.15.0/utilities/parser/index.md)
+- [Streaming](https://docs.powertools.aws.dev/lambda/python/latest/3.15.0/utilities/streaming/index.md)
+- [Typing](https://docs.powertools.aws.dev/lambda/python/latest/3.15.0/utilities/typing/index.md)
+- [Validation](https://docs.powertools.aws.dev/lambda/python/latest/3.15.0/utilities/validation/index.md)
+
+## Tutorial
+
+- [Tutorial](https://docs.powertools.aws.dev/lambda/python/latest/3.15.0/tutorial/index.md)
+
