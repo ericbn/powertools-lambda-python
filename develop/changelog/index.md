@@ -1,10 +1,19 @@
 # Unreleased
 
+## Maintenance
+
+- **deps:** bump redis from 5.3.0 to 6.2.0 ([#6827](https://github.com/aws-powertools/powertools-lambda-python/issues/6827))
+
 ## [v3.15.1](https://github.com/aws-powertools/powertools-lambda-python/compare/v3.15.0...v3.15.1) - 2025-06-20
+
+## Features
+
+- **kafka:** add logic to handle protobuf deserialization ([#6841](https://github.com/aws-powertools/powertools-lambda-python/issues/6841))
 
 ## Maintenance
 
 - version bump
+- **ci:** new pre-release 3.15.1a0 ([#6839](https://github.com/aws-powertools/powertools-lambda-python/issues/6839))
 
 ## [v3.15.0](https://github.com/aws-powertools/powertools-lambda-python/compare/v3.14.0...v3.15.0) - 2025-06-19
 
