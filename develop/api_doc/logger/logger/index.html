@@ -4922,8 +4922,7 @@ logger.info(&quot;Log without context&quot;)
 
             <details class="quote">
               <summary>Source code in <code>aws_lambda_powertools/logging/logger.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1240</span>
-<span class="normal">1241</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1241</span>
 <span class="normal">1242</span>
 <span class="normal">1243</span>
 <span class="normal">1244</span>
@@ -4933,7 +4932,8 @@ logger.info(&quot;Log without context&quot;)
 <span class="normal">1248</span>
 <span class="normal">1249</span>
 <span class="normal">1250</span>
-<span class="normal">1251</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">clear_buffer</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="normal">1251</span>
+<span class="normal">1252</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">clear_buffer</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Clear the internal buffer cache.</span>
 
@@ -5107,7 +5107,8 @@ Clears buffer after complete processing</p>
 <span class="normal">1235</span>
 <span class="normal">1236</span>
 <span class="normal">1237</span>
-<span class="normal">1238</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">flush_buffer</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="normal">1238</span>
+<span class="normal">1239</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">flush_buffer</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Flush all buffered log records associated with current execution.</span>
 
@@ -5126,6 +5127,10 @@ Clears buffer after complete processing</p>
 
     <span class="n">tracer_id</span> <span class="o">=</span> <span class="n">get_tracer_id</span><span class="p">()</span>
 
+    <span class="c1"># no buffer config? return</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_buffer_config</span><span class="p">:</span>
+        <span class="k">return</span>
+
     <span class="c1"># Flushing log without a tracer id? Return</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="n">tracer_id</span><span class="p">:</span>
         <span class="k">return</span>
@@ -5133,9 +5138,6 @@ Clears buffer after complete processing</p>
     <span class="c1"># is buffer empty? return</span>
     <span class="n">buffer</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_buffer_cache</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">tracer_id</span><span class="p">)</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="n">buffer</span><span class="p">:</span>
-        <span class="k">return</span>
-
-    <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_buffer_config</span><span class="p">:</span>
         <span class="k">return</span>
 
     <span class="c1"># Check ALC level against buffer level</span>
@@ -6010,9 +6012,9 @@ to an existing logger, so it is available across future log statements.</p>
 
             <details class="quote">
               <summary>Source code in <code>aws_lambda_powertools/logging/logger.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1293</span>
-<span class="normal">1294</span>
-<span class="normal">1295</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">log_uncaught_exception_hook</span><span class="p">(</span><span class="n">exc_type</span><span class="p">,</span> <span class="n">exc_value</span><span class="p">,</span> <span class="n">exc_traceback</span><span class="p">,</span> <span class="n">logger</span><span class="p">:</span> <span class="n">Logger</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1294</span>
+<span class="normal">1295</span>
+<span class="normal">1296</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">log_uncaught_exception_hook</span><span class="p">(</span><span class="n">exc_type</span><span class="p">,</span> <span class="n">exc_value</span><span class="p">,</span> <span class="n">exc_traceback</span><span class="p">,</span> <span class="n">logger</span><span class="p">:</span> <span class="n">Logger</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Callback function for sys.excepthook to use Logger to log uncaught exceptions&quot;&quot;&quot;</span>
     <span class="n">logger</span><span class="o">.</span><span class="n">exception</span><span class="p">(</span><span class="n">exc_value</span><span class="p">,</span> <span class="n">exc_info</span><span class="o">=</span><span class="p">(</span><span class="n">exc_type</span><span class="p">,</span> <span class="n">exc_value</span><span class="p">,</span> <span class="n">exc_traceback</span><span class="p">))</span>  <span class="c1"># pragma: no cover</span>
 </code></pre></div></td></tr></table></div>
@@ -6126,8 +6128,7 @@ This is separate from application Logger class utility</strong></p>
 
             <details class="quote">
               <summary>Source code in <code>aws_lambda_powertools/logging/logger.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1254</span>
-<span class="normal">1255</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1255</span>
 <span class="normal">1256</span>
 <span class="normal">1257</span>
 <span class="normal">1258</span>
@@ -6162,7 +6163,8 @@ This is separate from application Logger class utility</strong></p>
 <span class="normal">1287</span>
 <span class="normal">1288</span>
 <span class="normal">1289</span>
-<span class="normal">1290</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">set_package_logger</span><span class="p">(</span>
+<span class="normal">1290</span>
+<span class="normal">1291</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">set_package_logger</span><span class="p">(</span>
     <span class="n">level</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="nb">int</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">DEBUG</span><span class="p">,</span>
     <span class="n">stream</span><span class="p">:</span> <span class="n">IO</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="n">formatter</span><span class="p">:</span> <span class="n">logging</span><span class="o">.</span><span class="n">Formatter</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
