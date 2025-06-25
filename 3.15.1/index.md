@@ -44,7 +44,7 @@ However, you will need additional dependencies if you are using any of the featu
 
 For the latter, make sure to replace `{region}` with your AWS region, e.g., `eu-west-1`, and the `{python_version}` without the period (.), e.g., `python313` for `Python 3.13`.
 
-| Architecture | Layer ARN | | --- | --- | | x86_64 | **arn:aws:lambda:{region}:017000801446:layer:AWSLambdaPowertoolsPythonV3-{python_version}-x86_64:7** | | ARM | **arn:aws:lambda:{region}:017000801446:layer:AWSLambdaPowertoolsPythonV3-{python_version}-arm64:7** |
+| Architecture | Layer ARN | | --- | --- | | x86_64 | **arn:aws:lambda:{region}:017000801446:layer:AWSLambdaPowertoolsPythonV3-{python_version}-x86_64:18** | | ARM | **arn:aws:lambda:{region}:017000801446:layer:AWSLambdaPowertoolsPythonV3-{python_version}-arm64:18** |
 
 You can add our layer using the [AWS Lambda Console *(direct link)*](https://console.aws.amazon.com/lambda/home#/add/layer):
 
@@ -440,11 +440,11 @@ For the latter, make sure to replace `{python_version}` without the period (.), 
 
 **AWS GovCloud (us-gov-east-1)**
 
-| Architecture | Layer ARN | | --- | --- | | x86_64 | **arn:aws-us-gov:lambda:us-gov-east-1:165087284144:layer:AWSLambdaPowertoolsPythonV3-{python_version}-x86_64:7** | | ARM | **arn:aws-us-gov:lambda:us-gov-east-1:165087284144:layer:AWSLambdaPowertoolsPythonV3-{python_version}-arm64:7** |
+| Architecture | Layer ARN | | --- | --- | | x86_64 | **arn:aws-us-gov:lambda:us-gov-east-1:165087284144:layer:AWSLambdaPowertoolsPythonV3-{python_version}-x86_64:18** | | ARM | **arn:aws-us-gov:lambda:us-gov-east-1:165087284144:layer:AWSLambdaPowertoolsPythonV3-{python_version}-arm64:18** |
 
 **AWS GovCloud (us-gov-west-1)**
 
-| Architecture | Layer ARN | | --- | --- | | x86_64 | **arn:aws-us-gov:lambda:us-gov-west-1:165093116878:layer:AWSLambdaPowertoolsPythonV3-{python_version}-x86_64:7** | | ARM | **arn:aws-us-gov:lambda:us-gov-west-1:165093116878:layer:AWSLambdaPowertoolsPythonV3-{python_version}-arm64:7** |
+| Architecture | Layer ARN | | --- | --- | | x86_64 | **arn:aws-us-gov:lambda:us-gov-west-1:165093116878:layer:AWSLambdaPowertoolsPythonV3-{python_version}-x86_64:18** | | ARM | **arn:aws-us-gov:lambda:us-gov-west-1:165093116878:layer:AWSLambdaPowertoolsPythonV3-{python_version}-arm64:18** |
 
 We provide a SAR App that deploys a CloudFormation stack with a copy of our Lambda Layer in your AWS account and region.
 
