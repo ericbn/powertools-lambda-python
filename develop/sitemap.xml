@@ -2,350 +2,350 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>https://docs.powertools.aws.dev/lambda/python/latest/develop/</loc>
-         <lastmod>2025-06-23</lastmod>
+         <lastmod>2025-06-25</lastmod>
     </url>
     <url>
          <loc>https://docs.powertools.aws.dev/lambda/python/latest/develop/automation/</loc>
-         <lastmod>2025-06-23</lastmod>
+         <lastmod>2025-06-25</lastmod>
     </url>
     <url>
          <loc>https://docs.powertools.aws.dev/lambda/python/latest/develop/changelog/</loc>
-         <lastmod>2025-06-23</lastmod>
+         <lastmod>2025-06-25</lastmod>
     </url>
     <url>
          <loc>https://docs.powertools.aws.dev/lambda/python/latest/develop/maintainers/</loc>
-         <lastmod>2025-06-23</lastmod>
+         <lastmod>2025-06-25</lastmod>
     </url>
     <url>
          <loc>https://docs.powertools.aws.dev/lambda/python/latest/develop/roadmap/</loc>
-         <lastmod>2025-06-23</lastmod>
+         <lastmod>2025-06-25</lastmod>
     </url>
     <url>
          <loc>https://docs.powertools.aws.dev/lambda/python/latest/develop/security/</loc>
-         <lastmod>2025-06-23</lastmod>
+         <lastmod>2025-06-25</lastmod>
     </url>
     <url>
          <loc>https://docs.powertools.aws.dev/lambda/python/latest/develop/upgrade/</loc>
-         <lastmod>2025-06-23</lastmod>
+         <lastmod>2025-06-25</lastmod>
     </url>
     <url>
          <loc>https://docs.powertools.aws.dev/lambda/python/latest/develop/versioning/</loc>
-         <lastmod>2025-06-23</lastmod>
+         <lastmod>2025-06-25</lastmod>
     </url>
     <url>
          <loc>https://docs.powertools.aws.dev/lambda/python/latest/develop/we_made_this/</loc>
-         <lastmod>2025-06-23</lastmod>
+         <lastmod>2025-06-25</lastmod>
     </url>
     <url>
          <loc>https://docs.powertools.aws.dev/lambda/python/latest/develop/api_doc/data_classes/</loc>
-         <lastmod>2025-06-23</lastmod>
+         <lastmod>2025-06-25</lastmod>
     </url>
     <url>
          <loc>https://docs.powertools.aws.dev/lambda/python/latest/develop/api_doc/jmespath_functions/</loc>
-         <lastmod>2025-06-23</lastmod>
+         <lastmod>2025-06-25</lastmod>
     </url>
     <url>
          <loc>https://docs.powertools.aws.dev/lambda/python/latest/develop/api_doc/middleware_factory/</loc>
-         <lastmod>2025-06-23</lastmod>
+         <lastmod>2025-06-25</lastmod>
     </url>
     <url>
          <loc>https://docs.powertools.aws.dev/lambda/python/latest/develop/api_doc/parser/</loc>
-         <lastmod>2025-06-23</lastmod>
+         <lastmod>2025-06-25</lastmod>
     </url>
     <url>
          <loc>https://docs.powertools.aws.dev/lambda/python/latest/develop/api_doc/streaming/</loc>
-         <lastmod>2025-06-23</lastmod>
+         <lastmod>2025-06-25</lastmod>
     </url>
     <url>
          <loc>https://docs.powertools.aws.dev/lambda/python/latest/develop/api_doc/typing/</loc>
-         <lastmod>2025-06-23</lastmod>
+         <lastmod>2025-06-25</lastmod>
     </url>
     <url>
          <loc>https://docs.powertools.aws.dev/lambda/python/latest/develop/api_doc/validation/</loc>
-         <lastmod>2025-06-23</lastmod>
+         <lastmod>2025-06-25</lastmod>
     </url>
     <url>
          <loc>https://docs.powertools.aws.dev/lambda/python/latest/develop/api_doc/batch/base/</loc>
-         <lastmod>2025-06-23</lastmod>
+         <lastmod>2025-06-25</lastmod>
     </url>
     <url>
          <loc>https://docs.powertools.aws.dev/lambda/python/latest/develop/api_doc/batch/decorators/</loc>
-         <lastmod>2025-06-23</lastmod>
+         <lastmod>2025-06-25</lastmod>
     </url>
     <url>
          <loc>https://docs.powertools.aws.dev/lambda/python/latest/develop/api_doc/batch/exceptions/</loc>
-         <lastmod>2025-06-23</lastmod>
+         <lastmod>2025-06-25</lastmod>
     </url>
     <url>
          <loc>https://docs.powertools.aws.dev/lambda/python/latest/develop/api_doc/data_masking/base/</loc>
-         <lastmod>2025-06-23</lastmod>
+         <lastmod>2025-06-25</lastmod>
     </url>
     <url>
          <loc>https://docs.powertools.aws.dev/lambda/python/latest/develop/api_doc/data_masking/exceptions/</loc>
-         <lastmod>2025-06-23</lastmod>
+         <lastmod>2025-06-25</lastmod>
     </url>
     <url>
          <loc>https://docs.powertools.aws.dev/lambda/python/latest/develop/api_doc/data_masking/provider/</loc>
-         <lastmod>2025-06-23</lastmod>
+         <lastmod>2025-06-25</lastmod>
     </url>
     <url>
          <loc>https://docs.powertools.aws.dev/lambda/python/latest/develop/api_doc/event_handler/api_gateway/</loc>
-         <lastmod>2025-06-23</lastmod>
+         <lastmod>2025-06-25</lastmod>
     </url>
     <url>
          <loc>https://docs.powertools.aws.dev/lambda/python/latest/develop/api_doc/event_handler/appsync/</loc>
-         <lastmod>2025-06-23</lastmod>
+         <lastmod>2025-06-25</lastmod>
     </url>
     <url>
          <loc>https://docs.powertools.aws.dev/lambda/python/latest/develop/api_doc/event_handler/middleware/</loc>
-         <lastmod>2025-06-23</lastmod>
+         <lastmod>2025-06-25</lastmod>
     </url>
     <url>
          <loc>https://docs.powertools.aws.dev/lambda/python/latest/develop/api_doc/event_handler/openapi/</loc>
-         <lastmod>2025-06-23</lastmod>
+         <lastmod>2025-06-25</lastmod>
     </url>
     <url>
          <loc>https://docs.powertools.aws.dev/lambda/python/latest/develop/api_doc/feature_flags/appconfig/</loc>
-         <lastmod>2025-06-23</lastmod>
+         <lastmod>2025-06-25</lastmod>
     </url>
     <url>
          <loc>https://docs.powertools.aws.dev/lambda/python/latest/develop/api_doc/feature_flags/base/</loc>
-         <lastmod>2025-06-23</lastmod>
+         <lastmod>2025-06-25</lastmod>
     </url>
     <url>
          <loc>https://docs.powertools.aws.dev/lambda/python/latest/develop/api_doc/feature_flags/comparators/</loc>
-         <lastmod>2025-06-23</lastmod>
+         <lastmod>2025-06-25</lastmod>
     </url>
     <url>
          <loc>https://docs.powertools.aws.dev/lambda/python/latest/develop/api_doc/feature_flags/exceptions/</loc>
-         <lastmod>2025-06-23</lastmod>
+         <lastmod>2025-06-25</lastmod>
     </url>
     <url>
          <loc>https://docs.powertools.aws.dev/lambda/python/latest/develop/api_doc/feature_flags/feature_flags/</loc>
-         <lastmod>2025-06-23</lastmod>
+         <lastmod>2025-06-25</lastmod>
     </url>
     <url>
          <loc>https://docs.powertools.aws.dev/lambda/python/latest/develop/api_doc/feature_flags/schema/</loc>
-         <lastmod>2025-06-23</lastmod>
+         <lastmod>2025-06-25</lastmod>
     </url>
     <url>
          <loc>https://docs.powertools.aws.dev/lambda/python/latest/develop/api_doc/idempotency/base/</loc>
-         <lastmod>2025-06-23</lastmod>
+         <lastmod>2025-06-25</lastmod>
     </url>
     <url>
          <loc>https://docs.powertools.aws.dev/lambda/python/latest/develop/api_doc/idempotency/config/</loc>
-         <lastmod>2025-06-23</lastmod>
+         <lastmod>2025-06-25</lastmod>
     </url>
     <url>
          <loc>https://docs.powertools.aws.dev/lambda/python/latest/develop/api_doc/idempotency/exceptions/</loc>
-         <lastmod>2025-06-23</lastmod>
+         <lastmod>2025-06-25</lastmod>
     </url>
     <url>
          <loc>https://docs.powertools.aws.dev/lambda/python/latest/develop/api_doc/idempotency/persistence/</loc>
-         <lastmod>2025-06-23</lastmod>
+         <lastmod>2025-06-25</lastmod>
     </url>
     <url>
          <loc>https://docs.powertools.aws.dev/lambda/python/latest/develop/api_doc/idempotency/serialization/</loc>
-         <lastmod>2025-06-23</lastmod>
+         <lastmod>2025-06-25</lastmod>
     </url>
     <url>
          <loc>https://docs.powertools.aws.dev/lambda/python/latest/develop/api_doc/logger/datadog_formatter/</loc>
-         <lastmod>2025-06-23</lastmod>
+         <lastmod>2025-06-25</lastmod>
     </url>
     <url>
          <loc>https://docs.powertools.aws.dev/lambda/python/latest/develop/api_doc/logger/exceptions/</loc>
-         <lastmod>2025-06-23</lastmod>
+         <lastmod>2025-06-25</lastmod>
     </url>
     <url>
          <loc>https://docs.powertools.aws.dev/lambda/python/latest/develop/api_doc/logger/formatter/</loc>
-         <lastmod>2025-06-23</lastmod>
+         <lastmod>2025-06-25</lastmod>
     </url>
     <url>
          <loc>https://docs.powertools.aws.dev/lambda/python/latest/develop/api_doc/logger/lambda_context/</loc>
-         <lastmod>2025-06-23</lastmod>
+         <lastmod>2025-06-25</lastmod>
     </url>
     <url>
          <loc>https://docs.powertools.aws.dev/lambda/python/latest/develop/api_doc/logger/logger/</loc>
-         <lastmod>2025-06-23</lastmod>
+         <lastmod>2025-06-25</lastmod>
     </url>
     <url>
          <loc>https://docs.powertools.aws.dev/lambda/python/latest/develop/api_doc/metrics/base/</loc>
-         <lastmod>2025-06-23</lastmod>
+         <lastmod>2025-06-25</lastmod>
     </url>
     <url>
          <loc>https://docs.powertools.aws.dev/lambda/python/latest/develop/api_doc/metrics/exceptions/</loc>
-         <lastmod>2025-06-23</lastmod>
+         <lastmod>2025-06-25</lastmod>
     </url>
     <url>
          <loc>https://docs.powertools.aws.dev/lambda/python/latest/develop/api_doc/metrics/metrics/</loc>
-         <lastmod>2025-06-23</lastmod>
+         <lastmod>2025-06-25</lastmod>
     </url>
     <url>
          <loc>https://docs.powertools.aws.dev/lambda/python/latest/develop/api_doc/metrics/provider_datadog/</loc>
-         <lastmod>2025-06-23</lastmod>
+         <lastmod>2025-06-25</lastmod>
     </url>
     <url>
          <loc>https://docs.powertools.aws.dev/lambda/python/latest/develop/api_doc/metrics/provider_emf/</loc>
-         <lastmod>2025-06-23</lastmod>
+         <lastmod>2025-06-25</lastmod>
     </url>
     <url>
          <loc>https://docs.powertools.aws.dev/lambda/python/latest/develop/api_doc/parameters/appconfig/</loc>
-         <lastmod>2025-06-23</lastmod>
+         <lastmod>2025-06-25</lastmod>
     </url>
     <url>
          <loc>https://docs.powertools.aws.dev/lambda/python/latest/develop/api_doc/parameters/base/</loc>
-         <lastmod>2025-06-23</lastmod>
+         <lastmod>2025-06-25</lastmod>
     </url>
     <url>
          <loc>https://docs.powertools.aws.dev/lambda/python/latest/develop/api_doc/parameters/dynamodb/</loc>
-         <lastmod>2025-06-23</lastmod>
+         <lastmod>2025-06-25</lastmod>
     </url>
     <url>
          <loc>https://docs.powertools.aws.dev/lambda/python/latest/develop/api_doc/parameters/secrets/</loc>
-         <lastmod>2025-06-23</lastmod>
+         <lastmod>2025-06-25</lastmod>
     </url>
     <url>
          <loc>https://docs.powertools.aws.dev/lambda/python/latest/develop/api_doc/parameters/ssm/</loc>
-         <lastmod>2025-06-23</lastmod>
+         <lastmod>2025-06-25</lastmod>
     </url>
     <url>
          <loc>https://docs.powertools.aws.dev/lambda/python/latest/develop/api_doc/tracer/base/</loc>
-         <lastmod>2025-06-23</lastmod>
+         <lastmod>2025-06-25</lastmod>
     </url>
     <url>
          <loc>https://docs.powertools.aws.dev/lambda/python/latest/develop/api_doc/tracer/tracing/</loc>
-         <lastmod>2025-06-23</lastmod>
+         <lastmod>2025-06-25</lastmod>
     </url>
     <url>
          <loc>https://docs.powertools.aws.dev/lambda/python/latest/develop/contributing/conventions/</loc>
-         <lastmod>2025-06-23</lastmod>
+         <lastmod>2025-06-25</lastmod>
     </url>
     <url>
          <loc>https://docs.powertools.aws.dev/lambda/python/latest/develop/contributing/getting_started/</loc>
-         <lastmod>2025-06-23</lastmod>
+         <lastmod>2025-06-25</lastmod>
     </url>
     <url>
          <loc>https://docs.powertools.aws.dev/lambda/python/latest/develop/contributing/setup/</loc>
-         <lastmod>2025-06-23</lastmod>
+         <lastmod>2025-06-25</lastmod>
     </url>
     <url>
          <loc>https://docs.powertools.aws.dev/lambda/python/latest/develop/contributing/documentation/rfcs/</loc>
-         <lastmod>2025-06-23</lastmod>
+         <lastmod>2025-06-25</lastmod>
     </url>
     <url>
          <loc>https://docs.powertools.aws.dev/lambda/python/latest/develop/core/logger/</loc>
-         <lastmod>2025-06-23</lastmod>
+         <lastmod>2025-06-25</lastmod>
     </url>
     <url>
          <loc>https://docs.powertools.aws.dev/lambda/python/latest/develop/core/metrics/</loc>
-         <lastmod>2025-06-23</lastmod>
+         <lastmod>2025-06-25</lastmod>
     </url>
     <url>
          <loc>https://docs.powertools.aws.dev/lambda/python/latest/develop/core/tracer/</loc>
-         <lastmod>2025-06-23</lastmod>
+         <lastmod>2025-06-25</lastmod>
     </url>
     <url>
          <loc>https://docs.powertools.aws.dev/lambda/python/latest/develop/core/event_handler/_openapi_customization_metadata/</loc>
-         <lastmod>2025-06-23</lastmod>
+         <lastmod>2025-06-25</lastmod>
     </url>
     <url>
          <loc>https://docs.powertools.aws.dev/lambda/python/latest/develop/core/event_handler/_openapi_customization_operations/</loc>
-         <lastmod>2025-06-23</lastmod>
+         <lastmod>2025-06-25</lastmod>
     </url>
     <url>
          <loc>https://docs.powertools.aws.dev/lambda/python/latest/develop/core/event_handler/_openapi_customization_parameters/</loc>
-         <lastmod>2025-06-23</lastmod>
+         <lastmod>2025-06-25</lastmod>
     </url>
     <url>
          <loc>https://docs.powertools.aws.dev/lambda/python/latest/develop/core/event_handler/api_gateway/</loc>
-         <lastmod>2025-06-23</lastmod>
+         <lastmod>2025-06-25</lastmod>
     </url>
     <url>
          <loc>https://docs.powertools.aws.dev/lambda/python/latest/develop/core/event_handler/appsync/</loc>
-         <lastmod>2025-06-23</lastmod>
+         <lastmod>2025-06-25</lastmod>
     </url>
     <url>
          <loc>https://docs.powertools.aws.dev/lambda/python/latest/develop/core/event_handler/appsync_events/</loc>
-         <lastmod>2025-06-23</lastmod>
+         <lastmod>2025-06-25</lastmod>
     </url>
     <url>
          <loc>https://docs.powertools.aws.dev/lambda/python/latest/develop/core/event_handler/bedrock_agents/</loc>
-         <lastmod>2025-06-23</lastmod>
+         <lastmod>2025-06-25</lastmod>
     </url>
     <url>
          <loc>https://docs.powertools.aws.dev/lambda/python/latest/develop/core/metrics/</loc>
-         <lastmod>2025-06-23</lastmod>
+         <lastmod>2025-06-25</lastmod>
     </url>
     <url>
          <loc>https://docs.powertools.aws.dev/lambda/python/latest/develop/core/metrics/datadog/</loc>
-         <lastmod>2025-06-23</lastmod>
+         <lastmod>2025-06-25</lastmod>
     </url>
     <url>
          <loc>https://docs.powertools.aws.dev/lambda/python/latest/develop/diagram_src/cicd_steps/</loc>
-         <lastmod>2025-06-23</lastmod>
+         <lastmod>2025-06-25</lastmod>
     </url>
     <url>
          <loc>https://docs.powertools.aws.dev/lambda/python/latest/develop/includes/_layer_homepage_arm64/</loc>
-         <lastmod>2025-06-23</lastmod>
+         <lastmod>2025-06-25</lastmod>
     </url>
     <url>
          <loc>https://docs.powertools.aws.dev/lambda/python/latest/develop/includes/_layer_homepage_x86/</loc>
-         <lastmod>2025-06-23</lastmod>
+         <lastmod>2025-06-25</lastmod>
     </url>
     <url>
          <loc>https://docs.powertools.aws.dev/lambda/python/latest/develop/tutorial/</loc>
-         <lastmod>2025-06-23</lastmod>
+         <lastmod>2025-06-25</lastmod>
     </url>
     <url>
          <loc>https://docs.powertools.aws.dev/lambda/python/latest/develop/utilities/batch/</loc>
-         <lastmod>2025-06-23</lastmod>
+         <lastmod>2025-06-25</lastmod>
     </url>
     <url>
          <loc>https://docs.powertools.aws.dev/lambda/python/latest/develop/utilities/data_classes/</loc>
-         <lastmod>2025-06-23</lastmod>
+         <lastmod>2025-06-25</lastmod>
     </url>
     <url>
          <loc>https://docs.powertools.aws.dev/lambda/python/latest/develop/utilities/data_masking/</loc>
-         <lastmod>2025-06-23</lastmod>
+         <lastmod>2025-06-25</lastmod>
     </url>
     <url>
          <loc>https://docs.powertools.aws.dev/lambda/python/latest/develop/utilities/feature_flags/</loc>
-         <lastmod>2025-06-23</lastmod>
+         <lastmod>2025-06-25</lastmod>
     </url>
     <url>
          <loc>https://docs.powertools.aws.dev/lambda/python/latest/develop/utilities/idempotency/</loc>
-         <lastmod>2025-06-23</lastmod>
+         <lastmod>2025-06-25</lastmod>
     </url>
     <url>
          <loc>https://docs.powertools.aws.dev/lambda/python/latest/develop/utilities/jmespath_functions/</loc>
-         <lastmod>2025-06-23</lastmod>
+         <lastmod>2025-06-25</lastmod>
     </url>
     <url>
          <loc>https://docs.powertools.aws.dev/lambda/python/latest/develop/utilities/kafka/</loc>
-         <lastmod>2025-06-23</lastmod>
+         <lastmod>2025-06-25</lastmod>
     </url>
     <url>
          <loc>https://docs.powertools.aws.dev/lambda/python/latest/develop/utilities/middleware_factory/</loc>
-         <lastmod>2025-06-23</lastmod>
+         <lastmod>2025-06-25</lastmod>
     </url>
     <url>
          <loc>https://docs.powertools.aws.dev/lambda/python/latest/develop/utilities/parameters/</loc>
-         <lastmod>2025-06-23</lastmod>
+         <lastmod>2025-06-25</lastmod>
     </url>
     <url>
          <loc>https://docs.powertools.aws.dev/lambda/python/latest/develop/utilities/parser/</loc>
-         <lastmod>2025-06-23</lastmod>
+         <lastmod>2025-06-25</lastmod>
     </url>
     <url>
          <loc>https://docs.powertools.aws.dev/lambda/python/latest/develop/utilities/streaming/</loc>
-         <lastmod>2025-06-23</lastmod>
+         <lastmod>2025-06-25</lastmod>
     </url>
     <url>
          <loc>https://docs.powertools.aws.dev/lambda/python/latest/develop/utilities/typing/</loc>
-         <lastmod>2025-06-23</lastmod>
+         <lastmod>2025-06-25</lastmod>
     </url>
     <url>
          <loc>https://docs.powertools.aws.dev/lambda/python/latest/develop/utilities/validation/</loc>
-         <lastmod>2025-06-23</lastmod>
+         <lastmod>2025-06-25</lastmod>
     </url>
 </urlset>
