@@ -1195,9 +1195,9 @@ You're not viewing the latest version.
 </li>
         
           <li class="md-nav__item">
-  <a href="#deserializing-keys-and-values" class="md-nav__link">
+  <a href="#deserializing-key-and-value" class="md-nav__link">
     <span class="md-ellipsis">
-      Deserializing keys and values
+      Deserializing key and value
     </span>
   </a>
   
@@ -3963,9 +3963,9 @@ You're not viewing the latest version.
 </li>
         
           <li class="md-nav__item">
-  <a href="#deserializing-keys-and-values" class="md-nav__link">
+  <a href="#deserializing-key-and-value" class="md-nav__link">
     <span class="md-ellipsis">
-      Deserializing keys and values
+      Deserializing key and value
     </span>
   </a>
   
@@ -4268,7 +4268,7 @@ You're not viewing the latest version.
 <p><strong>Record Key and Value</strong> A Kafka messages contain two important parts: an optional key that determines the partition and a value containing the actual message data. Both are base64-encoded in Lambda events and can be independently deserialized.</p>
 <p><strong>Deserialization</strong> Is the process of converting binary data (base64-encoded in Lambda events) into usable Python objects according to a specific format like JSON, Avro, or Protocol Buffers. Powertools handles this conversion automatically.</p>
 <p><strong>SchemaConfig class</strong> Contains parameters that tell Powertools how to interpret message data, including the format type (JSON, Avro, Protocol Buffers) and optional schema definitions needed for binary formats.</p>
-<p><strong>Output Serializer</strong> A Pydantic model, Python dataclass, or any custom class that helps structure data for your business logic.</p>
+<p><strong>Output Serializer</strong> A Pydantic model, Python dataclass, or any custom function that helps structure data for your business logic.</p>
 <p><strong>Schema Registry</strong> Is a centralized service that stores and validates schemas, ensuring producers and consumers maintain compatibility when message formats evolve over time.</p>
 <h2 id="moving-from-traditional-kafka-consumers">Moving from traditional Kafka consumers<a class="headerlink" href="#moving-from-traditional-kafka-consumers" title="Permanent link">&para;</a></h2>
 <p>Lambda processes Kafka messages as discrete events rather than continuous streams, requiring a different approach to consumer development that Powertools for AWS helps standardize.</p>
@@ -4316,25 +4316,25 @@ You're not viewing the latest version.
 <h2 id="getting-started">Getting started<a class="headerlink" href="#getting-started" title="Permanent link">&para;</a></h2>
 <h3 id="installation">Installation<a class="headerlink" href="#installation" title="Permanent link">&para;</a></h3>
 <p>Install the Powertools for AWS Lambda package with the appropriate extras for your use case:</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
-<span class="normal">2</span>
-<span class="normal">3</span>
-<span class="normal">4</span>
-<span class="normal">5</span>
-<span class="normal">6</span>
-<span class="normal">7</span>
-<span class="normal">8</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1"># Basic installation - includes JSON support</span>
-pip<span class="w"> </span>install<span class="w"> </span>aws-lambda-powertools
-
-<span class="c1"># For processing Avro messages</span>
-pip<span class="w"> </span>install<span class="w"> </span><span class="s1">&#39;aws-lambda-powertools[kafka-consumer-avro]&#39;</span>
-
-<span class="c1"># For working with Protocol Buffers</span>
-pip<span class="w"> </span>install<span class="w"> </span><span class="s1">&#39;aws-lambda-powertools[kafka-consumer-protobuf]&#39;</span>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:3"><input checked="checked" id="json" name="__tabbed_1" type="radio" /><input id="avro" name="__tabbed_1" type="radio" /><input id="protobuf" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="json">JSON</label><label for="avro">Avro</label><label for="protobuf">Protobuf</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>pip<span class="w"> </span>install<span class="w"> </span>aws-lambda-powertools
 </code></pre></div></td></tr></table></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>pip<span class="w"> </span>install<span class="w"> </span><span class="s1">&#39;aws-lambda-powertools[kafka-consumer-avro]&#39;</span>
+</code></pre></div></td></tr></table></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>pip<span class="w"> </span>install<span class="w"> </span><span class="s1">&#39;aws-lambda-powertools[kafka-consumer-protobuf]&#39;</span>
+</code></pre></div></td></tr></table></div>
+</div>
+</div>
+</div>
 <h3 id="required-resources">Required resources<a class="headerlink" href="#required-resources" title="Permanent link">&para;</a></h3>
 <p>To use the Kafka consumer utility, you need an AWS Lambda function configured with a Kafka event source. This can be Amazon MSK, MSK Serverless, or a self-hosted Kafka cluster.</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="1:1"><input checked="checked" id="getting_started_with_mskyaml" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="getting_started_with_mskyaml">getting_started_with_msk.yaml</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="2:1"><input checked="checked" id="getting_started_with_mskyaml" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="getting_started_with_mskyaml">getting_started_with_msk.yaml</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
@@ -4355,8 +4355,7 @@ pip<span class="w"> </span>install<span class="w"> </span><span class="s1">&#39;
 <span class="normal">16</span>
 <span class="normal">17</span>
 <span class="normal">18</span>
-<span class="normal">19</span>
-<span class="normal">20</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nt">AWSTemplateFormatVersion</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;2010-09-09&#39;</span>
+<span class="normal">19</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nt">AWSTemplateFormatVersion</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;2010-09-09&#39;</span>
 <span class="nt">Transform</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">AWS::Serverless-2016-10-31</span>
 <span class="nt">Resources</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">KafkaConsumerFunction</span><span class="p">:</span>
@@ -4370,10 +4369,9 @@ pip<span class="w"> </span>install<span class="w"> </span><span class="s1">&#39;
 <span class="w">          </span><span class="nt">Type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MSK</span>
 <span class="w">          </span><span class="nt">Properties</span><span class="p">:</span>
 <span class="w">            </span><span class="nt">StartingPosition</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">LATEST</span>
-<span class="w">            </span><span class="nt">Stream</span><span class="p">:</span><span class="w"> </span><span class="kt">!GetAtt</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MyMSKCluster.Arn</span>
+<span class="w">            </span><span class="nt">Stream</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;arn:aws:lambda:eu-west-3:123456789012:event-source-mapping:11a2c814-dda3-4df8-b46f-4eeafac869ac&quot;</span>
 <span class="w">            </span><span class="nt">Topics</span><span class="p">:</span>
 <span class="w">              </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">my-topic-1</span>
-<span class="w">              </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">my-topic-2</span>
 <span class="w">      </span><span class="nt">Policies</span><span class="p">:</span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">AWSLambdaMSKExecutionRole</span>
 </code></pre></div></td></tr></table></div>
@@ -4383,16 +4381,201 @@ pip<span class="w"> </span>install<span class="w"> </span><span class="s1">&#39;
 <h3 id="using-esm-with-schema-registry">Using ESM with Schema Registry<a class="headerlink" href="#using-esm-with-schema-registry" title="Permanent link">&para;</a></h3>
 <p>The Event Source Mapping configuration determines which mode is used. With <code>JSON</code>, Lambda converts all messages to JSON before invoking your function. With <code>SOURCE</code> mode, Lambda preserves the original format, requiring you function to handle the appropriate deserialization.</p>
 <p>Powertools for AWS supports both Schema Registry integration modes in your Event Source Mapping configuration.</p>
+<p>For simplicity, we will use a simple schema containing <code>name</code> and <code>age</code> in all our examples. You can also copy the payload example with the expected Kafka event to test your code.</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="3:6"><input checked="checked" id="json_1" name="__tabbed_3" type="radio" /><input id="payload-json" name="__tabbed_3" type="radio" /><input id="avro-schema" name="__tabbed_3" type="radio" /><input id="payload-avro" name="__tabbed_3" type="radio" /><input id="protobuf-schema" name="__tabbed_3" type="radio" /><input id="payload-protobuf" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="json_1">JSON</label><label for="payload-json">Payload JSON</label><label for="avro-schema">Avro Schema</label><label for="payload-avro">Payload AVRO</label><label for="protobuf-schema">Protobuf Schema</label><label for="payload-protobuf">Payload Protobuf</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;...&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;age&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;...&quot;</span>
+<span class="p">}</span>
+</code></pre></div></td></tr></table></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="p">{</span>
+<span class="w">   </span><span class="nt">&quot;eventSource&quot;</span><span class="p">:</span><span class="s2">&quot;aws:kafka&quot;</span><span class="p">,</span>
+<span class="w">   </span><span class="nt">&quot;eventSourceArn&quot;</span><span class="p">:</span><span class="s2">&quot;arn:aws:kafka:eu-west-3:123456789012:cluster/powertools-kafka-esm/f138df86-9253-4d2a-b682-19e132396d4f-s3&quot;</span><span class="p">,</span>
+<span class="w">   </span><span class="nt">&quot;bootstrapServers&quot;</span><span class="p">:</span><span class="s2">&quot;boot-z3majaui.c3.kafka-serverless.eu-west-3.amazonaws.com:9098&quot;</span><span class="p">,</span>
+<span class="w">   </span><span class="nt">&quot;records&quot;</span><span class="p">:{</span>
+<span class="w">      </span><span class="nt">&quot;python-with-avro-doc-5&quot;</span><span class="p">:[</span>
+<span class="w">         </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;topic&quot;</span><span class="p">:</span><span class="s2">&quot;python-with-avro-doc&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;partition&quot;</span><span class="p">:</span><span class="mi">5</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;offset&quot;</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;timestamp&quot;</span><span class="p">:</span><span class="mi">1750547462087</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;timestampType&quot;</span><span class="p">:</span><span class="s2">&quot;CREATE_TIME&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;key&quot;</span><span class="p">:</span><span class="s2">&quot;MTIz&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;value&quot;</span><span class="p">:</span><span class="s2">&quot;eyJuYW1lIjogIlBvd2VydG9vbHMiLCAiYWdlIjogNX0=&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;headers&quot;</span><span class="p">:[</span>
+
+<span class="w">            </span><span class="p">]</span>
+<span class="w">         </span><span class="p">}</span>
+<span class="w">      </span><span class="p">]</span>
+<span class="w">   </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></td></tr></table></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span>
+<span class="normal">8</span>
+<span class="normal">9</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;record&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;User&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;namespace&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;com.example&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;fields&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="p">{</span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;name&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;string&quot;</span><span class="p">},</span>
+<span class="w">        </span><span class="p">{</span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;age&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;int&quot;</span><span class="p">}</span>
+<span class="w">    </span><span class="p">]</span>
+<span class="p">}</span>
+</code></pre></div></td></tr></table></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="p">{</span>
+<span class="w">   </span><span class="nt">&quot;eventSource&quot;</span><span class="p">:</span><span class="s2">&quot;aws:kafka&quot;</span><span class="p">,</span>
+<span class="w">   </span><span class="nt">&quot;eventSourceArn&quot;</span><span class="p">:</span><span class="s2">&quot;arn:aws:kafka:eu-west-3:123456789012:cluster/powertools-kafka-esm/f138df86-9253-4d2a-b682-19e132396d4f-s3&quot;</span><span class="p">,</span>
+<span class="w">   </span><span class="nt">&quot;bootstrapServers&quot;</span><span class="p">:</span><span class="s2">&quot;boot-z3majaui.c3.kafka-serverless.eu-west-3.amazonaws.com:9098&quot;</span><span class="p">,</span>
+<span class="w">   </span><span class="nt">&quot;records&quot;</span><span class="p">:{</span>
+<span class="w">      </span><span class="nt">&quot;python-with-avro-doc-3&quot;</span><span class="p">:[</span>
+<span class="w">         </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;topic&quot;</span><span class="p">:</span><span class="s2">&quot;python-with-avro-doc&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;partition&quot;</span><span class="p">:</span><span class="mi">3</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;offset&quot;</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;timestamp&quot;</span><span class="p">:</span><span class="mi">1750547105187</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;timestampType&quot;</span><span class="p">:</span><span class="s2">&quot;CREATE_TIME&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;key&quot;</span><span class="p">:</span><span class="s2">&quot;MTIz&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;value&quot;</span><span class="p">:</span><span class="s2">&quot;AwBXT2qalUhN6oaj2CwEeaEWFFBvd2VydG9vbHMK&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;headers&quot;</span><span class="p">:[</span>
+
+<span class="w">            </span><span class="p">]</span>
+<span class="w">         </span><span class="p">}</span>
+<span class="w">      </span><span class="p">]</span>
+<span class="w">   </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></td></tr></table></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span>
+<span class="normal">8</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">syntax</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;proto3&quot;</span><span class="p">;</span>
+
+<span class="kn">package</span><span class="w"> </span><span class="nn">com</span><span class="o">.</span><span class="n">example</span><span class="p">;</span>
+
+<span class="kd">message</span><span class="w"> </span><span class="nc">User</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kt">string</span><span class="w"> </span><span class="na">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="w">  </span><span class="kt">int32</span><span class="w"> </span><span class="na">age</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></td></tr></table></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="p">{</span>
+<span class="w">   </span><span class="nt">&quot;eventSource&quot;</span><span class="p">:</span><span class="s2">&quot;aws:kafka&quot;</span><span class="p">,</span>
+<span class="w">   </span><span class="nt">&quot;eventSourceArn&quot;</span><span class="p">:</span><span class="s2">&quot;arn:aws:kafka:eu-west-3:992382490249:cluster/powertools-kafka-esm/f138df86-9253-4d2a-b682-19e132396d4f-s3&quot;</span><span class="p">,</span>
+<span class="w">   </span><span class="nt">&quot;bootstrapServers&quot;</span><span class="p">:</span><span class="s2">&quot;boot-z3majaui.c3.kafka-serverless.eu-west-3.amazonaws.com:9098&quot;</span><span class="p">,</span>
+<span class="w">   </span><span class="nt">&quot;records&quot;</span><span class="p">:{</span>
+<span class="w">      </span><span class="nt">&quot;python-with-avro-doc-5&quot;</span><span class="p">:[</span>
+<span class="w">         </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;topic&quot;</span><span class="p">:</span><span class="s2">&quot;python-with-avro-doc&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;partition&quot;</span><span class="p">:</span><span class="mi">5</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;offset&quot;</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;timestamp&quot;</span><span class="p">:</span><span class="mi">1750624373324</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;timestampType&quot;</span><span class="p">:</span><span class="s2">&quot;CREATE_TIME&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;key&quot;</span><span class="p">:</span><span class="s2">&quot;MTIz&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;value&quot;</span><span class="p">:</span><span class="s2">&quot;Cgpwb3dlcnRvb2xzEAU=&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;headers&quot;</span><span class="p">:[</span>
+
+<span class="w">            </span><span class="p">]</span>
+<span class="w">         </span><span class="p">}</span>
+<span class="w">      </span><span class="p">]</span>
+<span class="w">   </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></td></tr></table></div>
+</div>
+</div>
+</div>
 <h3 id="processing-kafka-events">Processing Kafka events<a class="headerlink" href="#processing-kafka-events" title="Permanent link">&para;</a></h3>
 <p>The Kafka consumer utility transforms raw Lambda Kafka events into an intuitive format for processing. To handle messages effectively, you'll need to configure a schema that matches your data format.</p>
 <details class="tip" open="open">
 <summary>Using Avro is recommended</summary>
 <p>We recommend Avro for production Kafka implementations due to its schema evolution capabilities, compact binary format, and integration with Schema Registry. This offers better type safety and forward/backward compatibility compared to JSON.</p>
 </details>
-<div class="tabbed-set tabbed-alternate" data-tabs="2:3"><input checked="checked" id="avro-messages" name="__tabbed_2" type="radio" /><input id="protocol-buffers" name="__tabbed_2" type="radio" /><input id="json-messages" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="avro-messages">Avro Messages</label><label for="protocol-buffers">Protocol Buffers</label><label for="json-messages">JSON Messages</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="4:3"><input checked="checked" id="avro-messages" name="__tabbed_4" type="radio" /><input id="protocol-buffers" name="__tabbed_4" type="radio" /><input id="json-messages" name="__tabbed_4" type="radio" /><div class="tabbed-labels"><label for="avro-messages">Avro Messages</label><label for="protocol-buffers">Protocol Buffers</label><label for="json-messages">JSON Messages</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">getting_started_with_avro.py</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
 <span class="normal"> 4</span>
@@ -4426,8 +4609,8 @@ pip<span class="w"> </span>install<span class="w"> </span><span class="s1">&#39;
 <span class="normal">32</span>
 <span class="normal">33</span>
 <span class="normal">34</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">aws_lambda_powertools</span><span class="w"> </span><span class="kn">import</span> <span class="n">Logger</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">aws_lambda_powertools.utilities.kafka</span><span class="w"> </span><span class="kn">import</span> <span class="n">ConsumerRecords</span><span class="p">,</span> <span class="n">SchemaConfig</span><span class="p">,</span> <span class="n">kafka_consumer</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">aws_lambda_powertools.utilities.typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">LambdaContext</span>
+<span class="hll"><span class="kn">from</span><span class="w"> </span><span class="nn">aws_lambda_powertools.utilities.kafka</span><span class="w"> </span><span class="kn">import</span> <span class="n">ConsumerRecords</span><span class="p">,</span> <span class="n">SchemaConfig</span><span class="p">,</span> <span class="n">kafka_consumer</span>
+</span><span class="kn">from</span><span class="w"> </span><span class="nn">aws_lambda_powertools.utilities.typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">LambdaContext</span>
 
 <span class="n">logger</span> <span class="o">=</span> <span class="n">Logger</span><span class="p">()</span>
 
@@ -4445,14 +4628,14 @@ pip<span class="w"> </span>install<span class="w"> </span><span class="s1">&#39;
 <span class="s2">&quot;&quot;&quot;</span>
 
 <span class="c1"># Configure schema</span>
-<span class="n">schema_config</span> <span class="o">=</span> <span class="n">SchemaConfig</span><span class="p">(</span>
-    <span class="n">value_schema_type</span><span class="o">=</span><span class="s2">&quot;AVRO&quot;</span><span class="p">,</span>
-    <span class="n">value_schema</span><span class="o">=</span><span class="n">avro_schema</span><span class="p">,</span>
-<span class="p">)</span>
+<span class="hll"><span class="n">schema_config</span> <span class="o">=</span> <span class="n">SchemaConfig</span><span class="p">(</span>
+</span><span class="hll">    <span class="n">value_schema_type</span><span class="o">=</span><span class="s2">&quot;AVRO&quot;</span><span class="p">,</span>
+</span><span class="hll">    <span class="n">value_schema</span><span class="o">=</span><span class="n">avro_schema</span><span class="p">,</span>
+</span><span class="hll"><span class="p">)</span>
+</span>
 
-
-<span class="nd">@kafka_consumer</span><span class="p">(</span><span class="n">schema_config</span><span class="o">=</span><span class="n">schema_config</span><span class="p">)</span>
-<span class="k">def</span><span class="w"> </span><span class="nf">lambda_handler</span><span class="p">(</span><span class="n">event</span><span class="p">:</span> <span class="n">ConsumerRecords</span><span class="p">,</span> <span class="n">context</span><span class="p">:</span> <span class="n">LambdaContext</span><span class="p">):</span>
+<span class="hll"><span class="nd">@kafka_consumer</span><span class="p">(</span><span class="n">schema_config</span><span class="o">=</span><span class="n">schema_config</span><span class="p">)</span>
+</span><span class="k">def</span><span class="w"> </span><span class="nf">lambda_handler</span><span class="p">(</span><span class="n">event</span><span class="p">:</span> <span class="n">ConsumerRecords</span><span class="p">,</span> <span class="n">context</span><span class="p">:</span> <span class="n">LambdaContext</span><span class="p">):</span>
     <span class="k">for</span> <span class="n">record</span> <span class="ow">in</span> <span class="n">event</span><span class="o">.</span><span class="n">records</span><span class="p">:</span>
         <span class="n">user</span> <span class="o">=</span> <span class="n">record</span><span class="o">.</span><span class="n">value</span>  <span class="c1"># Dictionary from avro message</span>
 
@@ -4462,7 +4645,7 @@ pip<span class="w"> </span>install<span class="w"> </span><span class="s1">&#39;
 </code></pre></div></td></tr></table></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">getting_started_with_protobuf.py</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
 <span class="normal"> 4</span>
@@ -4486,23 +4669,23 @@ pip<span class="w"> </span>install<span class="w"> </span><span class="s1">&#39;
 <span class="normal">22</span>
 <span class="normal">23</span>
 <span class="normal">24</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">aws_lambda_powertools</span><span class="w"> </span><span class="kn">import</span> <span class="n">Logger</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">aws_lambda_powertools.utilities.kafka</span><span class="w"> </span><span class="kn">import</span> <span class="n">ConsumerRecords</span><span class="p">,</span> <span class="n">SchemaConfig</span><span class="p">,</span> <span class="n">kafka_consumer</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">aws_lambda_powertools.utilities.typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">LambdaContext</span>
+<span class="hll"><span class="kn">from</span><span class="w"> </span><span class="nn">aws_lambda_powertools.utilities.kafka</span><span class="w"> </span><span class="kn">import</span> <span class="n">ConsumerRecords</span><span class="p">,</span> <span class="n">SchemaConfig</span><span class="p">,</span> <span class="n">kafka_consumer</span>
+</span><span class="kn">from</span><span class="w"> </span><span class="nn">aws_lambda_powertools.utilities.typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">LambdaContext</span>
 
 <span class="c1"># Import generated protobuf class</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">.user_pb2</span><span class="w"> </span><span class="kn">import</span> <span class="n">User</span>  <span class="c1"># type: ignore[import-not-found]</span>
-
+<span class="hll"><span class="kn">from</span><span class="w"> </span><span class="nn">.user_pb2</span><span class="w"> </span><span class="kn">import</span> <span class="n">User</span>  <span class="c1"># type: ignore[import-not-found]</span>
+</span>
 <span class="n">logger</span> <span class="o">=</span> <span class="n">Logger</span><span class="p">()</span>
 
 <span class="c1"># Configure schema for protobuf</span>
-<span class="n">schema_config</span> <span class="o">=</span> <span class="n">SchemaConfig</span><span class="p">(</span>
-    <span class="n">value_schema_type</span><span class="o">=</span><span class="s2">&quot;PROTOBUF&quot;</span><span class="p">,</span>
-    <span class="n">value_schema</span><span class="o">=</span><span class="n">User</span><span class="p">,</span>  <span class="c1"># The protobuf message class</span>
-<span class="p">)</span>
+<span class="hll"><span class="n">schema_config</span> <span class="o">=</span> <span class="n">SchemaConfig</span><span class="p">(</span>
+</span><span class="hll">    <span class="n">value_schema_type</span><span class="o">=</span><span class="s2">&quot;PROTOBUF&quot;</span><span class="p">,</span>
+</span><span class="hll">    <span class="n">value_schema</span><span class="o">=</span><span class="n">User</span><span class="p">,</span>  <span class="c1"># The protobuf message class</span>
+</span><span class="hll"><span class="p">)</span>
+</span>
 
-
-<span class="nd">@kafka_consumer</span><span class="p">(</span><span class="n">schema_config</span><span class="o">=</span><span class="n">schema_config</span><span class="p">)</span>
-<span class="k">def</span><span class="w"> </span><span class="nf">lambda_handler</span><span class="p">(</span><span class="n">event</span><span class="p">:</span> <span class="n">ConsumerRecords</span><span class="p">,</span> <span class="n">context</span><span class="p">:</span> <span class="n">LambdaContext</span><span class="p">):</span>
+<span class="hll"><span class="nd">@kafka_consumer</span><span class="p">(</span><span class="n">schema_config</span><span class="o">=</span><span class="n">schema_config</span><span class="p">)</span>
+</span><span class="k">def</span><span class="w"> </span><span class="nf">lambda_handler</span><span class="p">(</span><span class="n">event</span><span class="p">:</span> <span class="n">ConsumerRecords</span><span class="p">,</span> <span class="n">context</span><span class="p">:</span> <span class="n">LambdaContext</span><span class="p">):</span>
     <span class="k">for</span> <span class="n">record</span> <span class="ow">in</span> <span class="n">event</span><span class="o">.</span><span class="n">records</span><span class="p">:</span>
         <span class="n">user</span> <span class="o">=</span> <span class="n">record</span><span class="o">.</span><span class="n">value</span>  <span class="c1"># Dictionary from avro message</span>
 
@@ -4512,7 +4695,7 @@ pip<span class="w"> </span>install<span class="w"> </span><span class="s1">&#39;
 </code></pre></div></td></tr></table></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">getting_started_with_json.py</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
 <span class="normal"> 4</span>
@@ -4530,17 +4713,17 @@ pip<span class="w"> </span>install<span class="w"> </span><span class="s1">&#39;
 <span class="normal">16</span>
 <span class="normal">17</span>
 <span class="normal">18</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">aws_lambda_powertools</span><span class="w"> </span><span class="kn">import</span> <span class="n">Logger</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">aws_lambda_powertools.utilities.kafka</span><span class="w"> </span><span class="kn">import</span> <span class="n">ConsumerRecords</span><span class="p">,</span> <span class="n">SchemaConfig</span><span class="p">,</span> <span class="n">kafka_consumer</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">aws_lambda_powertools.utilities.typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">LambdaContext</span>
+<span class="hll"><span class="kn">from</span><span class="w"> </span><span class="nn">aws_lambda_powertools.utilities.kafka</span><span class="w"> </span><span class="kn">import</span> <span class="n">ConsumerRecords</span><span class="p">,</span> <span class="n">SchemaConfig</span><span class="p">,</span> <span class="n">kafka_consumer</span>
+</span><span class="kn">from</span><span class="w"> </span><span class="nn">aws_lambda_powertools.utilities.typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">LambdaContext</span>
 
 <span class="n">logger</span> <span class="o">=</span> <span class="n">Logger</span><span class="p">()</span>
 
 <span class="c1"># Configure schema</span>
-<span class="n">schema_config</span> <span class="o">=</span> <span class="n">SchemaConfig</span><span class="p">(</span><span class="n">value_schema_type</span><span class="o">=</span><span class="s2">&quot;JSON&quot;</span><span class="p">)</span>
+<span class="hll"><span class="n">schema_config</span> <span class="o">=</span> <span class="n">SchemaConfig</span><span class="p">(</span><span class="n">value_schema_type</span><span class="o">=</span><span class="s2">&quot;JSON&quot;</span><span class="p">)</span>
+</span>
 
-
-<span class="nd">@kafka_consumer</span><span class="p">(</span><span class="n">schema_config</span><span class="o">=</span><span class="n">schema_config</span><span class="p">)</span>
-<span class="k">def</span><span class="w"> </span><span class="nf">lambda_handler</span><span class="p">(</span><span class="n">event</span><span class="p">:</span> <span class="n">ConsumerRecords</span><span class="p">,</span> <span class="n">context</span><span class="p">:</span> <span class="n">LambdaContext</span><span class="p">):</span>
+<span class="hll"><span class="nd">@kafka_consumer</span><span class="p">(</span><span class="n">schema_config</span><span class="o">=</span><span class="n">schema_config</span><span class="p">)</span>
+</span><span class="k">def</span><span class="w"> </span><span class="nf">lambda_handler</span><span class="p">(</span><span class="n">event</span><span class="p">:</span> <span class="n">ConsumerRecords</span><span class="p">,</span> <span class="n">context</span><span class="p">:</span> <span class="n">LambdaContext</span><span class="p">):</span>
     <span class="k">for</span> <span class="n">record</span> <span class="ow">in</span> <span class="n">event</span><span class="o">.</span><span class="n">records</span><span class="p">:</span>
         <span class="n">user</span> <span class="o">=</span> <span class="n">record</span><span class="o">.</span><span class="n">value</span>  <span class="c1"># Dictionary from avro message</span>
 
@@ -4551,12 +4734,12 @@ pip<span class="w"> </span>install<span class="w"> </span><span class="s1">&#39;
 </div>
 </div>
 </div>
-<h3 id="deserializing-keys-and-values">Deserializing keys and values<a class="headerlink" href="#deserializing-keys-and-values" title="Permanent link">&para;</a></h3>
-<p>The <code>@kafka_consumer</code> decorator can deserialize both keys and values independently based on your schema configuration. This flexibility allows you to work with different data formats in the same message.</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="3:2"><input checked="checked" id="key-and-value-deserialization" name="__tabbed_3" type="radio" /><input id="value-only-deserialization" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="key-and-value-deserialization">Key and Value Deserialization</label><label for="value-only-deserialization">Value-Only Deserialization</label></div>
+<h3 id="deserializing-key-and-value">Deserializing key and value<a class="headerlink" href="#deserializing-key-and-value" title="Permanent link">&para;</a></h3>
+<p>The <code>@kafka_consumer</code> decorator can deserialize both key and value fields independently based on your schema configuration. This flexibility allows you to work with different data formats in the same message.</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="5:3"><input checked="checked" id="key-and-value-deserialization" name="__tabbed_5" type="radio" /><input id="key-only-deserialization" name="__tabbed_5" type="radio" /><input id="value-only-deserialization" name="__tabbed_5" type="radio" /><div class="tabbed-labels"><label for="key-and-value-deserialization">Key and Value Deserialization</label><label for="key-only-deserialization">Key-only Deserialization</label><label for="value-only-deserialization">Value-only Deserialization</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">working_with_key_and_value.py</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
 <span class="normal"> 4</span>
@@ -4605,8 +4788,8 @@ pip<span class="w"> </span>install<span class="w"> </span><span class="s1">&#39;
 <span class="normal">47</span>
 <span class="normal">48</span>
 <span class="normal">49</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">aws_lambda_powertools</span><span class="w"> </span><span class="kn">import</span> <span class="n">Logger</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">aws_lambda_powertools.utilities.kafka</span><span class="w"> </span><span class="kn">import</span> <span class="n">ConsumerRecords</span><span class="p">,</span> <span class="n">SchemaConfig</span><span class="p">,</span> <span class="n">kafka_consumer</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">aws_lambda_powertools.utilities.typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">LambdaContext</span>
+<span class="hll"><span class="kn">from</span><span class="w"> </span><span class="nn">aws_lambda_powertools.utilities.kafka</span><span class="w"> </span><span class="kn">import</span> <span class="n">ConsumerRecords</span><span class="p">,</span> <span class="n">SchemaConfig</span><span class="p">,</span> <span class="n">kafka_consumer</span>
+</span><span class="kn">from</span><span class="w"> </span><span class="nn">aws_lambda_powertools.utilities.typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">LambdaContext</span>
 
 <span class="n">logger</span> <span class="o">=</span> <span class="n">Logger</span><span class="p">()</span>
 
@@ -4616,7 +4799,7 @@ pip<span class="w"> </span>install<span class="w"> </span><span class="s1">&#39;
 <span class="s2">    &quot;type&quot;: &quot;record&quot;,</span>
 <span class="s2">    &quot;name&quot;: &quot;ProductKey&quot;,</span>
 <span class="s2">    &quot;fields&quot;: [</span>
-<span class="s2">        {&quot;name&quot;: &quot;product_id&quot;, &quot;type&quot;: &quot;string&quot;}</span>
+<span class="s2">        {&quot;name&quot;: &quot;region_name&quot;, &quot;type&quot;: &quot;string&quot;}</span>
 <span class="s2">    ]</span>
 <span class="s2">}</span>
 <span class="s2">&quot;&quot;&quot;</span>
@@ -4624,39 +4807,39 @@ pip<span class="w"> </span>install<span class="w"> </span><span class="s1">&#39;
 <span class="n">value_schema</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
 <span class="s2">{</span>
 <span class="s2">    &quot;type&quot;: &quot;record&quot;,</span>
-<span class="s2">    &quot;name&quot;: &quot;ProductInfo&quot;,</span>
+<span class="s2">    &quot;name&quot;: &quot;User&quot;,</span>
+<span class="s2">    &quot;namespace&quot;: &quot;com.example&quot;,</span>
 <span class="s2">    &quot;fields&quot;: [</span>
 <span class="s2">        {&quot;name&quot;: &quot;name&quot;, &quot;type&quot;: &quot;string&quot;},</span>
-<span class="s2">        {&quot;name&quot;: &quot;price&quot;, &quot;type&quot;: &quot;double&quot;},</span>
-<span class="s2">        {&quot;name&quot;: &quot;in_stock&quot;, &quot;type&quot;: &quot;boolean&quot;}</span>
+<span class="s2">        {&quot;name&quot;: &quot;age&quot;, &quot;type&quot;: &quot;int&quot;}</span>
 <span class="s2">    ]</span>
 <span class="s2">}</span>
 <span class="s2">&quot;&quot;&quot;</span>
 
 <span class="c1"># Configure both key and value schemas</span>
-<span class="n">schema_config</span> <span class="o">=</span> <span class="n">SchemaConfig</span><span class="p">(</span>
-    <span class="n">key_schema_type</span><span class="o">=</span><span class="s2">&quot;AVRO&quot;</span><span class="p">,</span>
-    <span class="n">key_schema</span><span class="o">=</span><span class="n">key_schema</span><span class="p">,</span>
-    <span class="n">value_schema_type</span><span class="o">=</span><span class="s2">&quot;AVRO&quot;</span><span class="p">,</span>
-    <span class="n">value_schema</span><span class="o">=</span><span class="n">value_schema</span><span class="p">,</span>
-<span class="p">)</span>
+<span class="hll"><span class="n">schema_config</span> <span class="o">=</span> <span class="n">SchemaConfig</span><span class="p">(</span>
+</span><span class="hll">    <span class="n">key_schema_type</span><span class="o">=</span><span class="s2">&quot;AVRO&quot;</span><span class="p">,</span>
+</span><span class="hll">    <span class="n">key_schema</span><span class="o">=</span><span class="n">key_schema</span><span class="p">,</span>
+</span><span class="hll">    <span class="n">value_schema_type</span><span class="o">=</span><span class="s2">&quot;AVRO&quot;</span><span class="p">,</span>
+</span><span class="hll">    <span class="n">value_schema</span><span class="o">=</span><span class="n">value_schema</span><span class="p">,</span>
+</span><span class="hll"><span class="p">)</span>
+</span>
 
-
-<span class="nd">@kafka_consumer</span><span class="p">(</span><span class="n">schema_config</span><span class="o">=</span><span class="n">schema_config</span><span class="p">)</span>
-<span class="k">def</span><span class="w"> </span><span class="nf">lambda_handler</span><span class="p">(</span><span class="n">event</span><span class="p">:</span> <span class="n">ConsumerRecords</span><span class="p">,</span> <span class="n">context</span><span class="p">:</span> <span class="n">LambdaContext</span><span class="p">):</span>
+<span class="hll"><span class="nd">@kafka_consumer</span><span class="p">(</span><span class="n">schema_config</span><span class="o">=</span><span class="n">schema_config</span><span class="p">)</span>
+</span><span class="k">def</span><span class="w"> </span><span class="nf">lambda_handler</span><span class="p">(</span><span class="n">event</span><span class="p">:</span> <span class="n">ConsumerRecords</span><span class="p">,</span> <span class="n">context</span><span class="p">:</span> <span class="n">LambdaContext</span><span class="p">):</span>
     <span class="k">for</span> <span class="n">record</span> <span class="ow">in</span> <span class="n">event</span><span class="o">.</span><span class="n">records</span><span class="p">:</span>
         <span class="c1"># Access both deserialized components</span>
         <span class="n">key</span> <span class="o">=</span> <span class="n">record</span><span class="o">.</span><span class="n">key</span>
         <span class="n">value</span> <span class="o">=</span> <span class="n">record</span><span class="o">.</span><span class="n">value</span>
 
-        <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Processing key: </span><span class="si">{</span><span class="n">key</span><span class="p">[</span><span class="s1">&#39;product_id&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Processing key: </span><span class="si">{</span><span class="n">key</span><span class="p">[</span><span class="s1">&#39;region_name&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
         <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Processing value: </span><span class="si">{</span><span class="n">value</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
     <span class="k">return</span> <span class="p">{</span><span class="s2">&quot;statusCode&quot;</span><span class="p">:</span> <span class="mi">200</span><span class="p">}</span>
 </code></pre></div></td></tr></table></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">working_with_value_only.py</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
 <span class="normal"> 4</span>
@@ -4677,26 +4860,120 @@ pip<span class="w"> </span>install<span class="w"> </span><span class="s1">&#39;
 <span class="normal">19</span>
 <span class="normal">20</span>
 <span class="normal">21</span>
-<span class="normal">22</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">aws_lambda_powertools</span><span class="w"> </span><span class="kn">import</span> <span class="n">Logger</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">aws_lambda_powertools.utilities.kafka</span><span class="w"> </span><span class="kn">import</span> <span class="n">ConsumerRecords</span><span class="p">,</span> <span class="n">SchemaConfig</span><span class="p">,</span> <span class="n">kafka_consumer</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">aws_lambda_powertools.utilities.typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">LambdaContext</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">aws_lambda_powertools</span><span class="w"> </span><span class="kn">import</span> <span class="n">Logger</span>
+<span class="hll"><span class="kn">from</span><span class="w"> </span><span class="nn">aws_lambda_powertools.utilities.kafka</span><span class="w"> </span><span class="kn">import</span> <span class="n">ConsumerRecords</span><span class="p">,</span> <span class="n">SchemaConfig</span><span class="p">,</span> <span class="n">kafka_consumer</span>
+</span><span class="kn">from</span><span class="w"> </span><span class="nn">aws_lambda_powertools.utilities.typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">LambdaContext</span>
 
 <span class="n">logger</span> <span class="o">=</span> <span class="n">Logger</span><span class="p">()</span>
 
-<span class="c1"># Configure only value schema</span>
-<span class="n">schema_config</span> <span class="o">=</span> <span class="n">SchemaConfig</span><span class="p">(</span><span class="n">value_schema_type</span><span class="o">=</span><span class="s2">&quot;JSON&quot;</span><span class="p">)</span>
+<span class="c1"># Define schemas for key</span>
+<span class="n">key_schema</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">{</span>
+<span class="s2">    &quot;type&quot;: &quot;record&quot;,</span>
+<span class="s2">    &quot;name&quot;: &quot;ProductKey&quot;,</span>
+<span class="s2">    &quot;fields&quot;: [</span>
+<span class="s2">        {&quot;name&quot;: &quot;region_name&quot;, &quot;type&quot;: &quot;string&quot;}</span>
+<span class="s2">    ]</span>
+<span class="s2">}</span>
+<span class="s2">&quot;&quot;&quot;</span>
 
+<span class="c1"># Configure key schema</span>
+<span class="hll"><span class="n">schema_config</span> <span class="o">=</span> <span class="n">SchemaConfig</span><span class="p">(</span>
+</span><span class="hll">    <span class="n">key_schema_type</span><span class="o">=</span><span class="s2">&quot;AVRO&quot;</span><span class="p">,</span>
+</span><span class="hll">    <span class="n">key_schema</span><span class="o">=</span><span class="n">key_schema</span><span class="p">,</span>
+</span><span class="hll"><span class="p">)</span>
+</span>
 
-<span class="nd">@kafka_consumer</span><span class="p">(</span><span class="n">schema_config</span><span class="o">=</span><span class="n">schema_config</span><span class="p">)</span>
-<span class="k">def</span><span class="w"> </span><span class="nf">lambda_handler</span><span class="p">(</span><span class="n">event</span><span class="p">:</span> <span class="n">ConsumerRecords</span><span class="p">,</span> <span class="n">context</span><span class="p">:</span> <span class="n">LambdaContext</span><span class="p">):</span>
+<span class="hll"><span class="nd">@kafka_consumer</span><span class="p">(</span><span class="n">schema_config</span><span class="o">=</span><span class="n">schema_config</span><span class="p">)</span>
+</span><span class="k">def</span><span class="w"> </span><span class="nf">lambda_handler</span><span class="p">(</span><span class="n">event</span><span class="p">:</span> <span class="n">ConsumerRecords</span><span class="p">,</span> <span class="n">context</span><span class="p">:</span> <span class="n">LambdaContext</span><span class="p">):</span>
     <span class="k">for</span> <span class="n">record</span> <span class="ow">in</span> <span class="n">event</span><span class="o">.</span><span class="n">records</span><span class="p">:</span>
-        <span class="c1"># Key remains as string (if present)</span>
-        <span class="k">if</span> <span class="n">record</span><span class="o">.</span><span class="n">key</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-            <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Message key: </span><span class="si">{</span><span class="n">record</span><span class="o">.</span><span class="n">key</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="c1"># Access deserialized key</span>
+        <span class="n">key</span> <span class="o">=</span> <span class="n">record</span><span class="o">.</span><span class="n">key</span>
 
-        <span class="c1"># Value is deserialized as JSON</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Processing key: </span><span class="si">{</span><span class="n">key</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="p">{</span><span class="s2">&quot;statusCode&quot;</span><span class="p">:</span> <span class="mi">200</span><span class="p">}</span>
+</code></pre></div></td></tr></table></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span>
+<span class="normal">35</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">aws_lambda_powertools</span><span class="w"> </span><span class="kn">import</span> <span class="n">Logger</span>
+<span class="hll"><span class="kn">from</span><span class="w"> </span><span class="nn">aws_lambda_powertools.utilities.kafka</span><span class="w"> </span><span class="kn">import</span> <span class="n">ConsumerRecords</span><span class="p">,</span> <span class="n">SchemaConfig</span><span class="p">,</span> <span class="n">kafka_consumer</span>
+</span><span class="kn">from</span><span class="w"> </span><span class="nn">aws_lambda_powertools.utilities.typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">LambdaContext</span>
+
+<span class="n">logger</span> <span class="o">=</span> <span class="n">Logger</span><span class="p">()</span>
+
+<span class="c1"># Define schemas for value</span>
+<span class="n">value_schema</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">{</span>
+<span class="s2">    &quot;type&quot;: &quot;record&quot;,</span>
+<span class="s2">    &quot;name&quot;: &quot;User&quot;,</span>
+<span class="s2">    &quot;namespace&quot;: &quot;com.example&quot;,</span>
+<span class="s2">    &quot;fields&quot;: [</span>
+<span class="s2">        {&quot;name&quot;: &quot;name&quot;, &quot;type&quot;: &quot;string&quot;},</span>
+<span class="s2">        {&quot;name&quot;: &quot;age&quot;, &quot;type&quot;: &quot;int&quot;}</span>
+<span class="s2">    ]</span>
+<span class="s2">}</span>
+<span class="s2">&quot;&quot;&quot;</span>
+
+<span class="c1"># Configure value schema</span>
+<span class="hll"><span class="n">schema_config</span> <span class="o">=</span> <span class="n">SchemaConfig</span><span class="p">(</span>
+</span><span class="hll">    <span class="n">value_schema_type</span><span class="o">=</span><span class="s2">&quot;AVRO&quot;</span><span class="p">,</span>
+</span><span class="hll">    <span class="n">value_schema</span><span class="o">=</span><span class="n">value_schema</span><span class="p">,</span>
+</span><span class="hll"><span class="p">)</span>
+</span>
+
+<span class="hll"><span class="nd">@kafka_consumer</span><span class="p">(</span><span class="n">schema_config</span><span class="o">=</span><span class="n">schema_config</span><span class="p">)</span>
+</span><span class="k">def</span><span class="w"> </span><span class="nf">lambda_handler</span><span class="p">(</span><span class="n">event</span><span class="p">:</span> <span class="n">ConsumerRecords</span><span class="p">,</span> <span class="n">context</span><span class="p">:</span> <span class="n">LambdaContext</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">record</span> <span class="ow">in</span> <span class="n">event</span><span class="o">.</span><span class="n">records</span><span class="p">:</span>
+        <span class="c1"># Access deserialized value</span>
         <span class="n">value</span> <span class="o">=</span> <span class="n">record</span><span class="o">.</span><span class="n">value</span>
-        <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Order #</span><span class="si">{</span><span class="n">value</span><span class="p">[</span><span class="s1">&#39;order_id&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2"> - Total: $</span><span class="si">{</span><span class="n">value</span><span class="p">[</span><span class="s1">&#39;total&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+        <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Processing value: </span><span class="si">{</span><span class="n">value</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
     <span class="k">return</span> <span class="p">{</span><span class="s2">&quot;statusCode&quot;</span><span class="p">:</span> <span class="mi">200</span><span class="p">}</span>
 </code></pre></div></td></tr></table></div>
@@ -4709,10 +4986,10 @@ pip<span class="w"> </span>install<span class="w"> </span><span class="s1">&#39;
 <summary>Common pattern: Keys with primitive values</summary>
 <p>Using primitive types (strings, integers) as Kafka message keys is a common pattern for partitioning and identifying messages. Powertools automatically handles these primitive keys without requiring special configuration, making it easy to implement this popular design pattern.</p>
 </details>
-<div class="tabbed-set tabbed-alternate" data-tabs="4:2"><input checked="checked" id="primitive-key" name="__tabbed_4" type="radio" /><input id="primitive-key-and-value" name="__tabbed_4" type="radio" /><div class="tabbed-labels"><label for="primitive-key">Primitive key</label><label for="primitive-key-and-value">Primitive key and value</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="6:2"><input checked="checked" id="primitive-key" name="__tabbed_6" type="radio" /><input id="primitive-key-and-value" name="__tabbed_6" type="radio" /><div class="tabbed-labels"><label for="primitive-key">Primitive key</label><label for="primitive-key-and-value">Primitive key and value</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">working_with_primitive_key.py</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
 <span class="normal"> 4</span>
@@ -4735,17 +5012,17 @@ pip<span class="w"> </span>install<span class="w"> </span><span class="s1">&#39;
 <span class="normal">21</span>
 <span class="normal">22</span>
 <span class="normal">23</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">aws_lambda_powertools</span><span class="w"> </span><span class="kn">import</span> <span class="n">Logger</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">aws_lambda_powertools.utilities.kafka</span><span class="w"> </span><span class="kn">import</span> <span class="n">ConsumerRecords</span><span class="p">,</span> <span class="n">SchemaConfig</span><span class="p">,</span> <span class="n">kafka_consumer</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">aws_lambda_powertools.utilities.typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">LambdaContext</span>
+<span class="hll"><span class="kn">from</span><span class="w"> </span><span class="nn">aws_lambda_powertools.utilities.kafka</span><span class="w"> </span><span class="kn">import</span> <span class="n">ConsumerRecords</span><span class="p">,</span> <span class="n">SchemaConfig</span><span class="p">,</span> <span class="n">kafka_consumer</span>
+</span><span class="kn">from</span><span class="w"> </span><span class="nn">aws_lambda_powertools.utilities.typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">LambdaContext</span>
 
 <span class="n">logger</span> <span class="o">=</span> <span class="n">Logger</span><span class="p">()</span>
 
 <span class="c1"># Only configure value schema</span>
-<span class="n">schema_config</span> <span class="o">=</span> <span class="n">SchemaConfig</span><span class="p">(</span><span class="n">value_schema_type</span><span class="o">=</span><span class="s2">&quot;JSON&quot;</span><span class="p">)</span>
+<span class="hll"><span class="n">schema_config</span> <span class="o">=</span> <span class="n">SchemaConfig</span><span class="p">(</span><span class="n">value_schema_type</span><span class="o">=</span><span class="s2">&quot;JSON&quot;</span><span class="p">)</span>
+</span>
 
-
-<span class="nd">@kafka_consumer</span><span class="p">(</span><span class="n">schema_config</span><span class="o">=</span><span class="n">schema_config</span><span class="p">)</span>
-<span class="k">def</span><span class="w"> </span><span class="nf">lambda_handler</span><span class="p">(</span><span class="n">event</span><span class="p">:</span> <span class="n">ConsumerRecords</span><span class="p">,</span> <span class="n">context</span><span class="p">:</span> <span class="n">LambdaContext</span><span class="p">):</span>
+<span class="hll"><span class="nd">@kafka_consumer</span><span class="p">(</span><span class="n">schema_config</span><span class="o">=</span><span class="n">schema_config</span><span class="p">)</span>
+</span><span class="k">def</span><span class="w"> </span><span class="nf">lambda_handler</span><span class="p">(</span><span class="n">event</span><span class="p">:</span> <span class="n">ConsumerRecords</span><span class="p">,</span> <span class="n">context</span><span class="p">:</span> <span class="n">LambdaContext</span><span class="p">):</span>
     <span class="k">for</span> <span class="n">record</span> <span class="ow">in</span> <span class="n">event</span><span class="o">.</span><span class="n">records</span><span class="p">:</span>
         <span class="c1"># Key is automatically decoded as UTF-8 string</span>
         <span class="n">key</span> <span class="o">=</span> <span class="n">record</span><span class="o">.</span><span class="n">key</span>
@@ -4760,7 +5037,7 @@ pip<span class="w"> </span>install<span class="w"> </span><span class="s1">&#39;
 </code></pre></div></td></tr></table></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">working_with_primitive_key_and_value.py</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
 <span class="normal"> 4</span>
@@ -4780,14 +5057,14 @@ pip<span class="w"> </span>install<span class="w"> </span><span class="s1">&#39;
 <span class="normal">18</span>
 <span class="normal">19</span>
 <span class="normal">20</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">aws_lambda_powertools</span><span class="w"> </span><span class="kn">import</span> <span class="n">Logger</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">aws_lambda_powertools.utilities.kafka</span><span class="w"> </span><span class="kn">import</span> <span class="n">ConsumerRecords</span><span class="p">,</span> <span class="n">kafka_consumer</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">aws_lambda_powertools.utilities.typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">LambdaContext</span>
+<span class="hll"><span class="kn">from</span><span class="w"> </span><span class="nn">aws_lambda_powertools.utilities.kafka</span><span class="w"> </span><span class="kn">import</span> <span class="n">ConsumerRecords</span><span class="p">,</span> <span class="n">kafka_consumer</span>
+</span><span class="kn">from</span><span class="w"> </span><span class="nn">aws_lambda_powertools.utilities.typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">LambdaContext</span>
 
 <span class="n">logger</span> <span class="o">=</span> <span class="n">Logger</span><span class="p">()</span>
 
 
-<span class="nd">@kafka_consumer</span>
-<span class="k">def</span><span class="w"> </span><span class="nf">lambda_handler</span><span class="p">(</span><span class="n">event</span><span class="p">:</span> <span class="n">ConsumerRecords</span><span class="p">,</span> <span class="n">context</span><span class="p">:</span> <span class="n">LambdaContext</span><span class="p">):</span>
+<span class="hll"><span class="nd">@kafka_consumer</span>
+</span><span class="k">def</span><span class="w"> </span><span class="nf">lambda_handler</span><span class="p">(</span><span class="n">event</span><span class="p">:</span> <span class="n">ConsumerRecords</span><span class="p">,</span> <span class="n">context</span><span class="p">:</span> <span class="n">LambdaContext</span><span class="p">):</span>
     <span class="k">for</span> <span class="n">record</span> <span class="ow">in</span> <span class="n">event</span><span class="o">.</span><span class="n">records</span><span class="p">:</span>
         <span class="c1"># Key is automatically decoded as UTF-8 string</span>
         <span class="n">key</span> <span class="o">=</span> <span class="n">record</span><span class="o">.</span><span class="n">key</span>
@@ -4809,7 +5086,7 @@ pip<span class="w"> </span>install<span class="w"> </span><span class="s1">&#39;
 <summary>Selecting the right format</summary>
 <p>For new applications, consider Avro or Protocol Buffers over JSON. Both provide schema validation, evolution support, and significantly better performance with smaller message sizes. Avro is particularly well-suited for Kafka due to its built-in schema evolution capabilities.</p>
 </details>
-<div class="tabbed-set tabbed-alternate" data-tabs="5:2"><input checked="checked" id="supported-formats" name="__tabbed_5" type="radio" /><input id="format-comparison" name="__tabbed_5" type="radio" /><div class="tabbed-labels"><label for="supported-formats">Supported Formats</label><label for="format-comparison">Format Comparison</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="7:2"><input checked="checked" id="supported-formats" name="__tabbed_7" type="radio" /><input id="format-comparison" name="__tabbed_7" type="radio" /><div class="tabbed-labels"><label for="supported-formats">Supported Formats</label><label for="format-comparison">Format Comparison</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <table>
@@ -4910,7 +5187,7 @@ pip<span class="w"> </span>install<span class="w"> </span><span class="s1">&#39;
 <h2 id="advanced">Advanced<a class="headerlink" href="#advanced" title="Permanent link">&para;</a></h2>
 <h3 id="accessing-record-metadata">Accessing record metadata<a class="headerlink" href="#accessing-record-metadata" title="Permanent link">&para;</a></h3>
 <p>Each Kafka record contains important metadata that you can access alongside the deserialized message content. This metadata helps with message processing, troubleshooting, and implementing advanced patterns like exactly-once processing.</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="6:1"><input checked="checked" id="working-with-record-metadata" name="__tabbed_6" type="radio" /><div class="tabbed-labels"><label for="working-with-record-metadata">Working with Record Metadata</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="8:1"><input checked="checked" id="accessing-record-metadata_1" name="__tabbed_8" type="radio" /><div class="tabbed-labels"><label for="accessing-record-metadata_1">Accessing record metadata</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
@@ -4956,50 +5233,48 @@ pip<span class="w"> </span>install<span class="w"> </span><span class="s1">&#39;
 <span class="normal">41</span>
 <span class="normal">42</span>
 <span class="normal">43</span>
-<span class="normal">44</span>
-<span class="normal">45</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">aws_lambda_powertools.utilities.kafka</span><span class="w"> </span><span class="kn">import</span> <span class="n">kafka_consumer</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">aws_lambda_powertools.utilities.kafka.consumer_records</span><span class="w"> </span><span class="kn">import</span> <span class="n">ConsumerRecords</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">aws_lambda_powertools.utilities.kafka.schema_config</span><span class="w"> </span><span class="kn">import</span> <span class="n">SchemaConfig</span>
+<span class="normal">44</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">aws_lambda_powertools</span><span class="w"> </span><span class="kn">import</span> <span class="n">Logger</span>
+<span class="hll"><span class="kn">from</span><span class="w"> </span><span class="nn">aws_lambda_powertools.utilities.kafka</span><span class="w"> </span><span class="kn">import</span> <span class="n">ConsumerRecords</span><span class="p">,</span> <span class="n">SchemaConfig</span><span class="p">,</span> <span class="n">kafka_consumer</span>
+</span><span class="kn">from</span><span class="w"> </span><span class="nn">aws_lambda_powertools.utilities.typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">LambdaContext</span>
+
+<span class="n">logger</span> <span class="o">=</span> <span class="n">Logger</span><span class="p">()</span>
 
 <span class="c1"># Define Avro schema</span>
 <span class="n">avro_schema</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
 <span class="s2">{</span>
 <span class="s2">    &quot;type&quot;: &quot;record&quot;,</span>
-<span class="s2">    &quot;name&quot;: &quot;Customer&quot;,</span>
+<span class="s2">    &quot;name&quot;: &quot;User&quot;,</span>
+<span class="s2">    &quot;namespace&quot;: &quot;com.example&quot;,</span>
 <span class="s2">    &quot;fields&quot;: [</span>
-<span class="s2">        {&quot;name&quot;: &quot;customer_id&quot;, &quot;type&quot;: &quot;string&quot;},</span>
 <span class="s2">        {&quot;name&quot;: &quot;name&quot;, &quot;type&quot;: &quot;string&quot;},</span>
-<span class="s2">        {&quot;name&quot;: &quot;email&quot;, &quot;type&quot;: &quot;string&quot;},</span>
-<span class="s2">        {&quot;name&quot;: &quot;order_total&quot;, &quot;type&quot;: &quot;double&quot;}</span>
+<span class="s2">        {&quot;name&quot;: &quot;age&quot;, &quot;type&quot;: &quot;int&quot;}</span>
 <span class="s2">    ]</span>
 <span class="s2">}</span>
 <span class="s2">&quot;&quot;&quot;</span>
 
 <span class="n">schema_config</span> <span class="o">=</span> <span class="n">SchemaConfig</span><span class="p">(</span>
     <span class="n">value_schema_type</span><span class="o">=</span><span class="s2">&quot;AVRO&quot;</span><span class="p">,</span>
-    <span class="n">value_schema</span><span class="o">=</span><span class="n">avro_schema</span>
+    <span class="n">value_schema</span><span class="o">=</span><span class="n">avro_schema</span><span class="p">,</span>
 <span class="p">)</span>
 
+
 <span class="nd">@kafka_consumer</span><span class="p">(</span><span class="n">schema_config</span><span class="o">=</span><span class="n">schema_config</span><span class="p">)</span>
-<span class="k">def</span><span class="w"> </span><span class="nf">lambda_handler</span><span class="p">(</span><span class="n">event</span><span class="p">:</span> <span class="n">ConsumerRecords</span><span class="p">,</span> <span class="n">context</span><span class="p">):</span>
-    <span class="k">for</span> <span class="n">record</span> <span class="ow">in</span> <span class="n">event</span><span class="o">.</span><span class="n">records</span><span class="p">:</span>
+<span class="hll"><span class="k">def</span><span class="w"> </span><span class="nf">lambda_handler</span><span class="p">(</span><span class="n">event</span><span class="p">:</span> <span class="n">ConsumerRecords</span><span class="p">,</span> <span class="n">context</span><span class="p">:</span> <span class="n">LambdaContext</span><span class="p">):</span>
+</span>    <span class="k">for</span> <span class="n">record</span> <span class="ow">in</span> <span class="n">event</span><span class="o">.</span><span class="n">records</span><span class="p">:</span>
         <span class="c1"># Log record coordinates for tracing</span>
-        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Processing message from topic &#39;</span><span class="si">{</span><span class="n">record</span><span class="o">.</span><span class="n">topic</span><span class="si">}</span><span class="s2">&#39;&quot;</span><span class="p">)</span>
-        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  Partition: </span><span class="si">{</span><span class="n">record</span><span class="o">.</span><span class="n">partition</span><span class="si">}</span><span class="s2">, Offset: </span><span class="si">{</span><span class="n">record</span><span class="o">.</span><span class="n">offset</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  Produced at: </span><span class="si">{</span><span class="n">record</span><span class="o">.</span><span class="n">timestamp</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="hll">        <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Processing message from topic &#39;</span><span class="si">{</span><span class="n">record</span><span class="o">.</span><span class="n">topic</span><span class="si">}</span><span class="s2">&#39;&quot;</span><span class="p">)</span>
+</span>        <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Partition: </span><span class="si">{</span><span class="n">record</span><span class="o">.</span><span class="n">partition</span><span class="si">}</span><span class="s2">, Offset: </span><span class="si">{</span><span class="n">record</span><span class="o">.</span><span class="n">offset</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Produced at: </span><span class="si">{</span><span class="n">record</span><span class="o">.</span><span class="n">timestamp</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
         <span class="c1"># Process message headers</span>
-        <span class="k">if</span> <span class="n">record</span><span class="o">.</span><span class="n">headers</span><span class="p">:</span>
-            <span class="k">for</span> <span class="n">header</span> <span class="ow">in</span> <span class="n">record</span><span class="o">.</span><span class="n">headers</span><span class="p">:</span>
-                <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  Header: </span><span class="si">{</span><span class="n">header</span><span class="p">[</span><span class="s1">&#39;key&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2"> = </span><span class="si">{</span><span class="n">header</span><span class="p">[</span><span class="s1">&#39;value&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Headers: </span><span class="si">{</span><span class="n">record</span><span class="o">.</span><span class="n">headers</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
         <span class="c1"># Access the Avro deserialized message content</span>
-        <span class="n">customer</span> <span class="o">=</span> <span class="n">record</span><span class="o">.</span><span class="n">value</span>
-        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Processing order for: </span><span class="si">{</span><span class="n">customer</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Order total: $</span><span class="si">{</span><span class="n">customer</span><span class="p">[</span><span class="s1">&#39;order_total&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="n">value</span> <span class="o">=</span> <span class="n">record</span><span class="o">.</span><span class="n">value</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Deserialized value: </span><span class="si">{</span><span class="n">value</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
         <span class="c1"># For debugging, you can access the original raw data</span>
-        <span class="c1"># print(f&quot;Raw message: {record.raw_value}&quot;)</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Raw message: </span><span class="si">{</span><span class="n">record</span><span class="o">.</span><span class="n">original_value</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
     <span class="k">return</span> <span class="p">{</span><span class="s2">&quot;statusCode&quot;</span><span class="p">:</span> <span class="mi">200</span><span class="p">}</span>
 </code></pre></div></td></tr></table></div>
@@ -5066,6 +5341,16 @@ pip<span class="w"> </span>install<span class="w"> </span><span class="s1">&#39;
 <td>Base64-encoded original message key</td>
 <td>Debugging or custom deserialization</td>
 </tr>
+<tr>
+<td><code>value_schema_metadata</code></td>
+<td>Metadata about the value schema like <code>schemaId</code> and <code>dataFormat</code></td>
+<td>Data format and schemaId propagated when integrating with Schema Registry</td>
+</tr>
+<tr>
+<td><code>key_schema_metadata</code></td>
+<td>Metadata about the key schema like <code>schemaId</code> and <code>dataFormat</code></td>
+<td>Data format and schemaId propagated when integrating with Schema Registry</td>
+</tr>
 </tbody>
 </table>
 <h3 id="custom-output-serializers">Custom output serializers<a class="headerlink" href="#custom-output-serializers" title="Permanent link">&para;</a></h3>
@@ -5075,10 +5360,10 @@ pip<span class="w"> </span>install<span class="w"> </span><span class="s1">&#39;
 <ul>
 <li><strong>Pydantic models</strong> offer robust data validation at runtime and excellent IDE support</li>
 <li><strong>Dataclasses</strong> provide lightweight type hints with better performance than Pydantic</li>
-<li><strong>Custom classes</strong> give complete flexibility for complex transformations and business logic</li>
+<li><strong>Custom functions</strong> give complete flexibility for complex transformations and business logic</li>
 </ul>
 </details>
-<div class="tabbed-set tabbed-alternate" data-tabs="7:3"><input checked="checked" id="pydantic-models" name="__tabbed_7" type="radio" /><input id="python-dataclasses" name="__tabbed_7" type="radio" /><input id="custom-class" name="__tabbed_7" type="radio" /><div class="tabbed-labels"><label for="pydantic-models">Pydantic Models</label><label for="python-dataclasses">Python Dataclasses</label><label for="custom-class">Custom Class</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="9:3"><input checked="checked" id="pydantic-models" name="__tabbed_9" type="radio" /><input id="dataclasses" name="__tabbed_9" type="radio" /><input id="custom-function" name="__tabbed_9" type="radio" /><div class="tabbed-labels"><label for="pydantic-models">Pydantic models</label><label for="dataclasses">Dataclasses</label><label for="custom-function">Custom function</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
@@ -5109,41 +5394,33 @@ pip<span class="w"> </span>install<span class="w"> </span><span class="s1">&#39;
 <span class="normal">26</span>
 <span class="normal">27</span>
 <span class="normal">28</span>
-<span class="normal">29</span>
-<span class="normal">30</span>
-<span class="normal">31</span>
-<span class="normal">32</span>
-<span class="normal">33</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">pydantic</span><span class="w"> </span><span class="kn">import</span> <span class="n">BaseModel</span><span class="p">,</span> <span class="n">Field</span><span class="p">,</span> <span class="n">EmailStr</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">aws_lambda_powertools.utilities.kafka</span><span class="w"> </span><span class="kn">import</span> <span class="n">kafka_consumer</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">aws_lambda_powertools.utilities.kafka.schema_config</span><span class="w"> </span><span class="kn">import</span> <span class="n">SchemaConfig</span>
+<span class="normal">29</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="hll"><span class="kn">from</span><span class="w"> </span><span class="nn">pydantic</span><span class="w"> </span><span class="kn">import</span> <span class="n">BaseModel</span>
+</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">aws_lambda_powertools</span><span class="w"> </span><span class="kn">import</span> <span class="n">Logger</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">aws_lambda_powertools.utilities.kafka</span><span class="w"> </span><span class="kn">import</span> <span class="n">ConsumerRecords</span><span class="p">,</span> <span class="n">SchemaConfig</span><span class="p">,</span> <span class="n">kafka_consumer</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">aws_lambda_powertools.utilities.typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">LambdaContext</span>
 
-<span class="c1"># Define Pydantic model for strong validation</span>
-<span class="k">class</span><span class="w"> </span><span class="nc">Customer</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>
-    <span class="nb">id</span><span class="p">:</span> <span class="nb">str</span>
-    <span class="n">name</span><span class="p">:</span> <span class="nb">str</span>
-    <span class="n">email</span><span class="p">:</span> <span class="n">EmailStr</span>
-    <span class="n">tier</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="n">Field</span><span class="p">(</span><span class="n">pattern</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;^(standard|premium|enterprise)$&#39;</span><span class="p">)</span>
-    <span class="n">loyalty_points</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="n">Field</span><span class="p">(</span><span class="n">ge</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">logger</span> <span class="o">=</span> <span class="n">Logger</span><span class="p">()</span>
 
-    <span class="k">def</span><span class="w"> </span><span class="nf">is_premium</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">tier</span> <span class="ow">in</span> <span class="p">(</span><span class="s2">&quot;premium&quot;</span><span class="p">,</span> <span class="s2">&quot;enterprise&quot;</span><span class="p">)</span>
+
+<span class="hll"><span class="c1"># Define Pydantic model for strong validation</span>
+</span><span class="hll"><span class="k">class</span><span class="w"> </span><span class="nc">User</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>
+</span><span class="hll">    <span class="n">name</span><span class="p">:</span> <span class="nb">str</span>
+</span><span class="hll">    <span class="n">age</span><span class="p">:</span> <span class="nb">int</span>
+</span>
 
 <span class="c1"># Configure with Avro schema and Pydantic output</span>
-<span class="n">schema_config</span> <span class="o">=</span> <span class="n">SchemaConfig</span><span class="p">(</span>
-    <span class="n">value_schema_type</span><span class="o">=</span><span class="s2">&quot;JSON&quot;</span><span class="p">,</span>
-    <span class="n">value_output_serializer</span><span class="o">=</span><span class="n">Customer</span>
-<span class="p">)</span>
+<span class="hll"><span class="n">schema_config</span> <span class="o">=</span> <span class="n">SchemaConfig</span><span class="p">(</span><span class="n">value_schema_type</span><span class="o">=</span><span class="s2">&quot;JSON&quot;</span><span class="p">,</span> <span class="n">value_output_serializer</span><span class="o">=</span><span class="n">User</span><span class="p">)</span>
+</span>
 
 <span class="nd">@kafka_consumer</span><span class="p">(</span><span class="n">schema_config</span><span class="o">=</span><span class="n">schema_config</span><span class="p">)</span>
-<span class="k">def</span><span class="w"> </span><span class="nf">lambda_handler</span><span class="p">(</span><span class="n">event</span><span class="p">,</span> <span class="n">context</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">lambda_handler</span><span class="p">(</span><span class="n">event</span><span class="p">:</span> <span class="n">ConsumerRecords</span><span class="p">,</span> <span class="n">context</span><span class="p">:</span> <span class="n">LambdaContext</span><span class="p">):</span>
     <span class="k">for</span> <span class="n">record</span> <span class="ow">in</span> <span class="n">event</span><span class="o">.</span><span class="n">records</span><span class="p">:</span>
-        <span class="c1"># record.value is now a validated Customer instance</span>
-        <span class="n">customer</span> <span class="o">=</span> <span class="n">record</span><span class="o">.</span><span class="n">value</span>
-
-        <span class="c1"># Access model properties and methods</span>
-        <span class="k">if</span> <span class="n">customer</span><span class="o">.</span><span class="n">is_premium</span><span class="p">():</span>
-            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Processing premium customer: </span><span class="si">{</span><span class="n">customer</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-            <span class="n">apply_premium_benefits</span><span class="p">(</span><span class="n">customer</span><span class="p">)</span>
+        <span class="c1"># record.value is now a User instance</span>
+<span class="hll">        <span class="n">value</span><span class="p">:</span> <span class="n">User</span> <span class="o">=</span> <span class="n">record</span><span class="o">.</span><span class="n">value</span>
+</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Name: &#39;</span><span class="si">{</span><span class="n">value</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2">&#39;&quot;</span><span class="p">)</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Age: &#39;</span><span class="si">{</span><span class="n">value</span><span class="o">.</span><span class="n">age</span><span class="si">}</span><span class="s2">&#39;&quot;</span><span class="p">)</span>
 
     <span class="k">return</span> <span class="p">{</span><span class="s2">&quot;statusCode&quot;</span><span class="p">:</span> <span class="mi">200</span><span class="p">}</span>
 </code></pre></div></td></tr></table></div>
@@ -5178,76 +5455,34 @@ pip<span class="w"> </span>install<span class="w"> </span><span class="s1">&#39;
 <span class="normal">27</span>
 <span class="normal">28</span>
 <span class="normal">29</span>
-<span class="normal">30</span>
-<span class="normal">31</span>
-<span class="normal">32</span>
-<span class="normal">33</span>
-<span class="normal">34</span>
-<span class="normal">35</span>
-<span class="normal">36</span>
-<span class="normal">37</span>
-<span class="normal">38</span>
-<span class="normal">39</span>
-<span class="normal">40</span>
-<span class="normal">41</span>
-<span class="normal">42</span>
-<span class="normal">43</span>
-<span class="normal">44</span>
-<span class="normal">45</span>
-<span class="normal">46</span>
-<span class="normal">47</span>
-<span class="normal">48</span>
-<span class="normal">49</span>
-<span class="normal">50</span>
-<span class="normal">51</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">dataclasses</span><span class="w"> </span><span class="kn">import</span> <span class="n">dataclass</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">datetime</span><span class="w"> </span><span class="kn">import</span> <span class="n">datetime</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">List</span><span class="p">,</span> <span class="n">Optional</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">aws_lambda_powertools.utilities.kafka</span><span class="w"> </span><span class="kn">import</span> <span class="n">kafka_consumer</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">aws_lambda_powertools.utilities.kafka.schema_config</span><span class="w"> </span><span class="kn">import</span> <span class="n">SchemaConfig</span>
+<span class="normal">30</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="hll"><span class="kn">from</span><span class="w"> </span><span class="nn">dataclasses</span><span class="w"> </span><span class="kn">import</span> <span class="n">dataclass</span>
+</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">aws_lambda_powertools</span><span class="w"> </span><span class="kn">import</span> <span class="n">Logger</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">aws_lambda_powertools.utilities.kafka</span><span class="w"> </span><span class="kn">import</span> <span class="n">ConsumerRecords</span><span class="p">,</span> <span class="n">SchemaConfig</span><span class="p">,</span> <span class="n">kafka_consumer</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">aws_lambda_powertools.utilities.typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">LambdaContext</span>
 
-<span class="c1"># Define dataclasses for type hints and structure</span>
-<span class="nd">@dataclass</span>
-<span class="k">class</span><span class="w"> </span><span class="nc">OrderItem</span><span class="p">:</span>
-    <span class="n">product_id</span><span class="p">:</span> <span class="nb">str</span>
-    <span class="n">quantity</span><span class="p">:</span> <span class="nb">int</span>
-    <span class="n">unit_price</span><span class="p">:</span> <span class="nb">float</span>
+<span class="n">logger</span> <span class="o">=</span> <span class="n">Logger</span><span class="p">()</span>
 
-<span class="nd">@dataclass</span>
-<span class="k">class</span><span class="w"> </span><span class="nc">Order</span><span class="p">:</span>
-    <span class="n">order_id</span><span class="p">:</span> <span class="nb">str</span>
-    <span class="n">customer_id</span><span class="p">:</span> <span class="nb">str</span>
-    <span class="n">items</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">OrderItem</span><span class="p">]</span>
-    <span class="n">created_at</span><span class="p">:</span> <span class="n">datetime</span>
-    <span class="n">shipped_at</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">datetime</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
 
-    <span class="nd">@property</span>
-    <span class="k">def</span><span class="w"> </span><span class="nf">total</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
-        <span class="k">return</span> <span class="nb">sum</span><span class="p">(</span><span class="n">item</span><span class="o">.</span><span class="n">quantity</span> <span class="o">*</span> <span class="n">item</span><span class="o">.</span><span class="n">unit_price</span> <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">items</span><span class="p">)</span>
+<span class="hll"><span class="c1"># Define Dataclass model</span>
+</span><span class="hll"><span class="nd">@dataclass</span>
+</span><span class="hll"><span class="k">class</span><span class="w"> </span><span class="nc">User</span><span class="p">:</span>
+</span><span class="hll">    <span class="n">name</span><span class="p">:</span> <span class="nb">str</span>
+</span><span class="hll">    <span class="n">age</span><span class="p">:</span> <span class="nb">int</span>
+</span>
 
-<span class="c1"># Helper function to convert timestamps to datetime objects</span>
-<span class="k">def</span><span class="w"> </span><span class="nf">order_converter</span><span class="p">(</span><span class="n">data</span><span class="p">):</span>
-    <span class="c1"># Convert timestamps to datetime objects</span>
-    <span class="n">data</span><span class="p">[</span><span class="s1">&#39;created_at&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">fromtimestamp</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;created_at&#39;</span><span class="p">]</span><span class="o">/</span><span class="mi">1000</span><span class="p">)</span>
-    <span class="k">if</span> <span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;shipped_at&#39;</span><span class="p">):</span>
-        <span class="n">data</span><span class="p">[</span><span class="s1">&#39;shipped_at&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">fromtimestamp</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;shipped_at&#39;</span><span class="p">]</span><span class="o">/</span><span class="mi">1000</span><span class="p">)</span>
-
-    <span class="c1"># Convert order items</span>
-    <span class="n">data</span><span class="p">[</span><span class="s1">&#39;items&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">OrderItem</span><span class="p">(</span><span class="o">**</span><span class="n">item</span><span class="p">)</span> <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;items&#39;</span><span class="p">]]</span>
-    <span class="k">return</span> <span class="n">Order</span><span class="p">(</span><span class="o">**</span><span class="n">data</span><span class="p">)</span>
-
-<span class="n">schema_config</span> <span class="o">=</span> <span class="n">SchemaConfig</span><span class="p">(</span>
-    <span class="n">value_schema_type</span><span class="o">=</span><span class="s2">&quot;JSON&quot;</span><span class="p">,</span>
-    <span class="n">value_output_serializer</span><span class="o">=</span><span class="n">order_converter</span>
-<span class="p">)</span>
+<span class="c1"># Configure with Avro schema and Dataclass output</span>
+<span class="hll"><span class="n">schema_config</span> <span class="o">=</span> <span class="n">SchemaConfig</span><span class="p">(</span><span class="n">value_schema_type</span><span class="o">=</span><span class="s2">&quot;JSON&quot;</span><span class="p">,</span> <span class="n">value_output_serializer</span><span class="o">=</span><span class="n">User</span><span class="p">)</span>
+</span>
 
 <span class="nd">@kafka_consumer</span><span class="p">(</span><span class="n">schema_config</span><span class="o">=</span><span class="n">schema_config</span><span class="p">)</span>
-<span class="k">def</span><span class="w"> </span><span class="nf">lambda_handler</span><span class="p">(</span><span class="n">event</span><span class="p">,</span> <span class="n">context</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">lambda_handler</span><span class="p">(</span><span class="n">event</span><span class="p">:</span> <span class="n">ConsumerRecords</span><span class="p">,</span> <span class="n">context</span><span class="p">:</span> <span class="n">LambdaContext</span><span class="p">):</span>
     <span class="k">for</span> <span class="n">record</span> <span class="ow">in</span> <span class="n">event</span><span class="o">.</span><span class="n">records</span><span class="p">:</span>
-        <span class="c1"># record.value is now an Order object</span>
-        <span class="n">order</span> <span class="o">=</span> <span class="n">record</span><span class="o">.</span><span class="n">value</span>
-
-        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Processing order </span><span class="si">{</span><span class="n">order</span><span class="o">.</span><span class="n">order_id</span><span class="si">}</span><span class="s2"> with </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">order</span><span class="o">.</span><span class="n">items</span><span class="p">)</span><span class="si">}</span><span class="s2"> items&quot;</span><span class="p">)</span>
-        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Order total: $</span><span class="si">{</span><span class="n">order</span><span class="o">.</span><span class="n">total</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="c1"># record.value is now a User instance</span>
+<span class="hll">        <span class="n">value</span><span class="p">:</span> <span class="n">User</span> <span class="o">=</span> <span class="n">record</span><span class="o">.</span><span class="n">value</span>
+</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Name: &#39;</span><span class="si">{</span><span class="n">value</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2">&#39;&quot;</span><span class="p">)</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Age: &#39;</span><span class="si">{</span><span class="n">value</span><span class="o">.</span><span class="n">age</span><span class="si">}</span><span class="s2">&#39;&quot;</span><span class="p">)</span>
 
     <span class="k">return</span> <span class="p">{</span><span class="s2">&quot;statusCode&quot;</span><span class="p">:</span> <span class="mi">200</span><span class="p">}</span>
 </code></pre></div></td></tr></table></div>
@@ -5278,76 +5513,30 @@ pip<span class="w"> </span>install<span class="w"> </span><span class="s1">&#39;
 <span class="normal">23</span>
 <span class="normal">24</span>
 <span class="normal">25</span>
-<span class="normal">26</span>
-<span class="normal">27</span>
-<span class="normal">28</span>
-<span class="normal">29</span>
-<span class="normal">30</span>
-<span class="normal">31</span>
-<span class="normal">32</span>
-<span class="normal">33</span>
-<span class="normal">34</span>
-<span class="normal">35</span>
-<span class="normal">36</span>
-<span class="normal">37</span>
-<span class="normal">38</span>
-<span class="normal">39</span>
-<span class="normal">40</span>
-<span class="normal">41</span>
-<span class="normal">42</span>
-<span class="normal">43</span>
-<span class="normal">44</span>
-<span class="normal">45</span>
-<span class="normal">46</span>
-<span class="normal">47</span>
-<span class="normal">48</span>
-<span class="normal">49</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">aws_lambda_powertools.utilities.kafka</span><span class="w"> </span><span class="kn">import</span> <span class="n">kafka_consumer</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">aws_lambda_powertools.utilities.kafka.schema_config</span><span class="w"> </span><span class="kn">import</span> <span class="n">SchemaConfig</span>
+<span class="normal">26</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">aws_lambda_powertools</span><span class="w"> </span><span class="kn">import</span> <span class="n">Logger</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">aws_lambda_powertools.utilities.kafka</span><span class="w"> </span><span class="kn">import</span> <span class="n">ConsumerRecords</span><span class="p">,</span> <span class="n">SchemaConfig</span><span class="p">,</span> <span class="n">kafka_consumer</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">aws_lambda_powertools.utilities.typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">LambdaContext</span>
 
-<span class="c1"># Custom class with business logic</span>
-<span class="k">class</span><span class="w"> </span><span class="nc">EnrichmentProcessor</span><span class="p">:</span>
-    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">user_id</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;user_id&#39;</span><span class="p">]</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">preferences</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;preferences&#39;</span><span class="p">,</span> <span class="p">{})</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_raw_data</span> <span class="o">=</span> <span class="n">data</span>  <span class="c1"># Keep original data</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_enriched</span> <span class="o">=</span> <span class="kc">False</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_recommendations</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="n">logger</span> <span class="o">=</span> <span class="n">Logger</span><span class="p">()</span>
 
-    <span class="k">def</span><span class="w"> </span><span class="nf">enrich</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">recommendation_service</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Enrich user data with recommendations&quot;&quot;&quot;</span>
-        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_enriched</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">_recommendations</span> <span class="o">=</span> <span class="n">recommendation_service</span><span class="o">.</span><span class="n">get_for_user</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">user_id</span><span class="p">)</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">_enriched</span> <span class="o">=</span> <span class="kc">True</span>
-        <span class="k">return</span> <span class="bp">self</span>
 
-    <span class="nd">@property</span>
-    <span class="k">def</span><span class="w"> </span><span class="nf">recommendations</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_enriched</span><span class="p">:</span>
-            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Must call enrich() before accessing recommendations&quot;</span><span class="p">)</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_recommendations</span>
+<span class="hll"><span class="c1"># Define custom serializer</span>
+</span><span class="hll"><span class="k">def</span><span class="w"> </span><span class="nf">custom_serializer</span><span class="p">(</span><span class="n">data</span><span class="p">:</span> <span class="nb">dict</span><span class="p">):</span>
+</span><span class="hll">    <span class="k">del</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;age&quot;</span><span class="p">]</span>  <span class="c1"># Remove age key just for example</span>
+</span><span class="hll">    <span class="k">return</span> <span class="n">data</span>
+</span>
 
-<span class="c1"># Configure with custom processor</span>
-<span class="n">schema_config</span> <span class="o">=</span> <span class="n">SchemaConfig</span><span class="p">(</span>
-    <span class="n">value_schema_type</span><span class="o">=</span><span class="s2">&quot;JSON&quot;</span><span class="p">,</span>
-    <span class="n">value_output_serializer</span><span class="o">=</span><span class="n">EnrichmentProcessor</span>
-<span class="p">)</span>
+<span class="c1"># Configure with Avro schema and function serializer</span>
+<span class="hll"><span class="n">schema_config</span> <span class="o">=</span> <span class="n">SchemaConfig</span><span class="p">(</span><span class="n">value_schema_type</span><span class="o">=</span><span class="s2">&quot;JSON&quot;</span><span class="p">,</span> <span class="n">value_output_serializer</span><span class="o">=</span><span class="n">custom_serializer</span><span class="p">)</span>
+</span>
 
 <span class="nd">@kafka_consumer</span><span class="p">(</span><span class="n">schema_config</span><span class="o">=</span><span class="n">schema_config</span><span class="p">)</span>
-<span class="k">def</span><span class="w"> </span><span class="nf">lambda_handler</span><span class="p">(</span><span class="n">event</span><span class="p">,</span> <span class="n">context</span><span class="p">):</span>
-    <span class="c1"># Initialize services</span>
-    <span class="n">recommendation_service</span> <span class="o">=</span> <span class="n">RecommendationService</span><span class="p">()</span>
-
+<span class="k">def</span><span class="w"> </span><span class="nf">lambda_handler</span><span class="p">(</span><span class="n">event</span><span class="p">:</span> <span class="n">ConsumerRecords</span><span class="p">,</span> <span class="n">context</span><span class="p">:</span> <span class="n">LambdaContext</span><span class="p">):</span>
     <span class="k">for</span> <span class="n">record</span> <span class="ow">in</span> <span class="n">event</span><span class="o">.</span><span class="n">records</span><span class="p">:</span>
-        <span class="c1"># record.value is now an EnrichmentProcessor</span>
-        <span class="n">processor</span> <span class="o">=</span> <span class="n">record</span><span class="o">.</span><span class="n">value</span>
+        <span class="c1"># record.value now only contains the key &quot;name&quot;</span>
+        <span class="n">value</span> <span class="o">=</span> <span class="n">record</span><span class="o">.</span><span class="n">value</span>
 
-        <span class="c1"># Use the processor&#39;s methods for business logic</span>
-        <span class="n">enriched</span> <span class="o">=</span> <span class="n">processor</span><span class="o">.</span><span class="n">enrich</span><span class="p">(</span><span class="n">recommendation_service</span><span class="p">)</span>
-
-        <span class="c1"># Access computed properties</span>
-        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;User: </span><span class="si">{</span><span class="n">enriched</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Top recommendation: </span><span class="si">{</span><span class="n">enriched</span><span class="o">.</span><span class="n">recommendations</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;title&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Name: &#39;</span><span class="si">{</span><span class="n">value</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&#39;&quot;</span><span class="p">)</span>
 
     <span class="k">return</span> <span class="p">{</span><span class="s2">&quot;statusCode&quot;</span><span class="p">:</span> <span class="mi">200</span><span class="p">}</span>
 </code></pre></div></td></tr></table></div>
@@ -5356,7 +5545,11 @@ pip<span class="w"> </span>install<span class="w"> </span><span class="s1">&#39;
 </div>
 <h3 id="error-handling">Error handling<a class="headerlink" href="#error-handling" title="Permanent link">&para;</a></h3>
 <p>Handle errors gracefully when processing Kafka messages to ensure your application maintains resilience and provides clear diagnostic information. The Kafka consumer utility provides specific exception types to help you identify and handle deserialization issues effectively.</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="8:2"><input checked="checked" id="basic-error-handling" name="__tabbed_8" type="radio" /><input id="handling-schema-errors" name="__tabbed_8" type="radio" /><div class="tabbed-labels"><label for="basic-error-handling">Basic Error Handling</label><label for="handling-schema-errors">Handling Schema Errors</label></div>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<p>Fields like <code>value</code>, <code>key</code>, and <code>headers</code> are decoded lazily, meaning they are only deserialized when accessed. This allows you to handle deserialization errors at the point of access rather than when the record is first processed.</p>
+</div>
+<div class="tabbed-set tabbed-alternate" data-tabs="10:2"><input checked="checked" id="basic-error-handling" name="__tabbed_10" type="radio" /><input id="handling-schema-errors" name="__tabbed_10" type="radio" /><div class="tabbed-labels"><label for="basic-error-handling">Basic Error Handling</label><label for="handling-schema-errors">Handling Schema Errors</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
@@ -5398,18 +5591,24 @@ pip<span class="w"> </span>install<span class="w"> </span><span class="s1">&#39;
 <span class="normal">37</span>
 <span class="normal">38</span>
 <span class="normal">39</span>
-<span class="normal">40</span>
-<span class="normal">41</span>
-<span class="normal">42</span>
-<span class="normal">43</span>
-<span class="normal">44</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">aws_lambda_powertools.utilities.kafka</span><span class="w"> </span><span class="kn">import</span> <span class="n">kafka_consumer</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">aws_lambda_powertools.utilities.kafka.exceptions</span><span class="w"> </span><span class="kn">import</span> <span class="n">KafkaConsumerDeserializationError</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">aws_lambda_powertools</span><span class="w"> </span><span class="kn">import</span> <span class="n">Logger</span>
+<span class="normal">40</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">aws_lambda_powertools</span><span class="w"> </span><span class="kn">import</span> <span class="n">Logger</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">aws_lambda_powertools.utilities.kafka</span><span class="w"> </span><span class="kn">import</span> <span class="n">ConsumerRecords</span><span class="p">,</span> <span class="n">SchemaConfig</span><span class="p">,</span> <span class="n">kafka_consumer</span>
+<span class="hll"><span class="kn">from</span><span class="w"> </span><span class="nn">aws_lambda_powertools.utilities.kafka.exceptions</span><span class="w"> </span><span class="kn">import</span> <span class="n">KafkaConsumerDeserializationError</span>
+</span><span class="kn">from</span><span class="w"> </span><span class="nn">aws_lambda_powertools.utilities.typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">LambdaContext</span>
 
 <span class="n">logger</span> <span class="o">=</span> <span class="n">Logger</span><span class="p">()</span>
 
+<span class="n">schema_config</span> <span class="o">=</span> <span class="n">SchemaConfig</span><span class="p">(</span><span class="n">value_schema_type</span><span class="o">=</span><span class="s2">&quot;JSON&quot;</span><span class="p">)</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">process_customer_data</span><span class="p">(</span><span class="n">customer_data</span><span class="p">:</span> <span class="nb">dict</span><span class="p">):</span>
+    <span class="c1"># Simulate processing logic</span>
+    <span class="k">if</span> <span class="n">customer_data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;name&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="s2">&quot;error&quot;</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Simulated processing error&quot;</span><span class="p">)</span>
+
+
 <span class="nd">@kafka_consumer</span><span class="p">(</span><span class="n">schema_config</span><span class="o">=</span><span class="n">schema_config</span><span class="p">)</span>
-<span class="k">def</span><span class="w"> </span><span class="nf">lambda_handler</span><span class="p">(</span><span class="n">event</span><span class="p">,</span> <span class="n">context</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">lambda_handler</span><span class="p">(</span><span class="n">event</span><span class="p">:</span> <span class="n">ConsumerRecords</span><span class="p">,</span> <span class="n">context</span><span class="p">:</span> <span class="n">LambdaContext</span><span class="p">):</span>
     <span class="n">successful_records</span> <span class="o">=</span> <span class="mi">0</span>
     <span class="n">failed_records</span> <span class="o">=</span> <span class="mi">0</span>
 
@@ -5419,33 +5618,19 @@ pip<span class="w"> </span>install<span class="w"> </span><span class="s1">&#39;
             <span class="n">process_customer_data</span><span class="p">(</span><span class="n">record</span><span class="o">.</span><span class="n">value</span><span class="p">)</span>
             <span class="n">successful_records</span> <span class="o">+=</span> <span class="mi">1</span>
 
-        <span class="k">except</span> <span class="n">KafkaConsumerDeserializationError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
-            <span class="n">failed_records</span> <span class="o">+=</span> <span class="mi">1</span>
+<span class="hll">        <span class="k">except</span> <span class="n">KafkaConsumerDeserializationError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+</span>            <span class="n">failed_records</span> <span class="o">+=</span> <span class="mi">1</span>
             <span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span>
                 <span class="s2">&quot;Failed to deserialize Kafka message&quot;</span><span class="p">,</span>
-                <span class="n">extra</span><span class="o">=</span><span class="p">{</span>
-                    <span class="s2">&quot;topic&quot;</span><span class="p">:</span> <span class="n">record</span><span class="o">.</span><span class="n">topic</span><span class="p">,</span>
-                    <span class="s2">&quot;partition&quot;</span><span class="p">:</span> <span class="n">record</span><span class="o">.</span><span class="n">partition</span><span class="p">,</span>
-                    <span class="s2">&quot;offset&quot;</span><span class="p">:</span> <span class="n">record</span><span class="o">.</span><span class="n">offset</span><span class="p">,</span>
-                    <span class="s2">&quot;error&quot;</span><span class="p">:</span> <span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
-                <span class="p">}</span>
+                <span class="n">extra</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;topic&quot;</span><span class="p">:</span> <span class="n">record</span><span class="o">.</span><span class="n">topic</span><span class="p">,</span> <span class="s2">&quot;partition&quot;</span><span class="p">:</span> <span class="n">record</span><span class="o">.</span><span class="n">partition</span><span class="p">,</span> <span class="s2">&quot;offset&quot;</span><span class="p">:</span> <span class="n">record</span><span class="o">.</span><span class="n">offset</span><span class="p">,</span> <span class="s2">&quot;error&quot;</span><span class="p">:</span> <span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">)},</span>
             <span class="p">)</span>
             <span class="c1"># Optionally send to DLQ or error topic</span>
 
         <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
             <span class="n">failed_records</span> <span class="o">+=</span> <span class="mi">1</span>
-            <span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span>
-                <span class="s2">&quot;Error processing Kafka message&quot;</span><span class="p">,</span>
-                <span class="n">extra</span><span class="o">=</span><span class="p">{</span>
-                    <span class="s2">&quot;error&quot;</span><span class="p">:</span> <span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">),</span>
-                    <span class="s2">&quot;topic&quot;</span><span class="p">:</span> <span class="n">record</span><span class="o">.</span><span class="n">topic</span>
-                <span class="p">}</span>
-            <span class="p">)</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s2">&quot;Error processing Kafka message&quot;</span><span class="p">,</span> <span class="n">extra</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;error&quot;</span><span class="p">:</span> <span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">),</span> <span class="s2">&quot;topic&quot;</span><span class="p">:</span> <span class="n">record</span><span class="o">.</span><span class="n">topic</span><span class="p">})</span>
 
-    <span class="k">return</span> <span class="p">{</span>
-        <span class="s2">&quot;statusCode&quot;</span><span class="p">:</span> <span class="mi">200</span><span class="p">,</span>
-        <span class="s2">&quot;body&quot;</span><span class="p">:</span> <span class="sa">f</span><span class="s2">&quot;Processed </span><span class="si">{</span><span class="n">successful_records</span><span class="si">}</span><span class="s2"> records successfully, </span><span class="si">{</span><span class="n">failed_records</span><span class="si">}</span><span class="s2"> failed&quot;</span>
-    <span class="p">}</span>
+    <span class="k">return</span> <span class="p">{</span><span class="s2">&quot;statusCode&quot;</span><span class="p">:</span> <span class="mi">200</span><span class="p">,</span> <span class="s2">&quot;body&quot;</span><span class="p">:</span> <span class="sa">f</span><span class="s2">&quot;Processed </span><span class="si">{</span><span class="n">successful_records</span><span class="si">}</span><span class="s2"> records successfully, </span><span class="si">{</span><span class="n">failed_records</span><span class="si">}</span><span class="s2"> failed&quot;</span><span class="p">}</span>
 </code></pre></div></td></tr></table></div>
 </div>
 <div class="tabbed-block">
@@ -5492,20 +5677,38 @@ pip<span class="w"> </span>install<span class="w"> </span><span class="s1">&#39;
 <span class="normal">41</span>
 <span class="normal">42</span>
 <span class="normal">43</span>
-<span class="normal">44</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">aws_lambda_powertools.utilities.kafka</span><span class="w"> </span><span class="kn">import</span> <span class="n">kafka_consumer</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">aws_lambda_powertools.utilities.kafka.exceptions</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
-    <span class="n">KafkaConsumerDeserializationError</span><span class="p">,</span>
-    <span class="n">KafkaConsumerAvroSchemaParserError</span>
-<span class="p">)</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">aws_lambda_powertools</span><span class="w"> </span><span class="kn">import</span> <span class="n">Logger</span><span class="p">,</span> <span class="n">Metrics</span>
+<span class="normal">44</span>
+<span class="normal">45</span>
+<span class="normal">46</span>
+<span class="normal">47</span>
+<span class="normal">48</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">aws_lambda_powertools</span><span class="w"> </span><span class="kn">import</span> <span class="n">Logger</span><span class="p">,</span> <span class="n">Metrics</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">aws_lambda_powertools.metrics</span><span class="w"> </span><span class="kn">import</span> <span class="n">MetricUnit</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">aws_lambda_powertools.utilities.kafka</span><span class="w"> </span><span class="kn">import</span> <span class="n">ConsumerRecords</span><span class="p">,</span> <span class="n">SchemaConfig</span><span class="p">,</span> <span class="n">kafka_consumer</span>
+<span class="hll"><span class="kn">from</span><span class="w"> </span><span class="nn">aws_lambda_powertools.utilities.kafka.exceptions</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
+</span><span class="hll">    <span class="n">KafkaConsumerAvroSchemaParserError</span><span class="p">,</span>
+</span><span class="hll">    <span class="n">KafkaConsumerDeserializationError</span><span class="p">,</span>
+</span><span class="hll"><span class="p">)</span>
+</span><span class="kn">from</span><span class="w"> </span><span class="nn">aws_lambda_powertools.utilities.typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">LambdaContext</span>
 
 <span class="n">logger</span> <span class="o">=</span> <span class="n">Logger</span><span class="p">()</span>
 <span class="n">metrics</span> <span class="o">=</span> <span class="n">Metrics</span><span class="p">()</span>
 
+<span class="n">schema_config</span> <span class="o">=</span> <span class="n">SchemaConfig</span><span class="p">(</span><span class="n">value_schema_type</span><span class="o">=</span><span class="s2">&quot;JSON&quot;</span><span class="p">)</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">process_order</span><span class="p">(</span><span class="n">order</span><span class="p">):</span>
+    <span class="c1"># Simulate processing logic</span>
+    <span class="k">return</span> <span class="n">order</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">send_to_dlq</span><span class="p">(</span><span class="n">record</span><span class="p">):</span>
+    <span class="c1"># Simulate sending to DLQ</span>
+    <span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s2">&quot;Sending to DLQ&quot;</span><span class="p">,</span> <span class="n">record</span><span class="o">=</span><span class="n">record</span><span class="p">)</span>
+
+
 <span class="nd">@kafka_consumer</span><span class="p">(</span><span class="n">schema_config</span><span class="o">=</span><span class="n">schema_config</span><span class="p">)</span>
-<span class="k">def</span><span class="w"> </span><span class="nf">lambda_handler</span><span class="p">(</span><span class="n">event</span><span class="p">,</span> <span class="n">context</span><span class="p">):</span>
-    <span class="n">metrics</span><span class="o">.</span><span class="n">add_metric</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;TotalRecords&quot;</span><span class="p">,</span> <span class="n">unit</span><span class="o">=</span><span class="n">MetricUnit</span><span class="o">.</span><span class="n">Count</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">event</span><span class="o">.</span><span class="n">records</span><span class="p">))</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">lambda_handler</span><span class="p">(</span><span class="n">event</span><span class="p">:</span> <span class="n">ConsumerRecords</span><span class="p">,</span> <span class="n">context</span><span class="p">:</span> <span class="n">LambdaContext</span><span class="p">):</span>
+    <span class="n">metrics</span><span class="o">.</span><span class="n">add_metric</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;TotalRecords&quot;</span><span class="p">,</span> <span class="n">unit</span><span class="o">=</span><span class="n">MetricUnit</span><span class="o">.</span><span class="n">Count</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">event</span><span class="o">.</span><span class="n">records</span><span class="p">)))</span>
 
     <span class="k">for</span> <span class="n">record</span> <span class="ow">in</span> <span class="n">event</span><span class="o">.</span><span class="n">records</span><span class="p">:</span>
         <span class="k">try</span><span class="p">:</span>
@@ -5513,24 +5716,14 @@ pip<span class="w"> </span>install<span class="w"> </span><span class="s1">&#39;
             <span class="n">process_order</span><span class="p">(</span><span class="n">order</span><span class="p">)</span>
             <span class="n">metrics</span><span class="o">.</span><span class="n">add_metric</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;ProcessedRecords&quot;</span><span class="p">,</span> <span class="n">unit</span><span class="o">=</span><span class="n">MetricUnit</span><span class="o">.</span><span class="n">Count</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 
-        <span class="k">except</span> <span class="n">KafkaConsumerAvroSchemaParserError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
-            <span class="n">logger</span><span class="o">.</span><span class="n">critical</span><span class="p">(</span>
-                <span class="s2">&quot;Invalid Avro schema configuration&quot;</span><span class="p">,</span>
-                <span class="n">extra</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;error&quot;</span><span class="p">:</span> <span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">)}</span>
-            <span class="p">)</span>
+<span class="hll">        <span class="k">except</span> <span class="n">KafkaConsumerAvroSchemaParserError</span> <span class="k">as</span> <span class="n">exc</span><span class="p">:</span>
+</span>            <span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s2">&quot;Invalid Avro schema configuration&quot;</span><span class="p">,</span> <span class="n">error</span><span class="o">=</span><span class="nb">str</span><span class="p">(</span><span class="n">exc</span><span class="p">))</span>
             <span class="n">metrics</span><span class="o">.</span><span class="n">add_metric</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;SchemaErrors&quot;</span><span class="p">,</span> <span class="n">unit</span><span class="o">=</span><span class="n">MetricUnit</span><span class="o">.</span><span class="n">Count</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
             <span class="c1"># This requires fixing the schema - might want to raise to stop processing</span>
             <span class="k">raise</span>
 
-        <span class="k">except</span> <span class="n">KafkaConsumerDeserializationError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
-            <span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span>
-                <span class="s2">&quot;Message format doesn&#39;t match schema&quot;</span><span class="p">,</span>
-                <span class="n">extra</span><span class="o">=</span><span class="p">{</span>
-                    <span class="s2">&quot;topic&quot;</span><span class="p">:</span> <span class="n">record</span><span class="o">.</span><span class="n">topic</span><span class="p">,</span>
-                    <span class="s2">&quot;error&quot;</span><span class="p">:</span> <span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">),</span>
-                    <span class="s2">&quot;raw_data_sample&quot;</span><span class="p">:</span> <span class="nb">str</span><span class="p">(</span><span class="n">record</span><span class="o">.</span><span class="n">raw_value</span><span class="p">)[:</span><span class="mi">100</span><span class="p">]</span> <span class="o">+</span> <span class="s2">&quot;...&quot;</span> <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">record</span><span class="o">.</span><span class="n">raw_value</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">100</span> <span class="k">else</span> <span class="n">record</span><span class="o">.</span><span class="n">raw_value</span>
-                <span class="p">}</span>
-            <span class="p">)</span>
+<span class="hll">        <span class="k">except</span> <span class="n">KafkaConsumerDeserializationError</span> <span class="k">as</span> <span class="n">exc</span><span class="p">:</span>
+</span>            <span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s2">&quot;Message format doesn&#39;t match schema&quot;</span><span class="p">,</span> <span class="n">topic</span><span class="o">=</span><span class="n">record</span><span class="o">.</span><span class="n">topic</span><span class="p">,</span> <span class="n">error</span><span class="o">=</span><span class="nb">str</span><span class="p">(</span><span class="n">exc</span><span class="p">))</span>
             <span class="n">metrics</span><span class="o">.</span><span class="n">add_metric</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;DeserializationErrors&quot;</span><span class="p">,</span> <span class="n">unit</span><span class="o">=</span><span class="n">MetricUnit</span><span class="o">.</span><span class="n">Count</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
             <span class="c1"># Send to dead-letter queue for analysis</span>
             <span class="n">send_to_dlq</span><span class="p">(</span><span class="n">record</span><span class="p">)</span>
@@ -5570,12 +5763,17 @@ pip<span class="w"> </span>install<span class="w"> </span><span class="s1">&#39;
 <td>Raised when output serializer fails</td>
 <td>Error in custom serializer function, incompatible data, or validation failures in Pydantic models</td>
 </tr>
+<tr>
+<td><code>KafkaConsumerDeserializationFormatMismatch</code></td>
+<td>Raised when SchemaConfig format is wrong</td>
+<td>When integrating with Schema Registry, the data format is propagated, so Powertools for AWS catches this error if the format is different from the configured one.</td>
+</tr>
 </tbody>
 </table>
 <h3 id="integrating-with-idempotency">Integrating with Idempotency<a class="headerlink" href="#integrating-with-idempotency" title="Permanent link">&para;</a></h3>
-<p>When processing Kafka messages in Lambda, failed batches can result in message reprocessing. The idempotency utility prevents duplicate processing by tracking which messages have already been handled, ensuring each message is processed exactly once.</p>
-<p>The Idempotency utility automatically stores the result of each successful operation, returning the cached result if the same message is processed again, which prevents potentially harmful duplicate operations like double-charging customers or double-counting metrics.</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="9:1"><input checked="checked" id="idempotent-kafka-processing" name="__tabbed_9" type="radio" /><div class="tabbed-labels"><label for="idempotent-kafka-processing">Idempotent Kafka Processing</label></div>
+<p>When processing Kafka messages in Lambda, failed batches can result in message reprocessing. The <a href="../idempotency/" target="_blank">idempotency utility</a> prevents duplicate processing by tracking which messages have already been handled, ensuring each message is processed exactly once.</p>
+<p>The <a href="../idempotency/" target="_blank">idempotency utility</a> automatically stores the result of each successful operation, returning the cached result if the same message is processed again, which prevents potentially harmful duplicate operations like double-charging customers or double-counting metrics.</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="11:1"><input checked="checked" id="idempotent-kafka-processing" name="__tabbed_11" type="radio" /><div class="tabbed-labels"><label for="idempotent-kafka-processing">Idempotent Kafka Processing</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
@@ -5626,36 +5824,16 @@ pip<span class="w"> </span>install<span class="w"> </span><span class="s1">&#39;
 <span class="normal">46</span>
 <span class="normal">47</span>
 <span class="normal">48</span>
-<span class="normal">49</span>
-<span class="normal">50</span>
-<span class="normal">51</span>
-<span class="normal">52</span>
-<span class="normal">53</span>
-<span class="normal">54</span>
-<span class="normal">55</span>
-<span class="normal">56</span>
-<span class="normal">57</span>
-<span class="normal">58</span>
-<span class="normal">59</span>
-<span class="normal">60</span>
-<span class="normal">61</span>
-<span class="normal">62</span>
-<span class="normal">63</span>
-<span class="normal">64</span>
-<span class="normal">65</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">aws_lambda_powertools</span><span class="w"> </span><span class="kn">import</span> <span class="n">Logger</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">aws_lambda_powertools.utilities.idempotency</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
-    <span class="n">idempotent_function</span><span class="p">,</span>
-    <span class="n">DynamoDBPersistenceLayer</span><span class="p">,</span>
-    <span class="n">IdempotencyConfig</span>
-<span class="p">)</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">aws_lambda_powertools.utilities.kafka</span><span class="w"> </span><span class="kn">import</span> <span class="n">kafka_consumer</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">aws_lambda_powertools.utilities.kafka.schema_config</span><span class="w"> </span><span class="kn">import</span> <span class="n">SchemaConfig</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">aws_lambda_powertools.utilities.kafka.consumer_records</span><span class="w"> </span><span class="kn">import</span> <span class="n">ConsumerRecords</span>
+<span class="normal">49</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">aws_lambda_powertools</span><span class="w"> </span><span class="kn">import</span> <span class="n">Logger</span>
+<span class="hll"><span class="kn">from</span><span class="w"> </span><span class="nn">aws_lambda_powertools.utilities.idempotency</span><span class="w"> </span><span class="kn">import</span> <span class="n">DynamoDBPersistenceLayer</span><span class="p">,</span> <span class="n">IdempotencyConfig</span><span class="p">,</span> <span class="n">idempotent_function</span>
+</span><span class="kn">from</span><span class="w"> </span><span class="nn">aws_lambda_powertools.utilities.kafka</span><span class="w"> </span><span class="kn">import</span> <span class="n">ConsumerRecords</span><span class="p">,</span> <span class="n">SchemaConfig</span><span class="p">,</span> <span class="n">kafka_consumer</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">aws_lambda_powertools.utilities.typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">LambdaContext</span>
 
 <span class="c1"># Configure persistence layer for idempotency</span>
-<span class="n">persistence_layer</span> <span class="o">=</span> <span class="n">DynamoDBPersistenceLayer</span><span class="p">(</span><span class="n">table_name</span><span class="o">=</span><span class="s2">&quot;IdempotencyTable&quot;</span><span class="p">)</span>
-<span class="n">logger</span> <span class="o">=</span> <span class="n">Logger</span><span class="p">()</span>
-
+<span class="hll"><span class="n">persistence_layer</span> <span class="o">=</span> <span class="n">DynamoDBPersistenceLayer</span><span class="p">(</span><span class="n">table_name</span><span class="o">=</span><span class="s2">&quot;IdempotencyTable&quot;</span><span class="p">)</span>
+</span><span class="n">logger</span> <span class="o">=</span> <span class="n">Logger</span><span class="p">()</span>
+<span class="hll"><span class="n">idempotency_config</span> <span class="o">=</span> <span class="n">IdempotencyConfig</span><span class="p">()</span>
+</span>
 <span class="c1"># Configure Kafka schema</span>
 <span class="n">avro_schema</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
 <span class="s2">{</span>
@@ -5670,43 +5848,31 @@ pip<span class="w"> </span>install<span class="w"> </span><span class="s1">&#39;
 <span class="s2">}</span>
 <span class="s2">&quot;&quot;&quot;</span>
 
-<span class="n">schema_config</span> <span class="o">=</span> <span class="n">SchemaConfig</span><span class="p">(</span>
-    <span class="n">value_schema_type</span><span class="o">=</span><span class="s2">&quot;AVRO&quot;</span><span class="p">,</span>
-    <span class="n">value_schema</span><span class="o">=</span><span class="n">avro_schema</span>
-<span class="p">)</span>
+<span class="n">schema_config</span> <span class="o">=</span> <span class="n">SchemaConfig</span><span class="p">(</span><span class="n">value_schema_type</span><span class="o">=</span><span class="s2">&quot;AVRO&quot;</span><span class="p">,</span> <span class="n">value_schema</span><span class="o">=</span><span class="n">avro_schema</span><span class="p">)</span>
+
 
 <span class="nd">@kafka_consumer</span><span class="p">(</span><span class="n">schema_config</span><span class="o">=</span><span class="n">schema_config</span><span class="p">)</span>
-<span class="k">def</span><span class="w"> </span><span class="nf">lambda_handler</span><span class="p">(</span><span class="n">event</span><span class="p">:</span> <span class="n">ConsumerRecords</span><span class="p">,</span> <span class="n">context</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">lambda_handler</span><span class="p">(</span><span class="n">event</span><span class="p">:</span> <span class="n">ConsumerRecords</span><span class="p">,</span> <span class="n">context</span><span class="p">:</span> <span class="n">LambdaContext</span><span class="p">):</span>
+    <span class="n">idempotency_config</span><span class="o">.</span><span class="n">register_lambda_context</span><span class="p">(</span><span class="n">context</span><span class="p">)</span>
+
     <span class="k">for</span> <span class="n">record</span> <span class="ow">in</span> <span class="n">event</span><span class="o">.</span><span class="n">records</span><span class="p">:</span>
         <span class="c1"># Process each message with idempotency protection</span>
-        <span class="n">process_payment</span><span class="p">(</span>
-            <span class="n">payment</span><span class="o">=</span><span class="n">record</span><span class="o">.</span><span class="n">value</span><span class="p">,</span>
-            <span class="n">topic</span><span class="o">=</span><span class="n">record</span><span class="o">.</span><span class="n">topic</span><span class="p">,</span>
-            <span class="n">partition</span><span class="o">=</span><span class="n">record</span><span class="o">.</span><span class="n">partition</span><span class="p">,</span>
-            <span class="n">offset</span><span class="o">=</span><span class="n">record</span><span class="o">.</span><span class="n">offset</span>
-        <span class="p">)</span>
+        <span class="n">process_payment</span><span class="p">(</span><span class="n">payment</span><span class="o">=</span><span class="n">record</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> <span class="n">topic</span><span class="o">=</span><span class="n">record</span><span class="o">.</span><span class="n">topic</span><span class="p">,</span> <span class="n">partition</span><span class="o">=</span><span class="n">record</span><span class="o">.</span><span class="n">partition</span><span class="p">,</span> <span class="n">offset</span><span class="o">=</span><span class="n">record</span><span class="o">.</span><span class="n">offset</span><span class="p">)</span>
 
     <span class="k">return</span> <span class="p">{</span><span class="s2">&quot;statusCode&quot;</span><span class="p">:</span> <span class="mi">200</span><span class="p">}</span>
 
-<span class="nd">@idempotent_function</span><span class="p">(</span>
-    <span class="n">data_keyword_argument</span><span class="o">=</span><span class="s2">&quot;payment&quot;</span><span class="p">,</span>
-    <span class="n">config</span><span class="o">=</span><span class="n">IdempotencyConfig</span><span class="p">(</span>
-        <span class="n">event_key_jmespath</span><span class="o">=</span><span class="s2">&quot;topic &amp; &#39;-&#39; &amp; partition &amp; &#39;-&#39; &amp; offset&quot;</span>
-    <span class="p">),</span>
-    <span class="n">persistence_store</span><span class="o">=</span><span class="n">persistence_layer</span>
-<span class="p">)</span>
-<span class="k">def</span><span class="w"> </span><span class="nf">process_payment</span><span class="p">(</span><span class="n">payment</span><span class="p">,</span> <span class="n">topic</span><span class="p">,</span> <span class="n">partition</span><span class="p">,</span> <span class="n">offset</span><span class="p">):</span>
+
+<span class="hll"><span class="nd">@idempotent_function</span><span class="p">(</span>
+</span><span class="hll">    <span class="n">data_keyword_argument</span><span class="o">=</span><span class="s2">&quot;payment&quot;</span><span class="p">,</span>
+</span><span class="hll">    <span class="n">persistence_store</span><span class="o">=</span><span class="n">persistence_layer</span><span class="p">,</span>
+</span><span class="hll"><span class="p">)</span>
+</span><span class="k">def</span><span class="w"> </span><span class="nf">process_payment</span><span class="p">(</span><span class="n">payment</span><span class="p">,</span> <span class="n">topic</span><span class="p">,</span> <span class="n">partition</span><span class="p">,</span> <span class="n">offset</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Process a payment exactly once&quot;&quot;&quot;</span>
     <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Processing payment </span><span class="si">{</span><span class="n">payment</span><span class="p">[</span><span class="s1">&#39;payment_id&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2"> from </span><span class="si">{</span><span class="n">topic</span><span class="si">}</span><span class="s2">-</span><span class="si">{</span><span class="n">partition</span><span class="si">}</span><span class="s2">-</span><span class="si">{</span><span class="n">offset</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
     <span class="c1"># Execute payment logic</span>
-    <span class="n">payment_service</span><span class="o">.</span><span class="n">process</span><span class="p">(</span>
-        <span class="n">payment_id</span><span class="o">=</span><span class="n">payment</span><span class="p">[</span><span class="s1">&#39;payment_id&#39;</span><span class="p">],</span>
-        <span class="n">customer_id</span><span class="o">=</span><span class="n">payment</span><span class="p">[</span><span class="s1">&#39;customer_id&#39;</span><span class="p">],</span>
-        <span class="n">amount</span><span class="o">=</span><span class="n">payment</span><span class="p">[</span><span class="s1">&#39;amount&#39;</span><span class="p">]</span>
-    <span class="p">)</span>
 
-    <span class="k">return</span> <span class="p">{</span><span class="s2">&quot;success&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span> <span class="s2">&quot;payment_id&quot;</span><span class="p">:</span> <span class="n">payment</span><span class="p">[</span><span class="s1">&#39;payment_id&#39;</span><span class="p">]}</span>
+    <span class="k">return</span> <span class="p">{</span><span class="s2">&quot;success&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span> <span class="s2">&quot;payment_id&quot;</span><span class="p">:</span> <span class="n">payment</span><span class="p">[</span><span class="s2">&quot;payment_id&quot;</span><span class="p">]}</span>
 </code></pre></div></td></tr></table></div>
 </div>
 </div>
@@ -5715,7 +5881,7 @@ pip<span class="w"> </span>install<span class="w"> </span><span class="s1">&#39;
 <h3 id="best-practices">Best practices<a class="headerlink" href="#best-practices" title="Permanent link">&para;</a></h3>
 <h4 id="handling-large-messages">Handling large messages<a class="headerlink" href="#handling-large-messages" title="Permanent link">&para;</a></h4>
 <p>When processing large Kafka messages in Lambda, be mindful of memory limitations. Although the Kafka consumer utility optimizes memory usage, large deserialized messages can still exhaust Lambda's resources.</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="10:1"><input checked="checked" id="handling-large-messages_1" name="__tabbed_10" type="radio" /><div class="tabbed-labels"><label for="handling-large-messages_1">Handling Large Messages</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="12:1"><input checked="checked" id="handling-large-messages_1" name="__tabbed_12" type="radio" /><div class="tabbed-labels"><label for="handling-large-messages_1">Handling Large Messages</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
@@ -5744,27 +5910,49 @@ pip<span class="w"> </span>install<span class="w"> </span><span class="s1">&#39;
 <span class="normal">24</span>
 <span class="normal">25</span>
 <span class="normal">26</span>
-<span class="normal">27</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">aws_lambda_powertools.utilities.kafka</span><span class="w"> </span><span class="kn">import</span> <span class="n">kafka_consumer</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">aws_lambda_powertools</span><span class="w"> </span><span class="kn">import</span> <span class="n">Logger</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span>
+<span class="normal">35</span>
+<span class="normal">36</span>
+<span class="normal">37</span>
+<span class="normal">38</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">aws_lambda_powertools</span><span class="w"> </span><span class="kn">import</span> <span class="n">Logger</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">aws_lambda_powertools.utilities.kafka</span><span class="w"> </span><span class="kn">import</span> <span class="n">ConsumerRecords</span><span class="p">,</span> <span class="n">SchemaConfig</span><span class="p">,</span> <span class="n">kafka_consumer</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">aws_lambda_powertools.utilities.typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">LambdaContext</span>
 
 <span class="n">logger</span> <span class="o">=</span> <span class="n">Logger</span><span class="p">()</span>
 
+<span class="n">schema_config</span> <span class="o">=</span> <span class="n">SchemaConfig</span><span class="p">(</span><span class="n">value_schema_type</span><span class="o">=</span><span class="s2">&quot;JSON&quot;</span><span class="p">)</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">process_standard_message</span><span class="p">(</span><span class="n">message</span><span class="p">):</span>
+    <span class="c1"># Simulate processing logic</span>
+    <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Processing standard message: </span><span class="si">{</span><span class="n">message</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">process_catalog_from_s3</span><span class="p">(</span><span class="n">bucket</span><span class="p">,</span> <span class="n">key</span><span class="p">):</span>
+    <span class="c1"># Simulate processing logic</span>
+    <span class="k">return</span> <span class="p">{</span><span class="s2">&quot;bucket&quot;</span><span class="p">:</span> <span class="n">bucket</span><span class="p">,</span> <span class="s2">&quot;key&quot;</span><span class="p">:</span> <span class="n">key</span><span class="p">}</span>
+
+
 <span class="nd">@kafka_consumer</span><span class="p">(</span><span class="n">schema_config</span><span class="o">=</span><span class="n">schema_config</span><span class="p">)</span>
-<span class="k">def</span><span class="w"> </span><span class="nf">lambda_handler</span><span class="p">(</span><span class="n">event</span><span class="p">,</span> <span class="n">context</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">lambda_handler</span><span class="p">(</span><span class="n">event</span><span class="p">:</span> <span class="n">ConsumerRecords</span><span class="p">,</span> <span class="n">context</span><span class="p">:</span> <span class="n">LambdaContext</span><span class="p">):</span>
     <span class="k">for</span> <span class="n">record</span> <span class="ow">in</span> <span class="n">event</span><span class="o">.</span><span class="n">records</span><span class="p">:</span>
         <span class="c1"># Example: Handle large product catalog updates differently</span>
-        <span class="k">if</span> <span class="n">record</span><span class="o">.</span><span class="n">topic</span> <span class="o">==</span> <span class="s2">&quot;product-catalog&quot;</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="n">record</span><span class="o">.</span><span class="n">raw_value</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">3_000_000</span><span class="p">:</span>
-            <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Detected large product catalog update (</span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">record</span><span class="o">.</span><span class="n">raw_value</span><span class="p">)</span><span class="si">}</span><span class="s2"> bytes)&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="s2">&quot;large-product-update&quot;</span> <span class="ow">in</span> <span class="n">record</span><span class="o">.</span><span class="n">headers</span><span class="p">:</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Detected large product catalog update&quot;</span><span class="p">)</span>
 
             <span class="c1"># Example: Extract S3 reference from message</span>
             <span class="n">catalog_ref</span> <span class="o">=</span> <span class="n">record</span><span class="o">.</span><span class="n">value</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;s3_reference&quot;</span><span class="p">)</span>
             <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Processing catalog from S3: </span><span class="si">{</span><span class="n">catalog_ref</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
             <span class="c1"># Process via S3 reference instead of direct message content</span>
-            <span class="n">result</span> <span class="o">=</span> <span class="n">process_catalog_from_s3</span><span class="p">(</span>
-                <span class="n">bucket</span><span class="o">=</span><span class="n">catalog_ref</span><span class="p">[</span><span class="s2">&quot;bucket&quot;</span><span class="p">],</span>
-                <span class="n">key</span><span class="o">=</span><span class="n">catalog_ref</span><span class="p">[</span><span class="s2">&quot;key&quot;</span><span class="p">]</span>
-            <span class="p">)</span>
+            <span class="n">result</span> <span class="o">=</span> <span class="n">process_catalog_from_s3</span><span class="p">(</span><span class="n">bucket</span><span class="o">=</span><span class="n">catalog_ref</span><span class="p">[</span><span class="s2">&quot;bucket&quot;</span><span class="p">],</span> <span class="n">key</span><span class="o">=</span><span class="n">catalog_ref</span><span class="p">[</span><span class="s2">&quot;key&quot;</span><span class="p">])</span>
             <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Processed </span><span class="si">{</span><span class="n">result</span><span class="p">[</span><span class="s1">&#39;product_count&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2"> products from S3&quot;</span><span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="c1"># Regular processing for standard-sized messages</span>
@@ -5783,7 +5971,7 @@ pip<span class="w"> </span>install<span class="w"> </span><span class="s1">&#39;
 </ul>
 <h4 id="batch-size-configuration">Batch size configuration<a class="headerlink" href="#batch-size-configuration" title="Permanent link">&para;</a></h4>
 <p>The number of Kafka records processed per Lambda invocation is controlled by your Event Source Mapping configuration. Properly sized batches optimize cost and performance.</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="11:1"><input checked="checked" id="batch-size-configuration_1" name="__tabbed_11" type="radio" /><div class="tabbed-labels"><label for="batch-size-configuration_1">Batch size configuration</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="13:1"><input checked="checked" id="batch-size-configuration_1" name="__tabbed_13" type="radio" /><div class="tabbed-labels"><label for="batch-size-configuration_1">Batch size configuration</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
@@ -5806,27 +5994,27 @@ pip<span class="w"> </span>install<span class="w"> </span><span class="s1">&#39;
 <span class="normal">18</span>
 <span class="normal">19</span>
 <span class="normal">20</span>
-<span class="normal">21</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nt">Resources</span><span class="p">:</span>
-<span class="nt">OrderProcessingFunction</span><span class="p">:</span>
+<span class="normal">21</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nt">AWSTemplateFormatVersion</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;2010-09-09&#39;</span>
+<span class="nt">Transform</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">AWS::Serverless-2016-10-31</span>
+<span class="nt">Resources</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">KafkaConsumerFunction</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">Type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">AWS::Serverless::Function</span>
 <span class="w">    </span><span class="nt">Properties</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">Handler</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">app.lambda_handler</span>
-<span class="w">    </span><span class="nt">Runtime</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">python3.9</span>
-<span class="w">    </span><span class="nt">Events</span><span class="p">:</span>
-<span class="w">        </span><span class="nt">KafkaEvent</span><span class="p">:</span>
-<span class="w">        </span><span class="nt">Type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MSK</span>
-<span class="w">        </span><span class="nt">Properties</span><span class="p">:</span>
-<span class="w">            </span><span class="nt">Stream</span><span class="p">:</span><span class="w"> </span><span class="kt">!GetAtt</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">OrdersMSKCluster.Arn</span>
+<span class="w">      </span><span class="nt">Handler</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">app.lambda_handler</span>
+<span class="w">      </span><span class="nt">Runtime</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">python3.13</span>
+<span class="w">      </span><span class="nt">Timeout</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">30</span>
+<span class="w">      </span><span class="nt">Events</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">MSKEvent</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">Type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MSK</span>
+<span class="w">          </span><span class="nt">Properties</span><span class="p">:</span>
+<span class="w">            </span><span class="nt">StartingPosition</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">LATEST</span>
+<span class="w">            </span><span class="nt">Stream</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;arn:aws:lambda:eu-west-3:123456789012:event-source-mapping:11a2c814-dda3-4df8-b46f-4eeafac869ac&quot;</span>
 <span class="w">            </span><span class="nt">Topics</span><span class="p">:</span>
-<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">order-events</span>
-<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">payment-events</span>
-<span class="w">            </span><span class="c1"># Configuration for optimal throughput/latency balance</span>
+<span class="w">              </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">my-topic-1</span>
 <span class="w">            </span><span class="nt">BatchSize</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">100</span>
 <span class="w">            </span><span class="nt">MaximumBatchingWindowInSeconds</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">5</span>
-<span class="w">            </span><span class="nt">StartingPosition</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">LATEST</span>
-<span class="w">            </span><span class="c1"># Enable partial batch success reporting</span>
-<span class="w">            </span><span class="nt">FunctionResponseTypes</span><span class="p">:</span>
-<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ReportBatchItemFailures</span>
+<span class="w">      </span><span class="nt">Policies</span><span class="p">:</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">AWSLambdaMSKExecutionRole</span>
 </code></pre></div></td></tr></table></div>
 </div>
 </div>
@@ -5839,7 +6027,7 @@ pip<span class="w"> </span>install<span class="w"> </span><span class="s1">&#39;
 </ul>
 <h4 id="cross-language-compatibility">Cross-language compatibility<a class="headerlink" href="#cross-language-compatibility" title="Permanent link">&para;</a></h4>
 <p>When using binary serialization formats across multiple programming languages, ensure consistent schema handling to prevent deserialization failures.</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="12:1"><input checked="checked" id="using-java-naming-convention" name="__tabbed_12" type="radio" /><div class="tabbed-labels"><label for="using-java-naming-convention">Using Java naming convention</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="14:1"><input checked="checked" id="using-java-naming-convention" name="__tabbed_14" type="radio" /><div class="tabbed-labels"><label for="using-java-naming-convention">Using Java naming convention</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
@@ -5881,9 +6069,18 @@ pip<span class="w"> </span>install<span class="w"> </span><span class="s1">&#39;
 <span class="normal">37</span>
 <span class="normal">38</span>
 <span class="normal">39</span>
-<span class="normal">40</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1"># Example: Processing Java-produced Avro messages in Python</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">aws_lambda_powertools.utilities.kafka</span><span class="w"> </span><span class="kn">import</span> <span class="n">kafka_consumer</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">aws_lambda_powertools.utilities.kafka.schema_config</span><span class="w"> </span><span class="kn">import</span> <span class="n">SchemaConfig</span>
+<span class="normal">40</span>
+<span class="normal">41</span>
+<span class="normal">42</span>
+<span class="normal">43</span>
+<span class="normal">44</span>
+<span class="normal">45</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">datetime</span><span class="w"> </span><span class="kn">import</span> <span class="n">datetime</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">aws_lambda_powertools</span><span class="w"> </span><span class="kn">import</span> <span class="n">Logger</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">aws_lambda_powertools.utilities.kafka</span><span class="w"> </span><span class="kn">import</span> <span class="n">ConsumerRecords</span><span class="p">,</span> <span class="n">SchemaConfig</span><span class="p">,</span> <span class="n">kafka_consumer</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">aws_lambda_powertools.utilities.typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">LambdaContext</span>
+
+<span class="n">logger</span> <span class="o">=</span> <span class="n">Logger</span><span class="p">()</span>
 
 <span class="c1"># Define schema that matches Java producer</span>
 <span class="n">avro_schema</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
@@ -5900,27 +6097,28 @@ pip<span class="w"> </span>install<span class="w"> </span><span class="s1">&#39;
 <span class="s2">}</span>
 <span class="s2">&quot;&quot;&quot;</span>
 
-<span class="c1"># Configure schema with field name normalization for Python style</span>
-<span class="k">class</span><span class="w"> </span><span class="nc">OrderProcessor</span><span class="p">:</span>
-    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
-        <span class="c1"># Convert Java camelCase to Python snake_case</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">order_id</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;orderId&quot;</span><span class="p">]</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">customer_id</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;customerId&quot;</span><span class="p">]</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">total_amount</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;totalAmount&quot;</span><span class="p">]</span>
-        <span class="c1"># Convert Java timestamp to Python datetime</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">order_date</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">fromtimestamp</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s2">&quot;orderDate&quot;</span><span class="p">]</span><span class="o">/</span><span class="mi">1000</span><span class="p">)</span>
+
+<span class="hll"><span class="c1"># Configure schema with field name normalization for Python style</span>
+</span><span class="hll"><span class="k">def</span><span class="w"> </span><span class="nf">normalize_field_name</span><span class="p">(</span><span class="n">data</span><span class="p">:</span> <span class="nb">dict</span><span class="p">):</span>
+</span><span class="hll">    <span class="n">data</span><span class="p">[</span><span class="s2">&quot;order_id&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;orderId&quot;</span><span class="p">]</span>
+</span><span class="hll">    <span class="n">data</span><span class="p">[</span><span class="s2">&quot;customer_id&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;customerId&quot;</span><span class="p">]</span>
+</span><span class="hll">    <span class="n">data</span><span class="p">[</span><span class="s2">&quot;total_amount&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;totalAmount&quot;</span><span class="p">]</span>
+</span><span class="hll">    <span class="n">data</span><span class="p">[</span><span class="s2">&quot;order_date&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">fromtimestamp</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s2">&quot;orderDate&quot;</span><span class="p">]</span> <span class="o">/</span> <span class="mi">1000</span><span class="p">)</span>
+</span><span class="hll">    <span class="k">return</span> <span class="n">data</span>
+</span>
 
 <span class="n">schema_config</span> <span class="o">=</span> <span class="n">SchemaConfig</span><span class="p">(</span>
     <span class="n">value_schema_type</span><span class="o">=</span><span class="s2">&quot;AVRO&quot;</span><span class="p">,</span>
     <span class="n">value_schema</span><span class="o">=</span><span class="n">avro_schema</span><span class="p">,</span>
-    <span class="n">value_output_serializer</span><span class="o">=</span><span class="n">OrderProcessor</span>
+    <span class="n">value_output_serializer</span><span class="o">=</span><span class="n">normalize_field_name</span><span class="p">,</span>
 <span class="p">)</span>
 
+
 <span class="nd">@kafka_consumer</span><span class="p">(</span><span class="n">schema_config</span><span class="o">=</span><span class="n">schema_config</span><span class="p">)</span>
-<span class="k">def</span><span class="w"> </span><span class="nf">lambda_handler</span><span class="p">(</span><span class="n">event</span><span class="p">,</span> <span class="n">context</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">lambda_handler</span><span class="p">(</span><span class="n">event</span><span class="p">:</span> <span class="n">ConsumerRecords</span><span class="p">,</span> <span class="n">context</span><span class="p">:</span> <span class="n">LambdaContext</span><span class="p">):</span>
     <span class="k">for</span> <span class="n">record</span> <span class="ow">in</span> <span class="n">event</span><span class="o">.</span><span class="n">records</span><span class="p">:</span>
         <span class="n">order</span> <span class="o">=</span> <span class="n">record</span><span class="o">.</span><span class="n">value</span>  <span class="c1"># OrderProcessor instance</span>
-        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Processing order </span><span class="si">{</span><span class="n">order</span><span class="o">.</span><span class="n">order_id</span><span class="si">}</span><span class="s2"> from </span><span class="si">{</span><span class="n">order</span><span class="o">.</span><span class="n">order_date</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Processing order </span><span class="si">{</span><span class="n">order</span><span class="p">[</span><span class="s1">&#39;order_id&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
 </div>
 </div>
@@ -5947,7 +6145,7 @@ pip<span class="w"> </span>install<span class="w"> </span><span class="s1">&#39;
 <span class="c1"># For troubleshooting purposes only</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">base64</span>
 
-<span class="n">raw_bytes</span> <span class="o">=</span> <span class="n">base64</span><span class="o">.</span><span class="n">b64decode</span><span class="p">(</span><span class="n">record</span><span class="o">.</span><span class="n">raw_value</span><span class="p">)</span>
+<span class="n">raw_bytes</span> <span class="o">=</span> <span class="n">base64</span><span class="o">.</span><span class="n">b64decode</span><span class="p">(</span><span class="n">record</span><span class="o">.</span><span class="n">original_value</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Message size: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">raw_bytes</span><span class="p">)</span><span class="si">}</span><span class="s2"> bytes&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;First 50 bytes (hex): </span><span class="si">{</span><span class="n">raw_bytes</span><span class="p">[:</span><span class="mi">50</span><span class="p">]</span><span class="o">.</span><span class="n">hex</span><span class="p">()</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
@@ -6065,7 +6263,7 @@ pip<span class="w"> </span>install<span class="w"> </span><span class="s1">&#39;
 
 <h2 id="testing-your-code">Testing your code<a class="headerlink" href="#testing-your-code" title="Permanent link">&para;</a></h2>
 <p>Testing Kafka consumer functions is straightforward with pytest. You can create simple test fixtures that simulate Kafka events without needing a real Kafka cluster.</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="13:1"><input checked="checked" id="testing-your-code_1" name="__tabbed_13" type="radio" /><div class="tabbed-labels"><label for="testing-your-code_1">Testing your code</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="15:2"><input checked="checked" id="testing-your-code_1" name="__tabbed_15" type="radio" /><input id="lambda-handler" name="__tabbed_15" type="radio" /><div class="tabbed-labels"><label for="testing-your-code_1">Testing your code</label><label for="lambda-handler">Lambda handler</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
@@ -6129,10 +6327,12 @@ pip<span class="w"> </span>install<span class="w"> </span><span class="s1">&#39;
 <span class="normal">59</span>
 <span class="normal">60</span>
 <span class="normal">61</span>
-<span class="normal">62</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">pytest</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">base64</span>
+<span class="normal">62</span>
+<span class="normal">63</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">base64</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">json</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">your_module</span><span class="w"> </span><span class="kn">import</span> <span class="n">lambda_handler</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">lambda_handler_test</span><span class="w"> </span><span class="kn">import</span> <span class="n">lambda_handler</span>
+
 
 <span class="k">def</span><span class="w"> </span><span class="nf">test_process_json_message</span><span class="p">():</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Test processing a simple JSON message&quot;&quot;&quot;</span>
@@ -6149,9 +6349,9 @@ pip<span class="w"> </span>install<span class="w"> </span><span class="s1">&#39;
                     <span class="s2">&quot;timestampType&quot;</span><span class="p">:</span> <span class="s2">&quot;CREATE_TIME&quot;</span><span class="p">,</span>
                     <span class="s2">&quot;key&quot;</span><span class="p">:</span> <span class="kc">None</span><span class="p">,</span>
                     <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="n">base64</span><span class="o">.</span><span class="n">b64encode</span><span class="p">(</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">({</span><span class="s2">&quot;order_id&quot;</span><span class="p">:</span> <span class="s2">&quot;12345&quot;</span><span class="p">,</span> <span class="s2">&quot;amount&quot;</span><span class="p">:</span> <span class="mf">99.95</span><span class="p">})</span><span class="o">.</span><span class="n">encode</span><span class="p">())</span><span class="o">.</span><span class="n">decode</span><span class="p">(),</span>
-                <span class="p">}</span>
-            <span class="p">]</span>
-        <span class="p">}</span>
+                <span class="p">},</span>
+            <span class="p">],</span>
+        <span class="p">},</span>
     <span class="p">}</span>
 
     <span class="c1"># Invoke the Lambda handler</span>
@@ -6180,9 +6380,9 @@ pip<span class="w"> </span>install<span class="w"> </span><span class="s1">&#39;
                     <span class="s2">&quot;partition&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
                     <span class="s2">&quot;offset&quot;</span><span class="p">:</span> <span class="mi">11</span><span class="p">,</span>
                     <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="n">base64</span><span class="o">.</span><span class="n">b64encode</span><span class="p">(</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">({</span><span class="s2">&quot;customer_id&quot;</span><span class="p">:</span> <span class="s2">&quot;B2&quot;</span><span class="p">,</span> <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Bob&quot;</span><span class="p">})</span><span class="o">.</span><span class="n">encode</span><span class="p">())</span><span class="o">.</span><span class="n">decode</span><span class="p">(),</span>
-                <span class="p">}</span>
-            <span class="p">]</span>
-        <span class="p">}</span>
+                <span class="p">},</span>
+            <span class="p">],</span>
+        <span class="p">},</span>
     <span class="p">}</span>
 
     <span class="c1"># Invoke the Lambda handler</span>
@@ -6191,6 +6391,26 @@ pip<span class="w"> </span>install<span class="w"> </span><span class="s1">&#39;
     <span class="c1"># Verify the response</span>
     <span class="k">assert</span> <span class="n">response</span><span class="p">[</span><span class="s2">&quot;statusCode&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">200</span>
     <span class="k">assert</span> <span class="n">response</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;processed&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="mi">2</span>
+</code></pre></div></td></tr></table></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span>
+<span class="normal">8</span>
+<span class="normal">9</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">aws_lambda_powertools.utilities.kafka</span><span class="w"> </span><span class="kn">import</span> <span class="n">ConsumerRecords</span><span class="p">,</span> <span class="n">SchemaConfig</span><span class="p">,</span> <span class="n">kafka_consumer</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">aws_lambda_powertools.utilities.typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">LambdaContext</span>
+
+<span class="n">schema_config</span> <span class="o">=</span> <span class="n">SchemaConfig</span><span class="p">(</span><span class="n">value_schema_type</span><span class="o">=</span><span class="s2">&quot;JSON&quot;</span><span class="p">)</span>
+
+
+<span class="nd">@kafka_consumer</span><span class="p">(</span><span class="n">schema_config</span><span class="o">=</span><span class="n">schema_config</span><span class="p">)</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">lambda_handler</span><span class="p">(</span><span class="n">event</span><span class="p">:</span> <span class="n">ConsumerRecords</span><span class="p">,</span> <span class="n">context</span><span class="p">:</span> <span class="n">LambdaContext</span><span class="p">):</span>
+    <span class="k">return</span> <span class="p">{</span><span class="s2">&quot;statusCode&quot;</span><span class="p">:</span> <span class="mi">200</span><span class="p">,</span> <span class="s2">&quot;processed&quot;</span><span class="p">:</span> <span class="nb">len</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">event</span><span class="o">.</span><span class="n">records</span><span class="p">))}</span>
 </code></pre></div></td></tr></table></div>
 </div>
 </div>
@@ -6215,7 +6435,7 @@ pip<span class="w"> </span>install<span class="w"> </span><span class="s1">&#39;
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    2025-06-19
+    2025-06-30
   </span>
 
     
